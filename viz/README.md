@@ -74,7 +74,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 
 ## Branches
 
-- `main` — dashboard.html + data/ + this contract
+- `master` — dashboard.html + data/ + this contract
 - `viz/01-reasoning-tax` — worker 1
 - `viz/02-pareto-reasoning` — worker 2 (reference impl, may already be merged)
 - `viz/03-provider-archetypes` — worker 3
@@ -84,7 +84,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 
 After your viz is done:
 ```bash
-git checkout main
+git checkout master
 git merge --no-ff viz/NN-name
 # if conflict, fix only dashboard.html (which lists the <script src> includes)
 ```
