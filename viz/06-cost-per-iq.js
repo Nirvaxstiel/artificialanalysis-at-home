@@ -21,7 +21,7 @@
   const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
 
   function render(container, data) {
-    const W = 1200, H = 650;
+    const W = 1200; const H = 650;
     const M = { top: 40, right: 30, bottom: 140, left: 80 };
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;

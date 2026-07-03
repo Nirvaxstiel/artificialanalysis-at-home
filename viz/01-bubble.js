@@ -22,7 +22,7 @@
   const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
 
   function render(container, data) {
-    const W = 1100, H = 600;
+    const W = 1100; const H = 600;
     const M = { top: 30, right: 30, bottom: 50, left: 60 };
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
@@ -30,13 +30,13 @@
     const pts = data.filter(m => m.cost_per_task != null && m.cost_per_task > 0
       && m.tokens_m != null && m.intel != null);
 
-    const minCost = 0.02, maxCost = 3.0;
+    const minCost = 0.02, maxCost = 7.0;
     const minIQ = 10, maxIQ = 80;
     const minTok = 30, maxTok = 320;
 
     const xScale = c => M.left + (Math.log10(c) - Math.log10(minCost)) / (Math.log10(maxCost) - Math.log10(minCost)) * innerW;
     const yScale = i => M.top + (1 - (i - minIQ) / (maxIQ - minIQ)) * innerH;
-    const rScale = t => 4 + Math.sqrt((t - minTok) / (maxTok - minTok)) * 22;
+    const rScale = t => 4 + Math.sqrt(Math.max(0, (t - minTok) / (maxTok - minTok))) * 22;
 
     const costTicks = [0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 3];
     const iqTicks = [10, 20, 30, 40, 50, 60, 70, 80];
@@ -101,7 +101,16 @@
       if (!placed) {
         placed = { x: cx, y: cy - r - labelGap - h, anchor: 'middle' };
       }
-      const cleanName = text.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
+      // Clamp ALL labels to viewBox bounds
+      if (placed.anchor === 'middle') {
+        placed.x = Math.max(approxW/2 + 5, Math.min(W - approxW/2 - 5, placed.x));
+      } else if (placed.anchor === 'start') {
+        placed.x = Math.max(5, Math.min(W - approxW - 5, placed.x));
+      } else {
+        placed.x = Math.max(approxW + 5, Math.min(W - 5, placed.x));
+      }
+      placed.y = Math.max(h + 5, Math.min(H - 5, placed.y));
+      const cleanName = text;
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
     }
 

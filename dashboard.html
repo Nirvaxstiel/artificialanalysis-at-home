@@ -16,7 +16,7 @@
     --panel: #111;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); color: var(--fg); overflow-x: hidden; }
+  html, body { background: var(--bg); color: var(--fg); }
   body {
     font-family: 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace;
     line-height: 1.5;
@@ -85,8 +85,8 @@
   /* Viz panel */
   .viz-panel { display: none; }
   .viz-panel.active { display: block; }
-  .viz-mount { min-height: 600px; overflow: visible; }
-  .chart { overflow: visible; }
+  .viz-mount { }
+  .chart { overflow: hidden; }
 
   /* Legend */
   .legend { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 16px;
@@ -112,7 +112,7 @@
   tr:hover td { background: rgba(182,255,60,0.05); }
 
   /* SVG */
-  svg { display: block; max-width: 100%; height: auto; }
+  svg { display: block; width: 100%; aspect-ratio: auto; }
   svg .axis text { fill: var(--muted); font-family: inherit; font-size: 10px; }
   svg .axis line, svg .axis path { stroke: #444; }
   svg .grid line { stroke: #1a1a1a; stroke-dasharray: 2 4; }
@@ -319,11 +319,18 @@ window.PROCESSED_DATA = [{"slug": "gpt-oss-20b", "name": "GPT-OSS-20B", "creator
     </div>
   `).join('');
 
-  // Render each viz
-  for (const v of registry) {
-    const mount = document.getElementById(`mount-${v.id}`);
+  // Lazy render: only render when tab becomes active
+  const rendered = new Set();
+  function renderViz(id) {
+    if (rendered.has(id)) return;
+    const v = registry.find(r => r.id === id);
+    if (!v) return;
+    const mount = document.getElementById(`mount-${id}`);
     v.render(mount, data);
+    rendered.add(id);
   }
+  // Render first tab
+  renderViz(registry[0].id);
 
   // Tab switching
   tabsEl.addEventListener('click', e => {
@@ -332,6 +339,7 @@ window.PROCESSED_DATA = [{"slug": "gpt-oss-20b", "name": "GPT-OSS-20B", "creator
     const id = btn.dataset.viz;
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.viz === id));
     document.querySelectorAll('.viz-panel').forEach(p => p.classList.toggle('active', p.dataset.viz === id));
+    renderViz(id);
   });
 
   // ============ TABLES ============

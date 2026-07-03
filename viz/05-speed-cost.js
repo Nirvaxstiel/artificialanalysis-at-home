@@ -32,7 +32,7 @@
   ]);
 
   function render(container, data) {
-    const W = 1100, H = 600;
+    const W = 1100; const H = 600;
     const M = { top: 30, right: 30, bottom: 50, left: 60 };
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;

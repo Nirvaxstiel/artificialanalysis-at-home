@@ -122,7 +122,7 @@
       ];
 
       // Build radar SVG
-      let svg = `<svg viewBox="0 0 ${CX * 2} ${CY * 2}" width="${CX * 2}" height="${CY * 2}" style="display:block;margin:0 auto;">`;
+      let svg = `<svg viewBox="0 0 ${CX * 2} ${CY * 2}">`;
 
       // Grid rings (0.25, 0.5, 0.75, 1.0)
       for (const frac of [0.25, 0.5, 0.75, 1.0]) {

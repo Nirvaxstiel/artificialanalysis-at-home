@@ -17,7 +17,7 @@
   }
 
   function render(container, data) {
-    const W = 1100, H = 600;
+    const W = 1100; const H = 600;
     const M = { top: 30, right: 30, bottom: 50, left: 60 };
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
@@ -25,7 +25,7 @@
     const pts = data.filter(m => m.cost_per_task != null && m.cost_per_task > 0
       && m.tokens_m != null && m.intel != null);
 
-    const minCost = 0.02, maxCost = 3.0;
+    const minCost = 0.02, maxCost = 7.0;
     const minIQ = 10, maxIQ = 80;
     const minTok = 30, maxTok = 320;
 
