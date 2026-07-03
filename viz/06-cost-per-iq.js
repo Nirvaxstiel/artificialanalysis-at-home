@@ -107,7 +107,7 @@
 
     // Median reference line
     svg += `<line x1="${M.left}" y1="${medianY}" x2="${W - M.right}" y2="${medianY}" stroke="var(--neon2, #b6ff3c)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
-    svg += `<text x="${W - M.right + 4}" y="${medianY + 3}" font-size="9" font-weight="700" fill="var(--neon2, #b6ff3c)" font-family="monospace">// MEDIAN: $${median.toFixed(4)}</text>`;
+    svg += `<text x="${W - M.right - 4}" y="${medianY - 5}" text-anchor="end" font-size="9" font-weight="700" fill="var(--neon2, #b6ff3c)" font-family="monospace">MEDIAN $${median.toFixed(4)}</text>`;
 
     // Best value label (cheapest bar)
     const cheapest = models[0];

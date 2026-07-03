@@ -136,20 +136,6 @@
       svg += `<text x="${totalX + 6}" y="${y + barH / 2 + 4}" text-anchor="start" fill="#f5f5f0" font-size="10" font-family="monospace" font-weight="700">${totalLabel}</text>`;
     }
 
-    // Reasoning tax annotation — bracket for models where reasoning > 50% of total
-    const highTax = models.filter(m => m.total_cost_per_task_usd > 0 && (m.reasoning_usd / m.total_cost_per_task_usd) > 0.5);
-    if (highTax.length > 0) {
-      const firstIdx = models.indexOf(highTax[0]);
-      const lastIdx = models.indexOf(highTax[highTax.length - 1]);
-      const bracketX = W - M.right + 30;
-      const y1 = M.top + firstIdx * (barH + barGap) + barH / 2;
-      const y2 = M.top + lastIdx * (barH + barGap) + barH / 2;
-      svg += `<line x1="${bracketX - 5}" y1="${y1}" x2="${bracketX}" y2="${y1}" stroke="#ff3366" stroke-width="2"/>`;
-      svg += `<line x1="${bracketX}" y1="${y1}" x2="${bracketX}" y2="${y2}" stroke="#ff3366" stroke-width="2"/>`;
-      svg += `<line x1="${bracketX - 5}" y1="${y2}" x2="${bracketX}" y2="${y2}" stroke="#ff3366" stroke-width="2"/>`;
-      svg += `<text x="${bracketX + 8}" y="${(y1 + y2) / 2 + 4}" fill="#ff3366" font-size="9" font-family="monospace" font-weight="700">// &gt;50% REASONING TAX</text>`;
-    }
-
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">${svg}</svg>`;
 
     // Wire tooltips
