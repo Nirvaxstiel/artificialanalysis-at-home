@@ -14,5 +14,17 @@ Thumbs.db
 __pycache__/
 .pytest_cache/
 
+# Binary assets — only commit if intentionally shrunk + re-encoded
+# Rule: each image < 200KB OR committed with explicit label (e.g. assets/shrunk-*.webp)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.tiff
+# Exception: explicitly shrunk webp in assets/ (uncomment when adding)
+# !assets/shrunk-*.webp
+
 # Future: anything in data/ that's user-generated
 # data/private/
