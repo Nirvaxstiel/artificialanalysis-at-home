@@ -1,0 +1,19 @@
+name: Deploy to Codeberg Pages
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  publish:
+    runs-on: codeberg-tiny
+    steps:
+      - name: Checkout
+        uses: https://code.forgejo.org/actions/checkout@v6
+
+      - name: Deploy
+        uses: https://codeberg.org/git-pages/action@v2
+        with:
+          site: https://${{ forge.repository_owner }}.codeberg.page/${{ forge.event.repository.name }}/
+          token: ${{ forge.token }}
+          source: ./
