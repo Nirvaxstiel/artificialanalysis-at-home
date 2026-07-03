@@ -1,0 +1,286 @@
+{
+  "scraped_from": "Cost per Intelligence Index Task bar chart (3 Jul '26)",
+  "note": "Per-task cost in USD, segmented by token type. Total values read from bar labels. Segment ratios estimated by color fraction (Answer, Reasoning, Cache Write, Cache Hit, Input).",
+  "models": [
+    {
+      "name": "gpt-oss-20b (high)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 0.02,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.02
+    },
+    {
+      "name": "DeepSeek V4 Flash (max)",
+      "creator": "DeepSeek",
+      "total_cost_per_task_usd": 0.02,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.02,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.0
+    },
+    {
+      "name": "MiMo-V2.5-Pro (max)",
+      "creator": "Xiaomi",
+      "total_cost_per_task_usd": 0.03,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.03
+    },
+    {
+      "name": "DeepSeek V4 Pro (max)",
+      "creator": "DeepSeek",
+      "total_cost_per_task_usd": 0.04,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.04,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.0
+    },
+    {
+      "name": "gpt-oss-120b (high)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 0.06,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.06
+    },
+    {
+      "name": "MiniMax-M2.7",
+      "creator": "MiniMax",
+      "total_cost_per_task_usd": 0.07,
+      "answer_usd": 0.05,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.02
+    },
+    {
+      "name": "MiniMax-M3",
+      "creator": "MiniMax",
+      "total_cost_per_task_usd": 0.12,
+      "answer_usd": 0.07,
+      "reasoning_usd": 0.04,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.01
+    },
+    {
+      "name": "Grok 4.3 (high)",
+      "creator": "xAI",
+      "total_cost_per_task_usd": 0.16,
+      "answer_usd": 0.13,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.03
+    },
+    {
+      "name": "Nova 2.0 Pro Preview (medium)",
+      "creator": "Amazon",
+      "total_cost_per_task_usd": 0.17,
+      "answer_usd": 0.05,
+      "reasoning_usd": 0.10,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.02
+    },
+    {
+      "name": "Kimi K2.7 Code",
+      "creator": "Kimi",
+      "total_cost_per_task_usd": 0.18,
+      "answer_usd": 0.15,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.03
+    },
+    {
+      "name": "GPT-5.5 (low)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 0.22,
+      "answer_usd": 0.10,
+      "reasoning_usd": 0.08,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.02,
+      "input_usd": 0.02
+    },
+    {
+      "name": "Claude 4.5 Haiku",
+      "creator": "Anthropic",
+      "total_cost_per_task_usd": 0.24,
+      "answer_usd": 0.05,
+      "reasoning_usd": 0.15,
+      "cache_write_usd": 0.02,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.02
+    },
+    {
+      "name": "Nemotron 3 Ultra",
+      "creator": "NVIDIA",
+      "total_cost_per_task_usd": 0.24,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.24
+    },
+    {
+      "name": "NVIDIA Nemotron 3 Super",
+      "creator": "NVIDIA",
+      "total_cost_per_task_usd": 0.25,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.25
+    },
+    {
+      "name": "Gemini 3.1 Pro Preview",
+      "creator": "Google",
+      "total_cost_per_task_usd": 0.29,
+      "answer_usd": 0.18,
+      "reasoning_usd": 0.05,
+      "cache_write_usd": 0.04,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.02
+    },
+    {
+      "name": "Kimi K2.6",
+      "creator": "Kimi",
+      "total_cost_per_task_usd": 0.31,
+      "answer_usd": 0.18,
+      "reasoning_usd": 0.08,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.05
+    },
+    {
+      "name": "Qwen3.5 397B A17B",
+      "creator": "Alibaba",
+      "total_cost_per_task_usd": 0.33,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.0,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.33
+    },
+    {
+      "name": "Claude 4.5 Sonnet",
+      "creator": "Anthropic",
+      "total_cost_per_task_usd": 0.41,
+      "answer_usd": 0.15,
+      "reasoning_usd": 0.18,
+      "cache_write_usd": 0.05,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.03
+    },
+    {
+      "name": "GPT-5.5 (medium)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 0.42,
+      "answer_usd": 0.10,
+      "reasoning_usd": 0.22,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.08,
+      "input_usd": 0.02
+    },
+    {
+      "name": "GLM-5.2 (max)",
+      "creator": "Z AI",
+      "total_cost_per_task_usd": 0.48,
+      "answer_usd": 0.0,
+      "reasoning_usd": 0.48,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.0
+    },
+    {
+      "name": "Gemini 3.5 Flash",
+      "creator": "Google",
+      "total_cost_per_task_usd": 0.59,
+      "answer_usd": 0.30,
+      "reasoning_usd": 0.20,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.09
+    },
+    {
+      "name": "GPT-5.5 (high)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 0.69,
+      "answer_usd": 0.15,
+      "reasoning_usd": 0.40,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.12,
+      "input_usd": 0.02
+    },
+    {
+      "name": "GPT-5.5 (xhigh)",
+      "creator": "OpenAI",
+      "total_cost_per_task_usd": 1.03,
+      "answer_usd": 0.20,
+      "reasoning_usd": 0.65,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.15,
+      "input_usd": 0.03
+    },
+    {
+      "name": "Qwen3.7 Max",
+      "creator": "Alibaba",
+      "total_cost_per_task_usd": 1.06,
+      "answer_usd": 0.0,
+      "reasoning_usd": 1.06,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.0
+    },
+    {
+      "name": "Claude Sonnet 4.6 (max)",
+      "creator": "Anthropic",
+      "total_cost_per_task_usd": 1.14,
+      "answer_usd": 0.30,
+      "reasoning_usd": 0.50,
+      "cache_write_usd": 0.20,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.14
+    },
+    {
+      "name": "Mistral Medium 3.5",
+      "creator": "Mistral",
+      "total_cost_per_task_usd": 1.20,
+      "answer_usd": 0.0,
+      "reasoning_usd": 1.20,
+      "cache_write_usd": 0.0,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.0
+    },
+    {
+      "name": "Claude Opus 4.8 (max)",
+      "creator": "Anthropic",
+      "total_cost_per_task_usd": 1.80,
+      "answer_usd": 0.50,
+      "reasoning_usd": 0.80,
+      "cache_write_usd": 0.30,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.20
+    },
+    {
+      "name": "Claude Sonnet 5 (max)",
+      "creator": "Anthropic",
+      "total_cost_per_task_usd": 2.29,
+      "answer_usd": 0.60,
+      "reasoning_usd": 1.00,
+      "cache_write_usd": 0.45,
+      "cache_hit_usd": 0.0,
+      "input_usd": 0.24
+    }
+  ]
+}

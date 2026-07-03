@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LLM_PRICING // INTELLIGENCE × COST × TOKENS</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #f5f5f0;
+    --muted: #888;
+    --border: #f5f5f0;
+    --neon: #b6ff3c;
+    --neon2: #00e5ff;
+    --warn: #ff3366;
+    --panel: #111;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace;
+    line-height: 1.5;
+    padding: 48px 32px;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  /* Header */
+  header { border: 3px solid var(--border); padding: 24px 32px; margin-bottom: 32px;
+    box-shadow: 8px 8px 0 var(--neon); background: var(--panel); }
+  header h1 { font-size: 32px; letter-spacing: -0.02em; font-weight: 800; }
+  header h1 span { color: var(--neon); }
+  header .meta { color: var(--muted); font-size: 12px; margin-top: 8px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Section markers */
+  .section { margin-bottom: 48px; }
+  .section-marker { display: flex; align-items: baseline; gap: 16px; margin-bottom: 16px; }
+  .section-marker .num { color: var(--neon); font-weight: 800; font-size: 14px; }
+  .section-marker h2 { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section-marker .tag { color: var(--muted); font-size: 11px; text-transform: uppercase; }
+
+  /* Cards */
+  .card { border: 3px solid var(--border); background: var(--panel); padding: 24px;
+    box-shadow: 6px 6px 0 var(--neon2); }
+  .card.warn { box-shadow: 6px 6px 0 var(--warn); }
+  .card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; color: var(--muted); }
+  .card .big { font-size: 36px; font-weight: 800; line-height: 1; }
+  .card .big span { color: var(--neon); }
+
+  /* Chart container */
+  .chart { border: 3px solid var(--border); background: var(--panel);
+    box-shadow: 8px 8px 0 var(--neon); padding: 24px; margin-bottom: 32px; }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .chart-head h2 { font-size: 18px; font-weight: 800; text-transform: uppercase; }
+  .chart-head .src { color: var(--muted); font-size: 11px; }
+
+  /* Legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 16px;
+    padding-top: 16px; border-top: 1px dashed var(--muted); font-size: 11px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; }
+  .legend .dot { width: 10px; height: 10px; display: inline-block; border: 1px solid var(--fg); }
+  .legend .size { color: var(--muted); margin-left: 16px; }
+
+  /* Grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #333; }
+  th { color: var(--neon); text-transform: uppercase; font-size: 10px; letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--neon); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:hover td { background: rgba(182,255,60,0.05); }
+
+  /* SVG */
+  svg { display: block; max-width: 100%; height: auto; }
+  svg .axis text { fill: var(--muted); font-family: inherit; font-size: 10px; }
+  svg .axis line, svg .axis path { stroke: #444; }
+  svg .grid line { stroke: #1a1a1a; stroke-dasharray: 2 4; }
+  svg .point { cursor: crosshair; transition: filter 80ms linear; }
+  svg .point:hover, svg .label:hover { filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 12px var(--neon2)); }
+  svg .label { cursor: pointer; }
+
+  /* Custom tooltip */
+  .tooltip {
+    position: fixed; pointer-events: none; z-index: 100;
+    background: #000; border: 2px solid var(--neon);
+    box-shadow: 4px 4px 0 var(--neon2);
+    padding: 10px 14px; font-size: 11px; line-height: 1.5;
+    max-width: 280px; display: none; white-space: pre-line;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .tooltip .tt-name { color: var(--neon); font-weight: 800; font-size: 12px; margin-bottom: 4px; }
+  .tooltip .tt-creator { color: var(--muted); font-size: 10px; text-transform: uppercase; margin-bottom: 6px; }
+  .tooltip .tt-row { display: flex; justify-content: space-between; gap: 16px; }
+  .tooltip .tt-row .k { color: var(--muted); }
+  .tooltip .tt-row .v { color: var(--fg); font-weight: 700; }
+  .tooltip .tt-row .v.neon { color: var(--neon); }
+  .tooltip .tt-seg { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #333; }
+
+  /* Comment / quote */
+  .comment { color: var(--muted); font-style: italic; padding: 12px 16px;
+    border-left: 3px solid var(--neon2); margin: 16px 0; font-size: 13px; }
+  .comment::before { content: "// "; color: var(--neon2); font-style: normal; }
+
+  /* Footer */
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px dashed var(--muted);
+    color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Stats strip */
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 3px solid var(--border);
+    margin-bottom: 32px; box-shadow: 6px 6px 0 var(--neon); }
+  .strip > div { padding: 20px; border-right: 1px solid var(--border); background: var(--panel); }
+  .strip > div:last-child { border-right: 0; }
+  .strip .label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .strip .val { font-size: 28px; font-weight: 800; line-height: 1; margin-top: 8px; }
+  .strip .val span { color: var(--neon); }
+  @media (max-width: 700px) { .strip { grid-template-columns: 1fr 1fr; } .strip > div { border-bottom: 1px solid var(--border); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="tooltip" id="tooltip"></div>
+
+<header>
+  <h1>LLM_PRICING<span>//</span>INTELLIGENCE × COST × TOKENS</h1>
+  <div class="meta">SOURCE: ARTIFICIAL ANALYSIS INTELLIGENCE INDEX v4.1 · 03 JUL 2026 · 38 MODELS · 14 CREATORS</div>
+</header>
+
+<!-- TOP STRIP: HEADLINE STATS -->
+<div class="strip">
+  <div><div class="label">CHAMPION (IQ)</div><div class="val">Claude <span>Fable 5</span></div></div>
+  <div><div class="label">CHEAPEST ($/TASK)</div><div class="val">gpt-oss-<span>20b</span></div></div>
+  <div><div class="label">SWEET SPOT</div><div class="val">MiniMax-<span>M3</span></div></div>
+  <div><div class="label">IQ / $1000</div><div class="val">DeepSeek <span>V4 Flash</span></div></div>
+</div>
+
+<!-- SECTION 01: BUBBLE CHART (the headline crossover) -->
+<div class="section">
+  <div class="section-marker">
+    <span class="num">01 //</span>
+    <h2>The Crossover — Intelligence × Cost × Tokens</h2>
+    <span class="tag">bubble = output tokens · x = cost (log) · y = IQ</span>
+  </div>
+
+  <div class="chart">
+    <div class="chart-head">
+      <h2>intelligence-vs-cost-vs-tokens</h2>
+      <span class="src">// green quadrant = high IQ + low cost. upper-left = best.</span>
+    </div>
+    <svg viewBox="0 0 1100 600" id="bubble"></svg>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="comment">
+    The frontier proprietary models (GPT-5.5, Claude Sonnet/Fable, Gemini 3.1 Pro) cluster top-right:
+    high IQ, expensive. The open-weight crowd clusters bottom-left: cheap, lower IQ. The
+    inversion: DeepSeek V4 Flash uses 3.2x more tokens than GPT-5.5 but costs 39x less total.
+  </div>
+</div>
+
+<!-- SECTION 02: REASONING TAX -->
+<div class="section">
+  <div class="section-marker">
+    <span class="num">02 //</span>
+    <h2>The Reasoning Tax</h2>
+    <span class="tag">% of per-task cost spent on thinking tokens</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card warn">
+      <h3>// GPT-5.5 (xhigh)</h3>
+      <div class="big"><span>63%</span></div>
+      <p style="margin-top:12px;font-size:12px;color:var(--muted);">
+        $1.03/task total. $0.65 of that is reasoning tokens. The model is "smart" partly because
+        it's expensive to run, not because it's concise.
+      </p>
+    </div>
+    <div class="card">
+      <h3>// DeepSeek V4 Flash (max)</h3>
+      <div class="big"><span>100%</span></div>
+      <p style="margin-top:12px;font-size:12px;color:var(--muted);">
+        $0.02/task. 100% of cost is reasoning. But at $0.28/M output tokens, it doesn't matter.
+        The cheap-rate drowns the verbosity.
+      </p>
+    </div>
+    <div class="card">
+      <h3>// MiniMax-M3 (sweet spot)</h3>
+      <div class="big"><span>33%</span></div>
+      <p style="margin-top:12px;font-size:12px;color:var(--muted);">
+        $0.12/task. Reasoning share is low AND the per-token rate is $1.20/M, not $30/M.
+        Concise + cheap = the actual sweet spot.
+      </p>
+    </div>
+    <div class="card warn">
+      <h3>// Claude Sonnet 5 (max)</h3>
+      <div class="big"><span>44%</span></div>
+      <p style="margin-top:12px;font-size:12px;color:var(--muted);">
+        $2.29/task. $1.00 is reasoning. $0.60 is answer. $0.45 is cache writes. Anthropic's
+        caching shows up visibly in the cost stack.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 03: PROVIDER ROLLUP -->
+<div class="section">
+  <div class="section-marker">
+    <span class="num">03 //</span>
+    <h2>Provider Rollup</h2>
+    <span class="tag">avg intelligence, cost, token efficiency per creator</span>
+  </div>
+
+  <div class="chart" style="box-shadow: 8px 8px 0 var(--neon2);">
+    <div class="chart-head">
+      <h2>by-creator-aggregates</h2>
+      <span class="src">// one bar = one creator. stacked: avg cost per task.</span>
+    </div>
+    <div id="provider-table"></div>
+  </div>
+</div>
+
+<!-- SECTION 04: TOP/BOTTOM LEADERBOARD -->
+<div class="section">
+  <div class="section-marker">
+    <span class="num">04 //</span>
+    <h2>Best Bang Per Buck</h2>
+    <span class="tag">sorted by IQ per $1000 spent</span>
+  </div>
+
+  <div class="chart" style="box-shadow: 8px 8px 0 var(--neon);">
+    <table id="leaderboard">
+      <thead><tr><th>RANK</th><th>MODEL</th><th>CREATOR</th><th class="num">IQ</th><th class="num">$ / TASK</th><th class="num">TOK (M)</th><th class="num">IQ / $1K</th><th class="num">$ / IQ</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  // DATA: 38 MODELS · ARTIFICIAL ANALYSIS v4.1 · INTELLIGENCE INDEX = 9 WEIGHTED EVALS ·
+  // COST PER TASK = (INPUT × INPUT_PRICE + CACHE × CACHE_PRICE + REASONING × OUTPUT_PRICE + ANSWER × OUTPUT_PRICE) / TASKS
+</footer>
+
+</div>
+
+<script>
+/* ============================================================
+   DATA — load from JSON files via fetch (file:// works in browser)
+   ============================================================ */
+const CREATOR_COLORS = {
+  "OpenAI":     "#f5f5f0",
+  "Google":     "#4285F4",
+  "Anthropic":  "#D97757",
+  "DeepSeek":   "#536dfe",
+  "MiniMax":    "#b6ff3c",
+  "xAI":        "#9e9e9e",
+  "NVIDIA":     "#76b900",
+  "Kimi":       "#00e5ff",
+  "Alibaba":    "#ff6a00",
+  "Z AI":       "#a855f7",
+  "Xiaomi":     "#ff5722",
+  "Amazon":     "#ff9900",
+  "Mistral":    "#000000",
+  "Meta":       "#1877f2"
+};
+
+const CREATOR_BORDER = {
+  "Mistral": "#f5f5f0"
+};
+
+async function loadData() {
+  const [models, costs] = await Promise.all([
+    fetch('./data/aa_model_data.json').then(r => r.json()),
+    fetch('./data/aa_cost_breakdown.json').then(r => r.json())
+  ]);
+
+  // Build name→per-task-cost map from breakdown (it has the actual $0.02-$3 values)
+  // Strip parentheticals like "(high)", "(max)", "(xhigh)" to match against model.name
+  const norm = s => s.toLowerCase().replace(/\s*\(.*?\)\s*/g, '').trim();
+  const costByName = {};
+  const breakdownByName = {};
+  for (const m of costs.models) {
+    const key = norm(m.name);
+    costByName[key] = m.total_cost_per_task_usd;
+    breakdownByName[key] = m;
+  }
+
+  // Patch each model with per-task cost from breakdown; fall back to total-cost/1000 if no breakdown
+  for (const [slug, m] of Object.entries(models)) {
+    const key = norm(m.name);
+    m.cost_per_task = costByName[key] ?? (m.cost != null ? m.cost / 1000 : null);
+    m.breakdown = breakdownByName[key] || null;
+  }
+
+  return { models, costs };
+}
+
+/* ============================================================
+   CHART 01: BUBBLE — Intelligence × Cost × Tokens
+   ============================================================ */
+function renderBubble(models) {
+  const W = 1100, H = 600;
+  const M = { top: 30, right: 30, bottom: 50, left: 60 };
+  const innerW = W - M.left - M.right;
+  const innerH = H - M.top - M.bottom;
+
+  // Filter to models with per-task cost data (JSON uses short keys: intel/tokens_m; cost_per_task is from breakdown)
+  const pts = Object.values(models).filter(m => m.cost_per_task != null && m.cost_per_task > 0 && m.tokens_m != null && m.intel != null);
+
+  // Scales: log cost, linear IQ, sqrt for bubble area
+  const minCost = 0.02, maxCost = 3.0;
+  const minIQ = 10, maxIQ = 80;
+  const minTok = 30, maxTok = 320;
+
+  const xScale = c => M.left + (Math.log10(c) - Math.log10(minCost)) / (Math.log10(maxCost) - Math.log10(minCost)) * innerW;
+  const yScale = i => M.top + (1 - (i - minIQ) / (maxIQ - minIQ)) * innerH;
+  const rScale = t => 4 + Math.sqrt((t - minTok) / (maxTok - minTok)) * 22;
+
+  // Axis ticks
+  const costTicks = [0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 3];
+  const iqTicks = [10, 20, 30, 40, 50, 60, 70, 80];
+
+  let svg = '';
+  // Background "most attractive quadrant" (top-left)
+  svg += `<rect x="${xScale(0.02)}" y="${M.top}" width="${xScale(0.5) - xScale(0.02)}" height="${yScale(50) - M.top}" fill="rgba(182,255,60,0.05)" stroke="rgba(182,255,60,0.3)" stroke-dasharray="3 3"/>`;
+  svg += `<text x="${xScale(0.04)}" y="${M.top + 16}" fill="#b6ff3c" font-size="10" font-family="monospace">// GREEN QUADRANT: high IQ + low cost</text>`;
+
+  // Grid lines
+  for (const t of costTicks) {
+    svg += `<line class="grid" x1="${xScale(t)}" y1="${M.top}" x2="${xScale(t)}" y2="${H - M.bottom}"/>`;
+  }
+  for (const t of iqTicks) {
+    svg += `<line class="grid" x1="${M.left}" y1="${yScale(t)}" x2="${W - M.right}" y2="${yScale(t)}"/>`;
+  }
+
+  // Axes
+  svg += `<g class="axis">`;
+  for (const t of costTicks) {
+    svg += `<text x="${xScale(t)}" y="${H - M.bottom + 18}" text-anchor="middle">$${t}</text>`;
+    svg += `<line x1="${xScale(t)}" y1="${H - M.bottom}" x2="${xScale(t)}" y2="${H - M.bottom + 4}"/>`;
+  }
+  for (const t of iqTicks) {
+    svg += `<text x="${M.left - 8}" y="${yScale(t) + 3}" text-anchor="end">${t}</text>`;
+    svg += `<line x1="${M.left - 4}" y1="${yScale(t)}" x2="${M.left}" y2="${yScale(t)}"/>`;
+  }
+  svg += `<text x="${W/2}" y="${H - 8}" text-anchor="middle" font-weight="800" font-size="12">COST PER TASK (USD, log)</text>`;
+  svg += `<text x="14" y="${H/2}" text-anchor="middle" font-weight="800" font-size="12" transform="rotate(-90 14 ${H/2})">INTELLIGENCE INDEX</text>`;
+  svg += `</g>`;
+
+  // Points
+  for (const m of pts) {
+    const cx = xScale(m.cost_per_task);
+    const cy = yScale(m.intel);
+    const r = rScale(m.tokens_m);
+    const fill = CREATOR_COLORS[m.creator] || "#888";
+    const stroke = CREATOR_BORDER[m.creator] || "#000";
+    const slug = m.slug || m.name;
+    svg += `<circle class="point" data-slug="${slug}" cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity="0.7" stroke="${stroke}" stroke-width="1.5"></circle>`;
+  }
+
+  // Labels — placed above each bubble; simple collision avoidance by alternating side
+  // We don't do real force layout; instead, sort by Y, then offset alternating labels left/right
+  const sortedByY = [...pts].sort((a, b) => yScale(a.intel) - yScale(b.intel));
+  const labelPositions = []; // {x, y, w, h} for collision check
+  const labelGap = 4; // px gap between label and bubble
+  for (let i = 0; i < sortedByY.length; i++) {
+    const m = sortedByY[i];
+    const cx = xScale(m.cost_per_task);
+    const cy = yScale(m.intel);
+    const r = rScale(m.tokens_m);
+    const text = m.name;
+    const approxW = text.length * 5.5;
+    const h = 11;
+    // Try 4 positions: above, below, right, left
+    const candidates = [
+      { x: cx,           y: cy - r - labelGap - h, anchor: 'middle' },
+      { x: cx,           y: cy + r + labelGap + 9, anchor: 'middle' },
+      { x: cx + r + labelGap + 2, y: cy + 3, anchor: 'start' },
+      { x: cx - r - labelGap - 2, y: cy + 3, anchor: 'end' },
+    ];
+    let placed = null;
+    for (const c of candidates) {
+      const lx = c.anchor === 'middle' ? c.x - approxW/2 : c.anchor === 'end' ? c.x - approxW : c.x;
+      const rect = { x: lx, y: c.y - h, w: approxW, h: h + 2 };
+      const collides = labelPositions.some(p => !(rect.x + rect.w + 2 < p.x || rect.x > p.x + p.w + 2 || rect.y + rect.h < p.y || rect.y > p.y + p.h));
+      if (!collides) { placed = c; labelPositions.push(rect); break; }
+    }
+    if (!placed) {
+      // Force-place above, no collision check
+      const c = { x: cx, y: cy - r - labelGap - h, anchor: 'middle' };
+      placed = c;
+      labelPositions.push({ x: c.x - approxW/2, y: c.y - h, w: approxW, h: h + 2 });
+    }
+    // Strip "(xhigh)" / "(high)" / "(low)" etc. to keep labels short
+    const cleanName = text.replace(/\s*\((xhigh|high|medium|low|medium\)|xhigh|fallback|max)\)\s*/i, '').replace(/\s*\(with fallback\)\s*/i, '');
+    svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
+  }
+
+  document.getElementById('bubble').innerHTML = svg;
+
+  // Wire tooltip handlers
+  const tt = document.getElementById('tooltip');
+  const modelBySlug = Object.fromEntries(Object.entries(models).map(([k, v]) => [k, v]));
+
+  document.querySelectorAll('#bubble .point').forEach(c => {
+    c.addEventListener('mouseenter', e => {
+      const m = modelBySlug[c.dataset.slug];
+      if (!m) return;
+      tt.innerHTML = buildTooltip(m);
+      tt.style.display = 'block';
+    });
+    c.addEventListener('mousemove', e => {
+      const x = e.clientX + 16, y = e.clientY + 16;
+      const w = tt.offsetWidth, h = tt.offsetHeight;
+      tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
+      tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
+    });
+    c.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
+  });
+
+  // Same for labels (bubble hover triggers it indirectly via glow class, but we want full data on label hover too)
+  document.querySelectorAll('#bubble .label').forEach(l => {
+    l.addEventListener('mouseenter', e => {
+      const m = modelBySlug[l.dataset.slug];
+      if (!m) return;
+      tt.innerHTML = buildTooltip(m);
+      tt.style.display = 'block';
+    });
+    l.addEventListener('mousemove', e => {
+      const x = e.clientX + 16, y = e.clientY + 16;
+      const w = tt.offsetWidth, h = tt.offsetHeight;
+      tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
+      tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
+    });
+    l.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
+  });
+
+  // Legend
+  const creators = [...new Set(pts.map(p => p.creator))].sort();
+  let leg = '<strong style="color:var(--neon);">CREATOR</strong> ';
+  for (const c of creators) {
+    const color = CREATOR_COLORS[c] || "#888";
+    leg += `<span class="item"><span class="dot" style="background:${color}"></span>${c}</span>`;
+  }
+  leg += `<span class="size">// BUBBLE SIZE = OUTPUT TOKENS (M) · 30M → 320M · HOVER FOR DETAILS</span>`;
+  document.getElementById('legend').innerHTML = leg;
+}
+
+function buildTooltip(m) {
+  const iq = m.intel ?? 0;
+  const cost = m.cost_per_task;
+  const tok = m.tokens_m;
+  const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '—';
+  const b = m.breakdown;
+  let seg = '';
+  if (b) {
+    const total = b.total_cost_per_task_usd || 1;
+    const pct = v => total > 0 ? ((v/total)*100).toFixed(0) + '%' : '—';
+    seg = `<div class="tt-seg">
+      <div class="tt-row"><span class="k">REASONING $</span><span class="v">$${b.reasoning_usd.toFixed(2)} (${pct(b.reasoning_usd)})</span></div>
+      <div class="tt-row"><span class="k">ANSWER $</span><span class="v">$${b.answer_usd.toFixed(2)} (${pct(b.answer_usd)})</span></div>
+      <div class="tt-row"><span class="k">CACHE W $</span><span class="v">$${b.cache_write_usd.toFixed(2)} (${pct(b.cache_write_usd)})</span></div>
+      <div class="tt-row"><span class="k">CACHE H $</span><span class="v">$${b.cache_hit_usd.toFixed(2)} (${pct(b.cache_hit_usd)})</span></div>
+      <div class="tt-row"><span class="k">INPUT $</span><span class="v">$${b.input_usd.toFixed(2)} (${pct(b.input_usd)})</span></div>
+    </div>`;
+  }
+  return `<div class="tt-name">${m.name}</div>
+    <div class="tt-creator">${m.creator} · ${m.type}</div>
+    <div class="tt-row"><span class="k">IQ</span><span class="v neon">${iq}</span></div>
+    <div class="tt-row"><span class="k">$ / TASK</span><span class="v">$${cost.toFixed(2)}</span></div>
+    <div class="tt-row"><span class="k">OUTPUT TOK (M)</span><span class="v">${tok ?? '—'}</span></div>
+    <div class="tt-row"><span class="k">$ / M TOK</span><span class="v">${m.out ?? '—'}</span></div>
+    <div class="tt-row"><span class="k">SPEED t/s</span><span class="v">${m.spd ?? '—'}</span></div>
+    <div class="tt-row"><span class="k">IQ / $1K</span><span class="v neon">${iqPerK}</span></div>
+    <div class="tt-row"><span class="k">$ / IQ PT</span><span class="v">$${(cost/iq).toFixed(2)}</span></div>
+    ${seg}`;
+}
+
+/* ============================================================
+   CHART 03: PROVIDER ROLLUP TABLE
+   ============================================================ */
+function renderProviderTable(models, costs) {
+  const rollup = {};
+  for (const [slug, m] of Object.entries(models)) {
+    if (!rollup[m.creator]) rollup[m.creator] = { count: 0, iq: [], cost: [], tokens: [] };
+    rollup[m.creator].count++;
+    if (m.intel != null) rollup[m.creator].iq.push(m.intel);
+    if (m.cost_per_task != null) rollup[m.creator].cost.push(m.cost_per_task);
+    if (m.tokens_m != null) rollup[m.creator].tokens.push(m.tokens_m);
+  }
+
+  const rows = Object.entries(rollup).map(([creator, d]) => {
+    const avg = arr => arr.length ? arr.reduce((a,b)=>a+b,0) / arr.length : null;
+    return {
+      creator,
+      count: d.count,
+      avgIQ: avg(d.iq),
+      avgCost: avg(d.cost),
+      avgTokens: avg(d.tokens)
+    };
+  }).sort((a, b) => (b.avgIQ || 0) - (a.avgIQ || 0));
+
+  let html = '<table><thead><tr><th>CREATOR</th><th class="num"># MODELS</th><th class="num">AVG IQ</th><th class="num">AVG $ / TASK</th><th class="num">AVG TOK (M)</th><th class="num">IQ / $1K</th></tr></thead><tbody>';
+  for (const r of rows) {
+    const iqPerK = r.avgIQ && r.avgCost ? (r.avgIQ / r.avgCost * 1000).toFixed(1) : '—';
+    const color = CREATOR_COLORS[r.creator] || "#888";
+    html += `<tr>
+      <td><span class="dot" style="display:inline-block;width:10px;height:10px;background:${color};margin-right:8px;border:1px solid #f5f5f0;"></span>${r.creator}</td>
+      <td class="num">${r.count}</td>
+      <td class="num">${r.avgIQ ? r.avgIQ.toFixed(1) : '—'}</td>
+      <td class="num">${r.avgCost ? '$' + r.avgCost.toFixed(2) : '—'}</td>
+      <td class="num">${r.avgTokens ? r.avgTokens.toFixed(0) : '—'}</td>
+      <td class="num" style="color:var(--neon);font-weight:800;">${iqPerK}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('provider-table').innerHTML = html;
+}
+
+/* ============================================================
+   CHART 04: LEADERBOARD (IQ per $1000)
+   ============================================================ */
+function renderLeaderboard(models) {
+  // Use per-task cost for the leaderboard (more meaningful than total eval cost)
+  const rows = Object.values(models)
+    .filter(m => m.cost_per_task != null && m.cost_per_task > 0 && m.intel != null)
+    .map(m => ({
+      ...m,
+      // Recompute IQ/$1k using per-task cost
+      iq_per_1k_pt: m.intel / m.cost_per_task * 1000,
+      cost_per_iq_pt: m.cost_per_task / m.intel
+    }))
+    .sort((a, b) => b.iq_per_1k_pt - a.iq_per_1k_pt);
+
+  let html = '<tbody>';
+  rows.forEach((m, i) => {
+    const color = CREATOR_COLORS[m.creator] || "#888";
+    html += `<tr>
+      <td style="color:var(--neon);font-weight:800;">${String(i+1).padStart(2,'0')}</td>
+      <td><span class="dot" style="display:inline-block;width:8px;height:8px;background:${color};margin-right:8px;border:1px solid #f5f5f0;"></span>${m.name}</td>
+      <td style="color:var(--muted);">${m.creator}</td>
+      <td class="num">${m.intel ?? '—'}</td>
+      <td class="num">$${m.cost_per_task?.toFixed(2) ?? '—'}</td>
+      <td class="num">${m.tokens_m ?? '—'}</td>
+      <td class="num" style="color:var(--neon);font-weight:800;">${m.iq_per_1k_pt.toFixed(1)}</td>
+      <td class="num">$${m.cost_per_iq_pt?.toFixed(2) ?? '—'}</td>
+    </tr>`;
+  });
+  html += '</tbody>';
+  document.querySelector('#leaderboard tbody').innerHTML = html;
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+loadData().then(({ models, costs }) => {
+  renderBubble(models);
+  renderProviderTable(models, costs);
+  renderLeaderboard(models);
+});
+</script>
+</body>
+</html>

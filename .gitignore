@@ -1,0 +1,18 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Local server caches
+__pycache__/
+.pytest_cache/
+
+# Future: anything in data/ that's user-generated
+# data/private/
