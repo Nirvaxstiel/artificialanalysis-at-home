@@ -180,6 +180,36 @@
 <!-- VIZ PANELS — one per registered viz, generated dynamically -->
 <div id="panels"></div>
 
+<!-- ============ TABLES SECTION ============ -->
+<div class="section">
+  <div class="section-marker">
+    <span class="num">T1 //</span>
+    <h2>Provider Rollup</h2>
+    <span class="tag">avg intelligence, cost, token efficiency per creator</span>
+  </div>
+  <div class="chart" style="box-shadow: 8px 8px 0 var(--neon2);">
+    <div class="chart-head">
+      <h2>by-creator-aggregates</h2>
+      <span class="src">// one row = one creator. sorted by avg IQ.</span>
+    </div>
+    <div id="provider-table"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-marker">
+    <span class="num">T2 //</span>
+    <h2>Best Bang Per Buck</h2>
+    <span class="tag">sorted by IQ per $1000 spent</span>
+  </div>
+  <div class="chart" style="box-shadow: 8px 8px 0 var(--neon);">
+    <table id="leaderboard">
+      <thead><tr><th>RANK</th><th>MODEL</th><th>CREATOR</th><th class="num">IQ</th><th class="num">$ / TASK</th><th class="num">TOK (M)</th><th class="num">IQ / $1K</th><th class="num">$ / IQ</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
 <footer>
   // DATA: PROCESSED.JSON (DERIVED FROM AA_MODEL_DATA + AA_COST_BREAKDOWN) ·
   // INTELLIGENCE INDEX = 9 WEIGHTED EVALS ·
@@ -298,6 +328,70 @@ fetch('./data/processed.json').then(r => r.json()).then(({ models }) => {
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.viz === id));
     document.querySelectorAll('.viz-panel').forEach(p => p.classList.toggle('active', p.dataset.viz === id));
   });
+
+  // ============ TABLES ============
+  const CREATOR_COLORS = window.CREATOR_COLORS;
+
+  // Provider rollup table
+  const rollup = {};
+  for (const m of data) {
+    if (!rollup[m.creator]) rollup[m.creator] = { count: 0, iq: [], cost: [], tokens: [] };
+    rollup[m.creator].count++;
+    if (m.intel != null) rollup[m.creator].iq.push(m.intel);
+    if (m.cost_per_task != null) rollup[m.creator].cost.push(m.cost_per_task);
+    if (m.tokens_m != null) rollup[m.creator].tokens.push(m.tokens_m);
+  }
+  const avg = arr => arr.length ? arr.reduce((a,b)=>a+b,0) / arr.length : null;
+  const providerRows = Object.entries(rollup).map(([creator, d]) => ({
+    creator,
+    count: d.count,
+    avgIQ: avg(d.iq),
+    avgCost: avg(d.cost),
+    avgTokens: avg(d.tokens)
+  })).sort((a, b) => (b.avgIQ || 0) - (a.avgIQ || 0));
+
+  let phtml = '<table><thead><tr><th>CREATOR</th><th class="num"># MODELS</th><th class="num">AVG IQ</th><th class="num">AVG $ / TASK</th><th class="num">AVG TOK (M)</th><th class="num">IQ / $1K</th></tr></thead><tbody>';
+  for (const r of providerRows) {
+    const iqPerK = r.avgIQ && r.avgCost ? (r.avgIQ / r.avgCost * 1000).toFixed(1) : '—';
+    const color = CREATOR_COLORS[r.creator] || "#888";
+    phtml += `<tr>
+      <td><span class="dot" style="display:inline-block;width:10px;height:10px;background:${color};margin-right:8px;border:1px solid #f5f5f0;"></span>${r.creator}</td>
+      <td class="num">${r.count}</td>
+      <td class="num">${r.avgIQ ? r.avgIQ.toFixed(1) : '—'}</td>
+      <td class="num">${r.avgCost ? '$' + r.avgCost.toFixed(2) : '—'}</td>
+      <td class="num">${r.avgTokens ? r.avgTokens.toFixed(0) : '—'}</td>
+      <td class="num" style="color:var(--neon);font-weight:800;">${iqPerK}</td>
+    </tr>`;
+  }
+  phtml += '</tbody></table>';
+  document.getElementById('provider-table').innerHTML = phtml;
+
+  // Leaderboard table (IQ per $1000)
+  const lbRows = data
+    .filter(m => m.cost_per_task != null && m.cost_per_task > 0 && m.intel != null)
+    .map(m => ({
+      ...m,
+      iq_per_1k_pt: m.intel / m.cost_per_task * 1000,
+      cost_per_iq_pt: m.cost_per_task / m.intel
+    }))
+    .sort((a, b) => b.iq_per_1k_pt - a.iq_per_1k_pt);
+
+  let lhtml = '<tbody>';
+  lbRows.forEach((m, i) => {
+    const color = CREATOR_COLORS[m.creator] || "#888";
+    lhtml += `<tr>
+      <td style="color:var(--neon);font-weight:800;">${String(i+1).padStart(2,'0')}</td>
+      <td><span class="dot" style="display:inline-block;width:8px;height:8px;background:${color};margin-right:8px;border:1px solid #f5f5f0;"></span>${m.name}</td>
+      <td style="color:var(--muted);">${m.creator}</td>
+      <td class="num">${m.intel ?? '—'}</td>
+      <td class="num">$${m.cost_per_task?.toFixed(2) ?? '—'}</td>
+      <td class="num">${m.tokens_m ?? '—'}</td>
+      <td class="num" style="color:var(--neon);font-weight:800;">${m.iq_per_1k_pt.toFixed(1)}</td>
+      <td class="num">$${m.cost_per_iq_pt?.toFixed(2) ?? '—'}</td>
+    </tr>`;
+  });
+  lhtml += '</tbody>';
+  document.querySelector('#leaderboard tbody').innerHTML = lhtml;
 })();
 </script>
 </body>
