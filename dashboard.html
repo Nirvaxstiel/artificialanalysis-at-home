@@ -175,6 +175,14 @@
   .dt-table tbody tr:hover {
     background: rgba(182, 255, 60, 0.04);
   }
+  .dt-table tr.hl {
+    background: rgba(182, 255, 60, 0.08) !important;
+    outline: 1px solid var(--neon);
+    outline-offset: -1px;
+  }
+  .dt-table tr.hl td:first-child {
+    border-left: 3px solid var(--neon);
+  }
   .dt-table td {
     color: #ccc;
   }
@@ -285,7 +293,7 @@
   /* Stats strip */
   .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 3px solid var(--border);
     margin-bottom: 32px; box-shadow: 6px 6px 0 var(--neon); }
-  .strip > div { padding: 20px; border-right: 1px solid var(--border); background: var(--panel); }
+  .strip > div { padding: 20px; border-right: 1px solid var(--border); background: var(--panel); cursor: pointer; }
   .strip > div:last-child { border-right: 0; }
   .strip .label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
   .strip .val { font-size: 28px; font-weight: 800; line-height: 1; margin-top: 8px; }
@@ -313,10 +321,10 @@
 
 <!-- TOP STRIP: HEADLINE STATS -->
 <div class="strip">
-  <div><div class="label">CHAMPION (IQ)</div><div class="val">Claude <span>Fable 5</span></div></div>
-  <div><div class="label">CHEAPEST ($/TASK)</div><div class="val">gpt-oss-<span>20b</span></div></div>
-  <div><div class="label">BEST IQ/MTok$</div><div class="val">DeepSeek <span>V4 Flash</span></div></div>
-  <div><div class="label">PARETO COUNT</div><div class="val"><span>9</span> / 28</div></div>
+  <div data-metric="champion"><div class="label">CHAMPION (IQ)</div><div class="val">—</div></div>
+  <div data-metric="cheapest"><div class="label">CHEAPEST ($/TASK)</div><div class="val">—</div></div>
+  <div data-metric="value"><div class="label">BEST IQ/MTok$</div><div class="val">—</div></div>
+  <div><div class="label">PARETO COUNT</div><div class="val"><span id="pareto-count">—</span> / <span id="total-count">—</span></div></div>
 </div>
 
 <!-- TAB NAV -->
@@ -2612,6 +2620,77 @@ window.PROCESSED_DATA = [
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.viz === id));
     document.querySelectorAll('.viz-panel').forEach(p => p.classList.toggle('active', p.dataset.viz === id));
     renderViz(id);
+  });
+
+  // ============ BANNER: dynamic stats + click-to-navigate ============
+  function fmt(v) {
+    if (v == null) return '—';
+    if (Math.abs(v) >= 100) return v.toFixed(0);
+    if (Math.abs(v) >= 1) return v.toFixed(1);
+    if (Math.abs(v) >= 0.01) return v.toFixed(2);
+    return v.toExponential(2);
+  }
+
+  // Compute winners from live data
+  const byIntel = [...data].filter(m => m.intel != null).sort((a,b) => b.intel - a.intel);
+  const byCost = [...data].filter(m => m.cost_per_task != null).sort((a,b) => a.cost_per_task - b.cost_per_task);
+  const byValue = [...data]
+    .filter(m => m.intel != null && m.cost_per_task != null && m.cost_per_task > 0)
+    .sort((a,b) => (b.intel / b.cost_per_task) - (a.intel / a.cost_per_task));
+
+  const champ = byIntel[0];
+  const cheapest = byCost[0];
+  const bestValue = byValue[0];
+
+  function setBannerStat(sel, model, slug, view, sortKey, sortDir) {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const valEl = el.querySelector('.val');
+    const iq = model.intel != null ? ` (${fmt(model.intel)})` : '';
+    if (valEl) valEl.innerHTML = model.creator.split('/')[0] + ' <span>' + model.name.split(' ').pop() + '</span>';
+    el.dataset.slug = slug;
+    el.dataset.view = view;
+    el.dataset.sortKey = sortKey;
+    el.dataset.sortDir = sortDir;
+  }
+
+  setBannerStat('[data-metric="champion"]', champ, champ.slug, 'model', 'intel', 'desc');
+  setBannerStat('[data-metric="cheapest"]', cheapest, cheapest.slug, 'model', 'cost_per_task', 'asc');
+  setBannerStat('[data-metric="value"]', bestValue, bestValue.slug, 'model', 'iqPerK', 'desc');
+
+  // Pareto count
+  const dtId = registry.find(r => r.name === 'Data Tables')?.id || '06';
+  (function computePareto() {
+    let count = 0;
+    let maxQ = -Infinity;
+    const sorted = [...data].filter(m => m.cost_per_task != null && m.intel != null && m.cost_per_task > 0)
+      .sort((a, b) => a.cost_per_task - b.cost_per_task);
+    for (const m of sorted) {
+      if (m.intel > maxQ) { count++; maxQ = m.intel + 1e-9; }
+    }
+    document.getElementById('pareto-count').textContent = count;
+    document.getElementById('total-count').textContent = data.length;
+  })();
+
+  // Click-through: banner → data table with sort + highlight
+  window.navigateTable = function(view, sortKey, sortDir, highlight) {
+    const mount = document.getElementById(`mount-${dtId}`);
+    if (!mount) return;
+    mount.__view = view;
+    mount.__sort = [{ key: sortKey, dir: sortDir }];
+    mount.__highlight = highlight;
+    // Switch tab & force re-render
+    const btn = tabsEl.querySelector(`button[data-viz="${dtId}"]`);
+    if (btn) btn.click();
+    const v = registry.find(r => r.id === dtId);
+    if (v) v.render(mount, data);
+  };
+
+  document.querySelectorAll('.strip > div[data-metric]').forEach(el => {
+    el.addEventListener('click', () => {
+      const { slug, view, sortKey, sortDir } = el.dataset;
+      if (slug) window.navigateTable(view || 'model', sortKey || 'intel', sortDir || 'desc', slug);
+    });
   });
 
   // ============ REPO LINKS ============

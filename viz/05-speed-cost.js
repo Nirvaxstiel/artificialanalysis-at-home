@@ -131,7 +131,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '05',
+    id: '04',
     name: 'Speed-Adjusted Cost',
     subtitle: 'Cost per wall-clock second × IQ',
     render

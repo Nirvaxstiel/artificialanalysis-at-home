@@ -207,7 +207,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '04',
+    id: '03',
     name: 'Provider Archetypes',
     subtitle: 'Radar grid: IQ × Cost × Speed × Verbosity',
     render

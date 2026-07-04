@@ -142,7 +142,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '06',
+    id: '05',
     name: 'Cost per IQ Point',
     subtitle: 'How much you pay per intelligence unit',
     render

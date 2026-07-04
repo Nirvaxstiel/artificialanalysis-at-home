@@ -200,7 +200,8 @@
 
     for (let i = 0; i < sorted.length; i++) {
       const r = sorted[i];
-      html += `<tr>`;
+      const hl = container.__highlight && r.slug === container.__highlight;
+      html += `<tr class="${hl ? 'hl' : ''}">`;
       for (let j = 0; j < view.cols.length; j++) {
         const col = view.cols[j];
         const val = col.render(r, i);
@@ -265,7 +266,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '07',
+    id: '06',
     name: 'Data Tables',
     subtitle: 'Sortable multi-view tables — multi-column sort with shift+click',
     render

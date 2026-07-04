@@ -19,7 +19,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '00',
+    id: '',  // hidden — template/deletable
     name: 'Template (delete me)',
     subtitle: 'Reference template for new vizes',
     render
