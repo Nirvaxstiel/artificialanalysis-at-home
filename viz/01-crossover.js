@@ -275,7 +275,170 @@
     _wireToggle(container, data);
   }
 
-  // ===== Axis Picker UI =====
+  // ===== Searchable Axis Dropdown (fzf-style) =====
+  // Chip/button trigger → opens popup with filter input + scrollable list.
+  // Terminal / neobrutalism aesthetic: no round, no shadows, monospace, tone surfaces.
+  function _createAxisPicker(opts) {
+    const { options, value, label, onChange } = opts;
+
+    // --- Trigger button ---
+    const wrap = document.createElement('span');
+    wrap.style.cssText = 'position:relative;display:inline-block;';
+
+    const labelSpan = document.createElement('span');
+    labelSpan.textContent = label;
+    labelSpan.style.cssText = 'color:#888;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-right:4px;';
+
+    const trigger = document.createElement('button');
+    const curOpt = options.find(o => o.key === value);
+    trigger.textContent = (curOpt ? curOpt.label : '—') + '  ▼';
+    trigger.dataset.value = value;
+    trigger.style.cssText =
+      'background:#0a0a0a;color:#f5f5f0;border:2px solid #444;padding:3px 10px 3px 8px;'
+      + 'font-family:monospace;font-size:11px;cursor:pointer;text-align:left;'
+      + 'white-space:nowrap;outline:none;';
+    trigger.addEventListener('mouseenter', () => { trigger.style.borderColor = '#666'; });
+    trigger.addEventListener('mouseleave', () => {
+      if (!wrap.__open) trigger.style.borderColor = '#444';
+    });
+
+    // --- Popup ---
+    const popup = document.createElement('div');
+    popup.style.cssText =
+      'display:none;position:absolute;top:100%;left:0;z-index:300;'
+      + 'background:#161616;border:2px solid rgba(182,255,60,0.4);'
+      + 'min-width:200px;max-height:260px;flex-direction:column;';
+
+    // Filter input
+    const filter = document.createElement('input');
+    filter.type = 'text';
+    filter.placeholder = 'Filter...';
+    filter.autocomplete = 'off';
+    filter.spellcheck = false;
+    filter.style.cssText =
+      'background:#0a0a0a;color:#f5f5f0;border:none;border-bottom:1px solid #333;'
+      + 'padding:6px 8px;font-family:monospace;font-size:11px;outline:none;width:100%;box-sizing:border-box;';
+
+    // List container
+    const list = document.createElement('div');
+    list.style.cssText = 'overflow-y:auto;flex:1;';
+
+    let curVal = value;
+    let open = false;
+
+    function renderList(q) {
+      const ql = (q || '').toLowerCase();
+      const filtered = options.filter(o =>
+        o.label.toLowerCase().includes(ql) || o.key.toLowerCase().includes(ql)
+      );
+      list.innerHTML = '';
+      if (filtered.length === 0) {
+        const ni = document.createElement('div');
+        ni.textContent = '∅ no matches';
+        ni.style.cssText = 'padding:10px;color:#666;font-size:10px;text-align:center;font-family:monospace;';
+        list.appendChild(ni);
+        return;
+      }
+      for (const opt of filtered) {
+        const item = document.createElement('div');
+        item.textContent = opt.label;
+        item.dataset.value = opt.key;
+        item.style.cssText =
+          'padding:5px 8px;cursor:pointer;font-family:monospace;font-size:11px;color:#ccc;'
+          + 'border-bottom:1px solid #1a1a1a;';
+        if (opt.key === curVal) {
+          item.style.background = '#1a1a1a';
+          item.style.color = '#b6ff3c';
+          item.style.fontWeight = '700';
+        }
+        item.addEventListener('mouseenter', () => {
+          if (opt.key !== curVal) item.style.background = '#222';
+        });
+        item.addEventListener('mouseleave', () => {
+          if (opt.key !== curVal) item.style.background = 'transparent';
+        });
+        item.addEventListener('mousedown', e => {
+          e.preventDefault();
+          curVal = opt.key;
+          trigger.textContent = opt.label + '  ▼';
+          trigger.dataset.value = opt.key;
+          close();
+          if (onChange) onChange(opt.key);
+        });
+        list.appendChild(item);
+      }
+    }
+
+    function openPopup() {
+      open = true;
+      wrap.__open = true;
+      trigger.style.borderColor = 'rgba(182,255,60,0.5)';
+      popup.style.display = 'flex';
+      filter.value = '';
+      renderList('');
+      filter.focus();
+    }
+
+    function close() {
+      open = false;
+      wrap.__open = false;
+      trigger.style.borderColor = '#444';
+      popup.style.display = 'none';
+    }
+
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      if (open) close();
+      else openPopup();
+    });
+
+    filter.addEventListener('input', () => renderList(filter.value));
+    filter.addEventListener('keydown', e => {
+      const items = list.querySelectorAll('[data-value]');
+      if (items.length === 0) return;
+      let idx = Array.from(items).findIndex(el => el.dataset.value === curVal);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        idx = Math.min(idx + 1, items.length - 1);
+        items[idx].scrollIntoView({ block: 'nearest' });
+        curVal = items[idx].dataset.value;
+        renderList(filter.value);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        idx = Math.max(idx - 1, 0);
+        items[idx].scrollIntoView({ block: 'nearest' });
+        curVal = items[idx].dataset.value;
+        renderList(filter.value);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const match = Array.from(items).find(el => el.dataset.value === curVal);
+        if (match) {
+          curVal = match.dataset.value;
+          const m = options.find(o => o.key === curVal);
+          if (m) trigger.textContent = m.label + '  ▼';
+          trigger.dataset.value = curVal;
+          close();
+          if (onChange) onChange(curVal);
+        }
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('mousedown', e => {
+      if (open && !wrap.contains(e.target)) close();
+    }, { passive: true });
+
+    wrap.appendChild(labelSpan);
+    wrap.appendChild(trigger);
+    wrap.appendChild(popup);
+    popup.appendChild(filter);
+    popup.appendChild(list);
+    return wrap;
+  }
+
+  // ===== Axis Picker Row =====
   function _wireAxisUI(container, data) {
     const parent = container.parentElement;
     const existing = parent && parent.querySelector('.axis-picker-row');
@@ -287,37 +450,33 @@
 
     const row = document.createElement('div');
     row.className = 'axis-picker-row';
-    row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;';
+    row.style.cssText = 'display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;';
 
-    function buildSelect(label, role, options, current) {
-      let s = `<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">${label}</span> `;
-      s += `<select class="axis-picker" data-role="${role}">`;
-      for (const opt of options) {
-        s += `<option value="${opt.key}"${opt.key===current?' selected':''}>${opt.label}</option>`;
-      }
-      s += `</select>`;
-      return s;
+    function onAnyChange() {
+      container.__qualityAxis = row.querySelector('[data-picker="quality"] button').dataset.value;
+      container.__costAxis = row.querySelector('[data-picker="cost"] button').dataset.value;
+      container.__sizeAxis = row.querySelector('[data-picker="size"] button').dataset.value;
+      render(container, data);
     }
 
-    row.innerHTML =
-      buildSelect('X', 'x', AXES.cost, costKey) +
-      `<span style="color:#666;font-size:13px;font-weight:800;">×</span>` +
-      buildSelect('Y', 'y', AXES.quality, qualityKey) +
-      `<span style="color:#888;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-left:4px;">Size:</span> ` +
-      `<select class="axis-picker" data-role="s">` +
-      AXES.size.map(o => `<option value="${o.key}"${o.key===sizeKey?' selected':''}>${o.label}</option>`).join('') +
-      `</select>`;
+    const costPicker = _createAxisPicker({ options: AXES.cost, value: costKey, label: 'X', onChange: onAnyChange });
+    costPicker.dataset.picker = 'cost';
+    row.appendChild(costPicker);
+
+    const cross = document.createElement('span');
+    cross.textContent = '×';
+    cross.style.cssText = 'color:#666;font-size:13px;font-weight:800;';
+    row.appendChild(cross);
+
+    const qualityPicker = _createAxisPicker({ options: AXES.quality, value: qualityKey, label: 'Y', onChange: onAnyChange });
+    qualityPicker.dataset.picker = 'quality';
+    row.appendChild(qualityPicker);
+
+    const sizePicker = _createAxisPicker({ options: AXES.size, value: sizeKey, label: 'Size:', onChange: onAnyChange });
+    sizePicker.dataset.picker = 'size';
+    row.appendChild(sizePicker);
 
     if (parent) parent.insertBefore(row, container);
-
-    row.querySelectorAll('select').forEach(sel => {
-      sel.addEventListener('change', () => {
-        container.__qualityAxis = row.querySelector('select[data-role="y"]').value;
-        container.__costAxis = row.querySelector('select[data-role="x"]').value;
-        container.__sizeAxis = row.querySelector('select[data-role="s"]').value;
-        render(container, data);
-      });
-    });
   }
 
   // ===== Color Toggle UI =====
