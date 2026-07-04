@@ -41,7 +41,6 @@
       label: 'Model Detail',
       buildRows: data => data,
       cols: [
-        { key: 'index', label: '#', render: (r, i) => `<span style="color:#888;font-weight:800;">${String(i+1).padStart(2,'0')}</span>`, cls: 'num' },
         { key: 'name', label: 'NAME', render: r => r.name },
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot" style="display:inline-block;width:8px;height:8px;background:${CREATOR_COLORS[r.creator]||'#888'};margin-right:6px;border:1px solid #f5f5f0;"></span>${r.creator}` },
@@ -66,7 +65,6 @@
       label: 'LiveBench',
       buildRows: data => data,
       cols: [
-        { key: 'index', label: '#', render: (r, i) => `<span style="color:#888;font-weight:800;">${String(i+1).padStart(2,'0')}</span>`, cls: 'num' },
         { key: 'name', label: 'NAME', render: r => r.name },
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot" style="display:inline-block;width:8px;height:8px;background:${CREATOR_COLORS[r.creator]||'#888'};margin-right:6px;border:1px solid #f5f5f0;"></span>${r.creator}` },
@@ -84,7 +82,6 @@
       label: 'Cost Efficiency',
       buildRows: data => data,
       cols: [
-        { key: 'index', label: '#', render: (r, i) => `<span style="color:#888;font-weight:800;">${String(i+1).padStart(2,'0')}</span>`, cls: 'num' },
         { key: 'name', label: 'NAME', render: r => r.name },
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot" style="display:inline-block;width:8px;height:8px;background:${CREATOR_COLORS[r.creator]||'#888'};margin-right:6px;border:1px solid #f5f5f0;"></span>${r.creator}` },
@@ -135,10 +132,11 @@
 
   function getSortIndicator(sortSpec, key) {
     const idx = sortSpec.findIndex(s => s.key === key);
-    if (idx === -1) return '';
+    if (idx === -1) return '<span class="sort-indicator"></span>';
     const dir = sortSpec[idx].dir;
     const arrow = dir === 'asc' ? '▲' : '▼';
-    return sortSpec.length > 1 ? `${arrow}${idx + 1}` : arrow;
+    const text = sortSpec.length > 1 ? `${arrow}${idx + 1}` : arrow;
+    return `<span class="sort-indicator">${text}</span>`;
   }
 
   // ===== Search filter =====

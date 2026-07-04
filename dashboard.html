@@ -158,6 +158,21 @@
     top: 0;
     cursor: pointer;
     user-select: none;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .dt-table th.num {
+    text-align: right;
+  }
+  .dt-table th .sort-indicator {
+    display: inline-block;
+    width: 18px;
+    text-align: left;
+    font-size: 8px;
+    color: #666;
+  }
+  .dt-table th.sorted .sort-indicator {
+    color: #f5f5f0;
   }
   .dt-table th:hover {
     background: #1a1a1a;
@@ -168,6 +183,9 @@
   .dt-table td.num {
     text-align: right;
     font-variant-numeric: tabular-nums;
+  }
+  .dt-table td {
+    text-align: left;
   }
   .dt-table tbody tr:hover {
     background: rgba(182, 255, 60, 0.04);
