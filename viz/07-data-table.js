@@ -9,6 +9,7 @@
   const VIEWS = {
     provider: {
       label: 'Provider Rollup',
+      defaultSort: [{ key: 'avgIQ', dir: 'desc' }],
       buildRows(data) {
         const rollup = {};
         for (const m of data) {
@@ -39,6 +40,7 @@
     },
     model: {
       label: 'Model Detail',
+      defaultSort: [{ key: 'intel', dir: 'desc' }],
       buildRows: data => data,
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name },
@@ -63,6 +65,7 @@
     },
     livebench: {
       label: 'LiveBench',
+      defaultSort: [{ key: 'livebench_average', dir: 'desc' }],
       buildRows: data => data,
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name },
@@ -80,6 +83,7 @@
     },
     efficiency: {
       label: 'Cost Efficiency',
+      defaultSort: [{ key: 'iqPerK', dir: 'desc' }],
       buildRows: data => data,
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name },
@@ -150,11 +154,11 @@
 
   function render(container, data) {
     const viewKey = container.__view || 'model';
-    const sortSpec = container.__sort || [{ key: 'intel', dir: 'desc' }];
-    const search = container.__search || '';
-
     const view = VIEWS[viewKey];
     if (!view) return;
+
+    const sortSpec = container.__sort || (view.defaultSort && [...view.defaultSort]) || [{ key: 'intel', dir: 'desc' }];
+    const search = container.__search || '';
 
     const rows = view.buildRows(data);
     const filtered = search ? rows.filter(m => matchesSearch(m, search)) : rows;
@@ -246,8 +250,8 @@
     container.querySelectorAll('.dt-view-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         container.__view = btn.dataset.view;
-        container.__sort = VIEWS[container.__view].cols.length > 0
-          ? [{ key: VIEWS[container.__view].cols[0].key, dir: 'desc' }]
+        container.__sort = VIEWS[container.__view].defaultSort
+          ? [...VIEWS[container.__view].defaultSort]
           : [];
         container.__search = '';
         render(container, data);
