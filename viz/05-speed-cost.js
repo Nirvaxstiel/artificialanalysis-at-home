@@ -12,9 +12,9 @@
     "deepseek-v4-pro",
     "deepseek-v4-flash",
     "minimax-m3",
-    "kimi-k2-6",
-    "glm-5-2",
-    "mimo-v2-5-pro"
+    "kimi-k2.6",
+    "glm-5.2",
+    "mimo-v2.5-pro"
   ]);
 
   function render(container, data) {
