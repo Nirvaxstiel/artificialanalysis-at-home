@@ -1,12 +1,39 @@
 // viz/01-crossover.js
 // Merger of 01 (bubble) + 03 (pareto frontier x reasoning tax).
-// Single scatter: toggle coloring between creator / reasoning-tax.
-// Always draws pareto frontier.
+// Axis picker: swap quality/cost/size axes from any source.
+// Color toggle: creator / reasoning-tax. Always draws dynamic pareto frontier.
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
   const CREATOR_BORDER = window.CREATOR_BORDER || {};
   const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
+
+  // ===== Axis Catalog =====
+  const AXES = {
+    quality: [
+      { key: 'intel', label: 'AA Intel Index', unit: '' },
+      { key: 'livebench_average', label: 'LiveBench Avg', unit: '' },
+      { key: 'livebench_coding', label: 'LiveBench Coding', unit: '' },
+      { key: 'livebench_reasoning', label: 'LiveBench Reasoning', unit: '' },
+      { key: 'livebench_mathematics', label: 'LiveBench Math', unit: '' },
+      { key: 'livebench_language', label: 'LiveBench Language', unit: '' },
+      { key: 'arena_code_elo', label: 'Arena Code Elo', unit: '' },
+      { key: 'arena_text_elo', label: 'Arena Text Elo', unit: '' },
+      { key: 'openllm_average', label: 'OpenLLM Avg', unit: '' },
+    ],
+    cost: [
+      { key: 'cost_per_task', label: 'AA Cost / Task', unit: 'USD', log: true },
+      { key: 'cost_per_wallsec', label: 'AA Cost / Wall Sec', unit: 'USD', log: true },
+      { key: 'openrouter_inp_price_per_m', label: 'OR Input $/Mtok', unit: 'USD', log: true },
+      { key: 'openrouter_out_price_per_m', label: 'OR Output $/Mtok', unit: 'USD', log: true },
+    ],
+    size: [
+      { key: 'tokens_m', label: 'Output Tokens', unit: 'M' },
+      { key: 'params_b', label: 'Params', unit: 'B' },
+      { key: 'arena_code_votes', label: 'Arena Code Votes', unit: '' },
+      { key: 'arena_text_votes', label: 'Arena Text Votes', unit: '' },
+    ],
+  };
 
   const REASONING_COLORS = {
     low:  '#b6ff3c',
@@ -22,163 +49,295 @@
     return REASONING_COLORS.high;
   }
 
+  function computePareto(pts, costKey, qualityKey) {
+    const sorted = pts
+      .filter(m => m[costKey] != null && m[costKey] > 0 && m[qualityKey] != null)
+      .sort((a, b) => a[costKey] - b[costKey]);
+    if (sorted.length < 2) return sorted;
+    const frontier = [];
+    let maxQ = -Infinity;
+    for (const m of sorted) {
+      if (m[qualityKey] > maxQ) {
+        frontier.push(m);
+        maxQ = m[qualityKey] + 1e-9;
+      }
+    }
+    return frontier;
+  }
+
+  function fmtV(v) {
+    if (v == null) return '—';
+    if (Math.abs(v) >= 100) return v.toFixed(0);
+    if (Math.abs(v) >= 1) return v.toFixed(1);
+    if (Math.abs(v) >= 0.01) return v.toFixed(2);
+    if (Math.abs(v) >= 1e-6) return v.toFixed(4);
+    return v.toExponential(2);
+  }
+
+  function niceTicks(min, max, n, isLog) {
+    if (isLog) {
+      // 1-2-5 pattern per decade
+      const ticks = [];
+      let d = Math.pow(10, Math.floor(Math.log10(min)));
+      while (d <= max * 1.05) {
+        for (const m of [1, 2, 5]) {
+          const v = d * m;
+          if (v >= min * 0.9 && v <= max * 1.1) ticks.push(v);
+        }
+        d *= 10;
+      }
+      return ticks.length > 1 ? ticks : [min, max];
+    }
+    const range = max - min || 1;
+    const step = range / n;
+    const mag = Math.pow(10, Math.floor(Math.log10(step)));
+    let nice;
+    const r = step / mag;
+    if (r <= 1.5) nice = mag;
+    else if (r <= 3) nice = 2 * mag;
+    else if (r <= 7) nice = 5 * mag;
+    else nice = 10 * mag;
+    const start = Math.ceil(min / nice) * nice;
+    const ticks = [];
+    for (let v = start; v <= max * 1.05 + nice; v += nice) {
+      if (v >= min && v <= max) ticks.push(v);
+    }
+    return ticks.length > 1 ? ticks : [min, max];
+  }
+
   function render(container, data) {
     const W = 1100; const H = 600;
-    const M = { top: 30, right: 30, bottom: 50, left: 60 };
+    const M = { top: 50, right: 30, bottom: 50, left: 70 };
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
 
-    const pts = data.filter(m => m.cost_per_task != null && m.cost_per_task > 0
-      && m.tokens_m != null && m.intel != null);
-
-    const minCost = 0.02, maxCost = 7.0;
-    const minIQ = 10, maxIQ = 80;
-    const minTok = 30, maxTok = 320;
-
-    const xScale = c => M.left + (Math.log10(c) - Math.log10(minCost)) / (Math.log10(maxCost) - Math.log10(minCost)) * innerW;
-    const yScale = i => M.top + (1 - (i - minIQ) / (maxIQ - minIQ)) * innerH;
-    const rScale = t => 4 + Math.sqrt(Math.max(0, (t - minTok) / (maxTok - minTok))) * 22;
-
-    const costTicks = [0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 3];
-    const iqTicks = [10, 20, 30, 40, 50, 60, 70, 80];
-
-    // Read coloring mode from container state (default=creator)
+    const qualityKey = container.__qualityAxis || 'intel';
+    const costKey = container.__costAxis || 'cost_per_task';
+    const sizeKey = container.__sizeAxis || 'tokens_m';
     const colorMode = container.__colorMode || 'creator';
+
+    const qCfg = AXES.quality.find(a => a.key === qualityKey) || { key: qualityKey, label: qualityKey, unit: '' };
+    const cCfg = AXES.cost.find(a => a.key === costKey) || { key: costKey, label: costKey, unit: 'USD', log: false };
+    const sCfg = AXES.size.find(a => a.key === sizeKey) || { key: sizeKey, label: sizeKey, unit: '' };
+
+    const pts = data.filter(m =>
+      m[qualityKey] != null && m[costKey] != null && m[costKey] > 0
+      && m[sizeKey] != null && m[sizeKey] > 0
+    );
+
+    if (pts.length === 0) {
+      container.innerHTML = `<div style="padding:60px;color:#666;font-family:monospace;text-align:center;">No models with data for selected axis combination</div>`;
+      _wireAxisUI(container, data);
+      _wireToggle(container, data);
+      return;
+    }
+
+    const costVals = pts.map(m => m[costKey]);
+    const qualVals = pts.map(m => m[qualityKey]);
+    const sizeVals = pts.map(m => m[sizeKey]);
+
+    const minCost = Math.min(...costVals);
+    const maxCost = Math.max(...costVals);
+    const minQual = Math.min(...qualVals);
+    const maxQual = Math.max(...qualVals);
+    const minSize = Math.min(...sizeVals);
+    const maxSize = Math.max(...sizeVals);
+
+    // Pareto frontier (dynamic)
+    const paretoModels = computePareto(pts, costKey, qualityKey);
+
+    // Scales
+    const useLog = cCfg.log !== false;
+    let xScale, yScale, rScale;
+
+    if (useLog) {
+      const logMin = Math.log10(minCost), logMax = Math.log10(maxCost);
+      xScale = v => M.left + (Math.log10(Math.max(v, 1e-12)) - logMin) / (logMax - logMin) * innerW;
+    } else {
+      xScale = v => M.left + (v - minCost) / (maxCost - minCost) * innerW;
+    }
+    yScale = v => M.top + (1 - (v - minQual) / (maxQual - minQual)) * innerH;
+    {
+      const d = maxSize - minSize || 1;
+      rScale = t => 4 + Math.sqrt((t - minSize) / d) * 22;
+    }
+
+    const costTicks = niceTicks(minCost, maxCost, 7, useLog);
+    const qualTicks = niceTicks(minQual, maxQual, 8, false);
+
+    // Median lines for quadrant ref
+    const midCost = pts.sort((a,b) => a[costKey] - b[costKey])[Math.floor(pts.length/2)][costKey];
+    const midQual = pts.sort((a,b) => a[qualityKey] - b[qualityKey])[Math.floor(pts.length/2)][qualityKey];
 
     let svg = '';
 
-    // Green quadrant
-    svg += `<rect x="${xScale(0.02)}" y="${M.top}" width="${xScale(0.5) - xScale(0.02)}" height="${yScale(50) - M.top}" fill="rgba(182,255,60,0.05)" stroke="rgba(182,255,60,0.3)" stroke-dasharray="3 3"/>`;
-    svg += `<text x="${xScale(0.04)}" y="${M.top + 16}" fill="#b6ff3c" font-size="10" font-family="monospace">// GREEN QUADRANT: high IQ + low cost</text>`;
+    // Quadrant box (low cost + high quality)
+    const quadX = useLog ? xScale(minCost) : xScale(minCost);
+    const quadW = xScale(midCost) - quadX;
+    const quadY = yScale(midQual);
+    const quadH = yScale(maxQual) - yScale(midQual);
+    if (quadW > 5 && quadH > 5) {
+      svg += `<rect x="${quadX}" y="${quadY}" width="${quadW}" height="${quadH}" fill="rgba(182,255,60,0.04)" stroke="rgba(182,255,60,0.25)" stroke-dasharray="3 3"/>`;
+    }
+
+    // Median crosshairs
+    svg += `<line x1="${xScale(midCost)}" y1="${M.top}" x2="${xScale(midCost)}" y2="${H - M.bottom}" stroke="#444" stroke-width="1" stroke-dasharray="2 4"/>`;
+    svg += `<line x1="${M.left}" y1="${yScale(midQual)}" x2="${W - M.right}" y2="${yScale(midQual)}" stroke="#444" stroke-width="1" stroke-dasharray="2 4"/>`;
+    svg += `<text x="${xScale(midCost)}" y="${M.top - 6}" text-anchor="middle" fill="#555" font-size="9" font-family="monospace">median cost</text>`;
+    svg += `<text x="${M.left - 4}" y="${yScale(midQual) - 4}" text-anchor="end" fill="#555" font-size="9" font-family="monospace">median quality</text>`;
 
     // Grid
     for (const t of costTicks) svg += `<line class="grid" x1="${xScale(t)}" y1="${M.top}" x2="${xScale(t)}" y2="${H - M.bottom}"/>`;
-    for (const t of iqTicks) svg += `<line class="grid" x1="${M.left}" y1="${yScale(t)}" x2="${W - M.right}" y2="${yScale(t)}"/>`;
+    for (const t of qualTicks) svg += `<line class="grid" x1="${M.left}" y1="${yScale(t)}" x2="${W - M.right}" y2="${yScale(t)}"/>`;
 
     // Axes
-    svg += `<g class="axis">`;
+    svg += '<g class="axis">';
     for (const t of costTicks) {
-      svg += `<text x="${xScale(t)}" y="${H - M.bottom + 18}" text-anchor="middle">$${t}</text>`;
-      svg += `<line x1="${xScale(t)}" y1="${H - M.bottom}" x2="${xScale(t)}" y2="${H - M.bottom + 4}"/>`;
+      svg += `<text x="${xScale(t)}" y="${H - M.bottom + 18}" text-anchor="middle" fill="#f5f5f0" font-size="11" font-family="monospace">${fmtV(t)}</text>`;
+      svg += `<line x1="${xScale(t)}" y1="${H - M.bottom}" x2="${xScale(t)}" y2="${H - M.bottom + 4}" stroke="#f5f5f0"/>`;
     }
-    for (const t of iqTicks) {
-      svg += `<text x="${M.left - 8}" y="${yScale(t) + 3}" text-anchor="end">${t}</text>`;
-      svg += `<line x1="${M.left - 4}" y1="${yScale(t)}" x2="${M.left}" y2="${yScale(t)}"/>`;
+    for (const t of qualTicks) {
+      svg += `<text x="${M.left - 8}" y="${yScale(t) + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace">${fmtV(t)}</text>`;
+      svg += `<line x1="${M.left - 4}" y1="${yScale(t)}" x2="${M.left}" y2="${yScale(t)}" stroke="#f5f5f0"/>`;
     }
-    svg += `<text x="${W/2}" y="${H - 8}" text-anchor="middle" font-weight="800" font-size="12">COST PER TASK (USD, log)</text>`;
-    svg += `<text x="14" y="${H/2}" text-anchor="middle" font-weight="800" font-size="12" transform="rotate(-90 14 ${H/2})">INTELLIGENCE INDEX</text>`;
-    svg += `</g>`;
+    const costLabel = `${cCfg.label}${useLog ? ' (log)' : ''}`;
+    svg += `<text x="${W/2}" y="${H - 6}" text-anchor="middle" font-weight="800" font-size="12" fill="#f5f5f0" font-family="monospace">${costLabel}</text>`;
+    svg += `<text x="16" y="${H/2}" text-anchor="middle" font-weight="800" font-size="12" fill="#f5f5f0" font-family="monospace" transform="rotate(-90 16 ${H/2})">${qCfg.label}</text>`;
+    svg += '</g>';
 
-    // Pareto frontier — collect & sort pareto_optimal models by cost ascending
-    const paretoModels = data
-      .filter(m => m.pareto_optimal && m.cost_per_task != null && m.intel != null)
-      .sort((a, b) => a.cost_per_task - b.cost_per_task);
-
+    // Pareto frontier
     if (paretoModels.length > 1) {
-      const pts_pareto = paretoModels.map(m => `${xScale(m.cost_per_task)},${yScale(m.intel)}`).join(' ');
-      svg += `<polyline points="${pts_pareto}" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 4" stroke-opacity="0.7"/>`;
-    }
-
-    // Diamond markers on pareto vertices
-    for (const m of paretoModels) {
-      const cx = xScale(m.cost_per_task);
-      const cy = yScale(m.intel);
-      const s = 4;
-      const diamond = `${cx},${cy - s} ${cx + s},${cy} ${cx},${cy + s} ${cx - s},${cy}`;
-      svg += `<polygon points="${diamond}" fill="#fff" fill-opacity="0.9" stroke="#000" stroke-width="1"/>`;
+      const ps = paretoModels.map(m => `${xScale(m[costKey])},${yScale(m[qualityKey])}`).join(' ');
+      svg += `<polyline points="${ps}" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 4" stroke-opacity="0.7"/>`;
+      for (const m of paretoModels) {
+        const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]);
+        svg += `<polygon points="${cx},${cy-4} ${cx+4},${cy} ${cx},${cy+4} ${cx-4},${cy}" fill="#fff" fill-opacity="0.9" stroke="#000" stroke-width="1"/>`;
+      }
     }
 
     // Points
     for (const m of pts) {
-      const cx = xScale(m.cost_per_task);
-      const cy = yScale(m.intel);
-      const r = rScale(m.tokens_m);
-      let fill, stroke, opacity;
+      const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
+      let fill, stroke;
       if (colorMode === 'reasoning') {
         fill = reasoningColor(m.reasoning_tax_pct);
         stroke = '#000';
-        opacity = 0.75;
       } else {
         fill = CREATOR_COLORS[m.creator] || "#888";
         stroke = CREATOR_BORDER[m.creator] || "#000";
-        opacity = 0.7;
       }
-      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity="${opacity}" stroke="${stroke}" stroke-width="1.5"></circle>`;
+      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="0.7" stroke="${stroke}" stroke-width="1.5"></circle>`;
     }
 
-    // Labels — only on pareto-optimal models to reduce clutter
+    // Labels on pareto models only
     const labelPositions = [];
     for (const m of paretoModels) {
-      const cx = xScale(m.cost_per_task);
-      const cy = yScale(m.intel);
-      const r = rScale(m.tokens_m);
-      const placed = placeLabel(cx, cy, r, m.name, labelPositions, {});
+      const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
+      const placed = placeLabel(cx, cy, r, m.name, labelPositions, { W, H });
       if (!placed) continue;
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
     }
 
-    // Legend — bottom-right: depends on color mode
-    const legendW = 260, legendH = colorMode === 'reasoning' ? 90 : 45;
+    // Legend
+    const legendW = 280, legendH = colorMode === 'reasoning' ? 90 : 50;
     const legendX = W - M.right - legendW - 4;
     const legendY = H - M.bottom - legendH - 4;
-    let legend = `<g transform="translate(${legendX},${legendY})">`;
-    legend += `<rect x="0" y="0" width="${legendW}" height="${legendH}" fill="#111" stroke="#444" stroke-width="1" rx="0"/>`;
+    let leg = `<g transform="translate(${legendX},${legendY})">`;
+    leg += `<rect x="0" y="0" width="${legendW}" height="${legendH}" fill="#111" stroke="#444" stroke-width="1" rx="0"/>`;
 
     if (colorMode === 'reasoning') {
-      legend += `<text x="10" y="16" fill="var(--neon,#b6ff3c)" font-size="10" font-weight="800" font-family="monospace">REASONING TAX %</text>`;
-      legend += `<rect x="10" y="24" width="12" height="12" fill="${REASONING_COLORS.low}" stroke="#000" stroke-width="1"/>`;
-      legend += `<text x="28" y="34" fill="#ccc" font-size="9" font-family="monospace">&lt;20%</text>`;
-      legend += `<rect x="10" y="40" width="12" height="12" fill="${REASONING_COLORS.mid}" stroke="#000" stroke-width="1"/>`;
-      legend += `<text x="28" y="50" fill="#ccc" font-size="9" font-family="monospace">20–50%</text>`;
-      legend += `<rect x="10" y="56" width="12" height="12" fill="${REASONING_COLORS.high}" stroke="#000" stroke-width="1"/>`;
-      legend += `<text x="28" y="66" fill="#ccc" font-size="9" font-family="monospace">&gt;50%</text>`;
-      legend += `<rect x="130" y="24" width="12" height="12" fill="${REASONING_COLORS.none}" stroke="#000" stroke-width="1"/>`;
-      legend += `<text x="148" y="34" fill="#ccc" font-size="9" font-family="monospace">No data</text>`;
+      leg += `<text x="10" y="16" fill="#b6ff3c" font-size="10" font-weight="800" font-family="monospace">REASONING TAX %</text>`;
+      leg += `<rect x="10" y="24" width="12" height="12" fill="${REASONING_COLORS.low}" stroke="#000" stroke-width="1"/><text x="28" y="34" fill="#ccc" font-size="9" font-family="monospace">&lt;20%</text>`;
+      leg += `<rect x="10" y="40" width="12" height="12" fill="${REASONING_COLORS.mid}" stroke="#000" stroke-width="1"/><text x="28" y="50" fill="#ccc" font-size="9" font-family="monospace">20–50%</text>`;
+      leg += `<rect x="10" y="56" width="12" height="12" fill="${REASONING_COLORS.high}" stroke="#000" stroke-width="1"/><text x="28" y="66" fill="#ccc" font-size="9" font-family="monospace">&gt;50%</text>`;
+      leg += `<rect x="130" y="24" width="12" height="12" fill="${REASONING_COLORS.none}" stroke="#000" stroke-width="1"/><text x="148" y="34" fill="#ccc" font-size="9" font-family="monospace">No data</text>`;
     } else {
-      // Creator legend — top creators only
-      const topCreators = [...new Set(pts.map(p => p.creator))].sort();
-      legend += `<text x="10" y="18" fill="var(--neon,#b6ff3c)" font-size="9" font-weight="800" font-family="monospace">CREATOR COLOR</text>`;
-      let ly = 30;
-      for (const c of topCreators) {
+      const creators = [...new Set(pts.map(p => p.creator))].sort();
+      leg += `<text x="10" y="18" fill="#b6ff3c" font-size="9" font-weight="800" font-family="monospace">CREATOR COLOR</text>`;
+      let ly = 28;
+      for (const c of creators) {
         const color = CREATOR_COLORS[c] || "#888";
-        legend += `<rect x="10" y="${ly}" width="10" height="10" fill="${color}" stroke="#f5f5f0" stroke-width="1"/>`;
-        legend += `<text x="26" y="${ly + 9}" fill="#ccc" font-size="8" font-family="monospace">${c}</text>`;
+        leg += `<rect x="10" y="${ly}" width="10" height="10" fill="${color}" stroke="#f5f5f0" stroke-width="1"/><text x="26" y="${ly+9}" fill="#ccc" font-size="8" font-family="monospace">${c}</text>`;
         ly += 14;
-        if (ly > legendH - 6) break;
+        if (ly > legendH - 8) break;
       }
     }
-    legend += `<line x1="130" y1="${legendH - 26}" x2="170" y2="${legendH - 26}" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3"/>`;
-    legend += `<text x="178" y="${legendH - 22}" fill="#ccc" font-size="9" font-family="monospace">Pareto frontier</text>`;
+    leg += `<line x1="130" y1="${legendH - 22}" x2="170" y2="${legendH - 22}" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+    leg += `<text x="178" y="${legendH - 18}" fill="#ccc" font-size="9" font-family="monospace">Pareto frontier</text>`;
+    leg += `<text x="10" y="${legendH - 6}" fill="#888" font-size="7" font-family="monospace">N=${pts.length} · ${sCfg.label} (bubble size)</text>`;
+    leg += `</g>`;
 
-    // Color mode indicator
-    legend += `<text x="10" y="${legendH - 6}" fill="#888" font-size="7" font-family="monospace">Color: ${colorMode.toUpperCase()}</text>`;
-    legend += `</g>`;
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}${leg}</svg>`;
 
-    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}${legend}</svg>`;
-
-    // Wire tooltips
     wireTooltips(container, data, '.point, .label');
-
-    // Wire color-mode toggle
+    _wireAxisUI(container, data);
     _wireToggle(container, data);
   }
 
+  // ===== Axis Picker UI =====
+  function _wireAxisUI(container, data) {
+    const parent = container.parentElement;
+    const existing = parent && parent.querySelector('.axis-picker-row');
+    if (existing) existing.remove();
+
+    const qualityKey = container.__qualityAxis || 'intel';
+    const costKey = container.__costAxis || 'cost_per_task';
+    const sizeKey = container.__sizeAxis || 'tokens_m';
+
+    const row = document.createElement('div');
+    row.className = 'axis-picker-row';
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;';
+
+    function buildSelect(label, role, options, current) {
+      let s = `<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">${label}</span> `;
+      s += `<select class="axis-picker" data-role="${role}">`;
+      for (const opt of options) {
+        s += `<option value="${opt.key}"${opt.key===current?' selected':''}>${opt.label}</option>`;
+      }
+      s += `</select>`;
+      return s;
+    }
+
+    row.innerHTML =
+      buildSelect('X', 'x', AXES.cost, costKey) +
+      `<span style="color:#666;font-size:13px;font-weight:800;">×</span>` +
+      buildSelect('Y', 'y', AXES.quality, qualityKey) +
+      `<span style="color:#888;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-left:4px;">Size:</span> ` +
+      `<select class="axis-picker" data-role="s">` +
+      AXES.size.map(o => `<option value="${o.key}"${o.key===sizeKey?' selected':''}>${o.label}</option>`).join('') +
+      `</select>`;
+
+    if (parent) parent.insertBefore(row, container);
+
+    row.querySelectorAll('select').forEach(sel => {
+      sel.addEventListener('change', () => {
+        container.__qualityAxis = row.querySelector('select[data-role="y"]').value;
+        container.__costAxis = row.querySelector('select[data-role="x"]').value;
+        container.__sizeAxis = row.querySelector('select[data-role="s"]').value;
+        render(container, data);
+      });
+    });
+  }
+
+  // ===== Color Toggle UI =====
   function _wireToggle(container, data) {
-    // Remove any existing toggle UI (it's a sibling, not inside container)
     const parent = container.parentElement;
     const existing = parent && parent.querySelector('.color-toggle-row');
     if (existing) existing.remove();
+
+    const colorMode = container.__colorMode || 'creator';
 
     const div = document.createElement('div');
     div.className = 'color-toggle-row';
     div.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;';
 
+    const sizeLabel = (AXES.size.find(a => a.key === (container.__sizeAxis || 'tokens_m')) || {}).label || 'Size';
     div.innerHTML = `
-      <span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Color by:</span>
-      <button class="color-toggle-btn ${container.__colorMode === 'creator' ? 'active' : ''}" data-mode="creator">Creator</button>
-      <button class="color-toggle-btn ${container.__colorMode === 'reasoning' ? 'active' : ''}" data-mode="reasoning">Reasoning Tax %</button>
-      <span style="color:#666;font-size:8px;margin-left:auto;">BUBBLE SIZE = OUTPUT TOKENS (M) · HOVER FOR DETAILS</span>
+      <span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Color:</span>
+      <button class="color-toggle-btn ${colorMode==='creator'?'active':''}" data-mode="creator">Creator</button>
+      <button class="color-toggle-btn ${colorMode==='reasoning'?'active':''}" data-mode="reasoning">Reasoning Tax %</button>
+      <span style="color:#666;font-size:8px;margin-left:auto;">BUBBLE SIZE = ${sizeLabel} · HOVER FOR DETAILS</span>
     `;
 
     if (parent) parent.insertBefore(div, container);
@@ -195,7 +354,7 @@
   window.VIZ_REGISTRY.push({
     id: '01',
     name: 'The Crossover',
-    subtitle: 'IQ × Cost × Output Tokens — toggle coloring',
+    subtitle: 'Pick axes from any source — IQ, LiveBench, Arena Elo, OpenRouter pricing, and more',
     render
   });
 })();
