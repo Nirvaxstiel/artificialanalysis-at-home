@@ -3,23 +3,9 @@
 // The "is this model worth waiting for?" chart.
 
 (function() {
-  const CREATOR_COLORS = window.CREATOR_COLORS || {
-    "OpenAI":     "#f5f5f0",
-    "Google":     "#4285F4",
-    "Anthropic":  "#D97757",
-    "DeepSeek":   "#536dfe",
-    "MiniMax":    "#b6ff3c",
-    "xAI":        "#9e9e9e",
-    "NVIDIA":     "#76b900",
-    "Kimi":       "#00e5ff",
-    "Alibaba":    "#ff6a00",
-    "Z AI":       "#a855f7",
-    "Xiaomi":     "#ff5722",
-    "Amazon":     "#ff9900",
-    "Mistral":    "#000000",
-    "Meta":       "#1877f2"
-  };
-  const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
+  const CREATOR_COLORS = window.CREATOR_COLORS;
+  const CREATOR_BORDER = window.CREATOR_BORDER || {};
+  const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
 
   // Sweet-spot models: fast + cheap + smart (low cost_per_wallsec, high intel)
   const SWEET_SPOT_SLUGS = new Set([
@@ -77,13 +63,19 @@
     // Reference line at $1e-06/sec (micro-dollar threshold)
     const refX = xScale(1e-06);
     svg += `<line x1="${refX}" y1="${M.top}" x2="${refX}" y2="${H - M.bottom}" stroke="#ff3333" stroke-width="1.5" stroke-dasharray="6 3"/>`;
-    svg += `<text x="${refX + 4}" y="${M.top + 12}" fill="#ff3333" font-size="9" font-family="monospace" font-weight="700">$1e-06/sec threshold</text>`;
+    svg += `<text x="${refX + 4}" y="${M.top + 12}" fill="#ff3333" font-size="9" font-family="monospace" font-weight="700">$0.000001/sec threshold</text>`;
 
     // Axes
     svg += `<g class="axis">`;
     for (const t of wallSecTicks) {
       const x = xScale(t);
-      const label = t < 1e-06 ? `$${t.toExponential(0)}` : `$${t}`;
+      // No scientific notation — use full decimal
+      let label;
+      if (t >= 1) label = '$' + t.toFixed(2);
+      else if (t >= 0.01) label = '$' + t.toFixed(4);
+      else if (t >= 1e-06) label = '$' + t.toFixed(6);
+      else if (t >= 1e-08) label = '$' + t.toFixed(8);
+      else label = '$' + t.toExponential(2);
       svg += `<text x="${x}" y="${H - M.bottom + 18}" text-anchor="middle" fill="#888" font-size="10">${label}</text>`;
       svg += `<line x1="${x}" y1="${H - M.bottom}" x2="${x}" y2="${H - M.bottom + 4}" stroke="#888"/>`;
     }
@@ -109,60 +101,21 @@
     const sweetPts = pts.filter(m => SWEET_SPOT_SLUGS.has(m.slug));
     const sortedByY = [...sweetPts].sort((a, b) => yScale(a.intel) - yScale(b.intel));
     const labelPositions = [];
-    const labelGap = 4;
 
     for (const m of sortedByY) {
       const cx = xScale(m.cost_per_wallsec);
       const cy = yScale(m.intel);
       const r = rScale(m.tokens_m);
+      const placed = placeLabel(cx, cy, r, m.name, labelPositions, {});
+      if (!placed) continue;
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '').trim();
-      const approxW = cleanName.length * 5.5;
-      const h = 11;
-
-      // Prefer: above, below, right, left
-      const candidates = [
-        { x: cx, y: cy - r - labelGap - h, anchor: 'middle' },
-        { x: cx, y: cy + r + labelGap + 9, anchor: 'middle' },
-        { x: cx + r + labelGap + 2, y: cy + 3, anchor: 'start' },
-        { x: cx - r - labelGap - 2, y: cy + 3, anchor: 'end' },
-      ];
-      let placed = null;
-      for (const c of candidates) {
-        const lx = c.anchor === 'middle' ? c.x - approxW/2 : c.anchor === 'end' ? c.x - approxW : c.x;
-        const rect = { x: lx, y: c.y - h, w: approxW, h: h + 2 };
-        const collides = labelPositions.some(p =>
-          !(rect.x + rect.w + 2 < p.x || rect.x > p.x + p.w + 2 || rect.y + rect.h < p.y || rect.y > p.y + p.h)
-        );
-        if (!collides) { placed = c; labelPositions.push(rect); break; }
-      }
-      if (!placed) {
-        placed = { x: cx, y: cy - r - labelGap - h, anchor: 'middle' };
-      }
-
-      // Neon highlight for sweet-spot labels
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#b6ff3c" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
     }
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
     // Wire tooltips
-    const tt = window.getTooltipEl();
-    const modelBySlug = Object.fromEntries(data.map(m => [m.slug, m]));
-    container.querySelectorAll('.point, .label').forEach(el => {
-      el.addEventListener('mouseenter', e => {
-        const m = modelBySlug[el.dataset.slug];
-        if (!m) return;
-        tt.innerHTML = window.buildTooltip(m);
-        tt.style.display = 'block';
-      });
-      el.addEventListener('mousemove', e => {
-        const x = e.clientX + 16, y = e.clientY + 16;
-        const w = tt.offsetWidth, h = tt.offsetHeight;
-        tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
-        tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
-      });
-      el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-    });
+    wireTooltips(container, data, '.point, .label');
 
     // Legend
     const creators = [...new Set(pts.map(p => p.creator))].sort();

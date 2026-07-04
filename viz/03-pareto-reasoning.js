@@ -9,6 +9,8 @@
     none: '#888888'   // no data
   };
 
+  const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
+
   function reasoningColor(pct) {
     if (pct == null) return REASONING_COLORS.none;
     if (pct < 20) return REASONING_COLORS.low;
@@ -90,31 +92,13 @@
 
     // Labels — only on pareto-optimal models to reduce clutter
     const labelPositions = [];
-    const labelGap = 4;
     for (const m of paretoModels) {
       const cx = xScale(m.cost_per_task);
       const cy = yScale(m.intel);
       const r = rScale(m.tokens_m);
-      const text = m.name;
-      const approxW = text.length * 5.5;
-      const h = 11;
-      const candidates = [
-        { x: cx, y: cy - r - labelGap - h, anchor: 'middle' },
-        { x: cx, y: cy + r + labelGap + 9, anchor: 'middle' },
-        { x: cx + r + labelGap + 2, y: cy + 3, anchor: 'start' },
-        { x: cx - r - labelGap - 2, y: cy + 3, anchor: 'end' },
-      ];
-      let placed = null;
-      for (const c of candidates) {
-        const lx = c.anchor === 'middle' ? c.x - approxW/2 : c.anchor === 'end' ? c.x - approxW : c.x;
-        const rect = { x: lx, y: c.y - h, w: approxW, h: h + 2 };
-        const collides = labelPositions.some(p => !(rect.x + rect.w + 2 < p.x || rect.x > p.x + p.w + 2 || rect.y + rect.h < p.y || rect.y > p.y + p.h));
-        if (!collides) { placed = c; labelPositions.push(rect); break; }
-      }
-      if (!placed) {
-        placed = { x: cx, y: cy - r - labelGap - h, anchor: 'middle' };
-      }
-      const cleanName = text.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
+      const placed = placeLabel(cx, cy, r, m.name, labelPositions, {});
+      if (!placed) continue;
+      const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
     }
 
@@ -140,23 +124,7 @@
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}${legend}</svg>`;
 
     // Wire tooltips
-    const tt = window.getTooltipEl();
-    const modelBySlug = Object.fromEntries(data.map(m => [m.slug, m]));
-    container.querySelectorAll('.point, .label').forEach(el => {
-      el.addEventListener('mouseenter', e => {
-        const m = modelBySlug[el.dataset.slug];
-        if (!m) return;
-        tt.innerHTML = window.buildTooltip(m);
-        tt.style.display = 'block';
-      });
-      el.addEventListener('mousemove', e => {
-        const x = e.clientX + 16, y = e.clientY + 16;
-        const w = tt.offsetWidth, h = tt.offsetHeight;
-        tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
-        tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
-      });
-      el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-    });
+    wireTooltips(container, data, '.point, .label');
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

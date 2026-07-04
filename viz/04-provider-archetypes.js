@@ -49,15 +49,15 @@
 
     // Axes definition: 4 axes at 0°, 90°, 180°, 270° (top, right, bottom, left)
     const AXES = [
-      { label: '// IQ',           angle: -Math.PI / 2 },  // top
-      { label: '// COST EFF',     angle: 0 },              // right
-      { label: '// SPEED',        angle: Math.PI / 2 },    // bottom
-      { label: '// VERBOSITY',    angle: Math.PI },        // left
+      { label: 'IQ',           angle: -Math.PI / 2 },  // top
+      { label: 'COST EFF',     angle: 0 },              // right
+      { label: 'SPEED',        angle: Math.PI / 2 },    // bottom
+      { label: 'VERBOSITY',    angle: Math.PI },        // left
     ];
 
     const R = 80;       // radar radius
-    const CX = 120;     // center x within each panel
-    const CY = 120;     // center y within each panel
+    const CX = 130;     // center x within each panel (wider viewBox for label room)
+    const CY = 130;     // center y within each panel
     const COLS = 4;
 
     // CSS
@@ -163,8 +163,8 @@
       // Axis labels
       for (let i = 0; i < AXES.length; i++) {
         const ax = AXES[i];
-        const lx = CX + Math.cos(ax.angle) * (R + 16);
-        const ly = CY + Math.sin(ax.angle) * (R + 16);
+        const lx = CX + Math.cos(ax.angle) * (R + 10);
+        const ly = CY + Math.sin(ax.angle) * (R + 10);
         let anchor = 'middle';
         if (ax.angle === 0) anchor = 'start';
         else if (ax.angle === Math.PI) anchor = 'end';

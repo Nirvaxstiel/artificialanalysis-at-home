@@ -2,23 +2,9 @@
 // Vertical bar chart ranking all models by cost per IQ point
 
 (function() {
-  const CREATOR_COLORS = {
-    "OpenAI":     "#f5f5f0",
-    "Google":     "#4285F4",
-    "Anthropic":  "#D97757",
-    "DeepSeek":   "#536dfe",
-    "MiniMax":    "#b6ff3c",
-    "xAI":        "#9e9e9e",
-    "NVIDIA":     "#76b900",
-    "Kimi":       "#00e5ff",
-    "Alibaba":    "#ff6a00",
-    "Z AI":       "#a855f7",
-    "Xiaomi":     "#ff5722",
-    "Amazon":     "#ff9900",
-    "Mistral":    "#000000",
-    "Meta":       "#1877f2"
-  };
-  const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
+  const CREATOR_COLORS = window.CREATOR_COLORS;
+  const CREATOR_BORDER = window.CREATOR_BORDER || {};
+  const { wireTooltips } = window.VIZ_HELPERS || {};
 
   function render(container, data) {
     const W = 1200; const H = 650;
@@ -83,7 +69,6 @@
     }
 
     // Bars
-    const modelBySlug = Object.fromEntries(data.map(m => [m.slug, m]));
     models.forEach((m, i) => {
       const x = M.left + gap + i * (barW + gap);
       const y = yScale(m.cost_per_iq);
@@ -141,22 +126,7 @@
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
     // Wire tooltips
-    const tt = window.getTooltipEl();
-    container.querySelectorAll('.bar, .val-label').forEach(el => {
-      el.addEventListener('mouseenter', e => {
-        const m = modelBySlug[el.dataset.slug];
-        if (!m) return;
-        tt.innerHTML = window.buildTooltip(m);
-        tt.style.display = 'block';
-      });
-      el.addEventListener('mousemove', e => {
-        const x = e.clientX + 16, y = e.clientY + 16;
-        const w = tt.offsetWidth, h = tt.offsetHeight;
-        tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
-        tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
-      });
-      el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-    });
+    wireTooltips(container, data, '.bar, .val-label');
 
     // Legend
     const creators = [...new Set(models.map(p => p.creator))].sort();

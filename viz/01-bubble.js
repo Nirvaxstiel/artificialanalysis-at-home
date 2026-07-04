@@ -3,23 +3,9 @@
 // This is the "crossover" chart that started the project.
 
 (function() {
-  const CREATOR_COLORS = {
-    "OpenAI":     "#f5f5f0",
-    "Google":     "#4285F4",
-    "Anthropic":  "#D97757",
-    "DeepSeek":   "#536dfe",
-    "MiniMax":    "#b6ff3c",
-    "xAI":        "#9e9e9e",
-    "NVIDIA":     "#76b900",
-    "Kimi":       "#00e5ff",
-    "Alibaba":    "#ff6a00",
-    "Z AI":       "#a855f7",
-    "Xiaomi":     "#ff5722",
-    "Amazon":     "#ff9900",
-    "Mistral":    "#000000",
-    "Meta":       "#1877f2"
-  };
-  const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
+  const CREATOR_COLORS = window.CREATOR_COLORS;
+  const CREATOR_BORDER = window.CREATOR_BORDER || {};
+  const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
 
   function render(container, data) {
     const W = 1100; const H = 600;
@@ -77,63 +63,19 @@
     // Labels with collision avoidance
     const sortedByY = [...pts].sort((a, b) => yScale(a.intel) - yScale(b.intel));
     const labelPositions = [];
-    const labelGap = 4;
     for (const m of sortedByY) {
       const cx = xScale(m.cost_per_task);
       const cy = yScale(m.intel);
       const r = rScale(m.tokens_m);
-      const text = m.name;
-      const approxW = text.length * 5.5;
-      const h = 11;
-      const candidates = [
-        { x: cx, y: cy - r - labelGap - h, anchor: 'middle' },
-        { x: cx, y: cy + r + labelGap + 9, anchor: 'middle' },
-        { x: cx + r + labelGap + 2, y: cy + 3, anchor: 'start' },
-        { x: cx - r - labelGap - 2, y: cy + 3, anchor: 'end' },
-      ];
-      let placed = null;
-      for (const c of candidates) {
-        const lx = c.anchor === 'middle' ? c.x - approxW/2 : c.anchor === 'end' ? c.x - approxW : c.x;
-        const rect = { x: lx, y: c.y - h, w: approxW, h: h + 2 };
-        const collides = labelPositions.some(p => !(rect.x + rect.w + 2 < p.x || rect.x > p.x + p.w + 2 || rect.y + rect.h < p.y || rect.y > p.y + p.h));
-        if (!collides) { placed = c; labelPositions.push(rect); break; }
-      }
-      if (!placed) {
-        placed = { x: cx, y: cy - r - labelGap - h, anchor: 'middle' };
-      }
-      // Clamp ALL labels to viewBox bounds
-      if (placed.anchor === 'middle') {
-        placed.x = Math.max(approxW/2 + 5, Math.min(W - approxW/2 - 5, placed.x));
-      } else if (placed.anchor === 'start') {
-        placed.x = Math.max(5, Math.min(W - approxW - 5, placed.x));
-      } else {
-        placed.x = Math.max(approxW + 5, Math.min(W - 5, placed.x));
-      }
-      placed.y = Math.max(h + 5, Math.min(H - 5, placed.y));
-      const cleanName = text;
-      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
+      const placed = placeLabel(cx, cy, r, m.name, labelPositions, { W, H });
+      if (!placed) continue;
+      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${m.name}</text>`;
     }
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
     // Wire tooltips
-    const tt = window.getTooltipEl();
-    const modelBySlug = Object.fromEntries(data.map(m => [m.slug, m]));
-    container.querySelectorAll('.point, .label').forEach(el => {
-      el.addEventListener('mouseenter', e => {
-        const m = modelBySlug[el.dataset.slug];
-        if (!m) return;
-        tt.innerHTML = window.buildTooltip(m);
-        tt.style.display = 'block';
-      });
-      el.addEventListener('mousemove', e => {
-        const x = e.clientX + 16, y = e.clientY + 16;
-        const w = tt.offsetWidth, h = tt.offsetHeight;
-        tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
-        tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
-      });
-      el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
-    });
+    wireTooltips(container, data, '.point, .label');
 
     // Legend
     const creators = [...new Set(pts.map(p => p.creator))].sort();
