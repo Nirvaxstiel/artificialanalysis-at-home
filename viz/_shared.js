@@ -107,10 +107,19 @@ function wireTooltips(container, data, selectors) {
       tt.style.display = 'block';
     });
     el.addEventListener('mousemove', function(e) {
-      const x = e.clientX + 16, y = e.clientY + 16;
       const w = tt.offsetWidth, h = tt.offsetHeight;
-      tt.style.left = (x + w > window.innerWidth ? e.clientX - w - 16 : x) + 'px';
-      tt.style.top  = (y + h > window.innerHeight ? e.clientY - h - 16 : y) + 'px';
+      const vw = window.innerWidth, vh = window.innerHeight;
+      let x = e.clientX + 16, y = e.clientY + 16;
+      // Flip left if overflows right
+      if (x + w > vw - 8) x = e.clientX - w - 16;
+      // Flip up if overflows bottom
+      if (y + h > vh - 8) y = e.clientY - h - 16;
+      // Clamp top
+      if (y < 8) y = 8;
+      // Clamp left
+      if (x < 8) x = 8;
+      tt.style.left = x + 'px';
+      tt.style.top  = y + 'px';
     });
     el.addEventListener('mouseleave', function() {
       tt.style.display = 'none';

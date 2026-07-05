@@ -95,6 +95,7 @@
       const fill = CREATOR_COLORS[m.creator] || "#888";
       const stroke = CREATOR_BORDER[m.creator] || "#000";
       svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity="0.7" stroke="${stroke}" stroke-width="1.5"></circle>`;
+      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r + 5, 8)}" fill="transparent" stroke="none" style="pointer-events:all"></circle>`;
     }
 
     // Annotation labels on sweet-spot models with collision avoidance
