@@ -193,4 +193,43 @@ function placeLabel(cx, cy, r, text, occupied, opts) {
 
 window.VIZ_HELPERS = { wireTooltips, placeLabel };
 
-})();
+// ============================================================
+// Shared config — single source of truth for labels and patterns
+// ============================================================
+
+// SKU split patterns: slug keyword → suffix label
+window.SKU_PATTERNS = [
+  { keyword: 'oss',    suffix: ' OSS' },
+  { keyword: 'mini',   suffix: ' Mini' },
+  { keyword: 'nano',   suffix: ' Nano' },
+  { keyword: 'flash',  suffix: ' Flash' },
+  { keyword: 'codex',  suffix: ' Code' },
+  { keyword: '-code',  suffix: ' Code' },
+];
+
+// Radar axis definitions for provider archetypes
+window.RADAR_AXES = [
+  { key: 'avgIQ',       label: 'IQ',         angle: -Math.PI / 2 },
+  { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 5 },
+  { key: 'tokenEff',    label: 'TOKEN EFF',  angle: -Math.PI / 2 + 4 * Math.PI / 5 },
+  { key: 'avgCacheEff', label: 'CACHE EFF',  angle: -Math.PI / 2 + 6 * Math.PI / 5 },
+  { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 5 },
+];
+
+// Model field display labels (for tables, tooltips, etc.)
+window.FIELD_LABELS = {
+  intel:                'IQ',
+  cost_per_task:        '$ / TASK',
+  tokens_m:             'TOK (M)',
+  speed_tps:            'SPEED t/s',
+  inp_price:            'INPUT $/M',
+  out_price:            'OUTPUT $/M',
+  reasoning_tax_pct:    'RSN TAX %',
+  livebench_average:    'LB AVG',
+  arena_code_elo:       'CODE ELO',
+  openrouter_inp_price_per_m: 'OR IN $/M',
+  params_b:             'PARAMS B',
+  cache_hit_price:      'CACHE $/M',
+};
+
+})()

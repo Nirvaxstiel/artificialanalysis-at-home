@@ -11,15 +11,14 @@
     );
 
     // Group by creator, split into SKU variants
+    const SKU_PATTERNS = window.SKU_PATTERNS || [];
     const byCreator = {};
     for (const m of models) {
       const slug = m.slug.toLowerCase();
       let suffix = '';
-      if (slug.includes('oss')) suffix = ' OSS';
-      else if (slug.includes('mini')) suffix = ' Mini';
-      else if (slug.includes('nano')) suffix = ' Nano';
-      else if (slug.includes('flash')) suffix = ' Flash';
-      else if (slug.includes('codex') || slug.endsWith('-code')) suffix = ' Code';
+      for (const p of SKU_PATTERNS) {
+        if (slug.includes(p.keyword)) { suffix = p.suffix; break; }
+      }
       const key = m.creator + suffix;
       if (!byCreator[key]) byCreator[key] = [];
       byCreator[key].push(m);
@@ -37,7 +36,7 @@
       // Cache efficiency: how much cheaper cached prompts are vs input
       const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
       const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
-      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, verbEff, avgCacheEff, count: ms.length });
+      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, tokenEff, avgCacheEff, count: ms.length });
     }
 
     // Sort alphabetically — keeps OSS variants next to parent
@@ -50,7 +49,7 @@
     const allTokenEff = archetypes.map(a => a.tokenEff);
     const allCacheEff = archetypes.map(a => a.avgCacheEff);
 
-    const mn = arr => Math.min(...arr);
+    const mn = arr => 0;               // always start from 0
     const mx = arr => Math.max(...arr);
     const norm = (v, lo, hi) => hi === lo ? 0.5 : (v - lo) / (hi - lo);
 
@@ -60,14 +59,7 @@
     const teLo = mn(allTokenEff), teHi = mx(allTokenEff);
     const caLo = mn(allCacheEff), caHi = mx(allCacheEff);
 
-    // Axes: IQ → Speed → Token Eff → Cache → Cost (related adjacent)
-    const AXES = [
-      { label: 'IQ',           angle: -Math.PI / 2 },
-      { label: 'SPEED',        angle: -Math.PI / 2 + 2 * Math.PI / 5 },
-      { label: 'TOKEN EFF',    angle: -Math.PI / 2 + 4 * Math.PI / 5 },
-      { label: 'CACHE EFF',    angle: -Math.PI / 2 + 6 * Math.PI / 5 },
-      { label: 'COST EFF',     angle: -Math.PI / 2 + 8 * Math.PI / 5 },
-    ];
+    const RADAR_AXES = window.RADAR_AXES || [];
 
     const R = 80;       // radar radius
     const CX = 130;     // center x within each panel (wider viewBox for label room)
@@ -127,12 +119,9 @@
 
     html += `<div style="font-size:10px;color:#888;font-family:monospace;margin-bottom:12px;padding:8px;border:1px dashed #333;">`;
     html += `<span style="color:#b6ff3c;font-weight:700">AXES</span> `;
-    html += `<span class="item">// IQ</span> `;
-    html += `<span class="item">// SPEED (tok/s)</span> `;
-    html += `<span class="item">// VERBOSITY (1/tokens)</span> `;
-    html += `<span class="item">// CACHE EFF (1-cache_price/input_price)</span> `;
-    html += `<span class="item">// COST EFF (1/cost_per_task)</span>`;
-    html += `<span class="size" style="margin-left:12px">// SORTED BY AVG IQ DESC · NORMALIZED PER-AXIS</span>`;
+    const axisLabels = (window.RADAR_AXES || []).map(a => a.label);
+    html += axisLabels.map(l => `<span class="item">// ${l}</span>`).join(' ');
+    html += `<span class="size" style="margin-left:12px">// SORTED ALPHABETICALLY · NORMALIZED 0–MAX</span>`;
     html += `</div>`;
     html += '<div class="radar-grid">';
 
@@ -150,7 +139,7 @@
 
       // Grid rings (0.25, 0.5, 0.75, 1.0)
       for (const frac of [0.25, 0.5, 0.75, 1.0]) {
-        const pts = AXES.map(ax => {
+        const pts = RADAR_AXES.map(ax => {
           const x = CX + Math.cos(ax.angle) * R * frac;
           const y = CY + Math.sin(ax.angle) * R * frac;
           return `${x},${y}`;
@@ -159,35 +148,36 @@
       }
 
       // Axis lines
-      for (const ax of AXES) {
+      for (const ax of RADAR_AXES) {
         const ex = CX + Math.cos(ax.angle) * R;
         const ey = CY + Math.sin(ax.angle) * R;
         svg += `<line class="radar-axis-line" x1="${CX}" y1="${CY}" x2="${ex}" y2="${ey}"/>`;
       }
 
       // Data polygon
-      const dataPts = AXES.map((ax, i) => {
+      const dataPts = RADAR_AXES.map((ax, i) => {
         const v = values[i];
         const x = CX + Math.cos(ax.angle) * R * v;
         const y = CY + Math.sin(ax.angle) * R * v;
         return `${x},${y}`;
       }).join(' ');
 
-      const baseCreator = a.creator.replace(/ (OSS|Mini|Nano|Flash|Code)$/, '');
-      const color = CREATOR_COLORS[baseCreator] || '#888';
+      const skuSuffixes = (window.SKU_PATTERNS || []).map(p => p.suffix.trim()).join('|');
+      const baseCreator = a.creator.replace(new RegExp(` (${skuSuffixes})$`), '');
+      const color = (window.CREATOR_COLORS || {})[baseCreator] || '#888';
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
 
       // Data points (dots)
-      for (let i = 0; i < AXES.length; i++) {
+      for (let i = 0; i < RADAR_AXES.length; i++) {
         const v = values[i];
-        const x = CX + Math.cos(AXES[i].angle) * R * v;
-        const y = CY + Math.sin(AXES[i].angle) * R * v;
+        const x = CX + Math.cos(RADAR_AXES[i].angle) * R * v;
+        const y = CY + Math.sin(RADAR_AXES[i].angle) * R * v;
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1"/>`;
       }
 
       // Axis labels
-      for (let i = 0; i < AXES.length; i++) {
-        const ax = AXES[i];
+      for (let i = 0; i < RADAR_AXES.length; i++) {
+        const ax = RADAR_AXES[i];
         const lx = CX + Math.cos(ax.angle) * (R + 10);
         const ly = CY + Math.sin(ax.angle) * (R + 10);
         let anchor = 'middle';
@@ -228,7 +218,7 @@
   window.VIZ_REGISTRY.push({
     id: '03',
     name: 'Provider Archetypes',
-    subtitle: 'Radar grid: IQ × Cost × Speed × Verbosity',
+    subtitle: `Radar grid: ${(window.RADAR_AXES || []).map(a => a.label).join(' × ')}`,
     render
   });
 })();
