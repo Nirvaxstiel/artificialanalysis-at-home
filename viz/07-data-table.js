@@ -205,7 +205,8 @@
     for (let i = 0; i < sorted.length; i++) {
       const r = sorted[i];
       const hl = container.__highlight && r.slug === container.__highlight;
-      html += `<tr class="${hl ? 'hl' : ''}">`;
+      const dimmed = window.__legendFilter && window.__modelOpacity(r) < 1;
+      html += `<tr class="${hl ? 'hl' : ''}" data-slug="${r.slug}" style="${dimmed ? 'opacity:0.15' : ''}">`;
       for (let j = 0; j < view.cols.length; j++) {
         const col = view.cols[j];
         const val = col.render(r, i);

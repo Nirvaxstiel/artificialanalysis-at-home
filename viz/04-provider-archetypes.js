@@ -177,7 +177,7 @@
       svg += '</svg>';
 
       html += `
-        <div class="radar-panel">
+        <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? 'opacity:0.15' : ''}">
           <div class="creator-name" style="color:${color}">${a.creator}</div>
           ${svg}
           <div class="radar-stats">

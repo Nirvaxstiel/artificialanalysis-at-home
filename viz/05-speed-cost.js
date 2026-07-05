@@ -114,6 +114,16 @@
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
+    // Apply legend filter opacity
+    if (window.__legendFilter) {
+      const slugOpacity = {};
+      data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+      container.querySelectorAll('[data-slug]').forEach(el => {
+        const op = slugOpacity[el.dataset.slug];
+        if (op !== undefined && op < 1) el.style.opacity = op;
+      });
+    }
+
     // Wire tooltips
     wireTooltips(container, data, '.point, .label');
 

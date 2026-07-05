@@ -187,7 +187,7 @@
       const total = m.total_cost_per_task_usd;
       if (total <= 0) continue;
 
-      svg += `<text x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
+      svg += `<text data-slug="${m.slug}" x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
 
       let cumX = 0;
       for (const seg of segments) {
@@ -200,7 +200,7 @@
 
         if (segW < 0.5) continue;
 
-        svg += `<rect x="${x1}" y="${y}" width="${segW}" height="${barH}" fill="${seg.color}" stroke="#0a0a0a" stroke-width="1"/>`;
+        svg += `<rect data-slug="${m.slug}" x="${x1}" y="${y}" width="${segW}" height="${barH}" fill="${seg.color}" stroke="#0a0a0a" stroke-width="1"/>`;
 
         if (segW > 30) {
           const pct = ((val / total) * 100).toFixed(0);
@@ -224,6 +224,18 @@
     html += `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">${svg}</svg>`;
 
     container.innerHTML = html;
+
+    // Apply legend filter opacity
+    if (window.__legendFilter) {
+      const slugOpacity = {};
+      models.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+      container.querySelectorAll('[data-slug]').forEach(el => {
+        const op = slugOpacity[el.dataset.slug];
+        if (op !== undefined && op < 1) {
+          el.style.opacity = op;
+        }
+      });
+    }
 
     // Wire toggle buttons
     container.querySelectorAll('.cache-toggle-btn').forEach(btn => {

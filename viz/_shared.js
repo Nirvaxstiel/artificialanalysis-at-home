@@ -29,6 +29,22 @@ const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
 window.__legendFilter = null;
 window.__filterSubscribers = new Set();
 
+// Shared opacity helper — vizzes call this per model
+window.__modelOpacity = function(m) {
+  const lf = window.__legendFilter;
+  if (!lf) return 1;
+  if (lf.dim === 'creator') return m.creator === lf.val ? 1 : 0.12;
+  if (lf.dim === 'reasoning') {
+    const buckets = { none: m.reasoning_tax_pct != null && m.reasoning_tax_pct < 1,
+      low: m.reasoning_tax_pct != null && m.reasoning_tax_pct >= 1 && m.reasoning_tax_pct < 20,
+      mid: m.reasoning_tax_pct != null && m.reasoning_tax_pct >= 20 && m.reasoning_tax_pct < 50,
+      high: m.reasoning_tax_pct != null && m.reasoning_tax_pct >= 50 };
+    const myBucket = m.reasoning_tax_pct == null ? null : Object.keys(buckets).find(k => buckets[k]);
+    return myBucket === lf.val ? 1 : 0.12;
+  }
+  return 1;
+};
+
 window.__setLegendFilter = function(dim, val) {
   const same = window.__legendFilter && window.__legendFilter.dim === dim && window.__legendFilter.val === val;
   window.__legendFilter = same ? null : { dim, val };
