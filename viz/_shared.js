@@ -5,22 +5,32 @@
 (function() {
 
 const CREATOR_COLORS = {
-  "OpenAI":     "#f5f5f0",
-  "Google":     "#4285F4",
-  "Anthropic":  "#D97757",
-  "DeepSeek":   "#536dfe",
-  "MiniMax":    "#b6ff3c",
-  "xAI":        "#9e9e9e",
-  "NVIDIA":     "#76b900",
-  "Kimi":       "#00e5ff",
-  "Alibaba":    "#ff6a00",
-  "Z AI":       "#a855f7",
-  "Xiaomi":     "#ff5722",
-  "Amazon":     "#ff9900",
-  "Mistral":    "#000000",
-  "Meta":       "#1877f2"
+  "OpenAI":        "#f5f5f0",
+  "Anthropic":     "#D97757",
+  "Google":        "#4285F4",
+  "DeepSeek":      "#536dfe",
+  "Meta":          "#1877f2",
+  "xAI":           "#9e9e9e",
+  "MiniMax":       "#b6ff3c",
+  "NVIDIA":        "#76b900",
+  "Alibaba":       "#ff6a00",
+  "Amazon":        "#ff9900",
+  "Kimi":          "#00e5ff",
+  "Z AI":          "#a855f7",
+  "Xiaomi":        "#ff5722",
+  "Mistral":       "#e040fb",
+  "Upstage":       "#ffd740",
+  "StepFun":       "#69f0ae",
+  "LG AI Research":"#448aff",
+  "Nous Research": "#ff6e40",
+  "Perplexity":    "#b388ff",
+  "Inception":     "#18ffff",
+  "Reka AI":       "#ff80ab",
+  "Nex AGI":       "#ccff90",
+  "Tencent":       "#84ffff",
+  "Arcee AI":      "#ffd180",
 };
-const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
+const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
 
 // ============================================================
 // Legend Filter — generic shared filter state for all views
