@@ -132,12 +132,17 @@
       "cost_seg_input": null,
       "livebench_average": null,
       "arena_code_elo": null,
-      "arena_text_elo": null,
+      "arena_text_elo": 1475,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 5.0,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 30.0,
+      "openrouter_cache_read_price_per_m": 0.5,
+      "openrouter_vendor": "openai",
+      "arena_text_ci": 5,
+      "arena_text_votes": 38470
     },
     {
       "slug": "gpt-5.5-xhigh",
@@ -227,13 +232,20 @@
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
       "livebench_average": null,
-      "arena_code_elo": null,
-      "arena_text_elo": null,
+      "arena_code_elo": 1557,
+      "arena_text_elo": 1494,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 5.0,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 25.0,
+      "openrouter_cache_read_price_per_m": 0.5,
+      "openrouter_vendor": "anthropic",
+      "arena_text_ci": 4,
+      "arena_text_votes": 43053,
+      "arena_code_ci": 8,
+      "arena_code_votes": 8357
     },
     {
       "slug": "claude-opus-4-6-adaptive",
@@ -397,7 +409,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": 0.9086,
-      "params_b": null,
+      "params_b": 753.0,
       "co2_kg": null,
       "iq_per_1k_pt": 81862.0,
       "livebench_coding": 79.65,
@@ -442,13 +454,20 @@
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
       "livebench_average": null,
-      "arena_code_elo": null,
-      "arena_text_elo": null,
+      "arena_code_elo": 1394,
+      "arena_text_elo": 1467,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 2.5,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 15.0,
+      "openrouter_cache_read_price_per_m": 0.25,
+      "openrouter_vendor": "openai",
+      "arena_text_ci": 4,
+      "arena_text_votes": 53056,
+      "arena_code_ci": 22,
+      "arena_code_votes": 721
     },
     {
       "slug": "gemini-3-5-flash",
@@ -571,14 +590,19 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
-      "arena_code_elo": null,
+      "livebench_average": 70.77,
+      "arena_code_elo": 1461,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.325,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.95,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "qwen",
+      "arena_code_ci": 7,
+      "arena_code_votes": 9474
     },
     {
       "slug": "mimo-v2-pro",
@@ -609,14 +633,16 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
-      "arena_code_elo": null,
+      "livebench_average": 58.35,
+      "arena_code_elo": 1432,
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "arena_code_ci": 8,
+      "arena_code_votes": 6811
     },
     {
       "slug": "claude-sonnet-4.6-adaptive",
@@ -1020,14 +1046,17 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 48.78,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 1.2,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 4.0,
+      "openrouter_cache_read_price_per_m": 0.24,
+      "openrouter_vendor": "z-ai"
     },
     {
       "slug": "gpt-5-5-low",
@@ -1237,7 +1266,7 @@
       "arena_text_elo": 1466,
       "openllm_average": null,
       "openrouter_inp_price_per_m": 0.435,
-      "params_b": null,
+      "params_b": 1000.0,
       "co2_kg": null,
       "iq_per_1k_pt": 490110.3,
       "arena_code_ci": 8,
@@ -1396,10 +1425,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.25,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.0,
+      "openrouter_cache_read_price_per_m": 0.025,
+      "openrouter_vendor": "nex-agi"
     },
     {
       "slug": "deepseek-v4-flash",
@@ -1480,13 +1512,17 @@
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
       "livebench_average": null,
-      "arena_code_elo": null,
-      "arena_text_elo": null,
+      "arena_code_elo": 1439,
+      "arena_text_elo": 1486,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "arena_text_ci": 4,
+      "arena_text_votes": 41306,
+      "arena_code_ci": 7,
+      "arena_code_votes": 17152
     },
     {
       "slug": "glm-5",
@@ -1517,14 +1553,19 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
-      "arena_code_elo": null,
+      "livebench_average": 68.7,
+      "arena_code_elo": 1430,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "openrouter_inp_price_per_m": 0.6,
+      "params_b": 744.0,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.92,
+      "openrouter_cache_read_price_per_m": 0.12,
+      "openrouter_vendor": "z-ai",
+      "arena_code_ci": 8,
+      "arena_code_votes": 7374
     },
     {
       "slug": "glm-5-1",
@@ -1555,14 +1596,21 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
-      "arena_code_elo": null,
-      "arena_text_elo": null,
+      "livebench_average": 70.62,
+      "arena_code_elo": 1523,
+      "arena_text_elo": 1472,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "openrouter_inp_price_per_m": 0.966,
+      "params_b": 744.0,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 3.036,
+      "openrouter_cache_read_price_per_m": 0.1794,
+      "openrouter_vendor": "z-ai",
+      "arena_text_ci": 5,
+      "arena_text_votes": 22689,
+      "arena_code_ci": 10,
+      "arena_code_votes": 4589
     },
     {
       "slug": "gpt-5-2-codex",
@@ -1641,14 +1689,17 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 33.88,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.75,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 4.5,
+      "openrouter_cache_read_price_per_m": 0.075,
+      "openrouter_vendor": "openai"
     },
     {
       "slug": "mimo-v2-5-0424",
@@ -1684,7 +1735,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 310.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -1759,10 +1810,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.32,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.28,
+      "openrouter_cache_read_price_per_m": 0.064,
+      "openrouter_vendor": "qwen"
     },
     {
       "slug": "gemini-3-flash-reasoning",
@@ -1835,10 +1889,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 1.2,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 4.0,
+      "openrouter_cache_read_price_per_m": 0.24,
+      "openrouter_vendor": "z-ai"
     },
     {
       "slug": "gpt-5-4-nano",
@@ -1869,14 +1926,17 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 29.92,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.2,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.25,
+      "openrouter_cache_read_price_per_m": 0.02,
+      "openrouter_vendor": "openai"
     },
     {
       "slug": "grok-4-3",
@@ -1960,10 +2020,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.375,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 2.025,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "moonshotai"
     },
     {
       "slug": "minimax-m2-7",
@@ -2107,7 +2170,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 550.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -2144,10 +2207,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.1,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 0.3,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "stepfun"
     },
     {
       "slug": "deepseek-v4-flash-high",
@@ -2216,14 +2282,17 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 65.58,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "openrouter_inp_price_per_m": 0.285,
+      "params_b": 27.8,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 2.4,
+      "openrouter_cache_read_price_per_m": 0.15,
+      "openrouter_vendor": "qwen"
     },
     {
       "slug": "grok-4-3-medium",
@@ -2565,7 +2634,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 236.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -2640,10 +2709,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "openrouter_inp_price_per_m": 0.14,
+      "params_b": 36.0,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.0,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "qwen"
     },
     {
       "slug": "trinity-large-thinking",
@@ -2678,10 +2750,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.25,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 0.8,
+      "openrouter_cache_read_price_per_m": 0.06,
+      "openrouter_vendor": "arcee-ai"
     },
     {
       "slug": "nova-2-0-lite-reasoning-low",
@@ -2813,7 +2888,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 34.4,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -2846,7 +2921,7 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 58.12,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
@@ -2884,7 +2959,7 @@
       "cost_seg_cache_write": null,
       "cost_seg_cache_hit": null,
       "cost_seg_input": null,
-      "livebench_average": null,
+      "livebench_average": 58.96,
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
@@ -2942,10 +3017,10 @@
       "openllm_gpqa": null,
       "openllm_musr": null,
       "openllm_mmlu_pro": null,
-      "openrouter_inp_price_per_m": null,
-      "openrouter_out_price_per_m": null,
+      "openrouter_inp_price_per_m": 1.5,
+      "openrouter_out_price_per_m": 7.5,
       "openrouter_cache_read_price_per_m": null,
-      "openrouter_vendor": null,
+      "openrouter_vendor": "mistralai",
       "params_b": null,
       "co2_kg": null,
       "iq_per_1k_pt": 43478.3,
@@ -3022,10 +3097,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.2,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.15,
+      "openrouter_cache_read_price_per_m": 0.04,
+      "openrouter_vendor": "stepfun"
     },
     {
       "slug": "gemma-4-31b",
@@ -3061,7 +3139,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 30.7,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3137,7 +3215,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 25.2,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3175,7 +3253,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": 0.15,
-      "params_b": null,
+      "params_b": 102.0,
       "co2_kg": null,
       "iq_per_1k_pt": null,
       "openrouter_out_price_per_m": 0.6,
@@ -3215,10 +3293,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.25,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 1.5,
+      "openrouter_cache_read_price_per_m": 0.025,
+      "openrouter_vendor": "google"
     },
     {
       "slug": "mercury-2",
@@ -3253,10 +3334,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.25,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 0.75,
+      "openrouter_cache_read_price_per_m": 0.025,
+      "openrouter_vendor": "inception"
     },
     {
       "slug": "nemotron-3-super-120b-a12b",
@@ -3570,7 +3654,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 12.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3608,7 +3692,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 31.6,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3683,10 +3767,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 2.0,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 8.0,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "perplexity"
     },
     {
       "slug": "exaone-4-0-32b-reasoning",
@@ -3722,7 +3809,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 32.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3760,7 +3847,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 5.1,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3839,7 +3926,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 30.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3877,7 +3964,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 102.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -3991,7 +4078,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 25.2,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -4029,7 +4116,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 8.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -4105,7 +4192,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 70.6,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -4143,7 +4230,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 406.0,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -4181,7 +4268,7 @@
       "arena_text_elo": null,
       "openllm_average": null,
       "openrouter_inp_price_per_m": null,
-      "params_b": null,
+      "params_b": 1.28,
       "co2_kg": null,
       "iq_per_1k_pt": null
     },
@@ -4218,10 +4305,13 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 0.1,
       "params_b": null,
       "co2_kg": null,
-      "iq_per_1k_pt": null
+      "iq_per_1k_pt": null,
+      "openrouter_out_price_per_m": 0.2,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "rekaai"
     },
     {
       "slug": "claude-sonnet-5-high",
@@ -4441,9 +4531,12 @@
       "arena_code_elo": null,
       "arena_text_elo": null,
       "openllm_average": null,
-      "openrouter_inp_price_per_m": null,
+      "openrouter_inp_price_per_m": 30.0,
       "params_b": null,
-      "co2_kg": null
+      "co2_kg": null,
+      "openrouter_out_price_per_m": 180.0,
+      "openrouter_cache_read_price_per_m": null,
+      "openrouter_vendor": "openai"
     }
   ]
 }
