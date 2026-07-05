@@ -22,6 +22,57 @@ const CREATOR_COLORS = {
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0" };
 
+// ============================================================
+// Legend Filter — generic shared filter state for all views
+// Single source of truth: window.__legendFilter = { dim, val } | null
+// ============================================================
+window.__legendFilter = null;
+window.__filterSubscribers = new Set();
+
+window.__setLegendFilter = function(dim, val) {
+  const same = window.__legendFilter && window.__legendFilter.dim === dim && window.__legendFilter.val === val;
+  window.__legendFilter = same ? null : { dim, val };
+  // Update HTML .lg-fi highlights
+  document.querySelectorAll('.lg-fi').forEach(el => {
+    el.classList.toggle('active',
+      window.__legendFilter && el.dataset.lgDim === window.__legendFilter.dim && el.dataset.lgVal === window.__legendFilter.val);
+  });
+  window.__filterSubscribers.forEach(fn => fn(window.__legendFilter));
+};
+
+window.__clearLegendFilter = function() {
+  window.__legendFilter = null;
+  document.querySelectorAll('.lg-fi').forEach(el => el.classList.remove('active'));
+  window.__filterSubscribers.forEach(fn => fn(null));
+};
+
+window.__renderCreatorLegend = function() {
+  const el = window.__creatorLegendEl || document.getElementById('creator-legend');
+  if (!el) return;
+  window.__creatorLegendEl = el;
+  const src = window.PROCESSED_DATA;
+  const models = Array.isArray(src) ? src : (src && src.models ? src.models : []);
+  const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
+  const isAllActive = !window.__legendFilter;
+  el.innerHTML = '<span class="lg-fi' + (isAllActive ? ' active' : '') + '" data-lg-dim="" data-lg-val="">ALL</span>'
+    + creators.map(c => {
+        const active = window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val === c;
+        const color = (window.CREATOR_COLORS || {})[c] || '#888';
+        return `<span class="lg-fi${active ? ' active' : ''}" data-lg-dim="creator" data-lg-val="${c}"><span class="cr-fs" style="background:${color}"></span>${c}</span>`;
+      }).join('');
+  // Re-bind click — clone to drop old listeners
+  const newEl = el.cloneNode(true);
+  el.parentNode.replaceChild(newEl, el);
+  window.__creatorLegendEl = newEl;
+  newEl.addEventListener('click', e => {
+    const item = e.target.closest('.lg-fi');
+    if (!item) return;
+    const dim = item.dataset.lgDim;
+    if (!dim) { window.__clearLegendFilter(); return; }
+    window.__setLegendFilter(dim, item.dataset.lgVal);
+  });
+};
+
 window.CREATOR_COLORS = CREATOR_COLORS;
 window.CREATOR_BORDER = CREATOR_BORDER;
 

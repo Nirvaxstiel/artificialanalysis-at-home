@@ -48,6 +48,12 @@
     if (pct <= 50) return REASONING_COLORS.mid;
     return REASONING_COLORS.high;
   }
+  function reasoningBucket(pct) {
+    if (pct == null) return 'none';
+    if (pct < 20) return 'low';
+    if (pct <= 50) return 'mid';
+    return 'high';
+  }
 
   function computePareto(pts, costKey, qualityKey) {
     const sorted = pts
@@ -216,6 +222,7 @@
     }
 
     // Points
+    const lf = window.__legendFilter;
     for (const m of pts) {
       const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
       let fill, stroke;
@@ -226,7 +233,15 @@
         fill = CREATOR_COLORS[m.creator] || "#888";
         stroke = CREATOR_BORDER[m.creator] || "#000";
       }
-      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="0.7" stroke="${stroke}" stroke-width="1.5"></circle>`;
+      // Generic legend filter dimming
+      let fo = '0.7', so = '1.0';
+      if (lf && ((colorMode === 'creator' && lf.dim === 'creator') || (colorMode === 'reasoning' && lf.dim === 'reasoning'))) {
+        const mv = colorMode === 'creator' ? m.creator : reasoningBucket(m.reasoning_tax_pct);
+        const match = mv === lf.val;
+        fo = match ? '0.9' : '0.05';
+        so = match ? '1.0' : '0.06';
+      }
+      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="1.5" stroke-opacity="${so}"></circle>`;
     }
 
     // Labels on pareto models only
@@ -236,11 +251,20 @@
       const placed = placeLabel(cx, cy, r, m.name, labelPositions, { W, H });
       if (!placed) continue;
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
-      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
+      let lo = '1';
+      if (lf && ((colorMode === 'creator' && lf.dim === 'creator') || (colorMode === 'reasoning' && lf.dim === 'reasoning'))) {
+        const mv = colorMode === 'creator' ? m.creator : reasoningBucket(m.reasoning_tax_pct);
+        if (mv !== lf.val) lo = '0.06';
+      }
+      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${cleanName}</text>`;
     }
 
     // Legend
-    const legendW = 280, legendH = colorMode === 'reasoning' ? 90 : 50;
+    const legendW = 280;
+    const nCreators = colorMode === 'creator' ? new Set(pts.map(p => p.creator)).size : 0;
+    const nCols = colorMode === 'creator' ? 3 : 1;
+    const nRows = colorMode === 'creator' ? Math.ceil(nCreators / nCols) : 0;
+    const legendH = colorMode === 'reasoning' ? 90 : Math.max(90, 56 + nRows * 16);
     const legendX = W - M.right - legendW - 4;
     const legendY = H - M.bottom - legendH - 4;
     let leg = `<g transform="translate(${legendX},${legendY})">`;
@@ -248,19 +272,36 @@
 
     if (colorMode === 'reasoning') {
       leg += `<text x="10" y="16" fill="#b6ff3c" font-size="10" font-weight="800" font-family="monospace">REASONING TAX %</text>`;
-      leg += `<rect x="10" y="24" width="12" height="12" fill="${REASONING_COLORS.low}" stroke="#000" stroke-width="1"/><text x="28" y="34" fill="#ccc" font-size="9" font-family="monospace">&lt;20%</text>`;
-      leg += `<rect x="10" y="40" width="12" height="12" fill="${REASONING_COLORS.mid}" stroke="#000" stroke-width="1"/><text x="28" y="50" fill="#ccc" font-size="9" font-family="monospace">20–50%</text>`;
-      leg += `<rect x="10" y="56" width="12" height="12" fill="${REASONING_COLORS.high}" stroke="#000" stroke-width="1"/><text x="28" y="66" fill="#ccc" font-size="9" font-family="monospace">&gt;50%</text>`;
-      leg += `<rect x="130" y="24" width="12" height="12" fill="${REASONING_COLORS.none}" stroke="#000" stroke-width="1"/><text x="148" y="34" fill="#ccc" font-size="9" font-family="monospace">No data</text>`;
+      const rBucks = [
+        { key: 'low', label: '<20%', color: REASONING_COLORS.low },
+        { key: 'mid', label: '20–50%', color: REASONING_COLORS.mid },
+        { key: 'high', label: '>50%', color: REASONING_COLORS.high },
+        { key: 'none', label: 'No data', color: REASONING_COLORS.none },
+      ];
+      rBucks.forEach((b, i) => {
+        const col = i < 2 ? 0 : 1;
+        const row = i < 2 ? i : i - 2;
+        const x = 10 + col * 120;
+        const y = 24 + row * 16;
+        const isActive = lf && lf.dim === 'reasoning' && lf.val === b.key;
+        const sw = isActive ? 'stroke="#b6ff3c" stroke-width="2"' : 'stroke="#000" stroke-width="1"';
+        leg += `<g class="leg-rg" data-lg-dim="reasoning" data-lg-val="${b.key}" style="cursor:pointer"><rect x="${x}" y="${y}" width="12" height="12" fill="${b.color}" ${sw}/><text x="${x+16}" y="${y+10}" fill="${isActive ? '#b6ff3c' : '#ccc'}" font-size="9" font-family="monospace">${b.label}</text></g>`;
+      });
     } else {
       const creators = [...new Set(pts.map(p => p.creator))].sort();
-      leg += `<text x="10" y="18" fill="#b6ff3c" font-size="9" font-weight="800" font-family="monospace">CREATOR COLOR</text>`;
-      let ly = 28;
-      for (const c of creators) {
+      leg += `<text x="10" y="16" fill="#b6ff3c" font-size="10" font-weight="800" font-family="monospace">CREATOR COLOR</text>`;
+      const colW = Math.floor((legendW - 10) / nCols);
+      for (let i = 0; i < creators.length; i++) {
+        const c = creators[i];
+        const col = i % nCols;
+        const row = Math.floor(i / nCols);
+        const x = 6 + col * colW;
+        const y = 24 + row * 16;
         const color = CREATOR_COLORS[c] || "#888";
-        leg += `<rect x="10" y="${ly}" width="10" height="10" fill="${color}" stroke="#f5f5f0" stroke-width="1"/><text x="26" y="${ly+9}" fill="#ccc" font-size="8" font-family="monospace">${c}</text>`;
-        ly += 14;
-        if (ly > legendH - 8) break;
+        const isActive = lf && lf.dim === 'creator' && lf.val === c;
+        const textFill = isActive ? '#b6ff3c' : '#ccc';
+        const sw = isActive ? 'stroke="#b6ff3c" stroke-width="2"' : 'stroke="#000" stroke-width="1"';
+        leg += `<g class="leg-cr" data-lg-dim="creator" data-lg-val="${c}" style="cursor:pointer"><rect x="${x}" y="${y}" width="12" height="12" fill="${color}" ${sw}/><text x="${x+16}" y="${y+10}" fill="${textFill}" font-size="9" font-family="monospace">${c}</text></g>`;
       }
     }
     leg += `<line x1="130" y1="${legendH - 22}" x2="170" y2="${legendH - 22}" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 3"/>`;
@@ -269,6 +310,11 @@
     leg += `</g>`;
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}${leg}</svg>`;
+
+    // Click-to-filter via generic legend filter (creator + reasoning)
+    container.querySelectorAll('.leg-cr, .leg-rg').forEach(el => {
+      el.addEventListener('click', () => window.__setLegendFilter(el.dataset.lgDim, el.dataset.lgVal));
+    });
 
     wireTooltips(container, data, '.point, .label');
     _wireAxisUI(container, data);
