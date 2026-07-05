@@ -148,7 +148,7 @@
     }
     leg += `<span class="size">// Y-AXIS = COST / IQ POINT (LOG SCALE) · HOVER FOR DETAILS</span>`;
     const legendEl = container.parentElement.querySelector('.viz-legend');
-    if (legendEl) legendEl.innerHTML = leg;
+    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

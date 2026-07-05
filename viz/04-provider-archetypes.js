@@ -10,11 +10,19 @@
       && m.speed_tps != null && m.tokens_m != null && m.tokens_m > 0
     );
 
-    // Group by creator
+    // Group by creator, split into SKU variants
     const byCreator = {};
     for (const m of models) {
-      if (!byCreator[m.creator]) byCreator[m.creator] = [];
-      byCreator[m.creator].push(m);
+      const slug = m.slug.toLowerCase();
+      let suffix = '';
+      if (slug.includes('oss')) suffix = ' OSS';
+      else if (slug.includes('mini')) suffix = ' Mini';
+      else if (slug.includes('nano')) suffix = ' Nano';
+      else if (slug.includes('flash')) suffix = ' Flash';
+      else if (slug.includes('codex') || slug.endsWith('-code')) suffix = ' Code';
+      const key = m.creator + suffix;
+      if (!byCreator[key]) byCreator[key] = [];
+      byCreator[key].push(m);
     }
 
     // Build creator archetypes: average metrics per creator
@@ -24,19 +32,23 @@
       const avgCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
       const avgSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
       const avgTokens = ms.reduce((s, m) => s + m.tokens_m, 0) / ms.length;
-      const costEff = 1 / avgCost;          // higher = better
-      const verbEff = 1 / avgTokens;         // higher = better (fewer tokens)
-      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, verbEff, count: ms.length });
+      const costEff = 1 / avgCost;
+      const tokenEff = 1 / avgTokens;    // higher = fewer tokens = more efficient
+      // Cache efficiency: how much cheaper cached prompts are vs input
+      const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
+      const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
+      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, verbEff, avgCacheEff, count: ms.length });
     }
 
-    // Sort by avg IQ descending
-    archetypes.sort((a, b) => b.avgIQ - a.avgIQ);
+    // Sort alphabetically — keeps OSS variants next to parent
+    archetypes.sort((a, b) => a.creator.localeCompare(b.creator));
 
-    // Global min/max for normalization across creators (for each raw metric)
+    // Global min/max for normalization
     const allIQ = archetypes.map(a => a.avgIQ);
     const allCostEff = archetypes.map(a => a.costEff);
     const allSpeed = archetypes.map(a => a.avgSpeed);
-    const allVerbEff = archetypes.map(a => a.verbEff);
+    const allTokenEff = archetypes.map(a => a.tokenEff);
+    const allCacheEff = archetypes.map(a => a.avgCacheEff);
 
     const mn = arr => Math.min(...arr);
     const mx = arr => Math.max(...arr);
@@ -45,14 +57,16 @@
     const iqLo = mn(allIQ), iqHi = mx(allIQ);
     const ceLo = mn(allCostEff), ceHi = mx(allCostEff);
     const spLo = mn(allSpeed), spHi = mx(allSpeed);
-    const veLo = mn(allVerbEff), veHi = mx(allVerbEff);
+    const teLo = mn(allTokenEff), teHi = mx(allTokenEff);
+    const caLo = mn(allCacheEff), caHi = mx(allCacheEff);
 
-    // Axes definition: 4 axes at 0°, 90°, 180°, 270° (top, right, bottom, left)
+    // Axes: IQ → Speed → Token Eff → Cache → Cost (related adjacent)
     const AXES = [
-      { label: 'IQ',           angle: -Math.PI / 2 },  // top
-      { label: 'COST EFF',     angle: 0 },              // right
-      { label: 'SPEED',        angle: Math.PI / 2 },    // bottom
-      { label: 'VERBOSITY',    angle: Math.PI },        // left
+      { label: 'IQ',           angle: -Math.PI / 2 },
+      { label: 'SPEED',        angle: -Math.PI / 2 + 2 * Math.PI / 5 },
+      { label: 'TOKEN EFF',    angle: -Math.PI / 2 + 4 * Math.PI / 5 },
+      { label: 'CACHE EFF',    angle: -Math.PI / 2 + 6 * Math.PI / 5 },
+      { label: 'COST EFF',     angle: -Math.PI / 2 + 8 * Math.PI / 5 },
     ];
 
     const R = 80;       // radar radius
@@ -111,14 +125,24 @@
       }
     </style>`;
 
+    html += `<div style="font-size:10px;color:#888;font-family:monospace;margin-bottom:12px;padding:8px;border:1px dashed #333;">`;
+    html += `<span style="color:#b6ff3c;font-weight:700">AXES</span> `;
+    html += `<span class="item">// IQ</span> `;
+    html += `<span class="item">// SPEED (tok/s)</span> `;
+    html += `<span class="item">// VERBOSITY (1/tokens)</span> `;
+    html += `<span class="item">// CACHE EFF (1-cache_price/input_price)</span> `;
+    html += `<span class="item">// COST EFF (1/cost_per_task)</span>`;
+    html += `<span class="size" style="margin-left:12px">// SORTED BY AVG IQ DESC · NORMALIZED PER-AXIS</span>`;
+    html += `</div>`;
     html += '<div class="radar-grid">';
 
     for (const a of archetypes) {
       const values = [
         norm(a.avgIQ, iqLo, iqHi),
-        norm(a.costEff, ceLo, ceHi),
         norm(a.avgSpeed, spLo, spHi),
-        norm(a.verbEff, veLo, veHi),
+        norm(a.tokenEff, teLo, teHi),
+        norm(a.avgCacheEff, caLo, caHi),
+        norm(a.costEff, ceLo, ceHi),
       ];
 
       // Build radar SVG
@@ -149,7 +173,8 @@
         return `${x},${y}`;
       }).join(' ');
 
-      const color = CREATOR_COLORS[a.creator] || '#888';
+      const baseCreator = a.creator.replace(/ (OSS|Mini|Nano|Flash|Code)$/, '');
+      const color = CREATOR_COLORS[baseCreator] || '#888';
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
 
       // Data points (dots)
@@ -181,8 +206,10 @@
           <div class="creator-name" style="color:${color}">${a.creator}</div>
           ${svg}
           <div class="radar-stats">
-            IQ <span class="val">${a.avgIQ.toFixed(1)}</span> · 
-            $/task <span class="val">$${a.avgCost.toFixed(3)}</span> · 
+            IQ <span class="val">${a.avgIQ.toFixed(1)}</span> ·
+            $/task <span class="val">$${a.avgCost.toFixed(3)}</span> ·
+            <span class="val">${a.avgSpeed.toFixed(0)}</span> t/s ·
+            cache <span class="val">${(a.avgCacheEff * 100).toFixed(0)}%</span> ·
             <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}
           </div>
         </div>`;
@@ -192,17 +219,9 @@
 
     container.innerHTML = html;
 
-    // Legend
+    // Clear legend (redundant with chart header)
     const legendEl = container.parentElement.querySelector('.viz-legend');
-    if (legendEl) {
-      let leg = '<strong style="color:var(--neon);">AXES</strong> ';
-      leg += '<span class="item">// IQ</span> ';
-      leg += '<span class="item">// COST EFF (1/cost)</span> ';
-      leg += '<span class="item">// SPEED (tok/s)</span> ';
-      leg += '<span class="item">// VERBOSITY (1/tokens)</span> ';
-      leg += '<span class="size">// SORTED BY AVG IQ DESC · NORMALIZED PER-AXIS</span>';
-      legendEl.innerHTML = leg;
-    }
+    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

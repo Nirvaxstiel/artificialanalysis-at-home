@@ -305,7 +305,7 @@
       leg += `<span class="size">// AA-DERIVED CACHE DATA · TOGGLE ABOVE FOR EXTERNAL RATES · HOVER FOR BREAKDOWN</span>`;
     }
     const legendEl = container.parentElement ? container.parentElement.querySelector('.viz-legend') : null;
-    if (legendEl) legendEl.innerHTML = leg;
+    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
