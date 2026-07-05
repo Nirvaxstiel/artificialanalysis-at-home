@@ -22,7 +22,9 @@
       { key: 'openllm_average', label: 'OpenLLM Avg', unit: '' },
     ],
     cost: [
+      { key: 'inp_price', label: 'AA Input $/Mtok', unit: 'USD', log: true },
       { key: 'cost_per_task', label: 'AA Cost / Task', unit: 'USD', log: true },
+      { key: 'out_price', label: 'AA Output $/Mtok', unit: 'USD', log: true },
       { key: 'cost_per_wallsec', label: 'AA Cost / Wall Sec', unit: 'USD', log: true },
       { key: 'openrouter_inp_price_per_m', label: 'OR Input $/Mtok', unit: 'USD', log: true },
       { key: 'openrouter_out_price_per_m', label: 'OR Output $/Mtok', unit: 'USD', log: true },
@@ -118,7 +120,7 @@
     const innerH = H - M.top - M.bottom;
 
     const qualityKey = container.__qualityAxis || 'intel';
-    const costKey = container.__costAxis || 'cost_per_task';
+    const costKey = container.__costAxis || 'inp_price';
     const sizeKey = container.__sizeAxis || 'tokens_m';
     const colorMode = container.__colorMode || 'creator';
 
@@ -128,7 +130,6 @@
 
     const pts = data.filter(m =>
       m[qualityKey] != null && m[costKey] != null && m[costKey] > 0
-      && m[sizeKey] != null && m[sizeKey] > 0
     );
 
     if (pts.length === 0) {
@@ -491,7 +492,7 @@
     if (existing) existing.remove();
 
     const qualityKey = container.__qualityAxis || 'intel';
-    const costKey = container.__costAxis || 'cost_per_task';
+    const costKey = container.__costAxis || 'inp_price';
     const sizeKey = container.__sizeAxis || 'tokens_m';
 
     const row = document.createElement('div');

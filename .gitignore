@@ -28,3 +28,6 @@ __pycache__/
 
 # Future: anything in data/ that's user-generated
 # data/private/
+
+# Working architecture reference — not committed
+ARCHITECTURE-REFERENCE.md
