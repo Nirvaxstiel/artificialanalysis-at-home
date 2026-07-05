@@ -84,7 +84,8 @@
 
       // X-axis model name (rotated)
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
-      svg += `<text x="${x + barW / 2}" y="${innerH + 12}" text-anchor="end" font-size="9" font-weight="600" fill="var(--fg, #f5f5f0)" transform="rotate(-45 ${x + barW / 2} ${innerH + 12})">${cleanName}</text>`;
+      const shortName = cleanName.length > 24 ? cleanName.slice(0, 22) + '…' : cleanName;
+      svg += `<text x="${x + barW / 2}" y="${innerH + 12}" text-anchor="end" font-size="9" font-weight="600" fill="var(--fg, #f5f5f0)" transform="rotate(-45 ${x + barW / 2} ${innerH + 12})">${shortName}</text>`;
 
       // Creator color dot below name
       svg += `<circle cx="${x + barW / 2}" cy="${innerH + 8}" r="2" fill="${fill}"/>`;

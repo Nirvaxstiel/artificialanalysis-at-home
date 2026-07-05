@@ -154,6 +154,19 @@
     border-bottom: 1px solid #222;
     white-space: nowrap;
   }
+  .dt-table td.name-cell {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default;
+  }
+  .dt-table td.name-cell:hover {
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+    background: #1a1a1a;
+  }
   .dt-table th {
     background: #0a0a0a;
     color: #b6ff3c;
@@ -322,7 +335,7 @@
   .strip > div { padding: 20px; border-right: 1px solid var(--border); background: var(--panel); cursor: pointer; }
   .strip > div:last-child { border-right: 0; }
   .strip .label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
-  .strip .val { font-size: 28px; font-weight: 800; line-height: 1; margin-top: 8px; }
+  .strip .val { font-size: 28px; font-weight: 800; line-height: 1; margin-top: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .strip .val span { color: var(--neon); }
   @media (max-width: 700px) { .strip { grid-template-columns: 1fr 1fr; } .strip > div { border-bottom: 1px solid var(--border); } }
 
@@ -4978,7 +4991,7 @@ window.PROCESSED_DATA = [
     if (!el) return;
     const valEl = el.querySelector('.val');
     const iq = model.intel != null ? ` (${fmt(model.intel)})` : '';
-    if (valEl) valEl.innerHTML = model.creator.split('/')[0] + ' <span>' + model.name.split(' ').pop() + '</span>';
+    if (valEl) valEl.innerHTML = model.creator.split('/')[0] + ' <span>' + model.slug + '</span>';
     el.dataset.slug = slug;
     el.dataset.view = view;
     el.dataset.sortKey = sortKey;

@@ -252,12 +252,13 @@
       const placed = placeLabel(cx, cy, r, m.name, labelPositions, { W, H });
       if (!placed) continue;
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
+      const shortLabel = cleanName.length > 22 ? cleanName.slice(0, 20) + '…' : cleanName;
       let lo = '1';
       if (lf && ((colorMode === 'creator' && lf.dim === 'creator') || (colorMode === 'reasoning' && lf.dim === 'reasoning'))) {
         const mv = colorMode === 'creator' ? m.creator : reasoningBucket(m.reasoning_tax_pct);
         if (mv !== lf.val) lo = '0.06';
       }
-      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${cleanName}</text>`;
+      svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${shortLabel}</text>`;
     }
 
     // Legend

@@ -43,7 +43,7 @@
       defaultSort: [{ key: 'intel', dir: 'desc' }],
       buildRows: data => data,
       cols: [
-        { key: 'name', label: 'NAME', render: r => r.name },
+        { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot" style="display:inline-block;width:8px;height:8px;background:${CREATOR_COLORS[r.creator]||'#888'};margin-right:6px;border:1px solid #f5f5f0;"></span>${r.creator}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
@@ -86,7 +86,7 @@
       defaultSort: [{ key: 'iqPerK', dir: 'desc' }],
       buildRows: data => data,
       cols: [
-        { key: 'name', label: 'NAME', render: r => r.name },
+        { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot" style="display:inline-block;width:8px;height:8px;background:${CREATOR_COLORS[r.creator]||'#888'};margin-right:6px;border:1px solid #f5f5f0;"></span>${r.creator}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },

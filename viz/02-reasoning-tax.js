@@ -187,7 +187,7 @@
       const total = m.total_cost_per_task_usd;
       if (total <= 0) continue;
 
-      svg += `<text x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name}</text>`;
+      svg += `<text x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
 
       let cumX = 0;
       for (const seg of segments) {
