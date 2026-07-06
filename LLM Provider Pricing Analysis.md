@@ -60,6 +60,7 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 
 - `cost_seg_*` (Input / Cached / Answer / Reasoning) for new models — only on AA bar chart (color-coded, no labels)
 - Observed cache hit rates — no public analytics API
+- **Harness data** (codex, claude-code, aider) — not exposed by any source. Future axis: `metric × harness`
 
 ## Methodology
 
