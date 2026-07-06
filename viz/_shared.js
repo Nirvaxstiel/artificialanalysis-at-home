@@ -38,12 +38,18 @@ const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0
 // ============================================================
 window.__legendFilter = null;
 window.__filterSubscribers = new Set();
+// Filter mode: 'dim' (default, dim non-matching to 0.12) or 'hide' (remove non-matching from view)
+window.__filterMode = 'dim';
 
 // Shared opacity helper — vizzes call this per model
+// Returns 1 for matching, 0.12 for dim, 0 for hide
 window.__modelOpacity = function(m) {
   const lf = window.__legendFilter;
   if (!lf) return 1;
-  if (lf.dim === 'creator') return m.creator === lf.val ? 1 : 0.12;
+  if (lf.dim === 'creator') {
+    if (m.creator === lf.val) return 1;
+    return window.__filterMode === 'hide' ? 0 : 0.12;
+  }
   if (lf.dim === 'reasoning') {
     const buckets = { none: m.reasoning_tax_pct != null && m.reasoning_tax_pct < 1,
       low: m.reasoning_tax_pct != null && m.reasoning_tax_pct >= 1 && m.reasoning_tax_pct < 20,
@@ -80,17 +86,32 @@ window.__renderCreatorLegend = function() {
   const models = Array.isArray(src) ? src : (src && src.models ? src.models : []);
   const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
   const isAllActive = !window.__legendFilter;
+  // Filter mode toggle: dim (default) or hide non-matching
+  const fm = window.__filterMode || 'dim';
+  const toggleHtml = `<span class="lg-mode" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;">` +
+    `<span style="color:var(--muted);font-weight:700;">FILTER:</span>` +
+    `<button class="lg-mode-btn ${fm==='dim'?'active':''}" data-mode="dim" style="background:transparent;border:1px solid ${fm==='dim'?'var(--neon)':'#444'};color:${fm==='dim'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;">dim</button>` +
+    `<button class="lg-mode-btn ${fm==='hide'?'active':''}" data-mode="hide" style="background:transparent;border:1px solid ${fm==='hide'?'var(--neon)':'#444'};color:${fm==='hide'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;">hide out</button>` +
+    `</span>`;
   el.innerHTML = '<span class="lg-fi' + (isAllActive ? ' active' : '') + '" data-lg-dim="" data-lg-val="">ALL</span>'
     + creators.map(c => {
         const active = window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val === c;
         const color = (window.CREATOR_COLORS || {})[c] || '#888';
         return `<span class="lg-fi${active ? ' active' : ''}" data-lg-dim="creator" data-lg-val="${c}"><span class="cr-fs" style="background:${color}"></span>${c}</span>`;
-      }).join('');
+      }).join('')
+    + toggleHtml;
   // Re-bind click — clone to drop old listeners
   const newEl = el.cloneNode(true);
   el.parentNode.replaceChild(newEl, el);
   window.__creatorLegendEl = newEl;
   newEl.addEventListener('click', e => {
+    const modeBtn = e.target.closest('.lg-mode-btn');
+    if (modeBtn) {
+      window.__filterMode = modeBtn.dataset.mode;
+      window.__filterSubscribers.forEach(fn => fn(null));
+      window.__renderCreatorLegend();
+      return;
+    }
     const item = e.target.closest('.lg-fi');
     if (!item) return;
     const dim = item.dataset.lgDim;
@@ -111,12 +132,22 @@ function wireTooltips(container, data, selectors) {
   const modelBySlug = Object.fromEntries((data || []).map(m => [m.slug, m]));
   container.querySelectorAll(selectors).forEach(el => {
     el.addEventListener('mouseenter', function() {
+      // Skip tooltips on hidden/filtered elements
+      if (this.style.display === 'none' || this.style.opacity === '0') {
+        tt.style.display = 'none';
+        return;
+      }
       const m = modelBySlug[this.dataset.slug];
       if (!m) return;
       tt.innerHTML = window.buildTooltip ? window.buildTooltip(m) : m.name;
       tt.style.display = 'block';
     });
     el.addEventListener('mousemove', function(e) {
+      // Also bail if element became hidden
+      if (this.style.display === 'none' || this.style.opacity === '0') {
+        tt.style.display = 'none';
+        return;
+      }
       const w = tt.offsetWidth, h = tt.offsetHeight;
       const vw = window.innerWidth, vh = window.innerHeight;
       let x = e.clientX + 16, y = e.clientY + 16;
@@ -191,7 +222,15 @@ function placeLabel(cx, cy, r, text, occupied, opts) {
   return placed;
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel };
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState };
+
+// Render an empty-state message when a filter leaves no data
+function renderEmptyState(container, message) {
+  container.innerHTML = `<div style="padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;">
+    <div style="color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;">// NO DATA</div>
+    <div style="font-size:11px;line-height:1.6;">${message}</div>
+  </div>`;
+}
 
 // ============================================================
 // Shared config — single source of truth for labels and patterns

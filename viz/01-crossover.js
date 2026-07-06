@@ -223,8 +223,10 @@
     }
 
     // Points
-    const lf = window.__legendFilter;
     for (const m of pts) {
+      const fo = window.__modelOpacity(m);
+      if (fo === 0) continue; // hide mode: skip non-matching
+      const so = fo; // stroke opacity tracks fill opacity
       const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
       let fill, stroke;
       if (colorMode === 'reasoning') {
@@ -233,14 +235,6 @@
       } else {
         fill = CREATOR_COLORS[m.creator] || "#888";
         stroke = CREATOR_BORDER[m.creator] || "#000";
-      }
-      // Generic legend filter dimming
-      let fo = '0.7', so = '1.0';
-      if (lf && ((colorMode === 'creator' && lf.dim === 'creator') || (colorMode === 'reasoning' && lf.dim === 'reasoning'))) {
-        const mv = colorMode === 'creator' ? m.creator : reasoningBucket(m.reasoning_tax_pct);
-        const match = mv === lf.val;
-        fo = match ? '0.9' : '0.05';
-        so = match ? '1.0' : '0.06';
       }
       svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="1.5" stroke-opacity="${so}"></circle>`;
       // Invisible hit-target for overlapping nodes
@@ -255,11 +249,8 @@
       if (!placed) continue;
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       const shortLabel = cleanName.length > 22 ? cleanName.slice(0, 20) + '…' : cleanName;
-      let lo = '1';
-      if (lf && ((colorMode === 'creator' && lf.dim === 'creator') || (colorMode === 'reasoning' && lf.dim === 'reasoning'))) {
-        const mv = colorMode === 'creator' ? m.creator : reasoningBucket(m.reasoning_tax_pct);
-        if (mv !== lf.val) lo = '0.06';
-      }
+      let lo = window.__modelOpacity(m);
+      if (lo === 0) continue; // hide mode: skip label
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${shortLabel}</text>`;
     }
 

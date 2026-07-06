@@ -22,7 +22,8 @@
     })).sort((a, b) => a.cost_per_iq - b.cost_per_iq);
 
     if (models.length === 0) {
-      container.innerHTML = '<p style="color:var(--muted);font-family:monospace;padding:40px;text-align:center">// NO DATA WITH BOTH cost_per_task AND intel</p>';
+      window.VIZ_HELPERS.renderEmptyState(container,
+        `No models with cost-per-IQ data. This view needs <code>cost_per_task</code> + <code>intel</code>.`);
       return;
     }
 
@@ -85,7 +86,7 @@
       // X-axis model name (rotated)
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       const shortName = cleanName.length > 24 ? cleanName.slice(0, 22) + '…' : cleanName;
-      svg += `<text x="${x + barW / 2}" y="${innerH + 12}" text-anchor="end" font-size="9" font-weight="600" fill="var(--fg, #f5f5f0)" transform="rotate(-45 ${x + barW / 2} ${innerH + 12})">${shortName}</text>`;
+      svg += `<text data-slug="${m.slug}" x="${x + barW / 2}" y="${innerH + 12}" text-anchor="end" font-size="9" font-weight="600" fill="var(--fg, #f5f5f0)" transform="rotate(-45 ${x + barW / 2} ${innerH + 12})">${shortName}</text>`;
 
       // Creator color dot below name
       svg += `<circle cx="${x + barW / 2}" cy="${innerH + 8}" r="2" fill="${fill}"/>`;
@@ -130,9 +131,16 @@
     if (window.__legendFilter) {
       const slugOpacity = {};
       data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+      const hideMode = window.__filterMode === 'hide';
       container.querySelectorAll('[data-slug]').forEach(el => {
         const op = slugOpacity[el.dataset.slug];
-        if (op !== undefined && op < 1) el.style.opacity = op;
+        if (op !== undefined && op < 1) {
+          if (hideMode && op === 0) {
+            el.style.display = 'none';
+          } else {
+            el.style.opacity = op;
+          }
+        }
       });
     }
 

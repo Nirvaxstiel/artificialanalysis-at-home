@@ -10,6 +10,12 @@
       && m.speed_tps != null && m.tokens_m != null && m.tokens_m > 0
     );
 
+    if (models.length === 0) {
+      window.VIZ_HELPERS.renderEmptyState(container,
+        `No models with archetype data. This view needs <code>intel</code> + <code>cost_per_task</code> + <code>speed_tps</code> + <code>tokens_m</code>.`);
+      return;
+    }
+
     // Group by creator, split into SKU variants
     const SKU_PATTERNS = window.SKU_PATTERNS || [];
     const byCreator = {};
@@ -218,7 +224,7 @@
       statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `
-        <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? 'opacity:0.15' : ''}">
+        <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? (window.__filterMode === 'hide' ? 'display:none' : 'opacity:0.15') : ''}">
           <div class="creator-name" style="color:${color}">${a.creator}</div>
           ${svg}
           <div class="radar-stats">${statsHtml}</div>

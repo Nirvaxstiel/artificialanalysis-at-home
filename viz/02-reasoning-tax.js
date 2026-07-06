@@ -100,6 +100,23 @@
     // Sort cheapest first
     models.sort((a, b) => a.total_cost_per_task_usd - b.total_cost_per_task_usd);
 
+    // Apply legend filter at the data level — only when hiding
+    // In dim mode, keep all models rendered and let the opacity pass dim them
+    if (window.__legendFilter && window.__legendFilter.dim === 'creator'
+        && window.__filterMode === 'hide') {
+      const before = models.length;
+      models = models.filter(m => m.creator === window.__legendFilter.val);
+      if (models.length === 0) {
+        const sel = window.__legendFilter.val;
+        const emptyCreators = [...new Set(allData.filter(m => m.cost_seg_total).map(m => m.creator))].sort();
+        window.VIZ_HELPERS.renderEmptyState(container,
+          `No cost breakdown data for <b>${sel}</b>. ` +
+          `${before} model${before === 1 ? '' : 's'} matched the filter, but none have cost segments.<br><br>` +
+          `<b>Available:</b> ${emptyCreators.join(', ') || 'none'}`);
+        return;
+      }
+    }
+
     const barH = 22;
     const barGap = 4;
     const nameColW = 220;
@@ -175,7 +192,10 @@
       const total = m.total_cost_per_task_usd;
       if (total <= 0) continue;
 
-      svg += `<text data-slug="${m.slug}" x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
+      // Wrap each model's row in a group so hide-mode hides everything
+      svg += `<g data-slug="${m.slug}">`;
+
+      svg += `<text x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
 
       let cumX = 0;
       for (const seg of segments) {
@@ -188,7 +208,7 @@
 
         if (segW < 0.5) continue;
 
-        svg += `<rect data-slug="${m.slug}" x="${x1}" y="${y}" width="${segW}" height="${barH}" fill="${seg.color}" stroke="#0a0a0a" stroke-width="1"/>`;
+        svg += `<rect x="${x1}" y="${y}" width="${segW}" height="${barH}" fill="${seg.color}" stroke="#0a0a0a" stroke-width="1"/>`;
 
         if (segW > 30) {
           const pct = ((val / total) * 100).toFixed(0);
@@ -215,6 +235,7 @@
       const hitLabel = hitRate != null ? `hit ${(hitRate * 100).toFixed(0)}%` : 'hit: N/A';
       const hitColor = hitRate != null ? '#00e5ff' : '#666';
       svg += `<text x="${totalX + 6}" y="${y + barH / 2 - 6}" text-anchor="start" fill="${hitColor}" font-size="7" font-family="monospace" font-weight="400" opacity="0.7">${hitLabel}</text>`;
+      svg += `</g>`;
     }
 
     html += `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">${svg}</svg>`;
@@ -225,10 +246,15 @@
     if (window.__legendFilter) {
       const slugOpacity = {};
       models.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+      const hideMode = window.__filterMode === 'hide';
       container.querySelectorAll('[data-slug]').forEach(el => {
         const op = slugOpacity[el.dataset.slug];
         if (op !== undefined && op < 1) {
-          el.style.opacity = op;
+          if (hideMode && op === 0) {
+            el.style.display = 'none';
+          } else {
+            el.style.opacity = op;
+          }
         }
       });
     }

@@ -206,7 +206,8 @@
       const r = sorted[i];
       const hl = container.__highlight && r.slug === container.__highlight;
       const dimmed = window.__legendFilter && window.__modelOpacity(r) < 1;
-      html += `<tr class="${hl ? 'hl' : ''}" data-slug="${r.slug}" style="${dimmed ? 'opacity:0.15' : ''}">`;
+      const hidden = window.__filterMode === 'hide' && window.__modelOpacity(r) === 0;
+      html += `<tr class="${hl ? 'hl' : ''}" data-slug="${r.slug}" style="${hidden ? 'display:none' : dimmed ? 'opacity:0.15' : ''}">`;
       for (let j = 0; j < view.cols.length; j++) {
         const col = view.cols[j];
         const val = col.render(r, i);

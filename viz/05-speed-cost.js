@@ -27,6 +27,12 @@
     const pts = data.filter(m => m.cost_per_wallsec != null && m.cost_per_wallsec > 0
       && m.tokens_m != null && m.intel != null);
 
+    if (pts.length === 0) {
+      window.VIZ_HELPERS.renderEmptyState(container,
+        `No models with speed-adjusted cost data. This view needs <code>cost_per_wallsec</code> + <code>tokens_m</code> + <code>intel</code>.`);
+      return;
+    }
+
     // Scales
     const minWallSec = 5e-9, maxWallSec = 1e-5;  // log range for X
     const minIQ = 10, maxIQ = 80;
@@ -119,9 +125,16 @@
     if (window.__legendFilter) {
       const slugOpacity = {};
       data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+      const hideMode = window.__filterMode === 'hide';
       container.querySelectorAll('[data-slug]').forEach(el => {
         const op = slugOpacity[el.dataset.slug];
-        if (op !== undefined && op < 1) el.style.opacity = op;
+        if (op !== undefined && op < 1) {
+          if (hideMode && op === 0) {
+            el.style.display = 'none';
+          } else {
+            el.style.opacity = op;
+          }
+        }
       });
     }
 
