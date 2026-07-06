@@ -1,51 +1,69 @@
-# aa-at-home
+# LLM Provider Pricing Analysis
 
-**LLM benchmark analytics — derived from the public charts at [artificialanalysis.ai](https://artificialanalysis.ai/).**
+**Static dashboard for comparing LLM providers across IQ, cost, speed, verbosity, and cache efficiency.**
 
-Built because the AA Pro API is paywalled. The free tier shows charts but not the underlying data, so we read the charts (vision OCR) and the model summary cards (HTML scrape) to reconstruct the data we need for crossover analysis.
+Built for users who want to pick a model and care about more than one axis.
 
-## What it is
+## What it shows
 
-A static HTML dashboard that overlays three axes AA charts separately:
+85 reasoning models, 24 creators, 6 visualizations:
 
-- **Intelligence Index** (cost-effectiveness) — the y-axis
-- **Cost per Task** (USD, log scale) — the x-axis
-- **Output Tokens per Task** (bubble size)
+| Tab | What it answers |
+|-----|-----------------|
+| **01 Crossover** | X/Y scatter on any pair of (Intel, $/M, $/task, TOK, Speed). Bubble size = output tokens. |
+| **02 Cost Breakdown** | Per-model cost split (Input / Cached / Answer / Reasoning) with cache hit rate toggle. |
+| **03 Provider Archetypes** | Radar per creator across 5 axes: IQ, Speed, Token Eff, Cache Eff, Cost Eff. |
+| **04 Speed-Adjusted Cost** | Scatter: Speed × $/task, with sweet-spot quadrant. |
+| **05 Cost per IQ Point** | Bar: how much $ you pay per IQ point, log scale. |
+| **06 Data Table** | Sortable, filterable table of all fields. Click banner → jumps to this row. |
 
-Plus a hover tooltip with per-model cost breakdown (reasoning vs answer vs cache write vs cache hit vs input), and a sortable leaderboard ranked by IQ per $1000.
+Top bar: filter by creator or reasoning intensity. Banner shows top-3 champions per metric — click to navigate.
 
 ## Why
 
-AA's own charts are great for individual axes. They don't let you ask "is the cheap model also the verbose one, and is that verbosity the reason it's cheap?" — that's a 3-axis question, and the answer changes your model pick.
+AA's charts are great per-axis. This dashboard lets you ask "is the cheap model also verbose? Is verbosity why it's cheap?" — and similar 2-3 axis questions.
 
 ## Stack
 
 - **No build step.** No framework, no CDN, no bundler.
-- **One HTML file** (`dashboard.html`) — embeddable anywhere that can serve static files.
-- **Two JSON files** in `data/` — the scraped dataset and the cost breakdown.
-- **Vanilla JS** for the chart and tooltip. ~50 lines total.
+- **One HTML file** (`dashboard.html`) — embeddable anywhere that serves static files.
+- **Vanilla JS** for charts. ~200 lines per viz, all 6 in `viz/`.
+- **Inline data** — `window.PROCESSED_DATA` embedded directly in `dashboard.html`.
 
-Run it:
 ```bash
 cd "LLM Provider Pricing Analysis"
 python -m http.server 8000
 # open http://localhost:8000/dashboard.html
 ```
 
-Or just open `dashboard.html` directly in any modern browser.
+Or just open `dashboard.html` directly in a modern browser.
 
-## Data provenance
+## Data sources
 
-- **Scraped**: per-model summary cards at `artificialanalysis.ai/models/{slug}` (Intelligence Index, $/M input/output/cache, total cost, total tokens, speed).
-- **Vision-extracted**: bar chart values from AA's public charts (Cost per Task breakdown, Output Tokens per Task, Intelligence × Cost scatter).
+| Source | What we get |
+|--------|-------------|
+| **Artificial Analysis** (primary) | IQ Index, $/M input/output/cache, speed, output tokens |
+| **OpenRouter API** | Pricing for 49 models (cross-check) |
+| **LiveBench** | Coding/agentic scores (17 models) |
+| **Chatbot Arena** | Code Elo (18 models) |
+| **OpenLLM** | Parameter counts (not yet integrated) |
+| **Dirac.run** | Observed cache hit rates (configured in `_shared.js`) |
 
-Data is current as of **3 July 2026**, AA Intelligence Index v4.1 (9 weighted evals: GDPval-AA v2, τ³-Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
+Data is current as of **6 July 2026**, AA Intelligence Index v4.1.
 
-## Caveats
+## Architecture
 
-- Cost segment splits (reasoning/answer/cache write/cache hit/input) are estimated from color ratios in the bar chart, not read from raw numbers. Total bar values are exact (read from labels).
-- Free-tier models (Solar Pro 3, K2 Think V2, Muse Spark) have $0 list price and are excluded from the scatter.
-- ~28 of 38 models have full cost+tokens data. The rest show up in the leaderboard as best-effort.
+Shared config in `viz/_shared.js`:
+- `CREATOR_COLORS` — 24 creators with distinct hex colors
+- `SKU_PATTERNS` — slug-based splits (OSS / Mini / Nano / Flash / Code)
+- `RADAR_AXES` — 5 radar axes (IQ / Speed / Token Eff / Cache Eff / Cost Eff)
+- `FIELD_LABELS` — display names for table columns
+- `COST_SEGMENTS` — color + label for cost breakdown
+- `CACHE_HIT_RATES` — observed rates from external sources
+
+Generic filter: `window.__legendFilter = { dim, val }` — shared across all views, top-bar driven.
+
+See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions, scaling options, and trade-offs (gitignored temp doc).
 
 ## Layout
 
@@ -53,11 +71,30 @@ Data is current as of **3 July 2026**, AA Intelligence Index v4.1 (9 weighted ev
 .
 ├── README.md
 ├── dashboard.html              ← the viz
-├── LLM Provider Pricing Analysis.md  ← Obsidian note (also the source of the source-images folder above)
+├── LLM Provider Pricing Analysis.md  ← Obsidian note
+├── ARCHITECTURE-REFERENCE.md   ← design doc (gitignored)
 └── data/
-    ├── aa_model_data.json      ← primary dataset (38 models, 17 fields)
-    ├── aa_model_data.csv       ← same, CSV
-    └── aa_cost_breakdown.json  ← per-task cost segments (28 models)
+    ├── processed.json          ← 85 models, primary dataset
+    ├── aa_models_scraped.json  ← 99 AA-scraped models (raw)
+    ├── model_registry.json     ← 2186 models, 6 sources
+    ├── axes_catalog.json       ← 47 axes, typed
+    ├── _build_*.py             ← pipeline scripts
+    ├── _pull_sources.py        ← fetches LiveBench/Arena/OpenRouter
+    ├── project_axes.py         ← ProjectionEngine (N-axis query)
+    └── sources/
+        ├── openrouter_models.json
+        ├── livebench_*.csv
+        ├── arena_*.json
+        └── ...
+└── viz/
+    ├── _shared.js              ← legend filter, color maps, config
+    ├── 01-crossover.js
+    ├── 02-reasoning-tax.js
+    ├── 03-provider-archetypes.js
+    ├── 04-speed-cost.js
+    ├── 05-cost-per-iq.js
+    ├── 06-data-table.js
+    └── README.md               ← viz worker contract
 ```
 
 ## License
