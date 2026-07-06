@@ -198,13 +198,14 @@ window.VIZ_HELPERS = { wireTooltips, placeLabel };
 // ============================================================
 
 // SKU split patterns: slug keyword → suffix label
+// Use word boundary / dash separator to avoid false positives (e.g. "minimax" matching "mini")
 window.SKU_PATTERNS = [
-  { keyword: 'oss',    suffix: ' OSS' },
-  { keyword: 'mini',   suffix: ' Mini' },
-  { keyword: 'nano',   suffix: ' Nano' },
-  { keyword: 'flash',  suffix: ' Flash' },
-  { keyword: 'codex',  suffix: ' Code' },
-  { keyword: '-code',  suffix: ' Code' },
+  { keyword: 'oss',     suffix: ' OSS',   pattern: '(^|-)oss(-|$)' },
+  { keyword: 'mini',    suffix: ' Mini',  pattern: '(^|-)mini(-|$)' },
+  { keyword: 'nano',    suffix: ' Nano',  pattern: '(^|-)nano(-|$)' },
+  { keyword: 'flash',   suffix: ' Flash', pattern: '(^|-)flash(-|$)' },
+  { keyword: 'codex',   suffix: ' Code',  pattern: '(^|-)codex(-|$)' },
+  { keyword: '-code',   suffix: ' Code',  pattern: '-code$' },
 ];
 
 // Radar axis definitions for provider archetypes

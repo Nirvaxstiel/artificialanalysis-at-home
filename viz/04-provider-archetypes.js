@@ -17,7 +17,7 @@
       const slug = m.slug.toLowerCase();
       let suffix = '';
       for (const p of SKU_PATTERNS) {
-        if (slug.includes(p.keyword)) { suffix = p.suffix; break; }
+        if (new RegExp(p.pattern).test(slug)) { suffix = p.suffix; break; }
       }
       const key = m.creator + suffix;
       if (!byCreator[key]) byCreator[key] = [];
@@ -175,33 +175,53 @@
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1"/>`;
       }
 
-      // Axis labels
+      // Axis labels — show max value for context (human-readable)
+      const maxes = [iqHi, spHi, teHi, caHi, ceHi];
+      const fmtMax = (key, val) => {
+        if (val == null) return '?';
+        if (key === 'avgIQ') return val.toFixed(0);
+        if (key === 'avgSpeed') return val.toFixed(0) + '/s';
+        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok';
+        if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
+        if (key === 'costEff') return '$' + (1/val).toFixed(2);
+        return val.toFixed(2);
+      };
       for (let i = 0; i < RADAR_AXES.length; i++) {
         const ax = RADAR_AXES[i];
         const lx = CX + Math.cos(ax.angle) * (R + 10);
         const ly = CY + Math.sin(ax.angle) * (R + 10);
         let anchor = 'middle';
         if (ax.angle === 0) anchor = 'start';
-        else if (ax.angle === Math.PI) anchor = 'end';
+        if (ax.angle === Math.PI) anchor = 'end';
         let dy = '0.35em';
         if (ax.angle === -Math.PI / 2) dy = '0';
         if (ax.angle === Math.PI / 2) dy = '1em';
-        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label}</text>`;
+        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">(max ${fmtMax(ax.key, maxes[i])})</tspan></text>`;
       }
-
       svg += '</svg>';
+
+      // Format helpers for raw values
+      const fmtRaw = (key, val) => {
+        if (val == null) return '—';
+        if (key === 'avgIQ') return val.toFixed(1);
+        if (key === 'avgSpeed') return val.toFixed(0) + ' t/s';
+        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok/task';
+        if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
+        if (key === 'costEff') return '$' + (1/val).toFixed(3) + '/task';
+        return val.toFixed(2);
+      };
+
+      // Stats line: all axis raw values + model count
+      let statsHtml = RADAR_AXES.map(ax => {
+        return `${ax.label} <span class="val">${fmtRaw(ax.key, a[ax.key])}</span>`;
+      }).join(' · ');
+      statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `
         <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? 'opacity:0.15' : ''}">
           <div class="creator-name" style="color:${color}">${a.creator}</div>
           ${svg}
-          <div class="radar-stats">
-            IQ <span class="val">${a.avgIQ.toFixed(1)}</span> ·
-            $/task <span class="val">$${a.avgCost.toFixed(3)}</span> ·
-            <span class="val">${a.avgSpeed.toFixed(0)}</span> t/s ·
-            cache <span class="val">${(a.avgCacheEff * 100).toFixed(0)}%</span> ·
-            <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}
-          </div>
+          <div class="radar-stats">${statsHtml}</div>
         </div>`;
     }
 

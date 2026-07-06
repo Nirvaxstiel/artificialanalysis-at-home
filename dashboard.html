@@ -4265,9 +4265,16 @@ window.PROCESSED_DATA = [
     if (btn) btn.click();
     const v = registry.find(r => r.id === dtId);
     if (v) v.render(mount, data);
-    // Smooth scroll to data table panel
-    const panel = mount.closest('.viz-panel');
-    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll to highlighted row, then panel
+    requestAnimationFrame(() => {
+      const row = mount.querySelector('tr.hl');
+      if (row) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const panel = mount.closest('.viz-panel');
+        if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   };
 
   document.querySelectorAll('.strip > div[data-metric]').forEach(el => {
