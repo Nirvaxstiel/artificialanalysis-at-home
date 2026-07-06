@@ -217,7 +217,23 @@ window.RADAR_AXES = [
   { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 5 },
 ];
 
-// Model field display labels (for tables, tooltips, etc.)
+// Cost segment definitions for reasoning-tax viz
+window.COST_SEGMENTS = {
+  aa: [
+    { key: 'input_usd',       label: 'INPUT',              color: '#4a4a4a' },
+    { key: 'cache_hit_usd',   label: 'CACHED INPUT',        color: '#1a6b5a' },
+    { key: 'cache_write_usd', label: 'CACHE WRITE',         color: '#2a9d7a' },
+    { key: 'answer_usd',      label: 'ANSWER',             color: '#b6ff3c' },
+    { key: 'reasoning_usd',   label: 'REASONING',          color: '#ff3366' },
+  ],
+  ext: [
+    { key: 'input_usd',       label: 'INPUT (UNCACHED)',    color: '#4a4a4a' },
+    { key: 'cache_hit_usd',   label: 'CACHED INPUT',        color: '#1a6b5a' },
+    { key: 'cache_write_usd', label: 'CACHE WRITE',         color: '#2a9d7a' },
+    { key: 'answer_usd',      label: 'ANSWER',              color: '#b6ff3c' },
+    { key: 'reasoning_usd',   label: 'REASONING',           color: '#ff3366' },
+  ],
+};
 window.FIELD_LABELS = {
   intel:                'IQ',
   cost_per_task:        '$ / TASK',
@@ -231,6 +247,45 @@ window.FIELD_LABELS = {
   openrouter_inp_price_per_m: 'OR IN $/M',
   params_b:             'PARAMS B',
   cache_hit_price:      'CACHE $/M',
+};
+
+// Cache hit rates (observed from Dirac.run / OpenRouter)
+// Keys are model slugs. Lookup tries both hyphen and dot variants.
+window.CACHE_HIT_RATES = {
+  "deepseek-v4-flash":   0.861,
+  "deepseek-v4-pro":     0.879,
+  "claude-sonnet-4-6-adaptive": 0.899,
+  "claude-sonnet-4-6":   0.899,
+  "claude-4-5-sonnet-thinking": 0.784,
+  "claude-4-5-haiku-reasoning": 0.70,
+  "claude-opus-4-8":     0.79,
+  "claude-opus-4-7":     0.78,
+  "claude-opus-4-6-adaptive": 0.77,
+  "claude-sonnet-5":     0.80,
+  "gpt-5-5-low":         0.553,
+  "gpt-5-5-medium":      0.553,
+  "gpt-5-5-high":        0.553,
+  "gpt-5-5-xhigh":       0.553,
+  "gpt-5-5":             0.553,
+  "gpt-5-4-mini":        0.50,
+  "gpt-5-4-nano":        0.50,
+  "gpt-oss-20b":         0.30,
+  "gpt-oss-120b":        0.30,
+  "grok-4-3":            0.478,
+  "gemini-3-1-pro-preview": 0.30,
+  "gemini-3-5-flash":    0.30,
+  "minimax-m2-7":        0.656,
+  "minimax-m3":          0.75,
+  "mimo-v2-5-pro":       0.747,
+  "kimi-k2-6":           0.848,
+  "kimi-k2-7-code":      0.848,
+  "glm-5-2":             0.661,
+  "qwen3-5-397b-a17b":   0.20,
+  "qwen3-7-max":         0.20,
+  "nova-2-0-pro-reasoning-medium": 0.20,
+  "nemotron-3-ultra-550b-a55b": 0.10,
+  "nemotron-3-super-120b-a12b": 0.10,
+  "mistral-medium-3-5":  0.40,
 };
 
 })()

@@ -7,79 +7,54 @@
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS || {};
 
-  // ===================== CACHE HIT RATES (External) =====================
-  // Sources: Dirac.run (OpenRouter observed rates) + OpenRouter API pricing
-  // These are observed cache hit rates for INPUT (KV-cache) tokens.
-  const CACHE_HIT_RATES = {
-    "deepseek-v4-flash":   0.861,
-    "deepseek-v4-pro":     0.879,
-    "claude-sonnet-4.6-adaptive":   0.899,
-    "claude-4.5-sonnet-thinking":   0.784,
-    "claude-4.5-haiku-reasoning":   0.70,
-    "claude-opus-4.8":     0.79,
-    "claude-sonnet-5":     0.80,
-    "gpt-5.5-low":         0.553,
-    "gpt-5.5-medium":      0.553,
-    "gpt-5.5-high":        0.553,
-    "gpt-5.5-xhigh":       0.553,
-    "gpt-oss-20b":         0.30,
-    "gpt-oss-120b":        0.30,
-    "grok-4.3":            0.478,
-    "gemini-3.1-pro-preview": 0.30,
-    "gemini-3.5-flash":    0.30,
-    "minimax-m2.7":        0.656,
-    "minimax-m3":          0.75,
-    "mimo-v2.5-pro":       0.747,
-    "kimi-k2.6":           0.848,
-    "kimi-k2.7-code":      0.848,
-    "glm-5.2":             0.661,
-    "qwen3.5-397b-a17b":   0.20,
-    "qwen3.7-max":         0.20,
-    "nova-2.0-pro-reasoning-medium": 0.20,
-    "nemotron-3-ultra-550b-a55b": 0.10,
-    "nemotron-3-super-120b-a12b": 0.10,
-    "mistral-medium-3.5":  0.40
-  };
+  // Cache hit rates (from shared config) — try hyphen + dot variants
+  function getCacheHitRate(slug) {
+    const rates = window.CACHE_HIT_RATES || {};
+    if (rates[slug] != null) return rates[slug];
+    // Try dot variant
+    const dotSlug = slug.replace(/-/g, '.');
+    if (rates[dotSlug] != null) return rates[dotSlug];
+    return null;
+  }
 
   const CACHE_PRICE_RATIO = 0.1;
 
-  const SEGMENTS_AA = [
-    { key: 'input_usd',       label: 'INPUT',              color: '#4a4a4a' },
-    { key: 'cache_hit_usd',   label: 'INPUT CACHE (HIT)',  color: '#1a6b5a' },
-    { key: 'cache_write_usd', label: 'INPUT CACHE (MISS)', color: '#2a9d7a' },
-    { key: 'answer_usd',      label: 'ANSWER',             color: '#b6ff3c' },
-    { key: 'reasoning_usd',   label: 'REASONING',          color: '#ff3366' }
-  ];
+  const SEGMENTS_AA = (window.COST_SEGMENTS || {}).aa || [];
 
-  const SEGMENTS_EXT = [
-    { key: 'input_usd',       label: 'INPUT (UNCACHED)',    color: '#4a4a4a' },
-    { key: 'cache_hit_usd',   label: 'INPUT CACHE (HIT)',   color: '#1a6b5a' },
-    { key: 'cache_write_usd', label: 'INPUT CACHE (MISS)',  color: '#2a9d7a' },
-    { key: 'answer_usd',      label: 'ANSWER',              color: '#b6ff3c' },
-    { key: 'reasoning_usd',   label: 'REASONING',           color: '#ff3366' }
-  ];
+  const SEGMENTS_EXT = (window.COST_SEGMENTS || {}).ext || [];
 
   // Build COST_DATA from processed.json — models with cost_seg_total
   function buildCostData(data) {
     return data
       .filter(m => m.cost_seg_total != null && m.cost_seg_total > 0)
-      .map(m => ({
-        slug: m.slug,
-        name: m.name,
-        creator: m.creator,
-        total_cost_per_task_usd: m.cost_seg_total,
-        answer_usd: m.cost_seg_answer || 0,
-        reasoning_usd: m.cost_seg_reasoning || 0,
-        cache_write_usd: m.cost_seg_cache_write || 0,
-        cache_hit_usd: m.cost_seg_cache_hit || 0,
-        input_usd: m.cost_seg_input || 0
-      }));
+      .map(m => {
+        const cache_hit_usd = m.cost_seg_cache_hit || 0;
+        const input_usd = m.cost_seg_input || 0;
+        const cache_write_usd = m.cost_seg_cache_write || 0;
+        // AA does NOT provide cache hit rate directly.
+        // The cost_seg fields show what was charged, but not what % of input was cached.
+        // Hit rate is only available from external sources (Dirac.run / OpenRouter).
+        // null = unknown (will show N/A in AA mode, value in external mode)
+        const cache_hit_rate = null;
+        return {
+          slug: m.slug,
+          name: m.name,
+          creator: m.creator,
+          total_cost_per_task_usd: m.cost_seg_total,
+          answer_usd: m.cost_seg_answer || 0,
+          reasoning_usd: m.cost_seg_reasoning || 0,
+          cache_write_usd: cache_write_usd,
+          cache_hit_usd: cache_hit_usd,
+          input_usd: input_usd,
+          cache_hit_rate: cache_hit_rate,
+        };
+      });
   }
 
   function applyExternalCache(models) {
     return models.map(m => {
       const out = { ...m };
-      const rate = CACHE_HIT_RATES[m.slug];
+      const rate = getCacheHitRate(m.slug);
       if (rate == null) return out;
 
       const totalInput = (m.input_usd || 0) + (m.cache_hit_usd || 0) + (m.cache_write_usd || 0);
@@ -150,7 +125,20 @@
     html += `<button class="cache-toggle-btn ${cacheSource==='aa'?'active':''}" data-source="aa">AA Index</button>`;
     html += `<button class="cache-toggle-btn ${cacheSource==='external'?'active':''}" data-source="external">OpenRouter/Dirac.run</button>`;
     if (cacheSource === 'external') {
-      html += `<span style="color:var(--neon2,#00e5ff);font-size:9px;font-weight:400;">// using observed cache hit rates</span>`;
+      // External mode: redistribute cost using observed cache hit rates
+      // Total cost stays the same (it's based on AA's calculation), but the input/cached split changes
+      const withCacheTotal = models.reduce((s, m) => s + m.total_cost_per_task_usd, 0);
+      const noCacheTotal = models.reduce((s, m) => {
+        if ((m.input_usd || 0) + (m.cache_hit_usd || 0) <= 0) return s + m.total_cost_per_task_usd;
+        return s + (m.total_cost_per_task_usd - m.answer_usd - m.reasoning_usd);
+      }, 0);
+      const savings = noCacheTotal - withCacheTotal;
+      const savingsPct = noCacheTotal > 0 ? (savings / noCacheTotal * 100) : 0;
+      html += `<span style="color:var(--neon2,#00e5ff);font-size:9px;font-weight:400;">// observed cache hit rates · ~$${savings.toFixed(2)} saved (${savingsPct.toFixed(0)}% vs no cache) · total $${withCacheTotal.toFixed(2)}</span>`;
+    } else {
+      // AA mode: total is fixed, hit rate unknown
+      const total = models.reduce((s, m) => s + m.total_cost_per_task_usd, 0);
+      html += `<span style="color:var(--muted,#888);font-size:9px;font-weight:400;">// AA segments only · total $${total.toFixed(2)} · hit rate N/A (not in AA data)</span>`;
     }
     html += `<span style="color:#666;font-size:8px;margin-left:auto;text-transform:none;letter-spacing:0;">CACHE = KV-cache for INPUT tokens only</span>`;
     html += `</div>`;
@@ -178,7 +166,7 @@
     svg += '</g>';
 
     // Title
-    svg += `<text x="${M.left + innerW / 2}" y="${M.top - 20}" text-anchor="middle" fill="#f5f5f0" font-size="14" font-weight="800" font-family="monospace">// REASONING TAX: WHERE YOUR DOLLAR GOES</text>`;
+    svg += `<text x="${M.left + innerW / 2}" y="${M.top - 20}" text-anchor="middle" fill="#f5f5f0" font-size="14" font-weight="800" font-family="monospace">// COST BREAKDOWN: WHERE YOUR DOLLAR GOES</text>`;
 
     // Draw bars
     for (let i = 0; i < models.length; i++) {
@@ -205,7 +193,9 @@
         if (segW > 30) {
           const pct = ((val / total) * 100).toFixed(0);
           const valLabel = val >= 0.01 ? `$${val.toFixed(2)}` : `$${val.toFixed(3)}`;
-          const text = segW > 55 ? `${valLabel} ${pct}%` : valLabel;
+          // Show percentage if multiple segments AND segment is wide enough
+          const showPct = segments.filter(s => (m[s.key] || 0) > 0).length > 1;
+          const text = showPct && segW > 55 ? `${valLabel} ${pct}%` : valLabel;
           const textColor = seg.key === 'answer_usd' ? '#0a0a0a' : '#f5f5f0';
           svg += `<text x="${x1 + segW / 2}" y="${y + barH / 2 + 4}" text-anchor="middle" fill="${textColor}" font-size="9" font-family="monospace" font-weight="700">${text}</text>`;
         }
@@ -215,10 +205,16 @@
       const totalLabel = total >= 0.01 ? `$${total.toFixed(2)}` : `$${total.toFixed(3)}`;
       svg += `<text x="${totalX + 6}" y="${y + barH / 2 + 4}" text-anchor="start" fill="#f5f5f0" font-size="10" font-family="monospace" font-weight="700">${totalLabel}</text>`;
 
-      if (cacheSource === 'external' && CACHE_HIT_RATES[m.slug] != null) {
-        const pct = (CACHE_HIT_RATES[m.slug] * 100).toFixed(0);
-        svg += `<text x="${totalX + 6}" y="${y + barH / 2 - 6}" text-anchor="start" fill="#00e5ff" font-size="7" font-family="monospace" font-weight="400" opacity="0.7">hit ${pct}%</text>`;
+      // Always show cache hit rate (from external data, derived, or N/A)
+      let hitRate = null;
+      if (cacheSource === 'external' && getCacheHitRate(m.slug) != null) {
+        hitRate = getCacheHitRate(m.slug);
+      } else if (m.cache_hit_rate != null) {
+        hitRate = m.cache_hit_rate;
       }
+      const hitLabel = hitRate != null ? `hit ${(hitRate * 100).toFixed(0)}%` : 'hit: N/A';
+      const hitColor = hitRate != null ? '#00e5ff' : '#666';
+      svg += `<text x="${totalX + 6}" y="${y + barH / 2 - 6}" text-anchor="start" fill="${hitColor}" font-size="7" font-family="monospace" font-weight="400" opacity="0.7">${hitLabel}</text>`;
     }
 
     html += `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">${svg}</svg>`;
@@ -269,13 +265,27 @@
             tooltipHtml += `<span style="color:${seg.color};font-weight:700;">${fmtTooltipVal(val)} <span style="color:#888;">(${pct}%)</span></span>`;
             tooltipHtml += `</div>`;
           }
-          if (cacheSource === 'external' && CACHE_HIT_RATES[m.slug] != null) {
-            const hr = (CACHE_HIT_RATES[m.slug] * 100).toFixed(1);
-            tooltipHtml += `<div style="border-top:1px solid #333;margin-top:4px;padding-top:4px;">`;
-            tooltipHtml += `<div style="display:flex;justify-content:space-between;"><span style="color:#00e5ff;">Token cache hit rate</span><span style="color:#00e5ff;font-weight:700;">${hr}%</span></div>`;
-            tooltipHtml += `<div style="color:#666;font-size:9px;margin-top:2px;">cached tokens billed at ${(CACHE_PRICE_RATIO * 100).toFixed(0)}× discount</div>`;
-            tooltipHtml += `</div>`;
+          // Cache hit rate (from external data or derived from cost segments)
+          let hitRate = null;
+          if (cacheSource === 'external' && getCacheHitRate(m.slug) != null) {
+            hitRate = getCacheHitRate(m.slug);
+          } else if (m.cache_hit_rate != null) {
+            hitRate = m.cache_hit_rate;
           }
+          tooltipHtml += `<div style="border-top:1px solid #333;margin-top:4px;padding-top:4px;">`;
+          if (hitRate != null) {
+            const hr = (hitRate * 100).toFixed(1);
+            tooltipHtml += `<div style="display:flex;justify-content:space-between;"><span style="color:#00e5ff;">Cache hit rate</span><span style="color:#00e5ff;font-weight:700;">${hr}%</span></div>`;
+            if (cacheSource === 'external') {
+              tooltipHtml += `<div style="color:#666;font-size:9px;margin-top:2px;">cached tokens billed at ${(CACHE_PRICE_RATIO * 100).toFixed(0)}× discount</div>`;
+            } else {
+              tooltipHtml += `<div style="color:#666;font-size:9px;margin-top:2px;">derived from cost segments</div>`;
+            }
+          } else {
+            tooltipHtml += `<div style="display:flex;justify-content:space-between;"><span style="color:#888;">Cache hit rate</span><span style="color:#888;">N/A</span></div>`;
+            tooltipHtml += `<div style="color:#666;font-size:9px;margin-top:2px;">not derivable from cost segments</div>`;
+          }
+          tooltipHtml += `</div>`;
           tooltipHtml += `<div style="border-top:1px solid #333;margin-top:4px;padding-top:4px;font-weight:800;">TOTAL: $${m.total_cost_per_task_usd.toFixed(2)}</div>`;
           const reasoningPct = ((m.reasoning_usd / m.total_cost_per_task_usd) * 100).toFixed(0);
           if (m.reasoning_usd > 0) {
@@ -311,8 +321,8 @@
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
     id: '02',
-    name: 'The Reasoning Tax',
-    subtitle: 'Per-task cost breakdown by token type',
+    name: 'Cost Breakdown',
+    subtitle: 'Per-task cost split by token type (input / cached / answer / reasoning)',
     render
   });
 })();
