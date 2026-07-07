@@ -21,7 +21,7 @@ Top bar: filter by creator or reasoning intensity. Banner shows top-3 champions 
 
 ## Why
 
-AA's charts are great per-axis. This dashboard lets you ask "is the cheap model also verbose? Is verbosity why it's cheap?" — and similar 2-3 axis questions.
+Static, build-free, embeddable. No frameworks, no CDN, no bundlers — just HTML + JS + data.
 
 ## Stack
 
@@ -101,3 +101,35 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
 
 Data: scraped from public web pages. Verify against AA before quoting.
 Code: do whatever you want.
+
+## Ingestion
+
+Full pipeline to regenerate `data/processed.js` from fresh sources:
+
+```bash
+# 1. Pull latest benchmarks & pricing data
+python data/_pull_sources.py
+
+# 2. Merge all sources into unified registry
+python data/_build_registry.py
+
+# 3. Project selected axes → flat model rows for the dashboard
+python data/_build_dashboard_data.py
+```
+
+**Pipeline order matters.**  
+`_build_dashboard_data.py` reads `model_registry.json` (from step 2) and `processed.js` (from previous build, for AA bootstrap).  
+Scraped AA data (`aa_models_scraped.json`) is pulled separately via the AA scraper — not part of this repo.
+
+**What each step produces:**
+
+| Step | Input(s) | Output | Models |
+|------|----------|--------|--------|
+| `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | N/A |
+| `_build_registry` | `sources/*`, `aa_models_scraped.json` | `model_registry.json` | 2186 |
+| `_build_dashboard_data` | `model_registry.json`, `processed.js` | `processed.js` | 38–85 |
+
+**Coverage note:** The current `processed.js` (85 models, committed) is a snapshot from a prior AA scrape. When AA data is fresh, the pipeline produces ~38 models — the gap is slug mismatches between old and current AA scrapes, not a pipeline bug.
+
+**To update the committed snapshot:** run the pipeline, verify `processed.js` has the expected models, then commit.
+
