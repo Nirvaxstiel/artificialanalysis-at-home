@@ -36,7 +36,7 @@ def _today():
     from datetime import date
     return date.today().isoformat()
 
-def build():
+def build(ctx=None):
     pe = ProjectionEngine()
     
     # All axis IDs we want to fetch
