@@ -1,7 +1,7 @@
-"""Build processed.json — flat enriched model data from projection engine.
+"""Build processed.json + processed.js -- flat enriched model data from projection engine.
 
 Usage: python data/_build_dashboard_data.py
-Output: data/processed.json (overwritten)
+Output: data/processed.json + data/processed.js (both overwritten)
 
 Each model gets ALL available cross-source fields flattened into a single row,
 preserving backward-compat with existing viz that read AA-only fields.
@@ -30,6 +30,11 @@ def _clean_name(name):
         return None
     import re
     return re.sub(r'\s*\((xhigh|high|medium|low|with fallback|max)\)\s*', '', name, flags=re.IGNORECASE).strip()
+
+def _today():
+    """Return today's date as YYYY-MM-DD string."""
+    from datetime import date
+    return date.today().isoformat()
 
 def build():
     pe = ProjectionEngine()
@@ -63,10 +68,12 @@ def build():
         "meta.params_b", "meta.co2_kg",
     ]
     
-    # Only consider models that have AA data (the 38 core models)
-    # We detect this by checking if aa.intel is non-None
+    # Only consider models that have AA data (pricing or benchmarks)
     raw = pe.project(ALL_AXES)
-    aa_models = [r for r in raw if r["axes"].get("aa.intel") is not None]
+    aa_models = [r for r in raw if any(
+        k.startswith("aa.") and v is not None
+        for k, v in r["axes"].items()
+    )]
     
     # Also need to fetch meta fields which are on the registry model, not through axes
     # Build a lookup from model ID to full registry model
@@ -78,7 +85,6 @@ def build():
         a = r["axes"]
         reg = reg_by_id.get(mid, {})
         meta = reg.get("meta", {})
-        pricing_aa = reg.get("pricing", {}).get("aa", {})
         
         cost_task = _safe(a.get("aa.cost_per_task"))
         intel = _safe(a.get("aa.intel"))
@@ -181,8 +187,8 @@ def build():
     
     payload = {
         "meta": {
-            "generated": "2026-07-04",
-            "version": "2.0",
+            "generated": _today(),
+            "version": "3.0",
             "model_count": len(output),
             "sources": ["AA", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
         },
@@ -193,6 +199,14 @@ def build():
     with open(out_path, "w") as f:
         json.dump(payload, f, indent=2)
     
+    # Also write data/processed.js (JS assignment for HTML consumption)
+    js_path = BASE / "processed.js"
+    with open(js_path, "w") as f:
+        f.write("window.PROCESSED_DATA = ")
+        json.dump(output, f, indent=2)
+        f.write(";\n")
+    
+    print(f"  Wrote {len(output)} models to {js_path}")
     print(f"✅ Wrote {len(output)} models to {out_path}")
     print(f"   With AA intel: {sum(1 for m in output if m['intel'] is not None)}")
     print(f"   With LiveBench avg: {sum(1 for m in output if m['livebench_average'] is not None)}")

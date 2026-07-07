@@ -6,8 +6,9 @@ Output: data/model_registry.json
 """
 import json, csv, os, re
 from datetime import date
+from pathlib import Path
 
-BASE = r"C:\Users\Kei\.obsidian\Vault\KeiUniverse\IRL\Reference\LLM Provider Pricing Analysis"
+BASE = Path(__file__).resolve().parent.parent  # repo root
 SRC = os.path.join(BASE, "data", "sources")
 OUT = os.path.join(BASE, "data", "model_registry.json")
 

@@ -5,8 +5,9 @@ The catalog defines what axes exist; the projection engine (in _project_axes.py)
 extracts any N-axis combination into a model×axis matrix.
 """
 import json, os, csv, re
+from pathlib import Path
 
-BASE = r"C:\Users\Kei\.obsidian\Vault\KeiUniverse\IRL\Reference\LLM Provider Pricing Analysis"
+BASE = Path(__file__).resolve().parent.parent  # repo root
 REG = os.path.join(BASE, "data", "model_registry.json")
 OUT = os.path.join(BASE, "data", "axes_catalog.json")
 

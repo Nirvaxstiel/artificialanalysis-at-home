@@ -1,7 +1,8 @@
 """Read OpenLLM Leaderboard v2 parquet and dump schema + sample."""
 import json, os
+from pathlib import Path
 
-base = r"C:\Users\Kei\.obsidian\Vault\KeiUniverse\IRL\Reference\LLM Provider Pricing Analysis"
+base = str(Path(__file__).resolve().parent.parent)  # repo root
 sources = os.path.join(base, "data", "sources")
 
 try:

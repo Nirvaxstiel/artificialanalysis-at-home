@@ -1,7 +1,8 @@
 """Pull all open-source benchmarking data into data/sources/"""
 import json, csv, io, os, sys, urllib.request
+from pathlib import Path
 
-base = r"C:\Users\Kei\.obsidian\Vault\KeiUniverse\IRL\Reference\LLM Provider Pricing Analysis"
+base = str(Path(__file__).resolve().parent.parent)  # repo root
 src = os.path.join(base, "data", "sources")
 os.makedirs(src, exist_ok=True)
 
