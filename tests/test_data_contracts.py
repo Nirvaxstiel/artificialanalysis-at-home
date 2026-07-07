@@ -1,48 +1,16 @@
 """Contract tests at pipeline transformation boundaries.
 
 Verifies:
-1. processed.js ≡ processed.json models (slug + field fidelity)
-2. All creators have CREATOR_COLORS entries
-3. All HTML script src targets exist
-4. Header model count matches data
-5. All viz files loaded by HTML are parseable
+1. All creators have CREATOR_COLORS entries
+2. All HTML script src targets exist
+3. Header model count matches data
+4. All viz files loaded by HTML are parseable
+5. processed.js is valid JS with valid JSON payload
 """
 import json, re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-
-
-# ── TEST 1: processed.js == processed.json (data fidelity) ──
-
-class TestDataFidelity:
-    """processed.js and processed.json must agree on all models."""
-
-    def test_same_model_count(self, processed_json, processed_js):
-        assert len(processed_js) == len(processed_json), \
-            f"Count mismatch: processed.js={len(processed_js)} processed.json={len(processed_json)}"
-
-    def test_same_slugs(self, processed_json, processed_js):
-        js_slugs = {m["slug"] for m in processed_js}
-        json_slugs = {m["slug"] for m in processed_json}
-        assert js_slugs == json_slugs, \
-            f"Slug diff: only js={js_slugs - json_slugs}, only json={json_slugs - js_slugs}"
-
-    def test_identical_fields(self, processed_json, processed_js):
-        """Every field on every common model must match byte-for-byte."""
-        js_map = {m["slug"]: m for m in processed_js}
-        json_map = {m["slug"]: m for m in processed_json}
-        diffs = []
-        for slug in js_map:
-            if slug not in json_map:
-                continue
-            if js_map[slug] != json_map[slug]:
-                for k in set(list(js_map[slug].keys()) + list(json_map[slug].keys())):
-                    if js_map[slug].get(k) != json_map[slug].get(k):
-                        diffs.append((slug, k, js_map[slug].get(k), json_map[slug].get(k)))
-        assert len(diffs) == 0, \
-            f"{len(diffs)} field diffs detected (showing first 5): " + \
-            "; ".join(f"{s}.{k}: js={jv} json={pv}" for s, k, jv, pv in diffs[:5])
 
 
 # ── TEST 2: Creator color coverage ──

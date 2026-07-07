@@ -8,7 +8,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 // viz/NN-slug.js
 (function() {
   function render(container, data) {
-    // data = processed.json.models (array)
+    // data = processed.js.models (array)
     // container = DOM element to mount into
     // ... build your SVG/HTML ...
   }
@@ -26,7 +26,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 
 ## Rules
 
-1. **Read-only inputs.** `data/processed.json` is the only data source. Don't write to it.
+1. **Read-only inputs.** `data/processed.js` is the only data source. Don't write to it.
 2. **Self-contained styles.** Inline `<style>` in your container, or use the CSS custom properties from `dashboard.html` (`--neon`, `--neon2`, `--bg`, `--fg`, `--muted`, `--border`).
 3. **Reuse the tooltip.** If you have hoverable elements, attach to the shared `#tooltip` div from `dashboard.html` using the `buildTooltip(model)` function (also exposed globally).
 4. **No external dependencies.** No CDN, no fetch, no imports. Pure DOM + SVG.
@@ -34,7 +34,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 6. **No hardcoded values.** Use `window.FIELD_LABELS`, `window.RADAR_AXES`, `window.SKU_PATTERNS`, `window.COST_SEGMENTS` from `_shared.js`.
 7. **Use the legend filter.** Read `window.__legendFilter` to dim non-matching elements.
 
-## Available data (from `processed.json`)
+## Available data (from `processed.js`)
 
 | Field | Type | Notes |
 |-------|------|-------|

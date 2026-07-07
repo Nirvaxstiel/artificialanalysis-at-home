@@ -74,7 +74,7 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
 ├── LLM Provider Pricing Analysis.md  ← Obsidian note
 ├── ARCHITECTURE-REFERENCE.md   ← design doc (gitignored)
 └── data/
-    ├── processed.json          ← 85 models, primary dataset
+    ├── processed.js           ← 85 models, primary dataset (loaded by dashboard)
     ├── aa_models_scraped.json  ← 99 AA-scraped models (raw)
     ├── model_registry.json     ← 2186 models, 6 sources
     ├── axes_catalog.json       ← 47 axes, typed

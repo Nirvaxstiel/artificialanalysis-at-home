@@ -1,7 +1,7 @@
-"""Build processed.json + processed.js -- flat enriched model data from projection engine.
+"""Build processed.js — flat enriched model data from projection engine.
 
 Usage: python data/_build_dashboard_data.py
-Output: data/processed.json + data/processed.js (both overwritten)
+Output: data/processed.js (overwritten)
 
 Each model gets ALL available cross-source fields flattened into a single row,
 preserving backward-compat with existing viz that read AA-only fields.
@@ -195,19 +195,14 @@ def build():
         "models": output,
     }
     
-    out_path = BASE / "processed.json"
-    with open(out_path, "w") as f:
-        json.dump(payload, f, indent=2)
-    
-    # Also write data/processed.js (JS assignment for HTML consumption)
+    # Write data/processed.js (JS assignment for HTML consumption)
     js_path = BASE / "processed.js"
     with open(js_path, "w") as f:
         f.write("window.PROCESSED_DATA = ")
         json.dump(output, f, indent=2)
         f.write(";\n")
     
-    print(f"  Wrote {len(output)} models to {js_path}")
-    print(f"✅ Wrote {len(output)} models to {out_path}")
+    print(f"✅ Wrote {len(output)} models to {js_path}")
     print(f"   With AA intel: {sum(1 for m in output if m['intel'] is not None)}")
     print(f"   With LiveBench avg: {sum(1 for m in output if m['livebench_average'] is not None)}")
     print(f"   With Arena Code elo: {sum(1 for m in output if m['arena_code_elo'] is not None)}")

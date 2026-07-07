@@ -2,7 +2,7 @@
 // Horizontal stacked bar chart: per-task cost breakdown by token type
 // Shows the "reasoning tax" — how much of each task dollar goes to thinking vs useful output.
 // Supports toggling between AA-derived cache data and external (OpenRouter/Dirac.run) cache hit rates.
-// Now reads cost segments from processed.json instead of hardcoded data.
+// Now reads cost segments from processed.js instead of hardcoded data.
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS || {};
@@ -23,7 +23,7 @@
 
   const SEGMENTS_EXT = (window.COST_SEGMENTS || {}).ext || [];
 
-  // Build COST_DATA from processed.json — models with cost_seg_total
+  // Build COST_DATA from processed.js — models with cost_seg_total
   function buildCostData(data) {
     return data
       .filter(m => m.cost_seg_total != null && m.cost_seg_total > 0)

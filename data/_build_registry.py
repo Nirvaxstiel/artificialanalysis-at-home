@@ -142,12 +142,10 @@ def openllm_name_to_canonical(name):
 today = date.today().isoformat()
 all_models = {}  # canonical_id -> model record
 
-# ── AA (processed.json) ──
-with open(os.path.join(BASE, "data", "processed.json")) as f:
-    aa_data = json.load(f)
-
-aa_models = aa_data.get("models", [])
-aa_archetypes = aa_data.get("meta", {}).get("archetypes", {})
+# ── AA (from processed.js) ──
+aa_js = Path(BASE, "data", "processed.js").read_text()
+aa_data = json.loads(aa_js.removeprefix("window.PROCESSED_DATA = ").removesuffix(";\n"))
+aa_models = aa_data if isinstance(aa_data, list) else aa_data.get("models", [])
 
 for m in aa_models:
     slug = m.get("slug")

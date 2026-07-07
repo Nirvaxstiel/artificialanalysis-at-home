@@ -8,13 +8,6 @@ DATA = REPO / "data"
 
 
 @pytest.fixture(scope="session")
-def processed_json():
-    """Load processed.json's model array."""
-    with open(DATA / "processed.json") as f:
-        return json.load(f)["models"]
-
-
-@pytest.fixture(scope="session")
 def processed_js():
     """Parse processed.js and return model array."""
     with open(DATA / "processed.js") as f:
