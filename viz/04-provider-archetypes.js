@@ -1,5 +1,4 @@
-// viz/04-provider-archetypes.js
-// Small-multiples radar chart: 4 metrics per creator (IQ, cost, speed, tokens)
+// Small-multiples radar chart: 5 metrics per creator (IQ, speed, token eff, cache eff, cost eff)
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS || {};
@@ -39,7 +38,6 @@
       const avgTokens = ms.reduce((s, m) => s + m.tokens_m, 0) / ms.length;
       const costEff = 1 / avgCost;
       const tokenEff = 1 / avgTokens;    // higher = fewer tokens = more efficient
-      // Cache efficiency: how much cheaper cached prompts are vs input
       const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
       const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
       archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, tokenEff, avgCacheEff, count: ms.length });
@@ -48,14 +46,13 @@
     // Sort alphabetically — keeps OSS variants next to parent
     archetypes.sort((a, b) => a.creator.localeCompare(b.creator));
 
-    // Global min/max for normalization
     const allIQ = archetypes.map(a => a.avgIQ);
     const allCostEff = archetypes.map(a => a.costEff);
     const allSpeed = archetypes.map(a => a.avgSpeed);
     const allTokenEff = archetypes.map(a => a.tokenEff);
     const allCacheEff = archetypes.map(a => a.avgCacheEff);
 
-    const mn = arr => 0;               // always start from 0
+    const mn = arr => 0;
     const mx = arr => Math.max(...arr);
     const norm = (v, lo, hi) => hi === lo ? 0.5 : (v - lo) / (hi - lo);
 
@@ -68,11 +65,10 @@
     const RADAR_AXES = window.RADAR_AXES || [];
 
     const R = 80;       // radar radius
-    const CX = 130;     // center x within each panel (wider viewBox for label room)
+    const CX = 130;     // center x within each panel
     const CY = 130;     // center y within each panel
     const COLS = 4;
 
-    // CSS
     let html = `<style>
       .radar-grid {
         display: grid;
@@ -140,10 +136,9 @@
         norm(a.costEff, ceLo, ceHi),
       ];
 
-      // Build radar SVG
       let svg = `<svg viewBox="0 0 ${CX * 2} ${CY * 2}">`;
 
-      // Grid rings (0.25, 0.5, 0.75, 1.0)
+      // Grid rings
       for (const frac of [0.25, 0.5, 0.75, 1.0]) {
         const pts = RADAR_AXES.map(ax => {
           const x = CX + Math.cos(ax.angle) * R * frac;
@@ -153,14 +148,12 @@
         svg += `<polygon class="radar-grid-line" points="${pts}"/>`;
       }
 
-      // Axis lines
       for (const ax of RADAR_AXES) {
         const ex = CX + Math.cos(ax.angle) * R;
         const ey = CY + Math.sin(ax.angle) * R;
         svg += `<line class="radar-axis-line" x1="${CX}" y1="${CY}" x2="${ex}" y2="${ey}"/>`;
       }
 
-      // Data polygon
       const dataPts = RADAR_AXES.map((ax, i) => {
         const v = values[i];
         const x = CX + Math.cos(ax.angle) * R * v;
@@ -173,7 +166,6 @@
       const color = (window.CREATOR_COLORS || {})[baseCreator] || '#888';
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
 
-      // Data points (dots)
       for (let i = 0; i < RADAR_AXES.length; i++) {
         const v = values[i];
         const x = CX + Math.cos(RADAR_AXES[i].angle) * R * v;
@@ -206,9 +198,8 @@
       }
       svg += '</svg>';
 
-      // Format helpers for raw values
       const fmtRaw = (key, val) => {
-        if (val == null) return '—';
+        if (val == null) return '\u2014';
         if (key === 'avgIQ') return val.toFixed(1);
         if (key === 'avgSpeed') return val.toFixed(0) + ' t/s';
         if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok/task';
@@ -217,11 +208,10 @@
         return val.toFixed(2);
       };
 
-      // Stats line: all axis raw values + model count
       let statsHtml = RADAR_AXES.map(ax => {
         return `${ax.label} <span class="val">${fmtRaw(ax.key, a[ax.key])}</span>`;
-      }).join(' · ');
-      statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
+      }).join(' \u00b7 ');
+      statsHtml += ` \u00b7 <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `
         <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? (window.__filterMode === 'hide' ? 'display:none' : 'opacity:0.15') : ''}">
@@ -244,7 +234,7 @@
   window.VIZ_REGISTRY.push({
     id: '03',
     name: 'Provider Archetypes',
-    subtitle: `Radar grid: ${(window.RADAR_AXES || []).map(a => a.label).join(' × ')}`,
+    subtitle: `Radar grid: ${(window.RADAR_AXES || []).map(a => a.label).join(' \u00d7 ')}`,
     render
   });
 })();

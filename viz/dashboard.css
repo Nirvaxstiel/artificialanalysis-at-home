@@ -88,6 +88,8 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
   padding-top: 16px; border-top: 1px dashed var(--muted); font-size: 11px; }
 .legend .item { display: flex; align-items: center; gap: 6px; }
 .legend .dot { width: 10px; height: 10px; display: inline-block; border: 1px solid var(--fg); }
+.dot-lg { width: 10px; height: 10px; display: inline-block; margin-right: 8px; border: 1px solid #f5f5f0; }
+.dot-sm { width: 8px; height: 8px; display: inline-block; margin-right: 6px; border: 1px solid #f5f5f0; }
 .legend .size { color: var(--muted); margin-left: 16px; }
 
 /* Cache toggle buttons (02-reasoning-tax) */

@@ -1,13 +1,8 @@
-// viz/02-reasoning-tax.js
-// Horizontal stacked bar chart: per-task cost breakdown by token type
-// Shows the "reasoning tax" — how much of each task dollar goes to thinking vs useful output.
-// Supports toggling between AA-derived cache data and external (OpenRouter/Dirac.run) cache hit rates.
-// Now reads cost segments from processed.js instead of hardcoded data.
+// Cost per task with cache hit adjustment (AA segments / OpenRouter/Dirac.run external rates)
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS || {};
 
-  // Cache hit rates (from shared config) — try hyphen + dot variants
   function getCacheHitRate(slug) {
     const rates = window.CACHE_HIT_RATES || {};
     if (rates[slug] != null) return rates[slug];
@@ -20,10 +15,8 @@
   const CACHE_PRICE_RATIO = 0.1;
 
   const SEGMENTS_AA = (window.COST_SEGMENTS || {}).aa || [];
-
   const SEGMENTS_EXT = (window.COST_SEGMENTS || {}).ext || [];
 
-  // Build COST_DATA from processed.js — models with cost_seg_total
   function buildCostData(data) {
     return data
       .filter(m => m.cost_seg_total != null && m.cost_seg_total > 0)
@@ -31,10 +24,8 @@
         const cache_hit_usd = m.cost_seg_cache_hit || 0;
         const input_usd = m.cost_seg_input || 0;
         const cache_write_usd = m.cost_seg_cache_write || 0;
-        // AA does NOT provide cache hit rate directly.
-        // The cost_seg fields show what was charged, but not what % of input was cached.
-        // Hit rate is only available from external sources (Dirac.run / OpenRouter).
-        // null = unknown (will show N/A in AA mode, value in external mode)
+        // AA does NOT provide cache hit rate — the cost_seg fields show what was charged,
+        // but not what % of input was cached. Hit rate only from external sources.
         const cache_hit_rate = null;
         return {
           slug: m.slug,
@@ -101,7 +92,6 @@
     models.sort((a, b) => a.total_cost_per_task_usd - b.total_cost_per_task_usd);
 
     // Apply legend filter at the data level — only when hiding
-    // In dim mode, keep all models rendered and let the opacity pass dim them
     if (window.__legendFilter && window.__legendFilter.dim === 'creator'
         && window.__filterMode === 'hide') {
       const before = models.length;
@@ -142,8 +132,6 @@
     html += `<button class="cache-toggle-btn ${cacheSource==='aa'?'active':''}" data-source="aa">AA Index</button>`;
     html += `<button class="cache-toggle-btn ${cacheSource==='external'?'active':''}" data-source="external">OpenRouter/Dirac.run</button>`;
     if (cacheSource === 'external') {
-      // External mode: redistribute cost using observed cache hit rates
-      // Total cost stays the same (it's based on AA's calculation), but the input/cached split changes
       const withCacheTotal = models.reduce((s, m) => s + m.total_cost_per_task_usd, 0);
       const noCacheTotal = models.reduce((s, m) => {
         if ((m.input_usd || 0) + (m.cache_hit_usd || 0) <= 0) return s + m.total_cost_per_task_usd;
@@ -153,7 +141,6 @@
       const savingsPct = noCacheTotal > 0 ? (savings / noCacheTotal * 100) : 0;
       html += `<span style="color:var(--neon2,#00e5ff);font-size:9px;font-weight:400;">// observed cache hit rates · ~$${savings.toFixed(2)} saved (${savingsPct.toFixed(0)}% vs no cache) · total $${withCacheTotal.toFixed(2)}</span>`;
     } else {
-      // AA mode: total is fixed, hit rate unknown
       const total = models.reduce((s, m) => s + m.total_cost_per_task_usd, 0);
       html += `<span style="color:var(--muted,#888);font-size:9px;font-weight:400;">// AA segments only · total $${total.toFixed(2)} · hit rate N/A (not in AA data)</span>`;
     }
@@ -192,7 +179,6 @@
       const total = m.total_cost_per_task_usd;
       if (total <= 0) continue;
 
-      // Wrap each model's row in a group so hide-mode hides everything
       svg += `<g data-slug="${m.slug}">`;
 
       svg += `<text x="${M.left - 10}" y="${y + barH / 2 + 4}" text-anchor="end" fill="#f5f5f0" font-size="11" font-family="monospace" font-weight="700" paint-order="stroke" stroke="#0a0a0a" stroke-width="3">${m.name.length > 28 ? m.name.slice(0, 26) + '…' : m.name}</text>`;
@@ -213,7 +199,6 @@
         if (segW > 30) {
           const pct = ((val / total) * 100).toFixed(0);
           const valLabel = val >= 0.01 ? `$${val.toFixed(2)}` : `$${val.toFixed(3)}`;
-          // Show percentage if multiple segments AND segment is wide enough
           const showPct = segments.filter(s => (m[s.key] || 0) > 0).length > 1;
           const text = showPct && segW > 55 ? `${valLabel} ${pct}%` : valLabel;
           const textColor = seg.key === 'answer_usd' ? '#0a0a0a' : '#f5f5f0';
@@ -225,7 +210,7 @@
       const totalLabel = total >= 0.01 ? `$${total.toFixed(2)}` : `$${total.toFixed(3)}`;
       svg += `<text x="${totalX + 6}" y="${y + barH / 2 + 4}" text-anchor="start" fill="#f5f5f0" font-size="10" font-family="monospace" font-weight="700">${totalLabel}</text>`;
 
-      // Always show cache hit rate (from external data, derived, or N/A)
+      // Cache hit rate
       let hitRate = null;
       if (cacheSource === 'external' && getCacheHitRate(m.slug) != null) {
         hitRate = getCacheHitRate(m.slug);
@@ -291,7 +276,7 @@
             tooltipHtml += `<span style="color:${seg.color};font-weight:700;">${fmtTooltipVal(val)} <span style="color:#888;">(${pct}%)</span></span>`;
             tooltipHtml += `</div>`;
           }
-          // Cache hit rate (from external data or derived from cost segments)
+          // Cache hit rate
           let hitRate = null;
           if (cacheSource === 'external' && getCacheHitRate(m.slug) != null) {
             hitRate = getCacheHitRate(m.slug);

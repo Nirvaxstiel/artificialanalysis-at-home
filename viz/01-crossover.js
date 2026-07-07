@@ -1,14 +1,10 @@
-// viz/01-crossover.js
-// Merger of 01 (bubble) + 03 (pareto frontier x reasoning tax).
-// Axis picker: swap quality/cost/size axes from any source.
-// Color toggle: creator / reasoning-tax. Always draws dynamic pareto frontier.
+// Merger of 01 (bubble) + 03 (pareto frontier x reasoning tax). Axes from any source.
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
   const CREATOR_BORDER = window.CREATOR_BORDER || {};
   const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
 
-  // ===== Axis Catalog =====
   const AXES = {
     quality: [
       { key: 'intel', label: 'AA Intel Index', unit: '' },
@@ -225,8 +221,8 @@
     // Points
     for (const m of pts) {
       const fo = window.__modelOpacity(m);
-      if (fo === 0) continue; // hide mode: skip non-matching
-      const so = fo; // stroke opacity tracks fill opacity
+      if (fo === 0) continue;
+      const so = fo;
       const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
       let fill, stroke;
       if (colorMode === 'reasoning') {
@@ -250,7 +246,7 @@
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       const shortLabel = cleanName.length > 22 ? cleanName.slice(0, 20) + '…' : cleanName;
       let lo = window.__modelOpacity(m);
-      if (lo === 0) continue; // hide mode: skip label
+      if (lo === 0) continue;
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${shortLabel}</text>`;
     }
 
@@ -266,9 +262,6 @@
     _wireToggle(container, data);
   }
 
-  // ===== Searchable Axis Dropdown (fzf-style) =====
-  // Chip/button trigger → opens popup with filter input + scrollable list.
-  // Terminal / neobrutalism aesthetic: no round, no shadows, monospace, tone surfaces.
   function _createAxisPicker(opts) {
     const { options, value, label, onChange } = opts;
 
@@ -429,7 +422,6 @@
     return wrap;
   }
 
-  // ===== Axis Picker Row =====
   function _wireAxisUI(container, data) {
     const parent = container.parentElement;
     const existing = parent && parent.querySelector('.axis-picker-row');
@@ -470,7 +462,6 @@
     if (parent) parent.insertBefore(row, container);
   }
 
-  // ===== Color Toggle UI =====
   function _wireToggle(container, data) {
     const parent = container.parentElement;
     const existing = parent && parent.querySelector('.color-toggle-row');

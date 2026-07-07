@@ -1,6 +1,4 @@
-// viz/_shared.js
-// Shared helpers — color palette, tooltip wiring, label placement.
-// Single source of truth; loaded before viz scripts.
+// Color palette, tooltip wiring, label placement. Single source of truth; loaded before viz scripts.
 
 (function() {
 
@@ -32,17 +30,11 @@ const CREATOR_COLORS = {
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
 
-// ============================================================
-// Legend Filter — generic shared filter state for all views
-// Single source of truth: window.__legendFilter = { dim, val } | null
-// ============================================================
+// window.__legendFilter = { dim, val } | null
 window.__legendFilter = null;
 window.__filterSubscribers = new Set();
-// Filter mode: 'dim' (default, dim non-matching to 0.12) or 'hide' (remove non-matching from view)
 window.__filterMode = 'dim';
 
-// Shared opacity helper — vizzes call this per model
-// Returns 1 for matching, 0.12 for dim, 0 for hide
 window.__modelOpacity = function(m) {
   const lf = window.__legendFilter;
   if (!lf) return 1;
@@ -64,7 +56,6 @@ window.__modelOpacity = function(m) {
 window.__setLegendFilter = function(dim, val) {
   const same = window.__legendFilter && window.__legendFilter.dim === dim && window.__legendFilter.val === val;
   window.__legendFilter = same ? null : { dim, val };
-  // Update HTML .lg-fi highlights
   document.querySelectorAll('.lg-fi').forEach(el => {
     el.classList.toggle('active',
       window.__legendFilter && el.dataset.lgDim === window.__legendFilter.dim && el.dataset.lgVal === window.__legendFilter.val);
@@ -86,21 +77,19 @@ window.__renderCreatorLegend = function() {
   const models = Array.isArray(src) ? src : (src && src.models ? src.models : []);
   const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
   const isAllActive = !window.__legendFilter;
-  // Filter mode toggle: dim (default) or hide non-matching
   const fm = window.__filterMode || 'dim';
-  const toggleHtml = `<span class="lg-mode" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;">` +
-    `<span style="color:var(--muted);font-weight:700;">FILTER:</span>` +
-    `<button class="lg-mode-btn ${fm==='dim'?'active':''}" data-mode="dim" style="background:transparent;border:1px solid ${fm==='dim'?'var(--neon)':'#444'};color:${fm==='dim'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;">dim</button>` +
-    `<button class="lg-mode-btn ${fm==='hide'?'active':''}" data-mode="hide" style="background:transparent;border:1px solid ${fm==='hide'?'var(--neon)':'#444'};color:${fm==='hide'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;">hide out</button>` +
+  const toggleHtml = `<span class=\"lg-mode\" style=\"margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;\">` +
+    `<span style=\"color:var(--muted);font-weight:700;\">FILTER:</span>` +
+    `<button class=\"lg-mode-btn ${fm==='dim'?'active':''}\" data-mode=\"dim\" style=\"background:transparent;border:1px solid ${fm==='dim'?'var(--neon)':'#444'};color:${fm==='dim'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;\">dim</button>` +
+    `<button class=\"lg-mode-btn ${fm==='hide'?'active':''}\" data-mode=\"hide\" style=\"background:transparent;border:1px solid ${fm==='hide'?'var(--neon)':'#444'};color:${fm==='hide'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;\">hide out</button>` +
     `</span>`;
-  el.innerHTML = '<span class="lg-fi' + (isAllActive ? ' active' : '') + '" data-lg-dim="" data-lg-val="">ALL</span>'
+  el.innerHTML = '<span class=\"lg-fi' + (isAllActive ? ' active' : '') + '\" data-lg-dim=\"\" data-lg-val=\"\">ALL</span>'
     + creators.map(c => {
         const active = window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val === c;
         const color = (window.CREATOR_COLORS || {})[c] || '#888';
-        return `<span class="lg-fi${active ? ' active' : ''}" data-lg-dim="creator" data-lg-val="${c}"><span class="cr-fs" style="background:${color}"></span>${c}</span>`;
+        return `<span class=\"lg-fi${active ? ' active' : ''}\" data-lg-dim=\"creator\" data-lg-val=\"${c}\"><span class=\"cr-fs\" style=\"background:${color}\"></span>${c}</span>`;
       }).join('')
     + toggleHtml;
-  // Re-bind click — clone to drop old listeners
   const newEl = el.cloneNode(true);
   el.parentNode.replaceChild(newEl, el);
   window.__creatorLegendEl = newEl;
@@ -123,16 +112,12 @@ window.__renderCreatorLegend = function() {
 window.CREATOR_COLORS = CREATOR_COLORS;
 window.CREATOR_BORDER = CREATOR_BORDER;
 
-// ============================================================
-// Tooltip wiring — attach mousemove handlers to SVG elements
-// ============================================================
 function wireTooltips(container, data, selectors) {
   const tt = document.getElementById('tooltip');
   if (!tt) return;
   const modelBySlug = Object.fromEntries((data || []).map(m => [m.slug, m]));
   container.querySelectorAll(selectors).forEach(el => {
     el.addEventListener('mouseenter', function() {
-      // Skip tooltips on hidden/filtered elements
       if (this.style.display === 'none' || this.style.opacity === '0') {
         tt.style.display = 'none';
         return;
@@ -143,7 +128,6 @@ function wireTooltips(container, data, selectors) {
       tt.style.display = 'block';
     });
     el.addEventListener('mousemove', function(e) {
-      // Also bail if element became hidden
       if (this.style.display === 'none' || this.style.opacity === '0') {
         tt.style.display = 'none';
         return;
@@ -151,13 +135,9 @@ function wireTooltips(container, data, selectors) {
       const w = tt.offsetWidth, h = tt.offsetHeight;
       const vw = window.innerWidth, vh = window.innerHeight;
       let x = e.clientX + 16, y = e.clientY + 16;
-      // Flip left if overflows right
       if (x + w > vw - 8) x = e.clientX - w - 16;
-      // Flip up if overflows bottom
       if (y + h > vh - 8) y = e.clientY - h - 16;
-      // Clamp top
       if (y < 8) y = 8;
-      // Clamp left
       if (x < 8) x = 8;
       tt.style.left = x + 'px';
       tt.style.top  = y + 'px';
@@ -168,10 +148,7 @@ function wireTooltips(container, data, selectors) {
   });
 }
 
-// ============================================================
-// Label placement — collision avoidance for bubble labels
-// Returns { x, y, anchor }. Pass opts.W/H to clamp to viewBox.
-// ============================================================
+// Returns { x, y, anchor }. Clamps to viewBox if opts.W/H provided.
 function placeLabel(cx, cy, r, text, occupied, opts) {
   opts = opts || {};
   const gap = opts.gap || 4;
@@ -222,19 +199,23 @@ function placeLabel(cx, cy, r, text, occupied, opts) {
   return placed;
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState };
+function fmtV(v) {
+  if (v == null) return '\u2014';
+  if (Math.abs(v) >= 100) return v.toFixed(0);
+  if (Math.abs(v) >= 1) return v.toFixed(1);
+  if (Math.abs(v) >= 0.01) return v.toFixed(2);
+  return v.toExponential(2);
+}
 
-// Render an empty-state message when a filter leaves no data
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, fmtV };
+
 function renderEmptyState(container, message) {
-  container.innerHTML = `<div style="padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;">
-    <div style="color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;">// NO DATA</div>
-    <div style="font-size:11px;line-height:1.6;">${message}</div>
+  container.innerHTML = `<div style=\"padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;\">
+    <div style=\"color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;\">// NO DATA</div>
+    <div style=\"font-size:11px;line-height:1.6;\">${message}</div>
   </div>`;
 }
 
-// ============================================================
-// Shared model tooltip — builds HTML for the #tooltip element
-// ============================================================
 window.getTooltipEl = () => document.getElementById('tooltip');
 
 window.buildTooltip = function(m) {
@@ -243,21 +224,21 @@ window.buildTooltip = function(m) {
   const tok = m.tokens_m;
   const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '\u2014';
   const reasoningPct = m.reasoning_tax_pct != null ? m.reasoning_tax_pct + '%' : '\u2014';
-  let html = `<div class="tt-name">${m.name}</div>
-    <div class="tt-creator">${m.creator} &middot; ${m.slug}</div>
-    <div class="tt-row"><span class="k">IQ</span><span class="v neon">${iq}</span></div>
-    <div class="tt-row"><span class="k">$ / TASK</span><span class="v">${cost != null ? '$' + cost.toFixed(2) : '\u2014'}</span></div>
-    <div class="tt-row"><span class="k">OUTPUT TOK (M)</span><span class="v">${tok ?? '\u2014'}</span></div>
-    <div class="tt-row"><span class="k">$ / M TOK</span><span class="v">${m.out_price ?? '\u2014'}</span></div>
-    <div class="tt-row"><span class="k">SPEED t/s</span><span class="v">${m.speed_tps ?? '\u2014'}</span></div>
-    <div class="tt-row"><span class="k">IQ / $1K</span><span class="v neon">${iqPerK}</span></div>
-    <div class="tt-row"><span class="k">$ / IQ PT</span><span class="v">$${(cost/iq).toFixed(2)}</span></div>
-    <div class="tt-row"><span class="k">REASONING TAX</span><span class="v">${reasoningPct}</span></div>
-    <div class="tt-row"><span class="k">USEFUL $</span><span class="v">$${m.useful_cost != null ? m.useful_cost.toFixed(2) : '\u2014'}</span></div>
-    <div class="tt-row"><span class="k">ARCHETYPE</span><span class="v">${m.archetype}</span></div>
-    <div class="tt-row"><span class="k">PARETO</span><span class="v">${m.pareto_optimal ? 'YES' : 'no'}</span></div>`;
+  let html = `<div class=\"tt-name\">${m.name}</div>
+    <div class=\"tt-creator\">${m.creator} &middot; ${m.slug}</div>
+    <div class=\"tt-row\"><span class=\"k\">IQ</span><span class=\"v neon\">${iq}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / TASK</span><span class=\"v\">${cost != null ? '$' + cost.toFixed(2) : '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK (M)</span><span class=\"v\">${tok ?? '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / M TOK</span><span class=\"v\">${m.out_price ?? '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">SPEED t/s</span><span class=\"v\">${m.speed_tps ?? '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">IQ / $1K</span><span class=\"v neon\">${iqPerK}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / IQ PT</span><span class=\"v\">$${(cost/iq).toFixed(2)}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">REASONING TAX</span><span class=\"v\">${reasoningPct}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">USEFUL $</span><span class=\"v\">$${m.useful_cost != null ? m.useful_cost.toFixed(2) : '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">ARCHETYPE</span><span class=\"v\">${m.archetype}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">PARETO</span><span class=\"v\">${m.pareto_optimal ? 'YES' : 'no'}</span></div>`;
 
-  // Cross-source section
+  // Additional cross-source data
   const cross = [];
   if (m.livebench_average != null) {
     cross.push(`LiveBench avg: ${m.livebench_average.toFixed(1)}`);
@@ -275,18 +256,12 @@ window.buildTooltip = function(m) {
   if (m.co2_kg != null) cross.push(`CO\u2082: ${m.co2_kg}kg`);
 
   if (cross.length > 0) {
-    html += `<div class="tt-seg">${cross.join('<br>')}</div>`;
+    html += `<div class=\"tt-seg\">${cross.join('<br>')}</div>`;
   }
 
   return html;
 };
 
-// ============================================================
-// Shared config — single source of truth for labels and patterns
-// ============================================================
-
-// SKU split patterns: slug keyword → suffix label
-// Use word boundary / dash separator to avoid false positives (e.g. "minimax" matching "mini")
 window.SKU_PATTERNS = [
   { keyword: 'oss',     suffix: ' OSS',   pattern: '(^|-)oss(-|$)' },
   { keyword: 'mini',    suffix: ' Mini',  pattern: '(^|-)mini(-|$)' },
@@ -296,7 +271,6 @@ window.SKU_PATTERNS = [
   { keyword: '-code',   suffix: ' Code',  pattern: '-code$' },
 ];
 
-// Radar axis definitions for provider archetypes
 window.RADAR_AXES = [
   { key: 'avgIQ',       label: 'IQ',         angle: -Math.PI / 2 },
   { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 5 },
@@ -305,7 +279,6 @@ window.RADAR_AXES = [
   { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 5 },
 ];
 
-// Cost segment definitions for reasoning-tax viz
 window.COST_SEGMENTS = {
   aa: [
     { key: 'input_usd',       label: 'INPUT',              color: '#4a4a4a' },
@@ -337,8 +310,7 @@ window.FIELD_LABELS = {
   cache_hit_price:      'CACHE $/M',
 };
 
-// Cache hit rates (observed from Dirac.run / OpenRouter)
-// Keys are model slugs. Lookup tries both hyphen and dot variants.
+// Observed cache hit rates — Dirac.run / OpenRouter
 window.CACHE_HIT_RATES = {
   "deepseek-v4-flash":   0.861,
   "deepseek-v4-pro":     0.879,

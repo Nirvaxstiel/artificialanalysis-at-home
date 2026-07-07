@@ -1,6 +1,4 @@
-// viz/05-speed-cost.js
 // Speed-adjusted cost: cost-per-wall-clock-second vs Intelligence Index
-// The "is this model worth waiting for?" chart.
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
@@ -23,7 +21,6 @@
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
 
-    // Filter to models with cost_per_wallsec data
     const pts = data.filter(m => m.cost_per_wallsec != null && m.cost_per_wallsec > 0
       && m.tokens_m != null && m.intel != null);
 
@@ -33,8 +30,7 @@
       return;
     }
 
-    // Scales
-    const minWallSec = 5e-9, maxWallSec = 1e-5;  // log range for X
+    const minWallSec = 5e-9, maxWallSec = 1e-5;
     const minIQ = 10, maxIQ = 80;
     const minTok = 30, maxTok = 320;
 
@@ -42,7 +38,6 @@
     const yScale = i => M.top + (1 - (i - minIQ) / (maxIQ - minIQ)) * innerH;
     const rScale = t => 4 + Math.sqrt((t - minTok) / (maxTok - minTok)) * 22;
 
-    // Grid ticks
     const wallSecTicks = [1e-08, 1e-07, 1e-06, 1e-05];
     const iqTicks = [10, 20, 30, 40, 50, 60, 70, 80];
 
@@ -56,7 +51,6 @@
     svg += `<rect x="${qLeft}" y="${qTop}" width="${qRight - qLeft}" height="${qBottom - qTop}" fill="rgba(182,255,60,0.04)" stroke="rgba(182,255,60,0.25)" stroke-dasharray="4 4"/>`;
     svg += `<text x="${qLeft + 6}" y="${qTop + 14}" fill="#b6ff3c" font-size="10" font-family="monospace">// SWEET SPOT: fast + cheap + smart</text>`;
 
-    // Grid lines (dashed, subtle)
     for (const t of wallSecTicks) {
       const x = xScale(t);
       svg += `<line class="grid" x1="${x}" y1="${M.top}" x2="${x}" y2="${H - M.bottom}" stroke="#333" stroke-dasharray="2 4"/>`;
@@ -75,7 +69,6 @@
     svg += `<g class="axis">`;
     for (const t of wallSecTicks) {
       const x = xScale(t);
-      // No scientific notation — use full decimal
       let label;
       if (t >= 1) label = '$' + t.toFixed(2);
       else if (t >= 0.01) label = '$' + t.toFixed(4);
@@ -93,7 +86,6 @@
     svg += `<text x="14" y="${H/2}" text-anchor="middle" font-weight="800" font-size="12" fill="#f5f5f0" transform="rotate(-90 14 ${H/2})">INTELLIGENCE INDEX</text>`;
     svg += `</g>`;
 
-    // Data points
     for (const m of pts) {
       const cx = xScale(m.cost_per_wallsec);
       const cy = yScale(m.intel);
@@ -121,7 +113,6 @@
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
-    // Apply legend filter opacity
     if (window.__legendFilter) {
       const slugOpacity = {};
       data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
@@ -138,10 +129,8 @@
       });
     }
 
-    // Wire tooltips
     wireTooltips(container, data, '.point, .label');
 
-    // Legend
     const creators = [...new Set(pts.map(p => p.creator))].sort();
     let leg = '<strong style="color:var(--neon);">CREATOR</strong> ';
     for (const c of creators) {

@@ -1,5 +1,4 @@
-// viz/06-cost-per-iq.js
-// Vertical bar chart ranking all models by cost per IQ point
+// Cost per IQ point: vertical bar chart ranking all models by cost efficiency
 
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
@@ -12,7 +11,6 @@
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
 
-    // Filter to models with valid data
     const pts = data.filter(m => m.cost_per_task != null && m.intel != null && m.cost_per_task > 0);
 
     // Compute cost per IQ point and sort ascending
@@ -42,7 +40,6 @@
     const barW = Math.max(8, Math.min(28, (innerW - models.length * 2) / models.length));
     const gap = Math.max(2, (innerW - barW * models.length) / (models.length + 1));
 
-    // Median
     const sortedCosts = models.map(m => m.cost_per_iq).sort((a, b) => a - b);
     const median = sortedCosts.length % 2 === 0
       ? (sortedCosts[sortedCosts.length / 2 - 1] + sortedCosts[sortedCosts.length / 2]) / 2
@@ -50,7 +47,6 @@
 
     const medianY = yScale(median);
 
-    // Y-axis log ticks
     const yTicks = [];
     for (let e = Math.floor(logMin); e <= Math.ceil(logMax); e++) {
       for (const m of [1, 2, 5]) {
@@ -63,13 +59,11 @@
 
     let svg = '';
 
-    // Grid lines
     for (const t of yTicks) {
       const y = yScale(t);
       svg += `<line class="grid" x1="${M.left}" y1="${y}" x2="${W - M.right}" y2="${y}"/>`;
     }
 
-    // Bars
     models.forEach((m, i) => {
       const x = M.left + gap + i * (barW + gap);
       const y = yScale(m.cost_per_iq);
@@ -79,16 +73,13 @@
 
       svg += `<rect class="bar" data-slug="${m.slug}" x="${x}" y="${y}" width="${barW}" height="${h}" fill="${fill}" fill-opacity="0.8" stroke="${stroke}" stroke-width="1"/>`;
 
-      // Value label on top
       const label = '$' + m.cost_per_iq.toFixed(4);
       svg += `<text class="val-label" data-slug="${m.slug}" x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" font-size="8" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke">${label}</text>`;
 
-      // X-axis model name (rotated)
       const cleanName = m.name.replace(/\s*\((xhigh|high|medium|low|with fallback|max)\)\s*/i, '');
       const shortName = cleanName.length > 24 ? cleanName.slice(0, 22) + '…' : cleanName;
       svg += `<text data-slug="${m.slug}" x="${x + barW / 2}" y="${innerH + 12}" text-anchor="end" font-size="9" font-weight="600" fill="var(--fg, #f5f5f0)" transform="rotate(-45 ${x + barW / 2} ${innerH + 12})">${shortName}</text>`;
 
-      // Creator color dot below name
       svg += `<circle cx="${x + barW / 2}" cy="${innerH + 8}" r="2" fill="${fill}"/>`;
     });
 
@@ -96,7 +87,7 @@
     svg += `<line x1="${M.left}" y1="${medianY}" x2="${W - M.right}" y2="${medianY}" stroke="var(--neon2, #b6ff3c)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
     svg += `<text x="${W - M.right - 4}" y="${medianY - 5}" text-anchor="end" font-size="9" font-weight="700" fill="var(--neon2, #b6ff3c)" font-family="monospace">MEDIAN $${median.toFixed(4)}</text>`;
 
-    // Best value label (cheapest bar)
+    // Best value label
     const cheapest = models[0];
     const cheapestX = M.left + gap;
     const cheapestY = yScale(cheapest.cost_per_iq);
@@ -108,7 +99,6 @@
     const expensiveY = yScale(mostExpensive.cost_per_iq);
     svg += `<text x="${expensiveX + barW / 2}" y="${expensiveY - 16}" text-anchor="middle" font-size="8" font-weight="800" fill="#D97757" font-family="monospace">// MOST EXPENSIVE PER IQ</text>`;
 
-    // Y-axis ticks
     svg += `<g class="axis">`;
     for (const t of yTicks) {
       const y = yScale(t);
@@ -122,12 +112,10 @@
     svg += `<text x="${M.left + innerW / 2}" y="${H - 8}" text-anchor="middle" font-weight="800" font-size="12" font-family="monospace">MODEL (SORTED BY COST EFFICIENCY →)</text>`;
     svg += `</g>`;
 
-    // Title
     svg += `<text x="${M.left}" y="${M.top - 14}" font-size="14" font-weight="800" fill="var(--neon, #b6ff3c)" font-family="monospace">COST PER IQ POINT — RANKED</text>`;
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
 
-    // Apply legend filter opacity
     if (window.__legendFilter) {
       const slugOpacity = {};
       data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
@@ -144,10 +132,8 @@
       });
     }
 
-    // Wire tooltips
     wireTooltips(container, data, '.bar, .val-label');
 
-    // Legend
     const creators = [...new Set(models.map(p => p.creator))].sort();
     let leg = '<strong style="color:var(--neon);">CREATOR</strong> ';
     for (const c of creators) {
