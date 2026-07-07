@@ -233,6 +233,55 @@ function renderEmptyState(container, message) {
 }
 
 // ============================================================
+// Shared model tooltip — builds HTML for the #tooltip element
+// ============================================================
+window.getTooltipEl = () => document.getElementById('tooltip');
+
+window.buildTooltip = function(m) {
+  const iq = m.intel ?? 0;
+  const cost = m.cost_per_task;
+  const tok = m.tokens_m;
+  const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '\u2014';
+  const reasoningPct = m.reasoning_tax_pct != null ? m.reasoning_tax_pct + '%' : '\u2014';
+  let html = `<div class="tt-name">${m.name}</div>
+    <div class="tt-creator">${m.creator} &middot; ${m.slug}</div>
+    <div class="tt-row"><span class="k">IQ</span><span class="v neon">${iq}</span></div>
+    <div class="tt-row"><span class="k">$ / TASK</span><span class="v">${cost != null ? '$' + cost.toFixed(2) : '\u2014'}</span></div>
+    <div class="tt-row"><span class="k">OUTPUT TOK (M)</span><span class="v">${tok ?? '\u2014'}</span></div>
+    <div class="tt-row"><span class="k">$ / M TOK</span><span class="v">${m.out_price ?? '\u2014'}</span></div>
+    <div class="tt-row"><span class="k">SPEED t/s</span><span class="v">${m.speed_tps ?? '\u2014'}</span></div>
+    <div class="tt-row"><span class="k">IQ / $1K</span><span class="v neon">${iqPerK}</span></div>
+    <div class="tt-row"><span class="k">$ / IQ PT</span><span class="v">$${(cost/iq).toFixed(2)}</span></div>
+    <div class="tt-row"><span class="k">REASONING TAX</span><span class="v">${reasoningPct}</span></div>
+    <div class="tt-row"><span class="k">USEFUL $</span><span class="v">$${m.useful_cost != null ? m.useful_cost.toFixed(2) : '\u2014'}</span></div>
+    <div class="tt-row"><span class="k">ARCHETYPE</span><span class="v">${m.archetype}</span></div>
+    <div class="tt-row"><span class="k">PARETO</span><span class="v">${m.pareto_optimal ? 'YES' : 'no'}</span></div>`;
+
+  // Cross-source section
+  const cross = [];
+  if (m.livebench_average != null) {
+    cross.push(`LiveBench avg: ${m.livebench_average.toFixed(1)}`);
+    if (m.livebench_coding != null) cross.push(`  Coding: ${m.livebench_coding.toFixed(1)}`);
+    if (m.livebench_reasoning != null) cross.push(`  Reasoning: ${m.livebench_reasoning.toFixed(1)}`);
+  }
+  if (m.arena_code_elo != null) cross.push(`Arena Code Elo: ${m.arena_code_elo}`);
+  if (m.arena_text_elo != null) cross.push(`Arena Text Elo: ${m.arena_text_elo}`);
+  if (m.openrouter_inp_price_per_m != null) {
+    cross.push(`OR Input: $${m.openrouter_inp_price_per_m}/Mtok`);
+    cross.push(`OR Output: $${m.openrouter_out_price_per_m}/Mtok`);
+  }
+  if (m.openllm_average != null) cross.push(`OpenLLM avg: ${m.openllm_average.toFixed(1)}`);
+  if (m.params_b != null) cross.push(`Params: ${m.params_b}B`);
+  if (m.co2_kg != null) cross.push(`CO\u2082: ${m.co2_kg}kg`);
+
+  if (cross.length > 0) {
+    html += `<div class="tt-seg">${cross.join('<br>')}</div>`;
+  }
+
+  return html;
+};
+
+// ============================================================
 // Shared config — single source of truth for labels and patterns
 // ============================================================
 
