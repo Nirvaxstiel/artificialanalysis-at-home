@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-07-07",
+    "generated": "2026-07-08",
     "version": "1.0",
-    "model_count": 2223,
+    "model_count": 2242,
     "source_count": {
-      "aa": 85,
+      "aa": 104,
       "livebench": 127,
       "arena_text": 30,
       "arena_code": 50,
@@ -20,165 +20,189 @@
       "OpenRouter",
       "Cost Breakdown"
     ],
-    "name_map_size": 2355
+    "name_map_size": 2376
   },
   "name_map": {
-    "aa:claude-fable-5": "claude-fable-5",
-    "arena:claude-fable-5": "claude-fable-5",
-    "arena_code:claude-fable-5": "claude-fable-5",
-    "openrouter:anthropic/claude-fable-5": "claude-fable-5",
-    "aa:claude-opus-4-8": "claude-opus-4.8",
-    "arena:claude-opus-4-8": "claude-opus-4.8",
-    "arena_code:claude-opus-4-8": "claude-opus-4.8",
-    "openrouter:anthropic/claude-opus-4.8": "claude-opus-4.8",
+    "aa:gpt-oss-120b": "gpt-oss-120b",
+    "livebench:gpt-oss-120b": "gpt-oss-120b",
+    "openrouter:openai/gpt-oss-120b": "gpt-oss-120b",
+    "aa:gpt-oss-120b-low": "gpt-oss-120b-low",
+    "aa:gpt-oss-20b": "gpt-oss-20b",
+    "openrouter:openai/gpt-oss-20b": "gpt-oss-20b",
+    "aa:gpt-oss-20b-low": "gpt-oss-20b-low",
+    "aa:gpt-5-4-mini": "gpt-5-4-mini",
+    "aa:gpt-5-4-nano": "gpt-5-4-nano",
+    "aa:gpt-5-5-pro": "gpt-5.5-pro",
+    "openrouter:openai/gpt-5.5-pro": "gpt-5.5-pro",
     "aa:gpt-5-5": "gpt-5.5-xhigh",
     "livebench:gpt-5.5-xhigh": "gpt-5.5-xhigh",
-    "aa:claude-opus-4-7": "claude-opus-4-7",
-    "aa:claude-opus-4-6-adaptive": "claude-opus-4-6-adaptive",
-    "aa:claude-sonnet-5": "claude-sonnet-5",
-    "openrouter:anthropic/claude-sonnet-5": "claude-sonnet-5",
-    "aa:glm-5-2": "glm-5.2",
-    "livebench:glm-5.2": "glm-5.2",
-    "openrouter:z-ai/glm-5.2": "glm-5.2",
-    "aa:gpt-5-4": "gpt-5-4",
+    "aa:gpt-5-5-low": "gpt-5.5-low",
+    "aa:gpt-5-5-instant-06-26": "gpt-5-5-instant-06-26",
+    "aa:gpt-5-4-mini-medium": "gpt-5-4-mini-medium",
+    "aa:gpt-5-5-high": "gpt-5.5-high",
+    "livebench:gpt-5.5-high": "gpt-5.5-high",
+    "arena:gpt-5.5-high": "gpt-5.5-high",
+    "aa:gpt-5-4-nano-medium": "gpt-5-4-nano-medium",
+    "aa:gpt-5-5-medium": "gpt-5.5-medium",
+    "livebench:gpt-5.5-medium": "gpt-5.5-medium",
+    "aa:gpt-5-3-codex": "gpt-5.3-codex",
+    "openrouter:openai/gpt-5.3-codex": "gpt-5.3-codex",
+    "aa:muse-spark": "muse-spark",
+    "arena:muse-spark": "muse-spark",
+    "aa:gemma-4-12b": "gemma-4-12b",
+    "aa:gemma-4-26b-a4b": "gemma-4-26b-a4b",
     "aa:gemini-3-5-flash": "gemini-3.5-flash",
     "arena:gemini-3.5-flash": "gemini-3.5-flash",
     "arena_code:gemini-3.5-flash": "gemini-3.5-flash",
     "openrouter:google/gemini-3.5-flash": "gemini-3.5-flash",
-    "aa:qwen3-6-plus": "qwen3-6-plus",
-    "aa:mimo-v2-pro": "mimo-v2-pro",
-    "livebench:mimo-v2-pro": "mimo-v2-pro",
-    "arena_code:mimo-v2-pro": "mimo-v2-pro",
-    "aa:claude-sonnet-4.6-adaptive": "claude-sonnet-4.6-adaptive",
+    "aa:gemma-4-31b": "gemma-4-31b",
     "aa:gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
     "arena:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
     "arena_code:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
     "openrouter:google/gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
-    "aa:qwen3-7-max": "qwen3.7-max",
-    "livebench:qwen3.7-max": "qwen3.7-max",
-    "openrouter:qwen/qwen3.7-max": "qwen3.7-max",
+    "aa:gemma-4-e2b": "gemma-4-e2b",
+    "aa:diffusiongemma-26b-a4b": "diffusiongemma-26b-a4b",
+    "aa:gemma-4-e4b": "gemma-4-e4b",
+    "aa:gemini-3-1-flash-lite-preview": "gemini-3-1-flash-lite-preview",
+    "aa:gemini-3-5-flash-medium": "gemini-3-5-flash-medium",
+    "aa:claude-sonnet-5": "claude-sonnet-5",
+    "openrouter:anthropic/claude-sonnet-5": "claude-sonnet-5",
+    "aa:claude-opus-4-8": "claude-opus-4.8",
+    "arena:claude-opus-4-8": "claude-opus-4.8",
+    "arena_code:claude-opus-4-8": "claude-opus-4.8",
+    "openrouter:anthropic/claude-opus-4.8": "claude-opus-4.8",
+    "aa:claude-fable-5": "claude-fable-5",
+    "arena:claude-fable-5": "claude-fable-5",
+    "arena_code:claude-fable-5": "claude-fable-5",
+    "openrouter:anthropic/claude-fable-5": "claude-fable-5",
+    "aa:claude-opus-4-7": "claude-opus-4-7",
+    "aa:claude-sonnet-5-medium": "claude-sonnet-5-medium",
+    "aa:claude-sonnet-5-high": "claude-sonnet-5-high",
+    "aa:claude-sonnet-5-xhigh": "claude-sonnet-5-xhigh",
+    "aa:claude-sonnet-5-low": "claude-sonnet-5-low",
+    "aa:deepseek-v4-pro-high": "deepseek-v4-pro-high",
     "aa:deepseek-v4-pro": "deepseek-v4-pro",
     "livebench:deepseek-v4-pro": "deepseek-v4-pro",
     "arena_code:deepseek-v4-pro": "deepseek-v4-pro",
     "openrouter:deepseek/deepseek-v4-pro": "deepseek-v4-pro",
-    "aa:gpt-5-3-codex": "gpt-5.3-codex",
-    "openrouter:openai/gpt-5.3-codex": "gpt-5.3-codex",
+    "aa:deepseek-v4-flash": "deepseek-v4-flash",
+    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
+    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "aa:deepseek-v4-flash-high": "deepseek-v4-flash-high",
+    "aa:grok-4-3-low": "grok-4-3-low",
+    "aa:grok-4-3": "grok-4.3",
+    "livebench:grok-4.3": "grok-4.3",
+    "openrouter:x-ai/grok-4.3": "grok-4.3",
+    "aa:grok-4-3-medium": "grok-4-3-medium",
+    "aa:nova-2-0-omni-reasoning-medium": "nova-2-0-omni-reasoning-medium",
+    "aa:nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
+    "aa:nova-2-0-pro-reasoning-low": "nova-2-0-pro-reasoning-low",
+    "aa:nova-2-0-lite-reasoning": "nova-2-0-lite-reasoning",
+    "aa:nova-2-0-lite-reasoning-medium": "nova-2-0-lite-reasoning-medium",
+    "aa:nova-2-0-lite-reasoning-low": "nova-2-0-lite-reasoning-low",
+    "aa:nova-2-0-omni-reasoning-low": "nova-2-0-omni-reasoning-low",
+    "aa:solar-pro-3": "solar-pro-3",
+    "openrouter:upstage/solar-pro-3": "solar-pro-3",
+    "aa:solar-open-100b-reasoning": "solar-open-100b-reasoning",
     "aa:minimax-m3": "minimax-m3",
     "livebench:minimax-m3": "minimax-m3",
     "arena_code:minimax-m3": "minimax-m3",
     "openrouter:minimax/minimax-m3": "minimax-m3",
-    "aa:claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
-    "aa:glm-5v-turbo": "glm-5v-turbo",
-    "livebench:glm-5v-turbo": "glm-5v-turbo",
-    "openrouter:z-ai/glm-5v-turbo": "glm-5v-turbo",
-    "aa:kimi-k2-6": "kimi-k2.6",
-    "arena_code:kimi-k2.6": "kimi-k2.6",
-    "openrouter:moonshotai/kimi-k2.6": "kimi-k2.6",
-    "aa:muse-spark": "muse-spark",
-    "arena:muse-spark": "muse-spark",
-    "aa:kimi-k2-7-code": "kimi-k2.7-code",
-    "livebench:kimi-k2.7-code": "kimi-k2.7-code",
-    "arena_code:kimi-k2.7-code": "kimi-k2.7-code",
-    "openrouter:moonshotai/kimi-k2.7-code": "kimi-k2.7-code",
-    "aa:mimo-v2-5-pro": "mimo-v2.5-pro",
-    "arena:mimo-v2.5-pro": "mimo-v2.5-pro",
-    "arena_code:mimo-v2.5-pro": "mimo-v2.5-pro",
-    "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
-    "aa:claude-opus-4-5-thinking": "claude-opus-4-5-thinking",
-    "aa:gemini-3-pro": "gemini-3-pro",
-    "arena:gemini-3-pro": "gemini-3-pro",
-    "arena_code:gemini-3-pro": "gemini-3-pro",
-    "aa:nex-n2-pro": "nex-n2-pro",
-    "openrouter:nex-agi/nex-n2-pro": "nex-n2-pro",
-    "aa:deepseek-v4-flash": "deepseek-v4-flash",
-    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
-    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
-    "aa:glm-5": "glm-5",
-    "livebench:glm-5": "glm-5",
-    "arena_code:glm-5": "glm-5",
-    "openrouter:z-ai/glm-5": "glm-5",
-    "aa:glm-5-1": "glm-5-1",
-    "aa:gpt-5-2-codex": "gpt-5.2-codex",
-    "livebench:gpt-5.2-codex": "gpt-5.2-codex",
-    "openrouter:openai/gpt-5.2-codex": "gpt-5.2-codex",
-    "aa:gpt-5-4-mini": "gpt-5-4-mini",
-    "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
-    "aa:qwen3-6-max": "qwen3-6-max",
-    "aa:qwen3-7-plus": "qwen3-7-plus",
-    "aa:gemini-3-flash-reasoning": "gemini-3-flash-reasoning",
-    "aa:glm-5-turbo": "glm-5-turbo",
-    "openrouter:z-ai/glm-5-turbo": "glm-5-turbo",
-    "aa:gpt-5-4-nano": "gpt-5-4-nano",
-    "aa:grok-4-3": "grok-4.3",
-    "livebench:grok-4.3": "grok-4.3",
-    "openrouter:x-ai/grok-4.3": "grok-4.3",
-    "aa:kimi-k2-5": "kimi-k2-5",
     "aa:minimax-m2-7": "minimax-m2.7",
     "livebench:minimax-m2.7": "minimax-m2.7",
     "arena_code:minimax-m2.7": "minimax-m2.7",
     "openrouter:minimax/minimax-m2.7": "minimax-m2.7",
-    "aa:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "livebench:nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "openrouter:nvidia/nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "aa:step-3-5-flash": "step-3-5-flash",
-    "aa:qwen3-6-27b": "qwen3-6-27b",
-    "aa:nova-2-0-pro-reasoning-low": "nova-2-0-pro-reasoning-low",
-    "aa:hy3": "hy3",
-    "aa:minimax-m2-5": "minimax-m2.5",
-    "livebench:minimax-m2.5": "minimax-m2.5",
-    "openrouter:minimax/minimax-m2.5": "minimax-m2.5",
-    "aa:qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
-    "arena_code:qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
-    "openrouter:qwen/qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
-    "aa:kimi-k2-thinking": "kimi-k2-thinking",
-    "livebench:kimi-k2-thinking": "kimi-k2-thinking",
-    "openrouter:moonshotai/kimi-k2-thinking": "kimi-k2-thinking",
-    "aa:k-exaone": "k-exaone",
-    "aa:qwen3-6-35b-a3b": "qwen3-6-35b-a3b",
-    "aa:trinity-large-thinking": "trinity-large-thinking",
-    "openrouter:arcee-ai/trinity-large-thinking": "trinity-large-thinking",
-    "aa:nova-2-0-lite-reasoning": "nova-2-0-lite-reasoning",
-    "aa:claude-4.5-haiku-reasoning": "claude-4.5-haiku-reasoning",
-    "aa:exaone-4-5-33b": "exaone-4-5-33b",
-    "aa:mistral-medium-3.5": "mistral-medium-3.5",
-    "aa:step-3-7-flash": "step-3-7-flash",
-    "aa:gemma-4-31b": "gemma-4-31b",
-    "aa:nova-2-0-omni-reasoning-low": "nova-2-0-omni-reasoning-low",
-    "aa:gemma-4-26b-a4b": "gemma-4-26b-a4b",
-    "aa:solar-pro-3": "solar-pro-3",
-    "openrouter:upstage/solar-pro-3": "solar-pro-3",
-    "aa:gemini-3-1-flash-lite-preview": "gemini-3-1-flash-lite-preview",
-    "aa:mercury-2": "mercury-2",
-    "openrouter:inception/mercury-2": "mercury-2",
     "aa:nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
     "livebench:nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
     "openrouter:nvidia/nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
-    "aa:gpt-oss-120b": "gpt-oss-120b",
-    "livebench:gpt-oss-120b": "gpt-oss-120b",
-    "openrouter:openai/gpt-oss-120b": "gpt-oss-120b",
-    "aa:k2-think-v2": "k2-think-v2",
-    "aa:gemma-4-12b": "gemma-4-12b",
+    "aa:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "livebench:nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
     "aa:nemotron-cascade-2-30b-a3b": "nemotron-cascade-2-30b-a3b",
-    "aa:sonar-reasoning-pro": "sonar-reasoning-pro",
-    "openrouter:perplexity/sonar-reasoning-pro": "sonar-reasoning-pro",
-    "aa:exaone-4-0-32b-reasoning": "exaone-4-0-32b-reasoning",
-    "aa:gemma-4-e2b": "gemma-4-e2b",
-    "aa:gpt-oss-20b": "gpt-oss-20b",
-    "openrouter:openai/gpt-oss-20b": "gpt-oss-20b",
     "aa:nemotron-3-nano-omni-30b-a3b": "nemotron-3-nano-omni-30b-a3b",
-    "aa:solar-open-100b-reasoning": "solar-open-100b-reasoning",
     "aa:nvidia-nemotron-3-nano-30b-a3b-reasoning": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
-    "aa:diffusiongemma-26b-a4b": "diffusiongemma-26b-a4b",
-    "aa:gemma-4-e4b": "gemma-4-e4b",
-    "aa:sonar-reasoning": "sonar-reasoning",
-    "aa:hermes-4-llama-3-1-70b-reasoning": "hermes-4-llama-3-1-70b-reasoning",
-    "aa:hermes-4-llama-3-1-405b-reasoning": "hermes-4-llama-3-1-405b-reasoning",
-    "aa:exaone-4-0-1-2b-reasoning": "exaone-4-0-1-2b-reasoning",
+    "aa:kimi-k2-6": "kimi-k2.6",
+    "arena_code:kimi-k2.6": "kimi-k2.6",
+    "openrouter:moonshotai/kimi-k2.6": "kimi-k2.6",
+    "aa:kimi-k2-7-code": "kimi-k2.7-code",
+    "livebench:kimi-k2.7-code": "kimi-k2.7-code",
+    "arena_code:kimi-k2.7-code": "kimi-k2.7-code",
+    "openrouter:moonshotai/kimi-k2.7-code": "kimi-k2.7-code",
+    "aa:step-3-7-flash": "step-3-7-flash",
+    "aa:step-3-5-flash": "step-3-5-flash",
+    "aa:mercury-2": "mercury-2",
+    "openrouter:inception/mercury-2": "mercury-2",
     "aa:reka-flash-3": "reka-flash-3",
     "openrouter:rekaai/reka-flash-3": "reka-flash-3",
-    "aa:gpt-5-5-instant-06-26": "gpt-5-5-instant-06-26",
-    "aa:gpt-5-5-pro": "gpt-5.5-pro",
-    "openrouter:openai/gpt-5.5-pro": "gpt-5.5-pro",
+    "aa:hermes-4-llama-3-1-405b-reasoning": "hermes-4-llama-3-1-405b-reasoning",
+    "aa:hermes-4-llama-3-1-70b-reasoning": "hermes-4-llama-3-1-70b-reasoning",
+    "aa:exaone-4-0-1-2b-reasoning": "exaone-4-0-1-2b-reasoning",
+    "aa:exaone-4-5-33b": "exaone-4-5-33b",
+    "aa:k-exaone": "k-exaone",
+    "aa:exaone-4-0-32b-reasoning": "exaone-4-0-32b-reasoning",
+    "aa:mimo-v2-5-pro": "mimo-v2.5-pro",
+    "arena:mimo-v2.5-pro": "mimo-v2.5-pro",
+    "arena_code:mimo-v2.5-pro": "mimo-v2.5-pro",
+    "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
+    "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
+    "aa:hy3": "hy3",
+    "aa:trinity-large-thinking": "trinity-large-thinking",
+    "openrouter:arcee-ai/trinity-large-thinking": "trinity-large-thinking",
+    "aa:nex-n2-pro": "nex-n2-pro",
+    "openrouter:nex-agi/nex-n2-pro": "nex-n2-pro",
+    "aa:glm-5-1": "glm-5-1",
+    "aa:glm-5-2": "glm-5.2",
+    "livebench:glm-5.2": "glm-5.2",
+    "openrouter:z-ai/glm-5.2": "glm-5.2",
+    "aa:glm-5-turbo": "glm-5-turbo",
+    "openrouter:z-ai/glm-5-turbo": "glm-5-turbo",
+    "aa:glm-5v-turbo": "glm-5v-turbo",
+    "livebench:glm-5v-turbo": "glm-5v-turbo",
+    "openrouter:z-ai/glm-5v-turbo": "glm-5v-turbo",
+    "aa:qwen3-6-35b-a3b": "qwen3-6-35b-a3b",
+    "aa:qwen3-7-max": "qwen3.7-max",
+    "livebench:qwen3.7-max": "qwen3.7-max",
+    "openrouter:qwen/qwen3.7-max": "qwen3.7-max",
+    "aa:qwen3-7-plus": "qwen3-7-plus",
+    "aa:qwen3-6-27b": "qwen3-6-27b",
+    "aa:qwen3-6-plus": "qwen3-6-plus",
+    "aa:gpt-5-4": "gpt-5-4",
+    "aa:gpt-5-2-codex": "gpt-5.2-codex",
+    "livebench:gpt-5.2-codex": "gpt-5.2-codex",
+    "openrouter:openai/gpt-5.2-codex": "gpt-5.2-codex",
+    "aa:gemini-3-pro": "gemini-3-pro",
+    "arena:gemini-3-pro": "gemini-3-pro",
+    "arena_code:gemini-3-pro": "gemini-3-pro",
+    "aa:gemini-3-pro-low": "gemini-3-pro-low",
+    "aa:gemini-3-flash-reasoning": "gemini-3-flash-reasoning",
+    "aa:claude-opus-4-5-thinking": "claude-opus-4-5-thinking",
+    "aa:claude-opus-4-6-adaptive": "claude-opus-4-6-adaptive",
+    "aa:claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
+    "aa:sonar-reasoning-pro": "sonar-reasoning-pro",
+    "openrouter:perplexity/sonar-reasoning-pro": "sonar-reasoning-pro",
+    "aa:sonar-reasoning": "sonar-reasoning",
+    "aa:minimax-m2-5": "minimax-m2.5",
+    "livebench:minimax-m2.5": "minimax-m2.5",
+    "openrouter:minimax/minimax-m2.5": "minimax-m2.5",
+    "aa:kimi-k2-thinking": "kimi-k2-thinking",
+    "livebench:kimi-k2-thinking": "kimi-k2-thinking",
+    "openrouter:moonshotai/kimi-k2-thinking": "kimi-k2-thinking",
+    "aa:kimi-k2-5": "kimi-k2-5",
+    "aa:mimo-v2-pro": "mimo-v2-pro",
+    "livebench:mimo-v2-pro": "mimo-v2-pro",
+    "arena_code:mimo-v2-pro": "mimo-v2-pro",
+    "aa:glm-5": "glm-5",
+    "livebench:glm-5": "glm-5",
+    "arena_code:glm-5": "glm-5",
+    "openrouter:z-ai/glm-5": "glm-5",
+    "aa:qwen3-6-max": "qwen3-6-max",
+    "aa:claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
+    "aa:claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
+    "aa:mistral-medium-3-5": "mistral-medium-3.5",
+    "aa:k2-think-v2": "k2-think-v2",
+    "aa:qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
+    "arena_code:qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
+    "openrouter:qwen/qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
     "livebench:arcee-trinity-large-preview": "arcee-trinity-large-preview",
     "livebench:claude-4-1-opus-20250805-base": "claude-4-1-opus-base",
     "livebench:claude-4-1-opus-20250805-thinking-32k": "claude-4-1-opus-thinking-32k",
@@ -284,9 +308,6 @@
     "livebench:gpt-5.4-nano-low": "gpt-5.4-nano-low",
     "livebench:gpt-5.4-nano-medium": "gpt-5.4-nano-medium",
     "livebench:gpt-5.4-nano-xhigh": "gpt-5.4-nano-xhigh",
-    "livebench:gpt-5.5-high": "gpt-5.5-high",
-    "arena:gpt-5.5-high": "gpt-5.5-high",
-    "livebench:gpt-5.5-medium": "gpt-5.5-medium",
     "livebench:grok-4-0709": "grok-4-0709",
     "livebench:grok-4-1-fast-non-reasoning": "grok-4-1-fast-non-reasoning",
     "livebench:grok-4-1-fast-reasoning": "grok-4-1-fast-reasoning",
@@ -4659,12 +4680,12 @@
       "id": "claude-4.5-haiku-reasoning",
       "name": "Claude 4.5 Haiku Reasoning",
       "creator": "Anthropic",
-      "model_type": "Proprietary",
+      "model_type": null,
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 65.5,
-        "iq_percentile": 21.6,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -4672,13 +4693,13 @@
           "inp_price": 1.0,
           "out_price": 5.0,
           "blended": 0.7,
-          "cost_per_task": 0.445,
+          "cache_hit_price": null,
+          "cost_per_task": 539.04,
           "tokens_m": 88,
           "speed_tps": 102.0,
-          "cost_per_wallsec": 5.158e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 6.1255,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
             "answer_usd": 0.05,
@@ -4692,13 +4713,13 @@
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": 67.42,
-          "iq_per_mtok": 0.3409,
-          "iq_per_mtokdollar": 0.7661
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 55.6545,
+          "iq_per_mtokdollar": 17.968
         }
       },
       "aliases": {
-        "aa": "claude-4.5-haiku-reasoning"
+        "aa": "claude-4-5-haiku-reasoning"
       }
     },
     {
@@ -4707,10 +4728,10 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 86.2,
-        "iq_percentile": 62.2,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -4718,13 +4739,13 @@
           "inp_price": 3.0,
           "out_price": 15.0,
           "blended": 2.1,
-          "cost_per_task": 0.975,
+          "cache_hit_price": 0.3,
+          "cost_per_task": 1458.79,
           "tokens_m": 64,
           "speed_tps": 48.2,
-          "cost_per_wallsec": 7.343e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 22.7936,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.41,
             "answer_usd": 0.15,
@@ -4738,9 +4759,9 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": 44.1,
-          "iq_per_mtok": 0.6719,
-          "iq_per_mtokdollar": 0.6891
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 29.4765,
+          "iq_per_mtokdollar": 33.9253
         }
       },
       "aliases": {
@@ -4753,10 +4774,10 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "frontier",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 96.6,
-        "iq_percentile": 100.0,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -4764,13 +4785,13 @@
           "inp_price": 10.0,
           "out_price": 50.0,
           "blended": 7.0,
-          "cost_per_task": 4.4,
+          "cache_hit_price": 1.0,
+          "cost_per_task": 5630.52,
           "tokens_m": 87,
           "speed_tps": 72.6,
-          "cost_per_wallsec": 3.6717e-06,
-          "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "cost_per_wallsec": null,
+          "useful_cost": 64.7186,
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4785,9 +4806,9 @@
       "benchmarks": {
         "aa": {
           "intel": 60,
-          "iq_per_dollar_pt": 13.64,
-          "iq_per_mtok": 0.6897,
-          "iq_per_mtokdollar": 0.1567
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 10.6562,
+          "iq_per_mtokdollar": 93.842
         },
         "arena_text": {
           "elo": 1509,
@@ -5110,7 +5131,7 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "premium",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -5120,7 +5141,8 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 5.0,
+          "blended": null,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 55.6,
@@ -5216,7 +5238,7 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "premium",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -5226,7 +5248,8 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 5.0,
+          "blended": null,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 39.1,
@@ -5300,7 +5323,7 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "premium",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -5310,7 +5333,8 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 5.0,
+          "blended": null,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 48.0,
@@ -5705,10 +5729,10 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "frontier",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 93.1,
-        "iq_percentile": 97.3,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -5716,13 +5740,13 @@
           "inp_price": 5.0,
           "out_price": 25.0,
           "blended": 3.5,
-          "cost_per_task": 3.025,
+          "cache_hit_price": 0.5,
+          "cost_per_task": 3752.55,
           "tokens_m": 120,
           "speed_tps": 64.9,
-          "cost_per_wallsec": 1.636e-06,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 31.2713,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 1.8,
             "answer_usd": 0.5,
@@ -5745,9 +5769,9 @@
       "benchmarks": {
         "aa": {
           "intel": 56,
-          "iq_per_dollar_pt": 18.51,
-          "iq_per_mtok": 0.4667,
-          "iq_per_mtokdollar": 0.1543
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 14.9232,
+          "iq_per_mtokdollar": 67.0098
         },
         "arena_text": {
           "elo": 1477,
@@ -6034,12 +6058,12 @@
       "id": "claude-sonnet-4.6-adaptive",
       "name": "Claude Sonnet 4.6 Adaptive",
       "creator": "Anthropic",
-      "model_type": "Proprietary",
+      "model_type": null,
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 89.7,
-        "iq_percentile": 78.4,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -6047,13 +6071,13 @@
           "inp_price": 3.0,
           "out_price": 15.0,
           "blended": 2.1,
-          "cost_per_task": 3.015,
+          "cache_hit_price": null,
+          "cost_per_task": 3355.85,
           "tokens_m": 200,
           "speed_tps": 51.0,
-          "cost_per_wallsec": 7.688e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 16.7793,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 1.14,
             "answer_usd": 0.3,
@@ -6067,25 +6091,25 @@
       "benchmarks": {
         "aa": {
           "intel": 47,
-          "iq_per_dollar_pt": 15.59,
-          "iq_per_mtok": 0.235,
-          "iq_per_mtokdollar": 0.0779
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 14.0054,
+          "iq_per_mtokdollar": 71.4011
         }
       },
       "aliases": {
-        "aa": "claude-sonnet-4.6-adaptive"
+        "aa": "claude-sonnet-4-6-adaptive"
       }
     },
     {
       "id": "claude-sonnet-5",
-      "name": "Claude Sonnet 5 (high/low/medium/xhigh)",
+      "name": "Claude Sonnet 5 (Adaptive Reasoning, Max Effort)",
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 100.0,
-        "iq_percentile": 91.9,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -6093,13 +6117,13 @@
           "inp_price": 3.0,
           "out_price": 15.0,
           "blended": 2.1,
-          "cost_per_task": 4.515,
+          "cache_hit_price": 0.3,
+          "cost_per_task": 6015.18,
           "tokens_m": 300,
           "speed_tps": 78.1,
-          "cost_per_wallsec": 1.1754e-06,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 20.0506,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 2.29,
             "answer_usd": 0.6,
@@ -6122,14 +6146,128 @@
       "benchmarks": {
         "aa": {
           "intel": 53,
-          "iq_per_dollar_pt": 11.74,
-          "iq_per_mtok": 0.1767,
-          "iq_per_mtokdollar": 0.0391
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 8.811,
+          "iq_per_mtokdollar": 113.494
         }
       },
       "aliases": {
         "aa": "claude-sonnet-5",
         "openrouter": "anthropic/claude-sonnet-5"
+      }
+    },
+    {
+      "id": "claude-sonnet-5-high",
+      "name": "Claude Sonnet 5 (Adaptive Reasoning, High Effort)",
+      "creator": "Anthropic",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 3.0,
+          "out_price": 15.0,
+          "blended": null,
+          "cache_hit_price": 0.3,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 74.5,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": null,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-sonnet-5-high"
+      }
+    },
+    {
+      "id": "claude-sonnet-5-low",
+      "name": "Claude Sonnet 5 (Adaptive Reasoning, Low Effort)",
+      "creator": "Anthropic",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": null,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-sonnet-5-low"
+      }
+    },
+    {
+      "id": "claude-sonnet-5-medium",
+      "name": "Claude Sonnet 5 (Adaptive Reasoning, Medium Effort)",
+      "creator": "Anthropic",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": null,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-sonnet-5-medium"
       }
     },
     {
@@ -6148,6 +6286,44 @@
       },
       "aliases": {
         "arena_code": "claude-sonnet-5-thinking"
+      }
+    },
+    {
+      "id": "claude-sonnet-5-xhigh",
+      "name": "Claude Sonnet 5 (Adaptive Reasoning, Xhigh Effort)",
+      "creator": "Anthropic",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": null,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-sonnet-5-xhigh"
       }
     },
     {
@@ -8429,14 +8605,14 @@
     },
     {
       "id": "deepseek-v4-flash",
-      "name": "DeepSeek V4 Flash (Reasoning, Max Effort) (high)",
+      "name": "DeepSeek V4 Flash (Reasoning, Max Effort)",
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 3.4,
-        "iq_percentile": 45.9,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -8444,13 +8620,13 @@
           "inp_price": 0.14,
           "out_price": 0.28,
           "blended": 0.0581,
-          "cost_per_task": 0.0651,
+          "cache_hit_price": 0.003,
+          "cost_per_task": 72.42,
           "tokens_m": 230,
           "speed_tps": 101.0,
-          "cost_per_wallsec": 2.86e-08,
-          "useful_cost": 0.0,
-          "reasoning_tax_pct": 0,
-          "cache": 0.003,
+          "cost_per_wallsec": null,
+          "useful_cost": 0.3149,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -8473,9 +8649,9 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": 614.44,
-          "iq_per_mtok": 0.1739,
-          "iq_per_mtokdollar": 2.6713
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 552.3336,
+          "iq_per_mtokdollar": 1.8105
         },
         "livebench": {
           "average": 67.67,
@@ -8495,15 +8671,53 @@
       }
     },
     {
-      "id": "deepseek-v4-pro",
-      "name": "DeepSeek V4 Pro (Reasoning, Max Effort) (high)",
+      "id": "deepseek-v4-flash-high",
+      "name": "DeepSeek V4 Flash (Reasoning, High Effort)",
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 10.3,
-        "iq_percentile": 70.3,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.14,
+          "out_price": 0.28,
+          "blended": null,
+          "cache_hit_price": 0.028,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 37,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "deepseek-v4-flash-high"
+      }
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro (Reasoning, Max Effort)",
+      "creator": "DeepSeek",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -8511,13 +8725,13 @@
           "inp_price": 0.435,
           "out_price": 0.87,
           "blended": 0.173,
-          "cost_per_task": 0.158775,
+          "cache_hit_price": 0.004,
+          "cost_per_task": 176.34,
           "tokens_m": 180,
           "speed_tps": 65.5,
-          "cost_per_wallsec": 5.78e-08,
-          "useful_cost": 0.0,
-          "reasoning_tax_pct": 0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 0.9797,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.04,
             "answer_usd": 0.0,
@@ -8540,9 +8754,9 @@
       "benchmarks": {
         "aa": {
           "intel": 44,
-          "iq_per_dollar_pt": 277.12,
-          "iq_per_mtok": 0.2444,
-          "iq_per_mtokdollar": 1.5393
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 249.518,
+          "iq_per_mtokdollar": 4.0077
         },
         "livebench": {
           "average": 74.39,
@@ -8565,6 +8779,44 @@
         "livebench": "deepseek-v4-pro",
         "arena_code": "deepseek-v4-pro",
         "openrouter": "deepseek/deepseek-v4-pro"
+      }
+    },
+    {
+      "id": "deepseek-v4-pro-high",
+      "name": "DeepSeek V4 Pro (Reasoning, High Effort)",
+      "creator": "DeepSeek",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.435,
+          "out_price": 0.87,
+          "blended": null,
+          "cache_hit_price": 0.004,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 81.0,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 41,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "deepseek-v4-pro-high"
       }
     },
     {
@@ -8764,7 +9016,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -8775,6 +9027,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -10107,7 +10360,7 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -10118,6 +10371,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -10144,7 +10398,7 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -10155,6 +10409,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -10181,7 +10436,7 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -10192,6 +10447,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -12184,7 +12440,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -12194,7 +12450,8 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 1.5,
-          "blended": 0.25,
+          "blended": null,
+          "cache_hit_price": 0.025,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 280.3,
@@ -12213,6 +12470,44 @@
       },
       "aliases": {
         "aa": "gemini-3-1-flash-lite-preview"
+      }
+    },
+    {
+      "id": "gemini-3-5-flash-medium",
+      "name": "Gemini 3.5 Flash (medium)",
+      "creator": "Google",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.5,
+          "out_price": 9.0,
+          "blended": null,
+          "cache_hit_price": 0.15,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 168.3,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 45,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gemini-3-5-flash-medium"
       }
     },
     {
@@ -12331,7 +12626,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -12341,7 +12636,8 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": 0.5,
+          "blended": null,
+          "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 170.5,
@@ -12364,11 +12660,11 @@
     },
     {
       "id": "gemini-3-pro",
-      "name": "Gemini 3 Pro Preview (low)",
+      "name": "Gemini 3 Pro Preview (high)",
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -12378,7 +12674,8 @@
         "aa": {
           "inp_price": 2.0,
           "out_price": 12.0,
-          "blended": 2.0,
+          "blended": null,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -12453,6 +12750,44 @@
       "benchmarks": {},
       "aliases": {
         "openrouter": "google/gemini-3-pro-image-preview"
+      }
+    },
+    {
+      "id": "gemini-3-pro-low",
+      "name": "Gemini 3 Pro Preview (low)",
+      "creator": "Google",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 41,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gemini-3-pro-low"
       }
     },
     {
@@ -12634,10 +12969,10 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 34.5,
-        "iq_percentile": 75.7,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -12645,13 +12980,13 @@
           "inp_price": 2.0,
           "out_price": 12.0,
           "blended": 1.74,
-          "cost_per_task": 0.682,
+          "cache_hit_price": 0.2,
+          "cost_per_task": 815.11,
           "tokens_m": 56,
           "speed_tps": 130.4,
-          "cost_per_wallsec": 1.5881e-06,
-          "useful_cost": 0.24,
-          "reasoning_tax_pct": 20.83,
-          "cache": 0.2,
+          "cost_per_wallsec": null,
+          "useful_cost": 14.5555,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.29,
             "answer_usd": 0.18,
@@ -12674,9 +13009,9 @@
       "benchmarks": {
         "aa": {
           "intel": 46,
-          "iq_per_dollar_pt": 67.45,
-          "iq_per_mtok": 0.8214,
-          "iq_per_mtokdollar": 1.2044
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 56.4341,
+          "iq_per_mtokdollar": 17.7198
         },
         "arena_text": {
           "elo": 1486,
@@ -12743,14 +13078,14 @@
     },
     {
       "id": "gemini-3.5-flash",
-      "name": "Gemini 3.5 Flash (medium)",
+      "name": "Gemini 3.5 Flash (high)",
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 69.0,
-        "iq_percentile": 83.8,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -12758,13 +13093,13 @@
           "inp_price": 1.5,
           "out_price": 9.0,
           "blended": 1.2,
-          "cost_per_task": 0.6825,
+          "cache_hit_price": 0.15,
+          "cost_per_task": 1040.88,
           "tokens_m": 75,
           "speed_tps": 174.4,
-          "cost_per_wallsec": 1.587e-06,
-          "useful_cost": 0.39,
-          "reasoning_tax_pct": 51.28,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 13.8784,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.59,
             "answer_usd": 0.3,
@@ -12787,9 +13122,9 @@
       "benchmarks": {
         "aa": {
           "intel": 50,
-          "iq_per_dollar_pt": 73.26,
-          "iq_per_mtok": 0.6667,
-          "iq_per_mtokdollar": 0.9768
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 48.0363,
+          "iq_per_mtokdollar": 20.8176
         },
         "arena_text": {
           "elo": 1479,
@@ -12982,7 +13317,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -12993,6 +13328,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 120.4,
@@ -13019,7 +13355,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13029,7 +13365,8 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": 0.13,
+          "blended": null,
+          "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -13096,31 +13433,31 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 16.2,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
+          "inp_price": 0.0,
+          "out_price": 0.0,
           "blended": 0.0,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 38,
           "speed_tps": 34.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 29,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": 0.7632,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
       },
@@ -13188,7 +13525,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13199,6 +13536,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -13225,7 +13563,7 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13236,6 +13574,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -13598,7 +13937,7 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13608,7 +13947,8 @@
         "aa": {
           "inp_price": 1.0,
           "out_price": 3.2,
-          "blended": 1.0,
+          "blended": null,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 70.2,
@@ -13662,7 +14002,7 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13672,7 +14012,8 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": 1.4,
+          "blended": null,
+          "cache_hit_price": 0.26,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 69.3,
@@ -13699,7 +14040,7 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13710,6 +14051,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -13792,10 +14134,10 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 62.1,
-        "iq_percentile": 86.5,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -13803,13 +14145,13 @@
           "inp_price": 1.4,
           "out_price": 4.4,
           "blended": 0.72,
-          "cost_per_task": 0.623,
+          "cache_hit_price": 0.26,
+          "cost_per_task": 932.68,
           "tokens_m": 140,
           "speed_tps": 185.2,
-          "cost_per_wallsec": 8.241e-07,
-          "useful_cost": 0.0,
-          "reasoning_tax_pct": 0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 6.662,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.48,
             "answer_usd": 0.0,
@@ -13832,9 +14174,9 @@
       "benchmarks": {
         "aa": {
           "intel": 51,
-          "iq_per_dollar_pt": 81.86,
-          "iq_per_mtok": 0.3643,
-          "iq_per_mtokdollar": 0.5848
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 54.6811,
+          "iq_per_mtokdollar": 18.2878
         },
         "livebench": {
           "average": 76.18,
@@ -13883,7 +14225,7 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-high",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -13894,6 +14236,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -14333,11 +14676,11 @@
     },
     {
       "id": "gpt-5-4",
-      "name": "GPT-5.4",
+      "name": "GPT-5.4 (xhigh)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -14347,7 +14690,8 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 15.0,
-          "blended": 2.5,
+          "blended": null,
+          "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 153.0,
@@ -14370,11 +14714,11 @@
     },
     {
       "id": "gpt-5-4-mini",
-      "name": "GPT-5.4 mini (medium)",
+      "name": "GPT-5.4 mini (xhigh)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -14384,7 +14728,8 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": 0.75,
+          "blended": null,
+          "cache_hit_price": 0.075,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 185.1,
@@ -14406,12 +14751,50 @@
       }
     },
     {
-      "id": "gpt-5-4-nano",
-      "name": "GPT-5.4 nano (medium)",
+      "id": "gpt-5-4-mini-medium",
+      "name": "GPT-5.4 mini (medium)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.75,
+          "out_price": 4.5,
+          "blended": null,
+          "cache_hit_price": 0.075,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 169.0,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 30,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gpt-5-4-mini-medium"
+      }
+    },
+    {
+      "id": "gpt-5-4-nano",
+      "name": "GPT-5.4 nano (xhigh)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -14421,7 +14804,8 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": 0.2,
+          "blended": null,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.0,
@@ -14443,6 +14827,44 @@
       }
     },
     {
+      "id": "gpt-5-4-nano-medium",
+      "name": "GPT-5.4 nano (medium)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.2,
+          "out_price": 1.25,
+          "blended": null,
+          "cache_hit_price": 0.02,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 164.3,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 30,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gpt-5-4-nano-medium"
+      }
+    },
+    {
       "id": "gpt-5-5-instant-06-26",
       "name": "GPT-5.5 Instant (June 2026)",
       "creator": "OpenAI",
@@ -14458,7 +14880,8 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 5.0,
+          "blended": null,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15253,14 +15676,14 @@
     },
     {
       "id": "gpt-5.2-codex",
-      "name": "GPT-5.2 Codex",
+      "name": "GPT-5.2 Codex (xhigh)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 45.9,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -15268,13 +15691,13 @@
           "inp_price": 1.75,
           "out_price": 14.0,
           "blended": 1.75,
+          "cache_hit_price": 0.178,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 155.7,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -15354,14 +15777,14 @@
     },
     {
       "id": "gpt-5.3-codex",
-      "name": "GPT-5.3 Codex",
+      "name": "GPT-5.3 Codex (xhigh)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 70.3,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -15369,13 +15792,13 @@
           "inp_price": 1.75,
           "out_price": 14.0,
           "blended": 1.75,
+          "cache_hit_price": 0.175,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 90.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -15959,12 +16382,28 @@
     },
     {
       "id": "gpt-5.5-high",
-      "name": "gpt-5.5-high",
+      "name": "GPT-5.5 (high)",
       "creator": "OpenAI",
-      "model_type": null,
-      "meta": {},
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
       "pricing": {
         "aa": {
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 4.0,
+          "cache_hit_price": 0.5,
+          "cost_per_task": 1745.57,
+          "tokens_m": 43,
+          "speed_tps": 67.2,
+          "cost_per_wallsec": null,
+          "useful_cost": 40.5947,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.69,
             "answer_usd": 0.15,
@@ -15976,6 +16415,12 @@
         }
       },
       "benchmarks": {
+        "aa": {
+          "intel": 53,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 30.3626,
+          "iq_per_mtokdollar": 32.9353
+        },
         "livebench": {
           "average": 77.07,
           "Mathematics": 96.07,
@@ -15993,6 +16438,7 @@
         }
       },
       "aliases": {
+        "aa": "gpt-5-5-high",
         "livebench": "gpt-5.5-high",
         "arena": "gpt-5.5-high"
       }
@@ -16034,13 +16480,75 @@
       }
     },
     {
-      "id": "gpt-5.5-medium",
-      "name": "gpt-5.5-medium",
-      "creator": null,
-      "model_type": null,
-      "meta": {},
+      "id": "gpt-5.5-low",
+      "name": "GPT-5.5 (low)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
       "pricing": {
         "aa": {
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 4.0,
+          "cache_hit_price": 0.5,
+          "cost_per_task": 382.08,
+          "tokens_m": null,
+          "speed_tps": 68.6,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": {
+            "total_cost_per_task_usd": 0.22,
+            "answer_usd": 0.1,
+            "reasoning_usd": 0.08,
+            "cache_write_usd": 0.0,
+            "cache_hit_usd": 0.02,
+            "input_usd": 0.02
+          }
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 43,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 112.5419,
+          "iq_per_mtokdollar": 8.8856
+        }
+      },
+      "aliases": {
+        "aa": "gpt-5-5-low"
+      }
+    },
+    {
+      "id": "gpt-5.5-medium",
+      "name": "GPT-5.5 (medium)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 4.0,
+          "cache_hit_price": 0.5,
+          "cost_per_task": 951.24,
+          "tokens_m": 21,
+          "speed_tps": 66.9,
+          "cost_per_wallsec": null,
+          "useful_cost": 45.2971,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.42,
             "answer_usd": 0.1,
@@ -16052,6 +16560,12 @@
         }
       },
       "benchmarks": {
+        "aa": {
+          "intel": 50,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 52.563,
+          "iq_per_mtokdollar": 19.0248
+        },
         "livebench": {
           "average": 68.96,
           "Mathematics": 69.77,
@@ -16064,12 +16578,13 @@
         }
       },
       "aliases": {
+        "aa": "gpt-5-5-medium",
         "livebench": "gpt-5.5-medium"
       }
     },
     {
       "id": "gpt-5.5-pro",
-      "name": "GPT-5.5 Pro",
+      "name": "GPT-5.5 Pro (xhigh)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
@@ -16081,16 +16596,16 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
+          "inp_price": 0.0,
+          "out_price": 0.0,
           "blended": 0.0,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 3e-05,
@@ -16115,28 +16630,28 @@
     },
     {
       "id": "gpt-5.5-xhigh",
-      "name": "GPT-5.5 (high/low/medium/xhigh)",
+      "name": "GPT-5.5 (xhigh)",
       "creator": "OpenAI",
-      "model_type": "Proprietary",
+      "model_type": "reasoning",
       "meta": {
-        "archetype": "frontier",
-        "pareto_optimal": true,
-        "cost_percentile": 75.9,
-        "iq_percentile": 94.6,
-        "has_breakdown": true
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
       },
       "pricing": {
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
           "blended": 4.35,
-          "cost_per_task": 2.185,
+          "cache_hit_price": 0.5,
+          "cost_per_task": 2818.79,
           "tokens_m": 72,
-          "speed_tps": 75.0,
-          "cost_per_wallsec": 2.276e-06,
-          "useful_cost": 0.38,
-          "reasoning_tax_pct": 171.05,
-          "cache": 0.5,
+          "speed_tps": 71.4,
+          "cost_per_wallsec": null,
+          "useful_cost": 39.1499,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 1.03,
             "answer_usd": 0.2,
@@ -16150,9 +16665,9 @@
       "benchmarks": {
         "aa": {
           "intel": 55,
-          "iq_per_dollar_pt": 25.17,
-          "iq_per_mtok": 0.7639,
-          "iq_per_mtokdollar": 0.3496
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 19.5119,
+          "iq_per_mtokdollar": 51.2507
         },
         "livebench": {
           "average": 81.28,
@@ -16296,14 +16811,14 @@
     },
     {
       "id": "gpt-oss-120b",
-      "name": "gpt-oss-120b (low)",
+      "name": "gpt-oss-120b (high)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 17.2,
-        "iq_percentile": 8.1,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -16311,13 +16826,13 @@
           "inp_price": 0.15,
           "out_price": 0.6,
           "blended": 0.09,
-          "cost_per_task": 0.05295,
+          "cache_hit_price": 0.15,
+          "cost_per_task": 96.28,
           "tokens_m": 87,
           "speed_tps": 303.4,
-          "cost_per_wallsec": 1.847e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 1.1067,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.06,
             "answer_usd": 0.0,
@@ -16338,9 +16853,9 @@
       "benchmarks": {
         "aa": {
           "intel": 24,
-          "iq_per_dollar_pt": 453.26,
-          "iq_per_mtok": 0.2759,
-          "iq_per_mtokdollar": 5.2106
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 249.273,
+          "iq_per_mtokdollar": 4.0117
         },
         "livebench": {
           "average": 46.35,
@@ -16357,6 +16872,44 @@
         "aa": "gpt-oss-120b",
         "livebench": "gpt-oss-120b",
         "openrouter": "openai/gpt-oss-120b"
+      }
+    },
+    {
+      "id": "gpt-oss-120b-low",
+      "name": "gpt-oss-120b (low)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.15,
+          "out_price": 0.6,
+          "blended": null,
+          "cache_hit_price": 0.15,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 340.8,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 24,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gpt-oss-120b-low"
       }
     },
     {
@@ -16381,28 +16934,28 @@
     },
     {
       "id": "gpt-oss-20b",
-      "name": "gpt-oss-20b (low)",
+      "name": "gpt-oss-20b (high)",
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 6.9,
-        "iq_percentile": 2.7,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
+          "inp_price": 0.05,
+          "out_price": 0.2,
           "blended": 0.03,
-          "cost_per_task": 0.02987,
+          "cache_hit_price": null,
+          "cost_per_task": 29.87,
           "tokens_m": 67,
           "speed_tps": 234.0,
-          "cost_per_wallsec": 1.043e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 0.4458,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -16424,13 +16977,51 @@
         "aa": {
           "intel": 15,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": 0.2239,
-          "iq_per_mtokdollar": 7.4958
+          "iq_per_mtok": 502.1761,
+          "iq_per_mtokdollar": 1.9913
         }
       },
       "aliases": {
         "aa": "gpt-oss-20b",
         "openrouter": "openai/gpt-oss-20b"
+      }
+    },
+    {
+      "id": "gpt-oss-20b-low",
+      "name": "gpt-oss-20B (low)",
+      "creator": "OpenAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 223.6,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 14,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "gpt-oss-20b-low"
       }
     },
     {
@@ -16587,6 +17178,82 @@
       }
     },
     {
+      "id": "grok-4-3-low",
+      "name": "Grok 4.3 (low)",
+      "creator": "xAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.25,
+          "out_price": 2.5,
+          "blended": null,
+          "cache_hit_price": 0.2,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 121.5,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 35,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "grok-4-3-low"
+      }
+    },
+    {
+      "id": "grok-4-3-medium",
+      "name": "Grok 4.3 (medium)",
+      "creator": "xAI",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.25,
+          "out_price": 2.5,
+          "blended": null,
+          "cache_hit_price": 0.2,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 109.2,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 36,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "grok-4-3-medium"
+      }
+    },
+    {
       "id": "grok-4.1-thinking",
       "name": "grok-4.1-thinking",
       "creator": "xAI",
@@ -16738,14 +17405,14 @@
     },
     {
       "id": "grok-4.3",
-      "name": "Grok 4.3 (low/medium)",
+      "name": "Grok 4.3 (high)",
       "creator": "xAI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 41.4,
-        "iq_percentile": 40.5,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -16753,13 +17420,13 @@
           "inp_price": 1.25,
           "out_price": 2.5,
           "blended": 0.5,
-          "cost_per_task": 0.21375,
+          "cache_hit_price": 0.2,
+          "cost_per_task": 299.97,
           "tokens_m": 83,
           "speed_tps": 120.9,
-          "cost_per_wallsec": 3.114e-07,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 3.6141,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.16,
             "answer_usd": 0.13,
@@ -16782,9 +17449,9 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": 177.78,
-          "iq_per_mtok": 0.4578,
-          "iq_per_mtokdollar": 2.1418
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 126.6793,
+          "iq_per_mtokdollar": 7.8939
         },
         "livebench": {
           "average": 67.37,
@@ -17401,7 +18068,7 @@
       "creator": "Nous Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -17412,6 +18079,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 36.3,
@@ -17438,7 +18106,7 @@
       "creator": "Nous Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -17449,6 +18117,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 81.4,
@@ -18264,7 +18933,7 @@
       "creator": "Tencent",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -18274,7 +18943,8 @@
         "aa": {
           "inp_price": 0.123,
           "out_price": 0.43,
-          "blended": 0.123,
+          "blended": null,
+          "cache_hit_price": 0.045,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 160.7,
@@ -19302,7 +19972,7 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -19313,6 +19983,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -19337,12 +20008,12 @@
       "id": "k2-think-v2",
       "name": "K2 Think V2",
       "creator": "Google",
-      "model_type": "Open weights",
+      "model_type": null,
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 8.1,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -19350,20 +20021,20 @@
           "inp_price": 0.0,
           "out_price": 0.0,
           "blended": 0.0,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 99,
           "speed_tps": null,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 24,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": 0.2424,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
       },
@@ -19439,7 +20110,7 @@
       "creator": "Kimi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -19449,7 +20120,8 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.0,
-          "blended": 0.6,
+          "blended": null,
+          "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.7,
@@ -19499,10 +20171,10 @@
       "creator": "Kimi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 24.3,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -19510,13 +20182,13 @@
           "inp_price": 0.6,
           "out_price": 2.5,
           "blended": 0.37,
+          "cache_hit_price": 0.6,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 123.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -19625,10 +20297,10 @@
       "creator": "Kimi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 44.8,
-        "iq_percentile": 62.2,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -19636,13 +20308,13 @@
           "inp_price": 0.95,
           "out_price": 4.0,
           "blended": 0.59,
-          "cost_per_task": 0.64475,
+          "cache_hit_price": 0.16,
+          "cost_per_task": 831.34,
           "tokens_m": 160,
           "speed_tps": 42.6,
-          "cost_per_wallsec": 1.717e-07,
-          "useful_cost": 0.23,
-          "reasoning_tax_pct": 34.78,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 5.1959,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.31,
             "answer_usd": 0.18,
@@ -19665,9 +20337,9 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": 66.69,
-          "iq_per_mtok": 0.2687,
-          "iq_per_mtokdollar": 0.4168
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 51.7237,
+          "iq_per_mtokdollar": 19.3335
         },
         "arena_code": {
           "elo": 1514,
@@ -19710,10 +20382,10 @@
       "creator": "Kimi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 27.6,
-        "iq_percentile": 51.4,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -19721,13 +20393,13 @@
           "inp_price": 0.95,
           "out_price": 4.0,
           "blended": 0.59,
-          "cost_per_task": 0.40475,
+          "cache_hit_price": 0.16,
+          "cost_per_task": 524.56,
           "tokens_m": 100,
           "speed_tps": 43.6,
-          "cost_per_wallsec": 1.765e-07,
-          "useful_cost": 0.18,
-          "reasoning_tax_pct": 0.0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 5.2456,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.18,
             "answer_usd": 0.15,
@@ -19750,9 +20422,9 @@
       "benchmarks": {
         "aa": {
           "intel": 42,
-          "iq_per_dollar_pt": 103.77,
-          "iq_per_mtok": 0.42,
-          "iq_per_mtokdollar": 1.0377
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 80.0671,
+          "iq_per_mtokdollar": 12.4895
         },
         "livebench": {
           "average": 71.93,
@@ -34396,7 +35068,7 @@
       "creator": "Inception",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -34406,7 +35078,8 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 0.75,
-          "blended": 0.25,
+          "blended": null,
+          "cache_hit_price": 0.025,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 842.2,
@@ -35220,7 +35893,7 @@
       "creator": "Xiaomi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -35230,7 +35903,8 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.14,
+          "blended": null,
+          "cache_hit_price": 0.003,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 71.4,
@@ -35257,7 +35931,7 @@
       "creator": "Xiaomi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-high",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -35268,6 +35942,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 42.6,
@@ -35338,10 +36013,10 @@
       "creator": "Xiaomi",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 20.7,
-        "iq_percentile": 51.4,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -35349,13 +36024,13 @@
           "inp_price": 0.435,
           "out_price": 0.87,
           "blended": 0.173,
-          "cost_per_task": 0.085695,
+          "cache_hit_price": 0.004,
+          "cost_per_task": 98.47,
           "tokens_m": 96,
           "speed_tps": 43.5,
-          "cost_per_wallsec": 3.88e-08,
-          "useful_cost": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 1.0257,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.03,
             "answer_usd": 0.0,
@@ -35378,9 +36053,9 @@
       "benchmarks": {
         "aa": {
           "intel": 42,
-          "iq_per_dollar_pt": 490.11,
-          "iq_per_mtok": 0.4375,
-          "iq_per_mtokdollar": 5.1053
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 426.5258,
+          "iq_per_mtokdollar": 2.3445
         },
         "arena_text": {
           "elo": 1466,
@@ -35556,10 +36231,10 @@
       "creator": "MiniMax",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 29.7,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -35567,13 +36242,13 @@
           "inp_price": 0.3,
           "out_price": 1.2,
           "blended": 0.18,
+          "cache_hit_price": 0.155,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 240.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -35613,10 +36288,10 @@
       "creator": "MiniMax",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 13.8,
-        "iq_percentile": 40.5,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -35624,13 +36299,13 @@
           "inp_price": 0.3,
           "out_price": 1.2,
           "blended": 0.18,
-          "cost_per_task": 0.1035,
+          "cache_hit_price": 0.06,
+          "cost_per_task": 143.73,
           "tokens_m": 85,
           "speed_tps": 51.1,
-          "cost_per_wallsec": 6.22e-08,
-          "useful_cost": 0.07,
-          "reasoning_tax_pct": 0.0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 1.6909,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.07,
             "answer_usd": 0.05,
@@ -35651,9 +36326,9 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": 367.15,
-          "iq_per_mtok": 0.4471,
-          "iq_per_mtokdollar": 4.3198
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 264.3846,
+          "iq_per_mtokdollar": 3.7824
         },
         "livebench": {
           "average": 65.0,
@@ -35684,10 +36359,10 @@
       "creator": "MiniMax",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 24.1,
-        "iq_percentile": 70.3,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -35695,13 +36370,13 @@
           "inp_price": 0.3,
           "out_price": 1.2,
           "blended": 0.222,
-          "cost_per_task": 0.1083,
+          "cache_hit_price": 0.06,
+          "cost_per_task": 203.86,
           "tokens_m": 89,
           "speed_tps": 91.2,
-          "cost_per_wallsec": 1.11e-07,
-          "useful_cost": 0.08,
-          "reasoning_tax_pct": 50.0,
-          "cache": 0.06,
+          "cost_per_wallsec": null,
+          "useful_cost": 2.2906,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.12,
             "answer_usd": 0.07,
@@ -35724,9 +36399,9 @@
       "benchmarks": {
         "aa": {
           "intel": 44,
-          "iq_per_dollar_pt": 406.28,
-          "iq_per_mtok": 0.4944,
-          "iq_per_mtokdollar": 4.5651
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 215.8344,
+          "iq_per_mtokdollar": 4.6332
         },
         "livebench": {
           "average": 70.05,
@@ -37189,26 +37864,26 @@
       "id": "mistral-medium-3.5",
       "name": "Mistral Medium 3.5",
       "creator": "Mistral",
-      "model_type": "Open weights",
+      "model_type": null,
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 82.8,
-        "iq_percentile": 21.6,
-        "has_breakdown": true
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
       },
       "pricing": {
         "aa": {
           "inp_price": 1.5,
           "out_price": 7.5,
           "blended": 1.05,
-          "cost_per_task": 0.69,
+          "cache_hit_price": null,
+          "cost_per_task": 1483.4,
           "tokens_m": 91,
           "speed_tps": 118.0,
-          "cost_per_wallsec": 8.947e-07,
-          "useful_cost": 0.0,
-          "reasoning_tax_pct": 0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 16.3011,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 1.2,
             "answer_usd": 0.0,
@@ -37222,13 +37897,13 @@
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": 43.48,
-          "iq_per_mtok": 0.3297,
-          "iq_per_mtokdollar": 0.4778
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 20.2238,
+          "iq_per_mtokdollar": 49.4467
         }
       },
       "aliases": {
-        "aa": "mistral-medium-3.5"
+        "aa": "mistral-medium-3-5"
       }
     },
     {
@@ -39463,31 +40138,31 @@
       "creator": "Meta",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-high",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 62.2,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
+          "inp_price": 0.0,
+          "out_price": 0.0,
           "blended": 0.0,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 57,
           "speed_tps": null,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 43,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": 0.7544,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         },
         "arena_text": {
@@ -39790,7 +40465,7 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -39801,6 +40476,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 270.6,
@@ -39847,7 +40523,7 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -39858,13 +40534,13 @@
           "inp_price": 0.3,
           "out_price": 0.75,
           "blended": 0.135,
-          "cost_per_task": null,
-          "tokens_m": null,
+          "cache_hit_price": 0.2,
+          "cost_per_task": 294.56,
+          "tokens_m": 110,
           "speed_tps": 296.5,
           "cost_per_wallsec": null,
-          "useful_cost": null,
+          "useful_cost": 2.6778,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.25,
             "answer_usd": 0.0,
@@ -39886,8 +40562,8 @@
         "aa": {
           "intel": 25,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtok": 84.8724,
+          "iq_per_mtokdollar": 11.7824
         },
         "livebench": {
           "average": 32.02,
@@ -39932,7 +40608,7 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -39943,13 +40619,13 @@
           "inp_price": 0.675,
           "out_price": 2.675,
           "blended": 0.403,
-          "cost_per_task": null,
-          "tokens_m": null,
+          "cache_hit_price": 0.25,
+          "cost_per_task": 443.63,
+          "tokens_m": 110,
           "speed_tps": 172.8,
           "cost_per_wallsec": null,
-          "useful_cost": null,
+          "useful_cost": 4.033,
           "reasoning_tax_pct": null,
-          "cache": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
             "answer_usd": 0.0,
@@ -39973,8 +40649,8 @@
         "aa": {
           "intel": 38,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtok": 85.657,
+          "iq_per_mtokdollar": 11.6745
         },
         "livebench": {
           "average": 50.71,
@@ -40039,7 +40715,7 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -40050,6 +40726,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -40255,7 +40932,7 @@
       "creator": "Nex AGI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -40265,7 +40942,8 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 2.5,
-          "blended": 0.5,
+          "blended": null,
+          "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 108.5,
@@ -40428,11 +41106,11 @@
     },
     {
       "id": "nova-2-0-lite-reasoning",
-      "name": "Nova 2.0 Lite (low/medium)",
+      "name": "Nova 2.0 Lite (high)",
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -40443,6 +41121,45 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 150.4,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 21,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "nova-2-0-lite-reasoning"
+      }
+    },
+    {
+      "id": "nova-2-0-lite-reasoning-low",
+      "name": "Nova 2.0 Lite (low)",
+      "creator": "Amazon",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 131.0,
@@ -40460,16 +41177,16 @@
         }
       },
       "aliases": {
-        "aa": "nova-2-0-lite-reasoning"
+        "aa": "nova-2-0-lite-reasoning-low"
       }
     },
     {
-      "id": "nova-2-0-omni-reasoning-low",
-      "name": "Nova 2.0 Omni (low/medium)",
+      "id": "nova-2-0-lite-reasoning-medium",
+      "name": "Nova 2.0 Lite (medium)",
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -40480,6 +41197,83 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 123.2,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 30,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "nova-2-0-lite-reasoning-medium"
+      }
+    },
+    {
+      "id": "nova-2-0-omni-reasoning-low",
+      "name": "Nova 2.0 Omni (low)",
+      "creator": "Amazon",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": null,
+          "cost_per_wallsec": null,
+          "useful_cost": null,
+          "reasoning_tax_pct": null
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 23,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
+        }
+      },
+      "aliases": {
+        "aa": "nova-2-0-omni-reasoning-low"
+      }
+    },
+    {
+      "id": "nova-2-0-omni-reasoning-medium",
+      "name": "Nova 2.0 Omni (medium)",
+      "creator": "Amazon",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -40497,40 +41291,41 @@
         }
       },
       "aliases": {
-        "aa": "nova-2-0-omni-reasoning-low"
+        "aa": "nova-2-0-omni-reasoning-medium"
       }
     },
     {
       "id": "nova-2-0-pro-reasoning-low",
-      "name": "Nova 2.0 Pro Preview (low/medium)",
+      "name": "Nova 2.0 Pro Preview (low)",
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 58.6,
-        "iq_percentile": 32.4,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.25,
-          "out_price": 10.0,
-          "blended": 1.25,
-          "cost_per_task": 0.36625,
-          "tokens_m": 36,
-          "speed_tps": 126.4,
-          "cost_per_wallsec": 1.2859e-06,
+          "inp_price": null,
+          "out_price": null,
+          "blended": null,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 122.8,
+          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 36,
-          "iq_per_dollar_pt": 98.29,
-          "iq_per_mtok": 1.0,
-          "iq_per_mtokdollar": 2.7304
+          "intel": 32,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null
         }
       },
       "aliases": {
@@ -40555,6 +41350,52 @@
       "benchmarks": {},
       "aliases": {
         "openrouter": "amazon/nova-2-lite-v1"
+      }
+    },
+    {
+      "id": "nova-2.0-pro-reasoning-medium",
+      "name": "Nova 2.0 Pro Preview (medium)",
+      "creator": "Amazon",
+      "model_type": "reasoning",
+      "meta": {
+        "archetype": null,
+        "pareto_optimal": false,
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.25,
+          "out_price": 10.0,
+          "blended": 1.25,
+          "cache_hit_price": 0.312,
+          "cost_per_task": 466.55,
+          "tokens_m": 36,
+          "speed_tps": 126.4,
+          "cost_per_wallsec": null,
+          "useful_cost": 12.9597,
+          "reasoning_tax_pct": null,
+          "cost_segments": {
+            "total_cost_per_task_usd": 0.17,
+            "answer_usd": 0.05,
+            "reasoning_usd": 0.1,
+            "cache_write_usd": 0.0,
+            "cache_hit_usd": 0.0,
+            "input_usd": 0.02
+          }
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 36,
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 77.1621,
+          "iq_per_mtokdollar": 12.9597
+        }
+      },
+      "aliases": {
+        "aa": "nova-2-0-pro-reasoning-medium"
       }
     },
     {
@@ -41137,7 +41978,7 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -41148,6 +41989,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 85.1,
@@ -53723,7 +54565,7 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -53734,6 +54576,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 54.0,
@@ -53760,7 +54603,7 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -53771,6 +54614,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.1,
@@ -53797,7 +54641,7 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -53807,7 +54651,8 @@
         "aa": {
           "inp_price": 1.3,
           "out_price": 7.8,
-          "blended": 1.3,
+          "blended": null,
+          "cache_hit_price": 0.13,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.5,
@@ -53834,7 +54679,7 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -53844,7 +54689,8 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": 0.5,
+          "blended": null,
+          "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 52.6,
@@ -53871,7 +54717,7 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -53881,7 +54727,8 @@
         "aa": {
           "inp_price": 0.4,
           "out_price": 1.16,
-          "blended": 0.4,
+          "blended": null,
+          "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 49.8,
@@ -54382,26 +55229,26 @@
       "id": "qwen3.5-397b-a17b",
       "name": "Qwen3.5 397B (A17B)",
       "creator": "Alibaba",
-      "model_type": "Open weights",
+      "model_type": null,
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 48.3,
-        "iq_percentile": 29.7,
-        "has_breakdown": true
+        "cost_percentile": null,
+        "iq_percentile": null,
+        "has_breakdown": false
       },
       "pricing": {
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.6,
           "blended": 0.48,
-          "cost_per_task": 0.3198,
+          "cache_hit_price": null,
+          "cost_per_task": 528.06,
           "tokens_m": 88,
           "speed_tps": 51.0,
-          "cost_per_wallsec": 1.853e-07,
-          "useful_cost": 0.33,
-          "reasoning_tax_pct": 0.0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 6.0007,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 0.33,
             "answer_usd": 0.0,
@@ -54422,9 +55269,9 @@
       "benchmarks": {
         "aa": {
           "intel": 34,
-          "iq_per_dollar_pt": 106.32,
-          "iq_per_mtok": 0.3864,
-          "iq_per_mtokdollar": 1.2083
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 64.3866,
+          "iq_per_mtokdollar": 15.5312
         },
         "arena_code": {
           "elo": 1396,
@@ -54433,7 +55280,7 @@
         }
       },
       "aliases": {
-        "aa": "qwen3.5-397b-a17b",
+        "aa": "qwen3-5-397b-a17b",
         "arena_code": "qwen3.5-397b-a17b",
         "openrouter": "qwen/qwen3.5-397b-a17b"
       }
@@ -54675,10 +55522,10 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "sweet-spot",
+        "archetype": null,
         "pareto_optimal": false,
-        "cost_percentile": 79.3,
-        "iq_percentile": 75.7,
+        "cost_percentile": null,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
@@ -54686,13 +55533,13 @@
           "inp_price": 2.5,
           "out_price": 7.5,
           "blended": 1.25,
-          "cost_per_task": 0.7625,
+          "cache_hit_price": 0.25,
+          "cost_per_task": 1336.15,
           "tokens_m": 100,
           "speed_tps": 198.8,
-          "cost_per_wallsec": 1.5159e-06,
-          "useful_cost": 0.0,
-          "reasoning_tax_pct": 0,
-          "cache": null,
+          "cost_per_wallsec": null,
+          "useful_cost": 13.3615,
+          "reasoning_tax_pct": null,
           "cost_segments": {
             "total_cost_per_task_usd": 1.06,
             "answer_usd": 0.0,
@@ -54715,9 +55562,9 @@
       "benchmarks": {
         "aa": {
           "intel": 46,
-          "iq_per_dollar_pt": 60.33,
-          "iq_per_mtok": 0.46,
-          "iq_per_mtokdollar": 0.6033
+          "iq_per_dollar_pt": null,
+          "iq_per_mtok": 34.4273,
+          "iq_per_mtokdollar": 29.0467
         },
         "livebench": {
           "average": 75.15,
@@ -58799,7 +59646,7 @@
       "creator": "Reka AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -58810,6 +59657,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -61140,7 +61988,7 @@
       "creator": "Upstage",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -61151,6 +61999,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -61177,24 +62026,24 @@
       "creator": "Upstage",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
-        "iq_percentile": 13.5,
+        "iq_percentile": null,
         "has_breakdown": false
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
+          "inp_price": 0.0,
+          "out_price": 0.0,
           "blended": 0.0,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 120,
           "speed_tps": null,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cache": null
+          "reasoning_tax_pct": null
         },
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -61210,7 +62059,7 @@
         "aa": {
           "intel": 26,
           "iq_per_dollar_pt": null,
-          "iq_per_mtok": 0.2167,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
       },
@@ -61305,7 +62154,7 @@
       "creator": "Perplexity",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -61316,6 +62165,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -61342,7 +62192,7 @@
       "creator": "Perplexity",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "commodity",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -61353,6 +62203,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -61553,7 +62404,7 @@
       "creator": "StepFun",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -61564,6 +62415,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 192.4,
@@ -61590,7 +62442,7 @@
       "creator": "StepFun",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "budget",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -61600,7 +62452,8 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.15,
-          "blended": 0.2,
+          "blended": null,
+          "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 403.0,
@@ -62564,7 +63417,7 @@
       "creator": "Arcee AI",
       "model_type": "reasoning",
       "meta": {
-        "archetype": "mid-tier",
+        "archetype": null,
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
@@ -62575,6 +63428,7 @@
           "inp_price": null,
           "out_price": null,
           "blended": null,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 119.3,

@@ -74,18 +74,22 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
 ├── LLM Provider Pricing Analysis.md  ← Obsidian note
 ├── ARCHITECTURE-REFERENCE.md   ← design doc (gitignored)
 └── data/
-    ├── processed.js           ← 85 models, primary dataset (loaded by dashboard)
-    ├── aa_models_scraped.json  ← 99 AA-scraped models (raw)
-    ├── model_registry.json     ← 2186 models, 6 sources
+    ├── processed.js           ← 101 models, primary dataset (loaded by dashboard)
+    ├── sources/                ← all source data + per-source build modules
+    │   ├── aa/
+    │   │   ├── raw/aa_models_scraped.json  ← 99 AA-scraped models (raw)
+    │   │   ├── enriched/aa_model_data.json ← 38 models (blended, tokens_m, iq)
+    │   │   ├── enriched/aa_cost_breakdown.json ← 30 models (cost segments)
+    │   │   └── _build.py          ← merges raw + enriched → domain entries
+    │   ├── openrouter_models.json
+    │   ├── livebench_*.csv
+    │   ├── arena_*.json
+    │   └── openllm_*.json
+    ├── model_registry.json     ← 2242 models, 6 sources
     ├── axes_catalog.json       ← 47 axes, typed
     ├── _build_*.py             ← pipeline scripts
     ├── _pull_sources.py        ← fetches LiveBench/Arena/OpenRouter
     ├── project_axes.py         ← ProjectionEngine (N-axis query)
-    └── sources/
-        ├── openrouter_models.json
-        ├── livebench_*.csv
-        ├── arena_*.json
-        └── ...
 └── viz/
     ├── _shared.js              ← legend filter, color maps, config
     ├── 01-crossover.js
@@ -118,7 +122,7 @@ python data/_build_dashboard_data.py
 ```
 
 **Pipeline order matters.**  
-`_build_dashboard_data.py` reads `model_registry.json` (from step 2) and `processed.js` (from previous build, for AA bootstrap).  
+`_build_registry.py` now reads AA data from `data/sources/aa/raw/` and `data/sources/aa/enriched/` — never from pipeline output. No circular dependency.
 Scraped AA data (`aa_models_scraped.json`) is pulled separately via the AA scraper — not part of this repo.
 
 **What each step produces:**
@@ -126,10 +130,8 @@ Scraped AA data (`aa_models_scraped.json`) is pulled separately via the AA scrap
 | Step | Input(s) | Output | Models |
 |------|----------|--------|--------|
 | `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | N/A |
-| `_build_registry` | `sources/*`, `aa_models_scraped.json` | `model_registry.json` | 2186 |
-| `_build_dashboard_data` | `model_registry.json`, `processed.js` | `processed.js` | 38–85 |
-
-**Coverage note:** The current `processed.js` (85 models, committed) is a snapshot from a prior AA scrape. When AA data is fresh, the pipeline produces ~38 models — the gap is slug mismatches between old and current AA scrapes, not a pipeline bug.
+| `_build_registry` | `sources/*`, `data/sources/aa/raw/*`, `data/sources/aa/enriched/*` | `model_registry.json` | 2242 |
+| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 101 |
 
 **To update the committed snapshot:** run the pipeline, verify `processed.js` has the expected models, then commit.
 

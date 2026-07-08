@@ -8,56 +8,7 @@ import json, csv, os, re
 from datetime import date
 from pathlib import Path
 
-# ═══════════════════════════════════════════════
-# 1. CANONICAL NAME MAP
-# ═══════════════════════════════════════════════
-
-# Explicit aliases: {source: {source_id: canonical_id}}
-# Canonical IDs follow Arena/convention format (dots not hyphens for versions)
-AA_TO_CANONICAL = {
-    "gpt-oss-20b": "gpt-oss-20b",
-    "gpt-oss-120b": "gpt-oss-120b",
-    "gpt-5-5-low": "gpt-5.5-low",
-    "gpt-5-5-high": "gpt-5.5-high",
-    "gpt-5-5-medium": "gpt-5.5-medium",
-    "gpt-5-5": "gpt-5.5-xhigh",
-    "gpt-5-5-pro": "gpt-5.5-pro",
-    "gpt-5-3-codex": "gpt-5.3-codex",
-    "gpt-5-2-codex": "gpt-5.2-codex",
-    "muse-spark": "muse-spark",
-    "gemma-4-31b": "gemma-4-31b",
-    "gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
-    "gemini-3-5-flash": "gemini-3.5-flash",
-    "claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
-    "claude-fable-5": "claude-fable-5",
-    "claude-sonnet-5": "claude-sonnet-5",
-    "claude-opus-4-8": "claude-opus-4.8",
-    "claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
-    "claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
-    "mistral-medium-3-5": "mistral-medium-3.5",
-    "deepseek-v4-pro": "deepseek-v4-pro",
-    "deepseek-v4-flash": "deepseek-v4-flash",
-    "grok-4-3": "grok-4.3",
-    "nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
-    "solar-pro-3": "solar-pro-3",
-    "minimax-m2-7": "minimax-m2.7",
-    "minimax-m3": "minimax-m3",
-    "minimax-m2-5": "minimax-m2.5",
-    "nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
-    "kimi-k2-7-code": "kimi-k2.7-code",
-    "kimi-k2-6": "kimi-k2.6",
-    "kimi-k2-thinking": "kimi-k2-thinking",
-    "mimo-v2-5-pro": "mimo-v2.5-pro",
-    "k2-think-v2": "k2-think-v2",
-    "glm-5-2": "glm-5.2",
-    "qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
-    "qwen3-7-max": "qwen3.7-max",
-}
-
-# Build reverse maps for other sources
-def aa_slug_to_canonical(slug):
-    return AA_TO_CANONICAL.get(slug, slug)
+from .sources.aa._build import get_aa_models
 
 def arena_id_to_canonical(aid):
     """Arena IDs -> canonical. Handle hyphens-vs-dots mismatch."""
@@ -135,61 +86,9 @@ def run(ctx=None):
     today = date.today().isoformat()
     all_models = {}  # canonical_id -> model record
 
-    # ── AA (from processed.js) ──
-    aa_js = Path(BASE, "data", "processed.js").read_text()
-    aa_data = json.loads(aa_js.removeprefix("window.PROCESSED_DATA = ").removesuffix(";\n"))
-    aa_models = aa_data if isinstance(aa_data, list) else aa_data.get("models", [])
-
-    for m in aa_models:
-        slug = m.get("slug")
-        cid = aa_slug_to_canonical(slug)
-
-        all_models[cid] = {
-            "id": cid,
-            "name": m.get("name"),
-            "creator": m.get("creator"),
-            "model_type": m.get("type"),
-            "meta": {
-                "archetype": m.get("archetype"),
-                "pareto_optimal": m.get("pareto_optimal", False),
-                "cost_percentile": m.get("cost_percentile"),
-                "iq_percentile": m.get("iq_percentile"),
-                "has_breakdown": m.get("has_breakdown", False),
-            },
-            "pricing": {
-                "aa": {
-                    "inp_price": m.get("inp_price"),
-                    "out_price": m.get("out_price"),
-                    "blended": m.get("inp_price"),  # AA stores blended separately in raw
-                    "cost_per_task": m.get("cost_per_task"),
-                    "tokens_m": m.get("tokens_m"),
-                    "speed_tps": m.get("speed_tps"),
-                    "cost_per_wallsec": m.get("cost_per_wallsec"),
-                    "useful_cost": m.get("useful_cost"),
-                    "reasoning_tax_pct": m.get("reasoning_tax_pct"),
-                }
-            },
-            "benchmarks": {
-                "aa": {
-                    "intel": m.get("intel"),
-                    "iq_per_dollar_pt": m.get("iq_per_dollar_pt"),
-                    "iq_per_mtok": m.get("iq_per_mtok"),
-                    "iq_per_mtokdollar": m.get("iq_per_mtokdollar"),
-                }
-            },
-            "aliases": {
-                "aa": slug,
-            }
-        }
-
-    # Inject blended pricing from raw aa_model_data
-    with open(os.path.join(BASE, "data", "aa_model_data.json")) as f:
-        aa_raw = json.load(f)
-    for slug, raw in aa_raw.items():
-        cid = aa_slug_to_canonical(slug)
-        if cid in all_models:
-            all_models[cid]["pricing"]["aa"]["blended"] = raw.get("blended")
-            all_models[cid]["pricing"]["aa"]["cache"] = raw.get("cache")
+    # ── AA (from data/sources/aa/_build.py) ──
+    aa_models = get_aa_models(BASE)
+    all_models.update(aa_models)
 
     # ── LIVEBENCH ──
     lb_path = os.path.join(SRC, "livebench_2026_01_08.csv")
@@ -309,60 +208,6 @@ def run(ctx=None):
             "elo": m.get("score"),
             "ci": m.get("ci"),
             "votes": m.get("votes"),
-        }
-
-    # ── COST BREAKDOWN ──
-    costbd_name_map = {
-        "gpt-oss-20b (high)": "gpt-oss-20b",
-        "DeepSeek V4 Flash (max)": "deepseek-v4-flash",
-        "MiMo-V2.5-Pro (max)": "mimo-v2.5-pro",
-        "DeepSeek V4 Pro (max)": "deepseek-v4-pro",
-        "gpt-oss-120b (high)": "gpt-oss-120b",
-        "MiniMax-M2.7": "minimax-m2.7",
-        "MiniMax-M3": "minimax-m3",
-        "Grok 4.3 (high)": "grok-4.3",
-        "Nova 2.0 Pro Preview (medium)": "nova-2.0-pro-reasoning-medium",
-        "Kimi K2.7 Code": "kimi-k2.7-code",
-        "GPT-5.5 (low)": "gpt-5.5-low",
-        "Claude 4.5 Haiku": "claude-4.5-haiku-reasoning",
-        "Nemotron 3 Ultra": "nemotron-3-ultra-550b-a55b",
-        "NVIDIA Nemotron 3 Super": "nemotron-3-super-120b-a12b",
-        "Gemini 3.1 Pro Preview": "gemini-3.1-pro-preview",
-        "Kimi K2.6": "kimi-k2.6",
-        "Qwen3.5 397B A17B": "qwen3.5-397b-a17b",
-        "Claude 4.5 Sonnet": "claude-4.5-sonnet-thinking",
-        "GPT-5.5 (medium)": "gpt-5.5-medium",
-        "GLM-5.2 (max)": "glm-5.2",
-        "Gemini 3.5 Flash": "gemini-3.5-flash",
-        "GPT-5.5 (high)": "gpt-5.5-high",
-        "GPT-5.5 (xhigh)": "gpt-5.5-xhigh",
-        "Qwen3.7 Max": "qwen3.7-max",
-        "Claude Sonnet 4.6 (max)": "claude-sonnet-4.6-adaptive",
-        "Mistral Medium 3.5": "mistral-medium-3.5",
-        "Claude Opus 4.8 (max)": "claude-opus-4.8",
-        "Claude Sonnet 5 (max)": "claude-sonnet-5",
-    }
-
-    costbd_path = os.path.join(BASE, "data", "aa_cost_breakdown.json")
-    with open(costbd_path) as f:
-        costbd_data = json.load(f)
-
-    for m in costbd_data.get("models", []):
-        display_name = m.get("name", "")
-        cid = costbd_name_map.get(display_name)
-        if not cid or cid not in all_models:
-            continue
-
-        if "aa" not in all_models[cid].setdefault("pricing", {}):
-            all_models[cid]["pricing"]["aa"] = {}
-
-        all_models[cid]["pricing"]["aa"]["cost_segments"] = {
-            "total_cost_per_task_usd": m.get("total_cost_per_task_usd"),
-            "answer_usd": m.get("answer_usd"),
-            "reasoning_usd": m.get("reasoning_usd"),
-            "cache_write_usd": m.get("cache_write_usd"),
-            "cache_hit_usd": m.get("cache_hit_usd"),
-            "input_usd": m.get("input_usd"),
         }
 
     # ── OPENLLM v2 (AA subset) ──

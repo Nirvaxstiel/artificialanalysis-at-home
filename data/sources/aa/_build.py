@@ -1,0 +1,271 @@
+"""Build AA source models — merge scraped + enriched data into domain-format entries.
+
+Reads from data/sources/aa/raw/ and data/sources/aa/enriched/, returns dict of canonical_id → model record.
+Used by _build_registry.py (does NOT read from pipeline output — no circular dep).
+"""
+
+import json, os, re
+from pathlib import Path
+
+# ═══════════════════════════════════════════════
+# Canonical name mapping (AA slugs → canonical IDs)
+# ═══════════════════════════════════════════════
+
+AA_TO_CANONICAL = {
+    "gpt-oss-20b": "gpt-oss-20b",
+    "gpt-oss-120b": "gpt-oss-120b",
+    "gpt-5-5-low": "gpt-5.5-low",
+    "gpt-5-5-high": "gpt-5.5-high",
+    "gpt-5-5-medium": "gpt-5.5-medium",
+    "gpt-5-5": "gpt-5.5-xhigh",
+    "gpt-5-5-pro": "gpt-5.5-pro",
+    "gpt-5-3-codex": "gpt-5.3-codex",
+    "gpt-5-2-codex": "gpt-5.2-codex",
+    "muse-spark": "muse-spark",
+    "gemma-4-31b": "gemma-4-31b",
+    "gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
+    "gemini-3-5-flash": "gemini-3.5-flash",
+    "claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
+    "claude-fable-5": "claude-fable-5",
+    "claude-sonnet-5": "claude-sonnet-5",
+    "claude-opus-4-8": "claude-opus-4.8",
+    "claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
+    "claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
+    "mistral-medium-3-5": "mistral-medium-3.5",
+    "deepseek-v4-pro": "deepseek-v4-pro",
+    "deepseek-v4-flash": "deepseek-v4-flash",
+    "grok-4-3": "grok-4.3",
+    "nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
+    "solar-pro-3": "solar-pro-3",
+    "minimax-m2-7": "minimax-m2.7",
+    "minimax-m3": "minimax-m3",
+    "minimax-m2-5": "minimax-m2.5",
+    "nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
+    "kimi-k2-7-code": "kimi-k2.7-code",
+    "kimi-k2-6": "kimi-k2.6",
+    "kimi-k2-thinking": "kimi-k2-thinking",
+    "mimo-v2-5-pro": "mimo-v2.5-pro",
+    "k2-think-v2": "k2-think-v2",
+    "glm-5-2": "glm-5.2",
+    "qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
+    "qwen3-7-max": "qwen3.7-max",
+}
+
+# Cost breakdown display names → canonical IDs
+COSTBD_NAME_MAP = {
+    "gpt-oss-20b (high)": "gpt-oss-20b",
+    "DeepSeek V4 Flash (max)": "deepseek-v4-flash",
+    "MiMo-V2.5-Pro (max)": "mimo-v2.5-pro",
+    "DeepSeek V4 Pro (max)": "deepseek-v4-pro",
+    "gpt-oss-120b (high)": "gpt-oss-120b",
+    "MiniMax-M2.7": "minimax-m2.7",
+    "MiniMax-M3": "minimax-m3",
+    "Grok 4.3 (high)": "grok-4.3",
+    "Nova 2.0 Pro Preview (medium)": "nova-2.0-pro-reasoning-medium",
+    "Kimi K2.7 Code": "kimi-k2.7-code",
+    "GPT-5.5 (low)": "gpt-5.5-low",
+    "Claude 4.5 Haiku": "claude-4.5-haiku-reasoning",
+    "Nemotron 3 Ultra": "nemotron-3-ultra-550b-a55b",
+    "NVIDIA Nemotron 3 Super": "nemotron-3-super-120b-a12b",
+    "Gemini 3.1 Pro Preview": "gemini-3.1-pro-preview",
+    "Kimi K2.6": "kimi-k2.6",
+    "Qwen3.5 397B A17B": "qwen3.5-397b-a17b",
+    "Claude 4.5 Sonnet": "claude-4.5-sonnet-thinking",
+    "GPT-5.5 (medium)": "gpt-5.5-medium",
+    "GLM-5.2 (max)": "glm-5.2",
+    "Gemini 3.5 Flash": "gemini-3.5-flash",
+    "GPT-5.5 (high)": "gpt-5.5-high",
+    "GPT-5.5 (xhigh)": "gpt-5.5-xhigh",
+    "Qwen3.7 Max": "qwen3.7-max",
+    "Claude Sonnet 4.6 (max)": "claude-sonnet-4.6-adaptive",
+    "Mistral Medium 3.5": "mistral-medium-3.5",
+    "Claude Opus 4.8 (max)": "claude-opus-4.8",
+    "Claude Sonnet 5 (max)": "claude-sonnet-5",
+}
+
+
+def aa_slug_to_canonical(slug: str) -> str:
+    """Map an AA slug to its canonical ID (fallback: slug as-is)."""
+    return AA_TO_CANONICAL.get(slug, slug)
+
+
+def get_aa_models(base: Path) -> dict[str, dict]:
+    """Merge all AA data sources into dict of canonical_id → model record.
+
+    Sources (in order of priority — later sources enrich but don't overwrite
+    non-null fields from earlier sources):
+      1. data/sources/aa/raw/aa_models_scraped.json  — 99 base AA models
+      2. data/sources/aa/enriched/aa_model_data.json  — enriched fields (38 models)
+      3. data/sources/aa/enriched/aa_cost_breakdown.json — cost segments (30 models)
+    """
+    AA_DIR = os.path.join(base, "data", "sources", "aa")
+    all_models: dict[str, dict] = {}
+
+    # === 1) Base: raw scraped data ===
+    scraped_path = os.path.join(AA_DIR, "raw", "aa_models_scraped.json")
+    with open(scraped_path) as f:
+        scraped_models = json.load(f)
+
+    for m in scraped_models:
+        slug = m.get("slug")
+        cid = aa_slug_to_canonical(slug)
+        if not cid:
+            continue
+
+        all_models[cid] = {
+            "id": cid,
+            "name": m.get("name"),
+            "creator": m.get("creator"),
+            "model_type": "reasoning" if m.get("is_reasoning") else None,
+            "meta": {
+                "archetype": None,
+                "pareto_optimal": False,
+                "cost_percentile": None,
+                "iq_percentile": None,
+                "has_breakdown": False,
+            },
+            "pricing": {
+                "aa": {
+                    "inp_price": m.get("input_price"),
+                    "out_price": m.get("output_price"),
+                    "blended": None,
+                    "cache_hit_price": m.get("cache_hit_price"),
+                    "cost_per_task": None,
+                    "tokens_m": None,
+                    "speed_tps": m.get("speed_tps"),
+                    "cost_per_wallsec": None,
+                    "useful_cost": None,
+                    "reasoning_tax_pct": None,
+                }
+            },
+            "benchmarks": {
+                "aa": {
+                    "intel": m.get("intelligence"),
+                    "iq_per_dollar_pt": None,
+                    "iq_per_mtok": None,
+                    "iq_per_mtokdollar": None,
+                }
+            },
+            "aliases": {
+                "aa": slug,
+            }
+        }
+
+    # === 2) Enrich from aa_model_data.json (blended, tokens_m, etc.) ===
+    enriched_path = os.path.join(AA_DIR, "enriched", "aa_model_data.json")
+    with open(enriched_path) as f:
+        aa_raw = json.load(f)
+
+    for slug, raw in aa_raw.items():
+        cid = aa_slug_to_canonical(slug)
+        if not cid:
+            continue
+
+        if cid not in all_models:
+            # Models only in enriched data (eg Mistral Medium 3.5)
+            all_models[cid] = _make_model_from_enriched(slug, cid, raw)
+        else:
+            _overlay_enriched(all_models[cid], raw)
+
+    # === 3) Cost segments from aa_cost_breakdown.json ===
+    costbd_path = os.path.join(AA_DIR, "enriched", "aa_cost_breakdown.json")
+    try:
+        with open(costbd_path) as f:
+            costbd_data = json.load(f)
+    except FileNotFoundError:
+        return all_models  # cost breakdown is optional
+
+    for m in costbd_data.get("models", []):
+        display_name = m.get("name", "")
+        cid = COSTBD_NAME_MAP.get(display_name)
+        if not cid or cid not in all_models:
+            continue
+
+        p = all_models[cid].setdefault("pricing", {})
+        aa = p.setdefault("aa", {})
+        aa["cost_segments"] = {
+            "total_cost_per_task_usd": m.get("total_cost_per_task_usd"),
+            "answer_usd": m.get("answer_usd"),
+            "reasoning_usd": m.get("reasoning_usd"),
+            "cache_write_usd": m.get("cache_write_usd"),
+            "cache_hit_usd": m.get("cache_hit_usd"),
+            "input_usd": m.get("input_usd"),
+        }
+        if aa.get("cost_per_task") is None:
+            aa["cost_per_task"] = m.get("total_cost_per_task_usd")
+
+    return all_models
+
+
+# ── helpers ──
+
+
+def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
+    """Build a model record from enriched data when no scraped base exists."""
+    return {
+        "id": cid,
+        "name": raw.get("name"),
+        "creator": raw.get("creator"),
+        "model_type": None,
+        "meta": {
+            "archetype": None,
+            "pareto_optimal": False,
+            "cost_percentile": None,
+            "iq_percentile": None,
+            "has_breakdown": False,
+        },
+        "pricing": {
+            "aa": {
+                "inp_price": raw.get("inp"),
+                "out_price": raw.get("out"),
+                "blended": raw.get("blended"),
+                "cache_hit_price": raw.get("cache"),
+                "cost_per_task": raw.get("cost"),
+                "tokens_m": raw.get("tokens_m"),
+                "speed_tps": raw.get("spd"),
+                "cost_per_wallsec": None,
+                "useful_cost": raw.get("eff_cost_per_m"),
+                "reasoning_tax_pct": None,
+            }
+        },
+        "benchmarks": {
+            "aa": {
+                "intel": raw.get("intel"),
+                "iq_per_dollar_pt": None,
+                "iq_per_mtok": raw.get("iq_per_1k"),
+                "iq_per_mtokdollar": raw.get("cost_per_iq"),
+            }
+        },
+        "aliases": {
+            "aa": slug,
+        }
+    }
+
+
+def _overlay_enriched(model: dict, raw: dict) -> None:
+    """Overlay enriched fields onto an existing scraped-model entry (fill nulls only)."""
+    p = model["pricing"]["aa"]
+    b = model["benchmarks"]["aa"]
+    if p["inp_price"] is None:
+        p["inp_price"] = raw.get("inp")
+    if p["out_price"] is None:
+        p["out_price"] = raw.get("out")
+    if p["blended"] is None:
+        p["blended"] = raw.get("blended")
+    if p["cache_hit_price"] is None:
+        p["cache_hit_price"] = raw.get("cache")
+    if p["speed_tps"] is None:
+        p["speed_tps"] = raw.get("spd")
+    if p["tokens_m"] is None:
+        p["tokens_m"] = raw.get("tokens_m")
+    if p["cost_per_task"] is None:
+        p["cost_per_task"] = raw.get("cost")
+    if p["useful_cost"] is None:
+        p["useful_cost"] = raw.get("eff_cost_per_m")
+    if b["intel"] is None:
+        b["intel"] = raw.get("intel")
+    if b["iq_per_mtok"] is None:
+        b["iq_per_mtok"] = raw.get("iq_per_1k")
+    if b["iq_per_mtokdollar"] is None:
+        b["iq_per_mtokdollar"] = raw.get("cost_per_iq")

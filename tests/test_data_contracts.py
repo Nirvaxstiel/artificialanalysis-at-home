@@ -70,20 +70,22 @@ class TestScriptSources:
 
 
 class TestHeaderCount:
-    """The static dashboard header must match the actual model/creator count."""
+    """The dashboard header displays dynamic model/creator count from data."""
 
     def test_header_model_count(self, dashboard_html, processed_js):
-        m = re.search(r"(\d+)\s+MODELS\s+·\s+(\d+)\s+CREATORS", dashboard_html)
-        assert m, "Could not find header model/creator count"
-        header_models = int(m.group(1))
-        header_creators = int(m.group(2))
-        assert header_models == len(processed_js), (
-            f"Header says {header_models} models, actual {len(processed_js)}"
+        # Verify the header container has the dynamic-count element
+        assert 'id="header-meta"' in dashboard_html, (
+            "Missing #header-meta for dynamic model/creator count"
         )
+        # Verify processed data has consistent counts
+        assert len(processed_js) > 0, "No models in processed data"
         creators = {m["creator"] for m in processed_js if m.get("creator")}
-        assert header_creators == len(creators), (
-            f"Header says {header_creators} creators, actual {len(creators)}"
-        )
+        assert len(creators) > 0, "No creators in processed data"
+        # Verify each model has required fields
+        for m in processed_js:
+            assert "slug" in m
+            assert "name" in m
+            assert "type" in m or m.get("type") is None
 
 
 # ── TEST 4: All viz JS files parse ──

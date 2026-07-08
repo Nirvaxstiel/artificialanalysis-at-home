@@ -19,9 +19,9 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 ## Files
 
 - `dashboard.html` — the viz (single file, ~150KB with inline data)
-- `data/processed.js` — 85 models, primary dataset (loaded by dashboard)
-- `data/aa_models_scraped.json` — 99 raw AA scrapes
-- `data/model_registry.json` — 2186 models, 6 sources
+- `data/processed.js` — 101 models, primary dataset (loaded by dashboard)
+- `data/sources/aa/raw/aa_models_scraped.json` — 99 raw AA scrapes
+- `data/model_registry.json` — 2242 models, 6 sources
 - `data/axes_catalog.json` — 47 axes, typed
 - `data/_build_*.py` — pipeline scripts
 - `viz/` — 6 viz scripts + shared config

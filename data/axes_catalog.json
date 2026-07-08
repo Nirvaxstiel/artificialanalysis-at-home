@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated": "2026-07-07",
+    "generated": "2026-07-08",
     "version": "1.0",
     "total_axes": 47,
-    "total_models": 2223,
+    "total_models": 2242,
     "sources": [
       "AA",
       "Arena Code",
@@ -17,21 +17,21 @@
         "source": "AA",
         "axes": [
           "aa.speed_tps",
-          "aa.blended",
           "aa.inp_price",
           "aa.out_price",
+          "aa.blended",
           "aa.tokens_m",
+          "aa.cost_per_task",
+          "aa.useful_cost",
           "aa.cost_seg_total",
           "aa.cost_seg_answer",
           "aa.cost_seg_reasoning",
           "aa.cost_seg_cache_write",
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
-          "aa.cost_per_task",
-          "aa.cost_per_wallsec",
-          "aa.useful_cost",
-          "aa.reasoning_tax_pct",
           "aa.cache",
+          "aa.cost_per_wallsec",
+          "aa.reasoning_tax_pct",
           "aa.intel",
           "aa.iq_per_mtok",
           "aa.iq_per_mtokdollar",
@@ -107,31 +107,12 @@
       "unit": "tok/s",
       "higher_is_better": true,
       "description": "AA output speed in tokens per second",
-      "models_have": 61,
+      "models_have": 76,
       "range": [
         35,
         842
       ],
       "group": "Performance",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.blended",
-      "label": "Blended Price ($/Mtok)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$/M tok",
-      "higher_is_better": false,
-      "description": "AA blended (weighted average) price",
-      "models_have": 57,
-      "range": [
-        0.0,
-        7.0
-      ],
-      "group": "Pricing",
       "normalize_range": [
         0,
         100
@@ -145,7 +126,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 52,
+      "models_have": 69,
       "range": [
         0.0,
         10.0
@@ -164,10 +145,29 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 52,
+      "models_have": 69,
       "range": [
         0.0,
         50.0
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.blended",
+      "label": "Blended Price ($/Mtok)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$/M tok",
+      "higher_is_better": false,
+      "description": "AA blended (weighted average) price",
+      "models_have": 38,
+      "range": [
+        0.0,
+        7.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -183,10 +183,48 @@
       "unit": "M tokens",
       "higher_is_better": true,
       "description": "AA context length / tokens per task",
+      "models_have": 32,
+      "range": [
+        21,
+        300
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.cost_per_task",
+      "label": "Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "AA estimated cost per standard task",
+      "models_have": 29,
+      "range": [
+        29.87,
+        6015.18
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.useful_cost",
+      "label": "Useful Cost ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "AA cost attributable to useful output (non-reasoning)",
       "models_have": 28,
       "range": [
-        36,
-        300
+        0.3149,
+        64.7186
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -202,7 +240,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 total per task",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.02,
         2.29
@@ -221,7 +259,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 answer tokens",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.0,
         0.6
@@ -240,7 +278,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 reasoning tokens",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.0,
         1.2
@@ -259,7 +297,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 cache write",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.0,
         0.45
@@ -278,7 +316,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 cache read",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.0,
         0.15
@@ -297,85 +335,12 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "Cost breakdown \u2014 input tokens",
-      "models_have": 26,
+      "models_have": 28,
       "range": [
         0.0,
         0.33
       ],
       "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_per_task",
-      "label": "Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA estimated cost per standard task",
-      "models_have": 24,
-      "range": [
-        0.0299,
-        4.515
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_per_wallsec",
-      "label": "Cost per Wall-Second ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA cost per wall-second of inference",
-      "models_have": 24,
-      "range": [
-        0.0,
-        0.0
-      ],
-      "group": "Pricing",
-      "normalize_range": null
-    },
-    {
-      "id": "aa.useful_cost",
-      "label": "Useful Cost ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA cost attributable to useful output (non-reasoning)",
-      "models_have": 13,
-      "range": [
-        0.0,
-        0.39
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.reasoning_tax_pct",
-      "label": "Reasoning Tax (%)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "%",
-      "higher_is_better": false,
-      "description": "AA premium percentage paid for reasoning tokens",
-      "models_have": 13,
-      "range": [
-        0,
-        171.05
-      ],
-      "group": "Pricing",
       "normalize_range": [
         0,
         100
@@ -389,16 +354,36 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA cache read price per million tokens",
-      "models_have": 4,
-      "range": [
-        0.003,
-        0.5
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_per_wallsec",
+      "label": "Cost per Wall-Second ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "AA cost per wall-second of inference",
+      "models_have": 0,
+      "range": null,
+      "group": "Pricing",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.reasoning_tax_pct",
+      "label": "Reasoning Tax (%)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "%",
+      "higher_is_better": false,
+      "description": "AA premium percentage paid for reasoning tokens",
+      "models_have": 0,
+      "range": null,
+      "group": "Pricing",
+      "normalize_range": null
     },
     {
       "id": "aa.intel",
@@ -408,7 +393,7 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "AA composite intelligence score (Pareto index)",
-      "models_have": 81,
+      "models_have": 98,
       "range": [
         4,
         60
@@ -427,10 +412,10 @@
       "unit": "IQ/Mtok",
       "higher_is_better": true,
       "description": "AA intelligence per million tokens",
-      "models_have": 28,
+      "models_have": 29,
       "range": [
-        0.1739,
-        1.0
+        8.811,
+        552.3336
       ],
       "group": "AA Quality",
       "normalize_range": [
@@ -446,10 +431,10 @@
       "unit": "IQ/($\u00b7Mtok)",
       "higher_is_better": true,
       "description": "AA intelligence per million token-dollars",
-      "models_have": 24,
+      "models_have": 29,
       "range": [
-        0.0391,
-        7.4958
+        1.8105,
+        113.494
       ],
       "group": "AA Quality",
       "normalize_range": [
@@ -465,16 +450,10 @@
       "unit": "IQ/$",
       "higher_is_better": true,
       "description": "AA intelligence per dollar spent",
-      "models_have": 23,
-      "range": [
-        11.74,
-        614.44
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "AA Quality",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "arena_code.ci",
@@ -1002,8 +981,8 @@
   "feasibility": {
     "n_axis_pairs": {
       "AA\u00d7Arena Code": 14,
-      "AA\u00d7Arena Text": 7,
-      "AA\u00d7LiveBench": 17,
+      "AA\u00d7Arena Text": 8,
+      "AA\u00d7LiveBench": 19,
       "AA\u00d7OpenRouter": 29,
       "Arena Code\u00d7Arena Text": 18,
       "Arena Code\u00d7LiveBench": 11,

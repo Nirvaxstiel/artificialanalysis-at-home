@@ -1,190 +1,152 @@
-"""Build processed.js — flat enriched model data from projection engine.
+"""Build processed.js — flat enriched model data using domain types.
 
 Usage: python data/_build_dashboard_data.py
 Output: data/processed.js (overwritten)
 
-Each model gets ALL available cross-source fields flattened into a single row,
-preserving backward-compat with existing viz that read AA-only fields.
+Builds ProjectionRow domain objects with typed value objects. Invalid states
+are unrepresentable — the row constructor catches them at build time.
 """
 
-import json, sys, os
+import json, re, os
 from pathlib import Path
 
-# Ensure we can import from sibling directory
+import sys
 BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE))
 
 from project_axes import ProjectionEngine
+from _domain import (
+    ProjectionRow, ProjectionRowMeta,
+    Archetype, ModelType,
+    safe_ppm, safe_cost, safe_tok_per_task, safe_tps,
+    safe_wallsec, safe_useful_cost, safe_reasoning_tax,
+    safe_cost_segment, safe_intel, safe_iq_per_mtok,
+    safe_iq_per_mtokdollar, safe_iq_per_dollar,
+    safe_elo, safe_ci, safe_votes, safe_benchmark,
+    safe_params, safe_carbon, safe_pct,
+    try_model_type, try_archetype,
+)
 
-def _safe(v, default=None):
-    """Return v unless it's NaN or None."""
-    if v is None:
-        return default
-    if isinstance(v, float) and (v != v):  # NaN check
-        return default
-    return v
 
 def _clean_name(name):
     """Strip parenthetical qualifiers for display."""
     if not name:
         return None
-    import re
-    return re.sub(r'\s*\((xhigh|high|medium|low|with fallback|max)\)\s*', '', name, flags=re.IGNORECASE).strip()
+    return re.sub(
+        r'\s*\((xhigh|high|medium|low|with fallback|max)\)\s*',
+        '', name, flags=re.IGNORECASE
+    ).strip()
+
 
 def _today():
-    """Return today's date as YYYY-MM-DD string."""
     from datetime import date
     return date.today().isoformat()
 
+
 def build(ctx=None):
     pe = ProjectionEngine()
-    
-    # All axis IDs we want to fetch
+
     ALL_AXES = [
-        # AA pricing
         "aa.inp_price", "aa.out_price", "aa.blended",
         "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps",
         "aa.cost_per_wallsec", "aa.useful_cost", "aa.reasoning_tax_pct",
         "aa.cache",
-        # AA benchmarks
         "aa.intel", "aa.iq_per_mtok", "aa.iq_per_dollar", "aa.iq_per_mtokdollar",
-        # AA cost segments
         "aa.cost_seg_total", "aa.cost_seg_answer", "aa.cost_seg_reasoning",
         "aa.cost_seg_cache_write", "aa.cost_seg_cache_hit", "aa.cost_seg_input",
-        # LiveBench
         "livebench.average", "livebench.coding", "livebench.reasoning",
         "livebench.mathematics", "livebench.language", "livebench.data_analysis",
         "livebench.agentic_coding", "livebench.if",
-        # Arena
         "arena_code.elo", "arena_code.ci", "arena_code.votes",
         "arena_text.elo", "arena_text.ci", "arena_text.votes",
-        # OpenLLM
         "openllm.average", "openllm.ifeval", "openllm.bbh",
         "openllm.math_lvl_5", "openllm.gpqa", "openllm.musr", "openllm.mmlu_pro",
-        # OpenRouter
         "openrouter.inp_price_per_m", "openrouter.out_price_per_m",
         "openrouter.cache_read_price_per_m",
-        # Meta
         "meta.params_b", "meta.co2_kg",
     ]
-    
-    # Only consider models that have AA data (pricing or benchmarks)
+
     raw = pe.project(ALL_AXES)
     aa_models = [r for r in raw if any(
         k.startswith("aa.") and v is not None
         for k, v in r["axes"].items()
     )]
-    
-    # Also need to fetch meta fields which are on the registry model, not through axes
-    # Build a lookup from model ID to full registry model
+
     reg_by_id = {m["id"]: m for m in pe.models}
-    
+
     output = []
     for r in aa_models:
         mid = r["id"]
         a = r["axes"]
         reg = reg_by_id.get(mid, {})
         meta = reg.get("meta", {})
-        
-        cost_task = _safe(a.get("aa.cost_per_task"))
-        intel = _safe(a.get("aa.intel"))
-        tokens_m = _safe(a.get("aa.tokens_m"))
-        
-        # Compute derived fields
-        iq_per_dollar = _safe(a.get("aa.iq_per_dollar"))
-        iq_per_mtok = _safe(a.get("aa.iq_per_mtok"))
-        iq_per_mtokdollar = _safe(a.get("aa.iq_per_mtokdollar"))
-        reasoning_tax = _safe(a.get("aa.reasoning_tax_pct"))
-        
-        model = {
-            # Core identity
-            "slug": mid,
-            "name": _clean_name(r.get("name")),
-            "creator": r.get("creator"),
-            "type": r.get("model_type"),
-            
-            # AA fields (backward compat)
-            "intel": intel,
-            "cost_per_task": cost_task,
-            "tokens_m": tokens_m,
-            "speed_tps": _safe(a.get("aa.speed_tps")),
-            "inp_price": _safe(a.get("aa.inp_price")),
-            "out_price": _safe(a.get("aa.out_price")),
-            "iq_per_dollar_pt": iq_per_dollar,
-            "iq_per_mtok": iq_per_mtok,
-            "iq_per_mtokdollar": iq_per_mtokdollar,
-            "useful_cost": _safe(a.get("aa.useful_cost")),
-            "reasoning_tax_pct": reasoning_tax,
-            "cost_per_wallsec": _safe(a.get("aa.cost_per_wallsec")),
-            "archetype": meta.get("archetype"),
-            "has_breakdown": meta.get("has_breakdown", False),
-            "pareto_optimal": meta.get("pareto_optimal", False),
-            "cost_percentile": _safe(meta.get("cost_percentile")),
-            "iq_percentile": _safe(meta.get("iq_percentile")),
-            
-            # New: cost segment data (rename for clarity)
-            "cost_seg_total": _safe(a.get("aa.cost_seg_total")),
-            "cost_seg_answer": _safe(a.get("aa.cost_seg_answer")),
-            "cost_seg_reasoning": _safe(a.get("aa.cost_seg_reasoning")),
-            "cost_seg_cache_write": _safe(a.get("aa.cost_seg_cache_write")),
-            "cost_seg_cache_hit": _safe(a.get("aa.cost_seg_cache_hit")),
-            "cost_seg_input": _safe(a.get("aa.cost_seg_input")),
-            
-            # New: LiveBench
-            "livebench_average": _safe(a.get("livebench.average")),
-            "livebench_coding": _safe(a.get("livebench.coding")),
-            "livebench_reasoning": _safe(a.get("livebench.reasoning")),
-            "livebench_mathematics": _safe(a.get("livebench.mathematics")),
-            "livebench_language": _safe(a.get("livebench.language")),
-            "livebench_data_analysis": _safe(a.get("livebench.data_analysis")),
-            "livebench_agentic_coding": _safe(a.get("livebench.agentic_coding")),
-            "livebench_if": _safe(a.get("livebench.if")),
-            
-            # New: Arena
-            "arena_code_elo": _safe(a.get("arena_code.elo")),
-            "arena_code_ci": _safe(a.get("arena_code.ci")),
-            "arena_code_votes": _safe(a.get("arena_code.votes")),
-            "arena_text_elo": _safe(a.get("arena_text.elo")),
-            "arena_text_ci": _safe(a.get("arena_text.ci")),
-            "arena_text_votes": _safe(a.get("arena_text.votes")),
-            
-            # New: OpenLLM
-            "openllm_average": _safe(a.get("openllm.average")),
-            "openllm_ifeval": _safe(a.get("openllm.ifeval")),
-            "openllm_bbh": _safe(a.get("openllm.bbh")),
-            "openllm_math_lvl_5": _safe(a.get("openllm.math_lvl_5")),
-            "openllm_gpqa": _safe(a.get("openllm.gpqa")),
-            "openllm_musr": _safe(a.get("openllm.musr")),
-            "openllm_mmlu_pro": _safe(a.get("openllm.mmlu_pro")),
-            
-            # New: OpenRouter
-            "openrouter_inp_price_per_m": _safe(a.get("openrouter.inp_price_per_m")),
-            "openrouter_out_price_per_m": _safe(a.get("openrouter.out_price_per_m")),
-            "openrouter_cache_read_price_per_m": _safe(a.get("openrouter.cache_read_price_per_m")),
-            "openrouter_vendor": _safe(reg.get("pricing", {}).get("openrouter", {}).get("vendor")),
-            
-            # New: Meta
-            "params_b": _safe(a.get("meta.params_b")),
-            "co2_kg": _safe(a.get("meta.co2_kg")),
-        }
-        
-        # Derived: iq_per_1k_pt (used by leaderboard)
-        if intel is not None and cost_task is not None and cost_task > 0:
-            model["iq_per_1k_pt"] = round(intel / cost_task * 1000, 1)
-        else:
-            model["iq_per_1k_pt"] = None
-        
-        # Derived: cost_per_iq_pt
-        if intel is not None and intel > 0 and cost_task is not None:
-            model["cost_per_iq_pt"] = round(cost_task / intel, 6)
-        else:
-            model["cost_per_iq_pt"] = None
-        
-        output.append(model)
-    
-    # Sort: by iq descending, then name
-    output.sort(key=lambda m: (-(m["intel"] or 0), m["slug"]))
-    
+
+        row = ProjectionRow(
+            slug=mid,
+            name=_clean_name(r.get("name")) or mid,
+            creator=r.get("creator"),
+            type=try_model_type(r.get("model_type")),
+            meta=ProjectionRowMeta(
+                archetype=try_archetype(meta.get("archetype")),
+                pareto_optimal=meta.get("pareto_optimal", False),
+                has_breakdown=meta.get("has_breakdown", False),
+                cost_percentile=safe_pct(meta.get("cost_percentile")),
+                iq_percentile=safe_pct(meta.get("iq_percentile")),
+            ),
+            inp_price=safe_ppm(a.get("aa.inp_price")),
+            out_price=safe_ppm(a.get("aa.out_price")),
+            blended=safe_ppm(a.get("aa.blended")),
+            cost_per_task=safe_cost(a.get("aa.cost_per_task")),
+            tokens_m=safe_tok_per_task(a.get("aa.tokens_m")),
+            speed_tps=safe_tps(a.get("aa.speed_tps")),
+            cost_per_wallsec=safe_wallsec(a.get("aa.cost_per_wallsec")),
+            useful_cost=safe_useful_cost(a.get("aa.useful_cost")),
+            reasoning_tax_pct=safe_reasoning_tax(a.get("aa.reasoning_tax_pct")),
+            intel=safe_intel(a.get("aa.intel")),
+            iq_per_dollar_pt=safe_iq_per_dollar(a.get("aa.iq_per_dollar")),
+            iq_per_mtok=safe_iq_per_mtok(a.get("aa.iq_per_mtok")),
+            iq_per_mtokdollar=safe_iq_per_mtokdollar(a.get("aa.iq_per_mtokdollar")),
+            cost_seg_total=safe_cost_segment(a.get("aa.cost_seg_total")),
+            cost_seg_answer=safe_cost_segment(a.get("aa.cost_seg_answer")),
+            cost_seg_reasoning=safe_cost_segment(a.get("aa.cost_seg_reasoning")),
+            cost_seg_cache_write=safe_cost_segment(a.get("aa.cost_seg_cache_write")),
+            cost_seg_cache_hit=safe_cost_segment(a.get("aa.cost_seg_cache_hit")),
+            cost_seg_input=safe_cost_segment(a.get("aa.cost_seg_input")),
+            livebench_average=safe_benchmark(a.get("livebench.average")),
+            livebench_coding=safe_benchmark(a.get("livebench.coding")),
+            livebench_reasoning=safe_benchmark(a.get("livebench.reasoning")),
+            livebench_mathematics=safe_benchmark(a.get("livebench.mathematics")),
+            livebench_language=safe_benchmark(a.get("livebench.language")),
+            livebench_data_analysis=safe_benchmark(a.get("livebench.data_analysis")),
+            livebench_agentic_coding=safe_benchmark(a.get("livebench.agentic_coding")),
+            livebench_if=safe_benchmark(a.get("livebench.if")),
+            arena_code_elo=safe_elo(a.get("arena_code.elo")),
+            arena_code_ci=safe_ci(a.get("arena_code.ci")),
+            arena_code_votes=safe_votes(a.get("arena_code.votes")),
+            arena_text_elo=safe_elo(a.get("arena_text.elo")),
+            arena_text_ci=safe_ci(a.get("arena_text.ci")),
+            arena_text_votes=safe_votes(a.get("arena_text.votes")),
+            openllm_average=safe_benchmark(a.get("openllm.average")),
+            openllm_ifeval=safe_benchmark(a.get("openllm.ifeval")),
+            openllm_bbh=safe_benchmark(a.get("openllm.bbh")),
+            openllm_math_lvl_5=safe_benchmark(a.get("openllm.math_lvl_5")),
+            openllm_gpqa=safe_benchmark(a.get("openllm.gpqa")),
+            openllm_musr=safe_benchmark(a.get("openllm.musr")),
+            openllm_mmlu_pro=safe_benchmark(a.get("openllm.mmlu_pro")),
+            openrouter_inp_price_per_m=safe_ppm(a.get("openrouter.inp_price_per_m")),
+            openrouter_out_price_per_m=safe_ppm(a.get("openrouter.out_price_per_m")),
+            openrouter_cache_read_price_per_m=safe_ppm(a.get("openrouter.cache_read_price_per_m")),
+            openrouter_vendor=reg.get("pricing", {}).get("openrouter", {}).get("vendor"),
+            params_b=safe_params(a.get("meta.params_b")),
+            co2_kg=safe_carbon(a.get("meta.co2_kg")),
+        )
+
+        row.compute_derived()
+        output.append(row)
+
+    # Sort: by intel descending, then slug
+    output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
+
     payload = {
         "meta": {
             "generated": _today(),
@@ -194,23 +156,26 @@ def build(ctx=None):
         },
         "models": output,
     }
-    
-    # Write data/processed.js (JS assignment for HTML consumption)
+
+    # Serialize to processed.js
+    rows_dict = [r.to_dict() for r in output]
+
     js_path = BASE / "processed.js"
     with open(js_path, "w") as f:
         f.write("window.PROCESSED_DATA = ")
-        json.dump(output, f, indent=2)
+        json.dump(rows_dict, f, indent=2)
         f.write(";\n")
-    
+
     print(f"✅ Wrote {len(output)} models to {js_path}")
-    print(f"   With AA intel: {sum(1 for m in output if m['intel'] is not None)}")
-    print(f"   With LiveBench avg: {sum(1 for m in output if m['livebench_average'] is not None)}")
-    print(f"   With Arena Code elo: {sum(1 for m in output if m['arena_code_elo'] is not None)}")
-    print(f"   With Arena Text elo: {sum(1 for m in output if m['arena_text_elo'] is not None)}")
-    print(f"   With OpenRouter price: {sum(1 for m in output if m['openrouter_inp_price_per_m'] is not None)}")
-    print(f"   With cost breakdown: {sum(1 for m in output if m['cost_seg_total'] is not None)}")
-    
+    print(f"   With AA intel: {sum(1 for m in output if m.intel is not None)}")
+    print(f"   With LiveBench avg: {sum(1 for m in output if m.livebench_average is not None)}")
+    print(f"   With Arena Code elo: {sum(1 for m in output if m.arena_code_elo is not None)}")
+    print(f"   With Arena Text elo: {sum(1 for m in output if m.arena_text_elo is not None)}")
+    print(f"   With OpenRouter price: {sum(1 for m in output if m.openrouter_inp_price_per_m is not None)}")
+    print(f"   With cost breakdown: {sum(1 for m in output if m.cost_seg_total is not None)}")
+
     return payload
+
 
 if __name__ == "__main__":
     build()

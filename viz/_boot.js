@@ -7,6 +7,13 @@
   const data = window.PROCESSED_DATA;
   const registry = window.VIZ_REGISTRY.slice().sort((a, b) => a.id.localeCompare(b.id));
 
+  // Inject dynamic model/creator count into header
+  const metaEl = document.getElementById('header-meta');
+  if (metaEl) {
+    const creators = new Set(data.map(m => m.creator).filter(Boolean));
+    metaEl.textContent += ` · ${data.length} MODELS · ${creators.size} CREATORS`;
+  }
+
   const tabsEl = document.getElementById('tabs');
   tabsEl.innerHTML = registry.map((v, i) => `
     <button data-viz="${v.id}" class="${i === 0 ? 'active' : ''}">
