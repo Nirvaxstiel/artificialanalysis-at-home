@@ -142,6 +142,15 @@ def build(ctx=None):
         )
 
         row.compute_derived()
+
+        # Compute cost_per_wallsec from task cost, speed, tokens if source didn't provide it
+        if row.cost_per_wallsec is None:
+            ct = row.cost_per_task.as_primitive() if row.cost_per_task else None
+            sp = row.speed_tps.as_primitive() if row.speed_tps else None
+            tm = row.tokens_m.as_primitive() if row.tokens_m else None
+            if ct is not None and ct > 0 and sp is not None and sp > 0 and tm is not None and tm > 0:
+                row.cost_per_wallsec = safe_wallsec(ct * sp / (tm * 1_000_000))
+
         output.append(row)
 
     # Sort: by intel descending, then slug

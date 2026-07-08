@@ -30,26 +30,36 @@
       return;
     }
 
-    const minWallSec = 5e-9, maxWallSec = 1e-5;
-    const minIQ = 10, maxIQ = 80;
-    const minTok = 30, maxTok = 320;
+    // Dynamic axis range from data
+    const vals = pts.map(m => m.cost_per_wallsec);
+    const minWallSec = Math.pow(10, Math.floor(Math.log10(Math.min(...vals))));
+    const maxWallSec = Math.pow(10, Math.ceil(Math.log10(Math.max(...vals))));
+    const minIQ = Math.floor(Math.min(...pts.map(m => m.intel)) / 10) * 10;
+    const maxIQ = Math.ceil(Math.max(...pts.map(m => m.intel)) / 10) * 10;
+    const minTok = Math.max(10, Math.floor(Math.min(...pts.map(m => m.tokens_m)) / 10) * 10);
+    const maxTok = Math.ceil(Math.max(...pts.map(m => m.tokens_m)) / 10) * 10;
 
     const xScale = c => M.left + (Math.log10(c) - Math.log10(minWallSec)) / (Math.log10(maxWallSec) - Math.log10(minWallSec)) * innerW;
     const yScale = i => M.top + (1 - (i - minIQ) / (maxIQ - minIQ)) * innerH;
     const rScale = t => 4 + Math.sqrt((t - minTok) / (maxTok - minTok)) * 22;
 
-    const wallSecTicks = [1e-08, 1e-07, 1e-06, 1e-05];
-    const iqTicks = [10, 20, 30, 40, 50, 60, 70, 80];
+    // Generate wall-sec tick marks (log10 steps)
+    const wallSecTicks = [];
+    for (let p = Math.log10(minWallSec); p <= Math.log10(maxWallSec); p += 1) {
+      wallSecTicks.push(Math.pow(10, p));
+    }
+    const iqTicks = [];
+    for (let i = minIQ; i <= maxIQ; i += 10) {
+      iqTicks.push(i);
+    }
 
     let svg = '';
 
-    // Sweet-spot quadrant: low cost + high IQ (left of $1e-06, above IQ 40)
-    const qLeft = xScale(minWallSec);
-    const qRight = xScale(1e-06);
-    const qTop = yScale(80);
-    const qBottom = yScale(40);
-    svg += `<rect x="${qLeft}" y="${qTop}" width="${qRight - qLeft}" height="${qBottom - qTop}" fill="rgba(182,255,60,0.04)" stroke="rgba(182,255,60,0.25)" stroke-dasharray="4 4"/>`;
-    svg += `<text x="${qLeft + 6}" y="${qTop + 14}" fill="#b6ff3c" font-size="10" font-family="monospace">// SWEET SPOT: fast + cheap + smart</text>`;
+    // Sweet-spot: bottom-left quadrant (cheapest + smartest)
+    const qMidX = xScale(Math.pow(10, (Math.log10(minWallSec) + Math.log10(maxWallSec)) / 2));
+    const qMidY = yScale((minIQ + maxIQ) / 2);
+    svg += `<rect x="${M.left}" y="${M.top}" width="${qMidX - M.left}" height="${qMidY - M.top}" fill="rgba(182,255,60,0.04)" stroke="rgba(182,255,60,0.25)" stroke-dasharray="4 4"/>`;
+    svg += `<text x="${M.left + 6}" y="${M.top + 14}" fill="#b6ff3c" font-size="10" font-family="monospace">// SWEET SPOT: fast + cheap + smart</text>`;
 
     for (const t of wallSecTicks) {
       const x = xScale(t);
@@ -61,10 +71,6 @@
     }
 
     // Reference line at $1e-06/sec (micro-dollar threshold)
-    const refX = xScale(1e-06);
-    svg += `<line x1="${refX}" y1="${M.top}" x2="${refX}" y2="${H - M.bottom}" stroke="#ff3333" stroke-width="1.5" stroke-dasharray="6 3"/>`;
-    svg += `<text x="${refX + 4}" y="${M.top + 12}" fill="#ff3333" font-size="9" font-family="monospace" font-weight="700">$0.000001/sec threshold</text>`;
-
     // Axes
     svg += `<g class="axis">`;
     for (const t of wallSecTicks) {

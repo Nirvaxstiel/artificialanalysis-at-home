@@ -73,7 +73,7 @@ window.__renderCreatorLegend = function() {
   const el = window.__creatorLegendEl || document.getElementById('creator-legend');
   if (!el) return;
   window.__creatorLegendEl = el;
-  const src = window.PROCESSED_DATA;
+  const src = window.MODELS;
   const models = Array.isArray(src) ? src : (src && src.models ? src.models : []);
   const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
   const isAllActive = !window.__legendFilter;

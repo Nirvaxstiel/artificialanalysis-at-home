@@ -4,7 +4,7 @@
   if (!window.PROCESSED_DATA || !window.VIZ_REGISTRY) {
     return setTimeout(boot, 50);
   }
-  const data = window.PROCESSED_DATA;
+  const data = window.MODELS;
   const registry = window.VIZ_REGISTRY.slice().sort((a, b) => a.id.localeCompare(b.id));
 
   // Inject dynamic model/creator count into header
@@ -96,7 +96,7 @@
 
   let count = 0;
   let maxQ = -Infinity;
-  const sorted = [...data].filter(m => m.cost_per_task != null && m.intel != null && m.cost_per_task > 0)
+  const sorted = [...data].filter(m => m.hasCost && m.hasIntel)
     .sort((a, b) => a.cost_per_task - b.cost_per_task);
   for (const m of sorted) {
     if (m.intel > maxQ) { count++; maxQ = m.intel + 1e-9; }
