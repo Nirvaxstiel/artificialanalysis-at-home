@@ -93,7 +93,7 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
 └── viz/
     ├── _shared.js              ← legend filter, color maps, config
     ├── 01-crossover.js
-    ├── 02-reasoning-tax.js
+    ├── 02-cost-breakdown.js
     ├── 03-provider-archetypes.js
     ├── 04-speed-cost.js
     ├── 05-cost-per-iq.js

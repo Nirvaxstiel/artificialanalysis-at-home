@@ -224,6 +224,7 @@
     }
 
     html += `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">${svg}</svg>`;
+    html += window.VIZ_HELPERS.renderCoverageNote(container, models.length, allData.length, 'cost_seg_total');
 
     container.innerHTML = html;
 

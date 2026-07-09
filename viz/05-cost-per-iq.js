@@ -114,7 +114,7 @@
 
     svg += `<text x="${M.left}" y="${M.top - 14}" font-size="14" font-weight="800" fill="var(--neon, #b6ff3c)" font-family="monospace">COST PER IQ POINT — RANKED</text>`;
 
-    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>` + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel');
 
     if (window.__legendFilter) {
       const slugOpacity = {};

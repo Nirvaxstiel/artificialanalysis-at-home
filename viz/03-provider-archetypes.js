@@ -223,7 +223,7 @@
 
     html += '</div>';
 
-    container.innerHTML = html;
+    container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed + tokens_m');
 
     // Clear legend (redundant with chart header)
     const legendEl = container.parentElement.querySelector('.viz-legend');

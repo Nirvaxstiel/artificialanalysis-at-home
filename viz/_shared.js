@@ -207,16 +207,20 @@ function fmtV(v) {
   return v.toExponential(2);
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, fmtV };
-
 function renderEmptyState(container, message) {
-  container.innerHTML = `<div style=\"padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;\">
-    <div style=\"color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;\">// NO DATA</div>
-    <div style=\"font-size:11px;line-height:1.6;\">${message}</div>
+  container.innerHTML = `<div style="padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;">
+    <div style="color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;">// NO DATA</div>
+    <div style="font-size:11px;line-height:1.6;">${message}</div>
   </div>`;
 }
 
-window.getTooltipEl = () => document.getElementById('tooltip');
+function renderCoverageNote(container, shown, total, missingFields) {
+  if (shown === total) return '';
+  const pct = Math.round(shown / total * 100);
+  return `<div style="font-family:monospace;font-size:11px;color:#888;text-align:center;padding:8px;margin-top:8px;"><span style="color:var(--neon2,#6a6);opacity:0.5;">//</span> Showing ${shown}/${total} models <span style="color:#555;">(${pct}%)</span> — requires <span style="color:#999;">${missingFields}</span></div>`;
+}
+
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, fmtV };
 
 window.buildTooltip = function(m) {
   const iq = m.intel ?? 0;

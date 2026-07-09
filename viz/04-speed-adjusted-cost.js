@@ -117,7 +117,7 @@
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#b6ff3c" stroke="#000" stroke-width="2.5" paint-order="stroke" data-slug="${m.slug}">${cleanName}</text>`;
     }
 
-    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>` + window.VIZ_HELPERS.renderCoverageNote(container, pts.length, data.length, 'cost_per_wallsec + intel + tokens_m');
 
     if (window.__legendFilter) {
       const slugOpacity = {};
