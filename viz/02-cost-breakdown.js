@@ -229,21 +229,7 @@
     container.innerHTML = html;
 
     // Apply legend filter opacity
-    if (window.__legendFilter) {
-      const slugOpacity = {};
-      models.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
-      const hideMode = window.__filterMode === 'hide';
-      container.querySelectorAll('[data-slug]').forEach(el => {
-        const op = slugOpacity[el.dataset.slug];
-        if (op !== undefined && op < 1) {
-          if (hideMode && op === 0) {
-            el.style.display = 'none';
-          } else {
-            el.style.opacity = op;
-          }
-        }
-      });
-    }
+    window.VIZ_HELPERS.applyLegendFilter(container, models);
 
     // Wire toggle buttons
     container.querySelectorAll('.cache-toggle-btn').forEach(btn => {
@@ -315,19 +301,6 @@
         svgEl.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
       }
     }
-
-    // Legend
-    let leg = '<strong style="color:var(--neon);">TOKEN TYPE</strong> ';
-    for (const seg of segments) {
-      leg += `<span class="item"><span class="dot" style="background:${seg.color}"></span>${seg.label}</span>`;
-    }
-    if (cacheSource === 'external') {
-      leg += `<span class="size">// EXTERNAL CACHE RATES (OpenRouter/Dirac.run) · HOVER FOR BREAKDOWN</span>`;
-    } else {
-      leg += `<span class="size">// AA-DERIVED CACHE DATA · TOGGLE ABOVE FOR EXTERNAL RATES · HOVER FOR BREAKDOWN</span>`;
-    }
-    const legendEl = container.parentElement ? container.parentElement.querySelector('.viz-legend') : null;
-    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

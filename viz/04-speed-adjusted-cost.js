@@ -3,7 +3,7 @@
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
   const CREATOR_BORDER = window.CREATOR_BORDER || {};
-  const { wireTooltips, placeLabel } = window.VIZ_HELPERS || {};
+  const { wireTooltips, placeLabel, applyLegendFilter } = window.VIZ_HELPERS || {};
 
   // Sweet-spot models: fast + cheap + smart (low cost_per_wallsec, high intel)
   const SWEET_SPOT_SLUGS = new Set([
@@ -119,33 +119,9 @@
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>` + window.VIZ_HELPERS.renderCoverageNote(container, pts.length, data.length, 'cost_per_wallsec + intel + tokens_m');
 
-    if (window.__legendFilter) {
-      const slugOpacity = {};
-      data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
-      const hideMode = window.__filterMode === 'hide';
-      container.querySelectorAll('[data-slug]').forEach(el => {
-        const op = slugOpacity[el.dataset.slug];
-        if (op !== undefined && op < 1) {
-          if (hideMode && op === 0) {
-            el.style.display = 'none';
-          } else {
-            el.style.opacity = op;
-          }
-        }
-      });
-    }
+    applyLegendFilter(container, data);
 
     wireTooltips(container, data, '.point, .label');
-
-    const creators = [...new Set(pts.map(p => p.creator))].sort();
-    let leg = '<strong style="color:var(--neon);">CREATOR</strong> ';
-    for (const c of creators) {
-      const color = CREATOR_COLORS[c] || "#888";
-      leg += `<span class="item"><span class="dot" style="background:${color}"></span>${c}</span>`;
-    }
-    leg += `<span class="size">// BUBBLE SIZE = OUTPUT TOKENS (M) · SWEET SPOT = FAST + CHEAP + SMART</span>`;
-    const legendEl = container.parentElement.querySelector('.viz-legend');
-    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

@@ -3,7 +3,7 @@
 (function() {
   const CREATOR_COLORS = window.CREATOR_COLORS;
   const CREATOR_BORDER = window.CREATOR_BORDER || {};
-  const { wireTooltips } = window.VIZ_HELPERS || {};
+  const { wireTooltips, applyLegendFilter } = window.VIZ_HELPERS || {};
 
   function render(container, data) {
     const W = 1200; const H = 650;
@@ -116,33 +116,9 @@
 
     container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>` + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel');
 
-    if (window.__legendFilter) {
-      const slugOpacity = {};
-      data.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
-      const hideMode = window.__filterMode === 'hide';
-      container.querySelectorAll('[data-slug]').forEach(el => {
-        const op = slugOpacity[el.dataset.slug];
-        if (op !== undefined && op < 1) {
-          if (hideMode && op === 0) {
-            el.style.display = 'none';
-          } else {
-            el.style.opacity = op;
-          }
-        }
-      });
-    }
+    applyLegendFilter(container, data);
 
     wireTooltips(container, data, '.bar, .val-label');
-
-    const creators = [...new Set(models.map(p => p.creator))].sort();
-    let leg = '<strong style="color:var(--neon);">CREATOR</strong> ';
-    for (const c of creators) {
-      const color = CREATOR_COLORS[c] || "#888";
-      leg += `<span class="item"><span class="dot" style="background:${color}"></span>${c}</span>`;
-    }
-    leg += `<span class="size">// Y-AXIS = COST / IQ POINT (LOG SCALE) · HOVER FOR DETAILS</span>`;
-    const legendEl = container.parentElement.querySelector('.viz-legend');
-    if (legendEl) legendEl.innerHTML = '';
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];

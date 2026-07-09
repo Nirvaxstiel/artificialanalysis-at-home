@@ -73,8 +73,7 @@ window.__renderCreatorLegend = function() {
   const el = window.__creatorLegendEl || document.getElementById('creator-legend');
   if (!el) return;
   window.__creatorLegendEl = el;
-  const src = window.MODELS;
-  const models = Array.isArray(src) ? src : (src && src.models ? src.models : []);
+  const models = window.MODELS || [];
   const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
   const isAllActive = !window.__legendFilter;
   const fm = window.__filterMode || 'dim';
@@ -220,7 +219,24 @@ function renderCoverageNote(container, shown, total, missingFields) {
   return `<div style="font-family:monospace;font-size:11px;color:#888;text-align:center;padding:8px;margin-top:8px;"><span style="color:var(--neon2,#6a6);opacity:0.5;">//</span> Showing ${shown}/${total} models <span style="color:#555;">(${pct}%)</span> — requires <span style="color:#999;">${missingFields}</span></div>`;
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, fmtV };
+function applyLegendFilter(container, models) {
+  if (!window.__legendFilter) return;
+  const slugOpacity = {};
+  models.forEach(m => { slugOpacity[m.slug] = window.__modelOpacity(m); });
+  const hideMode = window.__filterMode === 'hide';
+  container.querySelectorAll('[data-slug]').forEach(el => {
+    const op = slugOpacity[el.dataset.slug];
+    if (op !== undefined && op < 1) {
+      if (hideMode && op === 0) {
+        el.style.display = 'none';
+      } else {
+        el.style.opacity = op;
+      }
+    }
+  });
+}
+
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, applyLegendFilter, fmtV };
 
 window.buildTooltip = function(m) {
   const iq = m.intel ?? 0;
