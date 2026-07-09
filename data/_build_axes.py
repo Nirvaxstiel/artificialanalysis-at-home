@@ -34,8 +34,8 @@ def run(ctx=None):
          "AA output price per million tokens", ["out_price", "output_price_per_m"]),
         ("aa.blended", "Blended Price ($/Mtok)", "pricing", "$/M tok", False,
          "AA blended (weighted average) price", ["blended"]),
-        ("aa.cache", "Cache Discount ($/Mtok)", "pricing", "$/M tok", False,
-         "AA cache read price per million tokens", ["cache"]),
+        ("aa.cache_hit_price", "Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
+         "AA cache read price per million tokens", ["cache_hit_price"]),
         ("aa.cost_per_task", "Cost per Task ($)", "pricing", "$", False,
          "AA estimated cost per standard task", ["cost_per_task"]),
         ("aa.tokens_m", "Tokens per Task (M)", "pricing", "M tokens", True,
@@ -122,6 +122,8 @@ def run(ctx=None):
     aa_perf_axes = [
         ("aa.speed_tps", "Speed (tokens/s)", "performance", "tok/s", True,
          "AA output speed in tokens per second", ["speed_tps"]),
+        ("aa.ttft", "Time to First Token (s)", "performance", "s", False,
+         "AA median time to first token in seconds", ["ttft"]),
     ]
     for pid, label, typ, unit, hib, desc, aliases in aa_perf_axes:
         count = 0

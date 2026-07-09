@@ -118,7 +118,7 @@
 
     const qualityKey = container.__qualityAxis || 'intel';
     const costKey = container.__costAxis || 'inp_price';
-    const sizeKey = container.__sizeAxis || 'tokens_m';
+    const sizeKey = container.__sizeAxis || 'context_window';
     const colorMode = container.__colorMode || 'creator';
 
     const qCfg = AXES.quality.find(a => a.key === qualityKey) || { key: qualityKey, label: qualityKey, unit: '' };
@@ -163,7 +163,11 @@
     yScale = v => M.top + (1 - (v - minQual) / (maxQual - minQual)) * innerH;
     {
       const d = maxSize - minSize || 1;
-      rScale = t => 4 + Math.sqrt((t - minSize) / d) * 22;
+      if (!isFinite(minSize) || !isFinite(maxSize)) {
+        rScale = () => 8;  // size axis fully null → uniform radius
+      } else {
+        rScale = t => 4 + Math.sqrt((t - minSize) / d) * 22;
+      }
     }
 
     const costTicks = niceTicks(minCost, maxCost, 7, useLog);
@@ -474,7 +478,7 @@
     div.className = 'color-toggle-row';
     div.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;';
 
-    const sizeLabel = (AXES.size.find(a => a.key === (container.__sizeAxis || 'tokens_m')) || {}).label || 'Size';
+    const sizeLabel = (AXES.size.find(a => a.key === (container.__sizeAxis || 'context_window')) || {}).label || 'Size';
     div.innerHTML = `
       <span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Color:</span>
       <button class="color-toggle-btn ${colorMode==='creator'?'active':''}" data-mode="creator">Creator</button>

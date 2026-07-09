@@ -13,7 +13,7 @@ import re
 from dataclasses import dataclass, field, fields
 from datetime import date
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, ClassVar, Dict, List, Optional, Tuple
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -38,6 +38,19 @@ class DomainValue:
 class ModelType(str, Enum):
     CHAT = "chat"
     REASONING = "reasoning"
+
+
+class Provenance(str, Enum):
+    """Where a ProjectionRow field's value originates.
+
+    SOURCED  — value read from a provider file (AA / OR / LiveBench / …) at
+               the source-fetch stage. Ground truth from an external source.
+    DERIVED  — value computed in-pipeline from one or more SOURCED fields
+               (e.g. cost_per_iq_pt = cost_per_task / intel). Must only be set
+               from validated inputs; never from another DERIVED field.
+    """
+    SOURCED = "sourced"
+    DERIVED = "derived"
 
 
 class Direction(str, Enum):
@@ -139,6 +152,21 @@ class TokensPerSecond(DomainValue):
     def __post_init__(self):
         if self.tps < 0:
             raise ValueError(f"Negative tokens per second: {self.tps}")
+
+
+@dataclass(frozen=True)
+class TimeToFirstToken(DomainValue):
+    """Median time to first token in seconds. Non-negative. Lower is better."""
+    seconds: float
+
+    def __post_init__(self):
+        if self.seconds < 0:
+            raise ValueError(f"Negative TTFT: {self.seconds}")
+
+
+def safe_ttft(v) -> Optional[TimeToFirstToken]:
+    v = safe_float(v)
+    return TimeToFirstToken(v) if v is not None else None
 
 
 @dataclass(frozen=True)
@@ -701,9 +729,11 @@ class ProjectionRow:
 
     # AA pricing (optional additional)
     blended: Optional[PricePerMToken] = None
+    cache_hit_price: Optional[PricePerMToken] = None
     cost_per_task: Optional[CostPerTask] = None
     tokens_m: Optional[TokensPerTask] = None
     speed_tps: Optional[TokensPerSecond] = None
+    ttft: Optional[TimeToFirstToken] = None
     useful_cost: Optional[UsefulCost] = None
     reasoning_tax_pct: Optional[ReasoningTaxPct] = None
     cost_per_wallsec: Optional[CostPerWallSec] = None
@@ -768,6 +798,54 @@ class ProjectionRow:
         if not self.slug:
             raise ValueError("slug required")
 
+    # ── Field provenance ──
+    # Every data field is either SOURCED (read from a provider file) or
+    # DERIVED (computed in-pipeline from SOURCED inputs). The test suite
+    # uses this to guarantee DERIVED fields are always produced from valid
+    # SOURCED inputs — that's how the domain model stays safe.
+    FIELD_PROVENANCE: ClassVar[Dict[str, 'Provenance']] = {
+        # Identity / meta
+        "slug": Provenance.SOURCED, "name": Provenance.SOURCED,
+        "creator": Provenance.SOURCED, "type": Provenance.SOURCED,
+        "meta": Provenance.SOURCED,
+        # AA pricing (sourced)
+        "inp_price": Provenance.SOURCED, "out_price": Provenance.SOURCED,
+        "blended": Provenance.SOURCED, "cache_hit_price": Provenance.SOURCED,
+        "cost_per_task": Provenance.SOURCED, "tokens_m": Provenance.SOURCED,
+        "speed_tps": Provenance.SOURCED, "ttft": Provenance.SOURCED,
+        "useful_cost": Provenance.SOURCED, "reasoning_tax_pct": Provenance.SOURCED,
+        "cost_per_wallsec": Provenance.DERIVED,
+        # AA cost breakdown (sourced — all-or-nothing from AA)
+        "cost_seg_total": Provenance.SOURCED, "cost_seg_answer": Provenance.SOURCED,
+        "cost_seg_reasoning": Provenance.SOURCED, "cost_seg_cache_write": Provenance.SOURCED,
+        "cost_seg_cache_hit": Provenance.SOURCED, "cost_seg_input": Provenance.SOURCED,
+        # AA benchmarks
+        "intel": Provenance.SOURCED, "iq_per_dollar_pt": Provenance.SOURCED,
+        "iq_per_mtok": Provenance.SOURCED, "iq_per_mtokdollar": Provenance.SOURCED,
+        # LiveBench / Arena / OpenLLM (sourced)
+        "livebench_average": Provenance.SOURCED, "livebench_coding": Provenance.SOURCED,
+        "livebench_reasoning": Provenance.SOURCED, "livebench_mathematics": Provenance.SOURCED,
+        "livebench_language": Provenance.SOURCED, "livebench_data_analysis": Provenance.SOURCED,
+        "livebench_agentic_coding": Provenance.SOURCED, "livebench_if": Provenance.SOURCED,
+        "arena_code_elo": Provenance.SOURCED, "arena_code_ci": Provenance.SOURCED,
+        "arena_code_votes": Provenance.SOURCED, "arena_text_elo": Provenance.SOURCED,
+        "arena_text_ci": Provenance.SOURCED, "arena_text_votes": Provenance.SOURCED,
+        "openllm_average": Provenance.SOURCED, "openllm_ifeval": Provenance.SOURCED,
+        "openllm_bbh": Provenance.SOURCED, "openllm_math_lvl_5": Provenance.SOURCED,
+        "openllm_gpqa": Provenance.SOURCED, "openllm_musr": Provenance.SOURCED,
+        "openllm_mmlu_pro": Provenance.SOURCED,
+        # OpenRouter pricing (sourced)
+        "openrouter_inp_price_per_m": Provenance.SOURCED,
+        "openrouter_out_price_per_m": Provenance.SOURCED,
+        "openrouter_cache_read_price_per_m": Provenance.SOURCED,
+        "openrouter_vendor": Provenance.SOURCED,
+        # Meta (sourced)
+        "params_b": Provenance.SOURCED, "co2_kg": Provenance.SOURCED,
+        "context_window": Provenance.SOURCED,
+        # Derived fields (computed in-pipeline)
+        "iq_per_1k_pt": Provenance.DERIVED, "cost_per_iq_pt": Provenance.DERIVED,
+    }
+
     # ── Derived field computation ──
 
     def compute_derived(self) -> 'ProjectionRow':
@@ -817,7 +895,9 @@ class ProjectionRow:
             "cost_per_task": self.cost_per_task,
             "tokens_m": self.tokens_m,
             "speed_tps": self.speed_tps,
+            "ttft": self.ttft,
             "blended": self.blended,
+            "cache_hit_price": self.cache_hit_price,
             "iq_per_dollar_pt": self.iq_per_dollar_pt,
             "iq_per_mtok": self.iq_per_mtok,
             "iq_per_mtokdollar": self.iq_per_mtokdollar,

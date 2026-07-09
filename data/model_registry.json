@@ -4717,7 +4717,7 @@
           "out_price": 5.0,
           "blended": 0.7,
           "cache_hit_price": null,
-          "cost_per_task": 539.04,
+          "cost_per_task": 0.24,
           "tokens_m": 88,
           "speed_tps": 102.0,
           "cost_per_wallsec": null,
@@ -4762,14 +4762,15 @@
         "aa": {
           "inp_price": 3.0,
           "out_price": 15.0,
-          "blended": 2.1,
+          "blended": 6,
           "cache_hit_price": 0.3,
-          "cost_per_task": 1458.79,
+          "cost_per_task": 0.41,
           "tokens_m": 64,
           "speed_tps": 48.2,
           "cost_per_wallsec": null,
           "useful_cost": 22.7936,
           "reasoning_tax_pct": null,
+          "ttft": 11.465,
           "cost_segments": {
             "total_cost_per_task_usd": 0.41,
             "answer_usd": 0.15,
@@ -4785,7 +4786,11 @@
           "intel": 43,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 29.4765,
-          "iq_per_mtokdollar": 33.9253
+          "iq_per_mtokdollar": 33.9253,
+          "coding_index": 52.1,
+          "math_index": 88,
+          "mmlu_pro": 0.875,
+          "gpqa": 0.834
         }
       },
       "aliases": {
@@ -4809,14 +4814,15 @@
         "aa": {
           "inp_price": 10.0,
           "out_price": 50.0,
-          "blended": 7.0,
+          "blended": 20,
           "cache_hit_price": 1.0,
           "cost_per_task": 5630.52,
           "tokens_m": 87,
           "speed_tps": 72.6,
           "cost_per_wallsec": null,
           "useful_cost": 64.7186,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 46.224
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4833,7 +4839,9 @@
           "intel": 60,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 10.6562,
-          "iq_per_mtokdollar": 93.842
+          "iq_per_mtokdollar": 93.842,
+          "coding_index": 76.5,
+          "gpqa": 0.926
         },
         "arena_text": {
           "elo": 1509,
@@ -5175,14 +5183,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": null,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 55.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 10.696
         }
       },
       "benchmarks": {
@@ -5190,7 +5199,10 @@
           "intel": 41,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 91.3,
+          "mmlu_pro": 0.895,
+          "gpqa": 0.866
         }
       },
       "aliases": {
@@ -5283,14 +5295,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": null,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 39.1,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 14.228
         }
       },
       "benchmarks": {
@@ -5298,7 +5311,8 @@
           "intel": 53,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.896
         }
       },
       "aliases": {
@@ -5369,14 +5383,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": null,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 48.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 18.55
         }
       },
       "benchmarks": {
@@ -5384,7 +5399,9 @@
           "intel": 54,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 73.6,
+          "gpqa": 0.914
         }
       },
       "aliases": {
@@ -5786,14 +5803,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 3.5,
+          "blended": 10,
           "cache_hit_price": 0.5,
-          "cost_per_task": 3752.55,
+          "cost_per_task": 1.8,
           "tokens_m": 120,
           "speed_tps": 64.9,
           "cost_per_wallsec": null,
           "useful_cost": 31.2713,
           "reasoning_tax_pct": null,
+          "ttft": 25.404,
           "cost_segments": {
             "total_cost_per_task_usd": 1.8,
             "answer_usd": 0.5,
@@ -5818,7 +5836,9 @@
           "intel": 56,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 14.9232,
-          "iq_per_mtokdollar": 67.0098
+          "iq_per_mtokdollar": 67.0098,
+          "coding_index": 74.3,
+          "gpqa": 0.92
         },
         "arena_text": {
           "elo": 1477,
@@ -6130,7 +6150,7 @@
           "out_price": 15.0,
           "blended": 2.1,
           "cache_hit_price": null,
-          "cost_per_task": 3355.85,
+          "cost_per_task": 1.14,
           "tokens_m": 200,
           "speed_tps": 51.0,
           "cost_per_wallsec": null,
@@ -6175,14 +6195,15 @@
         "aa": {
           "inp_price": 3.0,
           "out_price": 15.0,
-          "blended": 2.1,
+          "blended": 4,
           "cache_hit_price": 0.3,
-          "cost_per_task": 6015.18,
+          "cost_per_task": 2.29,
           "tokens_m": 300,
           "speed_tps": 78.1,
           "cost_per_wallsec": null,
           "useful_cost": 20.0506,
           "reasoning_tax_pct": null,
+          "ttft": 134.449,
           "cost_segments": {
             "total_cost_per_task_usd": 2.29,
             "answer_usd": 0.6,
@@ -6207,7 +6228,9 @@
           "intel": 53,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 8.811,
-          "iq_per_mtokdollar": 113.494
+          "iq_per_mtokdollar": 113.494,
+          "coding_index": 71.5,
+          "gpqa": 0.911
         }
       },
       "aliases": {
@@ -6232,14 +6255,15 @@
         "aa": {
           "inp_price": 3.0,
           "out_price": 15.0,
-          "blended": null,
+          "blended": 4,
           "cache_hit_price": 0.3,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 74.5,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 4.516
         }
       },
       "benchmarks": {
@@ -6269,16 +6293,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 66.294,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.676
         }
       },
       "benchmarks": {
@@ -6308,16 +6333,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 66.76,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.709
         }
       },
       "benchmarks": {
@@ -6367,16 +6393,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 73.91,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 23.62
         }
       },
       "benchmarks": {
@@ -8724,14 +8751,15 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.0581,
+          "blended": 0.175,
           "cache_hit_price": 0.003,
-          "cost_per_task": 72.42,
+          "cost_per_task": 0.02,
           "tokens_m": 230,
           "speed_tps": 101.0,
           "cost_per_wallsec": null,
           "useful_cost": 0.3149,
           "reasoning_tax_pct": null,
+          "ttft": 0.928,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -8756,7 +8784,9 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 552.3336,
-          "iq_per_mtokdollar": 1.8105
+          "iq_per_mtokdollar": 1.8105,
+          "coding_index": 56.2,
+          "gpqa": 0.894
         },
         "livebench": {
           "average": 67.67,
@@ -8792,14 +8822,15 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": null,
+          "blended": 0.175,
           "cache_hit_price": 0.028,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -8807,7 +8838,8 @@
           "intel": 37,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.867
         }
       },
       "aliases": {
@@ -8831,14 +8863,15 @@
         "aa": {
           "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.173,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
-          "cost_per_task": 176.34,
+          "cost_per_task": 0.04,
           "tokens_m": 180,
           "speed_tps": 65.5,
           "cost_per_wallsec": null,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": null,
+          "ttft": 1.037,
           "cost_segments": {
             "total_cost_per_task_usd": 0.04,
             "answer_usd": 0.0,
@@ -8863,7 +8896,9 @@
           "intel": 44,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 249.518,
-          "iq_per_mtokdollar": 4.0077
+          "iq_per_mtokdollar": 4.0077,
+          "coding_index": 59.4,
+          "gpqa": 0.888
         },
         "livebench": {
           "average": 74.39,
@@ -8905,14 +8940,15 @@
         "aa": {
           "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": null,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 81.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.126
         }
       },
       "benchmarks": {
@@ -8920,7 +8956,8 @@
           "intel": 41,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.905
         }
       },
       "aliases": {
@@ -9137,16 +9174,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -9154,7 +9192,9 @@
           "intel": 13,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 19.7,
+          "gpqa": 0.669
         }
       },
       "aliases": {
@@ -10486,16 +10526,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -10503,7 +10544,10 @@
           "intel": 8,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 50.3,
+          "mmlu_pro": 0.588,
+          "gpqa": 0.515
         }
       },
       "aliases": {
@@ -10525,16 +10569,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -10542,7 +10587,10 @@
           "intel": 17,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 80,
+          "mmlu_pro": 0.818,
+          "gpqa": 0.739
         }
       },
       "aliases": {
@@ -10564,16 +10612,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -10581,7 +10630,8 @@
           "intel": 30,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.794
         }
       },
       "aliases": {
@@ -12591,14 +12641,15 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 1.5,
-          "blended": null,
+          "blended": 0.563,
           "cache_hit_price": 0.025,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 280.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 5.074
         }
       },
       "benchmarks": {
@@ -12606,7 +12657,9 @@
           "intel": 25,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 34.7,
+          "gpqa": 0.822
         }
       },
       "aliases": {
@@ -12630,14 +12683,15 @@
         "aa": {
           "inp_price": 1.5,
           "out_price": 9.0,
-          "blended": null,
+          "blended": 3.375,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 168.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 11.354
         }
       },
       "benchmarks": {
@@ -12645,7 +12699,8 @@
           "intel": 45,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.921
         }
       },
       "aliases": {
@@ -12783,14 +12838,15 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": null,
+          "blended": 1.125,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 170.5,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 5.857
         }
       },
       "benchmarks": {
@@ -12798,7 +12854,10 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 97,
+          "mmlu_pro": 0.89,
+          "gpqa": 0.898
         }
       },
       "aliases": {
@@ -12822,14 +12881,15 @@
         "aa": {
           "inp_price": 2.0,
           "out_price": 12.0,
-          "blended": null,
+          "blended": 4.5,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -12837,7 +12897,10 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 95.7,
+          "mmlu_pro": 0.898,
+          "gpqa": 0.908
         },
         "arena_text": {
           "elo": 1486,
@@ -12919,16 +12982,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -12936,7 +13000,10 @@
           "intel": 41,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 86.7,
+          "mmlu_pro": 0.895,
+          "gpqa": 0.887
         }
       },
       "aliases": {
@@ -13145,14 +13212,15 @@
         "aa": {
           "inp_price": 2.0,
           "out_price": 12.0,
-          "blended": 1.74,
+          "blended": 4.5,
           "cache_hit_price": 0.2,
-          "cost_per_task": 815.11,
+          "cost_per_task": 0.29,
           "tokens_m": 56,
           "speed_tps": 130.4,
           "cost_per_wallsec": null,
           "useful_cost": 14.5555,
           "reasoning_tax_pct": null,
+          "ttft": 25.936,
           "cost_segments": {
             "total_cost_per_task_usd": 0.29,
             "answer_usd": 0.18,
@@ -13177,7 +13245,9 @@
           "intel": 46,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 56.4341,
-          "iq_per_mtokdollar": 17.7198
+          "iq_per_mtokdollar": 17.7198,
+          "coding_index": 68.8,
+          "gpqa": 0.941
         },
         "arena_text": {
           "elo": 1486,
@@ -13263,14 +13333,15 @@
         "aa": {
           "inp_price": 1.5,
           "out_price": 9.0,
-          "blended": 1.2,
+          "blended": 3.375,
           "cache_hit_price": 0.15,
-          "cost_per_task": 1040.88,
+          "cost_per_task": 0.59,
           "tokens_m": 75,
           "speed_tps": 174.4,
           "cost_per_wallsec": null,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": null,
+          "ttft": 16.506,
           "cost_segments": {
             "total_cost_per_task_usd": 0.59,
             "answer_usd": 0.3,
@@ -13295,7 +13366,9 @@
           "intel": 50,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 48.0363,
-          "iq_per_mtokdollar": 20.8176
+          "iq_per_mtokdollar": 20.8176,
+          "coding_index": 70.1,
+          "gpqa": 0.922
         },
         "arena_text": {
           "elo": 1479,
@@ -13513,16 +13586,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.1,
+          "out_price": 0.3,
+          "blended": 0.15,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 120.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.328
         }
       },
       "benchmarks": {
@@ -13530,7 +13604,8 @@
           "intel": 22,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.753
         }
       },
       "aliases": {
@@ -13554,14 +13629,15 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": null,
+          "blended": 0.198,
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -13569,7 +13645,9 @@
           "intel": 26,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 39.3,
+          "gpqa": 0.792
         }
       },
       "aliases": {
@@ -13635,16 +13713,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 38,
           "speed_tps": 34.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.927
         }
       },
       "benchmarks": {
@@ -13652,7 +13731,9 @@
           "intel": 29,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 43.4,
+          "gpqa": 0.857
         }
       },
       "aliases": {
@@ -13732,16 +13813,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -13749,7 +13831,8 @@
           "intel": 15,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.433
         }
       },
       "aliases": {
@@ -13771,16 +13854,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -13788,7 +13872,8 @@
           "intel": 12,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.576
         }
       },
       "aliases": {
@@ -14162,14 +14247,15 @@
         "aa": {
           "inp_price": 1.0,
           "out_price": 3.2,
-          "blended": null,
+          "blended": 1.55,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 70.2,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.079
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -14186,7 +14272,8 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.82
         },
         "livebench": {
           "average": 68.7,
@@ -14228,14 +14315,15 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": null,
+          "blended": 2.15,
           "cache_hit_price": 0.26,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 69.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.831
         }
       },
       "benchmarks": {
@@ -14243,7 +14331,9 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 55.8,
+          "gpqa": 0.868
         }
       },
       "aliases": {
@@ -14265,16 +14355,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.2e-06,
@@ -14291,7 +14382,8 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.847
         }
       },
       "aliases": {
@@ -14364,14 +14456,15 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": 0.72,
+          "blended": 2.15,
           "cache_hit_price": 0.26,
-          "cost_per_task": 932.68,
+          "cost_per_task": 0.48,
           "tokens_m": 140,
           "speed_tps": 185.2,
           "cost_per_wallsec": null,
           "useful_cost": 6.662,
           "reasoning_tax_pct": null,
+          "ttft": 0.904,
           "cost_segments": {
             "total_cost_per_task_usd": 0.48,
             "answer_usd": 0.0,
@@ -14396,7 +14489,9 @@
           "intel": 51,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 54.6811,
-          "iq_per_mtokdollar": 18.2878
+          "iq_per_mtokdollar": 18.2878,
+          "coding_index": 68.8,
+          "gpqa": 0.895
         },
         "livebench": {
           "average": 76.18,
@@ -14454,16 +14549,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.2e-06,
@@ -14480,7 +14576,8 @@
           "intel": 43,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.809
         },
         "livebench": {
           "average": 48.78,
@@ -14950,14 +15047,15 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 15.0,
-          "blended": null,
+          "blended": 5.625,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 153.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 124.634
         }
       },
       "benchmarks": {
@@ -14965,7 +15063,9 @@
           "intel": 51,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 71.1,
+          "gpqa": 0.92
         }
       },
       "aliases": {
@@ -14989,14 +15089,15 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": null,
+          "blended": 1.688,
           "cache_hit_price": 0.075,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 185.1,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 10.94
         }
       },
       "benchmarks": {
@@ -15004,7 +15105,9 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 56.1,
+          "gpqa": 0.875
         }
       },
       "aliases": {
@@ -15028,14 +15131,15 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": null,
+          "blended": 1.688,
           "cache_hit_price": 0.075,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 169.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 7.209
         }
       },
       "benchmarks": {
@@ -15043,7 +15147,8 @@
           "intel": 30,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.823
         }
       },
       "aliases": {
@@ -15067,14 +15172,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": null,
+          "blended": 0.463,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 2.399
         }
       },
       "benchmarks": {
@@ -15082,7 +15188,9 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 56.1,
+          "gpqa": 0.817
         }
       },
       "aliases": {
@@ -15106,14 +15214,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": null,
+          "blended": 0.463,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 164.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 3.227
         }
       },
       "benchmarks": {
@@ -15121,7 +15230,8 @@
           "intel": 30,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.761
         }
       },
       "aliases": {
@@ -15145,22 +15255,25 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": null,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": null,
+          "intel": 28.9,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 39.4,
+          "gpqa": 0.823
         }
       },
       "aliases": {
@@ -15998,14 +16111,15 @@
         "aa": {
           "inp_price": 1.75,
           "out_price": 14.0,
-          "blended": 1.75,
+          "blended": 4.813,
           "cache_hit_price": 0.178,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 155.7,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.074
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16022,7 +16136,8 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.899
         },
         "livebench": {
           "average": 74.33,
@@ -16104,14 +16219,15 @@
         "aa": {
           "inp_price": 1.75,
           "out_price": 14.0,
-          "blended": 1.75,
+          "blended": 4.813,
           "cache_hit_price": 0.175,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 90.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 89.087
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16128,7 +16244,8 @@
           "intel": 44,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.915
         }
       },
       "aliases": {
@@ -16746,14 +16863,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 4.0,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
-          "cost_per_task": 1745.57,
+          "cost_per_task": 0.69,
           "tokens_m": 43,
           "speed_tps": 67.2,
           "cost_per_wallsec": null,
           "useful_cost": 40.5947,
           "reasoning_tax_pct": null,
+          "ttft": 20.797,
           "cost_segments": {
             "total_cost_per_task_usd": 0.69,
             "answer_usd": 0.15,
@@ -16769,7 +16887,9 @@
           "intel": 53,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 30.3626,
-          "iq_per_mtokdollar": 32.9353
+          "iq_per_mtokdollar": 32.9353,
+          "coding_index": 71.6,
+          "gpqa": 0.932
         },
         "livebench": {
           "average": 77.07,
@@ -16846,14 +16966,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 4.0,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
-          "cost_per_task": 382.08,
+          "cost_per_task": 0.22,
           "tokens_m": null,
           "speed_tps": 68.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
+          "ttft": 1.633,
           "cost_segments": {
             "total_cost_per_task_usd": 0.22,
             "answer_usd": 0.1,
@@ -16869,7 +16990,9 @@
           "intel": 43,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 112.5419,
-          "iq_per_mtokdollar": 8.8856
+          "iq_per_mtokdollar": 8.8856,
+          "coding_index": 60.9,
+          "gpqa": 0.91
         }
       },
       "aliases": {
@@ -16893,14 +17016,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 4.0,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
-          "cost_per_task": 951.24,
+          "cost_per_task": 0.42,
           "tokens_m": 21,
           "speed_tps": 66.9,
           "cost_per_wallsec": null,
           "useful_cost": 45.2971,
           "reasoning_tax_pct": null,
+          "ttft": 5.29,
           "cost_segments": {
             "total_cost_per_task_usd": 0.42,
             "answer_usd": 0.1,
@@ -16916,7 +17040,9 @@
           "intel": 50,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 52.563,
-          "iq_per_mtokdollar": 19.0248
+          "iq_per_mtokdollar": 19.0248,
+          "coding_index": 71.5,
+          "gpqa": 0.926
         },
         "livebench": {
           "average": 68.96,
@@ -16949,16 +17075,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 3e-05,
@@ -16998,14 +17125,15 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 4.35,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
-          "cost_per_task": 2818.79,
+          "cost_per_task": 1.03,
           "tokens_m": 72,
           "speed_tps": 71.4,
           "cost_per_wallsec": null,
           "useful_cost": 39.1499,
           "reasoning_tax_pct": null,
+          "ttft": 45.195,
           "cost_segments": {
             "total_cost_per_task_usd": 1.03,
             "answer_usd": 0.2,
@@ -17021,7 +17149,9 @@
           "intel": 55,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 19.5119,
-          "iq_per_mtokdollar": 51.2507
+          "iq_per_mtokdollar": 51.2507,
+          "coding_index": 74.9,
+          "gpqa": 0.935
         },
         "livebench": {
           "average": 81.28,
@@ -17190,14 +17320,15 @@
         "aa": {
           "inp_price": 0.15,
           "out_price": 0.6,
-          "blended": 0.09,
+          "blended": 0.262,
           "cache_hit_price": 0.15,
-          "cost_per_task": 96.28,
+          "cost_per_task": 0.06,
           "tokens_m": 87,
           "speed_tps": 303.4,
           "cost_per_wallsec": null,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": null,
+          "ttft": 0.516,
           "cost_segments": {
             "total_cost_per_task_usd": 0.06,
             "answer_usd": 0.0,
@@ -17220,7 +17351,11 @@
           "intel": 24,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 249.273,
-          "iq_per_mtokdollar": 4.0117
+          "iq_per_mtokdollar": 4.0117,
+          "coding_index": 30.4,
+          "math_index": 93.4,
+          "mmlu_pro": 0.808,
+          "gpqa": 0.782
         },
         "livebench": {
           "average": 46.35,
@@ -17256,14 +17391,15 @@
         "aa": {
           "inp_price": 0.15,
           "out_price": 0.6,
-          "blended": null,
+          "blended": 0.262,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 340.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.502
         }
       },
       "benchmarks": {
@@ -17271,7 +17407,10 @@
           "intel": 24,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 66.7,
+          "mmlu_pro": 0.775,
+          "gpqa": 0.672
         }
       },
       "aliases": {
@@ -17317,14 +17456,15 @@
         "aa": {
           "inp_price": 0.05,
           "out_price": 0.2,
-          "blended": 0.03,
+          "blended": 0.088,
           "cache_hit_price": null,
-          "cost_per_task": 29.87,
+          "cost_per_task": 0.02,
           "tokens_m": 67,
           "speed_tps": 234.0,
           "cost_per_wallsec": null,
           "useful_cost": 0.4458,
           "reasoning_tax_pct": null,
+          "ttft": 0.48,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -17347,7 +17487,11 @@
           "intel": 15,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 502.1761,
-          "iq_per_mtokdollar": 1.9913
+          "iq_per_mtokdollar": 1.9913,
+          "coding_index": 20.7,
+          "math_index": 89.3,
+          "mmlu_pro": 0.748,
+          "gpqa": 0.688
         }
       },
       "aliases": {
@@ -17370,16 +17514,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.06,
+          "out_price": 0.2,
+          "blended": 0.095,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 223.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.496
         }
       },
       "benchmarks": {
@@ -17387,7 +17532,10 @@
           "intel": 14,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 62.3,
+          "mmlu_pro": 0.718,
+          "gpqa": 0.611
         }
       },
       "aliases": {
@@ -17572,14 +17720,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": null,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 121.5,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 7.915
         }
       },
       "benchmarks": {
@@ -17587,7 +17736,8 @@
           "intel": 35,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.843
         }
       },
       "aliases": {
@@ -17611,14 +17761,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": null,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 109.2,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 21.73
         }
       },
       "benchmarks": {
@@ -17626,7 +17777,8 @@
           "intel": 36,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.89
         }
       },
       "aliases": {
@@ -17804,14 +17956,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 0.5,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
-          "cost_per_task": 299.97,
+          "cost_per_task": 0.16,
           "tokens_m": 83,
           "speed_tps": 120.9,
           "cost_per_wallsec": null,
           "useful_cost": 3.6141,
           "reasoning_tax_pct": null,
+          "ttft": 32.832,
           "cost_segments": {
             "total_cost_per_task_usd": 0.16,
             "answer_usd": 0.13,
@@ -17836,7 +17989,9 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 126.6793,
-          "iq_per_mtokdollar": 7.8939
+          "iq_per_mtokdollar": 7.8939,
+          "coding_index": 42.2,
+          "gpqa": 0.901
         },
         "livebench": {
           "average": 67.37,
@@ -18521,16 +18676,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 1,
+          "out_price": 3,
+          "blended": 1.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 36.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.796
         }
       },
       "benchmarks": {
@@ -18538,7 +18694,10 @@
           "intel": 9,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 69.7,
+          "mmlu_pro": 0.829,
+          "gpqa": 0.727
         }
       },
       "aliases": {
@@ -18560,16 +18719,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.13,
+          "out_price": 0.4,
+          "blended": 0.198,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 81.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.571
         }
       },
       "benchmarks": {
@@ -18577,7 +18737,10 @@
           "intel": 10,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 68.7,
+          "mmlu_pro": 0.811,
+          "gpqa": 0.699
         }
       },
       "aliases": {
@@ -19392,14 +19555,15 @@
         "aa": {
           "inp_price": 0.123,
           "out_price": 0.43,
-          "blended": null,
+          "blended": 0.2,
           "cache_hit_price": 0.045,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 160.7,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.774
         },
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -19416,7 +19580,8 @@
           "intel": 34,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.867
         }
       },
       "aliases": {
@@ -20470,16 +20635,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -20487,7 +20653,10 @@
           "intel": 32,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 90.3,
+          "mmlu_pro": 0.838,
+          "gpqa": 0.783
         }
       },
       "aliases": {
@@ -20618,14 +20787,15 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.0,
-          "blended": null,
+          "blended": 1.2,
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.7,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.278
         }
       },
       "benchmarks": {
@@ -20633,7 +20803,8 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.879
         }
       },
       "aliases": {
@@ -20680,14 +20851,15 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 2.5,
-          "blended": 0.37,
+          "blended": 1.075,
           "cache_hit_price": 0.6,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 123.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.776
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -20704,7 +20876,10 @@
           "intel": 33,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 94.7,
+          "mmlu_pro": 0.848,
+          "gpqa": 0.838
         },
         "livebench": {
           "average": 62.28,
@@ -20813,14 +20988,15 @@
         "aa": {
           "inp_price": 0.95,
           "out_price": 4.0,
-          "blended": 0.59,
+          "blended": 1.712,
           "cache_hit_price": 0.16,
-          "cost_per_task": 831.34,
+          "cost_per_task": 0.31,
           "tokens_m": 160,
           "speed_tps": 42.6,
           "cost_per_wallsec": null,
           "useful_cost": 5.1959,
           "reasoning_tax_pct": null,
+          "ttft": 1.253,
           "cost_segments": {
             "total_cost_per_task_usd": 0.31,
             "answer_usd": 0.18,
@@ -20845,7 +21021,9 @@
           "intel": 43,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 51.7237,
-          "iq_per_mtokdollar": 19.3335
+          "iq_per_mtokdollar": 19.3335,
+          "coding_index": 61.8,
+          "gpqa": 0.911
         },
         "arena_code": {
           "elo": 1514,
@@ -20901,14 +21079,15 @@
         "aa": {
           "inp_price": 0.95,
           "out_price": 4.0,
-          "blended": 0.59,
+          "blended": 1.712,
           "cache_hit_price": 0.16,
-          "cost_per_task": 524.56,
+          "cost_per_task": 0.18,
           "tokens_m": 100,
           "speed_tps": 43.6,
           "cost_per_wallsec": null,
           "useful_cost": 5.2456,
           "reasoning_tax_pct": null,
+          "ttft": 1.351,
           "cost_segments": {
             "total_cost_per_task_usd": 0.18,
             "answer_usd": 0.15,
@@ -20933,7 +21112,9 @@
           "intel": 42,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 80.0671,
-          "iq_per_mtokdollar": 12.4895
+          "iq_per_mtokdollar": 12.4895,
+          "coding_index": 60.8,
+          "gpqa": 0.896
         },
         "livebench": {
           "average": 71.93,
@@ -35646,14 +35827,15 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 0.75,
-          "blended": null,
+          "blended": 0.375,
           "cache_hit_price": 0.025,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 842.2,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 3.077
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -35670,7 +35852,8 @@
           "intel": 25,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.77
         }
       },
       "aliases": {
@@ -36472,14 +36655,15 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": null,
+          "blended": 0.175,
           "cache_hit_price": 0.003,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 71.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.734
         }
       },
       "benchmarks": {
@@ -36487,7 +36671,8 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.849
         }
       },
       "aliases": {
@@ -36509,16 +36694,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 1,
+          "out_price": 3,
+          "blended": 1.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 42.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -36526,7 +36712,8 @@
           "intel": 49,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.87
         },
         "livebench": {
           "average": 58.35,
@@ -36598,14 +36785,15 @@
         "aa": {
           "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.173,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
-          "cost_per_task": 98.47,
+          "cost_per_task": 0.03,
           "tokens_m": 96,
           "speed_tps": 43.5,
           "cost_per_wallsec": null,
           "useful_cost": 1.0257,
           "reasoning_tax_pct": null,
+          "ttft": 1.915,
           "cost_segments": {
             "total_cost_per_task_usd": 0.03,
             "answer_usd": 0.0,
@@ -36630,7 +36818,9 @@
           "intel": 42,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 426.5258,
-          "iq_per_mtokdollar": 2.3445
+          "iq_per_mtokdollar": 2.3445,
+          "coding_index": 60.2,
+          "gpqa": 0.866
         },
         "arena_text": {
           "elo": 1466,
@@ -36829,14 +37019,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.18,
+          "blended": 0.525,
           "cache_hit_price": 0.155,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 240.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.372
         },
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -36851,7 +37042,8 @@
           "intel": 34,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.848
         },
         "livebench": {
           "average": 60.27,
@@ -36887,14 +37079,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.18,
+          "blended": 0.525,
           "cache_hit_price": 0.06,
-          "cost_per_task": 143.73,
+          "cost_per_task": 0.07,
           "tokens_m": 85,
           "speed_tps": 51.1,
           "cost_per_wallsec": null,
           "useful_cost": 1.6909,
           "reasoning_tax_pct": null,
+          "ttft": 1.453,
           "cost_segments": {
             "total_cost_per_task_usd": 0.07,
             "answer_usd": 0.05,
@@ -36917,7 +37110,9 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 264.3846,
-          "iq_per_mtokdollar": 3.7824
+          "iq_per_mtokdollar": 3.7824,
+          "coding_index": 52.6,
+          "gpqa": 0.874
         },
         "livebench": {
           "average": 65.0,
@@ -36959,14 +37154,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.222,
+          "blended": 0.525,
           "cache_hit_price": 0.06,
-          "cost_per_task": 203.86,
+          "cost_per_task": 0.12,
           "tokens_m": 89,
           "speed_tps": 91.2,
           "cost_per_wallsec": null,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": null,
+          "ttft": 1.428,
           "cost_segments": {
             "total_cost_per_task_usd": 0.12,
             "answer_usd": 0.07,
@@ -36991,7 +37187,9 @@
           "intel": 44,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 215.8344,
-          "iq_per_mtokdollar": 4.6332
+          "iq_per_mtokdollar": 4.6332,
+          "coding_index": 58.6,
+          "gpqa": 0.929
         },
         "livebench": {
           "average": 70.05,
@@ -38487,7 +38685,7 @@
           "out_price": 7.5,
           "blended": 1.05,
           "cache_hit_price": null,
-          "cost_per_task": 1483.4,
+          "cost_per_task": 1.2,
           "tokens_m": 91,
           "speed_tps": 118.0,
           "cost_per_wallsec": null,
@@ -40774,16 +40972,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 57,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -40791,7 +40990,9 @@
           "intel": 43,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 58.6,
+          "gpqa": 0.884
         },
         "arena_text": {
           "elo": 1487,
@@ -41108,16 +41309,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.075,
+          "out_price": 0.3,
+          "blended": 0.131,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 270.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.573
         }
       },
       "benchmarks": {
@@ -41125,7 +41327,8 @@
           "intel": 15,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.469
         }
       },
       "aliases": {
@@ -41171,14 +41374,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 0.75,
-          "blended": 0.135,
+          "blended": 0.381,
           "cache_hit_price": 0.2,
-          "cost_per_task": 294.56,
+          "cost_per_task": 0.25,
           "tokens_m": 110,
           "speed_tps": 296.5,
           "cost_per_wallsec": null,
           "useful_cost": 2.6778,
           "reasoning_tax_pct": null,
+          "ttft": 0.98,
           "cost_segments": {
             "total_cost_per_task_usd": 0.25,
             "answer_usd": 0.0,
@@ -41201,7 +41405,9 @@
           "intel": 25,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 84.8724,
-          "iq_per_mtokdollar": 11.7824
+          "iq_per_mtokdollar": 11.7824,
+          "coding_index": 37.7,
+          "gpqa": 0.8
         },
         "livebench": {
           "average": 32.02,
@@ -41259,14 +41465,15 @@
         "aa": {
           "inp_price": 0.675,
           "out_price": 2.675,
-          "blended": 0.403,
+          "blended": 1.175,
           "cache_hit_price": 0.25,
-          "cost_per_task": 443.63,
+          "cost_per_task": 0.24,
           "tokens_m": 110,
           "speed_tps": 172.8,
           "cost_per_wallsec": null,
           "useful_cost": 4.033,
           "reasoning_tax_pct": null,
+          "ttft": 0.92,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
             "answer_usd": 0.0,
@@ -41291,7 +41498,9 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 85.657,
-          "iq_per_mtokdollar": 11.6745
+          "iq_per_mtokdollar": 11.6745,
+          "coding_index": 49.3,
+          "gpqa": 0.867
         },
         "livebench": {
           "average": 50.71,
@@ -41369,16 +41578,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -41386,7 +41596,8 @@
           "intel": 21,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.758
         }
       },
       "aliases": {
@@ -41617,14 +41828,15 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 2.5,
-          "blended": null,
+          "blended": 1,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 108.5,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.037
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -41641,7 +41853,9 @@
           "intel": 41,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 59.1,
+          "gpqa": 0.892
         }
       },
       "aliases": {
@@ -41796,16 +42010,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.3,
+          "out_price": 2.5,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 150.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 19.759
         }
       },
       "benchmarks": {
@@ -41813,7 +42028,11 @@
           "intel": 21,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 23,
+          "math_index": 94.3,
+          "mmlu_pro": 0.818,
+          "gpqa": 0.811
         }
       },
       "aliases": {
@@ -41835,16 +42054,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.3,
+          "out_price": 2.5,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 131.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 4.813
         }
       },
       "benchmarks": {
@@ -41852,7 +42072,10 @@
           "intel": 31,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 46.7,
+          "mmlu_pro": 0.788,
+          "gpqa": 0.698
         }
       },
       "aliases": {
@@ -41874,16 +42097,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.3,
+          "out_price": 2.5,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 123.2,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 16.908
         }
       },
       "benchmarks": {
@@ -41891,7 +42115,10 @@
           "intel": 30,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 88.7,
+          "mmlu_pro": 0.813,
+          "gpqa": 0.768
         }
       },
       "aliases": {
@@ -41913,16 +42140,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.3,
+          "out_price": 2.5,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -41930,7 +42158,10 @@
           "intel": 23,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 56,
+          "mmlu_pro": 0.798,
+          "gpqa": 0.699
         }
       },
       "aliases": {
@@ -41952,16 +42183,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.3,
+          "out_price": 2.5,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -41969,7 +42201,10 @@
           "intel": 28,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 89.7,
+          "mmlu_pro": 0.809,
+          "gpqa": 0.76
         }
       },
       "aliases": {
@@ -41991,16 +42226,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 1.25,
+          "out_price": 10,
+          "blended": 3.438,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 122.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 7.905
         }
       },
       "benchmarks": {
@@ -42008,7 +42244,11 @@
           "intel": 32,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 25.9,
+          "math_index": 63.3,
+          "mmlu_pro": 0.822,
+          "gpqa": 0.751
         }
       },
       "aliases": {
@@ -42054,14 +42294,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 10.0,
-          "blended": 1.25,
+          "blended": 3.438,
           "cache_hit_price": 0.312,
-          "cost_per_task": 466.55,
+          "cost_per_task": 0.17,
           "tokens_m": 36,
           "speed_tps": 126.4,
           "cost_per_wallsec": null,
           "useful_cost": 12.9597,
           "reasoning_tax_pct": null,
+          "ttft": 16.127,
           "cost_segments": {
             "total_cost_per_task_usd": 0.17,
             "answer_usd": 0.05,
@@ -42077,7 +42318,11 @@
           "intel": 36,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 77.1621,
-          "iq_per_mtokdollar": 12.9597
+          "iq_per_mtokdollar": 12.9597,
+          "coding_index": 34,
+          "math_index": 89,
+          "mmlu_pro": 0.83,
+          "gpqa": 0.785
         }
       },
       "aliases": {
@@ -42681,16 +42926,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.05,
+          "out_price": 0.2,
+          "blended": 0.088,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 85.1,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.914
         }
       },
       "benchmarks": {
@@ -42698,7 +42944,11 @@
           "intel": 14,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 14.4,
+          "math_index": 91,
+          "mmlu_pro": 0.794,
+          "gpqa": 0.757
         }
       },
       "aliases": {
@@ -55333,16 +55583,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.6,
+          "out_price": 3.6,
+          "blended": 1.35,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 54.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.508
         }
       },
       "benchmarks": {
@@ -55350,7 +55601,9 @@
           "intel": 37,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 53.7,
+          "gpqa": 0.842
         }
       },
       "aliases": {
@@ -55372,16 +55625,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.248,
+          "out_price": 1.485,
+          "blended": 0.557,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.1,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.407
         }
       },
       "benchmarks": {
@@ -55389,7 +55643,9 @@
           "intel": 32,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 41.9,
+          "gpqa": 0.841
         }
       },
       "aliases": {
@@ -55413,14 +55669,15 @@
         "aa": {
           "inp_price": 1.3,
           "out_price": 7.8,
-          "blended": null,
+          "blended": 2.925,
           "cache_hit_price": 0.13,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.5,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 2.307
         }
       },
       "benchmarks": {
@@ -55428,7 +55685,8 @@
           "intel": 40,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.888
         }
       },
       "aliases": {
@@ -55452,14 +55710,15 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": null,
+          "blended": 1.125,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 52.6,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 1.799
         }
       },
       "benchmarks": {
@@ -55467,7 +55726,9 @@
           "intel": 50,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 54.5,
+          "gpqa": 0.882
         }
       },
       "aliases": {
@@ -55491,14 +55752,15 @@
         "aa": {
           "inp_price": 0.4,
           "out_price": 1.16,
-          "blended": null,
+          "blended": 0.7,
           "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 49.8,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 2.373
         }
       },
       "benchmarks": {
@@ -55506,7 +55768,9 @@
           "intel": 39,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 55.9,
+          "gpqa": 0.9
         }
       },
       "aliases": {
@@ -56052,7 +56316,7 @@
           "out_price": 3.6,
           "blended": 0.48,
           "cache_hit_price": null,
-          "cost_per_task": 528.06,
+          "cost_per_task": 0.33,
           "tokens_m": 88,
           "speed_tps": 51.0,
           "cost_per_wallsec": null,
@@ -56362,14 +56626,15 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 7.5,
-          "blended": 1.25,
+          "blended": 3.75,
           "cache_hit_price": 0.25,
-          "cost_per_task": 1336.15,
+          "cost_per_task": 1.06,
           "tokens_m": 100,
           "speed_tps": 198.8,
           "cost_per_wallsec": null,
           "useful_cost": 13.3615,
           "reasoning_tax_pct": null,
+          "ttft": 1.57,
           "cost_segments": {
             "total_cost_per_task_usd": 1.06,
             "answer_usd": 0.0,
@@ -56394,7 +56659,9 @@
           "intel": 46,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": 34.4273,
-          "iq_per_mtokdollar": 29.0467
+          "iq_per_mtokdollar": 29.0467,
+          "coding_index": 66,
+          "gpqa": 0.923
         },
         "livebench": {
           "average": 75.15,
@@ -60491,16 +60758,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.2,
+          "out_price": 0.8,
+          "blended": 0.35,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 94.952,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 99.701
         },
         "openrouter": {
           "inp_price": 1e-07,
@@ -60515,7 +60783,10 @@
           "intel": 4,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "math_index": 33.7,
+          "mmlu_pro": 0.669,
+          "gpqa": 0.529
         }
       },
       "aliases": {
@@ -62834,16 +63105,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -62851,7 +63123,8 @@
           "intel": 15,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.657
         }
       },
       "aliases": {
@@ -62873,16 +63146,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 120,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -62899,7 +63173,9 @@
           "intel": 26,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 16.2,
+          "gpqa": 0.724
         }
       },
       "aliases": {
@@ -63010,16 +63286,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -63027,7 +63304,8 @@
           "intel": 12,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.623
         }
       },
       "aliases": {
@@ -63049,16 +63327,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -63262,16 +63541,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.1,
+          "out_price": 0.3,
+          "blended": 0.15,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 192.4,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.918
         }
       },
       "benchmarks": {
@@ -63279,7 +63559,8 @@
           "intel": 38,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.826
         }
       },
       "aliases": {
@@ -63303,14 +63584,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.15,
-          "blended": null,
+          "blended": 0.438,
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 403.0,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.752
         }
       },
       "benchmarks": {
@@ -63318,7 +63600,9 @@
           "intel": 30,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "coding_index": 37.3,
+          "gpqa": 0.809
         }
       },
       "aliases": {
@@ -64281,16 +64565,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
+          "inp_price": 0.235,
+          "out_price": 0.875,
+          "blended": 0.395,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 119.3,
           "cost_per_wallsec": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null
+          "reasoning_tax_pct": null,
+          "ttft": 0.682
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -64307,7 +64592,8 @@
           "intel": 32,
           "iq_per_dollar_pt": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "gpqa": 0.752
         }
       },
       "aliases": {

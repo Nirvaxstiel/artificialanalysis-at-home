@@ -2,7 +2,7 @@
   "meta": {
     "generated": "2026-07-09",
     "version": "1.0",
-    "total_axes": 47,
+    "total_axes": 48,
     "total_models": 2245,
     "sources": [
       "AA",
@@ -17,9 +17,11 @@
         "source": "AA",
         "axes": [
           "aa.speed_tps",
+          "aa.ttft",
           "aa.inp_price",
           "aa.out_price",
           "aa.blended",
+          "aa.cache_hit_price",
           "aa.tokens_m",
           "aa.cost_per_task",
           "aa.useful_cost",
@@ -29,7 +31,6 @@
           "aa.cost_seg_cache_write",
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
-          "aa.cache",
           "aa.cost_per_wallsec",
           "aa.reasoning_tax_pct",
           "aa.intel",
@@ -37,7 +38,7 @@
           "aa.iq_per_mtokdollar",
           "aa.iq_per_dollar"
         ],
-        "count": 20
+        "count": 21
       },
       "Arena Code": {
         "source": "Arena Code",
@@ -107,10 +108,29 @@
       "unit": "tok/s",
       "higher_is_better": true,
       "description": "AA output speed in tokens per second",
-      "models_have": 76,
+      "models_have": 103,
       "range": [
-        35,
+        0,
         842
+      ],
+      "group": "Performance",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.ttft",
+      "label": "Time to First Token (s)",
+      "source": "AA",
+      "type": "performance",
+      "unit": "s",
+      "higher_is_better": false,
+      "description": "AA median time to first token in seconds",
+      "models_have": 99,
+      "range": [
+        0,
+        134
       ],
       "group": "Performance",
       "normalize_range": [
@@ -126,9 +146,9 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 69,
+      "models_have": 104,
       "range": [
-        0.0,
+        0,
         10.0
       ],
       "group": "Pricing",
@@ -145,9 +165,9 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 69,
+      "models_have": 104,
       "range": [
-        0.0,
+        0,
         50.0
       ],
       "group": "Pricing",
@@ -164,10 +184,29 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA blended (weighted average) price",
-      "models_have": 38,
+      "models_have": 104,
       "range": [
-        0.0,
-        7.0
+        0,
+        20
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.cache_hit_price",
+      "label": "Cache Read Price ($/Mtok)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$/M tok",
+      "higher_is_better": false,
+      "description": "AA cache read price per million tokens",
+      "models_have": 59,
+      "range": [
+        0.003,
+        1.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -204,8 +243,8 @@
       "description": "AA estimated cost per standard task",
       "models_have": 29,
       "range": [
-        29.87,
-        6015.18
+        0.02,
+        5630.52
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -347,19 +386,6 @@
       ]
     },
     {
-      "id": "aa.cache",
-      "label": "Cache Discount ($/Mtok)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$/M tok",
-      "higher_is_better": false,
-      "description": "AA cache read price per million tokens",
-      "models_have": 0,
-      "range": null,
-      "group": "Pricing",
-      "normalize_range": null
-    },
-    {
       "id": "aa.cost_per_wallsec",
       "label": "Cost per Wall-Second ($)",
       "source": "AA",
@@ -393,7 +419,7 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "AA composite intelligence score (Pareto index)",
-      "models_have": 98,
+      "models_have": 99,
       "range": [
         4,
         60
@@ -983,7 +1009,7 @@
       "AA\u00d7Arena Code": 14,
       "AA\u00d7Arena Text": 8,
       "AA\u00d7LiveBench": 19,
-      "AA\u00d7OpenRouter": 30,
+      "AA\u00d7OpenRouter": 31,
       "Arena Code\u00d7Arena Text": 18,
       "Arena Code\u00d7LiveBench": 11,
       "Arena Code\u00d7OpenRouter": 23,

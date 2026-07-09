@@ -18,7 +18,7 @@ from project_axes import ProjectionEngine
 from _domain import (
     ProjectionRow, ProjectionRowMeta,
     Archetype, ModelType,
-    safe_ppm, safe_cost, safe_tok_per_task, safe_tps,
+    safe_ppm, safe_cost, safe_tok_per_task, safe_tps, safe_ttft,
     safe_wallsec, safe_useful_cost, safe_reasoning_tax,
     safe_cost_segment, safe_intel, safe_iq_per_mtok,
     safe_iq_per_mtokdollar, safe_iq_per_dollar,
@@ -49,9 +49,9 @@ def build(ctx=None):
 
     ALL_AXES = [
         "aa.inp_price", "aa.out_price", "aa.blended",
-        "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps",
+        "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps", "aa.ttft",
         "aa.cost_per_wallsec", "aa.useful_cost", "aa.reasoning_tax_pct",
-        "aa.cache",
+        "aa.cache_hit_price",
         "aa.intel", "aa.iq_per_mtok", "aa.iq_per_dollar", "aa.iq_per_mtokdollar",
         "aa.cost_seg_total", "aa.cost_seg_answer", "aa.cost_seg_reasoning",
         "aa.cost_seg_cache_write", "aa.cost_seg_cache_hit", "aa.cost_seg_input",
@@ -97,9 +97,11 @@ def build(ctx=None):
             inp_price=safe_ppm(a.get("aa.inp_price")),
             out_price=safe_ppm(a.get("aa.out_price")),
             blended=safe_ppm(a.get("aa.blended")),
+            cache_hit_price=safe_ppm(a.get("aa.cache_hit_price")),
             cost_per_task=safe_cost(a.get("aa.cost_per_task")),
             tokens_m=safe_tok_per_task(a.get("aa.tokens_m")),
             speed_tps=safe_tps(a.get("aa.speed_tps")),
+            ttft=safe_ttft(a.get("aa.ttft")),
             cost_per_wallsec=safe_wallsec(a.get("aa.cost_per_wallsec")),
             useful_cost=safe_useful_cost(a.get("aa.useful_cost")),
             reasoning_tax_pct=safe_reasoning_tax(a.get("aa.reasoning_tax_pct")),
@@ -145,7 +147,21 @@ def build(ctx=None):
 
         row.compute_derived()
 
-        # Compute cost_per_wallsec from task cost, speed, tokens if source didn't provide it
+        # tokens_m is AA's "Output Tokens per Intelligence Index Task" (millions).
+        # It spans the ENTIRE eval suite, not a single context window — so it is
+        # legitimately far larger than context_window. Do NOT null it on a
+        # context-window comparison. Sanity bound only: must be a positive number
+        # within AA's observed range (~10M–500M tokens per task).
+        if row.tokens_m is not None:
+            tm = row.tokens_m.as_primitive()
+            if tm <= 0 or tm > 10_000:
+                row.tokens_m = None
+
+        # DERIVED field (Provenance.DERIVED): cost_per_wallsec.
+        # Formula: cost_per_task * speed_tps / (tokens_m * 1e6). cost_per_task is
+        # the $ to run the full Intelligence Index; tokens_m is the output tokens
+        # for that same task — so the formula yields $/wall-sec. Valid whenever
+        # tokens_m survived the sanity bound above.
         if row.cost_per_wallsec is None:
             ct = row.cost_per_task.as_primitive() if row.cost_per_task else None
             sp = row.speed_tps.as_primitive() if row.speed_tps else None

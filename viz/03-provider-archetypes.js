@@ -6,12 +6,12 @@
   function render(container, data) {
     const models = data.filter(m =>
       m.intel != null && m.cost_per_task != null && m.cost_per_task > 0
-      && m.speed_tps != null && m.tokens_m != null && m.tokens_m > 0
+      && m.speed_tps != null
     );
 
     if (models.length === 0) {
       window.VIZ_HELPERS.renderEmptyState(container,
-        `No models with archetype data. This view needs <code>intel</code> + <code>cost_per_task</code> + <code>speed_tps</code> + <code>tokens_m</code>.`);
+        `No models with archetype data. This view needs <code>intel</code> + <code>cost_per_task</code> + <code>speed_tps</code>.`);
       return;
     }
 
@@ -35,11 +35,12 @@
       const avgIQ = ms.reduce((s, m) => s + m.intel, 0) / ms.length;
       const avgCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
       const avgSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
-      const avgTokens = ms.reduce((s, m) => s + m.tokens_m, 0) / ms.length;
+      const withTok = ms.filter(m => m.tokens_m != null);
+      const avgTokens = withTok.length ? withTok.reduce((s, m) => s + m.tokens_m, 0) / withTok.length : null;
       const withCtx = ms.filter(m => m.context_window != null);
       const avgCtx = withCtx.length ? Math.round(withCtx.reduce((s, m) => s + m.context_window, 0) / withCtx.length) : null;
       const costEff = 1 / avgCost;
-      const tokenEff = 1 / avgTokens;    // higher = fewer tokens = more efficient
+      const tokenEff = avgTokens ? 1 / avgTokens : null;    // higher = fewer tokens = more efficient
       const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
       const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
       archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, avgCtx, costEff, tokenEff, avgCacheEff, count: ms.length });
@@ -51,8 +52,7 @@
     const allIQ = archetypes.map(a => a.avgIQ);
     const allCostEff = archetypes.map(a => a.costEff);
     const allSpeed = archetypes.map(a => a.avgSpeed);
-    const allTokenEff = archetypes.map(a => a.tokenEff);
-    const allCacheEff = archetypes.map(a => a.avgCacheEff);
+    const allTokenEff = archetypes.map(a => a.tokenEff).filter(v => v != null);
     const allCtx = archetypes.map(a => a.avgCtx).filter(v => v != null);
 
     const mn = arr => 0;
@@ -184,8 +184,8 @@
         if (val == null) return '?';
         if (key === 'avgIQ') return val.toFixed(0);
         if (key === 'avgSpeed') return val.toFixed(0) + '/s';
-        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok';
         if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
+        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok';
         if (key === 'costEff') return '$' + (1/val).toFixed(2);
         if (key === 'avgCtx') return val >= 1000000 ? (val/1000000).toFixed(1) + 'M' : (val/1000).toFixed(0) + 'K';
         return val.toFixed(2);
@@ -208,8 +208,8 @@
         if (val == null) return '\u2014';
         if (key === 'avgIQ') return val.toFixed(1);
         if (key === 'avgSpeed') return val.toFixed(0) + ' t/s';
-        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok/task';
         if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
+        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok/task';
         if (key === 'costEff') return '$' + (1/val).toFixed(3) + '/task';
         return val.toFixed(2);
       };
@@ -233,7 +233,7 @@
 
     html += '</div>';
 
-    container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed + tokens_m');
+    container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed (TOKEN EFF where tokens_m available)');
 
     // Clear legend (redundant with chart header)
     const legendEl = container.parentElement.querySelector('.viz-legend');

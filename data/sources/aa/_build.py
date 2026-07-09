@@ -152,6 +152,15 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             }
         }
 
+    # === 1.5) Live AA API — fill nulls from authoritative source ===
+    api_models = _load_aa_api()
+    if api_models:
+        for cid, model in all_models.items():
+            api_slug = model.get("aliases", {}).get("aa")
+            aa_m = api_models.get(api_slug) if api_slug else None
+            if aa_m:
+                _overlay_aa_api(model, aa_m)
+
     # === 2) Enrich from aa_model_data.json (blended, tokens_m, etc.) ===
     enriched_path = os.path.join(AA_DIR, "enriched", "aa_model_data.json")
     with open(enriched_path) as f:
@@ -192,7 +201,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             "cache_hit_usd": m.get("cache_hit_usd"),
             "input_usd": m.get("input_usd"),
         }
-        if aa.get("cost_per_task") is None:
+        if m.get("total_cost_per_task_usd") is not None:
             aa["cost_per_task"] = m.get("total_cost_per_task_usd")
 
     return all_models
@@ -241,6 +250,70 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
             "aa": slug,
         }
     }
+
+
+def _overlay_aa_api(model: dict, aa_m: dict) -> None:
+    """Fill null AA fields from live AA API response (nulls only — no override)."""
+    ev = aa_m.get("evaluations", {}) or {}
+    pr = aa_m.get("pricing", {}) or {}
+    p = model.setdefault("pricing", {}).setdefault("aa", {})
+    b = model.setdefault("benchmarks", {}).setdefault("aa", {})
+
+    fills = [
+        (p, {
+            "inp_price": pr.get("price_1m_input_tokens"),
+            "out_price": pr.get("price_1m_output_tokens"),
+            "blended": pr.get("price_1m_blended_3_to_1"),
+            "speed_tps": aa_m.get("median_output_tokens_per_second"),
+            "ttft": aa_m.get("median_time_to_first_token_seconds"),
+        }),
+        (b, {
+            "intel": ev.get("artificial_analysis_intelligence_index"),
+            "coding_index": ev.get("artificial_analysis_coding_index"),
+            "math_index": ev.get("artificial_analysis_math_index"),
+            "mmlu_pro": ev.get("mmlu_pro"),
+            "gpqa": ev.get("gpqa"),
+        }),
+    ]
+    for sec, kv in fills:
+        for k, v in kv.items():
+            if v is not None and sec.get(k) is None:
+                sec[k] = v
+
+
+def _load_aa_api() -> dict:
+    """Fetch live AA models via API; return slug→record. Empty if no key."""
+    key = os.environ.get("AA_API_KEY")
+    if not key:
+        env_path = os.path.join(os.path.expanduser("~"), ".hermes", ".env")
+        try:
+            with open(env_path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("AA_API_KEY="):
+                        key = line.split("=", 1)[1].strip().strip('"').strip("'")
+                        break
+        except OSError:
+            pass
+    if not key:
+        return {}
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            "https://artificialanalysis.ai/api/v2/data/llms/models",
+            headers={"x-api-key": key, "Accept": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        models = data.get("data") or data.get("models") or []
+        out = {}
+        for m in models:
+            s = m.get("slug")
+            if s:
+                out[s] = m
+        return out
+    except Exception:
+        return {}
 
 
 def _overlay_enriched(model: dict, raw: dict) -> None:
