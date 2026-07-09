@@ -310,6 +310,15 @@ class CarbonKg(DomainValue):
 
 
 @dataclass(frozen=True)
+class ContextWindow(DomainValue):
+    tokens: int
+
+    def __post_init__(self):
+        if self.tokens <= 0:
+            raise ValueError(f"Context window must be positive: {self.tokens}")
+
+
+@dataclass(frozen=True)
 class Percentile(DomainValue):
     """Percentile rank. [0, 100]."""
     pct: float
@@ -749,6 +758,7 @@ class ProjectionRow:
     # Meta
     params_b: Optional[ParameterCount] = None
     co2_kg: Optional[CarbonKg] = None
+    context_window: Optional[ContextWindow] = None
 
     # Derived fields (computed lazily or set after construction)
     iq_per_1k_pt: Optional[IQ_PerDollarPoint] = None
@@ -798,6 +808,7 @@ class ProjectionRow:
             "pareto_optimal": self.meta.pareto_optimal if self.meta else False,
             "cost_percentile": None,
             "iq_percentile": None,
+            "context_window": None,
         }
 
         # Map optional fields
@@ -845,6 +856,7 @@ class ProjectionRow:
             "openrouter_cache_read_price_per_m": self.openrouter_cache_read_price_per_m,
             "params_b": self.params_b,
             "co2_kg": self.co2_kg,
+            "context_window": self.context_window,
             "iq_per_1k_pt": self.iq_per_1k_pt,
             "cost_per_iq_pt": self.cost_per_iq_pt,
         }
@@ -1026,6 +1038,18 @@ def safe_params(v) -> Optional[ParameterCount]:
 def safe_carbon(v) -> Optional[CarbonKg]:
     v = safe_float(v)
     return CarbonKg(v) if v is not None else None
+
+
+def safe_ctx_window(v) -> Optional[ContextWindow]:
+    if v is None:
+        return None
+    try:
+        tokens = int(v)
+    except (TypeError, ValueError):
+        return None
+    if tokens <= 0:
+        return None
+    return ContextWindow(tokens)
 
 
 def safe_pct(v) -> Optional[Percentile]:

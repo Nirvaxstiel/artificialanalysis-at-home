@@ -60,6 +60,8 @@ class ProjectionRow {
   get isReasoning() { return this.type === ModelType.REASONING; }
   get isParetoOptimal() { return this.pareto_optimal === true; }
   get hasBreakdown() { return this.has_breakdown === true; }
+  get contextWindow() { return this.context_window; }
+  get hasContext() { return this.context_window != null; }
 
   // ── Static helpers ──
 

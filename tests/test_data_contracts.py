@@ -112,7 +112,34 @@ class TestVizParseability:
                 )
 
 
-# ── TEST 5: processed.js is valid JS (window assignment) ──
+# ── TEST 6: misc.json data contract ──
+
+
+class TestMiscSource:
+    """misc.json entries must be valid records referencing real models."""
+
+    def test_valid_json(self):
+        path = REPO / "data" / "sources" / "misc.json"
+        assert path.exists(), "misc.json not found"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        assert isinstance(data, dict), "misc.json must be a dict"
+        for slug, record in data.items():
+            assert isinstance(record, dict), \
+                f"misc.json[{slug!r}] must be an object, got {type(record).__name__}"
+            assert record, f"misc.json[{slug!r}] has empty record"
+            for key, val in record.items():
+                assert val is not None, \
+                    f"misc.json[{slug!r}].{key} is null — omit the key instead"
+
+    def test_all_slugs_exist_in_registry(self):
+        with open(REPO / "data" / "model_registry.json") as f:
+            reg = json.load(f)
+        reg_ids = {m["id"] for m in reg["models"]}
+        with open(REPO / "data" / "sources" / "misc.json") as f:
+            misc = json.load(f)
+        stale = [s for s in misc if s not in reg_ids]
+        assert not stale, \
+            f"misc.json references slugs not in registry: {stale}"
 
 
 class TestProcessedJS:

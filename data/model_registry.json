@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generated": "2026-07-08",
+    "generated": "2026-07-09",
     "version": "1.0",
-    "model_count": 2242,
+    "model_count": 2245,
     "source_count": {
       "aa": 104,
       "livebench": 127,
       "arena_text": 30,
       "arena_code": 50,
       "openllm_aa_subset": 1783,
-      "openrouter": 340
+      "openrouter": 344
     },
     "sources": [
       "AA",
@@ -20,7 +20,7 @@
       "OpenRouter",
       "Cost Breakdown"
     ],
-    "name_map_size": 2376
+    "name_map_size": 2380
   },
   "name_map": {
     "aa:gpt-oss-120b": "gpt-oss-120b",
@@ -146,6 +146,7 @@
     "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
     "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
     "aa:hy3": "hy3",
+    "openrouter:tencent/hy3": "hy3",
     "aa:trinity-large-thinking": "trinity-large-thinking",
     "openrouter:arcee-ai/trinity-large-thinking": "trinity-large-thinking",
     "aa:nex-n2-pro": "nex-n2-pro",
@@ -2132,9 +2133,15 @@
     "openllm:yuvraj17/Llama3-8B-SuperNova-Spectrum-dare_ties": "llama3-8b-supernova-spectrum-dare_ties",
     "openllm:yuvraj17/Llama3-8B-abliterated-Spectrum-slerp": "llama3-8b-abliterated-spectrum-slerp",
     "openllm:zetasepic/Qwen2.5-32B-Instruct-abliterated-v2": "qwen2.5-32b-instruct-abliterated-v2",
+    "openrouter:x-ai/grok-4.5": "grok-4.5",
+    "openrouter:~x-ai/grok-latest": "grok-latest",
+    "openrouter:aion-labs/aion-3.0-mini": "aion-3.0-mini",
+    "openrouter:aion-labs/aion-3.0": "aion-3.0",
+    "openrouter:tencent/hy3:free": "hy3:free",
     "openrouter:poolside/laguna-xs-2.1:free": "laguna-xs-2.1:free",
     "openrouter:poolside/laguna-xs-2.1": "laguna-xs-2.1",
     "openrouter:google/gemini-3.1-flash-lite-image": "gemini-3.1-flash-lite-image",
+    "openrouter:nex-agi/nex-n2-mini": "nex-n2-mini",
     "openrouter:sakana/fugu-ultra": "fugu-ultra",
     "openrouter:google/gemini-3.1-flash-image": "gemini-3.1-flash-image",
     "openrouter:google/gemini-3-pro-image": "gemini-3-pro-image",
@@ -2290,7 +2297,6 @@
     "openrouter:bytedance/ui-tars-1.5-7b": "ui-tars-1.5-7b",
     "openrouter:google/gemini-2.5-flash-lite": "gemini-2.5-flash-lite",
     "openrouter:qwen/qwen3-235b-a22b-2507": "qwen3-235b-a22b-2507",
-    "openrouter:switchpoint/router": "router",
     "openrouter:moonshotai/kimi-k2": "kimi-k2",
     "openrouter:cognitivecomputations/dolphin-mistral-24b-venice-edition:free": "dolphin-mistral-24b-venice-edition:free",
     "openrouter:tencent/hunyuan-a13b-instruct": "hunyuan-a13b-instruct",
@@ -2339,8 +2345,6 @@
     "openrouter:perplexity/sonar-deep-research": "sonar-deep-research",
     "openrouter:mistralai/mistral-saba": "mistral-saba",
     "openrouter:openai/o3-mini-high": "o3-mini-high",
-    "openrouter:aion-labs/aion-1.0": "aion-1.0",
-    "openrouter:aion-labs/aion-1.0-mini": "aion-1.0-mini",
     "openrouter:aion-labs/aion-rp-llama-3.1-8b": "aion-rp-llama-3.1-8b",
     "openrouter:qwen/qwen2.5-vl-72b-instruct": "qwen2.5-vl-72b-instruct",
     "openrouter:qwen/qwen-plus": "qwen-plus",
@@ -2365,8 +2369,8 @@
     "openrouter:thedrummer/unslopnemo-12b": "unslopnemo-12b",
     "openrouter:anthracite-org/magnum-v4-72b": "magnum-v4-72b",
     "openrouter:qwen/qwen-2.5-7b-instruct": "qwen-2.5-7b-instruct",
-    "openrouter:inflection/inflection-3-productivity": "inflection-3-productivity",
     "openrouter:inflection/inflection-3-pi": "inflection-3-pi",
+    "openrouter:inflection/inflection-3-productivity": "inflection-3-productivity",
     "openrouter:thedrummer/rocinante-12b": "rocinante-12b",
     "openrouter:meta-llama/llama-3.2-3b-instruct:free": "llama-3.2-3b-instruct:free",
     "openrouter:meta-llama/llama-3.2-11b-vision-instruct": "llama-3.2-11b-vision-instruct",
@@ -2379,11 +2383,11 @@
     "openrouter:sao10k/l3-lunaris-8b": "l3-lunaris-8b",
     "openrouter:openai/gpt-4o-2024-08-06": "gpt-4o-2024-08-06",
     "openrouter:mistralai/mistral-nemo": "mistral-nemo",
-    "openrouter:openai/gpt-4o-mini": "gpt-4o-mini",
     "openrouter:openai/gpt-4o-mini-2024-07-18": "gpt-4o-mini-2024-07-18",
+    "openrouter:openai/gpt-4o-mini": "gpt-4o-mini",
     "openrouter:google/gemma-2-27b-it": "gemma-2-27b-it",
-    "openrouter:openai/gpt-4o": "gpt-4o",
     "openrouter:openai/gpt-4o-2024-05-13": "gpt-4o-2024-05-13",
+    "openrouter:openai/gpt-4o": "gpt-4o",
     "openrouter:mistralai/mixtral-8x22b-instruct": "mixtral-8x22b-instruct",
     "openrouter:microsoft/wizardlm-2-8x22b": "wizardlm-2-8x22b",
     "openrouter:openai/gpt-4-turbo": "gpt-4-turbo",
@@ -2654,51 +2658,13 @@
       }
     },
     {
-      "id": "aion-1.0",
-      "name": "AionLabs: Aion-1.0",
-      "creator": "aion-labs",
-      "model_type": null,
-      "meta": {},
-      "pricing": {
-        "openrouter": {
-          "inp_price": 4e-06,
-          "inp_price_per_m": 4.0,
-          "out_price": 8e-06,
-          "out_price_per_m": 8.0,
-          "vendor": "aion-labs"
-        }
-      },
-      "benchmarks": {},
-      "aliases": {
-        "openrouter": "aion-labs/aion-1.0"
-      }
-    },
-    {
-      "id": "aion-1.0-mini",
-      "name": "AionLabs: Aion-1.0-Mini",
-      "creator": "aion-labs",
-      "model_type": null,
-      "meta": {},
-      "pricing": {
-        "openrouter": {
-          "inp_price": 7e-07,
-          "inp_price_per_m": 0.7,
-          "out_price": 1.4e-06,
-          "out_price_per_m": 1.4,
-          "vendor": "aion-labs"
-        }
-      },
-      "benchmarks": {},
-      "aliases": {
-        "openrouter": "aion-labs/aion-1.0-mini"
-      }
-    },
-    {
       "id": "aion-2.0",
       "name": "AionLabs: Aion-2.0",
       "creator": "aion-labs",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -2716,11 +2682,61 @@
       }
     },
     {
+      "id": "aion-3.0",
+      "name": "AionLabs: Aion-3.0",
+      "creator": "aion-labs",
+      "model_type": null,
+      "meta": {
+        "context_window": 131072
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 3e-06,
+          "inp_price_per_m": 3.0,
+          "out_price": 6e-06,
+          "out_price_per_m": 6.0,
+          "cache_read_price": 7.5e-07,
+          "cache_read_price_per_m": 0.75,
+          "vendor": "aion-labs"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "aion-labs/aion-3.0"
+      }
+    },
+    {
+      "id": "aion-3.0-mini",
+      "name": "AionLabs: Aion-3.0-Mini",
+      "creator": "aion-labs",
+      "model_type": null,
+      "meta": {
+        "context_window": 131072
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 7e-07,
+          "inp_price_per_m": 0.7,
+          "out_price": 1.4e-06,
+          "out_price_per_m": 1.4,
+          "cache_read_price": 1.8e-07,
+          "cache_read_price_per_m": 0.18,
+          "vendor": "aion-labs"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "aion-labs/aion-3.0-mini"
+      }
+    },
+    {
       "id": "aion-rp-llama-3.1-8b",
       "name": "AionLabs: Aion-RP 1.0 (8B)",
       "creator": "aion-labs",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -2931,7 +2947,9 @@
       "name": "Auto Router",
       "creator": "openrouter",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -3826,7 +3844,9 @@
       "name": "Body Builder (beta)",
       "creator": "openrouter",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -4567,7 +4587,9 @@
       "name": "Anthropic: Claude 3 Haiku",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -4686,7 +4708,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -4732,7 +4755,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -4778,7 +4802,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -4879,7 +4904,9 @@
       "name": "Anthropic: Claude Fable Latest",
       "creator": "~anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -4947,7 +4974,9 @@
       "name": "Anthropic: Claude Haiku 4.5",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -4969,7 +4998,9 @@
       "name": "Anthropic Claude Haiku Latest",
       "creator": "~anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -4991,7 +5022,9 @@
       "name": "Anthropic: Claude Opus 4",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -5135,7 +5168,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -5242,7 +5276,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -5327,7 +5362,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -5592,7 +5628,9 @@
       "name": "Anthropic: Claude Opus 4.1",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -5614,7 +5652,9 @@
       "name": "Anthropic: Claude Opus 4.5",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5636,7 +5676,9 @@
       "name": "claude-opus-4-6",
       "creator": "Anthropic",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5671,7 +5713,9 @@
       "name": "claude-opus-4-7",
       "creator": "Anthropic",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5706,7 +5750,9 @@
       "name": "Anthropic: Claude Opus 4.7 (Fast)",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -5733,7 +5779,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5796,7 +5843,9 @@
       "name": "Anthropic: Claude Opus 4.8 (Fast)",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -5818,7 +5867,9 @@
       "name": "Anthropic: Claude Opus Latest",
       "creator": "~anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5840,7 +5891,9 @@
       "name": "Anthropic: Claude Sonnet 4",
       "creator": "anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -5995,7 +6048,9 @@
       "name": "claude-sonnet-4-5-20250929",
       "creator": "Anthropic",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -6024,7 +6079,9 @@
       "name": "claude-sonnet-4-6",
       "creator": "Anthropic",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -6064,7 +6121,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6110,7 +6168,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6166,7 +6225,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6204,7 +6264,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6242,7 +6303,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6275,7 +6337,9 @@
       "name": "claude-sonnet-5-thinking",
       "creator": "Anthropic",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {},
       "benchmarks": {
         "arena_code": {
@@ -6298,7 +6362,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6354,7 +6419,9 @@
       "name": "Anthropic Claude Sonnet Latest",
       "creator": "~anthropic",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -6599,7 +6666,9 @@
       "name": "Arcee AI: Coder Large",
       "creator": "arcee-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -6647,7 +6716,9 @@
       "name": "Mistral: Codestral 2508",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -6669,7 +6740,9 @@
       "name": "Deep Cogito: Cogito v2.1 671B",
       "creator": "deepcogito",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -6744,7 +6817,9 @@
       "name": "Cohere: Command A",
       "creator": "cohere",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -6764,7 +6839,9 @@
       "name": "Cohere: Command R (08-2024)",
       "creator": "cohere",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -6784,7 +6861,9 @@
       "name": "Cohere: Command R+ (08-2024)",
       "creator": "cohere",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -6804,7 +6883,9 @@
       "name": "Cohere: Command R7B (12-2024)",
       "creator": "cohere",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.75e-08,
@@ -6963,7 +7044,9 @@
       "name": "TheDrummer: Cydonia 24B V4.1",
       "creator": "thedrummer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -7149,7 +7232,9 @@
       "name": "DeepSeek: DeepSeek V3",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.002e-07,
@@ -7169,7 +7254,9 @@
       "name": "DeepSeek: DeepSeek V3 0324",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.4e-07,
@@ -7191,7 +7278,9 @@
       "name": "DeepSeek: DeepSeek V3.1",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.1e-07,
@@ -7545,7 +7634,9 @@
       "name": "DeepSeek: R1",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-07,
@@ -7565,7 +7656,9 @@
       "name": "DeepSeek: R1 0528",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -7648,7 +7741,8 @@
         "co2_kg": 118.54646560023332,
         "architecture": "LlamaForCausalLM",
         "license": "mit",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 128000
       },
       "pricing": {
         "openrouter": {
@@ -8474,7 +8568,9 @@
       "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "creator": "deepseek",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.7e-07,
@@ -8496,7 +8592,9 @@
       "name": "deepseek-v3.2",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.288e-07,
@@ -8530,7 +8628,9 @@
       "name": "deepseek-v3.2-exp",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.7e-07,
@@ -8562,7 +8662,9 @@
       "name": "deepseek-v3.2-exp-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -8585,7 +8687,9 @@
       "name": "deepseek-v3.2-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -8613,7 +8717,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8680,7 +8785,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8718,7 +8824,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8791,7 +8898,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8824,7 +8932,9 @@
       "name": "deepseek-v4-pro-thinking",
       "creator": "DeepSeek",
       "model_type": "open",
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {},
       "benchmarks": {
         "arena_code": {
@@ -8953,7 +9063,9 @@
       "name": "devstral-2512",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -9020,7 +9132,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -9305,7 +9418,9 @@
       "name": "Venice: Uncensored (free)",
       "creator": "cognitivecomputations",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -10154,7 +10269,9 @@
       "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
       "creator": "baidu",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.2e-07,
@@ -10364,7 +10481,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -10402,7 +10520,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -10440,7 +10559,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -11728,7 +11848,9 @@
       "name": "Free Models Router",
       "creator": "openrouter",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -11858,7 +11980,9 @@
       "name": "Sakana: Fugu Ultra",
       "creator": "sakana",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -12044,7 +12168,9 @@
       "name": "OpenRouter: Fusion",
       "creator": "openrouter",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -12170,7 +12296,9 @@
       "name": "Google: Gemini 2.5 Flash",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -12215,7 +12343,9 @@
       "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -12237,7 +12367,9 @@
       "name": "Google: Gemini 2.5 Flash Lite",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -12282,7 +12414,9 @@
       "name": "Google: Gemini 2.5 Flash Lite Preview 09-2025",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -12350,7 +12484,9 @@
       "name": "Google: Gemini 2.5 Pro",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -12395,7 +12531,9 @@
       "name": "Google: Gemini 2.5 Pro Preview 06-05",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -12417,7 +12555,9 @@
       "name": "Google: Gemini 2.5 Pro Preview 05-06",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -12444,7 +12584,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -12482,7 +12623,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -12557,7 +12699,9 @@
       "name": "Google: Gemini 3 Flash Preview",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -12579,7 +12723,9 @@
       "name": "gemini-3-flash-preview-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -12630,7 +12776,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -12668,7 +12815,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -12713,7 +12861,9 @@
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -12735,7 +12885,9 @@
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -12762,7 +12914,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -12841,7 +12994,9 @@
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -12861,7 +13016,9 @@
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -12881,7 +13038,9 @@
       "name": "Google: Gemini 3.1 Flash Lite",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -12903,7 +13062,9 @@
       "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -12923,7 +13084,9 @@
       "name": "Google: Gemini 3.1 Flash Lite Preview",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -12945,7 +13108,9 @@
       "name": "gemini-3.1-flash-lite-preview-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -12973,7 +13138,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -13036,7 +13202,9 @@
       "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048756
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -13058,7 +13226,9 @@
       "name": "gemini-3.1-pro-preview-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -13086,7 +13256,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -13149,7 +13320,9 @@
       "name": "gemini-3.5-flash-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -13172,7 +13345,9 @@
       "name": "Google Gemini Flash Latest",
       "creator": "~google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -13194,7 +13369,9 @@
       "name": "Google Gemini Pro Latest",
       "creator": "~google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -13216,7 +13393,9 @@
       "name": "Google: Gemma 2 27B",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -13236,7 +13415,9 @@
       "name": "Google: Gemma 3 12B",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -13256,7 +13437,9 @@
       "name": "Google: Gemma 3 27B",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-08,
@@ -13276,7 +13459,9 @@
       "name": "Google: Gemma 3 4B",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -13296,7 +13481,9 @@
       "name": "Google: Gemma 3n 4B",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -13321,7 +13508,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -13359,7 +13547,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -13392,7 +13581,9 @@
       "name": "Google: Gemma 4 26B A4B ",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -13412,7 +13603,9 @@
       "name": "Google: Gemma 4 26B A4B  (free)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -13437,7 +13630,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -13470,7 +13664,9 @@
       "name": "gemma-4-31b-it",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -13504,7 +13700,9 @@
       "name": "Google: Gemma 4 31B (free)",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -13529,7 +13727,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -13567,7 +13766,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -13740,7 +13940,9 @@
       "name": "Z.ai: GLM 4.5",
       "creator": "z-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -13762,7 +13964,9 @@
       "name": "Z.ai: GLM 4.5 Air",
       "creator": "z-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -13784,7 +13988,9 @@
       "name": "Z.ai: GLM 4.5V",
       "creator": "z-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -13806,7 +14012,9 @@
       "name": "glm-4.6",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.3e-07,
@@ -13840,7 +14048,9 @@
       "name": "glm-4.6v",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -13874,7 +14084,9 @@
       "name": "glm-4.7",
       "creator": "Z.ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -13914,7 +14126,9 @@
       "name": "Z.ai: GLM 4.7 Flash",
       "creator": "z-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -13941,7 +14155,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 202752
       },
       "pricing": {
         "aa": {
@@ -14006,7 +14221,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -14044,7 +14260,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -14087,7 +14304,9 @@
       "name": "glm-5.1",
       "creator": "Z.ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9.66e-07,
@@ -14138,7 +14357,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -14162,12 +14382,12 @@
           }
         },
         "openrouter": {
-          "inp_price": 9.086e-07,
-          "inp_price_per_m": 0.9086,
-          "out_price": 2.8556e-06,
-          "out_price_per_m": 2.8556,
-          "cache_read_price": 1.6874e-07,
-          "cache_read_price_per_m": 0.16874,
+          "inp_price": 8.4e-07,
+          "inp_price_per_m": 0.84,
+          "out_price": 2.64e-06,
+          "out_price_per_m": 2.64,
+          "cache_read_price": 1.56e-07,
+          "cache_read_price_per_m": 0.156,
           "vendor": "z-ai"
         }
       },
@@ -14229,7 +14449,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 202752
       },
       "pricing": {
         "aa": {
@@ -14283,7 +14504,9 @@
       "name": "OpenAI: GPT-3.5 Turbo",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 16385
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -14303,7 +14526,9 @@
       "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 4095
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -14323,7 +14548,9 @@
       "name": "OpenAI: GPT-3.5 Turbo 16k",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 16385
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -14343,7 +14570,9 @@
       "name": "OpenAI: GPT-3.5 Turbo Instruct",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 4095
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -14363,7 +14592,9 @@
       "name": "OpenAI: GPT-4",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8191
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -14383,7 +14614,9 @@
       "name": "OpenAI: GPT-4 Turbo",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -14403,7 +14636,9 @@
       "name": "OpenAI: GPT-4 Turbo Preview",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -14423,7 +14658,9 @@
       "name": "OpenAI: GPT-4.1",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -14445,7 +14682,9 @@
       "name": "OpenAI: GPT-4.1 Mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -14467,7 +14706,9 @@
       "name": "OpenAI: GPT-4.1 Nano",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -14489,7 +14730,9 @@
       "name": "OpenAI: GPT-4o",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -14509,7 +14752,9 @@
       "name": "OpenAI: GPT-4o (2024-05-13)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -14529,7 +14774,9 @@
       "name": "OpenAI: GPT-4o (2024-08-06)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -14551,7 +14798,9 @@
       "name": "OpenAI: GPT-4o (2024-11-20)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -14573,7 +14822,9 @@
       "name": "OpenAI: GPT-4o-mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -14595,7 +14846,9 @@
       "name": "OpenAI: GPT-4o-mini (2024-07-18)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -14617,7 +14870,9 @@
       "name": "OpenAI: GPT-4o-mini Search Preview",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -14637,7 +14892,9 @@
       "name": "OpenAI: GPT-4o Search Preview",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -14657,7 +14914,9 @@
       "name": "OpenAI: GPT-5",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14684,7 +14943,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14722,7 +14982,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14760,7 +15021,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14798,7 +15060,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14836,7 +15099,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14874,7 +15138,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14907,7 +15172,9 @@
       "name": "OpenAI: GPT-5 Chat",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14929,7 +15196,9 @@
       "name": "OpenAI: GPT-5 Codex",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14951,7 +15220,9 @@
       "name": "OpenAI: GPT-5 Image",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -14973,7 +15244,9 @@
       "name": "OpenAI: GPT-5 Image Mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -14995,7 +15268,9 @@
       "name": "gpt-5-medium",
       "creator": "OpenAI",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "arena_code": {
@@ -15013,7 +15288,9 @@
       "name": "gpt-5-mini",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -15047,7 +15324,9 @@
       "name": "gpt-5-mini-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15070,7 +15349,9 @@
       "name": "gpt-5-mini-low",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15116,7 +15397,9 @@
       "name": "gpt-5-nano",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -15150,7 +15433,9 @@
       "name": "gpt-5-nano-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15173,7 +15458,9 @@
       "name": "gpt-5-nano-low",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15196,7 +15483,9 @@
       "name": "OpenAI: GPT-5 Pro",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -15239,7 +15528,9 @@
       "name": "OpenAI: GPT-5.1",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -15353,7 +15644,9 @@
       "name": "OpenAI: GPT-5.1 Chat",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -15375,7 +15668,9 @@
       "name": "gpt-5.1-codex",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -15409,7 +15704,9 @@
       "name": "gpt-5.1-codex-max",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -15443,7 +15740,9 @@
       "name": "gpt-5.1-codex-max-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15466,7 +15765,9 @@
       "name": "gpt-5.1-codex-mini",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -15500,7 +15801,9 @@
       "name": "gpt-5.1-medium",
       "creator": "OpenAI",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "arena_code": {
@@ -15518,7 +15821,9 @@
       "name": "gpt-5.2",
       "creator": "OpenAI",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -15639,7 +15944,9 @@
       "name": "OpenAI: GPT-5.2 Chat",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -15684,7 +15991,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -15738,7 +16046,9 @@
       "name": "OpenAI: GPT-5.2 Pro",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.1e-05,
@@ -15758,7 +16068,9 @@
       "name": "OpenAI: GPT-5.3 Chat",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -15785,7 +16097,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -15846,7 +16159,9 @@
       "name": "gpt-5.3-codex-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15869,7 +16184,9 @@
       "name": "gpt-5.3-codex-xhigh",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15915,7 +16232,9 @@
       "name": "gpt-5.4",
       "creator": "OpenAI",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -15950,7 +16269,9 @@
       "name": "gpt-5.4-high",
       "creator": "OpenAI",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -15997,7 +16318,9 @@
       "name": "OpenAI: GPT-5.4 Image 2",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 272000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-06,
@@ -16037,7 +16360,9 @@
       "name": "gpt-5.4-mini",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -16071,7 +16396,9 @@
       "name": "gpt-5.4-mini-high",
       "creator": "OpenAI",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16100,7 +16427,9 @@
       "name": "gpt-5.4-mini-low",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16123,7 +16452,9 @@
       "name": "gpt-5.4-mini-medium",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16146,7 +16477,9 @@
       "name": "gpt-5.4-mini-xhigh",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16169,7 +16502,9 @@
       "name": "gpt-5.4-nano",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -16203,7 +16538,9 @@
       "name": "gpt-5.4-nano-high",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16226,7 +16563,9 @@
       "name": "gpt-5.4-nano-low",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16249,7 +16588,9 @@
       "name": "gpt-5.4-nano-medium",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16272,7 +16613,9 @@
       "name": "gpt-5.4-nano-xhigh",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16295,7 +16638,9 @@
       "name": "OpenAI: GPT-5.4 Pro",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -16315,7 +16660,9 @@
       "name": "gpt-5.4-xhigh",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -16338,7 +16685,9 @@
       "name": "gpt-5.5",
       "creator": "OpenAI",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -16390,7 +16739,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -16489,7 +16839,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -16535,7 +16886,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -16592,7 +16944,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -16638,7 +16991,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -16708,7 +17062,9 @@
       "name": "OpenAI: GPT Audio",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -16728,7 +17084,9 @@
       "name": "OpenAI: GPT Audio Mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -16748,7 +17106,9 @@
       "name": "OpenAI: GPT Chat Latest",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -16770,7 +17130,9 @@
       "name": "OpenAI GPT Latest",
       "creator": "~openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -16792,7 +17154,9 @@
       "name": "OpenAI GPT Mini Latest",
       "creator": "~openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -16819,7 +17183,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -16884,7 +17249,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -16917,7 +17283,9 @@
       "name": "OpenAI: gpt-oss-120b (free)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -16942,7 +17310,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -16996,7 +17365,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -17029,7 +17399,9 @@
       "name": "OpenAI: gpt-oss-20b (free)",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -17049,7 +17421,9 @@
       "name": "OpenAI: gpt-oss-safeguard-20b",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -17071,7 +17445,9 @@
       "name": "IBM: Granite 4.0 Micro",
       "creator": "ibm-granite",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.7e-08,
@@ -17091,7 +17467,9 @@
       "name": "IBM: Granite 4.1 8B",
       "creator": "ibm-granite",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -17187,7 +17565,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -17225,7 +17604,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -17276,7 +17656,9 @@
       "name": "xAI: Grok 4.20",
       "creator": "x-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -17368,7 +17750,9 @@
       "name": "xAI: Grok 4.20 Multi-Agent",
       "creator": "x-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -17413,7 +17797,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -17471,11 +17856,37 @@
       }
     },
     {
+      "id": "grok-4.5",
+      "name": "xAI: Grok 4.5",
+      "creator": "x-ai",
+      "model_type": null,
+      "meta": {
+        "context_window": 500000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2e-06,
+          "inp_price_per_m": 2.0,
+          "out_price": 6e-06,
+          "out_price_per_m": 6.0,
+          "cache_read_price": 5e-07,
+          "cache_read_price_per_m": 0.5,
+          "vendor": "x-ai"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "x-ai/grok-4.5"
+      }
+    },
+    {
       "id": "grok-build-0.1",
       "name": "grok-build-0.1",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -17525,6 +17936,30 @@
       },
       "aliases": {
         "livebench": "grok-code-fast-1-0825"
+      }
+    },
+    {
+      "id": "grok-latest",
+      "name": "xAI: Grok Latest",
+      "creator": "~x-ai",
+      "model_type": null,
+      "meta": {
+        "context_window": 500000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2e-06,
+          "inp_price_per_m": 2.0,
+          "out_price": 6e-06,
+          "out_price_per_m": 6.0,
+          "cache_read_price": 5e-07,
+          "cache_read_price_per_m": 0.5,
+          "vendor": "~x-ai"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "~x-ai/grok-latest"
       }
     },
     {
@@ -17839,7 +18274,9 @@
       "name": "Nous: Hermes 3 405B Instruct",
       "creator": "nousresearch",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -17859,7 +18296,9 @@
       "name": "Nous: Hermes 3 405B Instruct (free)",
       "creator": "nousresearch",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -17884,7 +18323,8 @@
         "co2_kg": 22.415781841842687,
         "architecture": "LlamaForCausalLM",
         "license": "llama3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -18027,7 +18467,9 @@
       "name": "Nous: Hermes 4 405B",
       "creator": "nousresearch",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -18047,7 +18489,9 @@
       "name": "Nous: Hermes 4 70B",
       "creator": "nousresearch",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -18072,7 +18516,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -18110,7 +18555,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -18669,7 +19115,9 @@
       "name": "Tencent: Hunyuan A13B Instruct",
       "creator": "tencent",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -18937,7 +19385,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -18951,6 +19400,15 @@
           "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null
+        },
+        "openrouter": {
+          "inp_price": 1.4e-07,
+          "inp_price_per_m": 0.14,
+          "out_price": 5.8e-07,
+          "out_price_per_m": 0.58,
+          "cache_read_price": 3.5e-08,
+          "cache_read_price_per_m": 0.035,
+          "vendor": "tencent"
         }
       },
       "benchmarks": {
@@ -18962,7 +19420,8 @@
         }
       },
       "aliases": {
-        "aa": "hy3"
+        "aa": "hy3",
+        "openrouter": "tencent/hy3"
       }
     },
     {
@@ -18970,7 +19429,9 @@
       "name": "Tencent: Hy3 preview",
       "creator": "tencent",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.3e-08,
@@ -18985,6 +19446,28 @@
       "benchmarks": {},
       "aliases": {
         "openrouter": "tencent/hy3-preview"
+      }
+    },
+    {
+      "id": "hy3:free",
+      "name": "Tencent: Hy3 (free)",
+      "creator": "tencent",
+      "model_type": null,
+      "meta": {
+        "context_window": 262144
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 0.0,
+          "inp_price_per_m": 0.0,
+          "out_price": 0.0,
+          "out_price_per_m": 0.0,
+          "vendor": "tencent"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "tencent/hy3:free"
       }
     },
     {
@@ -19576,7 +20059,9 @@
       "name": "Inflection: Inflection 3 Pi",
       "creator": "inflection",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -19596,7 +20081,9 @@
       "name": "Inflection: Inflection 3 Productivity",
       "creator": "inflection",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -19644,7 +20131,9 @@
       "name": "AI21: Jamba Large 1.7",
       "creator": "ai21",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -19976,7 +20465,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -20014,7 +20504,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -20047,7 +20538,9 @@
       "name": "Kwaipilot: KAT-Coder-Pro V2",
       "creator": "kwaipilot",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -20069,7 +20562,9 @@
       "name": "MoonshotAI: Kimi K2 0711",
       "creator": "moonshotai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5.7e-07,
@@ -20089,7 +20584,9 @@
       "name": "MoonshotAI: Kimi K2 0905",
       "creator": "moonshotai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -20114,7 +20611,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -20175,7 +20673,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -20229,13 +20728,17 @@
       "name": "MoonshotAI: Kimi K2.5",
       "creator": "moonshotai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.75e-07,
           "inp_price_per_m": 0.375,
           "out_price": 2.025e-06,
           "out_price_per_m": 2.025,
+          "cache_read_price": 2.03e-07,
+          "cache_read_price_per_m": 0.203,
           "vendor": "moonshotai"
         }
       },
@@ -20267,7 +20770,9 @@
       "name": "kimi-k2.5-thinking",
       "creator": "Moonshot",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -20301,7 +20806,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -20325,8 +20831,8 @@
           }
         },
         "openrouter": {
-          "inp_price": 6.6e-07,
-          "inp_price_per_m": 0.66,
+          "inp_price": 6.5e-07,
+          "inp_price_per_m": 0.65,
           "out_price": 3.41e-06,
           "out_price_per_m": 3.41,
           "cache_read_price": 1.4e-07,
@@ -20358,7 +20864,9 @@
       "name": "kimi-k2.6-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -20386,7 +20894,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -20454,11 +20963,13 @@
       "name": "MoonshotAI Kimi Latest",
       "creator": "~moonshotai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
-          "inp_price": 6.6e-07,
-          "inp_price_per_m": 0.66,
+          "inp_price": 6.5e-07,
+          "inp_price_per_m": 0.65,
           "out_price": 3.41e-06,
           "out_price_per_m": 3.41,
           "cache_read_price": 1.4e-07,
@@ -20504,7 +21015,9 @@
       "name": "Sao10K: Llama 3 8B Lunaris",
       "creator": "sao10k",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-08,
@@ -20524,7 +21037,9 @@
       "name": "Sao10K: Llama 3.1 70B Hanami x1",
       "creator": "sao10k",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 16000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -20572,7 +21087,9 @@
       "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
       "creator": "sao10k",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8.5e-07,
@@ -20619,7 +21136,9 @@
       "name": "Sao10K: Llama 3.3 Euryale 70B",
       "creator": "sao10k",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -20639,7 +21158,9 @@
       "name": "Poolside: Laguna M.1",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -20661,7 +21182,9 @@
       "name": "Poolside: Laguna M.1 (free)",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -20681,7 +21204,9 @@
       "name": "Poolside: Laguna XS 2.1",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -20703,7 +21228,9 @@
       "name": "Poolside: Laguna XS 2.1 (free)",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -20723,7 +21250,9 @@
       "name": "Poolside: Laguna XS.2",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -20745,7 +21274,9 @@
       "name": "Poolside: Laguna XS.2 (free)",
       "creator": "poolside",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -20986,7 +21517,9 @@
       "name": "LiquidAI: LFM2-24B-A2B",
       "creator": "liquid",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-08,
@@ -21006,7 +21539,9 @@
       "name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
       "creator": "liquid",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -21026,7 +21561,9 @@
       "name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
       "creator": "liquid",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -21074,7 +21611,9 @@
       "name": "inclusionAI: Ling-2.6-1T",
       "creator": "inclusionai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -21096,7 +21635,9 @@
       "name": "inclusionAI: Ling-2.6-flash",
       "creator": "inclusionai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-08,
@@ -21901,7 +22442,8 @@
         "co2_kg": 2.3322217617350347,
         "architecture": "LlamaForCausalLM",
         "license": "llama3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 8192
       },
       "pricing": {
         "openrouter": {
@@ -25969,7 +26511,8 @@
         "co2_kg": 40.22182401425256,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.1",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -26283,7 +26826,8 @@
         "co2_kg": 2.1060373342307948,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.1",
-        "precision": "float16"
+        "precision": "float16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -27874,7 +28418,9 @@
       "name": "Meta: Llama 3.2 11B Vision Instruct",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.45e-07,
@@ -27981,7 +28527,8 @@
         "co2_kg": 0.722639371510048,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.2",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -28458,14 +29005,15 @@
         "co2_kg": 1.9279617086879264,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.2",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
-          "inp_price": 5.09e-08,
-          "inp_price_per_m": 0.0509,
-          "out_price": 3.35e-07,
-          "out_price_per_m": 0.335,
+          "inp_price": 5e-08,
+          "inp_price_per_m": 0.049999999999999996,
+          "out_price": 3.3e-07,
+          "out_price_per_m": 0.33,
           "vendor": "meta-llama"
         }
       },
@@ -28545,7 +29093,9 @@
       "name": "Meta: Llama 3.2 3B Instruct (free)",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -29456,7 +30006,8 @@
         "co2_kg": 76.55907410745293,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -29488,7 +30039,9 @@
       "name": "Meta: Llama 3.3 70B Instruct (free)",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -29508,7 +30061,9 @@
       "name": "NVIDIA: Llama 3.3 Nemotron Super 49B V1.5",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -29612,7 +30167,9 @@
       "name": "Meta: Llama 4 Maverick",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -29632,7 +30189,9 @@
       "name": "Meta: Llama 4 Scout",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 10000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -30013,7 +30572,9 @@
       "name": "Meta: Llama Guard 4 12B",
       "creator": "meta-llama",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.8e-07,
@@ -34757,7 +35318,9 @@
       "name": "Google: Lyria 3 Clip Preview",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -34777,7 +35340,9 @@
       "name": "Google: Lyria 3 Pro Preview",
       "creator": "google",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -34824,7 +35389,9 @@
       "name": "Magnum v4 72B",
       "creator": "anthracite-org",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -35072,7 +35639,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -35897,7 +36465,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -35935,7 +36504,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -35985,13 +36555,17 @@
       "name": "mimo-v2.5",
       "creator": "Xiaomi",
       "model_type": "open",
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.05e-07,
           "inp_price_per_m": 0.105,
           "out_price": 2.8e-07,
           "out_price_per_m": 0.28,
+          "cache_read_price": 2.8e-08,
+          "cache_read_price_per_m": 0.028,
           "vendor": "xiaomi"
         }
       },
@@ -36017,7 +36591,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -36108,7 +36683,9 @@
       "name": "MiniMax: MiniMax-01",
       "creator": "minimax",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -36128,7 +36705,9 @@
       "name": "MiniMax: MiniMax M1",
       "creator": "minimax",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -36148,7 +36727,9 @@
       "name": "MiniMax: MiniMax M2",
       "creator": "minimax",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 204800
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.55e-07,
@@ -36168,7 +36749,9 @@
       "name": "MiniMax: MiniMax M2-her",
       "creator": "minimax",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -36190,7 +36773,9 @@
       "name": "MiniMax: MiniMax M2.1",
       "creator": "minimax",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 204800
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -36212,7 +36797,9 @@
       "name": "minimax-m2.1-preview",
       "creator": "MiniMax",
       "model_type": "open",
-      "meta": {},
+      "meta": {
+        "context_window": 204800
+      },
       "pricing": {},
       "benchmarks": {
         "arena_code": {
@@ -36235,7 +36822,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 204800
       },
       "pricing": {
         "aa": {
@@ -36292,7 +36880,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 204800
       },
       "pricing": {
         "aa": {
@@ -36363,7 +36952,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -36458,7 +37048,9 @@
       "name": "Mistral: Ministral 3 14B 2512",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -36480,7 +37072,9 @@
       "name": "Mistral: Ministral 3 3B 2512",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -36502,7 +37096,9 @@
       "name": "Mistral: Ministral 3 8B 2512",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -37707,7 +38303,9 @@
       "name": "Mistral Large",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -37729,7 +38327,9 @@
       "name": "Mistral Large 2407",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -37751,7 +38351,9 @@
       "name": "Mistral: Mistral Large 3 2512",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -37801,7 +38403,9 @@
       "name": "Mistral: Mistral Medium 3",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -37823,7 +38427,9 @@
       "name": "Mistral: Mistral Medium 3.5",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -37843,7 +38449,9 @@
       "name": "Mistral: Mistral Medium 3.1",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -37870,7 +38478,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -37967,7 +38576,9 @@
       "name": "Mistral: Mistral Nemo",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-08,
@@ -38911,7 +39522,9 @@
       "name": "Mistral: Saba",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -38989,7 +39602,9 @@
       "name": "Mistral: Mistral Small 3",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -39121,7 +39736,9 @@
       "name": "Mistral: Mistral Small 4",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -39143,7 +39760,9 @@
       "name": "Mistral: Mistral Small 3.1 24B",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.51e-07,
@@ -39163,7 +39782,9 @@
       "name": "Mistral: Mistral Small 3.2 24B",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -39853,7 +40474,9 @@
       "name": "Mistral: Mixtral 8x22B Instruct",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -40069,7 +40692,9 @@
       "name": "Morph: Morph V3 Fast",
       "creator": "morph",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 81920
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -40089,7 +40714,9 @@
       "name": "Morph: Morph V3 Large",
       "creator": "morph",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-07,
@@ -40142,7 +40769,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -40181,7 +40809,9 @@
       "name": "MythoMax 13B",
       "creator": "gryphe",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 4096
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -40424,7 +41054,9 @@
       "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -40444,7 +41076,9 @@
       "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40469,7 +41103,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -40502,7 +41137,9 @@
       "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40527,7 +41164,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -40587,7 +41225,9 @@
       "name": "NVIDIA: Nemotron 3 Super (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40612,7 +41252,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -40674,7 +41315,9 @@
       "name": "NVIDIA: Nemotron 3 Ultra (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40694,7 +41337,9 @@
       "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40719,7 +41364,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -40752,7 +41398,9 @@
       "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40772,7 +41420,9 @@
       "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
       "creator": "nvidia",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -40927,6 +41577,30 @@
       }
     },
     {
+      "id": "nex-n2-mini",
+      "name": "Nex AGI: Nex-N2-Mini",
+      "creator": "nex-agi",
+      "model_type": null,
+      "meta": {
+        "context_window": 262144
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2.5e-08,
+          "inp_price_per_m": 0.024999999999999998,
+          "out_price": 1e-07,
+          "out_price_per_m": 0.09999999999999999,
+          "cache_read_price": 2.5e-09,
+          "cache_read_price_per_m": 0.0025,
+          "vendor": "nex-agi"
+        }
+      },
+      "benchmarks": {},
+      "aliases": {
+        "openrouter": "nex-agi/nex-n2-mini"
+      }
+    },
+    {
       "id": "nex-n2-pro",
       "name": "Nex-N2-Pro",
       "creator": "Nex AGI",
@@ -40936,7 +41610,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -41033,7 +41708,9 @@
       "name": "Cohere: North Mini Code (free)",
       "creator": "cohere",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -41114,7 +41791,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -41152,7 +41830,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -41190,7 +41869,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -41228,7 +41908,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -41266,7 +41947,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -41304,7 +41986,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -41337,7 +42020,9 @@
       "name": "Amazon: Nova 2 Lite",
       "creator": "amazon",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -41362,7 +42047,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -41403,7 +42089,9 @@
       "name": "Amazon: Nova Lite 1.0",
       "creator": "amazon",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 300000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -41423,7 +42111,9 @@
       "name": "Amazon: Nova Micro 1.0",
       "creator": "amazon",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.5e-08,
@@ -41443,7 +42133,9 @@
       "name": "Amazon: Nova Premier 1.0",
       "creator": "amazon",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -41465,7 +42157,9 @@
       "name": "Amazon: Nova Pro 1.0",
       "creator": "amazon",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 300000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -41982,7 +42676,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -42042,7 +42737,9 @@
       "name": "OpenAI: o1",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -42064,7 +42761,9 @@
       "name": "OpenAI: o1-pro",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.00015,
@@ -42084,7 +42783,9 @@
       "name": "OpenAI: o3",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -42106,7 +42807,9 @@
       "name": "OpenAI: o3 Deep Research",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -42128,7 +42831,9 @@
       "name": "OpenAI: o3 Mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -42150,7 +42855,9 @@
       "name": "OpenAI: o3 Mini High",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -42172,7 +42879,9 @@
       "name": "OpenAI: o3 Pro",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-05,
@@ -42192,7 +42901,9 @@
       "name": "OpenAI: o4 Mini",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -42214,7 +42925,9 @@
       "name": "OpenAI: o4 Mini Deep Research",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -42236,7 +42949,9 @@
       "name": "OpenAI: o4 Mini High",
       "creator": "openai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -42258,7 +42973,9 @@
       "name": "AllenAI: Olmo 3 32B Think",
       "creator": "allenai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -42810,7 +43527,9 @@
       "name": "Writer: Palmyra X5",
       "creator": "writer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1040000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -42858,7 +43577,9 @@
       "name": "Pareto Code Router",
       "creator": "openrouter",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -42930,7 +43651,9 @@
       "name": "Perceptron: Perceptron Mk1",
       "creator": "perceptron",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -42978,7 +43701,9 @@
       "name": "Microsoft: Phi 4",
       "creator": "microsoft",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 16384
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-08,
@@ -43917,7 +44642,9 @@
       "name": "Qwen2.5 72B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.6e-07,
@@ -44072,7 +44799,9 @@
       "name": "Qwen: Qwen2.5 7B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-08,
@@ -44229,7 +44958,9 @@
       "name": "Qwen2.5 Coder 32B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.6e-07,
@@ -44582,7 +45313,9 @@
       "name": "Qwen: Qwen-Plus",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -44604,7 +45337,9 @@
       "name": "Qwen: Qwen Plus 0728",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -44624,7 +45359,9 @@
       "name": "Qwen: Qwen Plus 0728 (thinking)",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -54191,7 +54928,9 @@
       "name": "Qwen: Qwen2.5 VL 72B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -54323,7 +55062,9 @@
       "name": "Qwen: Qwen3 14B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131702
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -54343,7 +55084,9 @@
       "name": "Qwen: Qwen3 235B A22B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.55e-07,
@@ -54363,7 +55106,9 @@
       "name": "Qwen: Qwen3 235B A22B Instruct 2507",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-08,
@@ -54406,7 +55151,9 @@
       "name": "qwen3-235b-a22b-thinking-2507",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.495e-07,
@@ -54438,7 +55185,9 @@
       "name": "Qwen: Qwen3 30B A3B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -54458,7 +55207,9 @@
       "name": "Qwen: Qwen3 30B A3B Instruct 2507",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.815e-08,
@@ -54478,7 +55229,9 @@
       "name": "qwen3-30b-a3b-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -54501,7 +55254,9 @@
       "name": "Qwen: Qwen3 30B A3B Thinking 2507",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -54521,7 +55276,9 @@
       "name": "Qwen: Qwen3 32B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-08,
@@ -54541,7 +55298,9 @@
       "name": "qwen3-32b-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {},
       "benchmarks": {
         "livebench": {
@@ -54569,7 +55328,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -54607,7 +55367,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -54645,7 +55406,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -54683,7 +55445,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -54721,7 +55484,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -54754,7 +55518,9 @@
       "name": "Qwen: Qwen3 8B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -54774,7 +55540,9 @@
       "name": "Qwen: Qwen3 Coder 480B A35B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.2e-07,
@@ -54794,7 +55562,9 @@
       "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 160000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-08,
@@ -54814,7 +55584,9 @@
       "name": "Qwen: Qwen3 Coder Flash",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.95e-07,
@@ -54836,7 +55608,9 @@
       "name": "Qwen: Qwen3 Coder Next",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-07,
@@ -54858,7 +55632,9 @@
       "name": "Qwen: Qwen3 Coder Plus",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -54880,7 +55656,9 @@
       "name": "Qwen: Qwen3 Coder 480B A35B (free)",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -54900,7 +55678,9 @@
       "name": "Qwen: Qwen3 Max",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.8e-07,
@@ -54922,7 +55702,9 @@
       "name": "Qwen: Qwen3 Max Thinking",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.8e-07,
@@ -54942,7 +55724,9 @@
       "name": "qwen3-next-80b-a3b-instruct",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-08,
@@ -54974,7 +55758,9 @@
       "name": "Qwen: Qwen3 Next 80B A3B Instruct (free)",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -54994,7 +55780,9 @@
       "name": "qwen3-next-80b-a3b-thinking",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9.75e-08,
@@ -55026,7 +55814,9 @@
       "name": "Qwen: Qwen3 VL 235B A22B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -55048,7 +55838,9 @@
       "name": "Qwen: Qwen3 VL 235B A22B Thinking",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -55068,7 +55860,9 @@
       "name": "Qwen: Qwen3 VL 30B A3B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -55088,7 +55882,9 @@
       "name": "Qwen: Qwen3 VL 30B A3B Thinking",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -55108,7 +55904,9 @@
       "name": "Qwen: Qwen3 VL 32B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.04e-07,
@@ -55128,7 +55926,9 @@
       "name": "Qwen: Qwen3 VL 8B Instruct",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -55148,7 +55948,9 @@
       "name": "Qwen: Qwen3 VL 8B Thinking",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -55168,7 +55970,9 @@
       "name": "Qwen: Qwen3.5-122B-A10B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -55188,7 +55992,9 @@
       "name": "Qwen: Qwen3.5-27B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.95e-07,
@@ -55208,7 +56014,9 @@
       "name": "Qwen: Qwen3.5-35B-A3B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -55235,7 +56043,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -55263,6 +56072,8 @@
           "inp_price_per_m": 0.385,
           "out_price": 2.45e-06,
           "out_price_per_m": 2.4499999999999997,
+          "cache_read_price": 1.11e-07,
+          "cache_read_price_per_m": 0.111,
           "vendor": "qwen"
         }
       },
@@ -55290,7 +56101,9 @@
       "name": "Qwen: Qwen3.5-9B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -55310,7 +56123,9 @@
       "name": "Qwen: Qwen3.5-Flash",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-08,
@@ -55330,7 +56145,9 @@
       "name": "Qwen: Qwen3.5 Plus 2026-02-15",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -55350,7 +56167,9 @@
       "name": "Qwen: Qwen3.5 Plus 2026-04-20",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -55370,7 +56189,9 @@
       "name": "qwen3.6-27b",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.85e-07,
@@ -55404,7 +56225,9 @@
       "name": "Qwen: Qwen3.6 35B A3B",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -55424,7 +56247,9 @@
       "name": "qwen3.6-flash",
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.875e-07,
@@ -55456,7 +56281,9 @@
       "name": "qwen3.6-max-preview",
       "creator": "Alibaba",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.04e-06,
@@ -55483,7 +56310,9 @@
       "name": "qwen3.6-plus",
       "creator": "Alibaba",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.25e-07,
@@ -55526,7 +56355,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -55606,7 +56436,9 @@
       "name": "qwen3.7-max-preview",
       "creator": "Alibaba",
       "model_type": "proprietary",
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {},
       "benchmarks": {
         "arena_text": {
@@ -55624,7 +56456,9 @@
       "name": "Qwen: Qwen3.7 Plus",
       "creator": "qwen",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.2e-07,
@@ -59625,7 +60459,9 @@
       "name": "Reka Edge",
       "creator": "rekaai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 16384
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -59650,7 +60486,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -59691,7 +60528,9 @@
       "name": "Relace: Relace Apply 3",
       "creator": "relace",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8.5e-07,
@@ -59711,7 +60550,9 @@
       "name": "Relace: Relace Search",
       "creator": "relace",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -59731,7 +60572,9 @@
       "name": "ReMM SLERP 13B",
       "creator": "undi95",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 6144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.5e-07,
@@ -60025,7 +60868,9 @@
       "name": "inclusionAI: Ring-2.6-1T",
       "creator": "inclusionai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -60047,7 +60892,9 @@
       "name": "TheDrummer: Rocinante 12B",
       "creator": "thedrummer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -60566,26 +61413,6 @@
       }
     },
     {
-      "id": "router",
-      "name": "Switchpoint Router",
-      "creator": "switchpoint",
-      "model_type": null,
-      "meta": {},
-      "pricing": {
-        "openrouter": {
-          "inp_price": 8.5e-07,
-          "inp_price_per_m": 0.85,
-          "out_price": 3.4e-06,
-          "out_price_per_m": 3.4,
-          "vendor": "switchpoint"
-        }
-      },
-      "benchmarks": {},
-      "aliases": {
-        "openrouter": "switchpoint/router"
-      }
-    },
-    {
       "id": "rqwen-v0.1",
       "name": "ehristoforu/RQwen-v0.1",
       "creator": null,
@@ -60952,7 +61779,9 @@
       "name": "ByteDance Seed: Seed 1.6",
       "creator": "bytedance-seed",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -60972,7 +61801,9 @@
       "name": "ByteDance Seed: Seed 1.6 Flash",
       "creator": "bytedance-seed",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -60992,7 +61823,9 @@
       "name": "ByteDance Seed: Seed-2.0-Lite",
       "creator": "bytedance-seed",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -61012,7 +61845,9 @@
       "name": "ByteDance Seed: Seed-2.0-Mini",
       "creator": "bytedance-seed",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -61714,7 +62549,9 @@
       "name": "TheDrummer: Skyfall 36B V2",
       "creator": "thedrummer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5.5e-07,
@@ -61992,7 +62829,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -62030,7 +62868,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -62073,7 +62912,9 @@
       "name": "Perplexity: Sonar",
       "creator": "perplexity",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 127072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -62093,7 +62934,9 @@
       "name": "Perplexity: Sonar Deep Research",
       "creator": "perplexity",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -62113,7 +62956,9 @@
       "name": "Perplexity: Sonar Pro",
       "creator": "perplexity",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -62133,7 +62978,9 @@
       "name": "Perplexity: Sonar Pro Search",
       "creator": "perplexity",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -62158,7 +63005,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 127072
       },
       "pricing": {
         "aa": {
@@ -62196,7 +63044,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -62408,7 +63257,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -62446,7 +63296,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -62479,7 +63330,9 @@
       "name": "StepFun: Step 3.5 Flash",
       "creator": "stepfun",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -62499,7 +63352,9 @@
       "name": "StepFun: Step 3.7 Flash",
       "creator": "stepfun",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -63421,7 +64276,8 @@
         "pareto_optimal": false,
         "cost_percentile": null,
         "iq_percentile": null,
-        "has_breakdown": false
+        "has_breakdown": false,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -63464,7 +64320,9 @@
       "name": "Arcee AI: Trinity Mini",
       "creator": "arcee-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.5e-08,
@@ -63484,7 +64342,9 @@
       "name": "ByteDance: UI-TARS 7B ",
       "creator": "bytedance",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -63506,7 +64366,9 @@
       "name": "TheDrummer: UnslopNemo 12B",
       "creator": "thedrummer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -63554,7 +64416,9 @@
       "name": "Arcee AI: Virtuoso Large",
       "creator": "arcee-ai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -63574,7 +64438,9 @@
       "name": "Mistral: Voxtral Small 24B 2507",
       "creator": "mistralai",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 32000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -63596,7 +64462,9 @@
       "name": "Mancer: Weaver (alpha)",
       "creator": "mancer",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -63616,7 +64484,9 @@
       "name": "WizardLM-2 8x22B",
       "creator": "microsoft",
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.2e-07,

@@ -104,6 +104,7 @@ def run(ctx=None):
             "output_price": pr.get("completion"),
             "cache_read_price": pr.get("input_cache_read"),
             "cache_write_price": pr.get("input_cache_write"),
+            "context_length": m.get("context_length"),
         })
 
     with open(os.path.join(src, "openrouter_models.json"), "w") as f:

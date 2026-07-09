@@ -24,6 +24,7 @@ from _domain import (
     safe_iq_per_mtokdollar, safe_iq_per_dollar,
     safe_elo, safe_ci, safe_votes, safe_benchmark,
     safe_params, safe_carbon, safe_pct,
+    safe_ctx_window,
     try_model_type, try_archetype,
 )
 
@@ -139,6 +140,7 @@ def build(ctx=None):
             openrouter_vendor=reg.get("pricing", {}).get("openrouter", {}).get("vendor"),
             params_b=safe_params(a.get("meta.params_b")),
             co2_kg=safe_carbon(a.get("meta.co2_kg")),
+            context_window=safe_ctx_window(meta.get("context_window")),
         )
 
         row.compute_derived()

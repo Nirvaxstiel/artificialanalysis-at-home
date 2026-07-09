@@ -21,6 +21,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 7.0,
     "arena_code_elo": 1653,
     "arena_code_ci": 15,
@@ -57,6 +58,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 3.5,
     "cost_seg_total": 1.8,
     "cost_seg_answer": 0.5,
@@ -99,6 +101,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1050000,
     "blended": 4.35,
     "cost_seg_total": 1.03,
     "cost_seg_answer": 0.2,
@@ -138,7 +141,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 200000
   },
   {
     "slug": "claude-opus-4-6-adaptive",
@@ -161,7 +165,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 200000
   },
   {
     "slug": "claude-sonnet-5",
@@ -185,6 +190,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 2.1,
     "cost_seg_total": 2.29,
     "cost_seg_answer": 0.6,
@@ -221,6 +227,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1050000,
     "blended": 4.0,
     "cost_seg_total": 0.69,
     "cost_seg_answer": 0.15,
@@ -264,6 +271,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.72,
     "cost_seg_total": 0.48,
     "cost_seg_answer": 0.0,
@@ -279,9 +287,9 @@ window.PROCESSED_DATA = [
     "livebench_data_analysis": 73.74,
     "livebench_agentic_coding": 73.33,
     "livebench_if": 62.29,
-    "openrouter_inp_price_per_m": 0.9086,
-    "openrouter_out_price_per_m": 2.8556,
-    "openrouter_cache_read_price_per_m": 0.16874,
+    "openrouter_inp_price_per_m": 0.84,
+    "openrouter_out_price_per_m": 2.64,
+    "openrouter_cache_read_price_per_m": 0.156,
     "iq_per_1k_pt": 54.7,
     "cost_per_iq_pt": 18.287843,
     "openrouter_vendor": "z-ai"
@@ -307,7 +315,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "gemini-3.5-flash",
@@ -331,6 +340,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 1.2,
     "cost_seg_total": 0.59,
     "cost_seg_answer": 0.3,
@@ -373,6 +383,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1050000,
     "blended": 4.0,
     "cost_seg_total": 0.42,
     "cost_seg_answer": 0.1,
@@ -412,7 +423,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "mimo-v2-pro",
@@ -436,6 +448,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "livebench_average": 58.35,
     "livebench_coding": 68.85,
     "livebench_reasoning": 69.7,
@@ -470,6 +483,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 2.1,
     "cost_seg_total": 1.14,
     "cost_seg_answer": 0.3,
@@ -502,6 +516,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 1.74,
     "cost_seg_total": 0.29,
     "cost_seg_answer": 0.18,
@@ -544,6 +559,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 1.25,
     "cost_seg_total": 1.06,
     "cost_seg_answer": 0.0,
@@ -587,7 +603,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "deepseek-v4-pro",
@@ -611,6 +628,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.173,
     "cost_seg_total": 0.04,
     "cost_seg_answer": 0.0,
@@ -658,6 +676,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 400000,
     "blended": 1.75,
     "openrouter_inp_price_per_m": 1.75,
     "openrouter_out_price_per_m": 14.0,
@@ -686,6 +705,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.222,
     "cost_seg_total": 0.12,
     "cost_seg_answer": 0.07,
@@ -733,6 +753,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 200000,
     "blended": 2.1,
     "cost_seg_total": 0.41,
     "cost_seg_answer": 0.15,
@@ -765,6 +786,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 202752,
     "livebench_average": 48.78,
     "livebench_coding": 73.9,
     "livebench_reasoning": 56.11,
@@ -800,6 +822,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1050000,
     "blended": 4.0,
     "cost_seg_total": 0.22,
     "cost_seg_answer": 0.1,
@@ -832,6 +855,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "blended": 0.59,
     "cost_seg_total": 0.31,
     "cost_seg_answer": 0.18,
@@ -842,7 +866,7 @@ window.PROCESSED_DATA = [
     "arena_code_elo": 1514,
     "arena_code_ci": 8,
     "arena_code_votes": 6851,
-    "openrouter_inp_price_per_m": 0.66,
+    "openrouter_inp_price_per_m": 0.65,
     "openrouter_out_price_per_m": 3.41,
     "openrouter_cache_read_price_per_m": 0.14,
     "iq_per_1k_pt": 51.7,
@@ -871,6 +895,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.0,
     "arena_text_elo": 1487,
     "arena_text_ci": 6,
@@ -898,6 +923,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "blended": 0.59,
     "cost_seg_total": 0.18,
     "cost_seg_answer": 0.15,
@@ -945,6 +971,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.173,
     "cost_seg_total": 0.03,
     "cost_seg_answer": 0.0,
@@ -986,7 +1013,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 200000
   },
   {
     "slug": "deepseek-v4-pro-high",
@@ -1009,7 +1037,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "gemini-3-pro-low",
@@ -1032,7 +1061,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 65536
   },
   {
     "slug": "nex-n2-pro",
@@ -1056,6 +1086,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "openrouter_inp_price_per_m": 0.25,
     "openrouter_out_price_per_m": 1.0,
     "openrouter_cache_read_price_per_m": 0.024999999999999998,
@@ -1083,6 +1114,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1048576,
     "blended": 0.0581,
     "cost_seg_total": 0.02,
     "cost_seg_answer": 0.0,
@@ -1127,6 +1159,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 65536,
     "arena_code_elo": 1439,
     "arena_code_ci": 7,
     "arena_code_votes": 17152,
@@ -1156,6 +1189,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 202752,
     "livebench_average": 68.7,
     "livebench_coding": 73.64,
     "livebench_reasoning": 69.11,
@@ -1193,7 +1227,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 200000
   },
   {
     "slug": "gpt-5-4-mini",
@@ -1216,7 +1251,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "gpt-5.2-codex",
@@ -1240,6 +1276,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 400000,
     "blended": 1.75,
     "livebench_average": 74.33,
     "livebench_coding": 83.62,
@@ -1275,7 +1312,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "qwen3-6-max",
@@ -1298,7 +1336,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "qwen3-7-plus",
@@ -1321,7 +1360,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gemini-3-flash-reasoning",
@@ -1344,7 +1384,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "glm-5-turbo",
@@ -1368,6 +1409,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "openrouter_inp_price_per_m": 1.2,
     "openrouter_out_price_per_m": 4.0,
     "openrouter_cache_read_price_per_m": 0.24,
@@ -1394,7 +1436,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "grok-4.3",
@@ -1418,6 +1461,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 0.5,
     "cost_seg_total": 0.16,
     "cost_seg_answer": 0.13,
@@ -1461,7 +1505,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 131072
   },
   {
     "slug": "minimax-m2.7",
@@ -1485,6 +1530,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 204800,
     "blended": 0.18,
     "cost_seg_total": 0.07,
     "cost_seg_answer": 0.05,
@@ -1531,6 +1577,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 0.403,
     "cost_seg_total": 0.24,
     "cost_seg_answer": 0.0,
@@ -1574,7 +1621,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "deepseek-v4-flash-high",
@@ -1597,7 +1645,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "qwen3-6-27b",
@@ -1620,7 +1669,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "grok-4-3-medium",
@@ -1643,7 +1693,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "nova-2.0-pro-reasoning-medium",
@@ -1667,6 +1718,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 1.25,
     "cost_seg_total": 0.17,
     "cost_seg_answer": 0.05,
@@ -1698,7 +1750,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "hy3",
@@ -1721,7 +1774,12 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144,
+    "openrouter_inp_price_per_m": 0.14,
+    "openrouter_out_price_per_m": 0.58,
+    "openrouter_cache_read_price_per_m": 0.035,
+    "openrouter_vendor": "tencent"
   },
   {
     "slug": "minimax-m2.5",
@@ -1745,6 +1803,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 204800,
     "blended": 0.18,
     "livebench_average": 60.27,
     "livebench_coding": 70.7,
@@ -1780,6 +1839,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 256000,
     "blended": 0.48,
     "cost_seg_total": 0.33,
     "cost_seg_answer": 0.0,
@@ -1792,6 +1852,7 @@ window.PROCESSED_DATA = [
     "arena_code_votes": 13069,
     "openrouter_inp_price_per_m": 0.385,
     "openrouter_out_price_per_m": 2.4499999999999997,
+    "openrouter_cache_read_price_per_m": 0.111,
     "iq_per_1k_pt": 64.4,
     "cost_per_iq_pt": 15.531176,
     "openrouter_vendor": "qwen"
@@ -1818,6 +1879,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 131072,
     "blended": 0.37,
     "livebench_average": 62.28,
     "livebench_coding": 67.44,
@@ -1853,7 +1915,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "nova-2-0-pro-reasoning-low",
@@ -1876,7 +1939,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "qwen3-6-35b-a3b",
@@ -1899,7 +1963,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "trinity-large-thinking",
@@ -1923,6 +1988,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "openrouter_inp_price_per_m": 0.25,
     "openrouter_out_price_per_m": 0.7999999999999999,
     "openrouter_cache_read_price_per_m": 0.06,
@@ -1949,7 +2015,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "claude-4.5-haiku-reasoning",
@@ -1973,6 +2040,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 200000,
     "blended": 0.7,
     "cost_seg_total": 0.24,
     "cost_seg_answer": 0.05,
@@ -2004,7 +2072,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "gpt-5-4-mini-medium",
@@ -2027,7 +2096,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "gpt-5-4-nano-medium",
@@ -2050,7 +2120,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "mistral-medium-3.5",
@@ -2074,6 +2145,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 128000,
     "blended": 1.05,
     "cost_seg_total": 1.2,
     "cost_seg_answer": 0.0,
@@ -2105,7 +2177,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "step-3-7-flash",
@@ -2128,7 +2201,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "gemma-4-31b",
@@ -2152,6 +2226,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 262144,
     "blended": 0.0
   },
   {
@@ -2175,7 +2250,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gemma-4-26b-a4b",
@@ -2198,7 +2274,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "solar-pro-3",
@@ -2222,6 +2299,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 128000,
     "blended": 0.0,
     "openrouter_inp_price_per_m": 0.15,
     "openrouter_out_price_per_m": 0.6,
@@ -2249,7 +2327,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1048576
   },
   {
     "slug": "mercury-2",
@@ -2273,6 +2352,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 128000,
     "openrouter_inp_price_per_m": 0.25,
     "openrouter_out_price_per_m": 0.75,
     "openrouter_cache_read_price_per_m": 0.024999999999999998,
@@ -2300,6 +2380,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1000000,
     "blended": 0.135,
     "cost_seg_total": 0.25,
     "cost_seg_answer": 0.0,
@@ -2343,6 +2424,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 131072,
     "blended": 0.09,
     "cost_seg_total": 0.06,
     "cost_seg_answer": 0.0,
@@ -2385,7 +2467,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 131072
   },
   {
     "slug": "k2-think-v2",
@@ -2409,6 +2492,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 131072,
     "blended": 0.0
   },
   {
@@ -2432,7 +2516,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gemma-4-12b",
@@ -2455,7 +2540,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "nemotron-cascade-2-30b-a3b",
@@ -2478,7 +2564,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "nova-2-0-lite-reasoning",
@@ -2501,7 +2588,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "sonar-reasoning-pro",
@@ -2525,6 +2613,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 200000,
     "openrouter_inp_price_per_m": 2.0,
     "openrouter_out_price_per_m": 8.0,
     "openrouter_vendor": "perplexity"
@@ -2550,7 +2639,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "gemma-4-e2b",
@@ -2573,7 +2663,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gpt-oss-20b",
@@ -2597,6 +2688,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 131072,
     "blended": 0.03,
     "cost_seg_total": 0.02,
     "cost_seg_answer": 0.0,
@@ -2631,7 +2723,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 256000
   },
   {
     "slug": "solar-open-100b-reasoning",
@@ -2654,7 +2747,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 128000
   },
   {
     "slug": "gpt-oss-20b-low",
@@ -2677,7 +2771,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 131072
   },
   {
     "slug": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
@@ -2700,7 +2795,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "diffusiongemma-26b-a4b",
@@ -2723,7 +2819,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gemma-4-e4b",
@@ -2746,7 +2843,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "sonar-reasoning",
@@ -2769,7 +2867,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 127072
   },
   {
     "slug": "hermes-4-llama-3-1-70b-reasoning",
@@ -2792,7 +2891,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 131072
   },
   {
     "slug": "hermes-4-llama-3-1-405b-reasoning",
@@ -2815,7 +2915,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 131072
   },
   {
     "slug": "exaone-4-0-1-2b-reasoning",
@@ -2838,7 +2939,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 262144
   },
   {
     "slug": "reka-flash-3",
@@ -2862,6 +2964,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 65536,
     "openrouter_inp_price_per_m": 0.09999999999999999,
     "openrouter_out_price_per_m": 0.19999999999999998,
     "openrouter_vendor": "rekaai"
@@ -2887,7 +2990,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 1000000
   },
   {
     "slug": "gpt-5-5-instant-06-26",
@@ -2910,7 +3014,8 @@ window.PROCESSED_DATA = [
     "has_breakdown": false,
     "pareto_optimal": false,
     "cost_percentile": null,
-    "iq_percentile": null
+    "iq_percentile": null,
+    "context_window": 400000
   },
   {
     "slug": "gpt-5.5-pro",
@@ -2934,6 +3039,7 @@ window.PROCESSED_DATA = [
     "pareto_optimal": false,
     "cost_percentile": null,
     "iq_percentile": null,
+    "context_window": 1050000,
     "blended": 0.0,
     "openrouter_inp_price_per_m": 30.0,
     "openrouter_out_price_per_m": 180.0,
