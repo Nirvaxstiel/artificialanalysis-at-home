@@ -44,6 +44,9 @@
         { key: 'creator', label: 'CREATOR', render: r =>
           `<span class="dot dot-sm" style="background:${CREATOR_COLORS[r.creator]||'#888'}"></span>${r.creator}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '\u2014', cls: 'num' },
+        { key: 'context_window', label: 'CTX', render: r => r.context_window != null
+          ? (r.context_window >= 1000000 ? (r.context_window/1000000).toFixed(1) + 'M' : (r.context_window/1000).toFixed(0) + 'K')
+          : '\u2014', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r => r.cost_per_task != null ? '$' + r.cost_per_task.toFixed(2) : '\u2014', cls: 'num' },
         { key: 'tokens_m', label: 'TOK (M)', render: r => r.tokens_m != null ? r.tokens_m.toFixed(0) : '\u2014', cls: 'num' },
         { key: 'speed_tps', label: 'SPEED t/s', render: r => r.speed_tps != null ? r.speed_tps.toFixed(0) : '\u2014', cls: 'num' },

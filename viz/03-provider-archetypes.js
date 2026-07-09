@@ -36,11 +36,13 @@
       const avgCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
       const avgSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
       const avgTokens = ms.reduce((s, m) => s + m.tokens_m, 0) / ms.length;
+      const withCtx = ms.filter(m => m.context_window != null);
+      const avgCtx = withCtx.length ? Math.round(withCtx.reduce((s, m) => s + m.context_window, 0) / withCtx.length) : null;
       const costEff = 1 / avgCost;
       const tokenEff = 1 / avgTokens;    // higher = fewer tokens = more efficient
       const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
       const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
-      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, costEff, tokenEff, avgCacheEff, count: ms.length });
+      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, avgCtx, costEff, tokenEff, avgCacheEff, count: ms.length });
     }
 
     // Sort alphabetically — keeps OSS variants next to parent
@@ -51,6 +53,7 @@
     const allSpeed = archetypes.map(a => a.avgSpeed);
     const allTokenEff = archetypes.map(a => a.tokenEff);
     const allCacheEff = archetypes.map(a => a.avgCacheEff);
+    const allCtx = archetypes.map(a => a.avgCtx).filter(v => v != null);
 
     const mn = arr => 0;
     const mx = arr => Math.max(...arr);
@@ -61,6 +64,7 @@
     const spLo = mn(allSpeed), spHi = mx(allSpeed);
     const teLo = mn(allTokenEff), teHi = mx(allTokenEff);
     const caLo = mn(allCacheEff), caHi = mx(allCacheEff);
+    const ctxLo = 0, ctxHi = mx(allCtx) || 0;
 
     const RADAR_AXES = window.RADAR_AXES || [];
 
@@ -134,6 +138,7 @@
         norm(a.tokenEff, teLo, teHi),
         norm(a.avgCacheEff, caLo, caHi),
         norm(a.costEff, ceLo, ceHi),
+        norm(a.avgCtx, ctxLo, ctxHi),
       ];
 
       let svg = `<svg viewBox="0 0 ${CX * 2} ${CY * 2}">`;
@@ -174,7 +179,7 @@
       }
 
       // Axis labels — show max value for context (human-readable)
-      const maxes = [iqHi, spHi, teHi, caHi, ceHi];
+      const maxes = [iqHi, spHi, teHi, caHi, ceHi, ctxHi];
       const fmtMax = (key, val) => {
         if (val == null) return '?';
         if (key === 'avgIQ') return val.toFixed(0);
@@ -182,6 +187,7 @@
         if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok';
         if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
         if (key === 'costEff') return '$' + (1/val).toFixed(2);
+        if (key === 'avgCtx') return val >= 1000000 ? (val/1000000).toFixed(1) + 'M' : (val/1000).toFixed(0) + 'K';
         return val.toFixed(2);
       };
       for (let i = 0; i < RADAR_AXES.length; i++) {
@@ -211,6 +217,10 @@
       let statsHtml = RADAR_AXES.map(ax => {
         return `${ax.label} <span class="val">${fmtRaw(ax.key, a[ax.key])}</span>`;
       }).join(' \u00b7 ');
+      const ctxFmt = a.avgCtx != null
+        ? (a.avgCtx >= 1000000 ? (a.avgCtx/1000000).toFixed(1) + 'M' : (a.avgCtx/1000).toFixed(0) + 'K')
+        : '\u2014';
+      statsHtml += ` \u00b7 CTX <span class="val">${ctxFmt}</span>`;
       statsHtml += ` \u00b7 <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `

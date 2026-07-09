@@ -28,6 +28,7 @@
     size: [
       { key: 'tokens_m', label: 'Output Tokens', unit: 'M' },
       { key: 'params_b', label: 'Params', unit: 'B' },
+      { key: 'context_window', label: 'Context Window', unit: '' },
       { key: 'arena_code_votes', label: 'Arena Code Votes', unit: '' },
       { key: 'arena_text_votes', label: 'Arena Text Votes', unit: '' },
     ],

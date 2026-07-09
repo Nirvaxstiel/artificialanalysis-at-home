@@ -273,7 +273,8 @@ window.buildTooltip = function(m) {
   }
   if (m.openllm_average != null) cross.push(`OpenLLM avg: ${m.openllm_average.toFixed(1)}`);
   if (m.params_b != null) cross.push(`Params: ${m.params_b}B`);
-  if (m.co2_kg != null) cross.push(`CO\u2082: ${m.co2_kg}kg`);
+  if (m.context_window != null) cross.push(`Context: ${m.context_window >= 1000000 ? (m.context_window/1000000).toFixed(1) + 'M' : (m.context_window/1000).toFixed(0) + 'K'}`);
+  if (m.co2_kg != null) cross.push(`CO₂: ${m.co2_kg}kg`);
 
   if (cross.length > 0) {
     html += `<div class=\"tt-seg\">${cross.join('<br>')}</div>`;
@@ -293,10 +294,11 @@ window.SKU_PATTERNS = [
 
 window.RADAR_AXES = [
   { key: 'avgIQ',       label: 'IQ',         angle: -Math.PI / 2 },
-  { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 5 },
-  { key: 'tokenEff',    label: 'TOKEN EFF',  angle: -Math.PI / 2 + 4 * Math.PI / 5 },
-  { key: 'avgCacheEff', label: 'CACHE EFF',  angle: -Math.PI / 2 + 6 * Math.PI / 5 },
-  { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 5 },
+  { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 6 },
+  { key: 'tokenEff',    label: 'TOKEN EFF',  angle: -Math.PI / 2 + 4 * Math.PI / 6 },
+  { key: 'avgCacheEff', label: 'CACHE EFF',  angle: -Math.PI / 2 + 6 * Math.PI / 6 },
+  { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 6 },
+  { key: 'avgCtx',      label: 'CTX',        angle: -Math.PI / 2 + 10 * Math.PI / 6 },
 ];
 
 window.COST_SEGMENTS = {
