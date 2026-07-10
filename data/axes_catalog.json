@@ -223,7 +223,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 105,
+      "models_have": 117,
       "range": [
         0,
         10.0
@@ -242,7 +242,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 105,
+      "models_have": 117,
       "range": [
         0,
         50.0
@@ -261,10 +261,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA blended (weighted average) price",
-      "models_have": 105,
+      "models_have": 117,
       "range": [
         0,
-        20
+        40.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -280,7 +280,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA cache read price per million tokens",
-      "models_have": 59,
+      "models_have": 77,
       "range": [
         0.003,
         1.0

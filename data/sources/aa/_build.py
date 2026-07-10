@@ -217,11 +217,13 @@ def get_aa_charts_models(aa_dir: str) -> dict[str, dict]:
       briefcase           → benchmarks.aa.briefcase_analytical_quality_elo / _presentation_elo
       time_per_task       → benchmarks.aa.time_per_task
       omniscience         → benchmarks.aa.omniscience_hallucination_rate (89% → 0.89)
+      pricing (#9)        → pricing.aa.inp_price / out_price / cache_hit_price
+                          (x-aligned 3-series parse; validated vs live API)
 
-    Deferred (scrape lacks sub-labels → ambiguous which sub-value):
-      cost_to_run (#8) and pricing (#9) — values are $X with no input/output/cache
-      label in the SVG. Ingestion paused until the scrape tags sub-values; do NOT
-      map the single ambiguous value onto a price axis (would be wrong).
+    Deferred (SVG lacks clean per-model series alignment → ambiguous):
+      cost_to_run (#8) — 6 label-list groups at divergent x-ranges; mapping its
+      $X to cost_segments.* would be guesswork. Source cost segments from
+      aa_cost_breakdown.json instead (handled in Step 3).
     """
     from ._parse_charts import parse_aa_charts
 
@@ -293,6 +295,22 @@ def get_aa_charts_models(aa_dir: str) -> dict[str, dict]:
         cid = ensure(slug)
         if cid and out[cid]["benchmarks"]["aa"].get("omniscience_hallucination_rate") is None:
             out[cid]["benchmarks"]["aa"]["omniscience_hallucination_rate"] = val
+
+    for slug, prices in charts.get("pricing", []):
+        cid = ensure(slug)
+        if not cid:
+            continue
+        p = out[cid]["pricing"]["aa"]
+        if isinstance(prices, dict):
+            if p.get("inp_price") is None and prices.get("inp") is not None:
+                p["inp_price"] = prices["inp"]
+            if p.get("out_price") is None and prices.get("out") is not None:
+                p["out_price"] = prices["out"]
+            if p.get("cache_hit_price") is None and prices.get("cache_hit") is not None:
+                p["cache_hit_price"] = prices["cache_hit"]
+            # blended (AA "3-to-1" = (input + 3·output)/4) derived from sourced inp/out
+            if p.get("blended") is None and p.get("inp_price") is not None and p.get("out_price") is not None:
+                p["blended"] = round((p["inp_price"] + 3 * p["out_price"]) / 4, 6)
 
     return out
 

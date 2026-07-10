@@ -4530,7 +4530,7 @@
         "aa": {
           "inp_price": 3.0,
           "out_price": 15.0,
-          "blended": 6,
+          "blended": 12.0,
           "cache_hit_price": 0.3,
           "cost_per_task": 0.41,
           "tokens_m": 64,
@@ -4602,7 +4602,7 @@
         "aa": {
           "inp_price": 10.0,
           "out_price": 50.0,
-          "blended": 20,
+          "blended": 40.0,
           "cache_hit_price": 1.0,
           "cost_per_task": 2.7498239008825984,
           "tokens_m": 87,
@@ -4967,7 +4967,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 10,
+          "blended": 20.0,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
@@ -5089,7 +5089,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 10,
+          "blended": 20.0,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
@@ -5483,7 +5483,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 10,
+          "blended": 20.0,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
@@ -5600,7 +5600,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 25.0,
-          "blended": 10,
+          "blended": 20.0,
           "cache_hit_price": 0.5,
           "cost_per_task": 1.8,
           "tokens_m": 120,
@@ -6001,10 +6001,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 3.0,
-          "out_price": 15.0,
-          "blended": 4,
-          "cache_hit_price": 0.3,
+          "inp_price": 2.0,
+          "out_price": 10.0,
+          "blended": 8.0,
+          "cache_hit_price": 0.2,
           "cost_per_task": 2.29,
           "tokens_m": 300,
           "speed_tps": 78.1,
@@ -6090,10 +6090,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 3.0,
-          "out_price": 15.0,
-          "blended": 4,
-          "cache_hit_price": 0.3,
+          "inp_price": 2.0,
+          "out_price": 10.0,
+          "blended": 8.0,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 74.5,
@@ -6146,10 +6146,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2,
-          "out_price": 10,
-          "blended": 4,
-          "cache_hit_price": null,
+          "inp_price": 2.0,
+          "out_price": 10.0,
+          "blended": 8.0,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 66.294,
@@ -6202,10 +6202,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2,
-          "out_price": 10,
-          "blended": 4,
-          "cache_hit_price": null,
+          "inp_price": 2.0,
+          "out_price": 10.0,
+          "blended": 8.0,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 66.76,
@@ -6277,10 +6277,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2,
-          "out_price": 10,
-          "blended": 4,
-          "cache_hit_price": null,
+          "inp_price": 2.0,
+          "out_price": 10.0,
+          "blended": 8.0,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 73.91,
@@ -8421,7 +8421,7 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.175,
+          "blended": 0.245,
           "cache_hit_price": 0.003,
           "cost_per_task": 0.02,
           "tokens_m": 230,
@@ -8517,8 +8517,8 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.175,
-          "cache_hit_price": 0.028,
+          "blended": 0.245,
+          "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
@@ -8572,9 +8572,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.435,
+          "inp_price": 0.44,
           "out_price": 0.87,
-          "blended": 0.544,
+          "blended": 0.7625,
           "cache_hit_price": 0.004,
           "cost_per_task": 0.04,
           "tokens_m": 180,
@@ -8677,9 +8677,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.435,
+          "inp_price": 0.44,
           "out_price": 0.87,
-          "blended": 0.544,
+          "blended": 0.7625,
           "cache_hit_price": 0.004,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12092,8 +12092,8 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 1.5,
-          "blended": 0.563,
-          "cache_hit_price": 0.025,
+          "blended": 1.1875,
+          "cache_hit_price": 0.03,
           "cost_per_task": 93.72015133584392,
           "tokens_m": null,
           "speed_tps": 280.3,
@@ -12158,7 +12158,7 @@
         "aa": {
           "inp_price": 1.5,
           "out_price": 9.0,
-          "blended": 3.375,
+          "blended": 7.125,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12322,7 +12322,7 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": 1.125,
+          "blended": 2.375,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12380,7 +12380,7 @@
         "aa": {
           "inp_price": 2.0,
           "out_price": 12.0,
-          "blended": 4.5,
+          "blended": 9.5,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12499,10 +12499,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2,
-          "out_price": 12,
-          "blended": 4.5,
-          "cache_hit_price": null,
+          "inp_price": 2.0,
+          "out_price": 12.0,
+          "blended": 9.5,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
@@ -12727,7 +12727,7 @@
         "aa": {
           "inp_price": 2.0,
           "out_price": 12.0,
-          "blended": 4.5,
+          "blended": 9.5,
           "cache_hit_price": 0.2,
           "cost_per_task": 0.29,
           "tokens_m": 56,
@@ -12870,7 +12870,7 @@
         "aa": {
           "inp_price": 1.5,
           "out_price": 9.0,
-          "blended": 3.375,
+          "blended": 7.125,
           "cache_hit_price": 0.15,
           "cost_per_task": 0.59,
           "tokens_m": 75,
@@ -13139,7 +13139,7 @@
         "aa": {
           "inp_price": 0.1,
           "out_price": 0.3,
-          "blended": 0.15,
+          "blended": 0.25,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -13200,8 +13200,8 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": 0.198,
-          "cache_hit_price": 0.1,
+          "blended": 0.3325,
+          "cache_hit_price": 0.09,
           "cost_per_task": 51.917683007742106,
           "tokens_m": null,
           "speed_tps": 0,
@@ -13881,7 +13881,7 @@
         "aa": {
           "inp_price": 1.0,
           "out_price": 3.2,
-          "blended": 1.55,
+          "blended": 2.65,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
@@ -14047,7 +14047,7 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": 2.15,
+          "blended": 3.65,
           "cache_hit_price": 0.26,
           "cost_per_task": null,
           "tokens_m": null,
@@ -14149,7 +14149,7 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": 2.15,
+          "blended": 3.65,
           "cache_hit_price": 0.26,
           "cost_per_task": 0.48,
           "tokens_m": 140,
@@ -14778,8 +14778,8 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": 1.688,
-          "cache_hit_price": 0.075,
+          "blended": 3.5625,
+          "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 185.1,
@@ -14848,8 +14848,8 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": 1.688,
-          "cache_hit_price": 0.075,
+          "blended": 3.5625,
+          "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 169.0,
@@ -14905,7 +14905,7 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": 0.463,
+          "blended": 0.9875,
           "cache_hit_price": 0.02,
           "cost_per_task": 271.5682823921118,
           "tokens_m": null,
@@ -14977,7 +14977,7 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": 0.463,
+          "blended": 0.9875,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
@@ -15033,7 +15033,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 11.25,
+          "blended": 23.75,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
@@ -15082,10 +15082,10 @@
       "name": "GPT-5.6 Luna (max)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 1.0,
+          "out_price": 6.0,
+          "blended": 4.75,
+          "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15130,10 +15130,10 @@
       "id": "gpt-5-6-luna-high",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 1.0,
+          "out_price": 6.0,
+          "blended": 4.75,
+          "cache_hit_price": 0.1,
           "cost_per_task": 275.01794040394276,
           "tokens_m": null,
           "speed_tps": null,
@@ -15184,10 +15184,10 @@
       "id": "gpt-5-6-luna-medium",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 1.0,
+          "out_price": 6.0,
+          "blended": 4.75,
+          "cache_hit_price": 0.1,
           "cost_per_task": 105.8384024527498,
           "tokens_m": null,
           "speed_tps": null,
@@ -15239,10 +15239,10 @@
       "name": "GPT-5.6 Luna (xhigh)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 1.0,
+          "out_price": 6.0,
+          "blended": 4.75,
+          "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15288,10 +15288,10 @@
       "name": "GPT-5.6 Sol (max)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 23.75,
+          "cache_hit_price": 0.5,
           "cost_per_task": 1.0373301565994435,
           "tokens_m": null,
           "speed_tps": 77.974515279617,
@@ -15337,10 +15337,10 @@
       "name": "GPT-5.6 Sol (high)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 23.75,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15386,10 +15386,10 @@
       "name": "GPT-5.6 Sol (medium)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 23.75,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15435,10 +15435,10 @@
       "name": "GPT-5.6 Sol (xhigh)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 5.0,
+          "out_price": 30.0,
+          "blended": 23.75,
+          "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15484,10 +15484,10 @@
       "name": "GPT-5.6 Terra (max)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 2.5,
+          "out_price": 15.0,
+          "blended": 11.875,
+          "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15533,10 +15533,10 @@
       "name": "GPT-5.6 Terra (high)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 2.5,
+          "out_price": 15.0,
+          "blended": 11.875,
+          "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -15581,10 +15581,10 @@
       "id": "gpt-5-6-terra-medium",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 2.5,
+          "out_price": 15.0,
+          "blended": 11.875,
+          "cache_hit_price": 0.25,
           "cost_per_task": 240.22771707940757,
           "tokens_m": null,
           "speed_tps": null,
@@ -15636,10 +15636,10 @@
       "name": "GPT-5.6 Terra (xhigh)",
       "pricing": {
         "aa": {
-          "inp_price": null,
-          "out_price": null,
-          "blended": null,
-          "cache_hit_price": null,
+          "inp_price": 2.5,
+          "out_price": 15.0,
+          "blended": 11.875,
+          "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": null,
@@ -16422,8 +16422,8 @@
         "aa": {
           "inp_price": 1.75,
           "out_price": 14.0,
-          "blended": 4.813,
-          "cache_hit_price": 0.178,
+          "blended": 10.9375,
+          "cache_hit_price": 0.18,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 155.7,
@@ -16542,8 +16542,8 @@
         "aa": {
           "inp_price": 1.75,
           "out_price": 14.0,
-          "blended": 4.813,
-          "cache_hit_price": 0.175,
+          "blended": 10.9375,
+          "cache_hit_price": 0.18,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 90.3,
@@ -16695,7 +16695,7 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 15.0,
-          "blended": 5.625,
+          "blended": 11.875,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
@@ -17204,7 +17204,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 11.25,
+          "blended": 23.75,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.69,
           "tokens_m": 43,
@@ -17328,7 +17328,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 11.25,
+          "blended": 23.75,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.22,
           "tokens_m": null,
@@ -17401,7 +17401,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 11.25,
+          "blended": 23.75,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.42,
           "tokens_m": 21,
@@ -17546,7 +17546,7 @@
         "aa": {
           "inp_price": 5.0,
           "out_price": 30.0,
-          "blended": 11.25,
+          "blended": 23.75,
           "cache_hit_price": 0.5,
           "cost_per_task": 1.03,
           "tokens_m": 72,
@@ -17754,7 +17754,7 @@
         "aa": {
           "inp_price": 0.15,
           "out_price": 0.6,
-          "blended": 0.262,
+          "blended": 0.4875,
           "cache_hit_price": 0.15,
           "cost_per_task": 0.06,
           "tokens_m": 87,
@@ -17846,7 +17846,7 @@
         "aa": {
           "inp_price": 0.15,
           "out_price": 0.6,
-          "blended": 0.262,
+          "blended": 0.4875,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
@@ -17924,7 +17924,7 @@
         "aa": {
           "inp_price": 0.05,
           "out_price": 0.2,
-          "blended": 0.088,
+          "blended": 0.1625,
           "cache_hit_price": null,
           "cost_per_task": 0.02,
           "tokens_m": 67,
@@ -18000,9 +18000,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.060000000000000005,
+          "inp_price": 0.06,
           "out_price": 0.2,
-          "blended": 0.095,
+          "blended": 0.165,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -18208,7 +18208,7 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 1.563,
+          "blended": 2.1875,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
@@ -18264,7 +18264,7 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 1.563,
+          "blended": 2.1875,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
@@ -18508,7 +18508,7 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 1.563,
+          "blended": 2.1875,
           "cache_hit_price": 0.2,
           "cost_per_task": 0.16,
           "tokens_m": 83,
@@ -19187,9 +19187,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1,
-          "out_price": 3,
-          "blended": 1.5,
+          "inp_price": 1.0,
+          "out_price": 3.0,
+          "blended": 2.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -19251,7 +19251,7 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": 0.198,
+          "blended": 0.3325,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -20015,10 +20015,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.123,
+          "inp_price": 0.12,
           "out_price": 0.43,
-          "blended": 0.2,
-          "cache_hit_price": 0.045,
+          "blended": 0.3525,
+          "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 160.7,
@@ -21163,7 +21163,7 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.0,
-          "blended": 1.2,
+          "blended": 2.4,
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
@@ -21242,7 +21242,7 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 2.5,
-          "blended": 1.075,
+          "blended": 2.025,
           "cache_hit_price": 0.6,
           "cost_per_task": null,
           "tokens_m": null,
@@ -21390,7 +21390,7 @@
         "aa": {
           "inp_price": 0.95,
           "out_price": 4.0,
-          "blended": 1.712,
+          "blended": 3.2375,
           "cache_hit_price": 0.16,
           "cost_per_task": 0.31,
           "tokens_m": 160,
@@ -21504,7 +21504,7 @@
         "aa": {
           "inp_price": 0.95,
           "out_price": 4.0,
-          "blended": 1.712,
+          "blended": 3.2375,
           "cache_hit_price": 0.16,
           "cost_per_task": 0.18,
           "tokens_m": 100,
@@ -34716,8 +34716,8 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 0.75,
-          "blended": 0.375,
-          "cache_hit_price": 0.025,
+          "blended": 0.625,
+          "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 842.2,
@@ -35486,7 +35486,7 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.175,
+          "blended": 0.245,
           "cache_hit_price": 0.003,
           "cost_per_task": null,
           "tokens_m": null,
@@ -35549,9 +35549,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1,
-          "out_price": 3,
-          "blended": 1.5,
+          "inp_price": 1.0,
+          "out_price": 3.0,
+          "blended": 2.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -35661,9 +35661,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.435,
+          "inp_price": 0.44,
           "out_price": 0.87,
-          "blended": 0.544,
+          "blended": 0.7625,
           "cache_hit_price": 0.004,
           "cost_per_task": 0.03,
           "tokens_m": 96,
@@ -35926,8 +35926,8 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.525,
-          "cache_hit_price": 0.155,
+          "blended": 0.975,
+          "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 240.4,
@@ -36005,7 +36005,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.525,
+          "blended": 0.975,
           "cache_hit_price": 0.06,
           "cost_per_task": 0.07,
           "tokens_m": 85,
@@ -36101,7 +36101,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.525,
+          "blended": 0.975,
           "cache_hit_price": 0.06,
           "cost_per_task": 0.12,
           "tokens_m": 89,
@@ -39869,9 +39869,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.075,
+          "inp_price": 0.08,
           "out_price": 0.3,
-          "blended": 0.131,
+          "blended": 0.245,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -39952,9 +39952,9 @@
       "pricing": {
         "aa": {
           "inp_price": 0.25,
-          "out_price": 0.775,
-          "blended": 0.381,
-          "cache_hit_price": 0.2,
+          "out_price": 0.78,
+          "blended": 0.6475,
+          "cache_hit_price": 0.14,
           "cost_per_task": 0.25,
           "tokens_m": 110,
           "speed_tps": 296.5,
@@ -40060,9 +40060,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.675,
-          "out_price": 2.675,
-          "blended": 1.175,
+          "inp_price": 0.68,
+          "out_price": 2.68,
+          "blended": 2.18,
           "cache_hit_price": 0.25,
           "cost_per_task": 0.24,
           "tokens_m": 110,
@@ -40441,7 +40441,7 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 2.5,
-          "blended": 1,
+          "blended": 2.0,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40632,7 +40632,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 0.85,
+          "blended": 1.95,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40690,7 +40690,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 0.85,
+          "blended": 1.95,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40747,7 +40747,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 0.85,
+          "blended": 1.95,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40804,7 +40804,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 0.85,
+          "blended": 1.95,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40861,7 +40861,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 0.85,
+          "blended": 1.95,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40917,8 +40917,8 @@
       "pricing": {
         "aa": {
           "inp_price": 1.25,
-          "out_price": 10,
-          "blended": 3.438,
+          "out_price": 10.0,
+          "blended": 7.8125,
           "cache_hit_price": null,
           "cost_per_task": 243.65079,
           "tokens_m": null,
@@ -41002,8 +41002,8 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 10.0,
-          "blended": 3.438,
-          "cache_hit_price": 0.312,
+          "blended": 7.8125,
+          "cache_hit_price": 0.31,
           "cost_per_task": 0.17,
           "tokens_m": 36,
           "speed_tps": 126.4,
@@ -41587,7 +41587,7 @@
         "aa": {
           "inp_price": 0.05,
           "out_price": 0.2,
-          "blended": 0.088,
+          "blended": 0.1625,
           "cache_hit_price": null,
           "cost_per_task": 38.9196747,
           "tokens_m": null,
@@ -52935,7 +52935,7 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.6,
-          "blended": 1.35,
+          "blended": 2.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -53004,9 +53004,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.248,
-          "out_price": 1.485,
-          "blended": 0.557,
+          "inp_price": 0.25,
+          "out_price": 1.49,
+          "blended": 1.18,
           "cache_hit_price": null,
           "cost_per_task": 333.526232195,
           "tokens_m": null,
@@ -53078,7 +53078,7 @@
         "aa": {
           "inp_price": 1.3,
           "out_price": 7.8,
-          "blended": 2.925,
+          "blended": 6.175,
           "cache_hit_price": 0.13,
           "cost_per_task": null,
           "tokens_m": null,
@@ -53140,7 +53140,7 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 3.0,
-          "blended": 1.125,
+          "blended": 2.375,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
@@ -53201,9 +53201,9 @@
       "pricing": {
         "aa": {
           "inp_price": 0.4,
-          "out_price": 1.16,
-          "blended": 0.7,
-          "cache_hit_price": 0.08,
+          "out_price": 1.6,
+          "blended": 1.3,
+          "cache_hit_price": 0.04,
           "cost_per_task": 320.33822171244503,
           "tokens_m": null,
           "speed_tps": 49.8,
@@ -54049,7 +54049,7 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 7.5,
-          "blended": 3.75,
+          "blended": 6.25,
           "cache_hit_price": 0.25,
           "cost_per_task": 1.06,
           "tokens_m": 100,
@@ -57768,7 +57768,7 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 0.8,
-          "blended": 0.35,
+          "blended": 0.65,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -60362,8 +60362,8 @@
         "aa": {
           "inp_price": 0.1,
           "out_price": 0.3,
-          "blended": 0.15,
-          "cache_hit_price": null,
+          "blended": 0.25,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 192.4,
@@ -60426,7 +60426,7 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.15,
-          "blended": 0.438,
+          "blended": 0.9125,
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
@@ -61328,10 +61328,10 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.235,
-          "out_price": 0.875,
-          "blended": 0.395,
-          "cache_hit_price": null,
+          "inp_price": 0.24,
+          "out_price": 0.88,
+          "blended": 0.72,
+          "cache_hit_price": 0.16,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 119.3,

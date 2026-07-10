@@ -75,11 +75,74 @@ def _parse_chart(svg: str):
     return list(zip(slugs, vals))
 
 
+def _extract_label_lists(svg: str):
+    """Return list of label-list group SVGs (each recharts-label-list block)."""
+    bounds = [m.end() for m in re.finditer(r'recharts-label-list', svg)]
+    groups = []
+    for i, start in enumerate(bounds):
+        end = bounds[i + 1] if i + 1 < len(bounds) else len(svg)
+        groups.append(svg[start:end])
+    return groups
+
+
+def _extract_x_values(group_svg: str):
+    """All ($)numeric <text> values in a group, with their x-coordinate."""
+    out = []
+    for x, v in re.findall(r'<text[^>]*x="([\d.]+)"[^>]*>\s*\$?<?\s*([\d.]+)\s*</text>', group_svg):
+        out.append((float(x), float(v)))
+    return out
+
+
+def _align_x_to_models(xvals: list, ref_xs: list):
+    """Map each (x, value) to a model index by x-band, using ref_xs as the
+    per-model column axis (sorted x of a complete series). Returns {idx: value}."""
+    if not ref_xs:
+        return {}
+    ref = sorted(ref_xs)
+    span = (ref[-1] - ref[0]) / max(1, len(ref) - 1)
+    out = {}
+    for x, v in xvals:
+        idx = round((x - ref[0]) / span) if span > 0 else 0
+        out[idx] = v
+    return out
+
+
+def _parse_pricing(svg: str):
+    """Parse the Pricing chart (#9) → [(slug, {cache_hit, inp, out}), ...].
+
+    The chart title names 3 series ("Cache Hit, Input, and Output") matching the
+    3 recharts-label-list groups. Each value <text> carries an x-coordinate; we
+    align values to model columns by x-band (rounding to the per-model spacing
+    derived from the complete Input series). Cache-hit is sparse (some models
+    lack it) so it's optional per model. Validated against the AA live API.
+    """
+    hrefs = _extract_slugs(svg)
+    groups = _extract_label_lists(svg)
+    if len(groups) < 3 or not hrefs:
+        return []
+    series = ["cache_hit", "inp", "out"]
+    parsed = [_extract_x_values(g) for g in groups[:3]]
+    # Reference axis = the complete series (most values) for stable spacing.
+    ref = max(parsed, key=len)
+    ref_xs = [x for x, _ in ref]
+    per_model = {}
+    for name, xvals in zip(series, parsed):
+        for idx, val in _align_x_to_models(xvals, ref_xs).items():
+            per_model.setdefault(idx, {})[name] = val
+    out = []
+    for idx in sorted(per_model):
+        if idx >= len(hrefs):
+            continue
+        out.append((hrefs[idx], per_model[idx]))
+    return out
+
+
 def parse_aa_charts(json_path: str) -> dict[str, list]:
     """Parse the method-2 SVG scrape → {chart_key: [(slug, value), ...]}.
 
     Only the 7 ranking/bar charts (keys in CHART_MAP) are parsed; the scatter
     charts (intelligence-vs-cost etc.) carry no href/value text and are skipped.
+    The Pricing chart (#9) uses a dedicated x-aligned parser.
     """
     with open(json_path) as f:
         data = json.load(f)
@@ -88,7 +151,10 @@ def parse_aa_charts(json_path: str) -> dict[str, list]:
         if idx >= len(data):
             continue
         svg = data[idx].get("svg") or ""
-        out[key] = _parse_chart(svg)
+        if key == "pricing":
+            out[key] = _parse_pricing(svg)
+        else:
+            out[key] = _parse_chart(svg)
     return out
 
 

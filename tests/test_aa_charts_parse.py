@@ -126,9 +126,38 @@ class TestPricing:
         charts, _ = _parse_module()
         rows = charts["pricing"]
         assert len(rows) >= 80, f"pricing: expected >=80, got {len(rows)}"
+        # each row is (slug, {cache_hit, inp, out})
+        assert isinstance(rows[0][1], dict), f"pricing row should be dict: {rows[0]}"
 
-    def test_dollar_values_normalized(self):
+    def test_gpt56_sol_three_prices(self):
         charts, _ = _parse_module()
         row = next(r for r in charts["pricing"] if r[0] == "gpt-5-6-sol")
-        vals = row[1] if isinstance(row[1], list) else [row[1]]
-        assert all(isinstance(v, float) for v in vals), f"pricing values not float: {row[1]}"
+        p = row[1]
+        assert isinstance(p, dict)
+        # gpt-5-6-sol: inp=5, out=30, cache_hit=0.5 (validated vs AA live API shape)
+        assert abs(p["inp"] - 5.0) < 1e-6, f"gpt-5-6-sol inp should be 5.0, got {p.get('inp')}"
+        assert abs(p["out"] - 30.0) < 1e-6, f"gpt-5-6-sol out should be 30.0, got {p.get('out')}"
+        assert abs(p["cache_hit"] - 0.5) < 1e-6, f"gpt-5-6-sol cache_hit should be 0.5, got {p.get('cache_hit')}"
+
+    def test_validated_against_live_api(self):
+        # Chart parsing validated against the AA live API: every slug present in
+        # BOTH the pricing chart and the API must have matching inp/out prices.
+        import sys
+        sys.path.insert(0, str(REPO / "data"))
+        from data.sources.aa._build import _load_aa_api
+        charts, _ = _parse_module()
+        api = _load_aa_api(str(REPO / "data" / "sources" / "aa"))
+        common = [r[0] for r in charts["pricing"]
+                  if r[0] in api and api[r[0]].get("pricing", {}).get("price_1m_input_tokens") is not None]
+        assert len(common) >= 5, f"too few overlapping slugs to validate: {len(common)}"
+        checked = 0
+        for slug in common:
+            p = next(r[1] for r in charts["pricing"] if r[0] == slug)
+            ap = api[slug]["pricing"]
+            # SVG labels are rounded (2 dp); allow <=0.02 rounding vs API.
+            assert abs(p["inp"] - ap["price_1m_input_tokens"]) <= 0.02, \
+                f"{slug} inp {p['inp']} != API {ap['price_1m_input_tokens']}"
+            assert abs(p["out"] - ap["price_1m_output_tokens"]) <= 0.02, \
+                f"{slug} out {p['out']} != API {ap['price_1m_output_tokens']}"
+            checked += 1
+        assert checked >= 5, f"validated too few: {checked}"
