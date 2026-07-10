@@ -218,3 +218,17 @@ class TestContextWindow:
         # because RegistryModelMeta lacked the field. Must be >0 again.
         have = [m for m in processed_js if m.get("context_window") is not None]
         assert len(have) >= 50, f"context_window regressed: only {len(have)} models populated"
+
+
+# ── (K) dead entity classes must stay removed ──
+
+
+class TestNoDeadEntityClasses:
+    def test_dead_classes_absent(self):
+        from data import _domain
+        dead = [
+            "AAPricing", "CostBreakdownPricing", "OpenRouterPricing",
+            "AABenchmarks", "LiveBenchBenchmarks", "ArenaBenchmarks", "OpenLLMBenchmarks",
+        ]
+        present = [c for c in dead if hasattr(_domain, c)]
+        assert not present, f"dead entity classes re-introduced: {present}"
