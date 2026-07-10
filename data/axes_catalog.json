@@ -3,7 +3,7 @@
     "generated": "2026-07-10",
     "version": "1.0",
     "total_axes": 62,
-    "total_models": 2242,
+    "total_models": 2262,
     "sources": [
       "AA",
       "AA_IMG",
@@ -35,9 +35,9 @@
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
           "aa.intel",
-          "aa.iq_per_mtok",
+          "aa.iq_per_dollar",
           "aa.iq_per_mtokdollar",
-          "aa.iq_per_dollar"
+          "aa.iq_per_mtok"
         ],
         "count": 20,
         "speculative": false
@@ -166,7 +166,7 @@
       "models_have": 99,
       "range": [
         0,
-        132.0
+        134.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -424,17 +424,17 @@
       ]
     },
     {
-      "id": "aa.iq_per_mtok",
-      "label": "IQ per Million Tokens",
+      "id": "aa.iq_per_dollar",
+      "label": "IQ per Dollar ($\u207b\u00b9)",
       "source": "AA",
       "type": "quality",
-      "unit": "IQ/Mtok",
+      "unit": "IQ/$",
       "higher_is_better": true,
-      "description": "AA intelligence per million tokens",
+      "description": "AA intelligence per dollar spent",
       "models_have": 29,
       "range": [
-        8.811,
-        552.3336
+        0.0088,
+        0.5523
       ],
       "group": "AA Quality",
       "normalize_range": [
@@ -462,13 +462,13 @@
       ]
     },
     {
-      "id": "aa.iq_per_dollar",
-      "label": "IQ per Dollar ($\u207b\u00b9)",
+      "id": "aa.iq_per_mtok",
+      "label": "IQ per Million Tokens",
       "source": "AA",
       "type": "quality",
-      "unit": "IQ/$",
+      "unit": "IQ/Mtok",
       "higher_is_better": true,
-      "description": "AA intelligence per dollar spent",
+      "description": "AA intelligence per million tokens",
       "models_have": 0,
       "range": null,
       "group": "AA Quality",
@@ -862,10 +862,16 @@
       "unit": "%",
       "higher_is_better": true,
       "description": "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
-      "models_have": 0,
-      "range": null,
+      "models_have": 35,
+      "range": [
+        5.4,
+        94.8
+      ],
       "group": "Cache Efficiency",
-      "normalize_range": null
+      "normalize_range": [
+        0,
+        100
+      ]
     },
     {
       "id": "livebench.average",

@@ -64,7 +64,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             "benchmarks": {
                 "aa": {
                     "intel": m.get("intelligence"),
-                    "iq_per_dollar_pt": None,
+                    "iq_per_dollar": None,
                     "iq_per_mtok": None,
                     "iq_per_mtokdollar": None,
                 }
@@ -75,7 +75,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         }
 
     # === 1.5) Live AA API — fill nulls from authoritative source ===
-    api_models = _load_aa_api()
+    api_models = _load_aa_api(base)
     if api_models:
         for cid, model in all_models.items():
             api_slug = model.get("aliases", {}).get("aa")
@@ -206,8 +206,20 @@ def _overlay_aa_api(model: dict, aa_m: dict) -> None:
                 sec[k] = v
 
 
-def _load_aa_api() -> dict:
-    """Fetch live AA models via API; return slug→record. Empty if no key."""
+def _load_aa_api(base: Path) -> dict:
+    """Load live AA models: prefer the cached aa_api_live.json (gitignored workflow
+    artifact from the aa-api-live-fill skill), fall back to a live HTTPS call using the
+    Free-tier /free endpoint (the /data/llms/models path 403s even with a valid key)."""
+    cache = os.path.join(base, "data", "sources", "aa", "aa_api_live.json")
+    if os.path.exists(cache):
+        try:
+            with open(cache) as f:
+                d = json.load(f)
+            models = d.get("data") or d.get("models") or []
+            return {m["slug"]: m for m in models if m.get("slug")}
+        except (OSError, ValueError):
+            pass
+
     key = os.environ.get("AA_API_KEY")
     if not key:
         env_path = os.path.join(os.path.expanduser("~"), ".hermes", ".env")
@@ -225,18 +237,13 @@ def _load_aa_api() -> dict:
     try:
         import urllib.request
         req = urllib.request.Request(
-            "https://artificialanalysis.ai/api/v2/data/llms/models",
+            "https://artificialanalysis.ai/api/v2/language/models/free",
             headers={"x-api-key": key, "Accept": "application/json"},
         )
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         models = data.get("data") or data.get("models") or []
-        out = {}
-        for m in models:
-            s = m.get("slug")
-            if s:
-                out[s] = m
-        return out
+        return {m["slug"]: m for m in models if m.get("slug")}
     except Exception:
         return {}
 

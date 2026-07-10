@@ -59,6 +59,20 @@ def run(ctx=None):
         if img_meta:
             existing.setdefault("meta", {}).update(img_meta)
 
+    # ── AA SCRAPE PROGRESS (provenance: which models were image-transcribed) ──
+    scrape_path = os.path.join(SRC, "aa", "aa_scrape_progress.json")
+    scraped_slugs = set()
+    if os.path.exists(scrape_path):
+        try:
+            with open(scrape_path) as f:
+                sp = json.load(f)
+            scraped_slugs = set(sp.get("scraped", []))
+        except (OSError, ValueError):
+            pass
+    for cid in aa_img_models:
+        if cid in scraped_slugs:
+            all_models.setdefault(cid, {}).setdefault("meta", {})["aa_img_scraped"] = True
+
     # ── DIRAC.RUN (observed cache hit rates, OpenRouter Effective Pricing) ──
     dirac_models = get_dirac_models(BASE)
     for cid, d in dirac_models.items():

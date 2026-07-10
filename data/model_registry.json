@@ -2,7 +2,7 @@
   "meta": {
     "generated": "2026-07-10",
     "version": "1.0",
-    "model_count": 2242,
+    "model_count": 2262,
     "source_count": {
       "aa": 104,
       "livebench": 127,
@@ -224,6 +224,9 @@
     "openrouter:xiaomi/mimo-v2.5": "mimo-v2.5",
     "openrouter:moonshotai/kimi-k2.5": "kimi-k2.5",
     "openrouter:tencent/hy3-preview": "hy3-preview",
+    "openrouter:qwen/qwen3-coder-next": "qwen3-coder-next",
+    "openrouter:openai/gpt-4o-mini": "gpt-4o-mini",
+    "livebench:qwen3-235b-a22b-instruct-2507": "qwen3-235b-a22b-instruct-2507",
     "livebench:arcee-trinity-large-preview": "arcee-trinity-large-preview",
     "livebench:claude-4-1-opus-20250805-base": "claude-4-1-opus-base",
     "livebench:claude-4-1-opus-20250805-thinking-32k": "claude-4-1-opus-thinking-32k",
@@ -336,7 +339,6 @@
     "livebench:kimi-k2.5-thinking": "kimi-k2.5-thinking",
     "arena_code:kimi-k2.5-thinking": "kimi-k2.5-thinking",
     "livebench:kimi-k2.6-thinking": "kimi-k2.6-thinking",
-    "livebench:qwen3-235b-a22b-instruct-2507": "qwen3-235b-a22b-instruct-2507",
     "livebench:qwen3-235b-a22b-thinking-2507": "qwen3-235b-a22b-thinking-2507",
     "openrouter:qwen/qwen3-235b-a22b-thinking-2507": "qwen3-235b-a22b-thinking-2507",
     "livebench:qwen3-30b-a3b-thinking": "qwen3-30b-a3b-thinking",
@@ -2208,7 +2210,6 @@
     "openrouter:aion-labs/aion-2.0": "aion-2.0",
     "openrouter:qwen/qwen3.5-plus-02-15": "qwen3.5-plus-02-15",
     "openrouter:qwen/qwen3-max-thinking": "qwen3-max-thinking",
-    "openrouter:qwen/qwen3-coder-next": "qwen3-coder-next",
     "openrouter:openrouter/free": "free",
     "openrouter:stepfun/step-3.5-flash": "step-3.5-flash",
     "openrouter:minimax/minimax-m2-her": "minimax-m2-her",
@@ -2384,7 +2385,6 @@
     "openrouter:openai/gpt-4o-2024-08-06": "gpt-4o-2024-08-06",
     "openrouter:mistralai/mistral-nemo": "mistral-nemo",
     "openrouter:openai/gpt-4o-mini-2024-07-18": "gpt-4o-mini-2024-07-18",
-    "openrouter:openai/gpt-4o-mini": "gpt-4o-mini",
     "openrouter:google/gemma-2-27b-it": "gemma-2-27b-it",
     "openrouter:openai/gpt-4o-2024-05-13": "gpt-4o-2024-05-13",
     "openrouter:openai/gpt-4o": "gpt-4o",
@@ -4655,6 +4655,52 @@
       }
     },
     {
+      "id": "claude-4-5-opus",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Anthropic",
+            "cache_hit_rate": 23.0,
+            "eff_input_price": 4.412,
+            "eff_output_price": 25.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 23.0
+        }
+      },
+      "aliases": {}
+    },
+    {
+      "id": "claude-4-5-sonnet-thinking",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Anthropic",
+            "cache_hit_rate": 5.4,
+            "eff_input_price": 3.021,
+            "eff_output_price": 15.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 5.4
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "claude-4-sonnet-base",
       "name": "claude-4-sonnet-20250514-base",
       "creator": null,
@@ -4737,8 +4783,8 @@
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 55.6545,
+          "iq_per_dollar": 0.055654499999999996,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 17.968
         }
       },
@@ -4770,7 +4816,7 @@
           "speed_tps": 48.2,
           "useful_cost": 22.7936,
           "reasoning_tax_pct": 43.9,
-          "ttft": 7.847,
+          "ttft": 11.465,
           "cost_segments": {
             "total_cost_per_task_usd": 0.41,
             "answer_usd": 0.15,
@@ -4784,8 +4830,8 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 29.4765,
+          "iq_per_dollar": 0.029476500000000003,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 33.9253,
           "coding_index": 52.1,
           "math_index": 88,
@@ -4814,6 +4860,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -4827,7 +4874,7 @@
           "speed_tps": 72.6,
           "useful_cost": 64.7186,
           "reasoning_tax_pct": null,
-          "ttft": 54.299
+          "ttft": 46.224
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4844,8 +4891,8 @@
       "benchmarks": {
         "aa": {
           "intel": 60,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 10.6562,
+          "iq_per_dollar": 0.0106562,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 93.842,
           "coding_index": 76.5,
           "gpqa": 0.926
@@ -5216,13 +5263,13 @@
           "speed_tps": 55.6,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 9.04
+          "ttft": 10.696
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 41,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 91.3,
@@ -5304,6 +5351,35 @@
       }
     },
     {
+      "id": "claude-opus-4-6",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Anthropic",
+            "cache_hit_rate": 79.0,
+            "eff_input_price": 1.652,
+            "eff_output_price": 25.0
+          },
+          {
+            "provider": "Azure",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 6.25,
+            "eff_output_price": 25.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 79.0
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "claude-opus-4-6-adaptive",
       "name": "Claude Opus 4.6 (Adaptive Reasoning, Max Effort)",
       "creator": "Anthropic",
@@ -5327,13 +5403,13 @@
           "speed_tps": 39.1,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 12.231
+          "ttft": 14.228
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 53,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.896
@@ -5389,6 +5465,30 @@
       "aliases": {
         "livebench": "claude-opus-4-6-thinking-auto-high-effort"
       }
+    },
+    {
+      "id": "claude-opus-4-7",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Anthropic",
+            "cache_hit_rate": 79.1,
+            "eff_input_price": 1.592,
+            "eff_output_price": 25.0
+          }
+        ],
+        "context_window": 200000
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 79.1
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "claude-opus-4-7-high-effort",
@@ -5741,7 +5841,7 @@
           "speed_tps": 48.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 17.282
+          "ttft": 18.55
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5758,7 +5858,7 @@
       "benchmarks": {
         "aa": {
           "intel": 54,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 73.6,
@@ -5843,7 +5943,7 @@
           "speed_tps": 64.9,
           "useful_cost": 31.2713,
           "reasoning_tax_pct": 44.4,
-          "ttft": 28.169,
+          "ttft": 25.404,
           "cost_segments": {
             "total_cost_per_task_usd": 1.8,
             "answer_usd": 0.5,
@@ -5868,8 +5968,8 @@
       "benchmarks": {
         "aa": {
           "intel": 56,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 14.9232,
+          "iq_per_dollar": 0.0149232,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 67.0098,
           "coding_index": 74.3,
           "gpqa": 0.92
@@ -6044,6 +6144,29 @@
       "aliases": {
         "livebench": "claude-sonnet-4-5-20250929-thinking-64k"
       }
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Anthropic",
+            "cache_hit_rate": 89.9,
+            "eff_input_price": 0.607,
+            "eff_output_price": 15.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 89.9
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "claude-sonnet-4-6-thinking-auto-high-effort",
@@ -6223,8 +6346,8 @@
       "benchmarks": {
         "aa": {
           "intel": 47,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 14.0054,
+          "iq_per_dollar": 0.0140054,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 71.4011
         }
       },
@@ -6243,6 +6366,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -6256,7 +6380,7 @@
           "speed_tps": 78.1,
           "useful_cost": 20.0506,
           "reasoning_tax_pct": 43.7,
-          "ttft": 132.063,
+          "ttft": 134.449,
           "cost_segments": {
             "total_cost_per_task_usd": 2.29,
             "answer_usd": 0.6,
@@ -6281,8 +6405,8 @@
       "benchmarks": {
         "aa": {
           "intel": 53,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 8.811,
+          "iq_per_dollar": 0.008811,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 113.494,
           "coding_index": 71.5,
           "gpqa": 0.911
@@ -6330,13 +6454,13 @@
           "speed_tps": 74.5,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 5.11
+          "ttft": 4.516
         }
       },
       "benchmarks": {
         "aa": {
           "intel": null,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -6366,16 +6490,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 66.037,
+          "speed_tps": 66.294,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.639
+          "ttft": 1.676
         }
       },
       "benchmarks": {
         "aa": {
           "intel": null,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -6405,16 +6529,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 62.844,
+          "speed_tps": 66.76,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.782
+          "ttft": 1.709
         }
       },
       "benchmarks": {
         "aa": {
           "intel": null,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -6464,16 +6588,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 68.353,
+          "speed_tps": 73.91,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 14.907
+          "ttft": 23.62
         }
       },
       "benchmarks": {
         "aa": {
           "intel": null,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -8657,6 +8781,59 @@
       }
     },
     {
+      "id": "deepseek-v3-0324",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 66.3,
+            "eff_input_price": 0.18,
+            "eff_output_price": 1.118
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 61.9,
+            "eff_input_price": 0.16,
+            "eff_output_price": 0.767
+          },
+          {
+            "provider": "ModelRun",
+            "cache_hit_rate": 50.4,
+            "eff_input_price": 0.185,
+            "eff_output_price": 0.798
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 52.6,
+            "eff_input_price": 0.25,
+            "eff_output_price": 1.0
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 4.0,
+            "eff_input_price": 0.214,
+            "eff_output_price": 0.877
+          },
+          {
+            "provider": "GMICloud",
+            "cache_hit_rate": 0.6,
+            "eff_input_price": 0.289,
+            "eff_output_price": 1.135
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 66.3
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "deepseek-v3.1-terminus",
       "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "creator": "deepseek",
@@ -8813,6 +8990,7 @@
         "has_breakdown": false,
         "params_total_b": 284,
         "params_active_b": 271,
+        "aa_img_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -8826,7 +9004,7 @@
           "speed_tps": 101.0,
           "useful_cost": 0.3149,
           "reasoning_tax_pct": 100.0,
-          "ttft": 0.867,
+          "ttft": 0.928,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -8849,8 +9027,8 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 552.3336,
+          "iq_per_dollar": 0.5523336000000001,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 1.8105,
           "coding_index": 56.2,
           "gpqa": 0.894
@@ -8913,7 +9091,7 @@
       "benchmarks": {
         "aa": {
           "intel": 37,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.867
@@ -8936,6 +9114,69 @@
         "has_breakdown": false,
         "params_total_b": 1600,
         "params_active_b": 1551,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 59.3,
+            "eff_input_price": 0.745,
+            "eff_output_price": 3.479
+          },
+          {
+            "provider": "DeepSeek",
+            "cache_hit_rate": 87.9,
+            "eff_input_price": 0.056,
+            "eff_output_price": 0.869
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 82.0,
+            "eff_input_price": 0.406,
+            "eff_output_price": 3.379
+          },
+          {
+            "provider": "GMICloud",
+            "cache_hit_rate": 89.8,
+            "eff_input_price": 0.246,
+            "eff_output_price": 2.783
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 47.1,
+            "eff_input_price": 0.735,
+            "eff_output_price": 2.599
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 34.5,
+            "eff_input_price": 1.145,
+            "eff_output_price": 3.38
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 2.1,
+            "eff_input_price": 1.722,
+            "eff_output_price": 3.478
+          },
+          {
+            "provider": "Fireworks",
+            "cache_hit_rate": 26.4,
+            "eff_input_price": 1.319,
+            "eff_output_price": 3.48
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 33.8,
+            "eff_input_price": 1.457,
+            "eff_output_price": 4.4
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 66.5,
+            "eff_input_price": 0.799,
+            "eff_output_price": 3.795
+          }
+        ],
         "context_window": 1048576
       },
       "pricing": {
@@ -8949,7 +9190,7 @@
           "speed_tps": 65.5,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": 100.0,
-          "ttft": 1.027,
+          "ttft": 1.037,
           "cost_segments": {
             "total_cost_per_task_usd": 0.04,
             "answer_usd": 0.0,
@@ -8972,8 +9213,8 @@
       "benchmarks": {
         "aa": {
           "intel": 44,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 249.518,
+          "iq_per_dollar": 0.249518,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.0077,
           "coding_index": 59.4,
           "gpqa": 0.888
@@ -8988,6 +9229,9 @@
           "coding_index": 59.4,
           "openness_index": 50,
           "ttft_variance": -1.8
+        },
+        "dirac": {
+          "cache_hit_rate_max": 89.8
         },
         "livebench": {
           "average": 74.39,
@@ -9036,13 +9280,13 @@
           "speed_tps": 81.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.062
+          "ttft": 1.126
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 41,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.905
@@ -9277,7 +9521,7 @@
       "benchmarks": {
         "aa": {
           "intel": 13,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 19.7,
@@ -10628,7 +10872,7 @@
       "benchmarks": {
         "aa": {
           "intel": 8,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 50.3,
@@ -10670,7 +10914,7 @@
       "benchmarks": {
         "aa": {
           "intel": 17,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 80,
@@ -10695,6 +10939,7 @@
         "has_breakdown": false,
         "params_total_b": 34,
         "params_active_b": 34,
+        "aa_img_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -10714,7 +10959,7 @@
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.794
@@ -12735,6 +12980,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -12748,13 +12994,13 @@
           "speed_tps": 280.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 5.136
+          "ttft": 5.074
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 25,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 34.7,
@@ -12792,13 +13038,13 @@
           "speed_tps": 168.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 10.855
+          "ttft": 11.354
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 45,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.921
@@ -12954,13 +13200,13 @@
           "speed_tps": 170.5,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 5.868
+          "ttft": 5.857
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 97,
@@ -12983,6 +13229,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 65536
       },
       "pricing": {
@@ -13002,7 +13249,7 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 95.7,
@@ -13112,7 +13359,7 @@
       "benchmarks": {
         "aa": {
           "intel": 41,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 86.7,
@@ -13337,7 +13584,7 @@
           "speed_tps": 130.4,
           "useful_cost": 14.5555,
           "reasoning_tax_pct": 17.2,
-          "ttft": 20.953,
+          "ttft": 25.936,
           "cost_segments": {
             "total_cost_per_task_usd": 0.29,
             "answer_usd": 0.18,
@@ -13362,8 +13609,8 @@
       "benchmarks": {
         "aa": {
           "intel": 46,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 56.4341,
+          "iq_per_dollar": 0.0564341,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 17.7198,
           "coding_index": 68.8,
           "gpqa": 0.941
@@ -13469,7 +13716,7 @@
           "speed_tps": 174.4,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": 33.9,
-          "ttft": 12.721,
+          "ttft": 16.506,
           "cost_segments": {
             "total_cost_per_task_usd": 0.59,
             "answer_usd": 0.3,
@@ -13494,8 +13741,8 @@
       "benchmarks": {
         "aa": {
           "intel": 50,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 48.0363,
+          "iq_per_dollar": 0.0480363,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 20.8176,
           "coding_index": 70.1,
           "gpqa": 0.922
@@ -13726,6 +13973,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -13739,13 +13987,13 @@
           "speed_tps": 120.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.429
+          "ttft": 1.328
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 22,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.753
@@ -13770,6 +14018,63 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 16.8,
+            "eff_input_price": 0.13,
+            "eff_output_price": 0.4
+          },
+          {
+            "provider": "NextBit",
+            "cache_hit_rate": 63.4,
+            "eff_input_price": 0.118,
+            "eff_output_price": 0.398
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.07,
+            "eff_output_price": 0.337
+          },
+          {
+            "provider": "Cloudflare",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.297
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 41.8,
+            "eff_input_price": 0.096,
+            "eff_output_price": 0.398
+          },
+          {
+            "provider": "DekaLLM",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.06,
+            "eff_output_price": 0.327
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.12,
+            "eff_output_price": 0.397
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 74.6,
+            "eff_input_price": 0.162,
+            "eff_output_price": 0.499
+          },
+          {
+            "provider": "io.net",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.15,
+            "eff_output_price": 0.5
+          }
+        ],
         "context_window": 262144
       },
       "pricing": {
@@ -13789,7 +14094,7 @@
       "benchmarks": {
         "aa": {
           "intel": 26,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 39.3,
@@ -13797,6 +14102,9 @@
         },
         "aa_img": {
           "openness_index": 39
+        },
+        "dirac": {
+          "cache_hit_rate_max": 74.6
         }
       },
       "aliases": {
@@ -13858,6 +14166,51 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.13,
+            "eff_output_price": 0.379
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 5.8,
+            "eff_input_price": 0.14,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 31.8,
+            "eff_input_price": 0.109,
+            "eff_output_price": 0.378
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.13,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "Ambient",
+            "cache_hit_rate": 18.4,
+            "eff_input_price": 0.118,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 12.0,
+            "eff_input_price": 0.175,
+            "eff_output_price": 0.5
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 6.4,
+            "eff_input_price": 0.137,
+            "eff_output_price": 0.399
+          }
+        ],
         "context_window": 262144
       },
       "pricing": {
@@ -13871,13 +14224,13 @@
           "speed_tps": 34.8,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.917
+          "ttft": 0.927
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 29,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 43.4,
@@ -13886,6 +14239,9 @@
         "aa_img": {
           "openness_index": 39,
           "ttft_variance": -1.1
+        },
+        "dirac": {
+          "cache_hit_rate_max": 31.8
         }
       },
       "aliases": {
@@ -13961,6 +14317,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -13980,7 +14337,7 @@
       "benchmarks": {
         "aa": {
           "intel": 15,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.433
@@ -14005,6 +14362,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -14024,7 +14382,7 @@
       "benchmarks": {
         "aa": {
           "intel": 12,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.576
@@ -14037,6 +14395,41 @@
       "aliases": {
         "aa": "gemma-4-e4b"
       }
+    },
+    {
+      "id": "glm-4-5-air",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Z.ai",
+            "cache_hit_rate": 73.5,
+            "eff_input_price": 0.075,
+            "eff_output_price": 1.096
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 72.3,
+            "eff_input_price": 0.054,
+            "eff_output_price": 0.846
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 42.4,
+            "eff_input_price": 0.14,
+            "eff_output_price": 0.858
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 73.5
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "glm-4-9b",
@@ -14401,6 +14794,81 @@
         "has_breakdown": false,
         "params_total_b": 744,
         "params_active_b": 704,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 85.3,
+            "eff_input_price": 0.31,
+            "eff_output_price": 2.549
+          },
+          {
+            "provider": "GMICloud",
+            "cache_hit_rate": 37.5,
+            "eff_input_price": 0.42,
+            "eff_output_price": 1.92
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 54.0,
+            "eff_input_price": 0.341,
+            "eff_output_price": 2.079
+          },
+          {
+            "provider": "Z.ai",
+            "cache_hit_rate": 66.1,
+            "eff_input_price": 0.471,
+            "eff_output_price": 3.199
+          },
+          {
+            "provider": "Friendli",
+            "cache_hit_rate": 26.0,
+            "eff_input_price": 0.87,
+            "eff_output_price": 3.2
+          },
+          {
+            "provider": "StreamLake",
+            "cache_hit_rate": 35.6,
+            "eff_input_price": 0.465,
+            "eff_output_price": 2.079
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 33.2,
+            "eff_input_price": 0.734,
+            "eff_output_price": 3.2
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 22.0,
+            "eff_input_price": 0.783,
+            "eff_output_price": 3.15
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 28.6,
+            "eff_input_price": 0.772,
+            "eff_output_price": 3.2
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 0.8,
+            "eff_input_price": 1.0,
+            "eff_output_price": 3.2
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 1.8,
+            "eff_input_price": 0.941,
+            "eff_output_price": 2.55
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 0.1,
+            "eff_input_price": 1.2,
+            "eff_output_price": 3.5
+          }
+        ],
         "context_window": 202752
       },
       "pricing": {
@@ -14414,7 +14882,7 @@
           "speed_tps": 70.2,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.262
+          "ttft": 1.079
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -14429,7 +14897,7 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.82
@@ -14438,6 +14906,9 @@
           "omniscience_hallucination_rate": 34,
           "openness_index": 50,
           "ttft_variance": -1.6
+        },
+        "dirac": {
+          "cache_hit_rate_max": 85.3
         },
         "livebench": {
           "average": 68.7,
@@ -14461,6 +14932,59 @@
         "arena_code": "glm-5",
         "openrouter": "z-ai/glm-5"
       }
+    },
+    {
+      "id": "glm-5-1",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 73.4,
+            "eff_input_price": 0.023,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 14.3,
+            "eff_input_price": 0.061,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "Cloudflare",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.06,
+            "eff_output_price": 0.397
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.429
+          },
+          {
+            "provider": "Z.ai",
+            "cache_hit_rate": 44.2,
+            "eff_input_price": 0.043,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 14.4,
+            "eff_input_price": 0.125,
+            "eff_output_price": 0.496
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 73.4
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "glm-5-turbo",
@@ -14501,7 +15025,7 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.847
@@ -14538,7 +15062,7 @@
           "speed_tps": 69.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.862
+          "ttft": 0.831
         },
         "openrouter": {
           "inp_price": 9.66e-07,
@@ -14553,7 +15077,7 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 55.8,
@@ -14625,7 +15149,7 @@
           "speed_tps": 185.2,
           "useful_cost": 6.662,
           "reasoning_tax_pct": 100.0,
-          "ttft": 0.893,
+          "ttft": 0.904,
           "cost_segments": {
             "total_cost_per_task_usd": 0.48,
             "answer_usd": 0.0,
@@ -14648,8 +15172,8 @@
       "benchmarks": {
         "aa": {
           "intel": 51,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 54.6811,
+          "iq_per_dollar": 0.0546811,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 18.2878,
           "coding_index": 68.8,
           "gpqa": 0.895
@@ -14747,7 +15271,7 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.809
@@ -15089,10 +15613,18 @@
     },
     {
       "id": "gpt-4o-mini",
-      "name": "OpenAI: GPT-4o-mini",
-      "creator": "openai",
+      "name": null,
+      "creator": null,
       "model_type": null,
       "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 8.0,
+            "eff_input_price": 0.144,
+            "eff_output_price": 0.597
+          }
+        ],
         "context_window": 128000
       },
       "pricing": {
@@ -15106,7 +15638,11 @@
           "vendor": "openai"
         }
       },
-      "benchmarks": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 8.0
+        }
+      },
       "aliases": {
         "openrouter": "openai/gpt-4o-mini"
       }
@@ -15204,15 +15740,92 @@
       }
     },
     {
+      "id": "gpt-5-1",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 38.1,
+            "eff_input_price": 0.822,
+            "eff_output_price": 10.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 38.1
+        }
+      },
+      "aliases": {}
+    },
+    {
+      "id": "gpt-5-1-chat",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 55.3,
+            "eff_input_price": 0.628,
+            "eff_output_price": 10.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 55.3
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "gpt-5-2-codex",
       "name": null,
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "aa_img_scraped": true
+      },
       "pricing": {},
       "benchmarks": {
         "aa_img": {
           "omniscience_accuracy": 41
+        }
+      },
+      "aliases": {}
+    },
+    {
+      "id": "gpt-5-3-codex",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 93.2,
+            "eff_input_price": 0.282,
+            "eff_output_price": 14.0
+          },
+          {
+            "provider": "Azure",
+            "cache_hit_rate": 82.7,
+            "eff_input_price": 0.447,
+            "eff_output_price": 14.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 93.2
         }
       },
       "aliases": {}
@@ -15228,6 +15841,21 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 61.5,
+            "eff_input_price": 0.337,
+            "eff_output_price": 4.511
+          },
+          {
+            "provider": "Azure",
+            "cache_hit_rate": 9.8,
+            "eff_input_price": 0.684,
+            "eff_output_price": 4.499
+          }
+        ],
         "context_window": 400000
       },
       "pricing": {
@@ -15241,13 +15869,13 @@
           "speed_tps": 185.1,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 6.986
+          "ttft": 10.94
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 56.1,
@@ -15262,6 +15890,9 @@
           "agentic_index": 30.2,
           "coding_index": 56.1,
           "e2e_response_time_s": 11.5
+        },
+        "dirac": {
+          "cache_hit_rate_max": 61.5
         }
       },
       "aliases": {
@@ -15292,13 +15923,13 @@
           "speed_tps": 169.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 6.44
+          "ttft": 7.209
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.823
@@ -15319,6 +15950,27 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 11.0,
+            "eff_input_price": 0.092,
+            "eff_output_price": 0.399
+          },
+          {
+            "provider": "OpenAI",
+            "cache_hit_rate": 62.8,
+            "eff_input_price": 0.087,
+            "eff_output_price": 1.249
+          },
+          {
+            "provider": "Azure",
+            "cache_hit_rate": 26.1,
+            "eff_input_price": 0.153,
+            "eff_output_price": 1.249
+          }
+        ],
         "context_window": 400000
       },
       "pricing": {
@@ -15332,13 +15984,13 @@
           "speed_tps": 175.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 2.474
+          "ttft": 2.399
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 56.1,
@@ -15349,6 +16001,9 @@
           "agentic_index": 25.6,
           "coding_index": 56.1,
           "e2e_response_time_s": 7.2
+        },
+        "dirac": {
+          "cache_hit_rate_max": 62.8
         }
       },
       "aliases": {
@@ -15379,13 +16034,13 @@
           "speed_tps": 164.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 3.093
+          "ttft": 3.227
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.761
@@ -15425,7 +16080,7 @@
       "benchmarks": {
         "aa": {
           "intel": 28.9,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 39.4,
@@ -16274,7 +16929,7 @@
           "speed_tps": 155.7,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.17
+          "ttft": 1.074
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16289,7 +16944,7 @@
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.899
@@ -16381,7 +17036,7 @@
           "speed_tps": 90.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 84.446
+          "ttft": 89.087
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16396,7 +17051,7 @@
       "benchmarks": {
         "aa": {
           "intel": 44,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.915
@@ -16529,7 +17184,7 @@
           "speed_tps": 153.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 119.136
+          "ttft": 124.634
         },
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -16544,7 +17199,7 @@
       "benchmarks": {
         "aa": {
           "intel": 51,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 71.1,
@@ -17063,7 +17718,7 @@
           "speed_tps": 67.2,
           "useful_cost": 40.5947,
           "reasoning_tax_pct": 58.0,
-          "ttft": 20.648,
+          "ttft": 20.797,
           "cost_segments": {
             "total_cost_per_task_usd": 0.69,
             "answer_usd": 0.15,
@@ -17077,8 +17732,8 @@
       "benchmarks": {
         "aa": {
           "intel": 53,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 30.3626,
+          "iq_per_dollar": 0.0303626,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 32.9353,
           "coding_index": 71.6,
           "gpqa": 0.932
@@ -17175,7 +17830,7 @@
           "speed_tps": 68.6,
           "useful_cost": null,
           "reasoning_tax_pct": 36.4,
-          "ttft": 1.75,
+          "ttft": 1.633,
           "cost_segments": {
             "total_cost_per_task_usd": 0.22,
             "answer_usd": 0.1,
@@ -17189,8 +17844,8 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 112.5419,
+          "iq_per_dollar": 0.1125419,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 8.8856,
           "coding_index": 60.9,
           "gpqa": 0.91
@@ -17232,7 +17887,7 @@
           "speed_tps": 66.9,
           "useful_cost": 45.2971,
           "reasoning_tax_pct": 52.4,
-          "ttft": 4.565,
+          "ttft": 5.29,
           "cost_segments": {
             "total_cost_per_task_usd": 0.42,
             "answer_usd": 0.1,
@@ -17246,8 +17901,8 @@
       "benchmarks": {
         "aa": {
           "intel": 50,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 52.563,
+          "iq_per_dollar": 0.052563000000000006,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 19.0248,
           "coding_index": 71.5,
           "gpqa": 0.926
@@ -17315,7 +17970,7 @@
       "benchmarks": {
         "aa": {
           "intel": null,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -17349,7 +18004,7 @@
           "speed_tps": 71.4,
           "useful_cost": 39.1499,
           "reasoning_tax_pct": 63.1,
-          "ttft": 35.786,
+          "ttft": 45.195,
           "cost_segments": {
             "total_cost_per_task_usd": 1.03,
             "answer_usd": 0.2,
@@ -17363,8 +18018,8 @@
       "benchmarks": {
         "aa": {
           "intel": 55,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 19.5119,
+          "iq_per_dollar": 0.019511900000000002,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 51.2507,
           "coding_index": 74.9,
           "gpqa": 0.935
@@ -17542,6 +18197,87 @@
         "has_breakdown": false,
         "params_total_b": 117,
         "params_active_b": 112,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.039,
+            "eff_output_price": 0.189
+          },
+          {
+            "provider": "Groq",
+            "cache_hit_rate": 40.0,
+            "eff_input_price": 0.12,
+            "eff_output_price": 0.599
+          },
+          {
+            "provider": "Cerebras",
+            "cache_hit_rate": 48.6,
+            "eff_input_price": 0.35,
+            "eff_output_price": 0.749
+          },
+          {
+            "provider": "DekaLLM",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.039,
+            "eff_output_price": 0.177
+          },
+          {
+            "provider": "Baseten",
+            "cache_hit_rate": 52.1,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.499
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 2.5,
+            "eff_input_price": 0.05,
+            "eff_output_price": 0.249
+          },
+          {
+            "provider": "Ambient",
+            "cache_hit_rate": 57.0,
+            "eff_input_price": 0.107,
+            "eff_output_price": 0.6
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 23.6,
+            "eff_input_price": 0.089,
+            "eff_output_price": 0.749
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.05,
+            "eff_output_price": 0.449
+          },
+          {
+            "provider": "SambaNova",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.14,
+            "eff_output_price": 0.949
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.15,
+            "eff_output_price": 0.6
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 14.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.489
+          },
+          {
+            "provider": "MARA",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.15,
+            "eff_output_price": 0.749
+          }
+        ],
         "context_window": 131072
       },
       "pricing": {
@@ -17555,7 +18291,7 @@
           "speed_tps": 303.4,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": 0.0,
-          "ttft": 0.521,
+          "ttft": 0.516,
           "cost_segments": {
             "total_cost_per_task_usd": 0.06,
             "answer_usd": 0.0,
@@ -17576,8 +18312,8 @@
       "benchmarks": {
         "aa": {
           "intel": 24,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 249.273,
+          "iq_per_dollar": 0.249273,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.0117,
           "coding_index": 30.4,
           "math_index": 93.4,
@@ -17588,6 +18324,9 @@
           "openness_index": 39,
           "e2e_response_time_s": 10.3,
           "ttft_variance": -0.9
+        },
+        "dirac": {
+          "cache_hit_rate_max": 57.0
         },
         "livebench": {
           "average": 46.35,
@@ -17630,13 +18369,13 @@
           "speed_tps": 340.8,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.515
+          "ttft": 0.502
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 24,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 66.7,
@@ -17681,6 +18420,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -17694,7 +18434,7 @@
           "speed_tps": 234.0,
           "useful_cost": 0.4458,
           "reasoning_tax_pct": 0.0,
-          "ttft": 0.421,
+          "ttft": 0.48,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
             "answer_usd": 0.0,
@@ -17715,8 +18455,8 @@
       "benchmarks": {
         "aa": {
           "intel": 15,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 502.1761,
+          "iq_per_dollar": 0.5021761,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 1.9913,
           "coding_index": 20.7,
           "math_index": 89.3,
@@ -17758,13 +18498,13 @@
           "speed_tps": 223.6,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.455
+          "ttft": 0.496
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 14,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 62.3,
@@ -17938,6 +18678,29 @@
       }
     },
     {
+      "id": "grok-4-3",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "xAI",
+            "cache_hit_rate": 47.8,
+            "eff_input_price": 0.749,
+            "eff_output_price": 2.5
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 47.8
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "grok-4-3-low",
       "name": "Grok 4.3 (low)",
       "creator": "xAI",
@@ -17961,13 +18724,13 @@
           "speed_tps": 121.5,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 7.412
+          "ttft": 7.915
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 35,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.843
@@ -18001,13 +18764,13 @@
           "speed_tps": 109.2,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 18.948
+          "ttft": 21.73
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 36,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.89
@@ -18195,7 +18958,7 @@
           "speed_tps": 120.9,
           "useful_cost": 3.6141,
           "reasoning_tax_pct": 0.0,
-          "ttft": 30.525,
+          "ttft": 32.832,
           "cost_segments": {
             "total_cost_per_task_usd": 0.16,
             "answer_usd": 0.13,
@@ -18218,8 +18981,8 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 126.6793,
+          "iq_per_dollar": 0.1266793,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 7.8939,
           "coding_index": 42.2,
           "gpqa": 0.901
@@ -18914,6 +19677,7 @@
         "has_breakdown": false,
         "params_total_b": 406,
         "params_active_b": 406,
+        "aa_img_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -18927,13 +19691,13 @@
           "speed_tps": 36.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.777
+          "ttft": 0.796
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 9,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 69.7,
@@ -18962,6 +19726,7 @@
         "has_breakdown": false,
         "params_total_b": 71,
         "params_active_b": 71,
+        "aa_img_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -18975,13 +19740,13 @@
           "speed_tps": 81.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.566
+          "ttft": 0.571
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 10,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 68.7,
@@ -19812,7 +20577,7 @@
           "speed_tps": 160.7,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.741
+          "ttft": 1.774
         },
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -19827,7 +20592,7 @@
       "benchmarks": {
         "aa": {
           "intel": 34,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.867
@@ -19846,6 +20611,14 @@
       "meta": {
         "params_total_b": 295,
         "params_active_b": 274,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 84.3,
+            "eff_input_price": 0.035,
+            "eff_output_price": 0.259
+          }
+        ],
         "context_window": 262144
       },
       "pricing": {
@@ -19862,6 +20635,9 @@
       "benchmarks": {
         "aa_img": {
           "e2e_response_time_s": 19.8
+        },
+        "dirac": {
+          "cache_hit_rate_max": 84.3
         }
       },
       "aliases": {
@@ -20888,6 +21664,7 @@
         "has_breakdown": false,
         "params_total_b": 236,
         "params_active_b": 213,
+        "aa_img_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -20907,7 +21684,7 @@
       "benchmarks": {
         "aa": {
           "intel": 32,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 90.3,
@@ -20948,7 +21725,7 @@
       "benchmarks": {
         "aa": {
           "intel": 24,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -21036,6 +21813,74 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 74.8,
+            "eff_input_price": 0.166,
+            "eff_output_price": 2.249
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 71.1,
+            "eff_input_price": 0.232,
+            "eff_output_price": 2.849
+          },
+          {
+            "provider": "ModelRun",
+            "cache_hit_rate": 77.1,
+            "eff_input_price": 0.161,
+            "eff_output_price": 1.9
+          },
+          {
+            "provider": "Fireworks",
+            "cache_hit_rate": 80.7,
+            "eff_input_price": 0.196,
+            "eff_output_price": 3.0
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 27.7,
+            "eff_input_price": 0.379,
+            "eff_output_price": 2.0
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 38.1,
+            "eff_input_price": 0.379,
+            "eff_output_price": 2.499
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 50.1,
+            "eff_input_price": 0.259,
+            "eff_output_price": 2.25
+          },
+          {
+            "provider": "Cloudflare",
+            "cache_hit_rate": 52.2,
+            "eff_input_price": 0.339,
+            "eff_output_price": 3.0
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 54.8,
+            "eff_input_price": 0.381,
+            "eff_output_price": 2.799
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 2.2,
+            "eff_input_price": 0.6,
+            "eff_output_price": 3.0
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 8.9,
+            "eff_input_price": 0.53,
+            "eff_output_price": 3.5
+          }
+        ],
         "context_window": 131072
       },
       "pricing": {
@@ -21049,16 +21894,19 @@
           "speed_tps": 44.7,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.293
+          "ttft": 1.278
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.879
+        },
+        "dirac": {
+          "cache_hit_rate_max": 80.7
         }
       },
       "aliases": {
@@ -21101,6 +21949,7 @@
         "has_breakdown": false,
         "params_total_b": 1000,
         "params_active_b": 968,
+        "aa_img_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -21114,7 +21963,7 @@
           "speed_tps": 123.8,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.728
+          "ttft": 0.776
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -21129,7 +21978,7 @@
       "benchmarks": {
         "aa": {
           "intel": 33,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 94.7,
@@ -21258,7 +22107,7 @@
           "speed_tps": 42.6,
           "useful_cost": 5.1959,
           "reasoning_tax_pct": 25.8,
-          "ttft": 1.308,
+          "ttft": 1.253,
           "cost_segments": {
             "total_cost_per_task_usd": 0.31,
             "answer_usd": 0.18,
@@ -21281,8 +22130,8 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 51.7237,
+          "iq_per_dollar": 0.0517237,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 19.3335,
           "coding_index": 61.8,
           "gpqa": 0.911
@@ -21359,7 +22208,7 @@
           "speed_tps": 43.6,
           "useful_cost": 5.2456,
           "reasoning_tax_pct": 0.0,
-          "ttft": 1.317,
+          "ttft": 1.351,
           "cost_segments": {
             "total_cost_per_task_usd": 0.18,
             "answer_usd": 0.15,
@@ -21382,8 +22231,8 @@
       "benchmarks": {
         "aa": {
           "intel": 42,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 80.0671,
+          "iq_per_dollar": 0.0800671,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 12.4895,
           "coding_index": 60.8,
           "gpqa": 0.896
@@ -22584,6 +23433,53 @@
       "aliases": {
         "openllm": "laislemke/LLaMA-2-vicuna-7b-slerp"
       }
+    },
+    {
+      "id": "llama-3-1-8b-instruct",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Groq",
+            "cache_hit_rate": 67.8,
+            "eff_input_price": 0.033,
+            "eff_output_price": 0.075
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.02,
+            "eff_output_price": 0.048
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.02,
+            "eff_output_price": 0.048
+          },
+          {
+            "provider": "Cerebras",
+            "cache_hit_rate": 87.5,
+            "eff_input_price": 0.099,
+            "eff_output_price": 0.095
+          },
+          {
+            "provider": "Cloudflare",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.152,
+            "eff_output_price": 0.285
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 87.5
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "llama-3-1-big-thoughtful-passthrough-merge-2",
@@ -36098,6 +36994,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -36111,7 +37008,7 @@
           "speed_tps": 842.2,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 3.685
+          "ttft": 3.077
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -36126,7 +37023,7 @@
       "benchmarks": {
         "aa": {
           "intel": 25,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.77
@@ -36918,6 +37815,29 @@
       }
     },
     {
+      "id": "mimo-v2-5",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Xiaomi",
+            "cache_hit_rate": 74.2,
+            "eff_input_price": 0.183,
+            "eff_output_price": 2.057
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 74.2
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "mimo-v2-5-0424",
       "name": "MiMo-V2.5",
       "creator": "Xiaomi",
@@ -36941,13 +37861,13 @@
           "speed_tps": 71.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.763
+          "ttft": 1.734
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.849
@@ -36956,6 +37876,35 @@
       "aliases": {
         "aa": "mimo-v2-5-0424"
       }
+    },
+    {
+      "id": "mimo-v2-5-pro",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Xiaomi",
+            "cache_hit_rate": 94.8,
+            "eff_input_price": 0.372,
+            "eff_output_price": 3.167
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 11.7,
+            "eff_input_price": 0.906,
+            "eff_output_price": 3.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 94.8
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "mimo-v2-pro",
@@ -36968,6 +37917,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -36987,7 +37937,7 @@
       "benchmarks": {
         "aa": {
           "intel": 49,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.87
@@ -37082,7 +38032,7 @@
           "speed_tps": 43.5,
           "useful_cost": 1.0257,
           "reasoning_tax_pct": 0.0,
-          "ttft": 2.01,
+          "ttft": 1.915,
           "cost_segments": {
             "total_cost_per_task_usd": 0.03,
             "answer_usd": 0.0,
@@ -37105,8 +38055,8 @@
       "benchmarks": {
         "aa": {
           "intel": 42,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 426.5258,
+          "iq_per_dollar": 0.4265258,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 2.3445,
           "coding_index": 60.2,
           "gpqa": 0.866
@@ -37236,6 +38186,154 @@
       }
     },
     {
+      "id": "minimax-m2-5",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 62.5,
+            "eff_input_price": 0.075,
+            "eff_output_price": 1.148
+          },
+          {
+            "provider": "Inceptron",
+            "cache_hit_rate": 78.8,
+            "eff_input_price": 0.074,
+            "eff_output_price": 0.898
+          },
+          {
+            "provider": "MiniMax",
+            "cache_hit_rate": 85.3,
+            "eff_input_price": 0.07,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 78.2,
+            "eff_input_price": 0.111,
+            "eff_output_price": 1.198
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 84.9,
+            "eff_input_price": 0.071,
+            "eff_output_price": 1.197
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 56.3,
+            "eff_input_price": 0.108,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "Friendli",
+            "cache_hit_rate": 79.5,
+            "eff_input_price": 0.109,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "AkashML",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.15,
+            "eff_output_price": 1.149
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 62.6,
+            "eff_input_price": 0.131,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "MARA",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.3,
+            "eff_output_price": 1.2
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 52.6,
+            "eff_input_price": 0.158,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 32.9,
+            "eff_input_price": 0.2,
+            "eff_output_price": 1.379
+          },
+          {
+            "provider": "StreamLake",
+            "cache_hit_rate": 6.8,
+            "eff_input_price": 0.305,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 63.8,
+            "eff_input_price": 0.148,
+            "eff_output_price": 1.188
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 85.3
+        }
+      },
+      "aliases": {}
+    },
+    {
+      "id": "minimax-m2-7",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "MiniMax",
+            "cache_hit_rate": 65.6,
+            "eff_input_price": 0.143,
+            "eff_output_price": 1.2
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 41.2,
+            "eff_input_price": 0.201,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "Morph",
+            "cache_hit_rate": 73.9,
+            "eff_input_price": 0.279,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "Fireworks",
+            "cache_hit_rate": 39.2,
+            "eff_input_price": 0.205,
+            "eff_output_price": 1.199
+          },
+          {
+            "provider": "SambaNova",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.6,
+            "eff_output_price": 2.399
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 73.9
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "minimax-m2-her",
       "name": "MiniMax: MiniMax M2-her",
       "creator": "minimax",
@@ -37329,7 +38427,7 @@
           "speed_tps": 240.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.379
+          "ttft": 1.372
         },
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -37342,7 +38440,7 @@
       "benchmarks": {
         "aa": {
           "intel": 34,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.848
@@ -37393,7 +38491,7 @@
           "speed_tps": 51.1,
           "useful_cost": 1.6909,
           "reasoning_tax_pct": 0.0,
-          "ttft": 1.451,
+          "ttft": 1.453,
           "cost_segments": {
             "total_cost_per_task_usd": 0.07,
             "answer_usd": 0.05,
@@ -37414,8 +38512,8 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 264.3846,
+          "iq_per_dollar": 0.26438459999999997,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 3.7824,
           "coding_index": 52.6,
           "gpqa": 0.874
@@ -37462,6 +38560,7 @@
         "has_breakdown": false,
         "params_total_b": 428,
         "params_active_b": 405,
+        "aa_img_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -37475,7 +38574,7 @@
           "speed_tps": 91.2,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": 33.3,
-          "ttft": 1.512,
+          "ttft": 1.428,
           "cost_segments": {
             "total_cost_per_task_usd": 0.12,
             "answer_usd": 0.07,
@@ -37498,8 +38597,8 @@
       "benchmarks": {
         "aa": {
           "intel": 44,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 215.8344,
+          "iq_per_dollar": 0.21583439999999998,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.6332,
           "coding_index": 58.6,
           "gpqa": 0.929
@@ -39012,8 +40111,8 @@
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 20.2238,
+          "iq_per_dollar": 0.0202238,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 49.4467
         }
       },
@@ -41277,6 +42376,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -41296,7 +42396,7 @@
       "benchmarks": {
         "aa": {
           "intel": 43,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 58.6,
@@ -41623,6 +42723,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -41636,13 +42737,13 @@
           "speed_tps": 270.6,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.579
+          "ttft": 0.573
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 15,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.469
@@ -41705,7 +42806,7 @@
           "speed_tps": 296.5,
           "useful_cost": 2.6778,
           "reasoning_tax_pct": 0.0,
-          "ttft": 0.891,
+          "ttft": 0.98,
           "cost_segments": {
             "total_cost_per_task_usd": 0.25,
             "answer_usd": 0.0,
@@ -41726,8 +42827,8 @@
       "benchmarks": {
         "aa": {
           "intel": 25,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 84.8724,
+          "iq_per_dollar": 0.0848724,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 11.7824,
           "coding_index": 37.7,
           "gpqa": 0.8
@@ -41802,7 +42903,7 @@
           "speed_tps": 172.8,
           "useful_cost": 4.033,
           "reasoning_tax_pct": 0.0,
-          "ttft": 0.865,
+          "ttft": 0.92,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
             "answer_usd": 0.0,
@@ -41825,8 +42926,8 @@
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 85.657,
+          "iq_per_dollar": 0.085657,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 11.6745,
           "coding_index": 49.3,
           "gpqa": 0.867
@@ -41933,7 +43034,7 @@
       "benchmarks": {
         "aa": {
           "intel": 21,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.758
@@ -42162,6 +43263,7 @@
         "iq_percentile": null,
         "has_breakdown": false,
         "params_total_b": 397,
+        "aa_img_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -42175,7 +43277,7 @@
           "speed_tps": 108.5,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.915
+          "ttft": 1.037
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -42190,7 +43292,7 @@
       "benchmarks": {
         "aa": {
           "intel": 41,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 59.1,
@@ -42364,13 +43466,13 @@
           "speed_tps": 150.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 12.855
+          "ttft": 19.759
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 21,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 23,
@@ -42407,13 +43509,13 @@
           "speed_tps": 131.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 4.767
+          "ttft": 4.813
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 31,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 46.7,
@@ -42449,13 +43551,13 @@
           "speed_tps": 123.2,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 14.616
+          "ttft": 16.908
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 88.7,
@@ -42497,7 +43599,7 @@
       "benchmarks": {
         "aa": {
           "intel": 23,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 56,
@@ -42539,7 +43641,7 @@
       "benchmarks": {
         "aa": {
           "intel": 28,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 89.7,
@@ -42575,13 +43677,13 @@
           "speed_tps": 122.8,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 6.33
+          "ttft": 7.905
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 32,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 25.9,
@@ -42640,7 +43742,7 @@
           "speed_tps": 126.4,
           "useful_cost": 12.9597,
           "reasoning_tax_pct": 58.8,
-          "ttft": 14.601,
+          "ttft": 16.127,
           "cost_segments": {
             "total_cost_per_task_usd": 0.17,
             "answer_usd": 0.05,
@@ -42654,8 +43756,8 @@
       "benchmarks": {
         "aa": {
           "intel": 36,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 77.1621,
+          "iq_per_dollar": 0.0771621,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 12.9597,
           "coding_index": 34,
           "math_index": 89,
@@ -43273,13 +44375,13 @@
           "speed_tps": 85.1,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.015
+          "ttft": 0.914
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 14,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 14.4,
@@ -44108,6 +45210,29 @@
       "aliases": {
         "openllm": "mlabonne/OrpoLlama-3-8B"
       }
+    },
+    {
+      "id": "owl-alpha",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Stealth",
+            "cache_hit_rate": 62.6,
+            "eff_input_price": 0.0,
+            "eff_output_price": 0.0
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 62.6
+        }
+      },
+      "aliases": {}
     },
     {
       "id": "palmyra-x5",
@@ -55716,12 +56841,60 @@
     },
     {
       "id": "qwen3-235b-a22b-instruct-2507",
-      "name": "qwen3-235b-a22b-instruct-2507",
+      "name": null,
       "creator": null,
       "model_type": null,
-      "meta": {},
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.09,
+            "eff_output_price": 0.577
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.071,
+            "eff_output_price": 0.097
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 43.1,
+            "eff_input_price": 0.078,
+            "eff_output_price": 0.599
+          },
+          {
+            "provider": "Cerebras",
+            "cache_hit_rate": 69.9,
+            "eff_input_price": 0.6,
+            "eff_output_price": 1.195
+          },
+          {
+            "provider": "Friendli",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.2,
+            "eff_output_price": 0.798
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.2,
+            "eff_output_price": 0.598
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.2,
+            "eff_output_price": 0.876
+          }
+        ]
+      },
       "pricing": {},
       "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 69.9
+        },
         "livebench": {
           "average": 48.01,
           "Mathematics": 68.03,
@@ -55910,6 +57083,124 @@
       }
     },
     {
+      "id": "qwen3-5-397b-a17b",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Morph",
+            "cache_hit_rate": 64.7,
+            "eff_input_price": 0.422,
+            "eff_output_price": 3.5
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 79.6,
+            "eff_input_price": 0.271,
+            "eff_output_price": 3.0
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.49,
+            "eff_output_price": 3.599
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 48.4,
+            "eff_input_price": 0.6,
+            "eff_output_price": 3.6
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 5.1,
+            "eff_input_price": 0.6,
+            "eff_output_price": 3.6
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.55,
+            "eff_output_price": 3.5
+          },
+          {
+            "provider": "Phala",
+            "cache_hit_rate": 35.5,
+            "eff_input_price": 0.55,
+            "eff_output_price": 3.5
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 45.3,
+            "eff_input_price": 0.409,
+            "eff_output_price": 3.6
+          },
+          {
+            "provider": "GMICloud",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.6,
+            "eff_output_price": 3.6
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 19.3,
+            "eff_input_price": 0.75,
+            "eff_output_price": 4.5
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 79.6
+        }
+      },
+      "aliases": {}
+    },
+    {
+      "id": "qwen3-5-9b",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.04,
+            "eff_output_price": 0.148
+          },
+          {
+            "provider": "Together",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.149
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.149
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 35.5,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.149
+          }
+        ]
+      },
+      "pricing": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 35.5
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "qwen3-6-27b",
       "name": "Qwen3.6 27B (Reasoning)",
       "creator": "Alibaba",
@@ -55920,6 +57211,45 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.32,
+            "eff_output_price": 3.199
+          },
+          {
+            "provider": "Ambient",
+            "cache_hit_rate": 32.8,
+            "eff_input_price": 0.267,
+            "eff_output_price": 3.2
+          },
+          {
+            "provider": "io.net",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.317,
+            "eff_output_price": 3.199
+          },
+          {
+            "provider": "Morph",
+            "cache_hit_rate": 28.5,
+            "eff_input_price": 0.498,
+            "eff_output_price": 2.399
+          },
+          {
+            "provider": "Chutes",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.5,
+            "eff_output_price": 2.0
+          },
+          {
+            "provider": "Venice",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.325,
+            "eff_output_price": 3.25
+          }
+        ],
         "context_window": 256000
       },
       "pricing": {
@@ -55933,13 +57263,13 @@
           "speed_tps": 54.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.523
+          "ttft": 1.508
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 37,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 53.7,
@@ -55954,6 +57284,9 @@
           "agentic_index": 27.0,
           "coding_index": 53.7,
           "openness_index": 39
+        },
+        "dirac": {
+          "cache_hit_rate_max": 32.8
         }
       },
       "aliases": {
@@ -55971,6 +57304,45 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 47.6,
+            "eff_input_price": 0.102,
+            "eff_output_price": 1.0
+          },
+          {
+            "provider": "Ambient",
+            "cache_hit_rate": 33.2,
+            "eff_input_price": 0.117,
+            "eff_output_price": 1.0
+          },
+          {
+            "provider": "io.net",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.15,
+            "eff_output_price": 1.0
+          },
+          {
+            "provider": "AkashML",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.17,
+            "eff_output_price": 1.2
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.161,
+            "eff_output_price": 0.965
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.2,
+            "eff_output_price": 1.6
+          }
+        ],
         "context_window": 256000
       },
       "pricing": {
@@ -55984,13 +57356,13 @@
           "speed_tps": 175.1,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.42
+          "ttft": 1.407
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 32,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 41.9,
@@ -56000,6 +57372,9 @@
           "omniscience_hallucination_rate": 50,
           "openness_index": 39,
           "ttft_variance": -2.4
+        },
+        "dirac": {
+          "cache_hit_rate_max": 47.6
         }
       },
       "aliases": {
@@ -56017,6 +57392,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -56030,13 +57406,13 @@
           "speed_tps": 44.5,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 2.145
+          "ttft": 2.307
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 40,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.888
@@ -56062,6 +57438,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -56075,13 +57452,13 @@
           "speed_tps": 52.6,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 1.901
+          "ttft": 1.799
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 50,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 54.5,
@@ -56121,13 +57498,13 @@
           "speed_tps": 49.8,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 2.309
+          "ttft": 2.373
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 39,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 55.9,
@@ -56232,10 +57609,36 @@
     },
     {
       "id": "qwen3-coder-next",
-      "name": "Qwen: Qwen3 Coder Next",
-      "creator": "qwen",
+      "name": null,
+      "creator": null,
       "model_type": null,
       "meta": {
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "Ionstream",
+            "cache_hit_rate": 61.1,
+            "eff_input_price": 0.086,
+            "eff_output_price": 0.799
+          },
+          {
+            "provider": "Parasail",
+            "cache_hit_rate": 68.4,
+            "eff_input_price": 0.086,
+            "eff_output_price": 0.799
+          },
+          {
+            "provider": "AtlasCloud",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.18,
+            "eff_output_price": 1.349
+          },
+          {
+            "provider": "NovitaAI",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.2,
+            "eff_output_price": 1.499
+          }
+        ],
         "context_window": 262144
       },
       "pricing": {
@@ -56249,7 +57652,11 @@
           "vendor": "qwen"
         }
       },
-      "benchmarks": {},
+      "benchmarks": {
+        "dirac": {
+          "cache_hit_rate_max": 68.4
+        }
+      },
       "aliases": {
         "openrouter": "qwen/qwen3-coder-next"
       }
@@ -56710,8 +58117,8 @@
       "benchmarks": {
         "aa": {
           "intel": 34,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 64.3866,
+          "iq_per_dollar": 0.0643866,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 15.5312
         },
         "arena_code": {
@@ -57007,7 +58414,7 @@
           "speed_tps": 198.8,
           "useful_cost": 13.3615,
           "reasoning_tax_pct": 100.0,
-          "ttft": 1.566,
+          "ttft": 1.57,
           "cost_segments": {
             "total_cost_per_task_usd": 1.06,
             "answer_usd": 0.0,
@@ -57032,8 +58439,8 @@
       "benchmarks": {
         "aa": {
           "intel": 46,
-          "iq_per_dollar_pt": null,
-          "iq_per_mtok": 34.4273,
+          "iq_per_dollar": 0.0344273,
+          "iq_per_mtok": null,
           "iq_per_mtokdollar": 29.0467,
           "coding_index": 66,
           "gpqa": 0.923
@@ -61142,6 +62549,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
         "context_window": 65536
       },
       "pricing": {
@@ -61152,10 +62560,10 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 96.46,
+          "speed_tps": 94.952,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 107.169
+          "ttft": 99.701
         },
         "openrouter": {
           "inp_price": 1e-07,
@@ -61168,7 +62576,7 @@
       "benchmarks": {
         "aa": {
           "intel": 4,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "math_index": 33.7,
@@ -63493,6 +64901,7 @@
         "has_breakdown": false,
         "params_total_b": 102,
         "params_active_b": 102,
+        "aa_img_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -63512,7 +64921,7 @@
       "benchmarks": {
         "aa": {
           "intel": 15,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.657
@@ -63535,6 +64944,7 @@
         "has_breakdown": false,
         "params_total_b": 102,
         "params_active_b": 102,
+        "aa_img_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -63563,7 +64973,7 @@
       "benchmarks": {
         "aa": {
           "intel": 26,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "coding_index": 16.2,
@@ -63693,7 +65103,7 @@
       "benchmarks": {
         "aa": {
           "intel": 12,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.623
@@ -63740,7 +65150,7 @@
       "benchmarks": {
         "aa": {
           "intel": 18,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null
         }
@@ -63927,6 +65337,27 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "aa_img_scraped": true,
+        "dirac_cache_hit_rates": [
+          {
+            "provider": "StepFun",
+            "cache_hit_rate": 86.1,
+            "eff_input_price": 0.031,
+            "eff_output_price": 0.299
+          },
+          {
+            "provider": "DeepInfra",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.09,
+            "eff_output_price": 0.299
+          },
+          {
+            "provider": "SiliconFlow",
+            "cache_hit_rate": 0.0,
+            "eff_input_price": 0.1,
+            "eff_output_price": 0.3
+          }
+        ],
         "context_window": 256000
       },
       "pricing": {
@@ -63940,13 +65371,13 @@
           "speed_tps": 192.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.956
+          "ttft": 0.918
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 38,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.826
@@ -63954,6 +65385,9 @@
         "aa_img": {
           "e2e_response_time_s": 15.6,
           "ttft_variance": -1.2
+        },
+        "dirac": {
+          "cache_hit_rate_max": 86.1
         }
       },
       "aliases": {
@@ -63973,6 +65407,7 @@
         "has_breakdown": false,
         "params_total_b": 198,
         "params_active_b": 187,
+        "aa_img_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -63986,16 +65421,16 @@
           "speed_tps": 403.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.753
+          "ttft": 0.752
         }
       },
       "benchmarks": {
         "aa": {
           "intel": 30,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 39.6,
+          "coding_index": 37.3,
           "gpqa": 0.809
         },
         "aa_img": {
@@ -64962,6 +66397,7 @@
         "has_breakdown": false,
         "params_total_b": 399,
         "params_active_b": 386,
+        "aa_img_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -64975,7 +66411,7 @@
           "speed_tps": 119.3,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "ttft": 0.69
+          "ttft": 0.682
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -64990,7 +66426,7 @@
       "benchmarks": {
         "aa": {
           "intel": 32,
-          "iq_per_dollar_pt": null,
+          "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.752
