@@ -36,10 +36,13 @@
     </div>
   `).join('');
 
-  // Lazy render: only render when tab becomes active
+  // Lazy render: only render when tab becomes active (or re-render on switch
+  // so a filter set in another viz carries forward — filter state lives on
+  // window.__legendFilter and is read at render time, so the viz must re-render
+  // to reflect it).
   const rendered = new Set();
-  function renderViz(id) {
-    if (rendered.has(id)) return;
+  function renderViz(id, force) {
+    if (rendered.has(id) && !force) return;
     const v = registry.find(r => r.id === id);
     if (!v) return;
     const mount = document.getElementById(`mount-${id}`);
@@ -54,7 +57,8 @@
     const id = btn.dataset.viz;
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.viz === id));
     document.querySelectorAll('.viz-panel').forEach(p => p.classList.toggle('active', p.dataset.viz === id));
-    renderViz(id);
+    renderViz(id, true);
+    window.__renderCreatorLegend();
   });
 
   const legendEl = document.getElementById('creator-legend');
