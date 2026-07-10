@@ -266,7 +266,18 @@ class TestProcessedJS:
             missing = [m["slug"] for m in aa_models if m.get(field) is None]
             assert not missing, f"AA models missing {field}: {missing[:5]}"
 
-    def test_archetype_classified(self, processed_js):
+    def test_cost_per_task_is_per_task_not_full_index_run(self, processed_js):
+        # cost_per_task must be the per-task cost (sane, typically < $5), NOT the
+        # cost to run the ENTIRE intelligence index as one job (which hits $100s+).
+        # Source of truth: "Cost per Task" dataset + aa_cost_breakdown.json. The
+        # "Cost to Run Intelligence Index" dataset (full-benchmark-run cost) must
+        # NOT be used for cost_per_task — see data/sources/aa/_build.py.
+        SANE_MAX = 5.0
+        offenders = [m["slug"] for m in processed_js
+                     if m.get("cost_per_task") is not None and m["cost_per_task"] > SANE_MAX]
+        assert not offenders, f"cost_per_task exceeds {SANE_MAX}: {offenders[:5]}"
+
+
         counts = {}
         for m in processed_js:
             a = m.get("archetype", "uncategorized")

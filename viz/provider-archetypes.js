@@ -66,6 +66,7 @@
     const spHi = Math.max(...allSpeed);
     const caHi = Math.max(...allCacheEff);
     const ceHi = 1 / Math.min(...allCost);  // costEff = 1/cost, so min cost = max eff
+    const ceBest = Math.min(...allCost);     // best (cheapest) per-task cost, for label
     const ctxHi = Math.max(...allCtx) || 0;
 
     const RADAR_AXES = window.RADAR_AXES || [];
@@ -180,14 +181,14 @@
       }
 
       // Axis labels — show max raw value for context
-      const maxes = [iqHi, spHi, caHi, ceHi, ctxHi];
+      const maxes = [iqHi, spHi, caHi, ceBest, ctxHi];
       const fmtMax = (key, val) => {
         const N = window.VIZ_NUM;
         if (val == null) return '?';
         if (key === 'avgIQ') return N.fmtCompact(val, { decimals: 0 });
         if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + '/s';
         if (key === 'avgCacheEff') return N.fmtPct(val);
-        if (key === 'costEff') return N.fmtUSD(val) + '/task';
+        if (key === 'costEff') return N.fmtUSD(val) + '/task best';
         if (key === 'avgCtx') return N.fmtCount(val);
         return N.fmtCompact(val);
       };
@@ -201,7 +202,8 @@
         let dy = '0.35em';
         if (ax.angle === -Math.PI / 2) dy = '0';
         if (ax.angle === Math.PI / 2) dy = '1em';
-        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">(max ${fmtMax(ax.key, maxes[i])})</tspan></text>`;
+        const extra = ax.key === 'costEff' ? ' · cheaper=better' : '';
+        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">(max ${fmtMax(ax.key, maxes[i])})${extra}</tspan></text>`;
       }
       svg += '</svg>';
 

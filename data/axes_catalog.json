@@ -25,8 +25,8 @@
           "aa.out_price",
           "aa.blended",
           "aa.cache_hit_price",
-          "aa.cost_per_task",
           "aa.tokens_m",
+          "aa.cost_per_task",
           "aa.useful_cost",
           "aa.reasoning_tax_pct",
           "aa.cost_seg_total",
@@ -292,25 +292,6 @@
       ]
     },
     {
-      "id": "aa.cost_per_task",
-      "label": "Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA estimated cost per standard task",
-      "models_have": 41,
-      "range": [
-        0.02,
-        333.5262
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
       "id": "aa.tokens_m",
       "label": "Tokens per Task (M) - verbosity",
       "source": "AA",
@@ -322,6 +303,25 @@
       "range": [
         21,
         300
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.cost_per_task",
+      "label": "Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "AA estimated cost per standard task",
+      "models_have": 31,
+      "range": [
+        0.02,
+        2.7498
       ],
       "group": "Pricing",
       "normalize_range": [

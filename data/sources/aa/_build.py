@@ -170,7 +170,13 @@ def get_aa_jsonld_models(aa_dir: str) -> dict[str, dict]:
             continue
         out[cid]["benchmarks"]["aa"]["time_per_task"] = e.get("timePerTask")
 
-    # Cost breakdown (5 segments)
+    # Cost breakdown (5 segments) — descriptive only.
+    # NOTE: do NOT derive cost_per_task here. This "Cost to Run Intelligence Index"
+    # dataset reports the cost to run the ENTIRE benchmark as one job (full-index
+    # token volume), which hits $100s+ for reasoning models — NOT a per-task cost.
+    # cost_per_task comes from the "Cost per Task" dataset (above) + aa_cost_breakdown
+    # (Step 3), both sane per-task values. Using this dataset's sum would inflate
+    # cost_per_task 100-1000x and break the cost-efficiency axis.
     for e in entries("Cost to Run Artificial Analysis Intelligence Index"):
         cid = ensure(slug_of(e))
         if not cid:
@@ -185,9 +191,6 @@ def get_aa_jsonld_models(aa_dir: str) -> dict[str, dict]:
         }
         if any(v is not None for v in segs.values()):
             aa["cost_segments"] = segs
-            if segs["answer_usd"] is not None and segs["reasoning_usd"] is not None:
-                aa["cost_per_task"] = segs["answer_usd"] + segs["reasoning_usd"] + \
-                    (segs["input_usd"] or 0) + (segs["cache_hit_usd"] or 0) + (segs["cache_write_usd"] or 0)
 
     # Pricing (input/output per M tokens)
     for e in entries("Pricing: Cache Hit, Input, and Output"):
