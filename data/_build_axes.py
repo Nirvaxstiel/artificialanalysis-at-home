@@ -273,10 +273,12 @@ def run(ctx=None):
             a["normalize_range"] = None
 
     source_groups = {}
+    speculative_sources = {"AA_IMG"}
     for a in axes:
         g = a["source"]
         if g not in source_groups:
-            source_groups[g] = {"source": g, "axes": [], "count": 0}
+            source_groups[g] = {"source": g, "axes": [], "count": 0,
+                                "speculative": g in speculative_sources}
         source_groups[g]["axes"].append(a["id"])
         source_groups[g]["count"] += 1
 

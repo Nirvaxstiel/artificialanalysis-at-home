@@ -38,7 +38,8 @@
           "aa.iq_per_mtokdollar",
           "aa.iq_per_dollar"
         ],
-        "count": 20
+        "count": 20,
+        "speculative": false
       },
       "AA_IMG": {
         "source": "AA_IMG",
@@ -58,7 +59,8 @@
           "aa_img.briefcase_rubric_score",
           "aa_img.e2e_response_time_s"
         ],
-        "count": 14
+        "count": 14,
+        "speculative": true
       },
       "Arena Code": {
         "source": "Arena Code",
@@ -67,7 +69,8 @@
           "arena_code.votes",
           "arena_code.elo"
         ],
-        "count": 3
+        "count": 3,
+        "speculative": false
       },
       "Arena Text": {
         "source": "Arena Text",
@@ -76,7 +79,8 @@
           "arena_text.votes",
           "arena_text.elo"
         ],
-        "count": 3
+        "count": 3,
+        "speculative": false
       },
       "LiveBench": {
         "source": "LiveBench",
@@ -91,7 +95,8 @@
           "livebench.mathematics",
           "livebench.reasoning"
         ],
-        "count": 9
+        "count": 9,
+        "speculative": false
       },
       "OpenLLM v2": {
         "source": "OpenLLM v2",
@@ -106,7 +111,8 @@
           "openllm.musr",
           "openllm.mmlu_pro"
         ],
-        "count": 9
+        "count": 9,
+        "speculative": false
       },
       "OpenRouter": {
         "source": "OpenRouter",
@@ -115,7 +121,8 @@
           "openrouter.out_price_per_m",
           "openrouter.cache_read_price_per_m"
         ],
-        "count": 3
+        "count": 3,
+        "speculative": false
       }
     }
   },

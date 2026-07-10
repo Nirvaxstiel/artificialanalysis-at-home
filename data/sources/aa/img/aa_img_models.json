@@ -2,6 +2,8 @@
   "_meta": {
     "source": "Artificial Analysis chart images (images/AA-Charts-New, dated 3 Jul '26)",
     "extraction": "vision-transcribed per-model scalars; keyed by chart display name",
+    "speculative": true,
+    "speculative_note": "Chart models (GPT-5.5, Claude Opus 4.8, Gemini 3.x, etc.) are future/speculative projections, not live releases. Values as-transcribed from images; some labels blurry -> best-effort. Treat as a separate speculative source.",
     "encoding_note": "Transcriptions keyed by the verbatim display name shown on each chart (e.g. 'GPT-5.5 (xhigh)'). Resolution to canonical model ids happens at merge time via aa_img_name_to_canonical in data/_canonical.py. Models with no canonical match are preserved here but not yet attached to the registry.",
     "excluded_charts": [
       "All 'Intelligence vs X' scatter charts (no per-model scalar)",
