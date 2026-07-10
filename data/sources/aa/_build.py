@@ -204,12 +204,106 @@ def get_aa_jsonld_models(aa_dir: str) -> dict[str, dict]:
     return out
 
 
+def get_aa_charts_models(aa_dir: str) -> dict[str, dict]:
+    """AA method-2 SVG scrape (browser console query) → canonical_id → model record.
+
+    Source: data/sources/aa/aa_charts_export.json (16 chart SVGs). Parsed by
+    _parse_charts.parse_aa_charts → {chart_key: [(slug, value), ...]}.
+
+    Reliable charts ingested here (method-2 is a SUPERSET of the JSON-LD export
+    for these — 58-106 models vs 10-20):
+      coding_index        → benchmarks.aa.aa_coding_index
+      intel               → benchmarks.aa.intel
+      briefcase           → benchmarks.aa.briefcase_analytical_quality_elo / _presentation_elo
+      time_per_task       → benchmarks.aa.time_per_task
+      omniscience         → benchmarks.aa.omniscience_hallucination_rate (89% → 0.89)
+
+    Deferred (scrape lacks sub-labels → ambiguous which sub-value):
+      cost_to_run (#8) and pricing (#9) — values are $X with no input/output/cache
+      label in the SVG. Ingestion paused until the scrape tags sub-values; do NOT
+      map the single ambiguous value onto a price axis (would be wrong).
+    """
+    from ._parse_charts import parse_aa_charts
+
+    path = os.path.join(aa_dir, "aa_charts_export.json")
+    if not os.path.exists(path):
+        return {}
+    charts = parse_aa_charts(path)
+
+    out: dict[str, dict] = {}
+
+    def ensure(slug):
+        if not slug:
+            return None
+        cid = resolve_from_slug(slug)
+        if not cid:
+            return None
+        out.setdefault(cid, {
+            "id": cid, "name": None, "creator": None, "model_type": None,
+            "meta": {"archetype": None, "pareto_optimal": False, "has_breakdown": False,
+                     "cost_percentile": None, "iq_percentile": None, "release_date": None},
+            "pricing": {"aa": {
+                "inp_price": None, "out_price": None, "blended": None,
+                "cache_hit_price": None, "cost_per_task": None, "tokens_m": None,
+                "speed_tps": None, "useful_cost": None, "reasoning_tax_pct": None,
+                "cost_segments": None,
+            }},
+            "benchmarks": {"aa": {
+                "intel": None, "iq_per_dollar": None, "iq_per_mtok": None,
+                "iq_per_mtokdollar": None, "aa_coding_index": None,
+                "aa_math_index": None, "gpqa": None, "mmlu_pro": None, "hle": None,
+                "aime": None, "aime_25": None, "math_500": None, "livecodebench": None,
+                "ifbench": None, "lcr": None, "scicode": None, "tau2": None,
+                "tau_banking": None, "terminalbench_hard": None,
+                "terminalbench_v2_1": None, "omniscience_hallucination_rate": None,
+                "briefcase_analytical_quality_elo": None,
+                "briefcase_presentation_elo": None, "time_per_task": None,
+            }},
+            "aliases": {"aa": slug},
+        })
+        return cid
+
+    for slug, val in charts.get("coding_index", []):
+        cid = ensure(slug)
+        if cid and out[cid]["benchmarks"]["aa"].get("aa_coding_index") is None:
+            out[cid]["benchmarks"]["aa"]["aa_coding_index"] = val
+
+    for slug, val in charts.get("intel", []):
+        cid = ensure(slug)
+        if cid and out[cid]["benchmarks"]["aa"].get("intel") is None:
+            out[cid]["benchmarks"]["aa"]["intel"] = val
+
+    for slug, vals in charts.get("briefcase", []):
+        cid = ensure(slug)
+        if not cid:
+            continue
+        b = out[cid]["benchmarks"]["aa"]
+        if isinstance(vals, list) and len(vals) >= 2:
+            if b.get("briefcase_analytical_quality_elo") is None:
+                b["briefcase_analytical_quality_elo"] = vals[0]
+            if b.get("briefcase_presentation_elo") is None:
+                b["briefcase_presentation_elo"] = vals[1]
+
+    for slug, val in charts.get("time_per_task", []):
+        cid = ensure(slug)
+        if cid and out[cid]["benchmarks"]["aa"].get("time_per_task") is None:
+            out[cid]["benchmarks"]["aa"]["time_per_task"] = val
+
+    for slug, val in charts.get("omniscience", []):
+        cid = ensure(slug)
+        if cid and out[cid]["benchmarks"]["aa"].get("omniscience_hallucination_rate") is None:
+            out[cid]["benchmarks"]["aa"]["omniscience_hallucination_rate"] = val
+
+    return out
+
+
 def get_aa_models(base: Path) -> dict[str, dict]:
     """Merge all AA data sources into dict of canonical_id → model record.
 
     Sources (in order of priority — later sources enrich but don't overwrite
     non-null fields from earlier sources):
-      0. data/../jsonified-artificialanalysis-data.json — AA JSON-LD export (NEW models + authoritative aa.*)
+      0. data/sources/aa/aa_charts_export.json — AA method-2 SVG scrape (NEW models + superset aa.*)
+      0b. data/sources/aa/aa_jsonld_export.json — AA JSON-LD console query (fallback for charts not yet scraped)
       1. data/sources/aa/raw/aa_models_scraped.json  — 99 base AA models
       2. data/sources/aa/enriched/aa_model_data.json  — enriched fields (38 models)
       3. data/sources/aa/enriched/aa_cost_breakdown.json — cost segments (30 models)
@@ -217,12 +311,18 @@ def get_aa_models(base: Path) -> dict[str, dict]:
     AA_DIR = os.path.join(base, "data", "sources", "aa")
     all_models: dict[str, dict] = {}
 
-    # === 0) AA JSON-LD export (console query) — seeds NEW models + authoritative aa.* ===
-    jsonld = get_aa_jsonld_models(os.path.join(str(base), "data", "sources", "aa"))
-    for cid, rec in jsonld.items():
+    # === 0) AA method-2 SVG scrape — seeds NEW models + SUPERSET aa.* ===
+    charts = get_aa_charts_models(AA_DIR)
+    for cid, rec in charts.items():
         all_models.setdefault(cid, rec)
 
-    # === 1) Base: raw scraped data ===
+    # === 0b) AA JSON-LD export (console query) — fills gaps the charts don't cover ===
+    jsonld = get_aa_jsonld_models(AA_DIR)
+    for cid, rec in jsonld.items():
+        if cid not in all_models:
+            all_models.setdefault(cid, rec)
+        else:
+            _merge_fill_nulls(all_models[cid], rec)
     scraped_path = os.path.join(AA_DIR, "raw", "aa_models_scraped.json")
     with open(scraped_path) as f:
         scraped_models = json.load(f)
@@ -484,8 +584,9 @@ def _load_aa_api(base: Path) -> dict:
 def _merge_fill_nulls(existing: dict, incoming: dict) -> None:
     """Merge `incoming` into `existing` fill-nulls-only (existing non-null wins).
 
-    Used so JSON-LD-seeded fields (e.g. omniscience_hallucination_rate) survive
-    when the scraped base loop would otherwise hard-overwrite the record.
+    Recurses into nested dicts (benchmarks.aa, pricing.aa) so deep fields like
+    aa_math_index / cost_segments survive. Used so JSON-LD/charts-seeded fields
+    persist when the scraped base loop would otherwise hard-overwrite the record.
     """
     for key, val in incoming.items():
         if key not in existing:
@@ -493,9 +594,7 @@ def _merge_fill_nulls(existing: dict, incoming: dict) -> None:
             continue
         ev = existing[key]
         if isinstance(ev, dict) and isinstance(val, dict):
-            for k2, v2 in val.items():
-                if ev.get(k2) is None and v2 is not None:
-                    ev[k2] = v2
+            _merge_fill_nulls(ev, val)
         elif ev is None and val is not None:
             existing[key] = val
 

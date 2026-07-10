@@ -8,8 +8,9 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 
 | # | Source | Method | Auth | Acquired by | File(s) | Freshness |
 |---|--------|--------|------|-------------|---------|-----------|
-| 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` | manual, per batch |
-| 1b | Artificial Analysis (**JSON-LD console query**) | **Structured JSON export** (no scraping/vision) | none (public) | Browser console query of the AA page's `Dataset` JSON-LD → `aa_jsonld_export.json` | `aa/aa_jsonld_export.json` (seeds NEW models + authoritative `aa.*` metrics) | manual, per batch |
+| 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` |
+| 1b | AA intelligence/benchmark charts | **SVG scrape (method-2)** — see below | none (public) | Browser console query → `aa_charts_export.json` (inside repo) → `aa` source | `aa_charts_export.json` |
+| 1c | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` |
 | 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (551 models) | pulled 2026-07-09 |
 | 3 | AA image charts | **Vision / OCR transcription** | none | Screenshots of AA chart images → transcribed to JSON | `aa/img/aa_img_models.json` (99 models) | manual, per batch |
 | 4 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (2262 models) | on `_pull_sources` run |
@@ -39,16 +40,34 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
   - `Time per Intelligence Index Task` (`timePerTask`) → `time_per_task`
   - `Cost to Run Artificial Analysis Intelligence Index` (5 fields) → `cost_segments.*`
   - `Pricing: Cache Hit, Input, and Output` (`pricing[]`) → `inp_price` / `out_price`
-- **Role in pipeline:** `get_aa_jsonld_models()` runs as **Step 0** of `get_aa_models()`, *seeding NEW models* (slug → canonical via `resolve_from_slug`) and filling authoritative `aa.*` metrics. Later sources (scraped base, live API, enriched, cost-breakdown) enrich fill-nulls-only via `_merge_fill_nulls`, so JSON-LD-only fields (e.g. `omniscience_hallucination_rate` on existing models) survive.
-- **Repro:**
-  ```js
-  // In the AA page console (e.g. ?models=gpt-5-6-...):
-  JSON.stringify(Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
-    .map(s => JSON.parse(s.textContent)))
-  ```
-  Save the array as `data/sources/aa/aa_jsonld_export.json`.
-- **Known gap:** the JSON-LD export only contains models **currently in the rendered view**. To get full coverage (e.g. Pricing for all 12 GPT-5.6 variants), query each chart/category **separately in batches** and merge the exports. The Pricing dataset is frequently absent from a single view — re-run the query with the Pricing chart in view.
-- **Supersedes #3 for most metrics:** Omniscience / Briefcase now arrive as clean structured numbers here, not vision-transcribed. The `aa_img` vision stream remains only for genuinely image-only charts.
+- **Role in pipeline:** `get_aa_jsonld_models()` runs as **Step 0b** of `get_aa_models()` (after method-2, Step 0), *seeding NEW models* and filling authoritative `aa.*` metrics that method-2 didn't capture. Later sources enrich fill-nulls-only via `_merge_fill_nulls`.
+
+### 1b. Artificial Analysis — SVG scrape (`aa_charts_export.json`)  ← PRIMARY
+  - **Method:** the AA site renders every chart as an inline **SVG** (recharts). A console snippet grabs each chart section (`[dir=ltr].scroll-mt-24`) → its `<svg>` outerHTML + visible `<span>` texts (title/subtitle/desc). The export is `data/sources/aa/aa_charts_export.json`: a JSON array of `{ svg, spans }`, one entry per chart (16 entries total; scatter charts carry no `<a>`/value text and are skipped by the parser).
+  - **Why this over #1c (JSON-LD) / #3 (vision):** the SVG charts embed **model slugs** in `<a href="/models/{slug}">` and the metric value in `<text>` nodes. A Python parser (`data/sources/aa/_parse_charts.py`) pairs them by render order → clean `slug → value`. No vision, no OCR, no manual transcription. This is the **authoritative AA chart source**; #1c JSON-LD fills only the gaps method-2 doesn't cover.
+  - **Coverage (this export):** Coding Index (58 models), Intelligence Index (106), Briefcase Elo (35, 2 values/model: analytical + presentation), Omniscience Hallucination Rate (104, rendered as `89%` → stored `0.89`), Time per Intelligence Index Task (53), Cost to Run (50), Pricing (94). **Method-2 is a SUPERSET of the JSON-LD export for these metrics** (58-106 vs 10-20 models) and is ingested FIRST (Step 0) so it wins on overlap.
+  - **Value normalization:** parser strips `$` (pricing), `%` (omniscience → fraction), `&lt;`/`<` (less-than sentinel), thousands commas. Rounds to the SVG label precision (e.g. `0.3` not `0.2963` — the precise value lives in JSON-LD if needed).
+  - **Deferred (scrape lacks sub-labels):** the Cost-to-Run (#8) and Pricing (#9) charts expose `$X` values with **no input/output/cache sub-label** in the SVG, so the single value is ambiguous. Ingestion of those two into price axes is **paused** until the scrape tags sub-values (do NOT map the ambiguous value onto `inp_price`/`out_price` — it would be wrong). All other 5 charts are fully ingested.
+  - **Repro (scrape script `scraped-method-2.js`):**
+    ```js
+    // In the AA page console — capture each chart section as { svg, spans }.
+    JSON.stringify(Array.from(document.querySelectorAll('[dir=ltr].scroll-mt-24'))
+      .map(el => ({ svg: el.querySelector('svg')?.outerHTML || '',
+                    spans: Array.from(el.querySelectorAll('span')).map(s => s.textContent) })))
+    ```
+    Save the array as `data/sources/aa/aa_charts_export.json`.
+
+### 1c. Artificial Analysis — JSON-LD console query (`aa_jsonld_export.json`)
+  - **Method:** the AA page also exposes `application/ld+json` `Dataset` objects (schema.org). Console query → `aa_jsonld_export.json`.
+  - **Repro:**
+    ```js
+    // In the AA page console (e.g. ?models=gpt-5-6-...):
+    JSON.stringify(Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
+      .map(s => JSON.parse(s.textContent)))
+    ```
+    Save the array as `data/sources/aa/aa_jsonld_export.json`.
+  - **Known gap:** the JSON-LD export only contains models **currently in the rendered view**. To get full coverage (e.g. Pricing for all 12 GPT-5.6 variants), query each chart/category **separately in batches** and merge the exports. The Pricing dataset is frequently absent from a single view — re-run the query with the Pricing chart in view.
+  - **Role:** ingested as Step 0b — fills ONLY the fields method-2 (#1b) didn't capture (method-2 is the superset and wins on overlap).
 
 ### 2. Artificial Analysis — live API (`aa_api_live.json`)
 - **Method:** `GET https://artificialanalysis.ai/api/v2/data/llms/models` with header `x-api-key: <AA_API_KEY>`.
