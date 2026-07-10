@@ -14,6 +14,8 @@ class DomainValue:
 class ModelType(str, Enum):
     CHAT = "chat"
     REASONING = "reasoning"
+    PROPRIETARY = "proprietary"
+    OPEN = "open"
 
 
 class Provenance(str, Enum):

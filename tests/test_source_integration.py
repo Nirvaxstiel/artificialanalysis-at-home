@@ -149,3 +149,26 @@ class TestAaImgScrapeProgress:
         # aa_scrape_progress.json repurposed as provenance flag on speculative AA_IMG models
         have = [m for m in processed_js if m.get("confirmed_scraped") is True]
         assert len(have) >= 10, f"expected >=10 confirmed_scraped models, got {len(have)}"
+
+
+# ── (H) RegistryModel entity layer wired as typed serializer ──
+
+
+class TestRegistryModelSerialization:
+    def test_registry_roundtrips_through_entities(self):
+        # The dead _domain._entities.RegistryModel is now the validating serializer
+        # for model_registry.json. Every model must construct + round-trip cleanly.
+        from data._domain._entities import RegistryModel
+        reg = _load_registry()
+        for m in reg["models"]:
+            rm = RegistryModel.from_flat(m)
+            out = rm.to_dict()
+            assert out["id"] == m["id"], f"id lost for {m['id']}"
+            # meta fields preserved
+            src_meta = m.get("meta", {})
+            out_meta = out.get("meta", {})
+            for k in ("release_date", "confirmed_scraped", "params_b"):
+                assert out_meta.get(k) == src_meta.get(k), f"{m['id']}: meta.{k} mismatch"
+            # pricing/benchmarks dicts preserved (to_dict omits empty sections)
+            assert (out.get("pricing") or {}) == (m.get("pricing") or {})
+            assert (out.get("benchmarks") or {}) == (m.get("benchmarks") or {})

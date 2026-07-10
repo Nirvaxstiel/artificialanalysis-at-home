@@ -8,8 +8,10 @@ from .sources.dirac._build import get_dirac_models
 from ._canonical import (
     resolve_from_slug, livebench_name_to_canonical,
     openrouter_id_to_canonical, openllm_name_to_canonical,
+    aa_img_name_to_canonical, costbd_name_to_canonical,
     canonical_to_or_id, resolve_or_context,
 )
+from ._domain._entities import RegistryModel
 
 
 def _ensure(all_models, cid, **overrides):
@@ -306,7 +308,7 @@ def run(ctx=None):
             "name_map_size": len(name_map),
         },
         "name_map": name_map,
-        "models": output_models,
+        "models": [RegistryModel.from_flat(m).to_dict() for m in output_models],
     }
 
     with open(OUT, "w") as f:

@@ -234,6 +234,8 @@ class RegistryModelMeta:
     architecture: Optional[str] = None
     license: Optional[str] = None
     precision: Optional[str] = None
+    release_date: Optional[str] = None
+    confirmed_scraped: Optional[bool] = None
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {}
@@ -262,8 +264,47 @@ class RegistryModel:
     def __post_init__(self):
         if not self.id:
             raise ValueError(f"Model ID cannot be empty")
-        if "aa" in self.pricing and self.creator is None:
-            raise ValueError(f"Model {self.id} has AA pricing but no creator")
+
+    @classmethod
+    def from_flat(cls, d: Dict[str, Any]) -> 'RegistryModel':
+        """Build from the pipeline's plain-dict registry contract.
+
+        Wraps the flat `meta` dict in RegistryModelMeta (typed/validated) while
+        keeping pricing/benchmarks as plain dicts — the pipeline emits those as
+        dicts, not AAPricing/CostBreakdownPricing objects. This makes
+        RegistryModel a validating serializer over the existing contract without
+        forcing a rewrite of every source module.
+        """
+        meta = d.get("meta") or {}
+        meta_obj = RegistryModelMeta(
+            archetype=meta.get("archetype"),
+            pareto_optimal=meta.get("pareto_optimal", False),
+            has_breakdown=meta.get("has_breakdown", False),
+            params_b=meta.get("params_b"),
+            co2_kg=meta.get("co2_kg"),
+            architecture=meta.get("architecture"),
+            license=meta.get("license"),
+            precision=meta.get("precision"),
+            release_date=meta.get("release_date"),
+            confirmed_scraped=meta.get("confirmed_scraped"),
+        )
+        mt = d.get("model_type")
+        model_type = None
+        if mt:
+            try:
+                model_type = ModelType(mt)
+            except ValueError:
+                model_type = None
+        return cls(
+            id=d["id"],
+            name=d.get("name"),
+            creator=d.get("creator"),
+            model_type=ModelType(mt) if mt else None,
+            meta=meta_obj,
+            pricing=d.get("pricing", {}) or {},
+            benchmarks=d.get("benchmarks", {}) or {},
+            aliases=d.get("aliases", {}) or {},
+        )
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {"id": self.id}

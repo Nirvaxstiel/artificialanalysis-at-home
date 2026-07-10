@@ -502,16 +502,10 @@
       "unit": "B",
       "higher_is_better": true,
       "description": "Model total parameter count in billions (from AA image charts)",
-      "models_have": 26,
-      "range": [
-        34,
-        1600
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "AA Image Charts",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "meta.params_active_b",
@@ -521,16 +515,10 @@
       "unit": "B",
       "higher_is_better": true,
       "description": "Model active (inference) parameter count in billions (from AA image charts)",
-      "models_have": 25,
-      "range": [
-        34,
-        1551
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "AA Image Charts",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "aa_img.agentic_index",
