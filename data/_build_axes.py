@@ -2,6 +2,53 @@ import json, os, csv, re
 from pathlib import Path
 
 
+def _build_axis(models, axis_id, source, label, type_, unit, hib, desc, group,
+                path, key=None, range_decimals=None):
+    count = 0
+    vals = []
+    for m in models:
+        sec = m
+        for k in path:
+            sec = sec.get(k, {})
+        if not sec:
+            continue
+        v = sec.get(key if key else axis_id.split(".")[-1])
+        if v is not None:
+            count += 1
+            vals.append(v)
+    rng = None
+    if vals:
+        lo, hi = min(vals), max(vals)
+        if range_decimals is not None:
+            lo, hi = round(lo, range_decimals), round(hi, range_decimals)
+        rng = [lo, hi]
+    return {
+        "id": axis_id, "label": label, "source": source, "type": type_,
+        "unit": unit, "higher_is_better": hib, "description": desc,
+        "models_have": count, "range": rng, "group": group,
+    }
+
+
+def _get_value(m, aid):
+    parts = aid.split(".")
+    source = parts[0]
+    if source == "meta":
+        return m.get("meta", {}).get(parts[-1])
+    if parts[0] in ("livebench", "arena_text", "arena_code", "openllm"):
+        sec = m.get("benchmarks", {}).get(parts[0], {})
+        if len(parts) == 2:
+            return sec.get(parts[1])
+        elif len(parts) == 3:
+            return sec.get(parts[1], {}).get(parts[2])
+    elif parts[0] in ("aa", "openrouter"):
+        sec = m.get("pricing", {}).get(parts[0], {})
+        if len(parts) == 2:
+            return sec.get(parts[1])
+        elif len(parts) == 3:
+            return sec.get(parts[1], {}).get(parts[2])
+    return None
+
+
 def run(ctx=None):
     if ctx and ctx.get("root"):
         BASE = Path(ctx["root"])
@@ -15,174 +62,69 @@ def run(ctx=None):
         reg = json.load(f)
 
     models = reg["models"]
-    model_ids = {m["id"] for m in models}
-
     axes = []
 
-    # ── AA PRICING AXES ──
-    aa_pricing_path = ["pricing", "aa"]
-    aa_pricing_axes = [
-        ("aa.inp_price", "Input Price ($/Mtok)", "pricing", "$/M tok", False,
-         "AA input price per million tokens", ["inp_price", "input_price_per_m"]),
-        ("aa.out_price", "Output Price ($/Mtok)", "pricing", "$/M tok", False,
-         "AA output price per million tokens", ["out_price", "output_price_per_m"]),
-        ("aa.blended", "Blended Price ($/Mtok)", "pricing", "$/M tok", False,
-         "AA blended (weighted average) price", ["blended"]),
-        ("aa.cache_hit_price", "Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
-         "AA cache read price per million tokens", ["cache_hit_price"]),
-        ("aa.cost_per_task", "Cost per Task ($)", "pricing", "$", False,
-         "AA estimated cost per standard task", ["cost_per_task"]),
-        ("aa.tokens_m", "Tokens per Task (M)", "pricing", "M tokens", True,
-         "AA context length / tokens per task", ["tokens_m"]),
-        ("aa.useful_cost", "Useful Cost ($)", "pricing", "$", False,
-         "AA cost attributable to useful output (non-reasoning)", ["useful_cost"]),
-        ("aa.reasoning_tax_pct", "Reasoning Tax (%)", "pricing", "%", False,
-         "AA premium percentage paid for reasoning tokens", ["reasoning_tax_pct"]),
-    ]
+    ba = lambda *a, **kw: axes.append(_build_axis(models, *a, **kw))
 
-    costseg_path = ["pricing", "aa", "cost_segments"]
-    costseg_axes = [
-        ("aa.cost_seg_total", "Total Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — total per task", ["total_cost_per_task_usd"]),
-        ("aa.cost_seg_answer", "Answer Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — answer tokens", ["answer_usd"]),
-        ("aa.cost_seg_reasoning", "Reasoning Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — reasoning tokens", ["reasoning_usd"]),
-        ("aa.cost_seg_cache_write", "Cache Write Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — cache write", ["cache_write_usd"]),
-        ("aa.cost_seg_cache_hit", "Cache Hit Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — cache read", ["cache_hit_usd"]),
-        ("aa.cost_seg_input", "Input Cost per Task ($)", "pricing", "$", False,
-         "Cost breakdown — input tokens", ["input_usd"]),
-    ]
+    # ── AA PRICING ──
+    ba("aa.inp_price", "AA", "Input Price ($/Mtok)", "pricing", "$/M tok", False,
+      "AA input price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.out_price", "AA", "Output Price ($/Mtok)", "pricing", "$/M tok", False,
+      "AA output price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.blended", "AA", "Blended Price ($/Mtok)", "pricing", "$/M tok", False,
+      "AA blended (weighted average) price", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.cache_hit_price", "AA", "Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
+      "AA cache read price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.cost_per_task", "AA", "Cost per Task ($)", "pricing", "$", False,
+      "AA estimated cost per standard task", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.tokens_m", "AA", "Tokens per Task (M)", "pricing", "M tokens", True,
+      "AA context length / tokens per task", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.useful_cost", "AA", "Useful Cost ($)", "pricing", "$", False,
+      "AA cost attributable to useful output (non-reasoning)", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.reasoning_tax_pct", "AA", "Reasoning Tax (%)", "pricing", "%", False,
+      "AA premium percentage paid for reasoning tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
 
-    for pid, label, typ, unit, hib, desc, aliases in aa_pricing_axes:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in aa_pricing_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(aliases[0] if aliases else pid.split(".")[-1])
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": pid,
-            "label": label,
-            "source": "AA",
-            "type": typ,
-            "unit": unit,
-            "higher_is_better": hib,
-            "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 4), round(max(vals), 4)] if vals else None,
-            "group": "Pricing Intelligence" if "cost_seg" in pid else "Pricing",
-        })
+    # ── COST BREAKDOWN ──
+    cb_path = ["pricing", "aa", "cost_segments"]
+    ba("aa.cost_seg_total", "AA", "Total Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — total per task", "Cost Breakdown", cb_path, range_decimals=4)
+    ba("aa.cost_seg_answer", "AA", "Answer Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — answer tokens", "Cost Breakdown", cb_path, range_decimals=4)
+    ba("aa.cost_seg_reasoning", "AA", "Reasoning Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — reasoning tokens", "Cost Breakdown", cb_path, range_decimals=4)
+    ba("aa.cost_seg_cache_write", "AA", "Cache Write Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — cache write", "Cost Breakdown", cb_path, range_decimals=4)
+    ba("aa.cost_seg_cache_hit", "AA", "Cache Hit Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — cache read", "Cost Breakdown", cb_path, range_decimals=4)
+    ba("aa.cost_seg_input", "AA", "Input Cost per Task ($)", "pricing", "$", False,
+      "Cost breakdown — input tokens", "Cost Breakdown", cb_path, range_decimals=4)
 
-    for pid, label, typ, unit, hib, desc, aliases in costseg_axes:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in costseg_path[:-1]:
-                sec = sec.get(k, {})
-            sub = sec.get("cost_segments", {})
-            if not sub:
-                continue
-            v = sub.get(aliases[0])
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": pid,
-            "label": label,
-            "source": "AA",
-            "type": typ,
-            "unit": unit,
-            "higher_is_better": hib,
-            "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 4), round(max(vals), 4)] if vals else None,
-            "group": "Cost Breakdown",
-        })
+    # ── AA PERFORMANCE ──
+    perf_path = ["pricing", "aa"]
+    ba("aa.speed_tps", "AA", "Speed (tokens/s)", "performance", "tok/s", True,
+      "AA output speed in tokens per second", "Performance", perf_path, range_decimals=0)
+    ba("aa.ttft", "AA", "Time to First Token (s)", "performance", "s", False,
+      "AA median time to first token in seconds", "Performance", perf_path, range_decimals=0)
 
-    # ── AA PERFORMANCE AXES ──
-    aa_perf_path = ["pricing", "aa"]
-    aa_perf_axes = [
-        ("aa.speed_tps", "Speed (tokens/s)", "performance", "tok/s", True,
-         "AA output speed in tokens per second", ["speed_tps"]),
-        ("aa.ttft", "Time to First Token (s)", "performance", "s", False,
-         "AA median time to first token in seconds", ["ttft"]),
-    ]
-    for pid, label, typ, unit, hib, desc, aliases in aa_perf_axes:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in aa_perf_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(aliases[0])
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": pid, "label": label, "source": "AA", "type": typ,
-            "unit": unit, "higher_is_better": hib, "description": desc,
-            "models_have": count,
-            "range": [round(min(vals)), round(max(vals))] if vals else None,
-            "group": "Performance",
-        })
+    # ── AA QUALITY ──
+    qual_path = ["benchmarks", "aa"]
+    ba("aa.intel", "AA", "AA Intelligence Score (0-100)", "quality", "points", True,
+      "AA composite intelligence score (Pareto index)", "AA Quality", qual_path, range_decimals=4)
+    ba("aa.iq_per_dollar", "AA", "IQ per Dollar ($⁻¹)", "quality", "IQ/$", True,
+      "AA intelligence per dollar spent", "AA Quality", qual_path, range_decimals=4)
+    ba("aa.iq_per_mtok", "AA", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
+      "AA intelligence per million tokens", "AA Quality", qual_path, range_decimals=4)
+    ba("aa.iq_per_mtokdollar", "AA", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
+      "AA intelligence per million token-dollars", "AA Quality", qual_path, range_decimals=4)
 
-    # ── AA QUALITY AXES ──
-    aa_bench_path = ["benchmarks", "aa"]
-    aa_bench_axes = [
-        ("aa.intel", "AA Intelligence Score (0-100)", "quality", "points", True,
-         "AA composite intelligence score (Pareto index)", ["intel"]),
-        ("aa.iq_per_dollar", "IQ per Dollar ($⁻¹)", "quality", "IQ/$", True,
-         "AA intelligence per dollar spent", ["iq_per_dollar_pt"]),
-        ("aa.iq_per_mtok", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
-         "AA intelligence per million tokens", ["iq_per_mtok"]),
-        ("aa.iq_per_mtokdollar", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
-         "AA intelligence per million token-dollars", ["iq_per_mtokdollar"]),
-    ]
-    for pid, label, typ, unit, hib, desc, aliases in aa_bench_axes:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in aa_bench_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(aliases[0])
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": pid, "label": label, "source": "AA", "type": typ,
-            "unit": unit, "higher_is_better": hib, "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 4), round(max(vals), 4)] if vals else None,
-            "group": "AA Quality",
-        })
-
-    # ── LIVEBENCH QUALITY AXES ──
-    lb_path = [("benchmarks", "livebench")]
+    # ── LIVEBENCH ──
     lb_orig_keys = set()
     for m in models:
-        sec = m
-        for k in ("benchmarks", "livebench"):
-            sec = sec.get(k, {})
-        if not sec:
-            continue
-        for k in sec:
-            if k not in ("tasks",) and k != "average":
-                lb_orig_keys.add(k)
+        sec = m.get("benchmarks", {}).get("livebench", {})
+        if sec:
+            for k in sec:
+                if k not in ("tasks",) and k != "average":
+                    lb_orig_keys.add(k)
 
     lb_labels = {
         "average": ("LiveBench Average", "Overall average across all LiveBench tasks"),
@@ -201,105 +143,46 @@ def run(ctx=None):
         lb_lower_to_orig[low] = orig
     lb_lower_to_orig["average"] = "average"
 
-    lb_cats = ["average"] + sorted(lb_lower_to_orig.keys())
-    for cat in lb_cats:
+    for cat in ["average"] + sorted(lb_lower_to_orig.keys()):
         if cat == "tasks":
             continue
         label, desc = lb_labels.get(cat, (f"LiveBench {cat}", f"LiveBench {cat} category"))
         orig_key = lb_lower_to_orig.get(cat, cat)
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in ("benchmarks", "livebench"):
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(orig_key)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": f"livebench.{cat}",
-            "label": label,
-            "source": "LiveBench",
-            "type": "quality",
-            "unit": "points",
-            "higher_is_better": True,
-            "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 2), round(max(vals), 2)] if vals else None,
-            "group": "LiveBench",
-            "_dict_key": orig_key,
-        })
+        axes.append(_build_axis(
+            models, f"livebench.{cat}", "LiveBench", label, "quality", "points", True, desc,
+            "LiveBench", ["benchmarks", "livebench"], key=orig_key, range_decimals=2,
+        ))
+        axes[-1]["_dict_key"] = orig_key
 
-    # ── ARENA TEXT ELO ──
+    # ── ARENA TEXT ──
     arena_t_path = ["benchmarks", "arena_text"]
     for metric, label, desc in [
         ("elo", "Arena Text Elo", "Arena AI text leaderboard Elo score"),
         ("ci", "Arena Text CI", "Arena AI text Elo confidence interval"),
         ("votes", "Arena Text Votes", "Arena AI text total votes"),
     ]:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in arena_t_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(metric)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": f"arena_text.{metric}",
-            "label": label,
-            "source": "Arena Text",
-            "type": "quality" if metric == "elo" else "meta",
-            "unit": "points" if metric in ("elo", "ci") else "votes",
-            "higher_is_better": metric != "ci",
-            "description": desc,
-            "models_have": count,
-            "range": [min(vals), max(vals)] if vals else None,
-            "group": "Arena",
-        })
+        a = _build_axis(models, f"arena_text.{metric}", "Arena Text", label,
+                        "quality" if metric == "elo" else "meta",
+                        "points" if metric in ("elo", "ci") else "votes",
+                        metric != "ci", desc, "Arena", arena_t_path)
+        axes.append(a)
 
-    # ── ARENA CODE ELO ──
+    # ── ARENA CODE ──
     arena_c_path = ["benchmarks", "arena_code"]
     for metric, label, desc in [
         ("elo", "Arena Code Elo", "Arena AI code leaderboard Elo score"),
         ("ci", "Arena Code CI", "Arena AI code Elo confidence interval"),
         ("votes", "Arena Code Votes", "Arena AI code total votes"),
     ]:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in arena_c_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(metric)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": f"arena_code.{metric}",
-            "label": label,
-            "source": "Arena Code",
-            "type": "quality" if metric == "elo" else "meta",
-            "unit": "points" if metric in ("elo", "ci") else "votes",
-            "higher_is_better": metric != "ci",
-            "description": desc,
-            "models_have": count,
-            "range": [min(vals), max(vals)] if vals else None,
-            "group": "Arena",
-        })
+        a = _build_axis(models, f"arena_code.{metric}", "Arena Code", label,
+                        "quality" if metric == "elo" else "meta",
+                        "points" if metric in ("elo", "ci") else "votes",
+                        metric != "ci", desc, "Arena", arena_c_path)
+        axes.append(a)
 
-    # ── OPENLLM QUALITY AXES ──
+    # ── OPENLLM ──
     ollm_path = ["benchmarks", "openllm"]
-    ollm_axes_list = [
+    for key, label, desc in [
         ("average", "OpenLLM Average", "OpenLLM average across all eval dimensions"),
         ("ifeval", "IFEval", "OpenLLM instruction following eval"),
         ("bbh", "BBH", "OpenLLM Big-Bench Hard"),
@@ -307,92 +190,36 @@ def run(ctx=None):
         ("gpqa", "GPQA", "OpenLLM GPQA (graduate-level Q&A)"),
         ("musr", "MUSR", "OpenLLM MUSR (multi-step reasoning)"),
         ("mmlu_pro", "MMLU-PRO", "OpenLLM MMLU Pro"),
-    ]
-    for key, label, desc in ollm_axes_list:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in ollm_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(key)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": f"openllm.{key}",
-            "label": label,
-            "source": "OpenLLM v2",
-            "type": "quality",
-            "unit": "points",
-            "higher_is_better": True,
-            "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 2), round(max(vals), 2)] if vals else None,
-            "group": "OpenLLM",
-        })
+    ]:
+        axes.append(_build_axis(
+            models, f"openllm.{key}", "OpenLLM v2", label, "quality", "points", True, desc,
+            "OpenLLM", ollm_path, range_decimals=2))
 
-    # ── OPENROUTER PRICING AXES ──
+    # ── OPENROUTER ──
     or_path = ["pricing", "openrouter"]
-    or_axes_list = [
+    for key, label, typ, unit, hib, desc in [
         ("inp_price_per_m", "OR Input Price ($/Mtok)", "pricing", "$/M tok", False,
          "OpenRouter input price per million tokens"),
         ("out_price_per_m", "OR Output Price ($/Mtok)", "pricing", "$/M tok", False,
          "OpenRouter output price per million tokens"),
         ("cache_read_price_per_m", "OR Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
          "OpenRouter cache-read price per million tokens"),
-    ]
-    for key, label, typ, unit, hib, desc in or_axes_list:
-        count = 0
-        vals = []
-        for m in models:
-            sec = m
-            for k in or_path:
-                sec = sec.get(k, {})
-            if not sec:
-                continue
-            v = sec.get(key)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": f"openrouter.{key}",
-            "label": label,
-            "source": "OpenRouter",
-            "type": typ,
-            "unit": unit,
-            "higher_is_better": hib,
-            "description": desc,
-            "models_have": count,
-            "range": [round(min(vals), 6), round(max(vals), 4)] if vals else None,
-            "group": "OpenRouter Pricing",
-        })
+    ]:
+        axes.append(_build_axis(
+            models, f"openrouter.{key}", "OpenRouter", label, typ, unit, hib, desc,
+            "OpenRouter Pricing", or_path,
+            range_decimals=6 if key == "inp_price_per_m" else 4))
 
-    # ── META AXES ──
-    meta_paths = [
+    # ── META ──
+    for mid, label, typ, unit, hib, desc in [
         ("meta.params_b", "# Params (B)", "meta", "B", True,
          "Model parameter count in billions"),
         ("meta.co2_kg", "CO₂ Cost (kg)", "meta", "kg", False,
          "Estimated CO₂ cost of training"),
-    ]
-    for mid, label, typ, unit, hib, desc in meta_paths:
-        key = mid.split(".")[-1]
-        count = 0
-        vals = []
-        for m in models:
-            v = m.get("meta", {}).get(key)
-            if v is not None:
-                count += 1
-                vals.append(v)
-        axes.append({
-            "id": mid, "label": label, "source": "OpenLLM v2", "type": typ,
-            "unit": unit, "higher_is_better": hib, "description": desc,
-            "models_have": count,
-            "range": [min(vals), max(vals)] if vals else None,
-            "group": "Model Meta",
-        })
+    ]:
+        axes.append(_build_axis(
+            models, mid, "OpenLLM v2", label, typ, unit, hib, desc,
+            "Model Meta", ["meta"]))
 
     # 2. SORT AND TAG
     axes.sort(key=lambda a: (a["source"], a["type"], -a["models_have"]))
@@ -411,28 +238,6 @@ def run(ctx=None):
         source_groups[g]["axes"].append(a["id"])
         source_groups[g]["count"] += 1
 
-    # HELPER: extract value from model by axis id
-    def get_value(m, aid):
-        parts = aid.split(".")
-        source = parts[0]
-        if source == "meta":
-            return m.get("meta", {}).get(parts[-1])
-        if parts[0] in ("livebench", "arena_text", "arena_code", "openllm"):
-            sec = m.get("benchmarks", {}).get(parts[0], {})
-            if len(parts) == 2:
-                return sec.get(parts[1])
-            elif len(parts) == 3:
-                sub = sec.get(parts[1], {})
-                return sub.get(parts[2])
-        elif parts[0] in ("aa", "openrouter"):
-            sec = m.get("pricing", {}).get(parts[0], {})
-            if len(parts) == 2:
-                return sec.get(parts[1])
-            elif len(parts) == 3:
-                sub = sec.get(parts[1], {})
-                return sub.get(parts[2])
-        return None
-
     # 3. BUILD N-AXIS FEASIBILITY MATRIX
     sources_list = sorted(set(a["source"] for a in axes))
     n_axis_pairs = {}
@@ -444,22 +249,12 @@ def run(ctx=None):
             a2_ids = [a["id"] for a in axes if a["source"] == s2 and a["type"] != "meta"]
             if not a1_ids or not a2_ids:
                 continue
-
             overlap = 0
             for m in models:
-                has_s1 = False
-                for aid in a1_ids:
-                    if get_value(m, aid):
-                        has_s1 = True
-                        break
-                has_s2 = False
-                for aid in a2_ids:
-                    if get_value(m, aid):
-                        has_s2 = True
-                        break
+                has_s1 = any(_get_value(m, aid) for aid in a1_ids)
+                has_s2 = any(_get_value(m, aid) for aid in a2_ids)
                 if has_s1 and has_s2:
                     overlap += 1
-
             if overlap >= 3:
                 n_axis_pairs[f"{s1}×{s2}"] = overlap
 
@@ -485,7 +280,6 @@ def run(ctx=None):
 
     print(f"Axes catalog: {len(axes)} axes from {len(source_groups)} sources → {OUT}")
     print(f"  {len(n_axis_pairs)} source-pair overlaps tracked")
-
     print("\n── AXES BY SOURCE ──")
     for sg_name in sorted(source_groups):
         sg = source_groups[sg_name]
@@ -496,11 +290,9 @@ def run(ctx=None):
                 types[t] = types.get(t, 0) + 1
         type_str = ", ".join(f"{k}:{v}" for k, v in sorted(types.items()))
         print(f"  {sg_name:15s} {sg['count']:3d} axes  ({type_str})")
-
     print("\n── CROSS-SOURCE OVERLAP (models with both) ──")
     for pair, count in sorted(n_axis_pairs.items(), key=lambda x: -x[1]):
         print(f"  {pair:40s} {count:4d} models")
-
     return {"axis_count": len(axes), "source_count": len(source_groups)}
 
 if __name__ == "__main__":

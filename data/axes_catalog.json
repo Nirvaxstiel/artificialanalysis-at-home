@@ -25,13 +25,13 @@
           "aa.tokens_m",
           "aa.cost_per_task",
           "aa.useful_cost",
+          "aa.reasoning_tax_pct",
           "aa.cost_seg_total",
           "aa.cost_seg_answer",
           "aa.cost_seg_reasoning",
           "aa.cost_seg_cache_write",
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
-          "aa.reasoning_tax_pct",
           "aa.intel",
           "aa.iq_per_mtok",
           "aa.iq_per_mtokdollar",
@@ -110,7 +110,7 @@
       "models_have": 103,
       "range": [
         0,
-        842
+        842.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -129,7 +129,7 @@
       "models_have": 99,
       "range": [
         0,
-        132
+        132.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -271,120 +271,6 @@
       ]
     },
     {
-      "id": "aa.cost_seg_total",
-      "label": "Total Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 total per task",
-      "models_have": 28,
-      "range": [
-        0.02,
-        2.29
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_seg_answer",
-      "label": "Answer Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 answer tokens",
-      "models_have": 28,
-      "range": [
-        0.0,
-        0.6
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_seg_reasoning",
-      "label": "Reasoning Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 reasoning tokens",
-      "models_have": 28,
-      "range": [
-        0.0,
-        1.2
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_seg_cache_write",
-      "label": "Cache Write Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 cache write",
-      "models_have": 28,
-      "range": [
-        0.0,
-        0.45
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_seg_cache_hit",
-      "label": "Cache Hit Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 cache read",
-      "models_have": 28,
-      "range": [
-        0.0,
-        0.15
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_seg_input",
-      "label": "Input Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "Cost breakdown \u2014 input tokens",
-      "models_have": 28,
-      "range": [
-        0.0,
-        0.33
-      ],
-      "group": "Cost Breakdown",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
       "id": "aa.reasoning_tax_pct",
       "label": "Reasoning Tax (%)",
       "source": "AA",
@@ -395,6 +281,84 @@
       "models_have": 0,
       "range": null,
       "group": "Pricing",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_total",
+      "label": "Total Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 total per task",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_answer",
+      "label": "Answer Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 answer tokens",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_reasoning",
+      "label": "Reasoning Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 reasoning tokens",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_cache_write",
+      "label": "Cache Write Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 cache write",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_cache_hit",
+      "label": "Cache Hit Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 cache read",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
+      "normalize_range": null
+    },
+    {
+      "id": "aa.cost_seg_input",
+      "label": "Input Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "Cost breakdown \u2014 input tokens",
+      "models_have": 0,
+      "range": null,
+      "group": "Cost Breakdown",
       "normalize_range": null
     },
     {

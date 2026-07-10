@@ -10,6 +10,16 @@ from ._canonical import (
 )
 
 
+def _ensure(all_models, cid, **overrides):
+    if cid not in all_models:
+        all_models[cid] = {"id": cid, "name": None, "creator": None,
+                           "model_type": None,
+                           "meta": {}, "pricing": {},
+                           "benchmarks": {}, "aliases": {},
+                           **overrides}
+    return all_models[cid]
+
+
 def run(ctx=None):
     if ctx and ctx.get("root"):
         BASE = Path(ctx["root"])
@@ -69,17 +79,7 @@ def run(ctx=None):
         cat_avgs = {cat: round(sum(vs)/len(vs), 2) for cat, vs in cat_scores.items()}
         overall = round(sum(scores.values()) / len(scores), 2) if scores else None
 
-        if cid not in all_models:
-            all_models[cid] = {
-                "id": cid,
-                "name": name,
-                "creator": None,
-                "model_type": None,
-                "meta": {},
-                "pricing": {},
-                "benchmarks": {},
-                "aliases": {},
-            }
+        _ensure(all_models, cid, name=name)
 
         all_models[cid]["aliases"]["livebench"] = name
         all_models[cid]["benchmarks"]["livebench"] = {
@@ -97,17 +97,7 @@ def run(ctx=None):
         aid = m["model"]
         cid = resolve_from_slug(aid)
 
-        if cid not in all_models:
-            all_models[cid] = {
-                "id": cid,
-                "name": aid,
-                "creator": m.get("vendor"),
-                "model_type": m.get("license"),
-                "meta": {},
-                "pricing": {},
-                "benchmarks": {},
-                "aliases": {},
-            }
+        _ensure(all_models, cid, name=aid, creator=m.get("vendor"), model_type=m.get("license"))
 
         all_models[cid]["aliases"]["arena"] = aid
         all_models[cid]["creator"] = all_models[cid].get("creator") or m.get("vendor")
@@ -126,17 +116,7 @@ def run(ctx=None):
         aid = m["model"]
         cid = resolve_from_slug(aid)
 
-        if cid not in all_models:
-            all_models[cid] = {
-                "id": cid,
-                "name": aid,
-                "creator": m.get("vendor"),
-                "model_type": m.get("license"),
-                "meta": {},
-                "pricing": {},
-                "benchmarks": {},
-                "aliases": {},
-            }
+        _ensure(all_models, cid, name=aid, creator=m.get("vendor"), model_type=m.get("license"))
 
         all_models[cid]["aliases"]["arena_code"] = aid
         all_models[cid]["creator"] = all_models[cid].get("creator") or m.get("vendor")
@@ -157,17 +137,7 @@ def run(ctx=None):
         if not cid:
             continue
 
-        if cid not in all_models:
-            all_models[cid] = {
-                "id": cid,
-                "name": fullname,
-                "creator": None,
-                "model_type": None,
-                "meta": {},
-                "pricing": {},
-                "benchmarks": {},
-                "aliases": {},
-            }
+        _ensure(all_models, cid, name=fullname)
 
         all_models[cid]["aliases"]["openllm"] = fullname
         all_models[cid]["benchmarks"]["openllm"] = {
@@ -206,17 +176,7 @@ def run(ctx=None):
         rid = m["id"]
         cid = openrouter_id_to_canonical(rid)
 
-        if cid not in all_models:
-            all_models[cid] = {
-                "id": cid,
-                "name": m.get("name", rid),
-                "creator": m.get("vendor"),
-                "model_type": None,
-                "meta": {},
-                "pricing": {},
-                "benchmarks": {},
-                "aliases": {},
-            }
+        _ensure(all_models, cid, name=m.get("name", rid), creator=m.get("vendor"))
 
         all_models[cid]["aliases"]["openrouter"] = rid
         all_models[cid]["pricing"]["openrouter"] = {}
