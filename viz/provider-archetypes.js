@@ -173,10 +173,18 @@
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
 
       for (let i = 0; i < RADAR_AXES.length; i++) {
+        const ax = RADAR_AXES[i];
         const v = values[i];
-        const x = CX + Math.cos(RADAR_AXES[i].angle) * R * v;
-        const y = CY + Math.sin(RADAR_AXES[i].angle) * R * v;
-        svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1"/>`;
+        const x = CX + Math.cos(ax.angle) * R * v;
+        const y = CY + Math.sin(ax.angle) * R * v;
+        const rawKey = { avgIQ: 'rawIQ', avgSpeed: 'rawSpeed', avgCacheEff: 'rawCacheEff',
+                         costEff: 'rawCost', avgCtx: 'rawCtx' }[ax.key] || ax.key;
+        const rawVal = a[rawKey];
+        const tip = ax.key === 'costEff'
+          ? `${N.fmtUSD(rawVal)}/task · ${(a.avgCostEff * 100).toFixed(0)} eff`
+          : (rawVal == null ? N.DASH : fmtRaw(ax.key, rawVal));
+        svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1" `
+             + `data-creator="${a.creator}" data-axis="${ax.label}" data-tip="${tip}" style="cursor:pointer"/>`;
       }
 
       // Axis labels — show the apex value at each axis (edge = peak is
@@ -239,6 +247,28 @@
     html += '</div>';
 
     container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed');
+
+    // Per-point hover: each radar vertex shows its real axis value.
+    const tt = document.getElementById('tooltip');
+    if (tt) {
+      container.querySelectorAll('circle[data-tip]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          tt.innerHTML = `<div class="tt-name">${el.dataset.creator}</div>`
+            + `<div class="tt-row"><span class="k">${el.dataset.axis}</span>`
+            + `<span class="v neon">${el.dataset.tip}</span></div>`;
+          tt.style.display = 'block';
+        });
+        el.addEventListener('mousemove', e => {
+          const w = tt.offsetWidth, h = tt.offsetHeight;
+          let x = e.clientX + 16, y = e.clientY + 16;
+          if (x + w > window.innerWidth - 8) x = e.clientX - w - 16;
+          if (y + h > window.innerHeight - 8) y = e.clientY - h - 16;
+          if (y < 8) y = 8; if (x < 8) x = 8;
+          tt.style.left = x + 'px'; tt.style.top = y + 'px';
+        });
+        el.addEventListener('mouseleave', () => { tt.style.display = 'none'; });
+      });
+    }
 
     // Clear legend (redundant with chart header)
     const legendEl = container.parentElement.querySelector('.viz-legend');
