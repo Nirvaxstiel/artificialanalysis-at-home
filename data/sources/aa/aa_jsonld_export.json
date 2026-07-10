@@ -1,0 +1,2198 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Intelligence",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Artificial Analysis Intelligence Index · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "artificialAnalysisIntelligenceIndex": 59.8606463217303,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "artificialAnalysisIntelligenceIndex": 58.889831189723,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Grok 4.5 (high)",
+        "artificialAnalysisIntelligenceIndex": 53.8265951657731,
+        "detailsUrl": "/models/grok-4-5"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "artificialAnalysisIntelligenceIndex": 51.0858347714416,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "Gemini 3.5 Flash",
+        "artificialAnalysisIntelligenceIndex": 50.2034858842254,
+        "detailsUrl": "/models/gemini-3-5-flash"
+      },
+      {
+        "label": "MiniMax-M3",
+        "artificialAnalysisIntelligenceIndex": 44.4372686326056,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "DeepSeek V4 Pro (max)",
+        "artificialAnalysisIntelligenceIndex": 44.2735554261611,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "Kimi K2.6",
+        "artificialAnalysisIntelligenceIndex": 44.2196682298639,
+        "detailsUrl": "/models/kimi-k2-6"
+      },
+      {
+        "label": "Muse Spark",
+        "artificialAnalysisIntelligenceIndex": 43.0555563074727,
+        "detailsUrl": "/models/muse-spark"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "artificialAnalysisIntelligenceIndex": 37.7619546243905,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "artificialAnalysisIntelligenceIndex": 23.8309678073278,
+        "detailsUrl": "/models/gpt-oss-120b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Speed",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Output tokens per second · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "gpt-oss-120b (high)",
+        "medianOutputSpeed": 293.740153627369,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "medianOutputSpeed": 191.369651855674,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "medianOutputSpeed": 168.879917133388,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Gemini 3.5 Flash",
+        "medianOutputSpeed": 160.67446934587,
+        "detailsUrl": "/models/gemini-3-5-flash"
+      },
+      {
+        "label": "MiniMax-M3",
+        "medianOutputSpeed": 99.0757303472299,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Grok 4.5 (high)",
+        "medianOutputSpeed": 89.5447637111961,
+        "detailsUrl": "/models/grok-4-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "medianOutputSpeed": 77.974515279617,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "medianOutputSpeed": 62.9283550883307,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "DeepSeek V4 Pro (max)",
+        "medianOutputSpeed": 59.2756781599212,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "Kimi K2.6",
+        "medianOutputSpeed": 42.9564869003978,
+        "detailsUrl": "/models/kimi-k2-6"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cost per Task",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Weighted average cost (USD) per Intelligence Index task · Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "DeepSeek V4 Pro (max)",
+        "costPerIntelligenceIndexTask": 0.044843733471261124,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "costPerIntelligenceIndexTask": 0.06067164425252872,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "MiniMax-M3",
+        "costPerIntelligenceIndexTask": 0.12455059919140353,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "costPerIntelligenceIndexTask": 0.24390316682824711,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Grok 4.5 (high)",
+        "costPerIntelligenceIndexTask": 0.3110838295302332,
+        "detailsUrl": "/models/grok-4-5"
+      },
+      {
+        "label": "Kimi K2.6",
+        "costPerIntelligenceIndexTask": 0.34554319749943396,
+        "detailsUrl": "/models/kimi-k2-6"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "costPerIntelligenceIndexTask": 0.370080167362808,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "Gemini 3.5 Flash",
+        "costPerIntelligenceIndexTask": 0.585545242207561,
+        "detailsUrl": "/models/gemini-3-5-flash"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "costPerIntelligenceIndexTask": 1.0373301565994435,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "costPerIntelligenceIndexTask": 2.7498239008825984,
+        "detailsUrl": "/models/claude-fable-5"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Coding Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Represents the weighted average of coding benchmarks in the Artificial Analysis Intelligence Index (Terminal-Bench v2.1, SciCode) · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "GPT-5.6 Sol (xhigh)",
+        "codingIndex": 78.3482452489943,
+        "detailsUrl": "/models/gpt-5-6-sol-xhigh"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "codingIndex": 77.3880739353586,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "GPT-5.6 Sol (high)",
+        "codingIndex": 77.158759883479,
+        "detailsUrl": "/models/gpt-5-6-sol-high"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "codingIndex": 76.6550492440005,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "codingIndex": 76.4911915660979,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (medium)",
+        "codingIndex": 76.2553752254127,
+        "detailsUrl": "/models/gpt-5-6-sol-medium"
+      },
+      {
+        "label": "GPT-5.5 (xhigh)",
+        "codingIndex": 74.8911950339853,
+        "detailsUrl": "/models/gpt-5-5"
+      },
+      {
+        "label": "Claude Opus 4.8 (max)",
+        "codingIndex": 74.2535372451103,
+        "detailsUrl": "/models/claude-opus-4-8"
+      },
+      {
+        "label": "Claude Opus 4.7 (max)",
+        "codingIndex": 73.6020079067832,
+        "detailsUrl": "/models/claude-opus-4-7"
+      },
+      {
+        "label": "GPT-5.5 (high)",
+        "codingIndex": 71.5680919683729,
+        "detailsUrl": "/models/gpt-5-5-high"
+      },
+      {
+        "label": "Claude Sonnet 5 (max)",
+        "codingIndex": 71.5455507005132,
+        "detailsUrl": "/models/claude-sonnet-5"
+      },
+      {
+        "label": "GPT-5.5 (medium)",
+        "codingIndex": 71.5069704535997,
+        "detailsUrl": "/models/gpt-5-5-medium"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "codingIndex": 71.4480163684284,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "GPT-5.4 (xhigh)",
+        "codingIndex": 71.0505097794423,
+        "detailsUrl": "/models/gpt-5-4"
+      },
+      {
+        "label": "GPT-5.6 Terra (xhigh)",
+        "codingIndex": 70.6399986128451,
+        "detailsUrl": "/models/gpt-5-6-terra-xhigh"
+      },
+      {
+        "label": "Gemini 3.5 Flash",
+        "codingIndex": 70.1427902621723,
+        "detailsUrl": "/models/gemini-3-5-flash"
+      },
+      {
+        "label": "Gemini 3.1 Pro Preview",
+        "codingIndex": 68.825860036066,
+        "detailsUrl": "/models/gemini-3-1-pro-preview"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "codingIndex": 68.7560688028853,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "GPT-5.6 Luna (xhigh)",
+        "codingIndex": 68.6017478152309,
+        "detailsUrl": "/models/gpt-5-6-luna-xhigh"
+      },
+      {
+        "label": "GPT-5.6 Terra (high)",
+        "codingIndex": 67.1422007213206,
+        "detailsUrl": "/models/gpt-5-6-terra-high"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Intelligence Index by Open Weights / Proprietary",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Artificial Analysis Intelligence Index v4.1 incorporates 9 evaluations: GDPval-AA v2, 𝜏³-Banking, Terminal-Bench v2.1, SciCode, Humanity's Last Exam, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "intelligenceIndex": 59.8606463217303,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "intelligenceIndex": 58.889831189723,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "GPT-5.6 Sol (xhigh)",
+        "intelligenceIndex": 57.653836996095,
+        "detailsUrl": "/models/gpt-5-6-sol-xhigh"
+      },
+      {
+        "label": "GPT-5.6 Sol (high)",
+        "intelligenceIndex": 55.8665067971861,
+        "detailsUrl": "/models/gpt-5-6-sol-high"
+      },
+      {
+        "label": "Claude Opus 4.8 (max)",
+        "intelligenceIndex": 55.6920406995495,
+        "detailsUrl": "/models/claude-opus-4-8"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "intelligenceIndex": 54.9528567569231,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      },
+      {
+        "label": "GPT-5.5 (xhigh)",
+        "intelligenceIndex": 54.8375984166433,
+        "detailsUrl": "/models/gpt-5-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (medium)",
+        "intelligenceIndex": 53.5888349532218,
+        "detailsUrl": "/models/gpt-5-6-sol-medium"
+      },
+      {
+        "label": "Claude Opus 4.7 (max)",
+        "intelligenceIndex": 53.5296569524586,
+        "detailsUrl": "/models/claude-opus-4-7"
+      },
+      {
+        "label": "Claude Sonnet 5 (max)",
+        "intelligenceIndex": 53.3500026989169,
+        "detailsUrl": "/models/claude-sonnet-5"
+      },
+      {
+        "label": "GPT-5.5 (high)",
+        "intelligenceIndex": 53.1275095349873,
+        "detailsUrl": "/models/gpt-5-5-high"
+      },
+      {
+        "label": "GPT-5.6 Terra (xhigh)",
+        "intelligenceIndex": 51.6046369461818,
+        "detailsUrl": "/models/gpt-5-6-terra-xhigh"
+      },
+      {
+        "label": "GPT-5.4 (xhigh)",
+        "intelligenceIndex": 51.4012420630147,
+        "detailsUrl": "/models/gpt-5-4"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "intelligenceIndex": 51.2359331798034,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "intelligenceIndex": 51.0858347714416,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "GPT-5.5 (medium)",
+        "intelligenceIndex": 50.4090068672092,
+        "detailsUrl": "/models/gpt-5-5-medium"
+      },
+      {
+        "label": "Gemini 3.5 Flash",
+        "intelligenceIndex": 50.2034858842254,
+        "detailsUrl": "/models/gemini-3-5-flash"
+      },
+      {
+        "label": "GPT-5.6 Luna (xhigh)",
+        "intelligenceIndex": 49.0677386549324,
+        "detailsUrl": "/models/gpt-5-6-luna-xhigh"
+      },
+      {
+        "label": "GPT-5.6 Terra (high)",
+        "intelligenceIndex": 48.9549359759828,
+        "detailsUrl": "/models/gpt-5-6-terra-high"
+      },
+      {
+        "label": "Gemini 3.1 Pro Preview",
+        "intelligenceIndex": 46.4594206066426,
+        "detailsUrl": "/models/gemini-3-1-pro-preview"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AA-Briefcase Analytical Quality & Presentation Elo",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Elo of analytical quality and presentation pairwise checks from model submissions · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1764.16
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1735.18
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1797.41
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1495.65
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1472.51
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1518.47
+          }
+        ],
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1591.68
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1569.99
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1615.74
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1655.74
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1629.99
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1683.91
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Claude Opus 4.8 (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1354.81
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1335.96
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1373.75
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1504.32
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1483.75
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1525.8
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-4-8"
+      },
+      {
+        "label": "Claude Sonnet 5 (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1459.54
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1440.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1479.92
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1456.78
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1434.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1480.37
+          }
+        ],
+        "detailsUrl": "/models/claude-sonnet-5"
+      },
+      {
+        "label": "Claude Opus 4.7 (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1300.81
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1283.85
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1318.23
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1371.56
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1350.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1390.24
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-4-7"
+      },
+      {
+        "label": "Claude Sonnet 5 (xhigh)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1370.37
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1350.86
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1391.66
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1316.57
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1296.25
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1338.1
+          }
+        ],
+        "detailsUrl": "/models/claude-sonnet-5-xhigh"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1328.49
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1309.7
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1347.25
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1291.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1272.45
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1312.21
+          }
+        ],
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "Claude Sonnet 5 (high)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1241.35
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1220.87
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1260.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1207.7
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1188.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1227.62
+          }
+        ],
+        "detailsUrl": "/models/claude-sonnet-5-high"
+      },
+      {
+        "label": "GPT-5.5 (xhigh)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1227.4
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1211.51
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1243.83
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1121.84
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1104.28
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1138.52
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-5"
+      },
+      {
+        "label": "MiniMax-M3",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1080.62
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1064.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1096.44
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1195.29
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1175.89
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1213.58
+          }
+        ],
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "GPT-5.5 (high)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1155.07
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1140.07
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1170.99
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1087.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1070.77
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1104.27
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-5-high"
+      },
+      {
+        "label": "Claude Sonnet 5 (medium)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1046.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1028.82
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1064.81
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1090.83
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1071.28
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1111.23
+          }
+        ],
+        "detailsUrl": "/models/claude-sonnet-5-medium"
+      },
+      {
+        "label": "GPT-5.5 (medium)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 1000
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 1000
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 1000
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 1000
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 1000
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 1000
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-5-medium"
+      },
+      {
+        "label": "GLM-5.1",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 951.64
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 934.68
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 968.72
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 971.26
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 953.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 989.45
+          }
+        ],
+        "detailsUrl": "/models/glm-5-1"
+      },
+      {
+        "label": "Qwen3.7 Max",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 804.23
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 787.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 819.52
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 963.5
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 945.31
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 981.08
+          }
+        ],
+        "detailsUrl": "/models/qwen3-7-max"
+      },
+      {
+        "label": "DeepSeek V4 Pro (max)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 899.18
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 883.64
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 913.94
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 940.56
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 924.34
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 957.44
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "Claude Sonnet 5 (low)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 881.43
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 862.93
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 899.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 936.84
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 917.96
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 955.12
+          }
+        ],
+        "detailsUrl": "/models/claude-sonnet-5-low"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 769.98
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 752.97
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 786.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 928.55
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 910.79
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 946.03
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Qwen3.6 27B",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 661.85
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 641.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 679.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 914.06
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 894.39
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 932.65
+          }
+        ],
+        "detailsUrl": "/models/qwen3-6-27b"
+      },
+      {
+        "label": "Gemini 3.5 Flash (medium)",
+        "aaBriefcaseQualityElos": [
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality mid",
+            "value": 711.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality lower",
+            "value": 693.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "analyticalQuality upper",
+            "value": 728.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation mid",
+            "value": 897.75
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation lower",
+            "value": 881.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "presentation upper",
+            "value": 915.14
+          }
+        ],
+        "detailsUrl": "/models/gemini-3-5-flash-medium"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AA-Omniscience Hallucination Rate",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "AA-Omniscience Hallucination Rate (lower is better) measures how often the model answers incorrectly when it should have refused or admitted to not knowing the answer. It is defined as the proportion of incorrect answers out of all non-correct responses, i.e. incorrect / (incorrect + partial answers + not attempted) · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Grok 4.3 (medium)",
+        "omniscienceHallucinationRate": 0.16026088982063824,
+        "detailsUrl": "/models/grok-4-3-medium"
+      },
+      {
+        "label": "MiniMax-M3",
+        "omniscienceHallucinationRate": 0.16084739113377794,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Grok 4.3 (low)",
+        "omniscienceHallucinationRate": 0.16483022262199234,
+        "detailsUrl": "/models/grok-4-3-low"
+      },
+      {
+        "label": "Qwen3.7 Max",
+        "omniscienceHallucinationRate": 0.22943000238492725,
+        "detailsUrl": "/models/qwen3-7-max"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "omniscienceHallucinationRate": 0.2454780361757106,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Grok 4.3 (high)",
+        "omniscienceHallucinationRate": 0.24961754207037226,
+        "detailsUrl": "/models/grok-4-3"
+      },
+      {
+        "label": "Qwen3.7 Plus",
+        "omniscienceHallucinationRate": 0.25492716366752355,
+        "detailsUrl": "/models/qwen3-7-plus"
+      },
+      {
+        "label": "GLM-5.2 (max)",
+        "omniscienceHallucinationRate": 0.2812986435401379,
+        "detailsUrl": "/models/glm-5-2"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "omniscienceHallucinationRate": 0.2853197365625664,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "GLM-5.1",
+        "omniscienceHallucinationRate": 0.2937554969217238,
+        "detailsUrl": "/models/glm-5-1"
+      },
+      {
+        "label": "MiMo-V2-Pro",
+        "omniscienceHallucinationRate": 0.2992484627647461,
+        "detailsUrl": "/models/mimo-v2-pro"
+      },
+      {
+        "label": "Gemma 4 E4B",
+        "omniscienceHallucinationRate": 0.3127392017495899,
+        "detailsUrl": "/models/gemma-4-e4b"
+      },
+      {
+        "label": "Qwen3.6 Plus",
+        "omniscienceHallucinationRate": 0.3197017623136014,
+        "detailsUrl": "/models/qwen3-6-plus"
+      },
+      {
+        "label": "MiMo-V2.5",
+        "omniscienceHallucinationRate": 0.32151490733279614,
+        "detailsUrl": "/models/mimo-v2-5-0424"
+      },
+      {
+        "label": "Gemma 4 E2B",
+        "omniscienceHallucinationRate": 0.3286301125200929,
+        "detailsUrl": "/models/gemma-4-e2b"
+      },
+      {
+        "label": "GLM-5",
+        "omniscienceHallucinationRate": 0.34001823154056515,
+        "detailsUrl": "/models/glm-5"
+      },
+      {
+        "label": "MiniMax-M2.7",
+        "omniscienceHallucinationRate": 0.3442364087525378,
+        "detailsUrl": "/models/minimax-m2-7"
+      },
+      {
+        "label": "Claude Opus 4.8 (max)",
+        "omniscienceHallucinationRate": 0.3589263420724095,
+        "detailsUrl": "/models/claude-opus-4-8"
+      },
+      {
+        "label": "Claude Opus 4.7 (max)",
+        "omniscienceHallucinationRate": 0.36181985859206883,
+        "detailsUrl": "/models/claude-opus-4-7"
+      },
+      {
+        "label": "Claude Sonnet 5 (max)",
+        "omniscienceHallucinationRate": 0.3725013506212858,
+        "detailsUrl": "/models/claude-sonnet-5"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cost to Run Artificial Analysis Intelligence Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "gpt-oss-20b (high)",
+        "answerCost": 0.7947310000000001,
+        "reasoningCost": 12.672229600000001,
+        "cacheWriteCost": 4.7553104067580385,
+        "cacheReadCost": 11.056508893241961,
+        "nonCacheInputCost": 0.5929486,
+        "detailsUrl": "/models/gpt-oss-20b"
+      },
+      {
+        "label": "NVIDIA Nemotron 3 Nano",
+        "answerCost": 0.6580916000000001,
+        "reasoningCost": 23.9759914,
+        "cacheWriteCost": 3.4775362697648733,
+        "cacheReadCost": 10.218873530235125,
+        "nonCacheInputCost": 0.5891819,
+        "detailsUrl": "/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"
+      },
+      {
+        "label": "Gemma 4 26B A4B",
+        "answerCost": 2.2540632,
+        "reasoningCost": 27.4816284,
+        "cacheWriteCost": 6.198066442366079,
+        "cacheReadCost": 14.460838335376026,
+        "nonCacheInputCost": 1.52308663,
+        "detailsUrl": "/models/gemma-4-26b-a4b"
+      },
+      {
+        "label": "DeepSeek V4 Flash (max)",
+        "answerCost": 2.71819716,
+        "reasoningCost": 62.714646120000005,
+        "cacheWriteCost": 5.304321643999178,
+        "cacheReadCost": 1.8371617523200163,
+        "nonCacheInputCost": 1.73830104,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "Gemini 3.1 Flash-Lite",
+        "answerCost": 4.1322105,
+        "reasoningCost": 78.86947649999999,
+        "cacheWriteCost": 6.01447484538214,
+        "cacheReadCost": 1.7679439904617862,
+        "nonCacheInputCost": 2.9360455,
+        "detailsUrl": "/models/gemini-3-1-flash-lite-preview"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "answerCost": 3.5366136,
+        "reasoningCost": 48.8940852,
+        "cacheWriteCost": 12.111252409853849,
+        "cacheReadCost": 29.92352134014615,
+        "nonCacheInputCost": 1.8105514499999997,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "answerCost": 6.74199018,
+        "reasoningCost": 76.59469734000001,
+        "cacheWriteCost": 8.10630243,
+        "cacheReadCost": 1.0611792899999999,
+        "nonCacheInputCost": 5.963311035,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "GPT-5.6 Luna (medium)",
+        "answerCost": 16.805034,
+        "reasoningCost": 58.07412600000001,
+        "cacheWriteCost": 8.316556035597598,
+        "cacheReadCost": 10.681409417152192,
+        "nonCacheInputCost": 11.961277,
+        "detailsUrl": "/models/gpt-5-6-luna-medium"
+      },
+      {
+        "label": "DeepSeek V4 Pro (max)",
+        "answerCost": 7.23748302,
+        "reasoningCost": 153.45185715000002,
+        "cacheWriteCost": 9.0044913,
+        "cacheReadCost": 1.1771512128,
+        "nonCacheInputCost": 5.468218395,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "MiniMax-M3",
+        "answerCost": 14.5377984,
+        "reasoningCost": 91.99946279999999,
+        "cacheWriteCost": 22.968439602707587,
+        "cacheReadCost": 68.76588826356678,
+        "nonCacheInputCost": 5.5863648,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "GPT-5.6 Terra (medium)",
+        "answerCost": 44.089305,
+        "reasoningCost": 112.251045,
+        "cacheWriteCost": 26.328064488486504,
+        "cacheReadCost": 27.96191509092108,
+        "nonCacheInputCost": 29.5973875,
+        "detailsUrl": "/models/gpt-5-6-terra-medium"
+      },
+      {
+        "label": "Nova 2.0 Pro Preview (low)",
+        "answerCost": 25.390480000000004,
+        "reasoningCost": 98.13054,
+        "cacheWriteCost": 36.518340300000006,
+        "cacheReadCost": 68.5784022,
+        "nonCacheInputCost": 15.0330275,
+        "detailsUrl": "/models/nova-2-0-pro-reasoning-low"
+      },
+      {
+        "label": "NVIDIA Nemotron 3 Super",
+        "answerCost": 5.42085685,
+        "reasoningCost": 77.3385272,
+        "cacheWriteCost": 123.01178575627856,
+        "cacheReadCost": 45.07181804642123,
+        "nonCacheInputCost": 3.0016425,
+        "detailsUrl": "/models/nvidia-nemotron-3-super-120b-a12b"
+      },
+      {
+        "label": "GPT-5.4 nano (xhigh)",
+        "answerCost": 8.90439875,
+        "reasoningCost": 218.58745,
+        "cacheWriteCost": 22.33047538012422,
+        "cacheReadCost": 19.38649726198758,
+        "nonCacheInputCost": 2.359461,
+        "detailsUrl": "/models/gpt-5-4-nano"
+      },
+      {
+        "label": "GPT-5.6 Luna (high)",
+        "answerCost": 24.992706,
+        "reasoningCost": 197.21515800000003,
+        "cacheWriteCost": 15.776033482546435,
+        "cacheReadCost": 25.14441992139629,
+        "nonCacheInputCost": 11.889623,
+        "detailsUrl": "/models/gpt-5-6-luna-high"
+      },
+      {
+        "label": "Grok 4.3 (high)",
+        "answerCost": 12.520290000000001,
+        "reasoningCost": 195.56833,
+        "cacheWriteCost": 25.183025787084418,
+        "cacheReadCost": 40.0813422740665,
+        "nonCacheInputCost": 14.29012875,
+        "detailsUrl": "/models/grok-4-3"
+      },
+      {
+        "label": "Qwen3.7 Plus",
+        "answerCost": 7.520732800000001,
+        "reasoningCost": 174.16782880000002,
+        "cacheWriteCost": 132.4071387309185,
+        "cacheReadCost": 0.9068633815265206,
+        "nonCacheInputCost": 5.3356580000000005,
+        "detailsUrl": "/models/qwen3-7-plus"
+      },
+      {
+        "label": "Qwen3.6 35B A3B",
+        "answerCost": 164.70973728,
+        "reasoningCost": 55.338238395,
+        "cacheWriteCost": 4.801481872,
+        "cacheReadCost": 105.443378424,
+        "nonCacheInputCost": 3.2333962240000003,
+        "detailsUrl": "/models/qwen3-6-35b-a3b"
+      },
+      {
+        "label": "GPT-5.5 (low)",
+        "answerCost": 65.19348,
+        "reasoningCost": 138.69840000000002,
+        "cacheWriteCost": 70.343501170981,
+        "cacheReadCost": 24.4365713829019,
+        "nonCacheInputCost": 59.498810000000006,
+        "detailsUrl": "/models/gpt-5-5-low"
+      },
+      {
+        "label": "Nova 2.0 Pro Preview (medium)",
+        "answerCost": 24.693939999999998,
+        "reasoningCost": 327.90179,
+        "cacheWriteCost": 18.620599300000002,
+        "cacheReadCost": 20.645096334719998,
+        "nonCacheInputCost": 14.918130000000001,
+        "detailsUrl": "/models/nova-2-0-pro-reasoning-medium"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Pricing: Cache Hit, Input, and Output",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Price (USD per M Tokens) · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "gpt-oss-20b (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.2
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-20b"
+      },
+      {
+        "label": "NVIDIA Nemotron 3 Nano",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.2
+          }
+        ],
+        "detailsUrl": "/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"
+      },
+      {
+        "label": "gpt-oss-20b (low)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.060000000000000005
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.2
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-20b-low"
+      },
+      {
+        "label": "Nemotron 3 Nano Omni 30B A3B Reasoning",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.075
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.3
+          }
+        ],
+        "detailsUrl": "/models/nemotron-3-nano-omni-30b-a3b"
+      },
+      {
+        "label": "Step 3.5 Flash 2603",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.3
+          }
+        ],
+        "detailsUrl": "/models/step-3-5-flash"
+      },
+      {
+        "label": "Gemma 4 12B",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.3
+          }
+        ],
+        "detailsUrl": "/models/gemma-4-12b"
+      },
+      {
+        "label": "MiMo-V2.5",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0028
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.28
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-5-0424"
+      },
+      {
+        "label": "DeepSeek V4 Flash (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.028
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.28
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-flash-high"
+      },
+      {
+        "label": "DeepSeek V4 Flash (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0028
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.28
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "Hermes 4 70B",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.4
+          }
+        ],
+        "detailsUrl": "/models/hermes-4-llama-3-1-70b-reasoning"
+      },
+      {
+        "label": "Gemma 4 26B A4B",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.085
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.4
+          }
+        ],
+        "detailsUrl": "/models/gemma-4-26b-a4b"
+      },
+      {
+        "label": "Hy3-preview",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0445
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.123
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.43
+          }
+        ],
+        "detailsUrl": "/models/hy3"
+      },
+      {
+        "label": "gpt-oss-120b (low)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b-low"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Mercury 2",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.025
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.25
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.75
+          }
+        ],
+        "detailsUrl": "/models/mercury-2"
+      },
+      {
+        "label": "Reka Flash 3",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.8
+          }
+        ],
+        "detailsUrl": "/models/reka-flash-3"
+      },
+      {
+        "label": "NVIDIA Nemotron 3 Super",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.14250000000000002
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.25
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.775
+          }
+        ],
+        "detailsUrl": "/models/nvidia-nemotron-3-super-120b-a12b"
+      },
+      {
+        "label": "Trinity Large Thinking",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.155
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.235
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.875
+          }
+        ],
+        "detailsUrl": "/models/trinity-large-thinking"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0036
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.435
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.87
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "DeepSeek V4 Pro (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0036
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.435
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.87
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-pro-high"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Time per Intelligence Index Task",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Weighted average decode time (minutes) per task; excludes TTFT and overhead time · Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "GPT-5.6 Luna (medium)",
+        "timePerTask": 0.2963172915357475,
+        "detailsUrl": "/models/gpt-5-6-luna-medium"
+      },
+      {
+        "label": "GPT-5.6 Terra (medium)",
+        "timePerTask": 0.5272720492399355,
+        "detailsUrl": "/models/gpt-5-6-terra-medium"
+      },
+      {
+        "label": "GPT-5.5 (low)",
+        "timePerTask": 0.5642314125105728,
+        "detailsUrl": "/models/gpt-5-5-low"
+      },
+      {
+        "label": "GPT-5.6 Luna (high)",
+        "timePerTask": 0.5915022916696738,
+        "detailsUrl": "/models/gpt-5-6-luna-high"
+      },
+      {
+        "label": "Nova 2.0 Pro Preview (low)",
+        "timePerTask": 0.6922947959551776,
+        "detailsUrl": "/models/nova-2-0-pro-reasoning-low"
+      },
+      {
+        "label": "Gemini 3.1 Flash-Lite",
+        "timePerTask": 1.064577850119302,
+        "detailsUrl": "/models/gemini-3-1-flash-lite-preview"
+      },
+      {
+        "label": "GPT-5.6 Terra (high)",
+        "timePerTask": 1.081556177510205,
+        "detailsUrl": "/models/gpt-5-6-terra-high"
+      },
+      {
+        "label": "GPT-5.6 Sol (medium)",
+        "timePerTask": 1.0919853885207433,
+        "detailsUrl": "/models/gpt-5-6-sol-medium"
+      },
+      {
+        "label": "GPT-5.6 Luna (xhigh)",
+        "timePerTask": 1.0986395892637004,
+        "detailsUrl": "/models/gpt-5-6-luna-xhigh"
+      },
+      {
+        "label": "GPT-5.6 Terra (xhigh)",
+        "timePerTask": 1.2559005698972994,
+        "detailsUrl": "/models/gpt-5-6-terra-xhigh"
+      },
+      {
+        "label": "GPT-5.5 (medium)",
+        "timePerTask": 1.3585769395173068,
+        "detailsUrl": "/models/gpt-5-5-medium"
+      },
+      {
+        "label": "gpt-oss-20b (high)",
+        "timePerTask": 1.509120546379171,
+        "detailsUrl": "/models/gpt-oss-20b"
+      },
+      {
+        "label": "GPT-5.6 Sol (high)",
+        "timePerTask": 1.5122779717390664,
+        "detailsUrl": "/models/gpt-5-6-sol-high"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "timePerTask": 1.519231600024437,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "Gemini 3.1 Pro Preview",
+        "timePerTask": 1.5355056719890878,
+        "detailsUrl": "/models/gemini-3-1-pro-preview"
+      },
+      {
+        "label": "Nova 2.0 Pro Preview (medium)",
+        "timePerTask": 1.601691814018582,
+        "detailsUrl": "/models/nova-2-0-pro-reasoning-medium"
+      },
+      {
+        "label": "Qwen3.7 Max",
+        "timePerTask": 1.6221611352504148,
+        "detailsUrl": "/models/qwen3-7-max"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "timePerTask": 2.062114534896426,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Step 3.7 Flash",
+        "timePerTask": 2.1389725889056335,
+        "detailsUrl": "/models/step-3-7-flash"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "timePerTask": 2.1809766179018397,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which is the most intelligent AI model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) currently leads the Artificial Analysis Intelligence Index with a score of 60, out of 136 models evaluated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the top AI models?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The top AI models by Intelligence Index are: 1. Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) (60), 2. GPT-5.6 Sol (max) (59), 3. GPT-5.6 Sol (xhigh) (58), 4. GPT-5.6 Sol (high) (56), 5. Claude Opus 4.8 (Adaptive Reasoning, Max Effort) (56)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is the fastest AI model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mercury 2 is the fastest at 792.3 tokens per second, followed by Granite 4.0 H Small (491.7 t/s) and LFM2.5-VL-1.6B (426.9 t/s)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is the cheapest AI model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gemma 3n E4B Instruct is the most affordable at $0.02 per 1M tokens (blended), followed by Nova Micro ($0.03) and Sarvam 30B (high) ($0.03)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI model has the lowest latency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "North Mini Code has the lowest time to first token at 0.32s, followed by Gemini 2.5 Flash-Lite (Non-reasoning) (0.34s) and Command A+ (0.42s)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is the best open weights AI model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GLM-5.2 (max) is the highest-ranked open weights model with an Intelligence Index score of 51. There are 72 open weights models out of 136 total evaluated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the top open weights AI models?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The top open weights AI models by Intelligence Index are: 1. GLM-5.2 (max) (51), 2. MiniMax-M3 (44), 3. DeepSeek V4 Pro (Reasoning, Max Effort) (44)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is the best reasoning model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) leads among 97 reasoning models with an Intelligence Index score of 60. Reasoning models use extended thinking to work through complex problems before providing answers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are AI models compared on Artificial Analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Models are compared across multiple dimensions including intelligence (quality), pricing, output speed (tokens per second), latency (time to first token), end-to-end response time, and context window size. Performance metrics are measured directly using standardized prompts across 570 models."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I compare a specific model against others?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click on any model name or row in the charts to view its dedicated page with detailed metrics and direct comparisons against similar models. You can also use the model selector to customize which models appear in each chart."
+        }
+      }
+    ]
+  }
+]

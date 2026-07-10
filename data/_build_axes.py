@@ -138,6 +138,16 @@ def run(ctx=None):
     ]:
         ba(aid, "AA", label, "quality", "score", True, desc, "AA Benchmarks", qual_path, range_decimals=4)
 
+    # ── AA JSON-LD EXPORT (console query) ──
+    ba("aa.omniscience_hallucination_rate", "AA", "Omniscience Hallucination Rate", "quality", "%", False,
+       "AA omniscience incorrect rate (0-1); lower is better", "AA Benchmarks", qual_path, range_decimals=4)
+    ba("aa.briefcase_analytical_quality_elo", "AA", "Briefcase Analytical Quality Elo", "quality", "elo", True,
+       "AA-Briefcase analytical-quality Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1)
+    ba("aa.briefcase_presentation_elo", "AA", "Briefcase Presentation Elo", "quality", "elo", True,
+       "AA-Briefcase presentation Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1)
+    ba("aa.time_per_task", "AA", "Time per Intelligence Index Task", "quality", "s", False,
+       "Wall-clock seconds to complete one Intelligence Index task; lower is better", "AA Benchmarks", qual_path, range_decimals=4)
+
     # ── AA IMAGE CHARTS (vision-transcribed) ──
     img_qual_path = ["benchmarks", "aa_img"]
     for aid, label, unit, hib, desc in [

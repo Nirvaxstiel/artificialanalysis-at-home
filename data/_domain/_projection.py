@@ -89,6 +89,10 @@ class ProjectionRow:
     aa_tau_banking: Optional[BenchmarkScore] = None
     aa_terminalbench_hard: Optional[BenchmarkScore] = None
     aa_terminalbench_v2_1: Optional[BenchmarkScore] = None
+    aa_omniscience_hallucination_rate: Optional[BenchmarkScore] = None
+    aa_briefcase_analytical_quality_elo: Optional[Elo] = None
+    aa_briefcase_presentation_elo: Optional[Elo] = None
+    aa_time_per_task: Optional[ResponseTime] = None
     openrouter_inp_price_per_m: Optional[PricePerMToken] = None
     openrouter_out_price_per_m: Optional[PricePerMToken] = None
     openrouter_cache_read_price_per_m: Optional[PricePerMToken] = None
@@ -161,6 +165,10 @@ class ProjectionRow:
         "aa_lcr": Provenance.SOURCED, "aa_scicode": Provenance.SOURCED,
         "aa_tau2": Provenance.SOURCED, "aa_tau_banking": Provenance.SOURCED,
         "aa_terminalbench_hard": Provenance.SOURCED, "aa_terminalbench_v2_1": Provenance.SOURCED,
+        "aa_omniscience_hallucination_rate": Provenance.SOURCED,
+        "aa_briefcase_analytical_quality_elo": Provenance.SOURCED,
+        "aa_briefcase_presentation_elo": Provenance.SOURCED,
+        "aa_time_per_task": Provenance.SOURCED,
         "openrouter_inp_price_per_m": Provenance.SOURCED,
         "openrouter_out_price_per_m": Provenance.SOURCED,
         "openrouter_cache_read_price_per_m": Provenance.SOURCED,
@@ -278,6 +286,10 @@ class ProjectionRow:
             "aa_tau_banking": self.aa_tau_banking,
             "aa_terminalbench_hard": self.aa_terminalbench_hard,
             "aa_terminalbench_v2_1": self.aa_terminalbench_v2_1,
+            "aa_omniscience_hallucination_rate": self.aa_omniscience_hallucination_rate,
+            "aa_briefcase_analytical_quality_elo": self.aa_briefcase_analytical_quality_elo,
+            "aa_briefcase_presentation_elo": self.aa_briefcase_presentation_elo,
+            "aa_time_per_task": self.aa_time_per_task,
             "openrouter_inp_price_per_m": self.openrouter_inp_price_per_m,
             "openrouter_out_price_per_m": self.openrouter_out_price_per_m,
             "openrouter_cache_read_price_per_m": self.openrouter_cache_read_price_per_m,

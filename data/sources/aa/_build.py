@@ -30,17 +30,197 @@ def get_aa_live_models(aa_dir: str) -> dict[str, dict]:
     return out
 
 
+def get_aa_jsonld_models(aa_dir: str) -> dict[str, dict]:
+    """AA JSON-LD Dataset export (console query) → canonical_id → model record.
+
+    Source: data/sources/aa/aa_jsonld_export.json (schema.org Dataset objects
+    the AA site exposes; the 'real way to query' per the user — no scraping/vision).
+    Each dataset has `data[]` entries keyed by `label` + `detailsUrl` (→ slug).
+
+    Maps JSON-LD metrics onto the `aa.*` contract:
+      intelligenceIndex / artificialAnalysisIntelligenceIndex → benchmarks.aa.intel
+      medianOutputSpeed → pricing.aa.speed_tps
+      costPerIntelligenceIndexTask → pricing.aa.cost_per_task
+      codingIndex → benchmarks.aa.aa_coding_index
+      omniscienceHallucinationRate → benchmarks.aa.omniscience_hallucination_rate
+      aaBriefcaseQualityElos[] → benchmarks.aa.briefcase_*_elo
+      timePerTask → benchmarks.aa.time_per_task
+      Cost to Run AA Intelligence Index (5 fields) → pricing.aa.cost_segments.*
+      pricing[] (inputPrice/outputPrice) → pricing.aa.inp_price/out_price
+
+    The two intelligence datasets are value-identical (asserted in tests); the
+    Open-Weights/Proprietary one is the superset, so only it feeds `intel`.
+    """
+    path = os.path.join(aa_dir, "aa_jsonld_export.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path) as f:
+        datasets = json.load(f)
+
+    # index datasets by name
+    by_name = {ds.get("name"): ds for ds in datasets if isinstance(ds, dict)}
+
+    def entries(name):
+        return by_name.get(name, {}).get("data", [])
+
+    def slug_of(e):
+        return (e.get("detailsUrl") or "").replace("/models/", "")
+
+    def prop_vals(e, field):
+        """Extract a list of PropertyValue {name,value} from a JSON-LD field."""
+        raw = e.get(field, [])
+        if isinstance(raw, list):
+            return {pv.get("name"): pv.get("value") for pv in raw if isinstance(pv, dict)}
+        return {}
+
+    out: dict[str, dict] = {}
+
+    def ensure(slug):
+        """Create the base AA record for a slug if not present; return cid or None.
+
+        Emits the FULL pricing.aa / benchmarks.aa schema (all known keys, None) so
+        downstream overlays (_overlay_enriched, _overlay_aa_api) that do direct
+        key access never KeyError on a JSON-LD-only (partial) record.
+        """
+        if not slug:
+            return None
+        cid = resolve_from_slug(slug)
+        if not cid:
+            return None
+        out.setdefault(cid, {
+            "id": cid, "name": None, "creator": None, "model_type": None,
+            "meta": {"archetype": None, "pareto_optimal": False, "has_breakdown": False,
+                     "cost_percentile": None, "iq_percentile": None, "release_date": None},
+            "pricing": {"aa": {
+                "inp_price": None, "out_price": None, "blended": None,
+                "cache_hit_price": None, "cost_per_task": None, "tokens_m": None,
+                "speed_tps": None, "useful_cost": None, "reasoning_tax_pct": None,
+                "cost_segments": None,
+            }},
+            "benchmarks": {"aa": {
+                "intel": None, "iq_per_dollar": None, "iq_per_mtok": None,
+                "iq_per_mtokdollar": None, "aa_coding_index": None,
+                "aa_math_index": None, "gpqa": None, "mmlu_pro": None, "hle": None,
+                "aime": None, "aime_25": None, "math_500": None, "livecodebench": None,
+                "ifbench": None, "lcr": None, "scicode": None, "tau2": None,
+                "tau_banking": None, "terminalbench_hard": None,
+                "terminalbench_v2_1": None, "omniscience_hallucination_rate": None,
+                "briefcase_analytical_quality_elo": None,
+                "briefcase_presentation_elo": None, "time_per_task": None,
+            }},
+            "aliases": {"aa": slug},
+        })
+        return cid
+
+    # Intelligence (use Open-Weights/Proprietary superset only)
+    for e in entries("Artificial Analysis Intelligence Index by Open Weights / Proprietary"):
+        cid = ensure(slug_of(e))
+        if not cid:
+            continue
+        rec = out[cid]
+        if rec["name"] is None:
+            rec["name"] = e.get("label")
+        if rec["benchmarks"]["aa"].get("intel") is None:
+            rec["benchmarks"]["aa"]["intel"] = e.get("intelligenceIndex")
+
+    # Speed
+    for e in entries("Speed"):
+        cid = ensure(slug_of(e))
+        if not cid or out[cid]["pricing"]["aa"].get("speed_tps") is not None:
+            continue
+        out[cid]["pricing"]["aa"]["speed_tps"] = e.get("medianOutputSpeed")
+
+    # Cost per Task
+    for e in entries("Cost per Task"):
+        cid = ensure(slug_of(e))
+        if not cid or out[cid]["pricing"]["aa"].get("cost_per_task") is not None:
+            continue
+        out[cid]["pricing"]["aa"]["cost_per_task"] = e.get("costPerIntelligenceIndexTask")
+
+    # Coding Index
+    for e in entries("Artificial Analysis Coding Index"):
+        cid = ensure(slug_of(e))
+        if out[cid]["benchmarks"]["aa"].get("aa_coding_index") is not None:
+            continue
+        out[cid]["benchmarks"]["aa"]["aa_coding_index"] = e.get("codingIndex")
+
+    # Omniscience Hallucination Rate
+    for e in entries("AA-Omniscience Hallucination Rate"):
+        cid = ensure(slug_of(e))
+        if not cid or out[cid]["benchmarks"]["aa"].get("omniscience_hallucination_rate") is not None:
+            continue
+        out[cid]["benchmarks"]["aa"]["omniscience_hallucination_rate"] = e.get("omniscienceHallucinationRate")
+
+    # Briefcase Elo (analyticalQuality / presentation, mid value)
+    for e in entries("AA-Briefcase Analytical Quality & Presentation Elo"):
+        cid = ensure(slug_of(e))
+        if not cid:
+            continue
+        pvs = prop_vals(e, "aaBriefcaseQualityElos")
+        b = out[cid]["benchmarks"]["aa"]
+        for src, dst in (("analyticalQuality mid", "briefcase_analytical_quality_elo"),
+                         ("presentation mid", "briefcase_presentation_elo")):
+            if b.get(dst) is None and pvs.get(src) is not None:
+                b[dst] = pvs.get(src)
+
+    # Time per Task
+    for e in entries("Time per Intelligence Index Task"):
+        cid = ensure(slug_of(e))
+        if not cid or out[cid]["benchmarks"]["aa"].get("time_per_task") is not None:
+            continue
+        out[cid]["benchmarks"]["aa"]["time_per_task"] = e.get("timePerTask")
+
+    # Cost breakdown (5 segments)
+    for e in entries("Cost to Run Artificial Analysis Intelligence Index"):
+        cid = ensure(slug_of(e))
+        if not cid:
+            continue
+        aa = out[cid]["pricing"]["aa"]
+        segs = {
+            "answer_usd": e.get("answerCost"),
+            "reasoning_usd": e.get("reasoningCost"),
+            "cache_write_usd": e.get("cacheWriteCost"),
+            "cache_hit_usd": e.get("cacheReadCost"),
+            "input_usd": e.get("nonCacheInputCost"),
+        }
+        if any(v is not None for v in segs.values()):
+            aa["cost_segments"] = segs
+            if segs["answer_usd"] is not None and segs["reasoning_usd"] is not None:
+                aa["cost_per_task"] = segs["answer_usd"] + segs["reasoning_usd"] + \
+                    (segs["input_usd"] or 0) + (segs["cache_hit_usd"] or 0) + (segs["cache_write_usd"] or 0)
+
+    # Pricing (input/output per M tokens)
+    for e in entries("Pricing: Cache Hit, Input, and Output"):
+        cid = ensure(slug_of(e))
+        if not cid:
+            continue
+        pvs = prop_vals(e, "pricing")
+        aa = out[cid]["pricing"]["aa"]
+        if aa.get("inp_price") is None and pvs.get("inputPrice") is not None:
+            aa["inp_price"] = pvs.get("inputPrice")
+        if aa.get("out_price") is None and pvs.get("outputPrice") is not None:
+            aa["out_price"] = pvs.get("outputPrice")
+
+    return out
+
+
 def get_aa_models(base: Path) -> dict[str, dict]:
     """Merge all AA data sources into dict of canonical_id → model record.
 
     Sources (in order of priority — later sources enrich but don't overwrite
     non-null fields from earlier sources):
+      0. data/../jsonified-artificialanalysis-data.json — AA JSON-LD export (NEW models + authoritative aa.*)
       1. data/sources/aa/raw/aa_models_scraped.json  — 99 base AA models
       2. data/sources/aa/enriched/aa_model_data.json  — enriched fields (38 models)
       3. data/sources/aa/enriched/aa_cost_breakdown.json — cost segments (30 models)
     """
     AA_DIR = os.path.join(base, "data", "sources", "aa")
     all_models: dict[str, dict] = {}
+
+    # === 0) AA JSON-LD export (console query) — seeds NEW models + authoritative aa.* ===
+    jsonld = get_aa_jsonld_models(os.path.join(str(base), "data", "sources", "aa"))
+    for cid, rec in jsonld.items():
+        all_models.setdefault(cid, rec)
 
     # === 1) Base: raw scraped data ===
     scraped_path = os.path.join(AA_DIR, "raw", "aa_models_scraped.json")
@@ -65,7 +245,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         live = live_models.get(slug, {})
         live_eval = live.get("evaluations", {})
 
-        all_models[cid] = {
+        scraped = {
             "id": cid,
             "name": m.get("name"),
             "creator": m.get("creator") or live.get("creator"),
@@ -117,8 +297,15 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             },
             "aliases": {
                 "aa": slug,
-            }
+            },
         }
+        # JSON-LD (Step 0) may have seeded this cid with fields the scraped
+        # set lacks (e.g. omniscience_hallucination_rate). Merge fill-nulls
+        # rather than hard-overwrite so those survive.
+        if cid in all_models:
+            _merge_fill_nulls(all_models[cid], scraped)
+        else:
+            all_models[cid] = scraped
 
     # === 1.5) Live AA API — fill nulls from authoritative source ===
     api_models = _load_aa_api(base)
@@ -292,6 +479,25 @@ def _load_aa_api(base: Path) -> dict:
         return {m["slug"]: m for m in models if m.get("slug")}
     except Exception:
         return {}
+
+
+def _merge_fill_nulls(existing: dict, incoming: dict) -> None:
+    """Merge `incoming` into `existing` fill-nulls-only (existing non-null wins).
+
+    Used so JSON-LD-seeded fields (e.g. omniscience_hallucination_rate) survive
+    when the scraped base loop would otherwise hard-overwrite the record.
+    """
+    for key, val in incoming.items():
+        if key not in existing:
+            existing[key] = val
+            continue
+        ev = existing[key]
+        if isinstance(ev, dict) and isinstance(val, dict):
+            for k2, v2 in val.items():
+                if ev.get(k2) is None and v2 is not None:
+                    ev[k2] = v2
+        elif ev is None and val is not None:
+            existing[key] = val
 
 
 def _overlay_enriched(model: dict, raw: dict) -> None:

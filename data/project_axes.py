@@ -47,8 +47,8 @@ class ProjectionEngine:
             path = self._path_override[cf]
             sec = model
             for k in path[:-1]:
-                sec = sec.get(k, {})
-            return sec.get(path[-1])
+                sec = sec.get(k, {}) if isinstance(sec, dict) else {}
+            return sec.get(path[-1]) if isinstance(sec, dict) else None
         
         resolved = self._resolve_axis(axis_id)
         meta = self.axes_meta[resolved]
