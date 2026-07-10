@@ -497,7 +497,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '01',
+    id: 'crossover',
     name: 'The Crossover',
     subtitle: 'Pick axes from any source — IQ, LiveBench, Arena Elo, OpenRouter pricing, and more',
     render

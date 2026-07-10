@@ -305,7 +305,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '02',
+    id: 'cost-breakdown',
     name: 'Cost Breakdown',
     subtitle: 'Per-task cost split by token type (input / cached / answer / reasoning)',
     render

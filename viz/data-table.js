@@ -264,7 +264,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '06',
+    id: 'data-table',
     name: 'Data Tables',
     subtitle: 'Sortable multi-view tables — multi-column sort with shift+click',
     render

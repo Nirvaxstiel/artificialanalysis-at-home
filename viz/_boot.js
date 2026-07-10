@@ -5,7 +5,7 @@
     return setTimeout(boot, 50);
   }
   const data = window.MODELS;
-  const registry = window.VIZ_REGISTRY.slice().sort((a, b) => a.id.localeCompare(b.id));
+  const registry = window.VIZ_REGISTRY.slice();
 
   // Inject dynamic model/creator count into header
   const metaEl = document.getElementById('header-meta');
@@ -17,7 +17,7 @@
   const tabsEl = document.getElementById('tabs');
   tabsEl.innerHTML = registry.map((v, i) => `
     <button data-viz="${v.id}" class="${i === 0 ? 'active' : ''}">
-      <span class="num">${v.id}</span> ${v.name}
+      <span class="num">${i + 1}</span> ${v.name}
       <span class="sub">${v.subtitle}</span>
     </button>
   `).join('');
@@ -27,7 +27,7 @@
     <div class="viz-panel ${i === 0 ? 'active' : ''}" data-viz="${v.id}">
       <div class="chart">
         <div class="chart-head">
-          <h2>${v.id} <span class="cmt">//</span> ${v.name}</h2>
+          <h2>${i + 1} <span class="cmt">//</span> ${v.name}</h2>
           <span class="src"><span class="cmt">//</span> ${v.subtitle}</span>
         </div>
         <div class="viz-mount" id="mount-${v.id}"></div>
@@ -105,7 +105,7 @@
   document.getElementById('total-count').textContent = data.length;
 
   // Click-through: banner model → data table with sort + highlight
-  const dtId = registry.find(r => r.name === 'Data Tables')?.id || '06';
+  const dtId = registry.find(r => r.name === 'Data Tables')?.id || 'data-table';
   window.navigateTable = function(view, sortKey, sortDir, highlight) {
     const mount = document.getElementById(`mount-${dtId}`);
     if (!mount) return;

@@ -242,7 +242,7 @@
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
   window.VIZ_REGISTRY.push({
-    id: '03',
+    id: 'provider-archetypes',
     name: 'Provider Archetypes',
     subtitle: `Radar grid: ${(window.RADAR_AXES || []).map(a => a.label).join(' \u00d7 ')}`,
     render
