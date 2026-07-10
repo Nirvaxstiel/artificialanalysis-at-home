@@ -20,7 +20,10 @@ def processed_js():
     js_path = REPO / "data" / "processed.js"
     raw = js_path.read_text(encoding="utf-8").strip()
     raw = raw.removeprefix("window.PROCESSED_DATA = ").removesuffix(";")
-    return json.loads(raw)
+    data = json.loads(raw)
+    if isinstance(data, dict) and "models" in data:
+        data = data["models"]
+    return data
 
 
 @pytest.fixture(scope="module")
@@ -55,6 +58,8 @@ class TestDerivedProperties:
         raw = (REPO / "data" / "processed.js").read_text(encoding="utf-8").strip()
         raw = raw.removeprefix("window.PROCESSED_DATA = ").removesuffix(";")
         data = json.loads(raw)
+        if isinstance(data, dict) and "models" in data:
+            data = data["models"]
         for m in data:
             assert "cost_per_wallsec" not in m, \
                 f"{m['slug']}: cost_per_wallsec key must be absent"

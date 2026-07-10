@@ -226,18 +226,33 @@ def build(ctx=None):
             "generated": _today(),
             "version": "3.0",
             "model_count": len(output),
-            "sources": ["AA", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
+            "sources": ["AA", "AA_IMG", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
+            "sources_meta": {
+                "AA": {"speculative": False},
+                "AA_IMG": {"speculative": True,
+                           "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."},
+                "LiveBench": {"speculative": False},
+                "Arena Code": {"speculative": False},
+                "Arena Text": {"speculative": False},
+                "OpenLLM v2": {"speculative": False},
+                "OpenRouter": {"speculative": False},
+            },
         },
         "models": output,
     }
 
     # Serialize to processed.js
     rows_dict = [r.to_dict() for r in output]
+    wrapper = {
+        "sources": payload["meta"]["sources"],
+        "sources_meta": payload["meta"]["sources_meta"],
+        "models": rows_dict,
+    }
 
     js_path = BASE / "processed.js"
     with open(js_path, "w") as f:
         f.write("window.PROCESSED_DATA = ")
-        json.dump(rows_dict, f, indent=2)
+        json.dump(wrapper, f, indent=2)
         f.write(";\n")
 
     print(f"✅ Wrote {len(output)} models to {js_path}")
