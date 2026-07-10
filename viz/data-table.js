@@ -24,7 +24,7 @@
       },
       cols: [
         { key: 'creator', label: 'CREATOR', render: (r, c) =>
-          `<span class="dot dot-lg" style="background:${CREATOR_COLORS[r.creator]||'#888'}"></span>${r.creator}` },
+          `<span class="dot dot-lg" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
         { key: 'count', label: '# MODELS', render: r => r.count, cls: 'num' },
         { key: 'avgIQ', label: 'AVG IQ', render: r => r.avgIQ != null ? r.avgIQ.toFixed(1) : '—', cls: 'num' },
         { key: 'avgCost', label: 'AVG $ / TASK', render: r => r.avgCost != null ? window.VIZ_NUM.fmtUSD(r.avgCost) : '—', cls: 'num' },
@@ -42,7 +42,7 @@
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${CREATOR_COLORS[r.creator]||'#888'}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
         { key: 'context_window', label: 'CTX', render: r => r.context_window != null
           ? window.VIZ_NUM.fmtCount(r.context_window) : '—', cls: 'num' },
@@ -69,7 +69,7 @@
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${CREATOR_COLORS[r.creator]||'#888'}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
         { key: 'livebench_average', label: 'AVG', render: r => r.livebench_average != null ? r.livebench_average.toFixed(1) : '—', cls: 'num' },
         { key: 'livebench_coding', label: 'CODING', render: r => r.livebench_coding != null ? r.livebench_coding.toFixed(1) : '—', cls: 'num' },
         { key: 'livebench_reasoning', label: 'REASON', render: r => r.livebench_reasoning != null ? r.livebench_reasoning.toFixed(1) : '—', cls: 'num' },
@@ -87,7 +87,7 @@
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${CREATOR_COLORS[r.creator]||'#888'}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r => r.cost_per_task != null ? window.VIZ_NUM.fmtUSD(r.cost_per_task) : '—', cls: 'num' },
         { key: 'iqPerK', label: 'IQ / $1K', render: r => {

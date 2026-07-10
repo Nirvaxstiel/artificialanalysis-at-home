@@ -3,32 +3,47 @@
 (function() {
 
 const CREATOR_COLORS = {
-  "OpenAI":        "#f5f5f0",
-  "Anthropic":     "#D97757",
-  "Google":        "#4285F4",
-  "DeepSeek":      "#536dfe",
-  "Meta":          "#1877f2",
-  "xAI":           "#9e9e9e",
-  "MiniMax":       "#b6ff3c",
+  "OpenAI":        "#ffe14d",
+  "Anthropic":     "#ff6b4a",
+  "Google":        "#4d8bff",
+  "DeepSeek":      "#7c5cff",
+  "Meta":          "#00b4d8",
+  "xAI":           "#c9c9d4",
+  "MiniMax":       "#a6ff00",
   "NVIDIA":        "#76b900",
-  "Alibaba":       "#ff6a00",
-  "Amazon":        "#ff9900",
+  "Alibaba":       "#ff8c1a",
+  "Amazon":        "#ffb300",
   "Kimi":          "#00e5ff",
-  "Z AI":          "#a855f7",
-  "Xiaomi":        "#ff5722",
-  "Mistral":       "#e040fb",
-  "Upstage":       "#ffd740",
-  "StepFun":       "#69f0ae",
-  "LG AI Research":"#448aff",
-  "Nous Research": "#ff6e40",
-  "Perplexity":    "#b388ff",
-  "Inception":     "#18ffff",
-  "Reka AI":       "#ff80ab",
-  "Nex AGI":       "#ccff90",
-  "Tencent":       "#84ffff",
-  "Arcee AI":      "#ffd180",
+  "Z AI":          "#d24dff",
+  "Xiaomi":        "#ff3d6e",
+  "Mistral":       "#ff4dd2",
+  "Upstage":       "#e0c000",
+  "StepFun":       "#3dffa6",
+  "LG AI Research":"#5d9bff",
+  "Nous Research": "#ff7a45",
+  "Perplexity":    "#b06bff",
+  "Inception":     "#1affc8",
+  "Reka AI":       "#ff5d9e",
+  "Nex AGI":       "#9bff5d",
+  "Tencent":       "#00d0ff",
+  "Arcee AI":      "#ffc24d",
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
+
+// Stable high-contrast fallback: golden-angle hue rotation + lightness jitter
+// keyed by name, so any creator not in CREATOR_COLORS still gets a distinct,
+// visually-separable color (never the flat #888). Deterministic per name.
+function creatorColor(name) {
+  if (!name) return '#888';
+  const cur = CREATOR_COLORS[name];
+  if (cur) return cur;
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  const hue = (h * 137.508) % 360;            // golden angle → max separation
+  const light = 52 + ((h >> 3) % 28);         // 52–80% to avoid mud/dazzle
+  const sat = 72 + ((h >> 5) % 18);           // 72–90% for punch
+  return `hsl(${hue.toFixed(0)}, ${sat}%, ${light}%)`;
+}
 
 // ── Number formatting ── single source of truth for suffixes / separators / currency.
 // Each formatter takes (value, opts?) and returns a string, or '—' for null/NaN.
@@ -131,7 +146,7 @@ window.__renderCreatorLegend = function() {
   el.innerHTML = '<span class=\"lg-fi' + (isAllActive ? ' active' : '') + '\" data-lg-dim=\"\" data-lg-val=\"\">ALL</span>'
     + creators.map(c => {
         const active = window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val === c;
-        const color = (window.CREATOR_COLORS || {})[c] || '#888';
+        const color = window.creatorColor(c);
         return `<span class=\"lg-fi${active ? ' active' : ''}\" data-lg-dim=\"creator\" data-lg-val=\"${c}\"><span class=\"cr-fs\" style=\"background:${color}\"></span>${c}</span>`;
       }).join('')
     + toggleHtml;
@@ -156,6 +171,7 @@ window.__renderCreatorLegend = function() {
 
 window.CREATOR_COLORS = CREATOR_COLORS;
 window.CREATOR_BORDER = CREATOR_BORDER;
+window.creatorColor = creatorColor;
 
 function wireTooltips(container, data, selectors) {
   const tt = document.getElementById('tooltip');

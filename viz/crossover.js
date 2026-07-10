@@ -233,7 +233,7 @@
         fill = reasoningColor(m.reasoning_tax_pct);
         stroke = '#000';
       } else {
-        fill = CREATOR_COLORS[m.creator] || "#888";
+        fill = window.creatorColor(m.creator);
         stroke = CREATOR_BORDER[m.creator] || "#000";
       }
       svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="1.5" stroke-opacity="${so}"></circle>`;

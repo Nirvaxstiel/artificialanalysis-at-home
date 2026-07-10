@@ -68,7 +68,7 @@
       const x = M.left + gap + i * (barW + gap);
       const y = yScale(m.cost_per_iq);
       const h = innerH - y;
-      const fill = CREATOR_COLORS[m.creator] || "#888";
+      const fill = window.creatorColor(m.creator);
       const stroke = CREATOR_BORDER[m.creator] || "#000";
 
       svg += `<rect class="bar" data-slug="${m.slug}" x="${x}" y="${y}" width="${barW}" height="${h}" fill="${fill}" fill-opacity="0.8" stroke="${stroke}" stroke-width="1"/>`;

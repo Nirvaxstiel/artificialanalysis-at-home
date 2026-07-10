@@ -169,8 +169,19 @@
 
       const skuSuffixes = (window.SKU_PATTERNS || []).map(p => p.suffix.trim()).join('|');
       const baseCreator = a.creator.replace(new RegExp(` (${skuSuffixes})$`), '');
-      const color = (window.CREATOR_COLORS || {})[baseCreator] || '#888';
+      const color = window.creatorColor(baseCreator);
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
+
+      const fmtRaw = (key, val) => {
+        const N = window.VIZ_NUM;
+        if (val == null) return N.DASH;
+        if (key === 'avgIQ') return val.toFixed(1);
+        if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + ' t/s';
+        if (key === 'avgCacheEff') return N.fmtPct(val);
+        if (key === 'costEff') return N.fmtUSD(val) + '/task';
+        if (key === 'avgCtx') return N.fmtCount(val);
+        return N.fmtCompact(val);
+      };
 
       for (let i = 0; i < RADAR_AXES.length; i++) {
         const ax = RADAR_AXES[i];
@@ -215,17 +226,6 @@
         svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">${fmtApex(ax.key, apexVals[i])}</tspan></text>`;
       }
       svg += '</svg>';
-
-      const fmtRaw = (key, val) => {
-        const N = window.VIZ_NUM;
-        if (val == null) return N.DASH;
-        if (key === 'avgIQ') return val.toFixed(1);
-        if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + ' t/s';
-        if (key === 'avgCacheEff') return N.fmtPct(val);
-        if (key === 'costEff') return N.fmtUSD(val) + '/task';
-        if (key === 'avgCtx') return N.fmtCount(val);
-        return N.fmtCompact(val);
-      };
 
       let statsHtml = RADAR_AXES.map(ax => {
         const rawKey = { avgIQ: 'rawIQ', avgSpeed: 'rawSpeed', avgCacheEff: 'rawCacheEff',
