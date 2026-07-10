@@ -1,152 +1,13 @@
-"""Build model_registry.json — merge all sources into unified domain model.
-
-Output: data/model_registry.json
-  - models[] with canonical ID, meta, pricing(source-tagged), benchmarks(source-tagged)
-  - name_map for cross-reference
-"""
 import json, csv, os, re
 from datetime import date
 from pathlib import Path
 
 from .sources.aa._build import get_aa_models
-
-def arena_id_to_canonical(aid):
-    """Arena IDs -> canonical. Handle hyphens-vs-dots mismatch."""
-    n = aid.strip().lower()
-    arena_fixes = {
-        "claude-opus-4-8": "claude-opus-4.8",
-        "claude-opus-4-6": "claude-opus-4.6",
-        "claude-opus-4-7": "claude-opus-4.7",
-        "claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
-        "claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
-        "claude-sonnet-4-6": "claude-sonnet-4.6",
-        "claude-sonnet-4-5-20250929": "claude-sonnet-4.5",
-        "grok-4-3": "grok-4.3",
-        "grok-4-1": "grok-4.1",
-        "gpt-5-5-high": "gpt-5.5-high",
-        "gpt-5-5": "gpt-5.5-xhigh",
-        "gpt-5-5-pro": "gpt-5.5-pro",
-        "gpt-5-4": "gpt-5.4",
-        "gpt-5-4-high": "gpt-5.4-high",
-        "gpt-5-3-codex": "gpt-5.3-codex",
-        "gpt-5-2-codex": "gpt-5.2-codex",
-        "gemini-3-5-flash": "gemini-3.5-flash",
-        "gemini-3-pro": "gemini-3-pro",
-        "gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
-        "gemini-3-flash": "gemini-3-flash",
-        "mistral-medium-3-5": "mistral-medium-3.5",
-        "glm-5-2": "glm-5.2",
-        "glm-5-1": "glm-5.1",
-        "gpt-5-5-instant": "gpt-5.5-instant",
-        "nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
-        "minimax-m3": "minimax-m3",
-    }
-    return arena_fixes.get(n, n)
-
-def livebench_name_to_canonical(name):
-    """LiveBench names. Mostly same as canonical, except some have dates."""
-    n = name.strip().lower()
-    n = re.sub(r'-20\d{6}', '', n)  # Strip date suffixes like -20250805
-    return n
-
-def openrouter_id_to_canonical(rid):
-    """openai/gpt-5.5-high -> gpt-5.5-high"""
-    r = rid.strip().lower()
-    parts = r.split("/")
-    if len(parts) >= 2:
-        return parts[-1]  # Use model name only
-    return r
-
-OR_SUFFIXES = ["-thinking", "-high", "-low", "-medium", "-xhigh",
-               "-preview", "-reasoning", "-non-thinking", "-it", ":free"]
-
-OR_ID_MAP = {
-    "claude-sonnet-4.6-adaptive": "anthropic/claude-sonnet-4.6",
-    "gemini-3-pro": "google/gemini-3-pro",
-    "gemini-3-pro-low": "google/gemini-3-pro",
-    "gemini-3-flash-reasoning": "google/gemini-3-flash-preview",
-    "claude-opus-4-7": "anthropic/claude-opus-4",
-    "claude-opus-4-6-adaptive": "anthropic/claude-opus-4",
-    "claude-opus-4-5-thinking": "anthropic/claude-opus-4",
-    "deepseek-v4-pro-high": "deepseek/deepseek-v4-pro",
-    "deepseek-v4-flash-high": "deepseek/deepseek-v4-flash",
-    "gpt-5-5-instant-06-26": "openai/gpt-5.5-instant",
-    "claude-4.5-sonnet-thinking": "anthropic/claude-4.5-sonnet",
-    "claude-4.5-haiku-reasoning": "anthropic/claude-4.5-haiku",
-    "grok-4-3-medium": "xai/grok-4.3",
-    "grok-4-3-low": "xai/grok-4.3",
-    "gemini-3-5-flash-medium": "google/gemini-3.5-flash",
-    "gpt-oss-120b-low": "openai/gpt-oss-120b",
-    "gpt-oss-20b-low": "openai/gpt-oss-20b",
-    "claude-sonnet-5-high": "anthropic/claude-sonnet-5",
-    "gemma-4-26b-a4b": "google/gemma-4-26b-a4b-it",
-    "gemma-4-31b": "google/gemma-4-31b-it",
-    "nemotron-3-nano-omni-30b-a3b": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
-    "nvidia-nemotron-3-nano-30b-a3b-reasoning": "nvidia/nemotron-3-nano-30b-a3b",
-    "sonar-reasoning": "perplexity/sonar",
-    "sonar-reasoning-pro": "perplexity/sonar-pro",
-    "diffusiongemma-26b-a4b": "google/fusion",
-    "gpt-5.5-xhigh": "openai/gpt-5.5",
-    "gpt-5.5-high": "openai/gpt-5.5",
-    "gpt-5.5-medium": "openai/gpt-5.5",
-    "gpt-5.5-low": "openai/gpt-5.5",
-    "gpt-5-4": "openai/gpt-5",
-    "gpt-5-4-mini": "openai/gpt-5",
-    "gpt-5-4-nano": "openai/gpt-5",
-    "gpt-5-4-mini-medium": "openai/gpt-5",
-    "gpt-5-4-nano-medium": "openai/gpt-5",
-    "kimi-k2-5": "moonshot/kimi-k2",
-    "kimi-k2-thinking": "moonshot/kimi-k2",
-}
-
-
-def _resolve_or_context(all_models, or_models):
-    or_ctx = {}
-    for m in or_models:
-        rid = m["id"]
-        canonical = openrouter_id_to_canonical(rid)
-        ctx = m.get("context_length")
-        if ctx is not None and isinstance(ctx, (int, float)) and ctx > 0:
-            or_ctx[canonical] = int(ctx)
-
-    for our_slug, or_id in OR_ID_MAP.items():
-        if our_slug in all_models:
-            canonical = openrouter_id_to_canonical(or_id)
-            if canonical in or_ctx:
-                all_models[our_slug]["meta"]["context_window"] = or_ctx[canonical]
-
-    for cid in all_models:
-        if "context_window" not in all_models[cid].get("meta", {}):
-            if cid in or_ctx:
-                all_models[cid]["meta"]["context_window"] = or_ctx[cid]
-                continue
-            for suffix in OR_SUFFIXES:
-                stripped = cid
-                if suffix.startswith(":"):
-                    if cid.endswith(suffix):
-                        stripped = cid[:-len(suffix)]
-                else:
-                    if cid.endswith(suffix):
-                        stripped = cid[:-len(suffix)]
-                if stripped in or_ctx:
-                    all_models[cid]["meta"]["context_window"] = or_ctx[stripped]
-                    break
-
-def openllm_name_to_canonical(name):
-    """HF model path or display name -> canonical"""
-    if not name:
-        return None
-    n = name.strip()
-    if "href=" in n:
-        m = re.search(r'href="([^"]+)"', n)
-        if m:
-            n = m.group(1)
-    n = n.lower()
-    if "/" in n:
-        parts = n.split("/")
-        n = parts[-1]
-    n = re.sub(r'-20\d{6}', '', n)
-    return n
+from ._canonical import (
+    resolve_from_slug, livebench_name_to_canonical,
+    openrouter_id_to_canonical, openllm_name_to_canonical,
+    canonical_to_or_id, resolve_or_context,
+)
 
 
 def run(ctx=None):
@@ -234,7 +95,7 @@ def run(ctx=None):
 
     for m in arena_text_data.get("models", []):
         aid = m["model"]
-        cid = arena_id_to_canonical(aid)
+        cid = resolve_from_slug(aid)
 
         if cid not in all_models:
             all_models[cid] = {
@@ -263,7 +124,7 @@ def run(ctx=None):
 
     for m in arena_code_data.get("models", []):
         aid = m["model"]
-        cid = arena_id_to_canonical(aid)
+        cid = resolve_from_slug(aid)
 
         if cid not in all_models:
             all_models[cid] = {
@@ -368,6 +229,7 @@ def run(ctx=None):
         inp = or_price(m.get("input_price"))
         out = or_price(m.get("output_price"))
         cache = or_price(m.get("cache_read_price"))
+        cache_write = or_price(m.get("cache_write_price"))
 
         if inp is not None:
             all_models[cid]["pricing"]["openrouter"]["inp_price"] = inp  # $/token
@@ -378,10 +240,13 @@ def run(ctx=None):
         if cache is not None:
             all_models[cid]["pricing"]["openrouter"]["cache_read_price"] = cache
             all_models[cid]["pricing"]["openrouter"]["cache_read_price_per_m"] = cache * 1_000_000
+        if cache_write is not None:
+            all_models[cid]["pricing"]["openrouter"]["cache_write_price"] = cache_write
+            all_models[cid]["pricing"]["openrouter"]["cache_write_price_per_m"] = cache_write * 1_000_000
 
         all_models[cid]["pricing"]["openrouter"]["vendor"] = m.get("vendor")
 
-    _resolve_or_context(all_models, or_models)
+    resolve_or_context(all_models, or_models)
 
     misc_path = os.path.join(SRC, "misc.json")
     if os.path.exists(misc_path):

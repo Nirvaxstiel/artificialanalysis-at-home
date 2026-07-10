@@ -1,4 +1,3 @@
-"""Pull all open-source benchmarking data into data/sources/"""
 import json, csv, io, os, sys, urllib.request
 from pathlib import Path
 

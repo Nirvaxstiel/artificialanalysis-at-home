@@ -7,7 +7,7 @@
   "muse-spark": { "context_window": 1048576 },
   "mimo-v2-pro": { "context_window": 1048576 },
   "mimo-v2-5-0424": { "context_window": 1048576 },
-  "glm-5-1": { "context_window": 200000 },
+  "glm-5.1": { "context_window": 200000 },
   "gemini-3-pro": { "context_window": 65536 },
   "gemini-3-pro-low": { "context_window": 65536 },
   "gemini-3-flash-reasoning": { "context_window": 1048576 },

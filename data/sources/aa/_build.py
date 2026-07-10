@@ -1,93 +1,8 @@
-"""Build AA source models — merge scraped + enriched data into domain-format entries.
-
-Reads from data/sources/aa/raw/ and data/sources/aa/enriched/, returns dict of canonical_id → model record.
-Used by _build_registry.py (does NOT read from pipeline output — no circular dep).
-"""
 
 import json, os, re
 from pathlib import Path
 
-# ═══════════════════════════════════════════════
-# Canonical name mapping (AA slugs → canonical IDs)
-# ═══════════════════════════════════════════════
-
-AA_TO_CANONICAL = {
-    "gpt-oss-20b": "gpt-oss-20b",
-    "gpt-oss-120b": "gpt-oss-120b",
-    "gpt-5-5-low": "gpt-5.5-low",
-    "gpt-5-5-high": "gpt-5.5-high",
-    "gpt-5-5-medium": "gpt-5.5-medium",
-    "gpt-5-5": "gpt-5.5-xhigh",
-    "gpt-5-5-pro": "gpt-5.5-pro",
-    "gpt-5-3-codex": "gpt-5.3-codex",
-    "gpt-5-2-codex": "gpt-5.2-codex",
-    "muse-spark": "muse-spark",
-    "gemma-4-31b": "gemma-4-31b",
-    "gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
-    "gemini-3-5-flash": "gemini-3.5-flash",
-    "claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
-    "claude-fable-5": "claude-fable-5",
-    "claude-sonnet-5": "claude-sonnet-5",
-    "claude-opus-4-8": "claude-opus-4.8",
-    "claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
-    "claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
-    "mistral-medium-3-5": "mistral-medium-3.5",
-    "deepseek-v4-pro": "deepseek-v4-pro",
-    "deepseek-v4-flash": "deepseek-v4-flash",
-    "grok-4-3": "grok-4.3",
-    "nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
-    "solar-pro-3": "solar-pro-3",
-    "minimax-m2-7": "minimax-m2.7",
-    "minimax-m3": "minimax-m3",
-    "minimax-m2-5": "minimax-m2.5",
-    "nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
-    "kimi-k2-7-code": "kimi-k2.7-code",
-    "kimi-k2-6": "kimi-k2.6",
-    "kimi-k2-thinking": "kimi-k2-thinking",
-    "mimo-v2-5-pro": "mimo-v2.5-pro",
-    "k2-think-v2": "k2-think-v2",
-    "glm-5-2": "glm-5.2",
-    "qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
-    "qwen3-7-max": "qwen3.7-max",
-}
-
-# Cost breakdown display names → canonical IDs
-COSTBD_NAME_MAP = {
-    "gpt-oss-20b (high)": "gpt-oss-20b",
-    "DeepSeek V4 Flash (max)": "deepseek-v4-flash",
-    "MiMo-V2.5-Pro (max)": "mimo-v2.5-pro",
-    "DeepSeek V4 Pro (max)": "deepseek-v4-pro",
-    "gpt-oss-120b (high)": "gpt-oss-120b",
-    "MiniMax-M2.7": "minimax-m2.7",
-    "MiniMax-M3": "minimax-m3",
-    "Grok 4.3 (high)": "grok-4.3",
-    "Nova 2.0 Pro Preview (medium)": "nova-2.0-pro-reasoning-medium",
-    "Kimi K2.7 Code": "kimi-k2.7-code",
-    "GPT-5.5 (low)": "gpt-5.5-low",
-    "Claude 4.5 Haiku": "claude-4.5-haiku-reasoning",
-    "Nemotron 3 Ultra": "nemotron-3-ultra-550b-a55b",
-    "NVIDIA Nemotron 3 Super": "nemotron-3-super-120b-a12b",
-    "Gemini 3.1 Pro Preview": "gemini-3.1-pro-preview",
-    "Kimi K2.6": "kimi-k2.6",
-    "Qwen3.5 397B A17B": "qwen3.5-397b-a17b",
-    "Claude 4.5 Sonnet": "claude-4.5-sonnet-thinking",
-    "GPT-5.5 (medium)": "gpt-5.5-medium",
-    "GLM-5.2 (max)": "glm-5.2",
-    "Gemini 3.5 Flash": "gemini-3.5-flash",
-    "GPT-5.5 (high)": "gpt-5.5-high",
-    "GPT-5.5 (xhigh)": "gpt-5.5-xhigh",
-    "Qwen3.7 Max": "qwen3.7-max",
-    "Claude Sonnet 4.6 (max)": "claude-sonnet-4.6-adaptive",
-    "Mistral Medium 3.5": "mistral-medium-3.5",
-    "Claude Opus 4.8 (max)": "claude-opus-4.8",
-    "Claude Sonnet 5 (max)": "claude-sonnet-5",
-}
-
-
-def aa_slug_to_canonical(slug: str) -> str:
-    """Map an AA slug to its canonical ID (fallback: slug as-is)."""
-    return AA_TO_CANONICAL.get(slug, slug)
+from ..._canonical import resolve_from_slug, costbd_name_to_canonical
 
 
 def get_aa_models(base: Path) -> dict[str, dict]:
@@ -107,9 +22,17 @@ def get_aa_models(base: Path) -> dict[str, dict]:
     with open(scraped_path) as f:
         scraped_models = json.load(f)
 
+    # Warn on duplicate slugs
+    seen_slugs = set()
     for m in scraped_models:
         slug = m.get("slug")
-        cid = aa_slug_to_canonical(slug)
+        if slug and slug in seen_slugs:
+            print(f"  ⚠ Duplicate AA slug '{slug}' in aa_models_scraped.json — overwriting previous")
+        seen_slugs.add(slug)
+
+    for m in scraped_models:
+        slug = m.get("slug")
+        cid = resolve_from_slug(slug)
         if not cid:
             continue
 
@@ -166,7 +89,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         aa_raw = json.load(f)
 
     for slug, raw in aa_raw.items():
-        cid = aa_slug_to_canonical(slug)
+        cid = resolve_from_slug(slug)
         if not cid:
             continue
 
@@ -186,7 +109,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
 
     for m in costbd_data.get("models", []):
         display_name = m.get("name", "")
-        cid = COSTBD_NAME_MAP.get(display_name)
+        cid = costbd_name_to_canonical(display_name)
         if not cid or cid not in all_models:
             continue
 

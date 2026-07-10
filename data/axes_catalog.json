@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated": "2026-07-09",
+    "generated": "2026-07-10",
     "version": "1.0",
     "total_axes": 47,
-    "total_models": 2245,
+    "total_models": 2241,
     "sources": [
       "AA",
       "Arena Code",
@@ -129,7 +129,7 @@
       "models_have": 99,
       "range": [
         0,
-        134
+        132
       ],
       "group": "Performance",
       "normalize_range": [
@@ -992,10 +992,10 @@
   ],
   "feasibility": {
     "n_axis_pairs": {
-      "AA\u00d7Arena Code": 14,
-      "AA\u00d7Arena Text": 8,
-      "AA\u00d7LiveBench": 19,
-      "AA\u00d7OpenRouter": 31,
+      "AA\u00d7Arena Code": 17,
+      "AA\u00d7Arena Text": 11,
+      "AA\u00d7LiveBench": 20,
+      "AA\u00d7OpenRouter": 35,
       "Arena Code\u00d7Arena Text": 18,
       "Arena Code\u00d7LiveBench": 11,
       "Arena Code\u00d7OpenRouter": 23,

@@ -1,9 +1,3 @@
-"""Build axes_catalog.json — atomic single-axis metrics with metadata.
-
-Each axis is a standalone metric that can be freely mixed across sources.
-The catalog defines what axes exist; the projection engine (project_axes.py)
-extracts any N-axis combination into a model×axis matrix.
-"""
 import json, os, csv, re
 from pathlib import Path
 

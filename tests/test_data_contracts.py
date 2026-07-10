@@ -16,7 +16,7 @@ def dashboard_html():
 
 @pytest.fixture(scope="module")
 def processed_js():
-    """Load processed.js as a Python list."""
+
     js_path = REPO / "data" / "processed.js"
     raw = js_path.read_text(encoding="utf-8").strip()
     raw = raw.removeprefix("window.PROCESSED_DATA = ").removesuffix(";")
@@ -32,16 +32,9 @@ def shared_js():
 
 
 class TestDerivedProperties:
-    """Guardrail for the whole class of DERIVED properties.
-
-    A DERIVED field must never carry a value computed from a null, corrupt,
-    or physically-impossible SOURCED input. This makes the domain model safe
-    by construction: if a source feeds garbage, the DERIVED output is null,
-    not wrong.
-    """
 
     def test_all_fields_have_provenance(self):
-        """Every ProjectionRow field must be tagged SOURCED or DERIVED."""
+
         annotated = set(ProjectionRow.FIELD_PROVENANCE)
         field_names = {f.name for f in ProjectionRow.__dataclass_fields__.values()}
         missing = field_names - annotated - {"meta", "FIELD_PROVENANCE"}
@@ -50,13 +43,13 @@ class TestDerivedProperties:
     def test_derived_fields_are_explicit(self):
         derived = {k for k, v in ProjectionRow.FIELD_PROVENANCE.items()
                     if v == Provenance.DERIVED}
-        assert derived == {"iq_per_1k_pt", "cost_per_iq_pt"}, \
+        assert derived == {"iq_per_1k_pt", "cost_per_iq_pt", "archetype",
+                           "radar_intel", "radar_speed", "radar_cache_eff",
+                           "radar_cost_eff", "radar_ctx"}, \
             f"DERIVED set drifted: {derived}"
 
     def test_cost_per_wallsec_axis_removed(self):
-        """cost_per_wallsec was removed entirely — not derivable from available
-        sources (AA doesn't expose Time per Task via API or scrapeable HTML).
-        No ProjectionRow field, provenance entry, or processed.js key should exist."""
+
         assert "cost_per_wallsec" not in ProjectionRow.FIELD_PROVENANCE, \
             "cost_per_wallsec must not appear in FIELD_PROVENANCE"
         raw = (REPO / "data" / "processed.js").read_text(encoding="utf-8").strip()
@@ -67,8 +60,7 @@ class TestDerivedProperties:
                 f"{m['slug']}: cost_per_wallsec key must be absent"
 
     def test_derived_iq_fields_consistent(self, processed_js):
-        """iq_per_1k_pt and cost_per_iq_pt must equal their derivation from
-        SOURCED intel + cost_per_task (or be null when inputs lack)."""
+
         for m in processed_js:
             intel = m.get("intel")
             ct = m.get("cost_per_task")
@@ -88,7 +80,6 @@ class TestDerivedProperties:
 
 
 class TestCreatorColors:
-    """Every model creator in processed.js must have an entry in CREATOR_COLORS."""
 
     def test_all_creators_have_colors(self, processed_js, shared_js):
         creators = {m["creator"] for m in processed_js}
@@ -109,7 +100,6 @@ class TestCreatorColors:
 
 
 class TestScriptSources:
-    """Every script tag in dashboard.html must point to an existing file."""
 
     def test_all_script_srcs_exist(self, dashboard_html):
         srcs = re.findall(r'<script\s+src="\.([^"]+)"', dashboard_html)
@@ -125,7 +115,6 @@ class TestScriptSources:
 
 
 class TestHeaderCount:
-    """The dashboard header displays dynamic model/creator count from data."""
 
     def test_header_model_count(self, dashboard_html, processed_js):
         assert 'id="header-meta"' in dashboard_html, \
@@ -143,7 +132,6 @@ class TestHeaderCount:
 
 
 class TestVizParseability:
-    """Every viz/*.js file must be valid JavaScript (no syntax errors)."""
 
     def test_all_viz_files_parse(self):
         from jsonschema.exceptions import ValidationError
@@ -166,7 +154,6 @@ class TestVizParseability:
 
 
 class TestMiscSource:
-    """misc.json entries must be valid records referencing real models."""
 
     def test_valid_json(self):
         path = REPO / "data" / "sources" / "misc.json"
@@ -200,8 +187,7 @@ class TestTokensMGuardrail:
     non-positive or absurdly large values (>10,000M = 10B tokens/task).
     """
     def test_tokens_m_is_aa_per_task_volume(self, processed_js):
-        """tokens_m values present must be positive AA per-task token volumes
-        (millions), within a sane bound. Not compared to context_window."""
+
         for m in processed_js:
             tm = m.get("tokens_m")
             if tm is None:
@@ -210,16 +196,14 @@ class TestTokensMGuardrail:
             assert tm <= 10_000, f"{m['slug']}: tokens_m={tm}M exceeds sane AA per-task bound"
 
     def test_tokens_m_absent_when_no_source(self, processed_js):
-        """tokens_m is sourced only from AA's enriched file (38 models).
-        Models without an AA per-task volume must be null, not zero/garbage."""
+
         have = [m for m in processed_js if m.get("tokens_m") is not None]
         # AA enriched set is ~38 models; the rest are null by design
         assert 30 <= len(have) <= 45, f"unexpected tokens_m coverage: {len(have)}"
 
 
 class TestVizNoDataGating:
-    """Each viz must gate on fields that actually carry data.
-    Archetypes radar must not require tokens_m (only AA models have it)."""
+
     def test_archetypes_no_longer_requires_tokens_m(self, processed_js):
         # 03 gate (post-fix): intel + cost_per_task>0 + speed_tps.
         models = [m for m in processed_js
@@ -240,7 +224,6 @@ class TestVizNoDataGating:
 
 
 class TestProcessedJS:
-    """processed.js must parse as valid JavaScript (no syntax errors)."""
 
     def test_valid_js_syntax(self):
         r = subprocess.run(
@@ -255,10 +238,7 @@ class TestProcessedJS:
             )
 
     def test_radar_axes_no_token_eff(self, shared_js):
-        """Provider-archetype radar must be a clean directional-quality pentagon
-        (IQ, SPEED, CACHE EFF, COST EFF, CTX). TOKEN EFF was removed — it inverted
-        a cumulative eval-token volume (tokens_m) to fake a 'higher=better' direction,
-        which is a misnomer (it's verbosity, not efficiency)."""
+
         import re
         m = re.search(r"window\.RADAR_AXES\s*=\s*\[(.*?)\];", shared_js, re.DOTALL)
         assert m, "RADAR_AXES not found in _shared.js"
@@ -269,11 +249,21 @@ class TestProcessedJS:
             f"radar axes drifted: {keys}"
 
     def test_aa_pricing_fully_populated(self, processed_js):
-        """AA-sourced pricing fields should be populated for AA models
-        (live API fill at source-fetch stage)."""
+
         aa_models = [m for m in processed_js if m.get("intel") is not None
                      or m.get("inp_price") is not None]
         assert aa_models, "no AA-sourced models found"
         for field in ("inp_price", "out_price", "blended"):
             missing = [m["slug"] for m in aa_models if m.get(field) is None]
             assert not missing, f"AA models missing {field}: {missing[:5]}"
+
+    def test_archetype_classified(self, processed_js):
+        counts = {}
+        for m in processed_js:
+            a = m.get("archetype", "uncategorized")
+            counts[a] = counts.get(a, 0) + 1
+        assert "frontier" in counts, "expected frontier models"
+        assert "uncategorized" in counts, "expected some uncategorized models"
+        assert counts.get("uncategorized", 0) < len(processed_js), \
+            "all models are uncategorized — classifier not running"
+        print(f"\n  Archetype distribution: {counts}")

@@ -1,11 +1,3 @@
-"""Build processed.js — flat enriched model data using domain types.
-
-Usage: python data/_build_dashboard_data.py
-Output: data/processed.js (overwritten)
-
-Builds ProjectionRow domain objects with typed value objects. Invalid states
-are unrepresentable — the row constructor catches them at build time.
-"""
 
 import json, re, os
 from pathlib import Path
@@ -42,6 +34,28 @@ def _clean_name(name):
 def _today():
     from datetime import date
     return date.today().isoformat()
+
+
+# ── Archetype classification ──
+
+ArchetypePriority = [
+    ("frontier", lambda r: r.intel is not None and r.intel.as_primitive() >= 50),
+    ("reasoning", lambda r: r.reasoning_tax_pct is not None and r.reasoning_tax_pct.as_primitive() >= 20),
+    ("cheap", lambda r: r.cost_per_task is not None and r.cost_per_task.as_primitive() < 0.50
+                and r.intel is not None and r.intel.as_primitive() >= 30),
+    ("fast", lambda r: r.speed_tps is not None and r.speed_tps.as_primitive() >= 150),
+    ("compact", lambda r: r.params_b is not None
+                 and r.params_b.as_primitive() > 0
+                 and r.params_b.as_primitive() < 30
+                 and r.intel is not None and r.intel.as_primitive() >= 30),
+]
+
+
+def classify_archetype(row: ProjectionRow) -> Archetype:
+    for name, pred in ArchetypePriority:
+        if pred(row):
+            return Archetype(name)
+    return Archetype.UNCATEGORIZED
 
 
 def build(ctx=None):
@@ -145,6 +159,7 @@ def build(ctx=None):
         )
 
         row.compute_derived()
+        row.meta.archetype = classify_archetype(row)
 
         # tokens_m is AA's "Output Tokens per Intelligence Index Task" (millions).
         # It spans the ENTIRE eval suite, not a single context window — so it is
@@ -159,6 +174,30 @@ def build(ctx=None):
 
     # Sort: by intel descending, then slug
     output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
+
+    # ── Compute radar-normalized scores ──
+    def _radar_raws(row):
+        intel_raw = row.intel.as_primitive() if row.intel else None
+        speed_raw = row.speed_tps.as_primitive() if row.speed_tps else None
+        cache_raw = (1 - row.cache_hit_price.as_primitive() / row.inp_price.as_primitive()) \
+            if row.cache_hit_price and row.inp_price and row.inp_price.as_primitive() > 0 else None
+        cost_raw = 1 / row.cost_per_task.as_primitive() \
+            if row.cost_per_task and row.cost_per_task.as_primitive() > 0 else None
+        ctx_raw = float(row.context_window.as_primitive()) if row.context_window else None
+        return intel_raw, speed_raw, cache_raw, cost_raw, ctx_raw
+
+    all_raws = [_radar_raws(r) for r in output]
+    maxes = []
+    for axis_idx in range(5):
+        vals = [r[axis_idx] for r in all_raws if r[axis_idx] is not None]
+        maxes.append(max(vals) if vals else 1)
+
+    for row, raws in zip(output, all_raws):
+        row.radar_intel = (raws[0] / maxes[0]) if raws[0] is not None else None
+        row.radar_speed = (raws[1] / maxes[1]) if raws[1] is not None else None
+        row.radar_cache_eff = (raws[2] / maxes[2]) if raws[2] is not None else None
+        row.radar_cost_eff = (raws[3] / maxes[3]) if raws[3] is not None else None
+        row.radar_ctx = (raws[4] / maxes[4]) if raws[4] is not None else None
 
     payload = {
         "meta": {

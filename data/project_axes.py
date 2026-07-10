@@ -1,18 +1,3 @@
-"""Projection engine — extract N-axis cross-source matrices from model registry.
-
-Usage:
-    from project_axes import ProjectionEngine
-    pe = ProjectionEngine()
-    
-    # Get N-axis matrix
-    matrix = pe.project(["aa.intel", "aa.inp_price", "livebench.coding", "arena_text.elo"])
-    
-    # Filter by model subset
-    matrix = pe.project(["aa.intel", "aa.inp_price"], model_ids=["deepseek-v4-pro", "gpt-5.5-high"])
-    
-    # Get feasible intersections
-    pe.feasibility_report(min_overlap=3)
-"""
 
 import json, os, re
 from pathlib import Path

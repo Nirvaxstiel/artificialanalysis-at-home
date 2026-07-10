@@ -1,14 +1,3 @@
-"""Domain model — rich typed value objects and entities for the pricing dashboard.
-
-Every value object validates its range at construction. Invalid states are
-unrepresentable: if the model allows it, it's valid.
-
-Use `to_primitive(obj)` to serialize domain objects to JSON-compatible dicts
-at the pipeline boundary.
-"""
-
-from __future__ import annotations
-
 import re
 from dataclasses import dataclass, field, fields
 from datetime import date
@@ -16,13 +5,7 @@ from enum import Enum
 from typing import Any, ClassVar, Dict, List, Optional, Tuple
 
 
-# ═══════════════════════════════════════════════════════════════
-# Base types
-# ═══════════════════════════════════════════════════════════════
-
 class DomainValue:
-    """Marker for scalar value objects that serialize to their primitive."""
-
     def as_primitive(self) -> Any:
         name = next(iter(self.__dataclass_fields__))
         return getattr(self, name)
@@ -31,24 +14,12 @@ class DomainValue:
         return f"{type(self).__name__}({self.as_primitive()!r})"
 
 
-# ═══════════════════════════════════════════════════════════════
-# Enums
-# ═══════════════════════════════════════════════════════════════
-
 class ModelType(str, Enum):
     CHAT = "chat"
     REASONING = "reasoning"
 
 
 class Provenance(str, Enum):
-    """Where a ProjectionRow field's value originates.
-
-    SOURCED  — value read from a provider file (AA / OR / LiveBench / …) at
-               the source-fetch stage. Ground truth from an external source.
-    DERIVED  — value computed in-pipeline from one or more SOURCED fields
-               (e.g. cost_per_iq_pt = cost_per_task / intel). Must only be set
-               from validated inputs; never from another DERIVED field.
-    """
     SOURCED = "sourced"
     DERIVED = "derived"
 
@@ -88,13 +59,8 @@ class SourceKey(str, Enum):
     COST_BREAKDOWN = "cost_breakdown"
 
 
-# ═══════════════════════════════════════════════════════════════
-# Pricing value objects
-# ═══════════════════════════════════════════════════════════════
-
 @dataclass(frozen=True)
 class PricePerMToken(DomainValue):
-    """$/M tokens. Non-negative. Canonical pricing unit."""
     usd: float
 
     def __post_init__(self):
@@ -113,7 +79,6 @@ class PricePerMToken(DomainValue):
 
 @dataclass(frozen=True)
 class PricePerToken(DomainValue):
-    """$/token. Non-negative. OpenRouter raw API format."""
     usd: float
 
     def __post_init__(self):
@@ -126,7 +91,6 @@ class PricePerToken(DomainValue):
 
 @dataclass(frozen=True)
 class CostPerTask(DomainValue):
-    """$ per average task. Non-negative."""
     usd: float
 
     def __post_init__(self):
@@ -136,10 +100,6 @@ class CostPerTask(DomainValue):
 
 @dataclass(frozen=True)
 class TokensPerTask(DomainValue):
-    """Millions of output tokens per Intelligence Index task (AA "Output Tokens
-    per Task"). The raw CSV/AA value is already in millions (e.g. 300 = 300M),
-    so `mtok` stores that raw number directly. Spans the entire eval suite, not
-    a single context window — legitimately far larger than context_window."""
     mtok: float
 
     def __post_init__(self):
@@ -149,7 +109,6 @@ class TokensPerTask(DomainValue):
 
 @dataclass(frozen=True)
 class TokensPerSecond(DomainValue):
-    """Output tokens per second. Non-negative."""
     tps: float
 
     def __post_init__(self):
@@ -159,7 +118,6 @@ class TokensPerSecond(DomainValue):
 
 @dataclass(frozen=True)
 class TimeToFirstToken(DomainValue):
-    """Median time to first token in seconds. Non-negative. Lower is better."""
     seconds: float
 
     def __post_init__(self):
@@ -174,7 +132,6 @@ def safe_ttft(v) -> Optional[TimeToFirstToken]:
 
 @dataclass(frozen=True)
 class UsefulCost(DomainValue):
-    """$ cost of non-reasoning output. Non-negative."""
     usd: float
 
     def __post_init__(self):
@@ -184,7 +141,6 @@ class UsefulCost(DomainValue):
 
 @dataclass(frozen=True)
 class ReasoningTaxPct(DomainValue):
-    """Percentage overhead from reasoning tokens. Non-negative ratio (can exceed 100%)."""
     pct: float
 
     def __post_init__(self):
@@ -194,7 +150,6 @@ class ReasoningTaxPct(DomainValue):
 
 @dataclass(frozen=True)
 class CacheHitRate(DomainValue):
-    """Cache hit rate percentage. [0, 100]."""
     pct: float
 
     def __post_init__(self):
@@ -204,7 +159,6 @@ class CacheHitRate(DomainValue):
 
 @dataclass(frozen=True)
 class CostSegment(DomainValue):
-    """Single cost component from breakdown. Non-negative."""
     usd: float
 
     def __post_init__(self):
@@ -212,13 +166,8 @@ class CostSegment(DomainValue):
             raise ValueError(f"Negative cost segment: {self.usd}")
 
 
-# ═══════════════════════════════════════════════════════════════
-# Quality & performance value objects
-# ═══════════════════════════════════════════════════════════════
-
 @dataclass(frozen=True)
 class IntelligenceScore(DomainValue):
-    """AA intelligence score. [0, 100]. Higher = better."""
     value: float
 
     def __post_init__(self):
@@ -228,7 +177,6 @@ class IntelligenceScore(DomainValue):
 
 @dataclass(frozen=True)
 class Elo(DomainValue):
-    """Arena Elo rating. Non-negative. Usually ~1000-2000."""
     score: float
 
     def __post_init__(self):
@@ -238,7 +186,6 @@ class Elo(DomainValue):
 
 @dataclass(frozen=True)
 class CIMargin(DomainValue):
-    """95% confidence interval half-width. Non-negative."""
     margin: float
 
     def __post_init__(self):
@@ -248,7 +195,6 @@ class CIMargin(DomainValue):
 
 @dataclass(frozen=True)
 class VoteCount(DomainValue):
-    """Total votes. Non-negative integer."""
     count: int
 
     def __post_init__(self):
@@ -261,7 +207,6 @@ class VoteCount(DomainValue):
 
 @dataclass(frozen=True)
 class BenchmarkScore(DomainValue):
-    """Generic benchmark score. [0, 100]."""
     score: float
 
     def __post_init__(self):
@@ -271,7 +216,6 @@ class BenchmarkScore(DomainValue):
 
 @dataclass(frozen=True)
 class IQ_PerMToken(DomainValue):
-    """Intelligence per million tokens."""
     value: float
 
     def as_primitive(self) -> float:
@@ -280,7 +224,6 @@ class IQ_PerMToken(DomainValue):
 
 @dataclass(frozen=True)
 class IQ_PerMTokenDollar(DomainValue):
-    """Intelligence per dollar per million tokens throughput."""
     value: float
 
     def as_primitive(self) -> float:
@@ -289,7 +232,6 @@ class IQ_PerMTokenDollar(DomainValue):
 
 @dataclass(frozen=True)
 class IQ_PerDollarPoint(DomainValue):
-    """Intelligence per dollar (point estimate)."""
     value: float
 
     def as_primitive(self) -> float:
@@ -298,7 +240,6 @@ class IQ_PerDollarPoint(DomainValue):
 
 @dataclass(frozen=True)
 class CostPerIQPoint(DomainValue):
-    """$ per unit of intelligence. Non-negative."""
     usd_per_iq: float
 
     def __post_init__(self):
@@ -306,13 +247,8 @@ class CostPerIQPoint(DomainValue):
             raise ValueError(f"Negative cost per IQ point: {self.usd_per_iq}")
 
 
-# ═══════════════════════════════════════════════════════════════
-# Meta value objects
-# ═══════════════════════════════════════════════════════════════
-
 @dataclass(frozen=True)
 class ParameterCount(DomainValue):
-    """Parameter count in billions. Positive."""
     b: float
 
     def __post_init__(self):
@@ -322,7 +258,6 @@ class ParameterCount(DomainValue):
 
 @dataclass(frozen=True)
 class CarbonKg(DomainValue):
-    """Estimated CO₂ for inference. Non-negative."""
     kg: float
 
     def __post_init__(self):
@@ -341,7 +276,6 @@ class ContextWindow(DomainValue):
 
 @dataclass(frozen=True)
 class Percentile(DomainValue):
-    """Percentile rank. [0, 100]."""
     pct: float
 
     def __post_init__(self):
@@ -351,7 +285,6 @@ class Percentile(DomainValue):
 
 @dataclass(frozen=True)
 class Count(DomainValue):
-    """Generic non-negative integer count."""
     value: int
 
     def __post_init__(self):
@@ -362,16 +295,8 @@ class Count(DomainValue):
         return self.value
 
 
-# ═══════════════════════════════════════════════════════════════
-# Entity — Axis
-# ═══════════════════════════════════════════════════════════════
-
 @dataclass(frozen=True)
 class Axis:
-    """Single metric dimension in the catalog.
-
-    AxisId = f"{source}.{name}" — globally unique, namespaced.
-    """
     id: str
     name: str
     source: SourceKey
@@ -427,7 +352,6 @@ class Axis:
 
 @dataclass(frozen=True)
 class AAPricing:
-    """AA pricing — all fields required (not null) when record exists."""
     inp_price: PricePerMToken
     out_price: PricePerMToken
     blended: PricePerMToken
@@ -461,7 +385,6 @@ class AAPricing:
 
 @dataclass(frozen=True)
 class CostBreakdownPricing:
-    """Cost breakdown — all fields present when record exists."""
     total_cost_per_task_usd: CostSegment
     answer_usd: CostSegment
     reasoning_usd: CostSegment
@@ -482,7 +405,6 @@ class CostBreakdownPricing:
 
 @dataclass(frozen=True)
 class OpenRouterPricing:
-    """OpenRouter pricing."""
     inp_price: PricePerToken
     inp_price_per_m: PricePerMToken
     out_price: PricePerToken
@@ -512,7 +434,6 @@ class OpenRouterPricing:
 
 @dataclass(frozen=True)
 class AABenchmarks:
-    """AA quality benchmarks."""
     intel: IntelligenceScore
     iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
     iq_per_mtok: Optional[IQ_PerMToken] = None
@@ -533,7 +454,6 @@ class AABenchmarks:
 
 @dataclass(frozen=True)
 class LiveBenchBenchmarks:
-    """LiveBench category scores — all present when record exists."""
     average: BenchmarkScore
     agentic_coding: Optional[BenchmarkScore] = None
     coding: Optional[BenchmarkScore] = None
@@ -562,7 +482,6 @@ class LiveBenchBenchmarks:
 
 @dataclass(frozen=True)
 class ArenaBenchmarks:
-    """Arena Elo results (text or code)."""
     elo: Elo
     ci: CIMargin
     votes: VoteCount
@@ -577,7 +496,6 @@ class ArenaBenchmarks:
 
 @dataclass(frozen=True)
 class OpenLLMBenchmarks:
-    """Open LLM Leaderboard v2 scores — all present when record exists."""
     average: BenchmarkScore
     ifeval: Optional[BenchmarkScore] = None
     bbh: Optional[BenchmarkScore] = None
@@ -601,7 +519,6 @@ class OpenLLMBenchmarks:
 
 @dataclass(frozen=True)
 class RegistryModelMeta:
-    """Metadata attached to a registry model."""
     archetype: Optional[str] = None
     pareto_optimal: bool = False
     cost_percentile: Optional[float] = None
@@ -628,7 +545,6 @@ class RegistryModelMeta:
 
 @dataclass(frozen=True)
 class RegistryModel:
-    """A single model in the registry, with all source-tagged data."""
     id: str
     name: Optional[str] = None
     creator: Optional[str] = None
@@ -688,7 +604,6 @@ class RegistryModel:
 
 @dataclass
 class ProjectionRowMeta:
-    """Computed metadata for a projected row."""
     archetype: Archetype = Archetype.UNCATEGORIZED
     pareto_optimal: bool = False
     has_breakdown: bool = False
@@ -784,6 +699,13 @@ class ProjectionRow:
     iq_per_1k_pt: Optional[IQ_PerDollarPoint] = None
     cost_per_iq_pt: Optional[CostPerIQPoint] = None
 
+    # Radar-normalized scores [0, 1]. Computed in pipeline from dataset-wide maxes.
+    radar_intel: Optional[float] = None
+    radar_speed: Optional[float] = None
+    radar_cache_eff: Optional[float] = None
+    radar_cost_eff: Optional[float] = None
+    radar_ctx: Optional[float] = None
+
     def __post_init__(self):
         if not self.slug:
             raise ValueError("slug required")
@@ -831,14 +753,19 @@ class ProjectionRow:
         # Meta (sourced)
         "params_b": Provenance.SOURCED, "co2_kg": Provenance.SOURCED,
         "context_window": Provenance.SOURCED,
+        # Archetype — computed from SOURCED inputs (intel, cost, speed, reasoning, params)
+        "archetype": Provenance.DERIVED,
         # Derived fields (computed in-pipeline)
         "iq_per_1k_pt": Provenance.DERIVED, "cost_per_iq_pt": Provenance.DERIVED,
+        # Radar-normalized scores
+        "radar_intel": Provenance.DERIVED, "radar_speed": Provenance.DERIVED,
+        "radar_cache_eff": Provenance.DERIVED, "radar_cost_eff": Provenance.DERIVED,
+        "radar_ctx": Provenance.DERIVED,
     }
 
     # ── Derived field computation ──
 
     def compute_derived(self) -> 'ProjectionRow':
-        """Compute iq_per_1k_pt and cost_per_iq_pt from current values."""
         intel = None
         if self.intel is not None:
             intel = self.intel.as_primitive()
@@ -926,6 +853,11 @@ class ProjectionRow:
             "context_window": self.context_window,
             "iq_per_1k_pt": self.iq_per_1k_pt,
             "cost_per_iq_pt": self.cost_per_iq_pt,
+            "radar_intel": self.radar_intel,
+            "radar_speed": self.radar_speed,
+            "radar_cache_eff": self.radar_cache_eff,
+            "radar_cost_eff": self.radar_cost_eff,
+            "radar_ctx": self.radar_ctx,
         }
         for key, val in optional_map.items():
             if val is not None:
@@ -948,7 +880,6 @@ class ProjectionRow:
 # ═══════════════════════════════════════════════════════════════
 
 def to_primitive(obj: Any) -> Any:
-    """Recursively convert domain objects to JSON-compatible primitives."""
     if obj is None:
         return None
     if isinstance(obj, DomainValue):
@@ -971,7 +902,6 @@ def to_primitive(obj: Any) -> Any:
 # ═══════════════════════════════════════════════════════════════
 
 def _is_valid(v):
-    """True if v is not None and not NaN."""
     if v is None:
         return False
     if isinstance(v, float) and v != v:

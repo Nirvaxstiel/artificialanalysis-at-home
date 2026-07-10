@@ -29,38 +29,44 @@
       byCreator[key].push(m);
     }
 
-    // Build creator archetypes: average metrics per creator
+    // Build creator archetypes: average normalized scores per creator
     const archetypes = [];
     for (const [creator, ms] of Object.entries(byCreator)) {
-      const avgIQ = ms.reduce((s, m) => s + m.intel, 0) / ms.length;
-      const avgCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
-      const avgSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
-      const withCtx = ms.filter(m => m.context_window != null);
-      const avgCtx = withCtx.length ? Math.round(withCtx.reduce((s, m) => s + m.context_window, 0) / withCtx.length) : null;
-      const costEff = 1 / avgCost;
-      const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
-      const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
-      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgCtx, costEff, avgCacheEff, count: ms.length });
+      const avgIQ = ms.reduce((s, m) => s + (m.radar_intel ?? 0), 0) / ms.length;
+      const avgSpeed = ms.reduce((s, m) => s + (m.radar_speed ?? 0), 0) / ms.length;
+      const avgCacheEff = ms.reduce((s, m) => s + (m.radar_cache_eff ?? 0), 0) / ms.length;
+      const avgCostEff = ms.reduce((s, m) => s + (m.radar_cost_eff ?? 0), 0) / ms.length;
+      const ctxVals = ms.map(m => m.radar_ctx).filter(v => v != null);
+      const avgCtx = ctxVals.length ? ctxVals.reduce((s, v) => s + v, 0) / ctxVals.length : null;
+
+      // Raw averages for stats display
+      const rawCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
+      const rawIQ = ms.reduce((s, m) => s + m.intel, 0) / ms.length;
+      const rawSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
+      const rawCtxVals = ms.map(m => m.context_window).filter(v => v != null);
+      const rawCtx = rawCtxVals.length ? Math.round(rawCtxVals.reduce((s, v) => s + v, 0) / rawCtxVals.length) : null;
+      const rawCacheHit = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
+      const rawCacheEff = rawCacheHit.length
+        ? rawCacheHit.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / rawCacheHit.length : 0;
+
+      archetypes.push({ creator, avgIQ, avgSpeed, avgCacheEff, avgCostEff, avgCtx,
+                        rawIQ, rawCost, rawSpeed, rawCtx, rawCacheEff, count: ms.length });
     }
 
     // Sort alphabetically — keeps OSS variants next to parent
     archetypes.sort((a, b) => a.creator.localeCompare(b.creator));
 
-    const allIQ = archetypes.map(a => a.avgIQ);
-    const allCostEff = archetypes.map(a => a.costEff);
-    const allSpeed = archetypes.map(a => a.avgSpeed);
-    const allCacheEff = archetypes.map(a => a.avgCacheEff);
-    const allCtx = archetypes.map(a => a.avgCtx).filter(v => v != null);
-
-    const mn = arr => 0;
-    const mx = arr => Math.max(...arr);
-    const norm = (v, lo, hi) => hi === lo ? 0.5 : (v - lo) / (hi - lo);
-
-    const iqLo = mn(allIQ), iqHi = mx(allIQ);
-    const ceLo = mn(allCostEff), ceHi = mx(allCostEff);
-    const spLo = mn(allSpeed), spHi = mx(allSpeed);
-    const caLo = mn(allCacheEff), caHi = mx(allCacheEff);
-    const ctxLo = 0, ctxHi = mx(allCtx) || 0;
+    // Collect raw maxes for axis labels
+    const allIQ = archetypes.map(a => a.rawIQ);
+    const allSpeed = archetypes.map(a => a.rawSpeed);
+    const allCacheEff = archetypes.map(a => a.rawCacheEff);
+    const allCost = archetypes.map(a => a.rawCost);
+    const allCtx = archetypes.map(a => a.rawCtx).filter(v => v != null);
+    const iqHi = Math.max(...allIQ);
+    const spHi = Math.max(...allSpeed);
+    const caHi = Math.max(...allCacheEff);
+    const ceHi = 1 / Math.min(...allCost);  // costEff = 1/cost, so min cost = max eff
+    const ctxHi = Math.max(...allCtx) || 0;
 
     const RADAR_AXES = window.RADAR_AXES || [];
 
@@ -129,11 +135,11 @@
 
     for (const a of archetypes) {
       const values = [
-        norm(a.avgIQ, iqLo, iqHi),
-        norm(a.avgSpeed, spLo, spHi),
-        norm(a.avgCacheEff, caLo, caHi),
-        norm(a.costEff, ceLo, ceHi),
-        norm(a.avgCtx, ctxLo, ctxHi),
+        a.avgIQ,
+        a.avgSpeed,
+        a.avgCacheEff,
+        a.avgCostEff,
+        a.avgCtx ?? 0,
       ];
 
       let svg = `<svg viewBox="0 0 ${CX * 2} ${CY * 2}">`;
@@ -173,7 +179,7 @@
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1"/>`;
       }
 
-      // Axis labels — show max value for context (human-readable)
+      // Axis labels — show max raw value for context
       const maxes = [iqHi, spHi, caHi, ceHi, ctxHi];
       const fmtMax = (key, val) => {
         const N = window.VIZ_NUM;
@@ -181,7 +187,7 @@
         if (key === 'avgIQ') return N.fmtCompact(val, { decimals: 0 });
         if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + '/s';
         if (key === 'avgCacheEff') return N.fmtPct(val);
-        if (key === 'costEff') return N.fmtUSD(1 / val);
+        if (key === 'costEff') return N.fmtUSD(val) + '/task';
         if (key === 'avgCtx') return N.fmtCount(val);
         return N.fmtCompact(val);
       };
@@ -205,13 +211,15 @@
         if (key === 'avgIQ') return val.toFixed(1);
         if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + ' t/s';
         if (key === 'avgCacheEff') return N.fmtPct(val);
-        if (key === 'costEff') return N.fmtUSD(1 / val) + '/task';
+        if (key === 'costEff') return N.fmtUSD(val) + '/task';
         if (key === 'avgCtx') return N.fmtCount(val);
         return N.fmtCompact(val);
       };
 
       let statsHtml = RADAR_AXES.map(ax => {
-        return `${ax.label} <span class="val">${fmtRaw(ax.key, a[ax.key])}</span>`;
+        const rawKey = { avgIQ: 'rawIQ', avgSpeed: 'rawSpeed', avgCacheEff: 'rawCacheEff',
+                         costEff: 'rawCost', avgCtx: 'rawCtx' }[ax.key] || ax.key;
+        return `${ax.label} <span class="val">${fmtRaw(ax.key, a[rawKey])}</span>`;
       }).join(' · ');
       statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
