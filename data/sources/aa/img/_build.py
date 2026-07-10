@@ -29,6 +29,8 @@ def get_aa_img_models(base: Path) -> dict[str, dict]:
         ):
             if rec.get(k) is not None:
                 b.setdefault(k, rec[k])
+        if rec.get("cost_per_task") is not None:
+            out[cid].setdefault("pricing", {}).setdefault("aa", {})["cost_per_task"] = rec["cost_per_task"]
         meta = out[cid].setdefault("meta", {})
         if rec.get("params_total_b") is not None:
             meta.setdefault("params_total_b", rec["params_total_b"])

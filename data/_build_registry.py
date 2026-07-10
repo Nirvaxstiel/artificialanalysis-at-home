@@ -48,6 +48,12 @@ def run(ctx=None):
         img_b = img.get("benchmarks", {}).get("aa_img")
         if img_b:
             existing.setdefault("benchmarks", {}).setdefault("aa_img", {}).update(img_b)
+        img_p = img.get("pricing", {}).get("aa")
+        if img_p:
+            ep = existing.setdefault("pricing", {}).setdefault("aa", {})
+            for k, v in img_p.items():
+                if v is not None and ep.get(k) is None:
+                    ep[k] = v
         img_meta = img.get("meta", {})
         if img_meta:
             existing.setdefault("meta", {}).update(img_meta)

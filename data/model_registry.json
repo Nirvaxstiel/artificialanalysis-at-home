@@ -4822,7 +4822,7 @@
           "out_price": 50.0,
           "blended": 20,
           "cache_hit_price": 1.0,
-          "cost_per_task": 5630.52,
+          "cost_per_task": null,
           "tokens_m": 87,
           "speed_tps": 72.6,
           "useful_cost": 64.7186,

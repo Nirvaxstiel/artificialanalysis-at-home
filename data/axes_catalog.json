@@ -268,10 +268,10 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "AA estimated cost per standard task",
-      "models_have": 29,
+      "models_have": 28,
       "range": [
         0.02,
-        5630.52
+        2.29
       ],
       "group": "Pricing",
       "normalize_range": [

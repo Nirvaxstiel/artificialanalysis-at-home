@@ -8,7 +8,6 @@
     "excluded_charts": [
       "All 'Intelligence vs X' scatter charts (no per-model scalar)",
       "All 'Over Time' / 'By Input Token Count' charts (time/context sweeps)",
-      "Cost per Intelligence Index Task (AA already owns cost_per_task)",
       "Context Window (AA/OR already own context_window)",
       "AA Intelligence Index (AA already owns intel)",
       "Output Speed / TTFT / Output Tokens (AA already owns speed_tps/ttft/tokens_m)",

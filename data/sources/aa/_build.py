@@ -156,7 +156,7 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
                 "out_price": raw.get("out"),
                 "blended": raw.get("blended"),
                 "cache_hit_price": raw.get("cache"),
-                "cost_per_task": raw.get("cost"),
+                "cost_per_task": None,
                 "tokens_m": raw.get("tokens_m"),
                 "speed_tps": raw.get("spd"),
                 "useful_cost": raw.get("eff_cost_per_m"),
@@ -257,8 +257,6 @@ def _overlay_enriched(model: dict, raw: dict) -> None:
         p["speed_tps"] = raw.get("spd")
     if p["tokens_m"] is None:
         p["tokens_m"] = raw.get("tokens_m")
-    if p["cost_per_task"] is None:
-        p["cost_per_task"] = raw.get("cost")
     if p["useful_cost"] is None:
         p["useful_cost"] = raw.get("eff_cost_per_m")
     if b["intel"] is None:
