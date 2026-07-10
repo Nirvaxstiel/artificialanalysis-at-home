@@ -56,17 +56,16 @@
     // Sort alphabetically — keeps OSS variants next to parent
     archetypes.sort((a, b) => a.creator.localeCompare(b.creator));
 
-    // Collect raw maxes for axis labels
+    // Collect raw apex values for axis labels
     const allIQ = archetypes.map(a => a.rawIQ);
     const allSpeed = archetypes.map(a => a.rawSpeed);
     const allCacheEff = archetypes.map(a => a.rawCacheEff);
-    const allCost = archetypes.map(a => a.rawCost);
+    const allCostEff = archetypes.map(a => a.avgCostEff);
     const allCtx = archetypes.map(a => a.rawCtx).filter(v => v != null);
     const iqHi = Math.max(...allIQ);
     const spHi = Math.max(...allSpeed);
     const caHi = Math.max(...allCacheEff);
-    const ceHi = 1 / Math.min(...allCost);  // costEff = 1/cost, so min cost = max eff
-    const ceBest = Math.min(...allCost);     // best (cheapest) per-task cost, for label
+    const ceScoreHi = Math.max(...allCostEff);  // best normalized cost-eff (1.0) → apex shows score
     const ctxHi = Math.max(...allCtx) || 0;
 
     const RADAR_AXES = window.RADAR_AXES || [];
@@ -180,15 +179,18 @@
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1"/>`;
       }
 
-      // Axis labels — show max raw value for context
-      const maxes = [iqHi, spHi, caHi, ceBest, ctxHi];
-      const fmtMax = (key, val) => {
+      // Axis labels — show the apex value at each axis (edge = peak is
+      // implicit). Cost axis shows the normalized efficiency SCORE (0-100,
+      // bigger = cheaper = better), matching the "higher = better" direction of
+      // the other axes. The real $/task lives in the panel stats below.
+      const apexVals = [iqHi, spHi, caHi, ceScoreHi, ctxHi];
+      const fmtApex = (key, val) => {
         const N = window.VIZ_NUM;
-        if (val == null) return '?';
+        if (val == null) return N.DASH;
         if (key === 'avgIQ') return N.fmtCompact(val, { decimals: 0 });
         if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + '/s';
         if (key === 'avgCacheEff') return N.fmtPct(val);
-        if (key === 'costEff') return N.fmtUSD(val) + '/task best';
+        if (key === 'costEff') return (val * 100).toFixed(0);  // normalized score 0-100
         if (key === 'avgCtx') return N.fmtCount(val);
         return N.fmtCompact(val);
       };
@@ -202,8 +204,7 @@
         let dy = '0.35em';
         if (ax.angle === -Math.PI / 2) dy = '0';
         if (ax.angle === Math.PI / 2) dy = '1em';
-        const extra = ax.key === 'costEff' ? ' · cheaper=better' : '';
-        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">(max ${fmtMax(ax.key, maxes[i])})${extra}</tspan></text>`;
+        svg += `<text class="radar-axis-label" x="${lx}" y="${ly}" text-anchor="${anchor}" dy="${dy}">${ax.label} <tspan fill="#666" font-size="7">${fmtApex(ax.key, apexVals[i])}</tspan></text>`;
       }
       svg += '</svg>';
 
@@ -221,7 +222,9 @@
       let statsHtml = RADAR_AXES.map(ax => {
         const rawKey = { avgIQ: 'rawIQ', avgSpeed: 'rawSpeed', avgCacheEff: 'rawCacheEff',
                          costEff: 'rawCost', avgCtx: 'rawCtx' }[ax.key] || ax.key;
-        return `${ax.label} <span class="val">${fmtRaw(ax.key, a[rawKey])}</span>`;
+        let val = fmtRaw(ax.key, a[rawKey]);
+        if (ax.key === 'costEff') val += ` <span style="color:#666">(${(a.avgCostEff * 100).toFixed(0)} eff)</span>`;
+        return `${ax.label} <span class="val">${val}</span>`;
       }).join(' · ');
       statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
