@@ -128,6 +128,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.08620280218475421,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-09",
+      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -186,6 +188,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.011111111111111112,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-05-28",
+      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -241,7 +245,9 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.08477796247922109,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.01941747572815534,
-      "radar_ctx": 1.0
+      "radar_ctx": 1.0,
+      "release_date": "2026-04-23",
+      "confirmed_scraped": true
     },
     {
       "slug": "claude-opus-4.7",
@@ -290,6 +296,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.056993588221325095,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-16",
+      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -320,7 +328,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.8833333333333333,
       "radar_speed": 0.0464260270719544,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.19047619047619047
+      "radar_ctx": 0.19047619047619047,
+      "release_date": "2026-02-05"
     },
     {
       "slug": "claude-sonnet-5",
@@ -374,6 +383,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.008733624454148471,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-30",
+      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -432,7 +443,9 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.07979102350985515,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.028985507246376815,
-      "radar_ctx": 1.0
+      "radar_ctx": 1.0,
+      "release_date": "2026-04-23",
+      "confirmed_scraped": true
     },
     {
       "slug": "glm-5.2",
@@ -496,6 +509,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8218428902883659,
       "radar_cost_eff": 0.04166666666666667,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-06-16",
+      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -540,6 +555,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.18166706245547376,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 1.0,
+      "release_date": "2026-03-05",
+      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -597,6 +614,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.03389830508474576,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-05-19",
+      "confirmed_scraped": true,
       "openrouter_vendor": "google"
     },
     {
@@ -652,7 +671,9 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.07943481358347186,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.047619047619047616,
-      "radar_ctx": 1.0
+      "radar_ctx": 1.0,
+      "release_date": "2026-04-23",
+      "confirmed_scraped": true
     },
     {
       "slug": "qwen3-6-plus",
@@ -685,7 +706,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.8333333333333334,
       "radar_speed": 0.06245547375920209,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-02",
+      "confirmed_scraped": true
     },
     {
       "slug": "mimo-v2-pro",
@@ -726,7 +749,9 @@ window.PROCESSED_DATA = {
       "omniscience_hallucination_rate": 30,
       "radar_intel": 0.8166666666666667,
       "radar_speed": 0.05058180954642603,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-03-18",
+      "confirmed_scraped": true
     },
     {
       "slug": "claude-sonnet-4.6-adaptive",
@@ -817,6 +842,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.06896551724137931,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-02-19",
+      "confirmed_scraped": true,
       "openrouter_vendor": "google"
     },
     {
@@ -877,6 +904,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.018867924528301886,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-05-19",
+      "confirmed_scraped": true,
       "openrouter_vendor": "qwen"
     },
     {
@@ -907,7 +936,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.75,
       "radar_speed": 0.19983376870102112,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-05-19"
     },
     {
       "slug": "deepseek-v4-pro",
@@ -973,6 +1003,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 1.0,
       "radar_cost_eff": 0.5,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-24",
+      "confirmed_scraped": true,
       "openrouter_vendor": "deepseek"
     },
     {
@@ -1012,6 +1044,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.10721918784136783,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-02-05",
+      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -1077,6 +1111,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8074245939675174,
       "radar_cost_eff": 0.16666666666666669,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-06-01",
+      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -1120,7 +1156,9 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.057231061505580626,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.04878048780487805,
-      "radar_ctx": 0.19047619047619047
+      "radar_ctx": 0.19047619047619047,
+      "release_date": "2025-09-29",
+      "confirmed_scraped": true
     },
     {
       "slug": "glm-5v-turbo",
@@ -1160,6 +1198,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.7166666666666667,
       "radar_speed": 0.0,
       "radar_ctx": 0.19309714285714286,
+      "release_date": "2026-04-01",
       "openrouter_vendor": "z-ai"
     },
     {
@@ -1205,7 +1244,9 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.08145333649964379,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.09090909090909091,
-      "radar_ctx": 1.0
+      "radar_ctx": 1.0,
+      "release_date": "2026-04-23",
+      "confirmed_scraped": true
     },
     {
       "slug": "kimi-k2.6",
@@ -1262,6 +1303,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8392966174136035,
       "radar_cost_eff": 0.06451612903225806,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-20",
+      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -1301,7 +1344,9 @@ window.PROCESSED_DATA = {
       "coding_index": 58.6,
       "radar_intel": 0.7166666666666667,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-08",
+      "confirmed_scraped": true
     },
     {
       "slug": "kimi-k2.7-code",
@@ -1358,6 +1403,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8392966174136035,
       "radar_cost_eff": 0.1111111111111111,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-06-12",
+      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -1419,6 +1466,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 1.0,
       "radar_cost_eff": 0.6666666666666667,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-22",
+      "confirmed_scraped": true,
       "openrouter_vendor": "xiaomi"
     },
     {
@@ -1449,7 +1498,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6833333333333333,
       "radar_speed": 0.0660175730230349,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.19047619047619047
+      "radar_ctx": 0.19047619047619047,
+      "release_date": "2025-11-24"
     },
     {
       "slug": "deepseek-v4-pro-high",
@@ -1479,7 +1529,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6833333333333333,
       "radar_speed": 0.0961766801234861,
       "radar_cache_eff": 1.0,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-24"
     },
     {
       "slug": "gemini-3-pro-low",
@@ -1507,7 +1558,8 @@ window.PROCESSED_DATA = {
       "blended": 4.5,
       "radar_intel": 0.6833333333333333,
       "radar_speed": 0.0,
-      "radar_ctx": 0.06241523809523809
+      "radar_ctx": 0.06241523809523809,
+      "release_date": "2025-11-18"
     },
     {
       "slug": "nex-n2-pro",
@@ -1546,6 +1598,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.12882925670862028,
       "radar_cache_eff": 0.5046403712296983,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-06-02",
+      "confirmed_scraped": true,
       "openrouter_vendor": "nex-agi"
     },
     {
@@ -1608,6 +1662,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.9876532979781238,
       "radar_cost_eff": 1.0,
       "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-24",
+      "confirmed_scraped": true,
       "openrouter_vendor": "deepseek"
     },
     {
@@ -1646,7 +1702,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.06241523809523809
+      "radar_ctx": 0.06241523809523809,
+      "release_date": "2025-11-18",
+      "confirmed_scraped": true
     },
     {
       "slug": "glm-5",
@@ -1697,6 +1755,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.08335312277368796,
       "radar_cache_eff": 0.8074245939675174,
       "radar_ctx": 0.19309714285714286,
+      "release_date": "2026-02-11",
+      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -1756,6 +1816,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.0822844929945381,
       "radar_cache_eff": 0.8218428902883659,
       "radar_ctx": 0.19309714285714286,
+      "release_date": "2026-04-07",
+      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -1795,7 +1857,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.2197815245784849,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.38095238095238093
+      "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-03-17",
+      "confirmed_scraped": true
     },
     {
       "slug": "gpt-5.2-codex",
@@ -1837,6 +1901,7 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.18487295179292326,
       "radar_cache_eff": 0.9066224726549552,
       "radar_ctx": 0.38095238095238093,
+      "release_date": "2025-12-11",
       "openrouter_vendor": "openai"
     },
     {
@@ -1867,7 +1932,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.08477796247922109,
       "radar_cache_eff": 0.9876532979781238,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-22"
     },
     {
       "slug": "qwen3-6-max",
@@ -1900,7 +1966,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.052837805746853476,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-20",
+      "confirmed_scraped": true
     },
     {
       "slug": "qwen3-7-plus",
@@ -1930,7 +1998,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.65,
       "radar_speed": 0.05913084777962479,
       "radar_cache_eff": 0.8074245939675174,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-01"
     },
     {
       "slug": "gemini-3-flash-reasoning",
@@ -1960,7 +2029,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.20244597482783186,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2025-12-17"
     },
     {
       "slug": "glm-5-turbo",
@@ -1992,6 +2062,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.0,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-03-15",
       "openrouter_vendor": "z-ai"
     },
     {
@@ -2027,7 +2098,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.20778912372358108,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.38095238095238093
+      "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-03-17",
+      "confirmed_scraped": true
     },
     {
       "slug": "grok-4.3",
@@ -2085,6 +2158,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8477958236658932,
       "radar_cost_eff": 0.125,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-30",
+      "confirmed_scraped": true,
       "openrouter_vendor": "x-ai"
     },
     {
@@ -2116,7 +2191,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.053075279031109,
       "radar_cache_eff": 0.8410672853828305,
-      "radar_ctx": 0.12483047619047619
+      "radar_ctx": 0.12483047619047619,
+      "release_date": "2026-01-27"
     },
     {
       "slug": "minimax-m2.7",
@@ -2175,6 +2251,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.8074245939675174,
       "radar_cost_eff": 0.2857142857142857,
       "radar_ctx": 0.19504761904761905,
+      "release_date": "2026-03-18",
+      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -2237,6 +2315,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.6354730600670275,
       "radar_cost_eff": 0.08333333333333334,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-04",
+      "confirmed_scraped": true,
       "openrouter_vendor": "nvidia"
     },
     {
@@ -2268,7 +2348,9 @@ window.PROCESSED_DATA = {
       "cache_hit_rate_max": 86.1,
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.22844929945381143,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-04-02",
+      "confirmed_scraped": true
     },
     {
       "slug": "deepseek-v4-flash-high",
@@ -2298,7 +2380,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6166666666666667,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.8074245939675174,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-04-24"
     },
     {
       "slug": "qwen3-6-27b",
@@ -2335,7 +2418,9 @@ window.PROCESSED_DATA = {
       "cache_hit_rate_max": 32.8,
       "radar_intel": 0.6166666666666667,
       "radar_speed": 0.06411778674899074,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-04-22",
+      "confirmed_scraped": true
     },
     {
       "slug": "grok-4-3-medium",
@@ -2365,7 +2450,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6,
       "radar_speed": 0.1296604132035146,
       "radar_cache_eff": 0.8477958236658932,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-30"
     },
     {
       "slug": "nova-2.0-pro-reasoning-medium",
@@ -2404,7 +2490,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.15008311564948942,
       "radar_cache_eff": 0.7573642691415312,
       "radar_cost_eff": 0.1176470588235294,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2025-11-27"
     },
     {
       "slug": "grok-4-3-low",
@@ -2434,7 +2521,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.5833333333333334,
       "radar_speed": 0.14426502018522916,
       "radar_cache_eff": 0.8477958236658932,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-30"
     },
     {
       "slug": "hy3",
@@ -2468,6 +2556,7 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.1908097838993113,
       "radar_cache_eff": 0.6400316903401052,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-23",
       "openrouter_vendor": "tencent"
     },
     {
@@ -2512,6 +2601,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.28544288767513654,
       "radar_cache_eff": 0.4878190255220417,
       "radar_ctx": 0.19504761904761905,
+      "release_date": "2026-02-12",
+      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -2601,6 +2692,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.14699596295416764,
       "radar_cache_eff": 0.0,
       "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-11-06",
+      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -2631,7 +2724,9 @@ window.PROCESSED_DATA = {
       "params_active_b": 213,
       "radar_intel": 0.5333333333333333,
       "radar_speed": 0.0,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2025-12-31",
+      "confirmed_scraped": true
     },
     {
       "slug": "nova-2-0-pro-reasoning-low",
@@ -2659,7 +2754,8 @@ window.PROCESSED_DATA = {
       "blended": 3.438,
       "radar_intel": 0.5333333333333333,
       "radar_speed": 0.14580859653289005,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2025-11-27"
     },
     {
       "slug": "qwen3-6-35b-a3b",
@@ -2691,7 +2787,9 @@ window.PROCESSED_DATA = {
       "cache_hit_rate_max": 47.6,
       "radar_intel": 0.5333333333333333,
       "radar_speed": 0.20790786036570885,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-04-16",
+      "confirmed_scraped": true
     },
     {
       "slug": "trinity-large-thinking",
@@ -2728,6 +2826,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.5333333333333333,
       "radar_speed": 0.14165281405841842,
       "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-01",
+      "confirmed_scraped": true,
       "openrouter_vendor": "arcee-ai"
     },
     {
@@ -2756,7 +2856,8 @@ window.PROCESSED_DATA = {
       "blended": 0.85,
       "radar_intel": 0.5166666666666667,
       "radar_speed": 0.15554500118736642,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2025-10-29"
     },
     {
       "slug": "claude-4.5-haiku-reasoning",
@@ -2822,7 +2923,9 @@ window.PROCESSED_DATA = {
       "params_active_b": 34,
       "radar_intel": 0.5,
       "radar_speed": 0.0,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-09",
+      "confirmed_scraped": true
     },
     {
       "slug": "gpt-5-4-mini-medium",
@@ -2852,7 +2955,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.5,
       "radar_speed": 0.20066492519591544,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.38095238095238093
+      "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-03-17"
     },
     {
       "slug": "gpt-5-4-nano-medium",
@@ -2882,7 +2986,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.5,
       "radar_speed": 0.1950843030159107,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.38095238095238093
+      "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-03-17"
     },
     {
       "slug": "mistral-medium-3.5",
@@ -2949,7 +3054,8 @@ window.PROCESSED_DATA = {
       "blended": 0.85,
       "radar_intel": 0.5,
       "radar_speed": 0.1462835431014011,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2025-10-29"
     },
     {
       "slug": "step-3-7-flash",
@@ -2984,7 +3090,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.5,
       "radar_speed": 0.4785086677748753,
       "radar_cache_eff": 0.8074245939675174,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-05-29",
+      "confirmed_scraped": true
     },
     {
       "slug": "gemma-4-31b",
@@ -3015,7 +3123,9 @@ window.PROCESSED_DATA = {
       "cache_hit_rate_max": 31.8,
       "radar_intel": 0.48333333333333334,
       "radar_speed": 0.041320351460460696,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-02",
+      "confirmed_scraped": true
     },
     {
       "slug": "gpt-5-5-instant-06-26",
@@ -3045,7 +3155,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.48166666666666663,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.38095238095238093
+      "radar_ctx": 0.38095238095238093,
+      "release_date": "2026-06-25"
     },
     {
       "slug": "nova-2-0-omni-reasoning-medium",
@@ -3073,7 +3184,8 @@ window.PROCESSED_DATA = {
       "blended": 0.85,
       "radar_intel": 0.4666666666666667,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2025-11-26"
     },
     {
       "slug": "gemma-4-26b-a4b",
@@ -3105,7 +3217,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.43333333333333335,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.23291094056755304,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-04-02",
+      "confirmed_scraped": true
     },
     {
       "slug": "solar-pro-3",
@@ -3139,6 +3253,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.43333333333333335,
       "radar_speed": 0.0,
       "radar_ctx": 0.1219047619047619,
+      "release_date": "2026-04-06",
+      "confirmed_scraped": true,
       "openrouter_vendor": "upstage"
     },
     {
@@ -3170,7 +3286,9 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.4166666666666667,
       "radar_speed": 0.33281880788411305,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9986438095238095
+      "radar_ctx": 0.9986438095238095,
+      "release_date": "2026-03-03",
+      "confirmed_scraped": true
     },
     {
       "slug": "mercury-2",
@@ -3205,6 +3323,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 1.0,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.1219047619047619,
+      "release_date": "2026-02-20",
+      "confirmed_scraped": true,
       "openrouter_vendor": "inception"
     },
     {
@@ -3260,6 +3380,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.33642691415313214,
       "radar_cost_eff": 0.08,
       "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-03-11",
+      "confirmed_scraped": true,
       "openrouter_vendor": "nvidia"
     },
     {
@@ -3316,6 +3438,8 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.0,
       "radar_cost_eff": 0.33333333333333337,
       "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-05",
+      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -3346,7 +3470,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.4,
       "radar_speed": 0.4046544763714082,
       "radar_cache_eff": 0.0,
-      "radar_ctx": 0.12483047619047619
+      "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-05"
     },
     {
       "slug": "k2-think-v2",
@@ -3400,7 +3525,8 @@ window.PROCESSED_DATA = {
       "blended": 0.85,
       "radar_intel": 0.38333333333333336,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2025-11-26"
     },
     {
       "slug": "gemma-4-12b",
@@ -3430,7 +3556,9 @@ window.PROCESSED_DATA = {
       "ttft_variance": -2.4,
       "radar_intel": 0.36666666666666664,
       "radar_speed": 0.1429589171218238,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2026-06-03",
+      "confirmed_scraped": true
     },
     {
       "slug": "nemotron-cascade-2-30b-a3b",
@@ -3458,7 +3586,8 @@ window.PROCESSED_DATA = {
       "blended": 0,
       "radar_intel": 0.35,
       "radar_speed": 0.0,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-03-19"
     },
     {
       "slug": "nova-2-0-lite-reasoning",
@@ -3486,7 +3615,8 @@ window.PROCESSED_DATA = {
       "blended": 0.85,
       "radar_intel": 0.35,
       "radar_speed": 0.17857990976015198,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2025-10-29"
     },
     {
       "slug": "sonar-reasoning-pro",
@@ -3517,6 +3647,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.3,
       "radar_speed": 0.0,
       "radar_ctx": 0.19047619047619047,
+      "release_date": "2025-01-28",
       "openrouter_vendor": "perplexity"
     },
     {
@@ -3545,7 +3676,8 @@ window.PROCESSED_DATA = {
       "blended": 0,
       "radar_intel": 0.2833333333333333,
       "radar_speed": 0.0,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2025-07-15"
     },
     {
       "slug": "gemma-4-e2b",
@@ -3575,7 +3707,9 @@ window.PROCESSED_DATA = {
       "openness_index": 39,
       "radar_intel": 0.25,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-02",
+      "confirmed_scraped": true
     },
     {
       "slug": "gpt-oss-20b",
@@ -3618,6 +3752,8 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.27784374257895983,
       "radar_cost_eff": 1.0,
       "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-05",
+      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -3649,7 +3785,9 @@ window.PROCESSED_DATA = {
       "ttft_variance": -1.0,
       "radar_intel": 0.25,
       "radar_speed": 0.3213013535977203,
-      "radar_ctx": 0.2438095238095238
+      "radar_ctx": 0.2438095238095238,
+      "release_date": "2026-04-29",
+      "confirmed_scraped": true
     },
     {
       "slug": "solar-open-100b-reasoning",
@@ -3679,7 +3817,9 @@ window.PROCESSED_DATA = {
       "params_active_b": 102,
       "radar_intel": 0.25,
       "radar_speed": 0.0,
-      "radar_ctx": 0.1219047619047619
+      "radar_ctx": 0.1219047619047619,
+      "release_date": "2025-12-17",
+      "confirmed_scraped": true
     },
     {
       "slug": "gpt-oss-20b-low",
@@ -3707,7 +3847,8 @@ window.PROCESSED_DATA = {
       "blended": 0.095,
       "radar_intel": 0.23333333333333334,
       "radar_speed": 0.26549513179767276,
-      "radar_ctx": 0.12483047619047619
+      "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-05"
     },
     {
       "slug": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
@@ -3735,7 +3876,8 @@ window.PROCESSED_DATA = {
       "blended": 0.088,
       "radar_intel": 0.23333333333333334,
       "radar_speed": 0.10104488245072428,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2025-12-15"
     },
     {
       "slug": "diffusiongemma-26b-a4b",
@@ -3763,7 +3905,8 @@ window.PROCESSED_DATA = {
       "blended": 0,
       "radar_intel": 0.21666666666666667,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-10"
     },
     {
       "slug": "gemma-4-e4b",
@@ -3793,7 +3936,9 @@ window.PROCESSED_DATA = {
       "openness_index": 39,
       "radar_intel": 0.2,
       "radar_speed": 0.0,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-04-03",
+      "confirmed_scraped": true
     },
     {
       "slug": "sonar-reasoning",
@@ -3821,7 +3966,8 @@ window.PROCESSED_DATA = {
       "blended": 0,
       "radar_intel": 0.2,
       "radar_speed": 0.0,
-      "radar_ctx": 0.12102095238095238
+      "radar_ctx": 0.12102095238095238,
+      "release_date": "2025-01-28"
     },
     {
       "slug": "hermes-4-llama-3-1-70b-reasoning",
@@ -3853,7 +3999,9 @@ window.PROCESSED_DATA = {
       "ttft_variance": -1.4,
       "radar_intel": 0.16666666666666666,
       "radar_speed": 0.09665162669199716,
-      "radar_ctx": 0.12483047619047619
+      "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-27",
+      "confirmed_scraped": true
     },
     {
       "slug": "hermes-4-llama-3-1-405b-reasoning",
@@ -3885,7 +4033,9 @@ window.PROCESSED_DATA = {
       "ttft_variance": -2.4,
       "radar_intel": 0.15,
       "radar_speed": 0.043101401092377103,
-      "radar_ctx": 0.12483047619047619
+      "radar_ctx": 0.12483047619047619,
+      "release_date": "2025-08-27",
+      "confirmed_scraped": true
     },
     {
       "slug": "exaone-4-0-1-2b-reasoning",
@@ -3913,7 +4063,8 @@ window.PROCESSED_DATA = {
       "blended": 0,
       "radar_intel": 0.13333333333333333,
       "radar_speed": 0.0,
-      "radar_ctx": 0.24966095238095237
+      "radar_ctx": 0.24966095238095237,
+      "release_date": "2025-07-15"
     },
     {
       "slug": "reka-flash-3",
@@ -3945,6 +4096,8 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.06666666666666667,
       "radar_speed": 0.11274281643315126,
       "radar_ctx": 0.06241523809523809,
+      "release_date": "2025-03-10",
+      "confirmed_scraped": true,
       "openrouter_vendor": "rekaai"
     },
     {
@@ -3974,7 +4127,8 @@ window.PROCESSED_DATA = {
       "cache_hit_price": 0.3,
       "radar_speed": 0.08845879838518166,
       "radar_cache_eff": 0.9083526682134571,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-30"
     },
     {
       "slug": "claude-sonnet-5-low",
@@ -4001,7 +4155,8 @@ window.PROCESSED_DATA = {
       "ttft": 1.676,
       "blended": 4,
       "radar_speed": 0.07871526953217763,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-30"
     },
     {
       "slug": "claude-sonnet-5-medium",
@@ -4028,7 +4183,8 @@ window.PROCESSED_DATA = {
       "ttft": 1.709,
       "blended": 4,
       "radar_speed": 0.079268582284493,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-30"
     },
     {
       "slug": "claude-sonnet-5-xhigh",
@@ -4055,7 +4211,8 @@ window.PROCESSED_DATA = {
       "ttft": 23.62,
       "blended": 4,
       "radar_speed": 0.08775825219662788,
-      "radar_ctx": 0.9523809523809523
+      "radar_ctx": 0.9523809523809523,
+      "release_date": "2026-06-30"
     },
     {
       "slug": "gpt-5.5-pro",
@@ -4085,6 +4242,7 @@ window.PROCESSED_DATA = {
       "openrouter_out_price_per_m": 180.0,
       "radar_speed": 0.0,
       "radar_ctx": 1.0,
+      "release_date": "2026-04-23",
       "openrouter_vendor": "openai"
     }
   ]

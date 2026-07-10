@@ -4803,6 +4803,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-09-29",
+        "confirmed_scraped": true,
         "context_window": 200000
       },
       "pricing": {
@@ -4860,6 +4862,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-09",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -5250,6 +5254,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-24",
         "context_window": 200000
       },
       "pricing": {
@@ -5390,6 +5395,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-05",
         "context_window": 200000
       },
       "pricing": {
@@ -5828,6 +5834,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-16",
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -5930,6 +5938,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-05-28",
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -6366,6 +6376,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-30",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -6441,6 +6453,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -6480,6 +6493,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -6519,6 +6533,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -6578,6 +6593,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -8988,8 +9004,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-24",
         "params_total_b": 284,
         "params_active_b": 271,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1048576
       },
@@ -9072,6 +9090,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-24",
         "context_window": 1048576
       },
       "pricing": {
@@ -9112,8 +9131,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-24",
         "params_total_b": 1600,
         "params_active_b": 1551,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -9267,6 +9288,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-24",
         "context_window": 1048576
       },
       "pricing": {
@@ -9502,6 +9524,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-10",
         "context_window": 1000000
       },
       "pricing": {
@@ -10853,6 +10876,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-07-15",
         "context_window": 262144
       },
       "pricing": {
@@ -10895,6 +10919,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-07-15",
         "context_window": 262144
       },
       "pricing": {
@@ -10937,8 +10962,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-09",
         "params_total_b": 34,
         "params_active_b": 34,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 262144
       },
@@ -12980,6 +13007,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-03",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1048576
       },
@@ -13025,6 +13054,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-05-19",
         "context_window": 1048576
       },
       "pricing": {
@@ -13187,6 +13217,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-12-17",
         "context_window": 1048576
       },
       "pricing": {
@@ -13229,6 +13260,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-18",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 65536
       },
@@ -13340,6 +13373,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-18",
         "context_window": 65536
       },
       "pricing": {
@@ -13571,6 +13605,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-19",
+        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -13703,6 +13739,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-05-19",
+        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -13973,6 +14011,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-03",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 262144
       },
@@ -14018,6 +14058,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-02",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -14166,6 +14208,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-02",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -14317,6 +14361,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-02",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -14362,6 +14408,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-03",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -14792,8 +14840,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-11",
         "params_total_b": 744,
         "params_active_b": 704,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -14997,6 +15047,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-15",
         "context_window": 262144
       },
       "pricing": {
@@ -15047,8 +15098,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-07",
         "params_total_b": 744,
         "params_active_b": 704,
+        "confirmed_scraped": true,
         "context_window": 202752
       },
       "pricing": {
@@ -15134,8 +15187,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-16",
         "params_total_b": 753,
         "params_active_b": 713,
+        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -15243,6 +15298,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-01",
         "context_window": 202752
       },
       "pricing": {
@@ -15841,6 +15897,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-17",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -15910,6 +15968,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-17",
         "context_window": 400000
       },
       "pricing": {
@@ -15950,6 +16009,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-17",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -16021,6 +16082,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-17",
         "context_window": 400000
       },
       "pricing": {
@@ -16061,6 +16123,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-25",
         "context_window": 400000
       },
       "pricing": {
@@ -16916,6 +16979,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-12-11",
         "context_window": 400000
       },
       "pricing": {
@@ -17023,6 +17087,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-05",
+        "confirmed_scraped": true,
         "context_window": 400000
       },
       "pricing": {
@@ -17171,6 +17237,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-05",
+        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17705,6 +17773,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
+        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17817,6 +17887,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
+        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17874,6 +17946,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
+        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17944,6 +18018,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
         "context_window": 1050000
       },
       "pricing": {
@@ -17991,6 +18066,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
+        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -18195,8 +18272,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-05",
         "params_total_b": 117,
         "params_active_b": 112,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -18356,6 +18435,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-05",
         "context_window": 131072
       },
       "pricing": {
@@ -18420,6 +18500,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-05",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 131072
       },
@@ -18485,6 +18567,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-05",
         "context_window": 131072
       },
       "pricing": {
@@ -18711,6 +18794,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -18751,6 +18835,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-30",
         "context_window": 1000000
       },
       "pricing": {
@@ -18945,6 +19030,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-30",
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -19675,8 +19762,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-27",
         "params_total_b": 406,
         "params_active_b": 406,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 131072
       },
@@ -19724,8 +19813,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-08-27",
         "params_total_b": 71,
         "params_active_b": 71,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 131072
       },
@@ -20564,6 +20655,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-23",
         "context_window": 262144
       },
       "pricing": {
@@ -21662,8 +21754,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-12-31",
         "params_total_b": 236,
         "params_active_b": 213,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 256000
       },
@@ -21813,6 +21907,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-01-27",
         "dirac_cache_hit_rates": [
           {
             "provider": "DeepInfra",
@@ -21947,8 +22042,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-06",
         "params_total_b": 1000,
         "params_active_b": 968,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 131072
       },
@@ -22092,8 +22189,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-20",
         "params_total_b": 1000,
         "params_active_b": 968,
+        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -22195,6 +22294,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-12",
+        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -36994,6 +37095,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-20",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 128000
       },
@@ -37848,6 +37951,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-22",
         "context_window": 1048576
       },
       "pricing": {
@@ -37917,6 +38021,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-18",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1048576
       },
@@ -38017,8 +38123,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-22",
         "params_total_b": 1023,
         "params_active_b": 981,
+        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -38412,8 +38520,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-02-12",
         "params_total_b": 230,
         "params_active_b": 220,
+        "confirmed_scraped": true,
         "context_window": 204800
       },
       "pricing": {
@@ -38476,8 +38586,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-18",
         "params_total_b": 230,
         "params_active_b": 220,
+        "confirmed_scraped": true,
         "context_window": 204800
       },
       "pricing": {
@@ -38558,8 +38670,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-01",
         "params_total_b": 428,
         "params_active_b": 405,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1048576
       },
@@ -42376,6 +42490,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-08",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1048576
       },
@@ -42723,6 +42839,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-29",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 256000
       },
@@ -42791,8 +42909,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-11",
         "params_total_b": 121,
         "params_active_b": 108,
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -42888,8 +43008,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-04",
         "params_total_b": 550,
         "params_active_b": 495,
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -43015,6 +43137,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-03-19",
         "context_window": 256000
       },
       "pricing": {
@@ -43262,7 +43385,9 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-02",
         "params_total_b": 397,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 262144
       },
@@ -43453,6 +43578,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-10-29",
         "context_window": 256000
       },
       "pricing": {
@@ -43496,6 +43622,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-10-29",
         "context_window": 256000
       },
       "pricing": {
@@ -43538,6 +43665,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-10-29",
         "context_window": 256000
       },
       "pricing": {
@@ -43580,6 +43708,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-26",
         "context_window": 1000000
       },
       "pricing": {
@@ -43622,6 +43751,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-26",
         "context_window": 1000000
       },
       "pricing": {
@@ -43664,6 +43794,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-27",
         "context_window": 1000000
       },
       "pricing": {
@@ -43729,6 +43860,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-11-27",
         "context_window": 1000000
       },
       "pricing": {
@@ -44362,6 +44494,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-12-15",
         "context_window": 262144
       },
       "pricing": {
@@ -57211,6 +57344,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-22",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -57304,6 +57439,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-16",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -57392,6 +57529,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-20",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -57438,6 +57577,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-02",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 1000000
       },
@@ -57485,6 +57626,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-06-01",
         "context_window": 1000000
       },
       "pricing": {
@@ -58401,6 +58543,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-05-19",
+        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -62549,6 +62693,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-03-10",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 65536
       },
@@ -64899,8 +65045,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-12-17",
         "params_total_b": 102,
         "params_active_b": 102,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 128000
       },
@@ -64942,8 +65090,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-06",
         "params_total_b": 102,
         "params_active_b": 102,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 128000
       },
@@ -65084,6 +65234,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-01-28",
         "context_window": 127072
       },
       "pricing": {
@@ -65124,6 +65275,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2025-01-28",
         "context_window": 200000
       },
       "pricing": {
@@ -65337,6 +65489,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-02",
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "dirac_cache_hit_rates": [
           {
@@ -65405,8 +65559,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-05-29",
         "params_total_b": 198,
         "params_active_b": 187,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 256000
       },
@@ -66395,8 +66551,10 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "release_date": "2026-04-01",
         "params_total_b": 399,
         "params_active_b": 386,
+        "confirmed_scraped": true,
         "aa_img_scraped": true,
         "context_window": 262144
       },

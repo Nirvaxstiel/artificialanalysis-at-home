@@ -123,3 +123,29 @@ class TestProcessedMetaBlock:
         assert data["meta"]["model_count"] == len(data["models"]), "model_count must equal len(models)"
         assert data["meta"]["version"] and data["meta"]["generated"]
         assert "sources" in data and "sources_meta" in data
+
+
+# ── (G) aa_api_live.json repurposing: release_date + creator enrichment ──
+
+
+class TestAaApiLiveEnrichment:
+    def test_release_date_axis_in_catalog(self):
+        cat = json.loads((REPO / "data" / "axes_catalog.json").read_text(encoding="utf-8"))
+        aids = {a["id"] for a in cat["axes"]}
+        assert "meta.release_date" in aids, "release_date should be a catalog axis"
+
+    def test_release_date_populated_in_output(self, processed_js):
+        have = [m for m in processed_js if m.get("release_date")]
+        assert len(have) >= 10, f"expected >=10 models with release_date from aa_api_live, got {len(have)}"
+
+    def test_creator_filled_from_live(self):
+        reg = _load_registry()
+        rd = [m for m in reg["models"] if m.get("meta", {}).get("release_date")]
+        assert len(rd) >= 10, f"release_date should be sourced into registry meta, got {len(rd)}"
+
+
+class TestAaImgScrapeProgress:
+    def test_confirmed_scraped_reaches_output(self, processed_js):
+        # aa_scrape_progress.json repurposed as provenance flag on speculative AA_IMG models
+        have = [m for m in processed_js if m.get("confirmed_scraped") is True]
+        assert len(have) >= 10, f"expected >=10 confirmed_scraped models, got {len(have)}"

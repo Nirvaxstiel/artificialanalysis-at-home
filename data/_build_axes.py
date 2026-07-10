@@ -19,7 +19,7 @@ def _build_axis(models, axis_id, source, label, type_, unit, hib, desc, group,
     rng = None
     if vals:
         lo, hi = min(vals), max(vals)
-        if range_decimals is not None:
+        if range_decimals is not None and isinstance(lo, (int, float)) and isinstance(hi, (int, float)):
             lo, hi = round(lo, range_decimals), round(hi, range_decimals)
         rng = [lo, hi]
     return {
@@ -167,6 +167,13 @@ def run(ctx=None):
         "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). "
         "Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
         "Cache Efficiency", dirac_path, range_decimals=2))
+
+    # ── RELEASE DATE (from aa_api_live.json, AA API) ──
+    axes.append(_build_axis(
+        models, "meta.release_date", "AA", "Release Date", "meta", "date", True,
+        "Model release date from the live Artificial Analysis API (aa_api_live.json). "
+        "Useful for recency/version-comparison; not a quality metric.",
+        "Provenance", ["meta"], range_decimals=0))
 
     # ── LIVEBENCH ──
     lb_orig_keys = set()

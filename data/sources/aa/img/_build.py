@@ -1,7 +1,28 @@
 import json, os
 from pathlib import Path
 
-from ...._canonical import aa_img_name_to_canonical
+from ...._canonical import aa_img_name_to_canonical, resolve_from_slug
+
+
+def get_aa_img_scraped_cids(base: Path) -> set[str]:
+    """Canonical ids the AA image scraper actually fetched (aa_scrape_progress.json).
+
+    Repurposes the orphan scrape-tracker as a provenance signal: an AA_IMG
+    (speculative) model is 'confirmed' if it was scraped from a real chart, vs
+    a pure projection. Distinct from the model's speculative flag. The tracker
+    stores AA slugs, so we resolve them to canonical ids for join.
+    """
+    path = os.path.join(base, "data", "sources", "aa", "aa_scrape_progress.json")
+    if not os.path.exists(path):
+        return set()
+    with open(path) as f:
+        data = json.load(f)
+    cids = set()
+    for slug in data.get("scraped", []):
+        cid = resolve_from_slug(slug)
+        if cid:
+            cids.add(cid)
+    return cids
 
 
 def get_aa_img_models(base: Path) -> dict[str, dict]:
@@ -11,6 +32,8 @@ def get_aa_img_models(base: Path) -> dict[str, dict]:
 
     with open(img_path) as f:
         raw = json.load(f)
+
+    scraped = get_aa_img_scraped_cids(base)
 
     out: dict[str, dict] = {}
     for display_name, rec in raw.items():
@@ -36,5 +59,7 @@ def get_aa_img_models(base: Path) -> dict[str, dict]:
             meta.setdefault("params_total_b", rec["params_total_b"])
         if rec.get("params_active_b") is not None:
             meta.setdefault("params_active_b", rec["params_active_b"])
+        if cid in scraped:
+            meta.setdefault("confirmed_scraped", True)
 
     return out

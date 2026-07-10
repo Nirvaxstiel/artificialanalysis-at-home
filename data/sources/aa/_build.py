@@ -5,6 +5,30 @@ from pathlib import Path
 from ..._canonical import resolve_from_slug, costbd_name_to_canonical
 
 
+def get_aa_live_models(aa_dir: str) -> dict[str, dict]:
+    """Live AA API pull (aa_api_live.json): 551 models with release_date + creator.
+
+    Used to enrich release_date into meta and backfill creator where the static
+    scraped set left it null. Source of truth for 'when did this model ship'.
+    """
+    path = os.path.join(aa_dir, "aa_api_live.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path) as f:
+        payload = json.load(f)
+    out: dict[str, dict] = {}
+    for m in payload.get("data", []):
+        slug = m.get("slug")
+        if not slug:
+            continue
+        creator = (m.get("model_creator") or {}).get("name")
+        out[slug] = {
+            "release_date": m.get("release_date"),
+            "creator": creator,
+        }
+    return out
+
+
 def get_aa_models(base: Path) -> dict[str, dict]:
     """Merge all AA data sources into dict of canonical_id → model record.
 
@@ -30,16 +54,19 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             print(f"  ⚠ Duplicate AA slug '{slug}' in aa_models_scraped.json — overwriting previous")
         seen_slugs.add(slug)
 
+    live_models = get_aa_live_models(AA_DIR)
+
     for m in scraped_models:
         slug = m.get("slug")
         cid = resolve_from_slug(slug)
         if not cid:
             continue
+        live = live_models.get(slug, {})
 
         all_models[cid] = {
             "id": cid,
             "name": m.get("name"),
-            "creator": m.get("creator"),
+            "creator": m.get("creator") or live.get("creator"),
             "model_type": "reasoning" if m.get("is_reasoning") else None,
             "meta": {
                 "archetype": None,
@@ -47,6 +74,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
                 "cost_percentile": None,
                 "iq_percentile": None,
                 "has_breakdown": False,
+                "release_date": live.get("release_date"),
             },
             "pricing": {
                 "aa": {

@@ -21,6 +21,8 @@ class ProjectionRowMeta:
     has_breakdown: bool = False
     cost_percentile: Optional[Percentile] = None
     iq_percentile: Optional[Percentile] = None
+    release_date: Optional[str] = None
+    confirmed_scraped: Optional[bool] = None
 
 
 @dataclass
@@ -274,6 +276,10 @@ class ProjectionRow:
                 d["cost_percentile"] = self.meta.cost_percentile.as_primitive()
             if self.meta.iq_percentile is not None:
                 d["iq_percentile"] = self.meta.iq_percentile.as_primitive()
+            if self.meta.release_date is not None:
+                d["release_date"] = self.meta.release_date
+            if self.meta.confirmed_scraped is not None:
+                d["confirmed_scraped"] = self.meta.confirmed_scraped
         if self.openrouter_vendor is not None:
             d["openrouter_vendor"] = self.openrouter_vendor
         return d
