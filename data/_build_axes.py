@@ -40,8 +40,6 @@ def run(ctx=None):
          "AA estimated cost per standard task", ["cost_per_task"]),
         ("aa.tokens_m", "Tokens per Task (M)", "pricing", "M tokens", True,
          "AA context length / tokens per task", ["tokens_m"]),
-        ("aa.cost_per_wallsec", "Cost per Wall-Second ($)", "pricing", "$", False,
-         "AA cost per wall-second of inference", ["cost_per_wallsec"]),
         ("aa.useful_cost", "Useful Cost ($)", "pricing", "$", False,
          "AA cost attributable to useful output (non-reasoning)", ["useful_cost"]),
         ("aa.reasoning_tax_pct", "Reasoning Tax (%)", "pricing", "%", False,

@@ -35,15 +35,12 @@
       const avgIQ = ms.reduce((s, m) => s + m.intel, 0) / ms.length;
       const avgCost = ms.reduce((s, m) => s + m.cost_per_task, 0) / ms.length;
       const avgSpeed = ms.reduce((s, m) => s + m.speed_tps, 0) / ms.length;
-      const withTok = ms.filter(m => m.tokens_m != null);
-      const avgTokens = withTok.length ? withTok.reduce((s, m) => s + m.tokens_m, 0) / withTok.length : null;
       const withCtx = ms.filter(m => m.context_window != null);
       const avgCtx = withCtx.length ? Math.round(withCtx.reduce((s, m) => s + m.context_window, 0) / withCtx.length) : null;
       const costEff = 1 / avgCost;
-      const tokenEff = avgTokens ? 1 / avgTokens : null;    // higher = fewer tokens = more efficient
       const withCache = ms.filter(m => m.cache_hit_price != null && m.inp_price != null && m.inp_price > 0);
       const avgCacheEff = withCache.length ? withCache.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / withCache.length : 0;
-      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgTokens, avgCtx, costEff, tokenEff, avgCacheEff, count: ms.length });
+      archetypes.push({ creator, avgIQ, avgCost, avgSpeed, avgCtx, costEff, avgCacheEff, count: ms.length });
     }
 
     // Sort alphabetically — keeps OSS variants next to parent
@@ -52,7 +49,7 @@
     const allIQ = archetypes.map(a => a.avgIQ);
     const allCostEff = archetypes.map(a => a.costEff);
     const allSpeed = archetypes.map(a => a.avgSpeed);
-    const allTokenEff = archetypes.map(a => a.tokenEff).filter(v => v != null);
+    const allCacheEff = archetypes.map(a => a.avgCacheEff);
     const allCtx = archetypes.map(a => a.avgCtx).filter(v => v != null);
 
     const mn = arr => 0;
@@ -62,7 +59,6 @@
     const iqLo = mn(allIQ), iqHi = mx(allIQ);
     const ceLo = mn(allCostEff), ceHi = mx(allCostEff);
     const spLo = mn(allSpeed), spHi = mx(allSpeed);
-    const teLo = mn(allTokenEff), teHi = mx(allTokenEff);
     const caLo = mn(allCacheEff), caHi = mx(allCacheEff);
     const ctxLo = 0, ctxHi = mx(allCtx) || 0;
 
@@ -135,7 +131,6 @@
       const values = [
         norm(a.avgIQ, iqLo, iqHi),
         norm(a.avgSpeed, spLo, spHi),
-        norm(a.tokenEff, teLo, teHi),
         norm(a.avgCacheEff, caLo, caHi),
         norm(a.costEff, ceLo, ceHi),
         norm(a.avgCtx, ctxLo, ctxHi),
@@ -179,16 +174,16 @@
       }
 
       // Axis labels — show max value for context (human-readable)
-      const maxes = [iqHi, spHi, teHi, caHi, ceHi, ctxHi];
+      const maxes = [iqHi, spHi, caHi, ceHi, ctxHi];
       const fmtMax = (key, val) => {
+        const N = window.VIZ_NUM;
         if (val == null) return '?';
-        if (key === 'avgIQ') return val.toFixed(0);
-        if (key === 'avgSpeed') return val.toFixed(0) + '/s';
-        if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
-        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok';
-        if (key === 'costEff') return '$' + (1/val).toFixed(2);
-        if (key === 'avgCtx') return val >= 1000000 ? (val/1000000).toFixed(1) + 'M' : (val/1000).toFixed(0) + 'K';
-        return val.toFixed(2);
+        if (key === 'avgIQ') return N.fmtCompact(val, { decimals: 0 });
+        if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + '/s';
+        if (key === 'avgCacheEff') return N.fmtPct(val);
+        if (key === 'costEff') return N.fmtUSD(1 / val);
+        if (key === 'avgCtx') return N.fmtCount(val);
+        return N.fmtCompact(val);
       };
       for (let i = 0; i < RADAR_AXES.length; i++) {
         const ax = RADAR_AXES[i];
@@ -205,23 +200,20 @@
       svg += '</svg>';
 
       const fmtRaw = (key, val) => {
-        if (val == null) return '\u2014';
+        const N = window.VIZ_NUM;
+        if (val == null) return N.DASH;
         if (key === 'avgIQ') return val.toFixed(1);
-        if (key === 'avgSpeed') return val.toFixed(0) + ' t/s';
-        if (key === 'avgCacheEff') return (val * 100).toFixed(0) + '%';
-        if (key === 'tokenEff') return (1/val).toFixed(0) + 'M tok/task';
-        if (key === 'costEff') return '$' + (1/val).toFixed(3) + '/task';
-        return val.toFixed(2);
+        if (key === 'avgSpeed') return N.fmtCompact(val, { decimals: 0 }) + ' t/s';
+        if (key === 'avgCacheEff') return N.fmtPct(val);
+        if (key === 'costEff') return N.fmtUSD(1 / val) + '/task';
+        if (key === 'avgCtx') return N.fmtCount(val);
+        return N.fmtCompact(val);
       };
 
       let statsHtml = RADAR_AXES.map(ax => {
         return `${ax.label} <span class="val">${fmtRaw(ax.key, a[ax.key])}</span>`;
-      }).join(' \u00b7 ');
-      const ctxFmt = a.avgCtx != null
-        ? (a.avgCtx >= 1000000 ? (a.avgCtx/1000000).toFixed(1) + 'M' : (a.avgCtx/1000).toFixed(0) + 'K')
-        : '\u2014';
-      statsHtml += ` \u00b7 CTX <span class="val">${ctxFmt}</span>`;
-      statsHtml += ` \u00b7 <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
+      }).join(' · ');
+      statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `
         <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? (window.__filterMode === 'hide' ? 'display:none' : 'opacity:0.15') : ''}">
@@ -233,7 +225,7 @@
 
     html += '</div>';
 
-    container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed (TOKEN EFF where tokens_m available)');
+    container.innerHTML = html + window.VIZ_HELPERS.renderCoverageNote(container, models.length, data.length, 'cost_per_task + intel + speed');
 
     // Clear legend (redundant with chart header)
     const legendEl = container.parentElement.querySelector('.viz-legend');

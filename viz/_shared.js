@@ -30,6 +30,52 @@ const CREATOR_COLORS = {
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
 
+// ── Number formatting ── single source of truth for suffixes / separators / currency.
+// Each formatter takes (value, opts?) and returns a string, or '—' for null/NaN.
+window.VIZ_NUM = (function () {
+  const DASH = '—';
+  const isNum = v => v != null && !Number.isNaN(v);
+
+  // Counts / magnitudes: tokens, context window. Adaptive M/K/B suffix.
+  function fmtCount(v, opts = {}) {
+    if (!isNum(v)) return DASH;
+    const dec = opts.decimals != null ? opts.decimals : 1;
+    const abs = Math.abs(v);
+    if (abs >= 1e9) return (v / 1e9).toFixed(dec) + 'B';
+    if (abs >= 1e6) return (v / 1e6).toFixed(dec) + 'M';
+    if (abs >= 1e3) return (v / 1e3).toFixed(opts.kDecimals != null ? opts.kDecimals : 0) + 'K';
+    return v.toLocaleString('en-US', { maximumFractionDigits: opts.decimals != null ? opts.decimals : 0 });
+  }
+
+  // Currency: adaptive precision — small values get more decimals, large get separators.
+  function fmtUSD(v, opts = {}) {
+    if (!isNum(v)) return DASH;
+    const abs = Math.abs(v);
+    let s;
+    if (abs === 0) s = '0.00';
+    else if (abs < 0.01) s = v.toFixed(4);
+    else if (abs < 1) s = v.toFixed(3);
+    else if (abs < 1000) s = v.toFixed(2);
+    else s = v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return '$' + s;
+  }
+
+  // Percent: input is a fraction (0.9 → 90%).
+  function fmtPct(v, opts = {}) {
+    if (!isNum(v)) return DASH;
+    const dec = opts.decimals != null ? opts.decimals : 0;
+    return (v * 100).toFixed(dec) + '%';
+  }
+
+  // Compact fallback: thousands separators, capped fraction digits.
+  function fmtCompact(v, opts = {}) {
+    if (!isNum(v)) return DASH;
+    return v.toLocaleString('en-US', { maximumFractionDigits: opts.decimals != null ? opts.decimals : 2 });
+  }
+
+  return { fmtCount, fmtUSD, fmtPct, fmtCompact, DASH };
+})();
+
 // window.__legendFilter = { dim, val } | null
 window.__legendFilter = null;
 window.__filterSubscribers = new Set();
@@ -239,22 +285,23 @@ function applyLegendFilter(container, models) {
 window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, applyLegendFilter, fmtV };
 
 window.buildTooltip = function(m) {
+  const N = window.VIZ_NUM;
   const iq = m.intel ?? 0;
   const cost = m.cost_per_task;
   const tok = m.tokens_m;
-  const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '\u2014';
-  const reasoningPct = m.reasoning_tax_pct != null ? m.reasoning_tax_pct + '%' : '\u2014';
+  const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '—';
+  const reasoningPct = m.reasoning_tax_pct != null ? N.fmtPct(m.reasoning_tax_pct) : '—';
   let html = `<div class=\"tt-name\">${m.name}</div>
     <div class=\"tt-creator\">${m.creator} &middot; ${m.slug}</div>
     <div class=\"tt-row\"><span class=\"k\">IQ</span><span class=\"v neon\">${iq}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">$ / TASK</span><span class=\"v\">${cost != null ? '$' + cost.toFixed(2) : '\u2014'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK (M)</span><span class=\"v\">${tok ?? '\u2014'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">$ / M TOK</span><span class=\"v\">${m.out_price ?? '\u2014'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">SPEED t/s</span><span class=\"v\">${m.speed_tps ?? '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / TASK</span><span class=\"v\">${cost != null ? N.fmtUSD(cost) : '—'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK (M)</span><span class=\"v\">${tok != null ? N.fmtCount(tok * 1e6, { decimals: 0 }) : '—'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / M TOK</span><span class=\"v\">${m.out_price != null ? N.fmtUSD(m.out_price) : '—'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">SPEED t/s</span><span class=\"v\">${m.speed_tps != null ? N.fmtCompact(m.speed_tps, { decimals: 0 }) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">IQ / $1K</span><span class=\"v neon\">${iqPerK}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">$ / IQ PT</span><span class=\"v\">$${(cost/iq).toFixed(2)}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">$ / IQ PT</span><span class=\"v\">${cost != null && iq > 0 ? N.fmtUSD(cost / iq) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">REASONING TAX</span><span class=\"v\">${reasoningPct}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">USEFUL $</span><span class=\"v\">$${m.useful_cost != null ? m.useful_cost.toFixed(2) : '\u2014'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">USEFUL $</span><span class=\"v\">${m.useful_cost != null ? N.fmtUSD(m.useful_cost) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">ARCHETYPE</span><span class=\"v\">${m.archetype}</span></div>
     <div class=\"tt-row\"><span class=\"k\">PARETO</span><span class=\"v\">${m.pareto_optimal ? 'YES' : 'no'}</span></div>`;
 
@@ -268,12 +315,12 @@ window.buildTooltip = function(m) {
   if (m.arena_code_elo != null) cross.push(`Arena Code Elo: ${m.arena_code_elo}`);
   if (m.arena_text_elo != null) cross.push(`Arena Text Elo: ${m.arena_text_elo}`);
   if (m.openrouter_inp_price_per_m != null) {
-    cross.push(`OR Input: $${m.openrouter_inp_price_per_m}/Mtok`);
-    cross.push(`OR Output: $${m.openrouter_out_price_per_m}/Mtok`);
+    cross.push(`OR Input: ${N.fmtUSD(m.openrouter_inp_price_per_m)}/Mtok`);
+    cross.push(`OR Output: ${N.fmtUSD(m.openrouter_out_price_per_m)}/Mtok`);
   }
   if (m.openllm_average != null) cross.push(`OpenLLM avg: ${m.openllm_average.toFixed(1)}`);
-  if (m.params_b != null) cross.push(`Params: ${m.params_b}B`);
-  if (m.context_window != null) cross.push(`Context: ${m.context_window >= 1000000 ? (m.context_window/1000000).toFixed(1) + 'M' : (m.context_window/1000).toFixed(0) + 'K'}`);
+  if (m.params_b != null) cross.push(`Params: ${N.fmtCount(m.params_b * 1e9, { decimals: 0 })}B`);
+  if (m.context_window != null) cross.push(`Context: ${N.fmtCount(m.context_window)}`);
   if (m.co2_kg != null) cross.push(`CO₂: ${m.co2_kg}kg`);
 
   if (cross.length > 0) {
@@ -294,11 +341,10 @@ window.SKU_PATTERNS = [
 
 window.RADAR_AXES = [
   { key: 'avgIQ',       label: 'IQ',         angle: -Math.PI / 2 },
-  { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 6 },
-  { key: 'tokenEff',    label: 'TOKEN EFF',  angle: -Math.PI / 2 + 4 * Math.PI / 6 },
-  { key: 'avgCacheEff', label: 'CACHE EFF',  angle: -Math.PI / 2 + 6 * Math.PI / 6 },
-  { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 8 * Math.PI / 6 },
-  { key: 'avgCtx',      label: 'CTX',        angle: -Math.PI / 2 + 10 * Math.PI / 6 },
+  { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 5 },
+  { key: 'avgCacheEff', label: 'CACHE EFF',  angle: -Math.PI / 2 + 4 * Math.PI / 5 },
+  { key: 'costEff',     label: 'COST EFF',   angle: -Math.PI / 2 + 6 * Math.PI / 5 },
+  { key: 'avgCtx',      label: 'CTX',        angle: -Math.PI / 2 + 8 * Math.PI / 5 },
 ];
 
 window.COST_SEGMENTS = {

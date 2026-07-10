@@ -95,7 +95,6 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
     ├── 01-crossover.js
     ├── 02-cost-breakdown.js
     ├── 03-provider-archetypes.js
-    ├── 04-speed-cost.js
     ├── 05-cost-per-iq.js
     ├── 06-data-table.js
     └── README.md               ← viz worker contract

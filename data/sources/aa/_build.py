@@ -134,7 +134,6 @@ def get_aa_models(base: Path) -> dict[str, dict]:
                     "cost_per_task": None,
                     "tokens_m": None,
                     "speed_tps": m.get("speed_tps"),
-                    "cost_per_wallsec": None,
                     "useful_cost": None,
                     "reasoning_tax_pct": None,
                 }
@@ -233,7 +232,6 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
                 "cost_per_task": raw.get("cost"),
                 "tokens_m": raw.get("tokens_m"),
                 "speed_tps": raw.get("spd"),
-                "cost_per_wallsec": None,
                 "useful_cost": raw.get("eff_cost_per_m"),
                 "reasoning_tax_pct": None,
             }

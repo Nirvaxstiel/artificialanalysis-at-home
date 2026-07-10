@@ -89,7 +89,6 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 - `01-crossover.js` — scatter with x/y axis dropdowns, bubble size
 - `02-cost-breakdown.js` — stacked bars with cache hit rate toggle
 - `03-provider-archetypes.js` — radar charts per creator
-- `04-speed-cost.js` — speed × cost scatter with sweet-spot
 - `05-cost-per-iq.js` — cost per IQ point bar chart
 - `06-data-table.js` — sortable, filterable table
 

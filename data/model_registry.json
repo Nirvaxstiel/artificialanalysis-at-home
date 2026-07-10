@@ -4720,7 +4720,6 @@
           "cost_per_task": 0.24,
           "tokens_m": 88,
           "speed_tps": 102.0,
-          "cost_per_wallsec": null,
           "useful_cost": 6.1255,
           "reasoning_tax_pct": null,
           "cost_segments": {
@@ -4767,7 +4766,6 @@
           "cost_per_task": 0.41,
           "tokens_m": 64,
           "speed_tps": 48.2,
-          "cost_per_wallsec": null,
           "useful_cost": 22.7936,
           "reasoning_tax_pct": null,
           "ttft": 11.465,
@@ -4819,7 +4817,6 @@
           "cost_per_task": 5630.52,
           "tokens_m": 87,
           "speed_tps": 72.6,
-          "cost_per_wallsec": null,
           "useful_cost": 64.7186,
           "reasoning_tax_pct": null,
           "ttft": 46.224
@@ -5188,7 +5185,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 55.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 10.696
@@ -5300,7 +5296,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 39.1,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 14.228
@@ -5388,7 +5383,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 48.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 18.55
@@ -5808,7 +5802,6 @@
           "cost_per_task": 1.8,
           "tokens_m": 120,
           "speed_tps": 64.9,
-          "cost_per_wallsec": null,
           "useful_cost": 31.2713,
           "reasoning_tax_pct": null,
           "ttft": 25.404,
@@ -6153,7 +6146,6 @@
           "cost_per_task": 1.14,
           "tokens_m": 200,
           "speed_tps": 51.0,
-          "cost_per_wallsec": null,
           "useful_cost": 16.7793,
           "reasoning_tax_pct": null,
           "cost_segments": {
@@ -6200,7 +6192,6 @@
           "cost_per_task": 2.29,
           "tokens_m": 300,
           "speed_tps": 78.1,
-          "cost_per_wallsec": null,
           "useful_cost": 20.0506,
           "reasoning_tax_pct": null,
           "ttft": 134.449,
@@ -6260,7 +6251,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 74.5,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 4.516
@@ -6300,7 +6290,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 66.294,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.676
@@ -6340,7 +6329,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 66.76,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.709
@@ -6400,7 +6388,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 73.91,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 23.62
@@ -8756,7 +8743,6 @@
           "cost_per_task": 0.02,
           "tokens_m": 230,
           "speed_tps": 101.0,
-          "cost_per_wallsec": null,
           "useful_cost": 0.3149,
           "reasoning_tax_pct": null,
           "ttft": 0.928,
@@ -8827,7 +8813,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -8868,7 +8853,6 @@
           "cost_per_task": 0.04,
           "tokens_m": 180,
           "speed_tps": 65.5,
-          "cost_per_wallsec": null,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": null,
           "ttft": 1.037,
@@ -8945,7 +8929,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 81.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.126
@@ -9181,7 +9164,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -10533,7 +10515,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -10576,7 +10557,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -10619,7 +10599,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -12646,7 +12625,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 280.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 5.074
@@ -12688,7 +12666,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 168.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 11.354
@@ -12843,7 +12820,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 170.5,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 5.857
@@ -12886,7 +12862,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -12989,7 +12964,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -13217,7 +13191,6 @@
           "cost_per_task": 0.29,
           "tokens_m": 56,
           "speed_tps": 130.4,
-          "cost_per_wallsec": null,
           "useful_cost": 14.5555,
           "reasoning_tax_pct": null,
           "ttft": 25.936,
@@ -13338,7 +13311,6 @@
           "cost_per_task": 0.59,
           "tokens_m": 75,
           "speed_tps": 174.4,
-          "cost_per_wallsec": null,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": null,
           "ttft": 16.506,
@@ -13593,7 +13565,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 120.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.328
@@ -13634,7 +13605,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -13720,7 +13690,6 @@
           "cost_per_task": null,
           "tokens_m": 38,
           "speed_tps": 34.8,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.927
@@ -13820,7 +13789,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -13861,7 +13829,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -14252,7 +14219,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 70.2,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.079
@@ -14320,7 +14286,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 69.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.831
@@ -14362,7 +14327,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -14461,7 +14425,6 @@
           "cost_per_task": 0.48,
           "tokens_m": 140,
           "speed_tps": 185.2,
-          "cost_per_wallsec": null,
           "useful_cost": 6.662,
           "reasoning_tax_pct": null,
           "ttft": 0.904,
@@ -14556,7 +14519,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -15052,7 +15014,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 153.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 124.634
@@ -15094,7 +15055,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 185.1,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 10.94
@@ -15136,7 +15096,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 169.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 7.209
@@ -15177,7 +15136,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 2.399
@@ -15219,7 +15177,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 164.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 3.227
@@ -15260,7 +15217,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -16116,7 +16072,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 155.7,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.074
@@ -16224,7 +16179,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 90.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 89.087
@@ -16868,7 +16822,6 @@
           "cost_per_task": 0.69,
           "tokens_m": 43,
           "speed_tps": 67.2,
-          "cost_per_wallsec": null,
           "useful_cost": 40.5947,
           "reasoning_tax_pct": null,
           "ttft": 20.797,
@@ -16971,7 +16924,6 @@
           "cost_per_task": 0.22,
           "tokens_m": null,
           "speed_tps": 68.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.633,
@@ -17021,7 +16973,6 @@
           "cost_per_task": 0.42,
           "tokens_m": 21,
           "speed_tps": 66.9,
-          "cost_per_wallsec": null,
           "useful_cost": 45.2971,
           "reasoning_tax_pct": null,
           "ttft": 5.29,
@@ -17082,7 +17033,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -17130,7 +17080,6 @@
           "cost_per_task": 1.03,
           "tokens_m": 72,
           "speed_tps": 71.4,
-          "cost_per_wallsec": null,
           "useful_cost": 39.1499,
           "reasoning_tax_pct": null,
           "ttft": 45.195,
@@ -17325,7 +17274,6 @@
           "cost_per_task": 0.06,
           "tokens_m": 87,
           "speed_tps": 303.4,
-          "cost_per_wallsec": null,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": null,
           "ttft": 0.516,
@@ -17396,7 +17344,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 340.8,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.502
@@ -17461,7 +17408,6 @@
           "cost_per_task": 0.02,
           "tokens_m": 67,
           "speed_tps": 234.0,
-          "cost_per_wallsec": null,
           "useful_cost": 0.4458,
           "reasoning_tax_pct": null,
           "ttft": 0.48,
@@ -17521,7 +17467,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 223.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.496
@@ -17725,7 +17670,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 121.5,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 7.915
@@ -17766,7 +17710,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 109.2,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 21.73
@@ -17961,7 +17904,6 @@
           "cost_per_task": 0.16,
           "tokens_m": 83,
           "speed_tps": 120.9,
-          "cost_per_wallsec": null,
           "useful_cost": 3.6141,
           "reasoning_tax_pct": null,
           "ttft": 32.832,
@@ -18683,7 +18625,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 36.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.796
@@ -18726,7 +18667,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 81.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.571
@@ -19560,7 +19500,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 160.7,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.774
@@ -20642,7 +20581,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -20685,7 +20623,6 @@
           "cost_per_task": null,
           "tokens_m": 99,
           "speed_tps": null,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null
         }
@@ -20792,7 +20729,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.7,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.278
@@ -20856,7 +20792,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 123.8,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.776
@@ -20993,7 +20928,6 @@
           "cost_per_task": 0.31,
           "tokens_m": 160,
           "speed_tps": 42.6,
-          "cost_per_wallsec": null,
           "useful_cost": 5.1959,
           "reasoning_tax_pct": null,
           "ttft": 1.253,
@@ -21084,7 +21018,6 @@
           "cost_per_task": 0.18,
           "tokens_m": 100,
           "speed_tps": 43.6,
-          "cost_per_wallsec": null,
           "useful_cost": 5.2456,
           "reasoning_tax_pct": null,
           "ttft": 1.351,
@@ -35832,7 +35765,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 842.2,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 3.077
@@ -36660,7 +36592,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 71.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.734
@@ -36701,7 +36632,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 42.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -36790,7 +36720,6 @@
           "cost_per_task": 0.03,
           "tokens_m": 96,
           "speed_tps": 43.5,
-          "cost_per_wallsec": null,
           "useful_cost": 1.0257,
           "reasoning_tax_pct": null,
           "ttft": 1.915,
@@ -37024,7 +36953,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 240.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.372
@@ -37084,7 +37012,6 @@
           "cost_per_task": 0.07,
           "tokens_m": 85,
           "speed_tps": 51.1,
-          "cost_per_wallsec": null,
           "useful_cost": 1.6909,
           "reasoning_tax_pct": null,
           "ttft": 1.453,
@@ -37159,7 +37086,6 @@
           "cost_per_task": 0.12,
           "tokens_m": 89,
           "speed_tps": 91.2,
-          "cost_per_wallsec": null,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": null,
           "ttft": 1.428,
@@ -38688,7 +38614,6 @@
           "cost_per_task": 1.2,
           "tokens_m": 91,
           "speed_tps": 118.0,
-          "cost_per_wallsec": null,
           "useful_cost": 16.3011,
           "reasoning_tax_pct": null,
           "cost_segments": {
@@ -40979,7 +40904,6 @@
           "cost_per_task": null,
           "tokens_m": 57,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -41316,7 +41240,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 270.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.573
@@ -41379,7 +41302,6 @@
           "cost_per_task": 0.25,
           "tokens_m": 110,
           "speed_tps": 296.5,
-          "cost_per_wallsec": null,
           "useful_cost": 2.6778,
           "reasoning_tax_pct": null,
           "ttft": 0.98,
@@ -41470,7 +41392,6 @@
           "cost_per_task": 0.24,
           "tokens_m": 110,
           "speed_tps": 172.8,
-          "cost_per_wallsec": null,
           "useful_cost": 4.033,
           "reasoning_tax_pct": null,
           "ttft": 0.92,
@@ -41585,7 +41506,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -41833,7 +41753,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 108.5,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.037
@@ -42017,7 +41936,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 150.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 19.759
@@ -42061,7 +41979,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 131.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 4.813
@@ -42104,7 +42021,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 123.2,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 16.908
@@ -42147,7 +42063,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -42190,7 +42105,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -42233,7 +42147,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 122.8,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 7.905
@@ -42299,7 +42212,6 @@
           "cost_per_task": 0.17,
           "tokens_m": 36,
           "speed_tps": 126.4,
-          "cost_per_wallsec": null,
           "useful_cost": 12.9597,
           "reasoning_tax_pct": null,
           "ttft": 16.127,
@@ -42933,7 +42845,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 85.1,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.914
@@ -55590,7 +55501,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 54.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.508
@@ -55632,7 +55542,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 175.1,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.407
@@ -55674,7 +55583,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 44.5,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 2.307
@@ -55715,7 +55623,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 52.6,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 1.799
@@ -55757,7 +55664,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 49.8,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 2.373
@@ -56319,7 +56225,6 @@
           "cost_per_task": 0.33,
           "tokens_m": 88,
           "speed_tps": 51.0,
-          "cost_per_wallsec": null,
           "useful_cost": 6.0007,
           "reasoning_tax_pct": null,
           "cost_segments": {
@@ -56631,7 +56536,6 @@
           "cost_per_task": 1.06,
           "tokens_m": 100,
           "speed_tps": 198.8,
-          "cost_per_wallsec": null,
           "useful_cost": 13.3615,
           "reasoning_tax_pct": null,
           "ttft": 1.57,
@@ -60765,7 +60669,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 94.952,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 99.701
@@ -63112,7 +63015,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -63153,7 +63055,6 @@
           "cost_per_task": null,
           "tokens_m": 120,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -63293,7 +63194,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -63334,7 +63234,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0
@@ -63548,7 +63447,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 192.4,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.918
@@ -63589,7 +63487,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 403.0,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.752
@@ -64572,7 +64469,6 @@
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 119.3,
-          "cost_per_wallsec": null,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "ttft": 0.682

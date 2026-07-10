@@ -50,32 +50,21 @@ class TestDerivedProperties:
     def test_derived_fields_are_explicit(self):
         derived = {k for k, v in ProjectionRow.FIELD_PROVENANCE.items()
                     if v == Provenance.DERIVED}
-        assert derived == {"iq_per_1k_pt", "cost_per_iq_pt", "cost_per_wallsec"}, \
+        assert derived == {"iq_per_1k_pt", "cost_per_iq_pt"}, \
             f"DERIVED set drifted: {derived}"
 
-    def test_no_derived_value_from_corrupt_input(self, processed_js):
-        """No DERIVED field may hold a value that implies a corrupt input.
-
-        cost_per_wallsec = cost_per_task * speed_tps / (tokens_m * 1e6).
-        Since tokens_m is nulled when impossible, any non-null cost_per_wallsec
-        proves the derivation chain was fed valid inputs.
-        """
-        for m in processed_js:
-            cws = m.get("cost_per_wallsec")
-            if cws is None:
-                continue
-            ct = m.get("cost_per_task")
-            sp = m.get("speed_tps")
-            tm = m.get("tokens_m")
-            ctx = m.get("context_window")
-            assert ct is not None and ct > 0, f"{m['slug']}: cost_per_wallsec set but cost_per_task missing"
-            assert sp is not None and sp > 0, f"{m['slug']}: cost_per_wallsec set but speed_tps missing"
-            assert tm is not None, f"{m['slug']}: cost_per_wallsec set but tokens_m null (corrupt derivation)"
-            # tokens_m is AA's per-task volume (millions) — legitimately large,
-            # NOT bounded by context_window. Skip the context check here.
-            expected = ct * sp / (tm * 1e6)
-            assert abs(expected - cws) < 1e-6, \
-                f"{m['slug']}: cost_per_wallsec {cws} != derived {expected}"
+    def test_cost_per_wallsec_axis_removed(self):
+        """cost_per_wallsec was removed entirely — not derivable from available
+        sources (AA doesn't expose Time per Task via API or scrapeable HTML).
+        No ProjectionRow field, provenance entry, or processed.js key should exist."""
+        assert "cost_per_wallsec" not in ProjectionRow.FIELD_PROVENANCE, \
+            "cost_per_wallsec must not appear in FIELD_PROVENANCE"
+        raw = (REPO / "data" / "processed.js").read_text(encoding="utf-8").strip()
+        raw = raw.removeprefix("window.PROCESSED_DATA = ").removesuffix(";")
+        data = json.loads(raw)
+        for m in data:
+            assert "cost_per_wallsec" not in m, \
+                f"{m['slug']}: cost_per_wallsec key must be absent"
 
     def test_derived_iq_fields_consistent(self, processed_js):
         """iq_per_1k_pt and cost_per_iq_pt must equal their derivation from
@@ -230,8 +219,7 @@ class TestTokensMGuardrail:
 
 class TestVizNoDataGating:
     """Each viz must gate on fields that actually carry data.
-    Archetypes radar must not require tokens_m (only AA models have it);
-    04 speed-adjusted-cost now renders from valid AA tokens_m."""
+    Archetypes radar must not require tokens_m (only AA models have it)."""
     def test_archetypes_no_longer_requires_tokens_m(self, processed_js):
         # 03 gate (post-fix): intel + cost_per_task>0 + speed_tps.
         models = [m for m in processed_js
@@ -244,14 +232,6 @@ class TestVizNoDataGating:
         without_tok = [m for m in models if m.get("tokens_m") is None]
         assert len(with_tok) > 0, "expected some archetype models with tokens_m (AA)"
         assert len(without_tok) > 0, "expected some archetype models without tokens_m (non-AA)"
-    def test_speed_adjusted_cost_now_populated(self, processed_js):
-        # 04 gate: cost_per_wallsec>0 + tokens_m + intel. tokens_m is AA's real
-        # per-task volume (not corrupt), so cost_per_wallsec is legitimately derived.
-        pts = [m for m in processed_js
-               if (m.get("cost_per_wallsec") or 0) > 0
-               and m.get("tokens_m") is not None
-               and m.get("intel") is not None]
-        assert len(pts) > 0, "04 should render — cost_per_wallsec derived from valid AA tokens_m"
 
     def test_cost_per_iq_still_has_data(self, processed_js):
         pts = [m for m in processed_js
@@ -273,6 +253,20 @@ class TestProcessedJS:
             raise AssertionError(
                 f"processed.js parse error:\n{r.stderr}"
             )
+
+    def test_radar_axes_no_token_eff(self, shared_js):
+        """Provider-archetype radar must be a clean directional-quality pentagon
+        (IQ, SPEED, CACHE EFF, COST EFF, CTX). TOKEN EFF was removed — it inverted
+        a cumulative eval-token volume (tokens_m) to fake a 'higher=better' direction,
+        which is a misnomer (it's verbosity, not efficiency)."""
+        import re
+        m = re.search(r"window\.RADAR_AXES\s*=\s*\[(.*?)\];", shared_js, re.DOTALL)
+        assert m, "RADAR_AXES not found in _shared.js"
+        body = m.group(1)
+        keys = re.findall(r"key:\s*'([^']+)'", body)
+        assert "tokenEff" not in keys, "TOKEN EFF must not appear in radar axes"
+        assert keys == ["avgIQ", "avgSpeed", "avgCacheEff", "costEff", "avgCtx"], \
+            f"radar axes drifted: {keys}"
 
     def test_aa_pricing_fully_populated(self, processed_js):
         """AA-sourced pricing fields should be populated for AA models

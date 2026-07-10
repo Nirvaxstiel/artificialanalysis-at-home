@@ -2,7 +2,7 @@
   "meta": {
     "generated": "2026-07-09",
     "version": "1.0",
-    "total_axes": 48,
+    "total_axes": 47,
     "total_models": 2245,
     "sources": [
       "AA",
@@ -31,14 +31,13 @@
           "aa.cost_seg_cache_write",
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
-          "aa.cost_per_wallsec",
           "aa.reasoning_tax_pct",
           "aa.intel",
           "aa.iq_per_mtok",
           "aa.iq_per_mtokdollar",
           "aa.iq_per_dollar"
         ],
-        "count": 21
+        "count": 20
       },
       "Arena Code": {
         "source": "Arena Code",
@@ -384,19 +383,6 @@
         0,
         100
       ]
-    },
-    {
-      "id": "aa.cost_per_wallsec",
-      "label": "Cost per Wall-Second ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA cost per wall-second of inference",
-      "models_have": 0,
-      "range": null,
-      "group": "Pricing",
-      "normalize_range": null
     },
     {
       "id": "aa.reasoning_tax_pct",

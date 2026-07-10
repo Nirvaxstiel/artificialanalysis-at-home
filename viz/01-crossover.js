@@ -21,7 +21,6 @@
       { key: 'inp_price', label: 'AA Input $/Mtok', unit: 'USD', log: true },
       { key: 'cost_per_task', label: 'AA Cost / Task', unit: 'USD', log: true },
       { key: 'out_price', label: 'AA Output $/Mtok', unit: 'USD', log: true },
-      { key: 'cost_per_wallsec', label: 'AA Cost / Wall Sec', unit: 'USD', log: true },
       { key: 'openrouter_inp_price_per_m', label: 'OR Input $/Mtok', unit: 'USD', log: true },
       { key: 'openrouter_out_price_per_m', label: 'OR Output $/Mtok', unit: 'USD', log: true },
     ],

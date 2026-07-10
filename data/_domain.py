@@ -136,12 +136,15 @@ class CostPerTask(DomainValue):
 
 @dataclass(frozen=True)
 class TokensPerTask(DomainValue):
-    """Thousands of tokens per task. Positive (>0 when present)."""
-    ktok: float
+    """Millions of output tokens per Intelligence Index task (AA "Output Tokens
+    per Task"). The raw CSV/AA value is already in millions (e.g. 300 = 300M),
+    so `mtok` stores that raw number directly. Spans the entire eval suite, not
+    a single context window — legitimately far larger than context_window."""
+    mtok: float
 
     def __post_init__(self):
-        if self.ktok <= 0:
-            raise ValueError(f"Non-positive tokens per task: {self.ktok}")
+        if self.mtok <= 0:
+            raise ValueError(f"Non-positive tokens per task: {self.mtok}")
 
 
 @dataclass(frozen=True)
@@ -167,16 +170,6 @@ class TimeToFirstToken(DomainValue):
 def safe_ttft(v) -> Optional[TimeToFirstToken]:
     v = safe_float(v)
     return TimeToFirstToken(v) if v is not None else None
-
-
-@dataclass(frozen=True)
-class CostPerWallSec(DomainValue):
-    """$ per wall-clock second. Non-negative."""
-    usd_per_s: float
-
-    def __post_init__(self):
-        if self.usd_per_s < 0:
-            raise ValueError(f"Negative cost per wall-second: {self.usd_per_s}")
 
 
 @dataclass(frozen=True)
@@ -441,7 +434,6 @@ class AAPricing:
     cost_per_task: CostPerTask
     tokens_m: TokensPerTask
     speed_tps: TokensPerSecond
-    cost_per_wallsec: CostPerWallSec
     useful_cost: Optional[UsefulCost] = None
     reasoning_tax_pct: Optional[ReasoningTaxPct] = None
     cache: Optional[CacheHitRate] = None
@@ -455,7 +447,6 @@ class AAPricing:
             "cost_per_task": self.cost_per_task.as_primitive(),
             "tokens_m": self.tokens_m.as_primitive(),
             "speed_tps": self.speed_tps.as_primitive(),
-            "cost_per_wallsec": self.cost_per_wallsec.as_primitive(),
         }
         if self.useful_cost is not None:
             d["useful_cost"] = self.useful_cost.as_primitive()
@@ -736,7 +727,6 @@ class ProjectionRow:
     ttft: Optional[TimeToFirstToken] = None
     useful_cost: Optional[UsefulCost] = None
     reasoning_tax_pct: Optional[ReasoningTaxPct] = None
-    cost_per_wallsec: Optional[CostPerWallSec] = None
 
     # AA cost breakdown (all or nothing)
     cost_seg_total: Optional[CostSegment] = None
@@ -814,7 +804,6 @@ class ProjectionRow:
         "cost_per_task": Provenance.SOURCED, "tokens_m": Provenance.SOURCED,
         "speed_tps": Provenance.SOURCED, "ttft": Provenance.SOURCED,
         "useful_cost": Provenance.SOURCED, "reasoning_tax_pct": Provenance.SOURCED,
-        "cost_per_wallsec": Provenance.DERIVED,
         # AA cost breakdown (sourced — all-or-nothing from AA)
         "cost_seg_total": Provenance.SOURCED, "cost_seg_answer": Provenance.SOURCED,
         "cost_seg_reasoning": Provenance.SOURCED, "cost_seg_cache_write": Provenance.SOURCED,
@@ -880,7 +869,6 @@ class ProjectionRow:
             "iq_per_mtokdollar": None,
             "useful_cost": None,
             "reasoning_tax_pct": None,
-            "cost_per_wallsec": None,
             "archetype": self.meta.archetype.value if self.meta else None,
             "has_breakdown": self.meta.has_breakdown if self.meta else False,
             "pareto_optimal": self.meta.pareto_optimal if self.meta else False,
@@ -903,7 +891,6 @@ class ProjectionRow:
             "iq_per_mtokdollar": self.iq_per_mtokdollar,
             "useful_cost": self.useful_cost,
             "reasoning_tax_pct": self.reasoning_tax_pct,
-            "cost_per_wallsec": self.cost_per_wallsec,
             "cost_seg_total": self.cost_seg_total,
             "cost_seg_answer": self.cost_seg_answer,
             "cost_seg_reasoning": self.cost_seg_reasoning,
@@ -1043,11 +1030,6 @@ def safe_tok_per_task(v) -> Optional[TokensPerTask]:
 def safe_tps(v) -> Optional[TokensPerSecond]:
     v = safe_float(v)
     return TokensPerSecond(v) if v is not None else None
-
-
-def safe_wallsec(v) -> Optional[CostPerWallSec]:
-    v = safe_float(v)
-    return CostPerWallSec(v) if v is not None else None
 
 
 def safe_useful_cost(v) -> Optional[UsefulCost]:
