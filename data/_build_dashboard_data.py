@@ -18,6 +18,7 @@ from _domain import (
     safe_params, safe_carbon, safe_pct,
     safe_ctx_window,
     safe_omniscience, safe_response_time, safe_axis_metric,
+    safe_cache,
     try_model_type, try_archetype,
 )
 
@@ -87,6 +88,7 @@ def build(ctx=None):
         "aa_img.briefcase_rubric_score", "aa_img.agentic_index",
         "aa_img.coding_index", "aa_img.openness_index",
         "aa_img.e2e_response_time_s", "aa_img.ttft_variance",
+        "dirac.cache_hit_rate_max",
     ]
 
     raw = pe.project(ALL_AXES)
@@ -127,7 +129,6 @@ def build(ctx=None):
             useful_cost=safe_useful_cost(a.get("aa.useful_cost")),
             reasoning_tax_pct=safe_reasoning_tax(a.get("aa.reasoning_tax_pct")),
             intel=safe_intel(a.get("aa.intel")),
-            iq_per_dollar_pt=safe_iq_per_dollar(a.get("aa.iq_per_dollar")),
             iq_per_mtok=safe_iq_per_mtok(a.get("aa.iq_per_mtok")),
             iq_per_mtokdollar=safe_iq_per_mtokdollar(a.get("aa.iq_per_mtokdollar")),
             cost_seg_total=safe_cost_segment(a.get("aa.cost_seg_total")),
@@ -161,11 +162,13 @@ def build(ctx=None):
             openrouter_out_price_per_m=safe_ppm(a.get("openrouter.out_price_per_m")),
             openrouter_cache_read_price_per_m=safe_ppm(a.get("openrouter.cache_read_price_per_m")),
             openrouter_vendor=reg.get("pricing", {}).get("openrouter", {}).get("vendor"),
-            params_b=safe_params(a.get("meta.params_b")),
+            params_b=safe_params(meta.get("params_b")),
             params_total_b=safe_params(a.get("meta.params_total_b")),
             params_active_b=safe_params(a.get("meta.params_active_b")),
             co2_kg=safe_carbon(a.get("meta.co2_kg")),
             context_window=safe_ctx_window(meta.get("context_window")),
+            cache_hit_rate_max=safe_cache(a.get("dirac.cache_hit_rate_max")),
+            iq_per_dollar_pt=safe_iq_per_dollar(a.get("aa.iq_per_dollar")),
             omniscience_index=safe_omniscience(a.get("aa_img.omniscience_index")),
             omniscience_accuracy=safe_benchmark(a.get("aa_img.omniscience_accuracy")),
             omniscience_hallucination_rate=safe_benchmark(a.get("aa_img.omniscience_hallucination_rate")),
@@ -226,11 +229,13 @@ def build(ctx=None):
             "generated": _today(),
             "version": "3.0",
             "model_count": len(output),
-            "sources": ["AA", "AA_IMG", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
+            "sources": ["AA", "AA_IMG", "Dirac.run", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
             "sources_meta": {
                 "AA": {"speculative": False},
                 "AA_IMG": {"speculative": True,
                            "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."},
+                "Dirac.run": {"speculative": False,
+                              "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."},
                 "LiveBench": {"speculative": False},
                 "Arena Code": {"speculative": False},
                 "Arena Text": {"speculative": False},
@@ -241,9 +246,11 @@ def build(ctx=None):
         "models": output,
     }
 
-    # Serialize to processed.js
+    # Serialize to processed.js — wrapper carries meta + sources + models so the
+    # artifact is self-describing (model_count/version/date) and the UI unwraps .models.
     rows_dict = [r.to_dict() for r in output]
     wrapper = {
+        "meta": payload["meta"],
         "sources": payload["meta"]["sources"],
         "sources_meta": payload["meta"]["sources_meta"],
         "models": rows_dict,

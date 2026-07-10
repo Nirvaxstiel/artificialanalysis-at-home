@@ -2,13 +2,14 @@
   "meta": {
     "generated": "2026-07-10",
     "version": "1.0",
-    "total_axes": 61,
+    "total_axes": 62,
     "total_models": 2242,
     "sources": [
       "AA",
       "AA_IMG",
       "Arena Code",
       "Arena Text",
+      "Dirac.run",
       "LiveBench",
       "OpenLLM v2",
       "OpenRouter"
@@ -80,6 +81,14 @@
           "arena_text.elo"
         ],
         "count": 3,
+        "speculative": false
+      },
+      "Dirac.run": {
+        "source": "Dirac.run",
+        "axes": [
+          "dirac.cache_hit_rate_max"
+        ],
+        "count": 1,
         "speculative": false
       },
       "LiveBench": {
@@ -243,12 +252,12 @@
     },
     {
       "id": "aa.tokens_m",
-      "label": "Tokens per Task (M)",
+      "label": "Tokens per Task (M) - verbosity",
       "source": "AA",
       "type": "pricing",
       "unit": "M tokens",
-      "higher_is_better": true,
-      "description": "AA context length / tokens per task",
+      "higher_is_better": false,
+      "description": "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.",
       "models_have": 32,
       "range": [
         21,
@@ -844,6 +853,19 @@
         0,
         100
       ]
+    },
+    {
+      "id": "dirac.cache_hit_rate_max",
+      "label": "Cache Hit Rate (max, %)",
+      "source": "Dirac.run",
+      "type": "performance",
+      "unit": "%",
+      "higher_is_better": true,
+      "description": "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
+      "models_have": 0,
+      "range": null,
+      "group": "Cache Efficiency",
+      "normalize_range": null
     },
     {
       "id": "livebench.average",

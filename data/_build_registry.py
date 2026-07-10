@@ -4,6 +4,7 @@ from pathlib import Path
 
 from .sources.aa._build import get_aa_models
 from .sources.aa.img._build import get_aa_img_models
+from .sources.dirac._build import get_dirac_models
 from ._canonical import (
     resolve_from_slug, livebench_name_to_canonical,
     openrouter_id_to_canonical, openllm_name_to_canonical,
@@ -57,6 +58,21 @@ def run(ctx=None):
         img_meta = img.get("meta", {})
         if img_meta:
             existing.setdefault("meta", {}).update(img_meta)
+
+    # ── DIRAC.RUN (observed cache hit rates, OpenRouter Effective Pricing) ──
+    dirac_models = get_dirac_models(BASE)
+    for cid, d in dirac_models.items():
+        if cid not in all_models:
+            all_models[cid] = {"id": cid, "name": None, "creator": None,
+                               "model_type": None, "meta": {}, "pricing": {},
+                               "benchmarks": {}, "aliases": {}}
+        existing = all_models[cid]
+        db = d.get("benchmarks", {}).get("dirac")
+        if db:
+            existing.setdefault("benchmarks", {}).setdefault("dirac", {}).update(db)
+        dmeta = d.get("meta", {})
+        if dmeta:
+            existing.setdefault("meta", {}).update(dmeta)
 
     # ── LIVEBENCH ──
     lb_path = os.path.join(SRC, "livebench_2026_01_08.csv")

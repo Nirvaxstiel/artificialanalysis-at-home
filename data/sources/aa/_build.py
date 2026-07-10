@@ -166,8 +166,8 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
         "benchmarks": {
             "aa": {
                 "intel": raw.get("intel"),
-                "iq_per_dollar_pt": None,
-                "iq_per_mtok": raw.get("iq_per_1k"),
+                "iq_per_dollar": (raw.get("iq_per_1k") / 1000.0) if raw.get("iq_per_1k") is not None else None,
+                "iq_per_mtok": None,
                 "iq_per_mtokdollar": raw.get("cost_per_iq"),
             }
         },
@@ -261,7 +261,7 @@ def _overlay_enriched(model: dict, raw: dict) -> None:
         p["useful_cost"] = raw.get("eff_cost_per_m")
     if b["intel"] is None:
         b["intel"] = raw.get("intel")
-    if b["iq_per_mtok"] is None:
-        b["iq_per_mtok"] = raw.get("iq_per_1k")
+    if b["iq_per_dollar"] is None and raw.get("iq_per_1k") is not None:
+        b["iq_per_dollar"] = raw.get("iq_per_1k") / 1000.0
     if b["iq_per_mtokdollar"] is None:
         b["iq_per_mtokdollar"] = raw.get("cost_per_iq")

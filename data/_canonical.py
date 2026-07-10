@@ -288,3 +288,55 @@ AA_IMG_NAME_MAP = {
 
 def aa_img_name_to_canonical(display_name: str) -> str | None:
     return AA_IMG_NAME_MAP.get(display_name)
+
+
+# Dirac.run "Cache Hit Rates of Inference" full table (dirac.run/posts/cache-hit-rates-agents).
+# Keyed by OpenRouter model-page name "Vendor_Model" (e.g. "DeepSeek_DeepSeek_V4_Pro").
+# Joined to our canonical ids via the OpenRouter API id. Only entries that resolve to a
+# known canonical model are included; the rest are intentionally omitted (no false joins).
+DIRAC_NAME_MAP = {
+    "Zai_GLM_5": "glm-5",
+    "Qwen_Qwen3_VL_32B_Instruct": "qwen3-vl-32b-instruct",
+    "Qwen_Qwen36_35B_A3B": "qwen3-6-35b-a3b",
+    "Qwen_Qwen36_27B": "qwen3-6-27b",
+    "OpenAI_GPT-41_Nano": "gpt-5-4-nano",
+    "xAI_Grok_43": "grok-4-3",
+    "Anthropic_Claude_Sonnet_46": "claude-sonnet-4-6",
+    "Xiaomi_MiMo-V25-Pro": "mimo-v2-5-pro",
+    "Xiaomi_MiMo-V25": "mimo-v2-5",
+    "Qwen_Qwen3_Coder_Next": "qwen3-coder-next",
+    "Anthropic_Claude_Opus_46": "claude-opus-4-6",
+    "Anthropic_Claude_Opus_47": "claude-opus-4-7",
+    "MiniMax_MiniMax_M27": "minimax-m2-7",
+    "OpenAI_gpt-oss-120b": "gpt-oss-120b",
+    "Zai_GLM_47_Flash": "glm-5-1",
+    "OpenAI_GPT-51": "gpt-5-1",
+    "OpenAI_GPT-54_Mini": "gpt-5-4-mini",
+    "Meta_Llama_31_8B_Instruct": "llama-3-1-8b-instruct",
+    "Qwen_Qwen35-9B": "qwen3-5-9b",
+    "MoonshotAI_Kimi_K25": "kimi-k2-5",
+    "Tencent_Hy3_preview": "hy3-preview",
+    "OpenAI_GPT-53-Codex": "gpt-5-3-codex",
+    "StepFun_Step_35_Flash": "step-3-5-flash",
+    "OpenAI_GPT-54_Nano": "gpt-5-4-nano",
+    "DeepSeek_DeepSeek_V3_0324": "deepseek-v3-0324",
+    "Qwen_Qwen35_397B_A17B": "qwen3-5-397b-a17b",
+    "Owl_Alpha": "owl-alpha",
+    "DeepSeek_DeepSeek_V4_Pro": "deepseek-v4-pro",
+    "OpenAI_GPT-4o-mini": "gpt-4o-mini",
+    "Google_Gemini_31_Flash_Lite_Preview": "gemini-3-1-flash-lite-preview",
+    "Zai_GLM_45_Air": "glm-4-5-air",
+    "Anthropic_Claude_Sonnet_45": "claude-4-5-sonnet-thinking",
+    "MiniMax_MiniMax_M25": "minimax-m2-5",
+    "Anthropic_Claude_Opus_45": "claude-4-5-opus",
+    "Qwen_Qwen3_235B_A22B_Instruct_2507": "qwen3-235b-a22b-instruct-2507",
+    "OpenAI_GPT-51_Chat": "gpt-5-1-chat",
+    "Google_Gemini_20_Flash": "gemini-2-0-flash",
+    "Google_Gemma_4_26B_A4B": "gemma-4-26b-a4b",
+    "Google_Gemma_4_31B": "gemma-4-31b",
+    "Qwen_Qwen36_35B": "qwen3-6-35b",
+}
+
+
+def dirac_name_to_canonical(model_name: str) -> str | None:
+    return DIRAC_NAME_MAP.get(model_name.strip())

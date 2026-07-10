@@ -1,7 +1,51 @@
 window.PROCESSED_DATA = {
+  "meta": {
+    "generated": "2026-07-10",
+    "version": "3.0",
+    "model_count": 104,
+    "sources": [
+      "AA",
+      "AA_IMG",
+      "Dirac.run",
+      "LiveBench",
+      "Arena Code",
+      "Arena Text",
+      "OpenLLM v2",
+      "OpenRouter"
+    ],
+    "sources_meta": {
+      "AA": {
+        "speculative": false
+      },
+      "AA_IMG": {
+        "speculative": true,
+        "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."
+      },
+      "Dirac.run": {
+        "speculative": false,
+        "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."
+      },
+      "LiveBench": {
+        "speculative": false
+      },
+      "Arena Code": {
+        "speculative": false
+      },
+      "Arena Text": {
+        "speculative": false
+      },
+      "OpenLLM v2": {
+        "speculative": false
+      },
+      "OpenRouter": {
+        "speculative": false
+      }
+    }
+  },
   "sources": [
     "AA",
     "AA_IMG",
+    "Dirac.run",
     "LiveBench",
     "Arena Code",
     "Arena Text",
@@ -15,6 +59,10 @@ window.PROCESSED_DATA = {
     "AA_IMG": {
       "speculative": true,
       "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."
+    },
+    "Dirac.run": {
+      "speculative": false,
+      "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."
     },
     "LiveBench": {
       "speculative": false

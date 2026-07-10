@@ -55,3 +55,4 @@ class SourceKey(str, Enum):
     OPENLLM = "openllm"
     OPENROUTER = "openrouter"
     COST_BREAKDOWN = "cost_breakdown"
+    DIRAC = "dirac"

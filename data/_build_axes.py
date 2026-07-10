@@ -77,8 +77,8 @@ def run(ctx=None):
       "AA cache read price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
     ba("aa.cost_per_task", "AA", "Cost per Task ($)", "pricing", "$", False,
       "AA estimated cost per standard task", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.tokens_m", "AA", "Tokens per Task (M)", "pricing", "M tokens", True,
-      "AA context length / tokens per task", "Pricing", ["pricing", "aa"], range_decimals=4)
+    ba("aa.tokens_m", "AA", "Tokens per Task (M) - verbosity", "pricing", "M tokens", False,
+      "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.", "Pricing", ["pricing", "aa"], range_decimals=4)
     ba("aa.useful_cost", "AA", "Useful Cost ($)", "pricing", "$", False,
       "AA cost attributable to useful output (non-reasoning)", "Pricing", ["pricing", "aa"], range_decimals=4)
     ba("aa.reasoning_tax_pct", "AA", "Reasoning Tax (%)", "pricing", "%", False,
@@ -158,6 +158,15 @@ def run(ctx=None):
         axes.append(_build_axis(
             models, aid, "AA_IMG", label, "meta", "B", hib, desc,
             "AA Image Charts", ["meta"]))
+
+    # ── DIRAC.RUN (observed cache hit rates) ──
+    dirac_path = ["benchmarks", "dirac"]
+    axes.append(_build_axis(
+        models, "dirac.cache_hit_rate_max", "Dirac.run", "Cache Hit Rate (max, %)",
+        "performance", "%", True,
+        "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). "
+        "Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
+        "Cache Efficiency", dirac_path, range_decimals=2))
 
     # ── LIVEBENCH ──
     lb_orig_keys = set()

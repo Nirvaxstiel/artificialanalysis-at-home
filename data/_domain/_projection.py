@@ -92,6 +92,8 @@ class ProjectionRow:
     openness_index: Optional[BenchmarkScore] = None
     e2e_response_time_s: Optional[ResponseTime] = None
     ttft_variance: Optional[AxisMetric] = None
+    cache_hit_rate_max: Optional[CacheHitRate] = None
+    iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
     iq_per_1k_pt: Optional[IQ_PerDollarPoint] = None
     cost_per_iq_pt: Optional[CostPerIQPoint] = None
     radar_intel: Optional[float] = None
@@ -153,7 +155,9 @@ class ProjectionRow:
         "openness_index": Provenance.SOURCED,
         "e2e_response_time_s": Provenance.SOURCED,
         "ttft_variance": Provenance.SOURCED,
+        "cache_hit_rate_max": Provenance.SOURCED,
         "archetype": Provenance.DERIVED,
+        "iq_per_dollar_pt": Provenance.SOURCED,
         "iq_per_1k_pt": Provenance.DERIVED, "cost_per_iq_pt": Provenance.DERIVED,
         "radar_intel": Provenance.DERIVED, "radar_speed": Provenance.DERIVED,
         "radar_cache_eff": Provenance.DERIVED, "radar_cost_eff": Provenance.DERIVED,
@@ -252,6 +256,8 @@ class ProjectionRow:
             "openness_index": self.openness_index,
             "e2e_response_time_s": self.e2e_response_time_s,
             "ttft_variance": self.ttft_variance,
+            "cache_hit_rate_max": self.cache_hit_rate_max,
+            "iq_per_dollar_pt": self.iq_per_dollar_pt,
             "iq_per_1k_pt": self.iq_per_1k_pt,
             "cost_per_iq_pt": self.cost_per_iq_pt,
             "radar_intel": self.radar_intel,
