@@ -192,8 +192,8 @@
                          costEff: 'rawCost', avgCtx: 'rawCtx' }[ax.key] || ax.key;
         const rawVal = a[rawKey];
         const tip = ax.key === 'costEff'
-          ? `${N.fmtUSD(rawVal)}/task · ${(a.avgCostEff * 100).toFixed(0)} eff`
-          : (rawVal == null ? N.DASH : fmtRaw(ax.key, rawVal));
+          ? `${window.VIZ_NUM.fmtUSD(rawVal)}/task · ${(a.avgCostEff * 100).toFixed(0)} eff`
+          : (rawVal == null ? window.VIZ_NUM.DASH : fmtRaw(ax.key, rawVal));
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1" `
              + `data-creator="${a.creator}" data-axis="${ax.label}" data-tip="${tip}" style="cursor:pointer"/>`;
       }
