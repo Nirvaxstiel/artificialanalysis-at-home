@@ -222,24 +222,48 @@
       }
     }
 
+    // Cluster overlapping points (union-find by pixel proximity) so a click on a
+    // crowded spot can "explode" the stack into individually-hoverable circles.
+    const layout = pts.map(m => ({
+      m,
+      cx: xScale(m[costKey]),
+      cy: yScale(m[qualityKey]),
+      r: Math.max(rScale(m[sizeKey]), 3),
+    }));
+    const parent = layout.map((_, i) => i);
+    const find = i => { while (parent[i] !== i) { parent[i] = parent[parent[i]]; i = parent[i]; } return i; };
+    const union = (a, b) => { parent[find(a)] = find(b); };
+    for (let i = 0; i < layout.length; i++) {
+      for (let j = i + 1; j < layout.length; j++) {
+        const dx = layout[i].cx - layout[j].cx, dy = layout[i].cy - layout[j].cy;
+        const grab = layout[i].r + layout[j].r + 6;
+        if (dx * dx + dy * dy <= grab * grab) union(i, j);
+      }
+    }
+    const clusterOf = layout.map((_, i) => find(i));
+    const groups = {};
+    clusterOf.forEach((g, i) => { (groups[g] = groups[g] || []).push(i); });
+
     // Points
-    for (const m of pts) {
+    for (let k = 0; k < layout.length; k++) {
+      const { m, cx, cy, r } = layout[k];
       const fo = window.__modelOpacity(m);
       if (fo === 0) continue;
       const so = fo;
-      const cx = xScale(m[costKey]), cy = yScale(m[qualityKey]), r = rScale(m[sizeKey]);
       let fill, stroke;
       if (colorMode === 'reasoning') {
         fill = reasoningColor(m.reasoning_tax_pct);
         stroke = '#000';
       } else {
         fill = window.creatorColor(m.creator);
-        stroke = CREATOR_BORDER[m.creator] || "#000";
+        stroke = CREATOR_BORDER[m.creator] || '#000';
       }
-      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r, 3)}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="1.5" stroke-opacity="${so}"></circle>`;
-      // Invisible hit-target for overlapping nodes
-      svg += `<circle class="point" data-slug="${m.slug}" cx="${cx}" cy="${cy}" r="${Math.max(r + 5, 8)}" fill="transparent" stroke="none" style="pointer-events:all"></circle>`;
+      const g = clusterOf[k];
+      svg += `<circle class="pt" data-slug="${m.slug}" data-g="${g}" data-i="${k}" cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity="${fo}" stroke="${stroke}" stroke-width="1.5" stroke-opacity="${so}"></circle>`;
+      // Invisible hit-target for overlapping nodes (covers the whole cluster grab)
+      svg += `<circle class="hit" data-slug="${m.slug}" data-g="${g}" data-i="${k}" cx="${cx}" cy="${cy}" r="${Math.max(r + 6, 9)}" fill="transparent" stroke="none" style="pointer-events:all;cursor:pointer"></circle>`;
     }
+    container.__crossoverLayout = { layout, clusterOf, groups, W, H };
 
     // Labels on pareto models only
     const labelPositions = [];
@@ -261,9 +285,122 @@
       el.addEventListener('click', () => window.__setLegendFilter(el.dataset.lgDim, el.dataset.lgVal));
     });
 
-    wireTooltips(container, data, '.point, .label');
+    wireTooltips(container, data, '.pt, .hit, .label');
     _wireAxisUI(container, data);
     _wireToggle(container, data);
+    _wireExplode(container);
+  }
+
+  // Click a clustered point → its group fans out into individually-hoverable
+  // circles (rAF tween of cx/cy around the group centroid). Click empty space
+  // → all groups tween back and merge. Exposed on window for manual testing.
+  window.__explodeCluster = function(container, g, opts) {
+    opts = opts || {};
+    const lay = container.__crossoverLayout;
+    if (!lay) return;
+    const members = lay.groups[g] || [];
+    if (members.length < 2) return;
+    const circles = [...container.querySelectorAll(`circle.pt[data-g="${g}"], circle.hit[data-g="${g}"]`)];
+    const cx0 = members.reduce((s, i) => s + lay.layout[i].cx, 0) / members.length;
+    const cy0 = members.reduce((s, i) => s + lay.layout[i].cy, 0) / members.length;
+    const slugToMember = {};
+    members.forEach((i, n) => { slugToMember[lay.layout[i].m.slug] = n; });
+    const spread = 26 + members.length * 10;
+    const membersAt = n => {
+      const ang = (n / members.length) * Math.PI * 2 - Math.PI / 2;
+      return [cx0 + Math.cos(ang) * spread, cy0 + Math.sin(ang) * spread];
+    };
+    if (container.__exploded === g) {
+      // re-click same cluster -> collapse it (and clear highlight/dim)
+      container.__exploded = null;
+      _clearExplodeStyles(container);
+      const tween = makeTween(circles, c => {
+        const i = +c.dataset.i;
+        return [lay.layout[i].cx, lay.layout[i].cy];
+      }, opts);
+      tween();
+      return;
+    }
+    container.__exploded = g;
+    // highlight the exploded group, dim everything else
+    circles.forEach(c => { if (c.classList.contains('pt')) c.classList.add('exploded'); });
+    [...container.querySelectorAll('circle.pt')].forEach(c => {
+      if (+c.dataset.g !== g) c.classList.add('dimmed');
+    });
+    const tween = makeTween(circles, c => membersAt(slugToMember[c.dataset.slug]), opts);
+    tween();
+  };
+
+  function _clearExplodeStyles(container) {
+    [...container.querySelectorAll('circle.pt')].forEach(c => c.classList.remove('exploded', 'dimmed'));
+  }
+
+  function makeTween(circles, targetFor, opts) {
+    return () => circles.forEach(c => {
+      const [ex, ey] = targetFor(c);
+      const sx = +c.getAttribute('cx'), sy = +c.getAttribute('cy');
+      const t0 = performance.now();
+      const dur = opts.instant ? 0 : 320;
+      const step = now => {
+        const p = dur ? Math.min((now - t0) / dur, 1) : 1;
+        const e = 1 - Math.pow(1 - p, 3);
+        c.setAttribute('cx', sx + (ex - sx) * e);
+        c.setAttribute('cy', sy + (ey - sy) * e);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  window.__collapseAll = function(container) {
+    const lay = container.__crossoverLayout;
+    if (!lay) return;
+    // Only act if something is currently exploded — a no-op empty click after
+    // boot must not re-tween/merge everything toward neighbors.
+    if (!container.__exploded) return;
+    container.__exploded = null;
+    _clearExplodeStyles(container);
+    const circles = [...container.querySelectorAll('circle.pt, circle.hit')];
+    const tween = makeTween(circles, c => {
+      const i = +c.dataset.i;
+      return [lay.layout[i].cx, lay.layout[i].cy];
+    }, {});
+    tween();
+  };
+
+  function _wireExplode(container) {
+    const svg = container.querySelector('svg');
+    if (!svg) return;
+    container.__exploded = null;  // fresh render starts un-exploded
+    const toSvg = e => {
+      const pt = svg.createSVGPoint();
+      pt.x = e.clientX; pt.y = e.clientY;
+      const m = svg.getScreenCTM().inverse();
+      const p = pt.matrixTransform(m);
+      return { x: p.x, y: p.y };
+    };
+    svg.addEventListener('click', e => {
+      const lay = container.__crossoverLayout;
+      if (!lay) return;
+      const { x, y } = toSvg(e);
+      // Find every cluster with a member within its grab radius of the click.
+      // Explode the densest one — that's the stack the user aimed at.
+      let best = null, bestN = 1;
+      for (const g in lay.groups) {
+        const members = lay.groups[g];
+        if (members.length < 2) continue;
+        for (const i of members) {
+          const dx = lay.layout[i].cx - x, dy = lay.layout[i].cy - y;
+          const grab = lay.layout[i].r + 6;
+          if (dx * dx + dy * dy <= grab * grab) {
+            if (members.length > bestN) { bestN = members.length; best = +g; }
+            break;
+          }
+        }
+      }
+      if (best != null) { window.__explodeCluster(container, best); e.stopPropagation(); return; }
+      window.__collapseAll(container);
+    });
   }
 
   function _createAxisPicker(opts) {

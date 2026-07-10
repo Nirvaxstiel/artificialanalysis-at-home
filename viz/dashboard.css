@@ -285,6 +285,10 @@ svg .axis line, svg .axis path { stroke: #444; }
 svg .grid line { stroke: #1a1a1a; stroke-dasharray: 2 4; }
 svg .point { cursor: crosshair; transition: filter 80ms linear; }
 svg .point:hover, svg .label:hover { filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 12px var(--neon2)); }
+svg .pt { cursor: pointer; transition: filter 80ms linear, fill-opacity 160ms linear; }
+svg .pt:hover, svg .hit:hover { filter: drop-shadow(0 0 6px var(--neon)) drop-shadow(0 0 12px var(--neon2)); }
+svg .pt.exploded { fill-opacity: 1 !important; stroke: #fff; stroke-width: 2.5; }
+svg .pt.dimmed { fill-opacity: 0.12 !important; }
 svg .label { cursor: pointer; }
 
 /* Custom tooltip */
