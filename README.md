@@ -114,7 +114,7 @@ Code: do whatever you want.
 Full pipeline to regenerate `data/processed.js` from fresh sources:
 
 ```bash
-# 1. Pull latest benchmarks & pricing data
+# 1. Pull latest benchmarks & pricing data (OpenRouter, LiveBench, OpenLLM parquet)
 python data/_pull_sources.py
 
 # 2. Merge all sources into unified registry
@@ -124,9 +124,10 @@ python data/_build_registry.py
 python data/_build_dashboard_data.py
 ```
 
-**Pipeline order matters.**  
-`_build_registry.py` now reads AA data from `data/sources/aa/raw/` and `data/sources/aa/enriched/` — never from pipeline output. No circular dependency.
-Scraped AA data (`aa_models_scraped.json`) is pulled separately via the AA scraper — not part of this repo.
+**`_pull_sources.py` covers only 3 of 8 sources** (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet). The other five — AA scraped, AA live API, AA image charts, Dirac.run, Chatbot Arena — are acquired **manually** (scrape / API curl / vision-transcription / table-copy / JSON download) and committed as files. See **`DATA-ACQUISITION.md`** for the full per-source method, auth, and repro steps.
+
+**Pipeline order matters.**  \n`_build_registry.py` reads AA data from `data/sources/aa/raw/` and `data/sources/aa/enriched/` — never from pipeline output. No circular dependency.
+Scraped AA data (`aa_models_scraped.json`) is pulled separately via the external AA scraper — not part of this repo.
 
 **What each step produces:**
 

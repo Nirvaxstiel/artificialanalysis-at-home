@@ -32,6 +32,7 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 - `viz/` — 6 viz scripts + shared config
 - `README.md` — quick start, current state
 - `ARCHITECTURE-REFERENCE.md` — design doc, trade-offs, gap audit (gitignored)
+- `DATA-ACQUISITION.md` — **how each source is obtained** (scrape / API / vision / manual table) + repro steps
 
 ## Data sources
 
