@@ -80,7 +80,7 @@
   }
 
   function render(container, allData) {
-    const cacheSource = container.__cacheSource || 'aa';
+    const cacheSource = container.__cacheSource || window.VIZ_DEFAULTS.costBreakdown.cacheSource;
 
     let models = buildCostData(allData);
     const segments = cacheSource === 'external' ? SEGMENTS_EXT : SEGMENTS_AA;

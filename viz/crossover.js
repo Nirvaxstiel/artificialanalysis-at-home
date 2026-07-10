@@ -115,10 +115,10 @@
     const innerW = W - M.left - M.right;
     const innerH = H - M.top - M.bottom;
 
-    const qualityKey = container.__qualityAxis || 'intel';
-    const costKey = container.__costAxis || 'inp_price';
-    const sizeKey = container.__sizeAxis || 'context_window';
-    const colorMode = container.__colorMode || 'creator';
+    const qualityKey = container.__qualityAxis || window.VIZ_DEFAULTS.crossover.qualityAxis;
+    const costKey = container.__costAxis || window.VIZ_DEFAULTS.crossover.costAxis;
+    const sizeKey = container.__sizeAxis || window.VIZ_DEFAULTS.crossover.sizeAxis;
+    const colorMode = container.__colorMode || window.VIZ_DEFAULTS.crossover.colorMode;
 
     const qCfg = AXES.quality.find(a => a.key === qualityKey) || { key: qualityKey, label: qualityKey, unit: '' };
     const cCfg = AXES.cost.find(a => a.key === costKey) || { key: costKey, label: costKey, unit: 'USD', log: false };
@@ -431,9 +431,9 @@
     const existing = parent && parent.querySelector('.axis-picker-row');
     if (existing) existing.remove();
 
-    const qualityKey = container.__qualityAxis || 'intel';
-    const costKey = container.__costAxis || 'inp_price';
-    const sizeKey = container.__sizeAxis || 'tokens_m';
+    const qualityKey = container.__qualityAxis || window.VIZ_DEFAULTS.crossover.qualityAxis;
+    const costKey = container.__costAxis || window.VIZ_DEFAULTS.crossover.costAxis;
+    const sizeKey = container.__sizeAxis || window.VIZ_DEFAULTS.crossover.sizeAxis;
 
     const row = document.createElement('div');
     row.className = 'axis-picker-row';
@@ -471,13 +471,13 @@
     const existing = parent && parent.querySelector('.color-toggle-row');
     if (existing) existing.remove();
 
-    const colorMode = container.__colorMode || 'creator';
+    const colorMode = container.__colorMode || window.VIZ_DEFAULTS.crossover.colorMode;
 
     const div = document.createElement('div');
     div.className = 'color-toggle-row';
     div.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;';
 
-    const sizeLabel = (AXES.size.find(a => a.key === (container.__sizeAxis || 'context_window')) || {}).label || 'Size';
+    const sizeLabel = (AXES.size.find(a => a.key === (container.__sizeAxis || window.VIZ_DEFAULTS.crossover.sizeAxis)) || {}).label || 'Size';
     div.innerHTML = `
       <span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Color:</span>
       <button class="color-toggle-btn ${colorMode==='creator'?'active':''}" data-mode="creator">Creator</button>

@@ -122,7 +122,7 @@ window.__renderCreatorLegend = function() {
   const models = window.MODELS || [];
   const creators = [...new Set(models.map(m => m.creator).filter(Boolean))].sort();
   const isAllActive = !window.__legendFilter;
-  const fm = window.__filterMode || 'dim';
+  const fm = window.__filterMode || window.VIZ_DEFAULTS.legend.filterMode;
   const toggleHtml = `<span class=\"lg-mode\" style=\"margin-left:auto;display:inline-flex;align-items:center;gap:6px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;\">` +
     `<span style=\"color:var(--muted);font-weight:700;\">FILTER:</span>` +
     `<button class=\"lg-mode-btn ${fm==='dim'?'active':''}\" data-mode=\"dim\" style=\"background:transparent;border:1px solid ${fm==='dim'?'var(--neon)':'#444'};color:${fm==='dim'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;\">dim</button>` +
@@ -283,6 +283,13 @@ function applyLegendFilter(container, models) {
 }
 
 window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, applyLegendFilter, fmtV };
+
+window.VIZ_DEFAULTS = {
+  crossover: { qualityAxis: 'intel', costAxis: 'inp_price', sizeAxis: 'context_window', colorMode: 'creator' },
+  costBreakdown: { cacheSource: 'aa' },
+  dataTable: { view: 'model', sort: { key: 'intel', dir: 'desc' } },
+  legend: { filterMode: 'dim' },
+};
 
 window.buildTooltip = function(m) {
   const N = window.VIZ_NUM;

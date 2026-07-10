@@ -150,11 +150,11 @@
   }
 
   function render(container, data) {
-    const viewKey = container.__view || 'model';
+    const viewKey = container.__view || window.VIZ_DEFAULTS.dataTable.view;
     const view = VIEWS[viewKey];
     if (!view) return;
 
-    const sortSpec = container.__sort || (view.defaultSort && [...view.defaultSort]) || [{ key: 'intel', dir: 'desc' }];
+    const sortSpec = container.__sort || (view.defaultSort && [...view.defaultSort]) || window.VIZ_DEFAULTS.dataTable.sort;
     const search = container.__search || '';
 
     const rows = view.buildRows(data);
