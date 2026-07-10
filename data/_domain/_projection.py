@@ -73,6 +73,22 @@ class ProjectionRow:
     openllm_gpqa: Optional[BenchmarkScore] = None
     openllm_musr: Optional[BenchmarkScore] = None
     openllm_mmlu_pro: Optional[BenchmarkScore] = None
+    aa_coding_index: Optional[BenchmarkScore] = None
+    aa_math_index: Optional[BenchmarkScore] = None
+    aa_gpqa: Optional[BenchmarkScore] = None
+    aa_mmlu_pro: Optional[BenchmarkScore] = None
+    aa_hle: Optional[BenchmarkScore] = None
+    aa_aime: Optional[BenchmarkScore] = None
+    aa_aime_25: Optional[BenchmarkScore] = None
+    aa_math_500: Optional[BenchmarkScore] = None
+    aa_livecodebench: Optional[BenchmarkScore] = None
+    aa_ifbench: Optional[BenchmarkScore] = None
+    aa_lcr: Optional[BenchmarkScore] = None
+    aa_scicode: Optional[BenchmarkScore] = None
+    aa_tau2: Optional[BenchmarkScore] = None
+    aa_tau_banking: Optional[BenchmarkScore] = None
+    aa_terminalbench_hard: Optional[BenchmarkScore] = None
+    aa_terminalbench_v2_1: Optional[BenchmarkScore] = None
     openrouter_inp_price_per_m: Optional[PricePerMToken] = None
     openrouter_out_price_per_m: Optional[PricePerMToken] = None
     openrouter_cache_read_price_per_m: Optional[PricePerMToken] = None
@@ -137,6 +153,14 @@ class ProjectionRow:
         "openllm_bbh": Provenance.SOURCED, "openllm_math_lvl_5": Provenance.SOURCED,
         "openllm_gpqa": Provenance.SOURCED, "openllm_musr": Provenance.SOURCED,
         "openllm_mmlu_pro": Provenance.SOURCED,
+        "aa_coding_index": Provenance.SOURCED, "aa_math_index": Provenance.SOURCED,
+        "aa_gpqa": Provenance.SOURCED, "aa_mmlu_pro": Provenance.SOURCED,
+        "aa_hle": Provenance.SOURCED, "aa_aime": Provenance.SOURCED,
+        "aa_aime_25": Provenance.SOURCED, "aa_math_500": Provenance.SOURCED,
+        "aa_livecodebench": Provenance.SOURCED, "aa_ifbench": Provenance.SOURCED,
+        "aa_lcr": Provenance.SOURCED, "aa_scicode": Provenance.SOURCED,
+        "aa_tau2": Provenance.SOURCED, "aa_tau_banking": Provenance.SOURCED,
+        "aa_terminalbench_hard": Provenance.SOURCED, "aa_terminalbench_v2_1": Provenance.SOURCED,
         "openrouter_inp_price_per_m": Provenance.SOURCED,
         "openrouter_out_price_per_m": Provenance.SOURCED,
         "openrouter_cache_read_price_per_m": Provenance.SOURCED,
@@ -238,6 +262,22 @@ class ProjectionRow:
             "openllm_gpqa": self.openllm_gpqa,
             "openllm_musr": self.openllm_musr,
             "openllm_mmlu_pro": self.openllm_mmlu_pro,
+            "aa_coding_index": self.aa_coding_index,
+            "aa_math_index": self.aa_math_index,
+            "aa_gpqa": self.aa_gpqa,
+            "aa_mmlu_pro": self.aa_mmlu_pro,
+            "aa_hle": self.aa_hle,
+            "aa_aime": self.aa_aime,
+            "aa_aime_25": self.aa_aime_25,
+            "aa_math_500": self.aa_math_500,
+            "aa_livecodebench": self.aa_livecodebench,
+            "aa_ifbench": self.aa_ifbench,
+            "aa_lcr": self.aa_lcr,
+            "aa_scicode": self.aa_scicode,
+            "aa_tau2": self.aa_tau2,
+            "aa_tau_banking": self.aa_tau_banking,
+            "aa_terminalbench_hard": self.aa_terminalbench_hard,
+            "aa_terminalbench_v2_1": self.aa_terminalbench_v2_1,
             "openrouter_inp_price_per_m": self.openrouter_inp_price_per_m,
             "openrouter_out_price_per_m": self.openrouter_out_price_per_m,
             "openrouter_cache_read_price_per_m": self.openrouter_cache_read_price_per_m,

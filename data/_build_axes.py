@@ -117,6 +117,27 @@ def run(ctx=None):
     ba("aa.iq_per_mtokdollar", "AA", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
       "AA intelligence per million token-dollars", "AA Quality", qual_path, range_decimals=4)
 
+    # ── AA LIVE API BENCHMARKS (aa_api_live.json: real eval scores) ──
+    for aid, label, desc in [
+        ("aa.aa_coding_index", "AA Coding Index", "AA composite coding capability index"),
+        ("aa.aa_math_index", "AA Math Index", "AA composite math capability index"),
+        ("aa.gpqa", "GPQA", "Graduate-level Google-proof QA accuracy (0-1)"),
+        ("aa.mmlu_pro", "MMLU-Pro", "MMLU-Pro accuracy (0-1)"),
+        ("aa.hle", "HLE", "Humanity's Last Exam accuracy (0-1)"),
+        ("aa.aime", "AIME", "AIME math competition accuracy (0-1)"),
+        ("aa.aime_25", "AIME 2025", "AIME 2025 math competition accuracy (0-1)"),
+        ("aa.math_500", "MATH-500", "MATH-500 accuracy (0-1)"),
+        ("aa.livecodebench", "LiveCodeBench", "LiveCodeBench coding accuracy (0-1)"),
+        ("aa.ifbench", "IFBench", "Instruction-following benchmark score (0-1)"),
+        ("aa.lcr", "LCR", "Long-context reasoning score (0-1)"),
+        ("aa.scicode", "SciCode", "Scientific coding benchmark accuracy (0-1)"),
+        ("aa.tau2", "TAU2", "TAU-bench agentic benchmark v2 (0-1)"),
+        ("aa.tau_banking", "TAU2 Banking", "TAU-bench banking split accuracy (0-1)"),
+        ("aa.terminalbench_hard", "TerminalBench Hard", "TerminalBench hard subset accuracy (0-1)"),
+        ("aa.terminalbench_v2_1", "TerminalBench v2.1", "TerminalBench v2.1 accuracy (0-1)"),
+    ]:
+        ba(aid, "AA", label, "quality", "score", True, desc, "AA Benchmarks", qual_path, range_decimals=4)
+
     # ── AA IMAGE CHARTS (vision-transcribed) ──
     img_qual_path = ["benchmarks", "aa_img"]
     for aid, label, unit, hib, desc in [
@@ -173,6 +194,13 @@ def run(ctx=None):
         models, "meta.release_date", "AA", "Release Date", "meta", "date", True,
         "Model release date from the live Artificial Analysis API (aa_api_live.json). "
         "Useful for recency/version-comparison; not a quality metric.",
+        "Provenance", ["meta"], range_decimals=0))
+
+    # ── CONTEXT WINDOW (from OpenRouter context_length) ──
+    axes.append(_build_axis(
+        models, "meta.context_window", "OpenRouter", "Context Window (tokens)", "meta", "tokens", True,
+        "Model context window in tokens, sourced from OpenRouter context_length. "
+        "Drives the crossover viz circle size. Higher = larger context.",
         "Provenance", ["meta"], range_decimals=0))
 
     # ── LIVEBENCH ──

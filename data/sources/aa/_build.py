@@ -25,6 +25,7 @@ def get_aa_live_models(aa_dir: str) -> dict[str, dict]:
         out[slug] = {
             "release_date": m.get("release_date"),
             "creator": creator,
+            "evaluations": m.get("evaluations", {}),
         }
     return out
 
@@ -62,6 +63,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         if not cid:
             continue
         live = live_models.get(slug, {})
+        live_eval = live.get("evaluations", {})
 
         all_models[cid] = {
             "id": cid,
@@ -91,10 +93,26 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             },
             "benchmarks": {
                 "aa": {
-                    "intel": m.get("intelligence"),
+                    "intel": m.get("intelligence") or live_eval.get("artificial_analysis_intelligence_index"),
                     "iq_per_dollar": None,
                     "iq_per_mtok": None,
                     "iq_per_mtokdollar": None,
+                    "aa_coding_index": live_eval.get("artificial_analysis_coding_index"),
+                    "aa_math_index": live_eval.get("artificial_analysis_math_index"),
+                    "gpqa": live_eval.get("gpqa"),
+                    "mmlu_pro": live_eval.get("mmlu_pro"),
+                    "hle": live_eval.get("hle"),
+                    "aime": live_eval.get("aime"),
+                    "aime_25": live_eval.get("aime_25"),
+                    "math_500": live_eval.get("math_500"),
+                    "livecodebench": live_eval.get("livecodebench"),
+                    "ifbench": live_eval.get("ifbench"),
+                    "lcr": live_eval.get("lcr"),
+                    "scicode": live_eval.get("scicode"),
+                    "tau2": live_eval.get("tau2"),
+                    "tau_banking": live_eval.get("tau_banking"),
+                    "terminalbench_hard": live_eval.get("terminalbench_hard"),
+                    "terminalbench_v2_1": live_eval.get("terminalbench_v2_1"),
                 }
             },
             "aliases": {

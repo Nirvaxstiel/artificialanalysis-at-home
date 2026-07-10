@@ -2,7 +2,7 @@
   "meta": {
     "generated": "2026-07-10",
     "version": "1.0",
-    "total_axes": 63,
+    "total_axes": 80,
     "total_models": 2262,
     "sources": [
       "AA",
@@ -36,11 +36,27 @@
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
           "aa.intel",
+          "aa.gpqa",
+          "aa.hle",
+          "aa.lcr",
+          "aa.scicode",
+          "aa.ifbench",
+          "aa.tau2",
+          "aa.terminalbench_hard",
+          "aa.tau_banking",
+          "aa.aa_coding_index",
+          "aa.terminalbench_v2_1",
           "aa.iq_per_dollar",
           "aa.iq_per_mtokdollar",
+          "aa.aa_math_index",
+          "aa.mmlu_pro",
+          "aa.aime_25",
+          "aa.livecodebench",
+          "aa.aime",
+          "aa.math_500",
           "aa.iq_per_mtok"
         ],
-        "count": 21,
+        "count": 37,
         "speculative": false
       },
       "AA_IMG": {
@@ -127,11 +143,12 @@
       "OpenRouter": {
         "source": "OpenRouter",
         "axes": [
+          "meta.context_window",
           "openrouter.inp_price_per_m",
           "openrouter.out_price_per_m",
           "openrouter.cache_read_price_per_m"
         ],
-        "count": 3,
+        "count": 4,
         "speculative": false
       }
     }
@@ -444,6 +461,196 @@
       ]
     },
     {
+      "id": "aa.gpqa",
+      "label": "GPQA",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Graduate-level Google-proof QA accuracy (0-1)",
+      "models_have": 93,
+      "range": [
+        0.433,
+        0.941
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.hle",
+      "label": "HLE",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Humanity's Last Exam accuracy (0-1)",
+      "models_have": 92,
+      "range": [
+        0.037,
+        0.533
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.lcr",
+      "label": "LCR",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Long-context reasoning score (0-1)",
+      "models_have": 92,
+      "range": [
+        0,
+        0.7567
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.scicode",
+      "label": "SciCode",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Scientific coding benchmark accuracy (0-1)",
+      "models_have": 92,
+      "range": [
+        0.093,
+        0.602
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.ifbench",
+      "label": "IFBench",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Instruction-following benchmark score (0-1)",
+      "models_have": 90,
+      "range": [
+        0.2299,
+        0.8333
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.tau2",
+      "label": "TAU2",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "TAU-bench agentic benchmark v2 (0-1)",
+      "models_have": 89,
+      "range": [
+        0,
+        0.9912
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.terminalbench_hard",
+      "label": "TerminalBench Hard",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "TerminalBench hard subset accuracy (0-1)",
+      "models_have": 88,
+      "range": [
+        0,
+        0.6288
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.tau_banking",
+      "label": "TAU2 Banking",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "TAU-bench banking split accuracy (0-1)",
+      "models_have": 47,
+      "range": [
+        0.0598,
+        0.3134
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.aa_coding_index",
+      "label": "AA Coding Index",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "AA composite coding capability index",
+      "models_have": 46,
+      "range": [
+        14.4,
+        76.5
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.terminalbench_v2_1",
+      "label": "TerminalBench v2.1",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "TerminalBench v2.1 accuracy (0-1)",
+      "models_have": 46,
+      "range": [
+        0.0674,
+        0.8464
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
       "id": "aa.iq_per_dollar",
       "label": "IQ per Dollar ($\u207b\u00b9)",
       "source": "AA",
@@ -476,6 +683,120 @@
         113.494
       ],
       "group": "AA Quality",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.aa_math_index",
+      "label": "AA Math Index",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "AA composite math capability index",
+      "models_have": 24,
+      "range": [
+        33.7,
+        97
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.mmlu_pro",
+      "label": "MMLU-Pro",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "MMLU-Pro accuracy (0-1)",
+      "models_have": 24,
+      "range": [
+        0.588,
+        0.898
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.aime_25",
+      "label": "AIME 2025",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "AIME 2025 math competition accuracy (0-1)",
+      "models_have": 24,
+      "range": [
+        0.3367,
+        0.97
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.livecodebench",
+      "label": "LiveCodeBench",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "LiveCodeBench coding accuracy (0-1)",
+      "models_have": 24,
+      "range": [
+        0.435,
+        0.917
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.aime",
+      "label": "AIME",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "AIME math competition accuracy (0-1)",
+      "models_have": 4,
+      "range": [
+        0.51,
+        0.8433
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.math_500",
+      "label": "MATH-500",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "MATH-500 accuracy (0-1)",
+      "models_have": 4,
+      "range": [
+        0.8927,
+        0.9767
+      ],
+      "group": "AA Benchmarks",
       "normalize_range": [
         0,
         100
@@ -1227,6 +1548,25 @@
         57.17
       ],
       "group": "OpenLLM",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "meta.context_window",
+      "label": "Context Window (tokens)",
+      "source": "OpenRouter",
+      "type": "meta",
+      "unit": "tokens",
+      "higher_is_better": true,
+      "description": "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.",
+      "models_have": 444,
+      "range": [
+        4095,
+        10000000
+      ],
+      "group": "Provenance",
       "normalize_range": [
         0,
         100

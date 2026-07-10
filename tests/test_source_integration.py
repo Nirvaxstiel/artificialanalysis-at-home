@@ -172,3 +172,49 @@ class TestRegistryModelSerialization:
             # pricing/benchmarks dicts preserved (to_dict omits empty sections)
             assert (out.get("pricing") or {}) == (m.get("pricing") or {})
             assert (out.get("benchmarks") or {}) == (m.get("benchmarks") or {})
+
+
+# ── (I) Live AA benchmarks promoted to real axes ──
+
+
+class TestAaLiveBenchmarks:
+    NEW_AXES = [
+        "aa.aa_coding_index", "aa.aa_math_index", "aa.gpqa", "aa.mmlu_pro",
+        "aa.hle", "aa.aime", "aa.aime_25", "aa.math_500", "aa.livecodebench",
+        "aa.ifbench", "aa.lcr", "aa.scicode", "aa.tau2", "aa.tau_banking",
+        "aa.terminalbench_hard", "aa.terminalbench_v2_1",
+    ]
+
+    def test_axes_in_catalog(self):
+        cat = json.loads((REPO / "data" / "axes_catalog.json").read_text(encoding="utf-8"))
+        aids = {a["id"] for a in cat["axes"]}
+        missing = [a for a in self.NEW_AXES if a not in aids]
+        assert not missing, f"missing axes: {missing}"
+
+    def test_benchmarks_populated_in_output(self, processed_js):
+        # Each new axis should carry real values for at least some models
+        # (sparse axes like aime/math_500 legitimately have few AA-covered models).
+        # Output key = ProjectionRow attribute. Axis suffix already carries aa_
+        # for some (aa_coding_index) but not others (gpqa); field = suffix
+        # when it already starts with aa_, else aa_ + suffix.
+        for ax in self.NEW_AXES:
+            suffix = ax.split(".")[1]
+            field = suffix if suffix.startswith("aa_") else "aa_" + suffix
+            have = [m for m in processed_js if m.get(field) is not None]
+            assert len(have) >= 1, f"{ax} (field {field}): no models populated"
+
+
+# ── (J) context_window regression (OpenRouter context_length → crossover size) ──
+
+
+class TestContextWindow:
+    def test_axis_in_catalog(self):
+        cat = json.loads((REPO / "data" / "axes_catalog.json").read_text(encoding="utf-8"))
+        aids = {a["id"] for a in cat["axes"]}
+        assert "meta.context_window" in aids, "context_window axis must exist (drives crossover circle size)"
+
+    def test_context_window_populated_in_output(self, processed_js):
+        # Regression: RegistryModel.from_flat silently dropped context_window
+        # because RegistryModelMeta lacked the field. Must be >0 again.
+        have = [m for m in processed_js if m.get("context_window") is not None]
+        assert len(have) >= 50, f"context_window regressed: only {len(have)} models populated"

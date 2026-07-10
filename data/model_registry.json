@@ -2634,6 +2634,9 @@
       "id": "aion-2.0",
       "name": "AionLabs: Aion-2.0",
       "creator": "aion-labs",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -2653,6 +2656,9 @@
       "id": "aion-3.0",
       "name": "AionLabs: Aion-3.0",
       "creator": "aion-labs",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -2672,6 +2678,9 @@
       "id": "aion-3.0-mini",
       "name": "AionLabs: Aion-3.0-Mini",
       "creator": "aion-labs",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-07,
@@ -2691,6 +2700,9 @@
       "id": "aion-rp-llama-3.1-8b",
       "name": "AionLabs: Aion-RP 1.0 (8B)",
       "creator": "aion-labs",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -2877,6 +2889,9 @@
       "id": "auto",
       "name": "Auto Router",
       "creator": "openrouter",
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -3673,6 +3688,9 @@
       "id": "bodybuilder",
       "name": "Body Builder (beta)",
       "creator": "openrouter",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -4333,6 +4351,9 @@
       "id": "claude-3-haiku",
       "name": "Anthropic: Claude 3 Haiku",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -4446,6 +4467,9 @@
       "id": "claude-4.5-haiku-reasoning",
       "name": "Claude 4.5 Haiku Reasoning",
       "creator": "Anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -4486,7 +4510,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-09-29",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -4516,10 +4541,24 @@
           "iq_per_dollar": 0.029476500000000003,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 33.9253,
-          "coding_index": 52.1,
-          "math_index": 88,
+          "aa_coding_index": 52.1,
+          "aa_math_index": 88,
+          "gpqa": 0.834,
           "mmlu_pro": 0.875,
-          "gpqa": 0.834
+          "hle": 0.173,
+          "aime": null,
+          "aime_25": 0.88,
+          "math_500": null,
+          "livecodebench": 0.714,
+          "ifbench": 0.572789115646258,
+          "lcr": 0.656666666666667,
+          "scicode": 0.447,
+          "tau2": 0.780701754385965,
+          "tau_banking": 0.189690721649485,
+          "terminalbench_hard": 0.356060606060606,
+          "terminalbench_v2_1": 0.558052434456929,
+          "coding_index": 52.1,
+          "math_index": 88
         },
         "aa_img": {
           "omniscience_index": 13,
@@ -4539,7 +4578,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-09",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -4572,8 +4612,23 @@
           "iq_per_dollar": 0.0106562,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 93.842,
-          "coding_index": 76.5,
-          "gpqa": 0.926
+          "aa_coding_index": 76.5,
+          "aa_math_index": null,
+          "gpqa": 0.926,
+          "mmlu_pro": null,
+          "hle": 0.533,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.63469387755102,
+          "lcr": 0.7,
+          "scicode": 0.602,
+          "tau2": 0.985380116959064,
+          "tau_banking": 0.268041237113402,
+          "terminalbench_hard": 0.628787878787879,
+          "terminalbench_v2_1": 0.846441947565543,
+          "coding_index": 76.5
         },
         "aa_img": {
           "omniscience_index": 40,
@@ -4646,6 +4701,9 @@
       "id": "claude-fable-latest",
       "name": "Anthropic: Claude Fable Latest",
       "creator": "~anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -4705,6 +4763,9 @@
       "id": "claude-haiku-4.5",
       "name": "Anthropic: Claude Haiku 4.5",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -4726,6 +4787,9 @@
       "id": "claude-haiku-latest",
       "name": "Anthropic Claude Haiku Latest",
       "creator": "~anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -4747,6 +4811,9 @@
       "id": "claude-opus-4",
       "name": "Anthropic: Claude Opus 4",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -4871,7 +4938,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-24"
+        "release_date": "2025-11-24",
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -4893,9 +4961,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 91.3,
+          "aa_coding_index": null,
+          "aa_math_index": 91.3,
+          "gpqa": 0.866,
           "mmlu_pro": 0.895,
-          "gpqa": 0.866
+          "hle": 0.284,
+          "aime": null,
+          "aime_25": 0.913333333333333,
+          "math_500": null,
+          "livecodebench": 0.871,
+          "ifbench": 0.579591836734694,
+          "lcr": 0.74,
+          "scicode": 0.495,
+          "tau2": 0.894736842105263,
+          "tau_banking": null,
+          "terminalbench_hard": 0.46969696969697,
+          "terminalbench_v2_1": null,
+          "math_index": 91.3
         }
       },
       "aliases": {
@@ -4973,7 +5055,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-02-05"
+        "release_date": "2026-02-05",
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -4995,7 +5078,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.896
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.896,
+          "mmlu_pro": null,
+          "hle": 0.367,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.531292517006803,
+          "lcr": 0.706666666666667,
+          "scicode": 0.519,
+          "tau2": 0.921052631578947,
+          "tau_banking": null,
+          "terminalbench_hard": 0.462121212121212,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -5045,6 +5143,9 @@
     },
     {
       "id": "claude-opus-4-7",
+      "meta": {
+        "context_window": 200000
+      },
       "benchmarks": {
         "dirac": {
           "cache_hit_rate_max": 79.1
@@ -5251,6 +5352,9 @@
       "id": "claude-opus-4.1",
       "name": "Anthropic: Claude Opus 4.1",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -5272,6 +5376,9 @@
       "id": "claude-opus-4.5",
       "name": "Anthropic: Claude Opus 4.5",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5292,6 +5399,9 @@
     {
       "id": "claude-opus-4.6",
       "creator": "Anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5334,7 +5444,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-16",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5367,8 +5478,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 73.6,
-          "gpqa": 0.914
+          "aa_coding_index": 73.6,
+          "aa_math_index": null,
+          "gpqa": 0.914,
+          "mmlu_pro": null,
+          "hle": 0.396,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.586394557823129,
+          "lcr": 0.703333333333333,
+          "scicode": 0.545,
+          "tau2": 0.885964912280702,
+          "tau_banking": 0.288659793814433,
+          "terminalbench_hard": 0.515151515151515,
+          "terminalbench_v2_1": 0.831460674157303,
+          "coding_index": 73.6
         },
         "aa_img": {
           "omniscience_index": 26,
@@ -5403,6 +5529,9 @@
       "id": "claude-opus-4.7-fast",
       "name": "Anthropic: Claude Opus 4.7 (Fast)",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -5427,7 +5556,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-28",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5468,8 +5598,23 @@
           "iq_per_dollar": 0.0149232,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 67.0098,
-          "coding_index": 74.3,
-          "gpqa": 0.92
+          "aa_coding_index": 74.3,
+          "aa_math_index": null,
+          "gpqa": 0.92,
+          "mmlu_pro": null,
+          "hle": 0.457,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.622448979591837,
+          "lcr": 0.676666666666667,
+          "scicode": 0.535,
+          "tau2": 0.944444444444445,
+          "tau_banking": 0.276288659793814,
+          "terminalbench_hard": 0.583333333333333,
+          "terminalbench_v2_1": 0.846441947565543,
+          "coding_index": 74.3
         },
         "aa_img": {
           "omniscience_index": 27,
@@ -5504,6 +5649,9 @@
       "id": "claude-opus-4.8-fast",
       "name": "Anthropic: Claude Opus 4.8 (Fast)",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -5525,6 +5673,9 @@
       "id": "claude-opus-latest",
       "name": "Anthropic: Claude Opus Latest",
       "creator": "~anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -5546,6 +5697,9 @@
       "id": "claude-sonnet-4",
       "name": "Anthropic: Claude Sonnet 4",
       "creator": "anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -5687,6 +5841,9 @@
       "name": "claude-sonnet-4-5-20250929",
       "creator": "Anthropic",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -5717,6 +5874,9 @@
       "name": "claude-sonnet-4-6",
       "creator": "Anthropic",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -5752,6 +5912,9 @@
       "id": "claude-sonnet-4.6-adaptive",
       "name": "Claude Sonnet 4.6 Adaptive",
       "creator": "Anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "aa": {
           "inp_price": 3.0,
@@ -5792,7 +5955,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-30",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5833,8 +5997,23 @@
           "iq_per_dollar": 0.008811,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 113.494,
-          "coding_index": 71.5,
-          "gpqa": 0.911
+          "aa_coding_index": 71.5,
+          "aa_math_index": null,
+          "gpqa": 0.911,
+          "mmlu_pro": null,
+          "hle": 0.396,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": 0.706666666666667,
+          "scicode": 0.536,
+          "tau2": null,
+          "tau_banking": 0.282474226804124,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.805243445692884,
+          "coding_index": 71.5
         },
         "aa_img": {
           "omniscience_index": 15,
@@ -5861,7 +6040,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-30"
+        "release_date": "2026-06-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5882,7 +6062,23 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -5895,7 +6091,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-30"
+        "release_date": "2026-06-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5916,7 +6113,23 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -5929,7 +6142,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-30"
+        "release_date": "2026-06-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -5950,7 +6164,23 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -5962,6 +6192,9 @@
       "name": "claude-sonnet-5-thinking",
       "creator": "Anthropic",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 1000000
+      },
       "benchmarks": {
         "arena_code": {
           "elo": 1551,
@@ -5979,7 +6212,8 @@
       "creator": "Anthropic",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-30"
+        "release_date": "2026-06-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -6000,7 +6234,23 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -6030,6 +6280,9 @@
       "id": "claude-sonnet-latest",
       "name": "Anthropic Claude Sonnet Latest",
       "creator": "~anthropic",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -6250,6 +6503,9 @@
       "id": "coder-large",
       "name": "Arcee AI: Coder Large",
       "creator": "arcee-ai",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -6292,6 +6548,9 @@
       "id": "codestral-2508",
       "name": "Mistral: Codestral 2508",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -6311,6 +6570,9 @@
       "id": "cogito-v2.1-671b",
       "name": "Deep Cogito: Cogito v2.1 671B",
       "creator": "deepcogito",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -6377,6 +6639,9 @@
       "id": "command-a",
       "name": "Cohere: Command A",
       "creator": "cohere",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -6394,6 +6659,9 @@
       "id": "command-r-08-2024",
       "name": "Cohere: Command R (08-2024)",
       "creator": "cohere",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -6411,6 +6679,9 @@
       "id": "command-r-plus-08-2024",
       "name": "Cohere: Command R+ (08-2024)",
       "creator": "cohere",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -6428,6 +6699,9 @@
       "id": "command-r7b-12-2024",
       "name": "Cohere: Command R7B (12-2024)",
       "creator": "cohere",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.75e-08,
@@ -6569,6 +6843,9 @@
       "id": "cydonia-24b-v4.1",
       "name": "TheDrummer: Cydonia 24B V4.1",
       "creator": "thedrummer",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -6734,6 +7011,9 @@
       "id": "deepseek-chat",
       "name": "DeepSeek: DeepSeek V3",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.002e-07,
@@ -6751,6 +7031,9 @@
       "id": "deepseek-chat-v3-0324",
       "name": "DeepSeek: DeepSeek V3 0324",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.4e-07,
@@ -6770,6 +7053,9 @@
       "id": "deepseek-chat-v3.1",
       "name": "DeepSeek: DeepSeek V3.1",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.1e-07,
@@ -7085,6 +7371,9 @@
       "id": "deepseek-r1",
       "name": "DeepSeek: R1",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-07,
@@ -7102,6 +7391,9 @@
       "id": "deepseek-r1-0528",
       "name": "DeepSeek: R1 0528",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -7175,7 +7467,8 @@
         "co2_kg": 118.54646560023332,
         "architecture": "LlamaForCausalLM",
         "license": "mit",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 128000
       },
       "pricing": {
         "openrouter": {
@@ -7921,6 +8214,9 @@
       "id": "deepseek-v3.1-terminus",
       "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "creator": "deepseek",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.7e-07,
@@ -7939,6 +8235,9 @@
     {
       "id": "deepseek-v3.2",
       "name": "deepseek-v3.2",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.288e-07,
@@ -7970,6 +8269,9 @@
     {
       "id": "deepseek-v3.2-exp",
       "name": "deepseek-v3.2-exp",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.7e-07,
@@ -7999,6 +8301,9 @@
     {
       "id": "deepseek-v3.2-exp-thinking",
       "name": "deepseek-v3.2-exp-thinking",
+      "meta": {
+        "context_window": 163840
+      },
       "benchmarks": {
         "livebench": {
           "average": 58.91,
@@ -8018,6 +8323,9 @@
     {
       "id": "deepseek-v3.2-thinking",
       "name": "deepseek-v3.2-thinking",
+      "meta": {
+        "context_window": 131072
+      },
       "benchmarks": {
         "livebench": {
           "average": 63.13,
@@ -8041,7 +8349,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-24",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8080,8 +8389,23 @@
           "iq_per_dollar": 0.5523336000000001,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 1.8105,
-          "coding_index": 56.2,
-          "gpqa": 0.894
+          "aa_coding_index": 56.2,
+          "aa_math_index": null,
+          "gpqa": 0.894,
+          "mmlu_pro": null,
+          "hle": 0.321,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.791836734693877,
+          "lcr": 0.63,
+          "scicode": 0.449,
+          "tau2": 0.950292397660819,
+          "tau_banking": 0.228865979381443,
+          "terminalbench_hard": 0.356060606060606,
+          "terminalbench_v2_1": 0.617977528089888,
+          "coding_index": 56.2
         },
         "aa_img": {
           "omniscience_accuracy": 37,
@@ -8117,7 +8441,8 @@
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24"
+        "release_date": "2026-04-24",
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8139,7 +8464,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.867
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.867,
+          "mmlu_pro": null,
+          "hle": 0.278,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.734693877551021,
+          "lcr": 0.626666666666667,
+          "scicode": 0.42,
+          "tau2": 0.956140350877193,
+          "tau_banking": null,
+          "terminalbench_hard": 0.386363636363636,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -8153,7 +8493,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-24",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8192,8 +8533,23 @@
           "iq_per_dollar": 0.249518,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.0077,
-          "coding_index": 59.4,
-          "gpqa": 0.888
+          "aa_coding_index": 59.4,
+          "aa_math_index": null,
+          "gpqa": 0.888,
+          "mmlu_pro": null,
+          "hle": 0.359,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.764625850340136,
+          "lcr": 0.663333333333333,
+          "scicode": 0.5,
+          "tau2": 0.961988304093567,
+          "tau_banking": 0.257731958762887,
+          "terminalbench_hard": 0.462121212121212,
+          "terminalbench_v2_1": 0.640449438202247,
+          "coding_index": 59.4
         },
         "aa_img": {
           "omniscience_accuracy": 43,
@@ -8238,7 +8594,8 @@
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24"
+        "release_date": "2026-04-24",
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -8260,7 +8617,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.905
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.905,
+          "mmlu_pro": null,
+          "hle": 0.335,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.712925170068027,
+          "lcr": 0.65,
+          "scicode": 0.464,
+          "tau2": 0.941520467836257,
+          "tau_banking": null,
+          "terminalbench_hard": 0.416666666666667,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -8272,6 +8644,9 @@
       "name": "deepseek-v4-pro-thinking",
       "creator": "DeepSeek",
       "model_type": "open",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "arena_code": {
           "elo": 1457,
@@ -8385,6 +8760,9 @@
     {
       "id": "devstral-2512",
       "name": "devstral-2512",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -8444,7 +8822,8 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-10"
+        "release_date": "2026-06-10",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -8466,8 +8845,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 19.7,
-          "gpqa": 0.669
+          "aa_coding_index": 19.7,
+          "aa_math_index": null,
+          "gpqa": 0.669,
+          "mmlu_pro": null,
+          "hle": 0.102,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.594557823129252,
+          "lcr": 0.143333333333333,
+          "scicode": 0.343,
+          "tau2": null,
+          "tau_banking": 0.065979381443299,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.123595505617978,
+          "coding_index": 19.7
         }
       },
       "aliases": {
@@ -8703,6 +9097,9 @@
       "id": "dolphin-mistral-24b-venice-edition:free",
       "name": "Venice: Uncensored (free)",
       "creator": "cognitivecomputations",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -9458,6 +9855,9 @@
       "id": "ernie-4.5-vl-424b-a47b",
       "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
       "creator": "baidu",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.2e-07,
@@ -9642,7 +10042,8 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-07-15"
+        "release_date": "2025-07-15",
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -9664,9 +10065,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 50.3,
+          "aa_coding_index": null,
+          "aa_math_index": 50.3,
+          "gpqa": 0.515,
           "mmlu_pro": 0.588,
-          "gpqa": 0.515
+          "hle": 0.058,
+          "aime": null,
+          "aime_25": 0.503333333333333,
+          "math_500": null,
+          "livecodebench": 0.516,
+          "ifbench": 0.229931972789116,
+          "lcr": 0,
+          "scicode": 0.093,
+          "tau2": 0.16374269005848,
+          "tau_banking": null,
+          "terminalbench_hard": 0,
+          "terminalbench_v2_1": null,
+          "math_index": 50.3
         }
       },
       "aliases": {
@@ -9679,7 +10094,8 @@
       "creator": "LG AI Research",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-07-15"
+        "release_date": "2025-07-15",
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -9701,9 +10117,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 80,
+          "aa_coding_index": null,
+          "aa_math_index": 80,
+          "gpqa": 0.739,
           "mmlu_pro": 0.818,
-          "gpqa": 0.739
+          "hle": 0.105,
+          "aime": 0.843333333333333,
+          "aime_25": 0.8,
+          "math_500": 0.976666666666667,
+          "livecodebench": 0.747,
+          "ifbench": 0.363265306122449,
+          "lcr": 0.14,
+          "scicode": 0.344,
+          "tau2": 0.172514619883041,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0378787878787879,
+          "terminalbench_v2_1": null,
+          "math_index": 80
         }
       },
       "aliases": {
@@ -9717,7 +10147,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-09",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -9739,7 +10170,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.794
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.794,
+          "mmlu_pro": null,
+          "hle": 0.116,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.579591836734694,
+          "lcr": 0.493333333333333,
+          "scicode": 0.28,
+          "tau2": 0.780701754385965,
+          "tau_banking": null,
+          "terminalbench_hard": 0.204545454545455,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -10870,6 +11316,9 @@
       "id": "free",
       "name": "Free Models Router",
       "creator": "openrouter",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -10985,6 +11434,9 @@
       "id": "fugu-ultra",
       "name": "Sakana: Fugu Ultra",
       "creator": "sakana",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -11150,6 +11602,9 @@
       "id": "fusion",
       "name": "OpenRouter: Fusion",
       "creator": "openrouter",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -11261,6 +11716,9 @@
       "id": "gemini-2.5-flash",
       "name": "Google: Gemini 2.5 Flash",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -11301,6 +11759,9 @@
       "id": "gemini-2.5-flash-image",
       "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
       "creator": "google",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -11322,6 +11783,9 @@
       "id": "gemini-2.5-flash-lite",
       "name": "Google: Gemini 2.5 Flash Lite",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -11362,6 +11826,9 @@
       "id": "gemini-2.5-flash-lite-preview-09-2025",
       "name": "Google: Gemini 2.5 Flash Lite Preview 09-2025",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -11421,6 +11888,9 @@
       "id": "gemini-2.5-pro",
       "name": "Google: Gemini 2.5 Pro",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -11461,6 +11931,9 @@
       "id": "gemini-2.5-pro-preview",
       "name": "Google: Gemini 2.5 Pro Preview 06-05",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -11482,6 +11955,9 @@
       "id": "gemini-2.5-pro-preview-05-06",
       "name": "Google: Gemini 2.5 Pro Preview 05-06",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -11506,7 +11982,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-03",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -11528,8 +12005,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 34.7,
-          "gpqa": 0.822
+          "aa_coding_index": 34.7,
+          "aa_math_index": null,
+          "gpqa": 0.822,
+          "mmlu_pro": null,
+          "hle": 0.162,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.772108843537415,
+          "lcr": 0.653333333333333,
+          "scicode": 0.419,
+          "tau2": 0.312865497076023,
+          "tau_banking": 0.0865979381443299,
+          "terminalbench_hard": 0.242424242424242,
+          "terminalbench_v2_1": 0.310861423220974,
+          "coding_index": 34.7
         },
         "aa_img": {
           "e2e_response_time_s": 6.8
@@ -11545,7 +12037,8 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-05-19"
+        "release_date": "2026-05-19",
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -11567,7 +12060,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.921
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.921,
+          "mmlu_pro": null,
+          "hle": 0.399,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.745578231292517,
+          "lcr": 0.71,
+          "scicode": 0.53,
+          "tau2": 0.956140350877193,
+          "tau_banking": null,
+          "terminalbench_hard": 0.393939393939394,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -11618,6 +12126,9 @@
       "id": "gemini-3-flash-preview",
       "name": "Google: Gemini 3 Flash Preview",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -11638,6 +12149,9 @@
     {
       "id": "gemini-3-flash-preview-high",
       "name": "gemini-3-flash-preview-high",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "livebench": {
           "average": 73.05,
@@ -11657,6 +12171,9 @@
     {
       "id": "gemini-3-flash-preview-minimal",
       "name": "gemini-3-flash-preview-minimal",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "livebench": {
           "average": 54.36,
@@ -11679,7 +12196,8 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-12-17"
+        "release_date": "2025-12-17",
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -11701,9 +12219,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 97,
+          "aa_coding_index": null,
+          "aa_math_index": 97,
+          "gpqa": 0.898,
           "mmlu_pro": 0.89,
-          "gpqa": 0.898
+          "hle": 0.347,
+          "aime": null,
+          "aime_25": 0.97,
+          "math_500": null,
+          "livecodebench": 0.908,
+          "ifbench": 0.779591836734694,
+          "lcr": 0.663333333333333,
+          "scicode": 0.506,
+          "tau2": 0.804093567251462,
+          "tau_banking": 0.175257731958763,
+          "terminalbench_hard": 0.386363636363636,
+          "terminalbench_v2_1": null,
+          "math_index": 97
         }
       },
       "aliases": {
@@ -11717,7 +12249,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-11-18",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -11739,9 +12272,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 95.7,
+          "aa_coding_index": null,
+          "aa_math_index": 95.7,
+          "gpqa": 0.908,
           "mmlu_pro": 0.898,
-          "gpqa": 0.908
+          "hle": 0.372,
+          "aime": null,
+          "aime_25": 0.956666666666667,
+          "math_500": null,
+          "livecodebench": 0.917,
+          "ifbench": 0.704081632653061,
+          "lcr": 0.706666666666667,
+          "scicode": 0.561,
+          "tau2": 0.871345029239766,
+          "tau_banking": null,
+          "terminalbench_hard": 0.416666666666667,
+          "terminalbench_v2_1": null,
+          "math_index": 95.7
         },
         "aa_img": {
           "omniscience_index": 16,
@@ -11768,6 +12315,9 @@
       "id": "gemini-3-pro-image",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
       "creator": "google",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -11789,6 +12339,9 @@
       "id": "gemini-3-pro-image-preview",
       "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
       "creator": "google",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -11812,7 +12365,8 @@
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-18"
+        "release_date": "2025-11-18",
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -11834,9 +12388,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 86.7,
+          "aa_coding_index": null,
+          "aa_math_index": 86.7,
+          "gpqa": 0.887,
           "mmlu_pro": 0.895,
-          "gpqa": 0.887
+          "hle": 0.276,
+          "aime": null,
+          "aime_25": 0.866666666666667,
+          "math_500": null,
+          "livecodebench": 0.857,
+          "ifbench": 0.496598639455782,
+          "lcr": 0.673333333333333,
+          "scicode": 0.499,
+          "tau2": 0.681286549707602,
+          "tau_banking": null,
+          "terminalbench_hard": 0.340909090909091,
+          "terminalbench_v2_1": null,
+          "math_index": 86.7
         }
       },
       "aliases": {
@@ -11885,6 +12453,9 @@
       "id": "gemini-3.1-flash-image",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
       "creator": "google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -11902,6 +12473,9 @@
       "id": "gemini-3.1-flash-image-preview",
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "creator": "google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -11919,6 +12493,9 @@
       "id": "gemini-3.1-flash-lite",
       "name": "Google: Gemini 3.1 Flash Lite",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -11940,6 +12517,9 @@
       "id": "gemini-3.1-flash-lite-image",
       "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
       "creator": "google",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -11957,6 +12537,9 @@
       "id": "gemini-3.1-flash-lite-preview",
       "name": "Google: Gemini 3.1 Flash Lite Preview",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -11977,6 +12560,9 @@
     {
       "id": "gemini-3.1-flash-lite-preview-high",
       "name": "gemini-3.1-flash-lite-preview-high",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "livebench": {
           "average": 62.11,
@@ -12000,7 +12586,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-19",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -12041,8 +12628,23 @@
           "iq_per_dollar": 0.0564341,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 17.7198,
-          "coding_index": 68.8,
-          "gpqa": 0.941
+          "aa_coding_index": 68.8,
+          "aa_math_index": null,
+          "gpqa": 0.941,
+          "mmlu_pro": null,
+          "hle": 0.447,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.771428571428571,
+          "lcr": 0.726666666666667,
+          "scicode": 0.589,
+          "tau2": 0.956140350877193,
+          "tau_banking": 0.164948453608247,
+          "terminalbench_hard": 0.537878787878788,
+          "terminalbench_v2_1": 0.737827715355805,
+          "coding_index": 68.8
         },
         "aa_img": {
           "omniscience_index": 33,
@@ -12074,6 +12676,9 @@
       "id": "gemini-3.1-pro-preview-customtools",
       "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
       "creator": "google",
+      "meta": {
+        "context_window": 1048756
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -12094,6 +12699,9 @@
     {
       "id": "gemini-3.1-pro-preview-high",
       "name": "gemini-3.1-pro-preview-high",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "livebench": {
           "average": 80.71,
@@ -12117,7 +12725,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-19",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -12158,8 +12767,23 @@
           "iq_per_dollar": 0.0480363,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 20.8176,
-          "coding_index": 70.1,
-          "gpqa": 0.922
+          "aa_coding_index": 70.1,
+          "aa_math_index": null,
+          "gpqa": 0.922,
+          "mmlu_pro": null,
+          "hle": 0.41,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.763265306122449,
+          "lcr": 0.693333333333333,
+          "scicode": 0.531,
+          "tau2": 0.953216374269006,
+          "tau_banking": 0.25360824742268,
+          "terminalbench_hard": 0.409090909090909,
+          "terminalbench_v2_1": 0.786516853932584,
+          "coding_index": 70.1
         },
         "aa_img": {
           "omniscience_index": 23,
@@ -12192,6 +12816,9 @@
     {
       "id": "gemini-3.5-flash-high",
       "name": "gemini-3.5-flash-high",
+      "meta": {
+        "context_window": 1048576
+      },
       "benchmarks": {
         "livebench": {
           "average": 75.79,
@@ -12212,6 +12839,9 @@
       "id": "gemini-flash-latest",
       "name": "Google Gemini Flash Latest",
       "creator": "~google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -12233,6 +12863,9 @@
       "id": "gemini-pro-latest",
       "name": "Google Gemini Pro Latest",
       "creator": "~google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -12254,6 +12887,9 @@
       "id": "gemma-2-27b-it",
       "name": "Google: Gemma 2 27B",
       "creator": "google",
+      "meta": {
+        "context_window": 8192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -12271,6 +12907,9 @@
       "id": "gemma-3-12b-it",
       "name": "Google: Gemma 3 12B",
       "creator": "google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -12288,6 +12927,9 @@
       "id": "gemma-3-27b-it",
       "name": "Google: Gemma 3 27B",
       "creator": "google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-08,
@@ -12305,6 +12947,9 @@
       "id": "gemma-3-4b-it",
       "name": "Google: Gemma 3 4B",
       "creator": "google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -12322,6 +12967,9 @@
       "id": "gemma-3n-e4b-it",
       "name": "Google: Gemma 3n 4B",
       "creator": "google",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -12342,7 +12990,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-03",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -12364,7 +13013,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.753
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.753,
+          "mmlu_pro": null,
+          "hle": 0.148,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.735374149659864,
+          "lcr": 0.553333333333333,
+          "scicode": 0.382,
+          "tau2": 0.362573099415205,
+          "tau_banking": null,
+          "terminalbench_hard": 0.181818181818182,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "openness_index": 39,
@@ -12382,7 +13046,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -12404,8 +13069,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 39.3,
-          "gpqa": 0.792
+          "aa_coding_index": 39.3,
+          "aa_math_index": null,
+          "gpqa": 0.792,
+          "mmlu_pro": null,
+          "hle": 0.183,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.724489795918367,
+          "lcr": 0.556666666666667,
+          "scicode": 0.4,
+          "tau2": 0.435672514619883,
+          "tau_banking": 0.117525773195876,
+          "terminalbench_hard": 0.1364,
+          "terminalbench_v2_1": 0.389513108614232,
+          "coding_index": 39.3
         },
         "aa_img": {
           "openness_index": 39
@@ -12422,6 +13102,9 @@
       "id": "gemma-4-26b-a4b-it",
       "name": "Google: Gemma 4 26B A4B ",
       "creator": "google",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -12439,6 +13122,9 @@
       "id": "gemma-4-26b-a4b-it:free",
       "name": "Google: Gemma 4 26B A4B  (free)",
       "creator": "google",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -12459,7 +13145,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -12481,8 +13168,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 43.4,
-          "gpqa": 0.857
+          "aa_coding_index": 43.4,
+          "aa_math_index": null,
+          "gpqa": 0.857,
+          "mmlu_pro": null,
+          "hle": 0.227,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.75578231292517,
+          "lcr": 0.62,
+          "scicode": 0.434,
+          "tau2": 0.599415204678363,
+          "tau_banking": 0.150515463917526,
+          "terminalbench_hard": 0.363636363636364,
+          "terminalbench_v2_1": 0.434456928838951,
+          "coding_index": 43.4
         },
         "aa_img": {
           "openness_index": 39,
@@ -12499,6 +13201,9 @@
     {
       "id": "gemma-4-31b-it",
       "name": "gemma-4-31b-it",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -12531,6 +13236,9 @@
       "id": "gemma-4-31b-it:free",
       "name": "Google: Gemma 4 31B (free)",
       "creator": "google",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -12551,7 +13259,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -12573,7 +13282,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.433
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.433,
+          "mmlu_pro": null,
+          "hle": 0.048,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.380272108843537,
+          "lcr": 0.15,
+          "scicode": 0.209,
+          "tau2": 0.207602339181287,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0303030303030303,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_hallucination_rate": 33,
@@ -12591,7 +13315,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-03",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -12613,7 +13338,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.576
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.576,
+          "mmlu_pro": null,
+          "hle": 0.037,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.442176870748299,
+          "lcr": 0.306666666666667,
+          "scicode": 0.244,
+          "tau2": 0.207602339181287,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0833333333333333,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_hallucination_rate": 31,
@@ -12761,6 +13501,9 @@
       "id": "glm-4.5",
       "name": "Z.ai: GLM 4.5",
       "creator": "z-ai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -12780,6 +13523,9 @@
       "id": "glm-4.5-air",
       "name": "Z.ai: GLM 4.5 Air",
       "creator": "z-ai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -12799,6 +13545,9 @@
       "id": "glm-4.5v",
       "name": "Z.ai: GLM 4.5V",
       "creator": "z-ai",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -12817,6 +13566,9 @@
     {
       "id": "glm-4.6",
       "name": "glm-4.6",
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.3e-07,
@@ -12848,6 +13600,9 @@
     {
       "id": "glm-4.6v",
       "name": "glm-4.6v",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -12880,6 +13635,9 @@
       "id": "glm-4.7",
       "name": "glm-4.7",
       "creator": "Z.ai",
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -12918,6 +13676,9 @@
       "id": "glm-4.7-flash",
       "name": "Z.ai: GLM 4.7 Flash",
       "creator": "z-ai",
+      "meta": {
+        "context_window": 202752
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -12940,7 +13701,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-11",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 202752
       },
       "pricing": {
         "aa": {
@@ -12971,7 +13733,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.82
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.82,
+          "mmlu_pro": null,
+          "hle": 0.272,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.72312925170068,
+          "lcr": 0.633333333333333,
+          "scicode": 0.462,
+          "tau2": 0.982456140350877,
+          "tau_banking": null,
+          "terminalbench_hard": 0.431818181818182,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_hallucination_rate": 34,
@@ -13018,7 +13795,8 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-03-15"
+        "release_date": "2026-03-15",
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -13049,7 +13827,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.847
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.847,
+          "mmlu_pro": null,
+          "hle": 0.254,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.731972789115646,
+          "lcr": 0.606666666666667,
+          "scicode": 0.436,
+          "tau2": 0.985380116959064,
+          "tau_banking": null,
+          "terminalbench_hard": 0.333333333333333,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -13064,7 +13857,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-07",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 202752
       },
       "pricing": {
         "aa": {
@@ -13095,8 +13889,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 55.8,
-          "gpqa": 0.868
+          "aa_coding_index": 55.8,
+          "aa_math_index": null,
+          "gpqa": 0.868,
+          "mmlu_pro": null,
+          "hle": 0.28,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.762585034013605,
+          "lcr": 0.623333333333333,
+          "scicode": 0.438,
+          "tau2": 0.976608187134503,
+          "tau_banking": 0.115463917525773,
+          "terminalbench_hard": 0.431818181818182,
+          "terminalbench_v2_1": 0.617977528089888,
+          "coding_index": 55.8
         },
         "aa_img": {
           "omniscience_hallucination_rate": 29,
@@ -13145,7 +13954,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-16",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -13184,8 +13994,23 @@
           "iq_per_dollar": 0.0546811,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 18.2878,
-          "coding_index": 68.8,
-          "gpqa": 0.895
+          "aa_coding_index": 68.8,
+          "aa_math_index": null,
+          "gpqa": 0.895,
+          "mmlu_pro": null,
+          "hle": 0.401,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.733333333333333,
+          "lcr": 0.713333333333333,
+          "scicode": 0.505,
+          "tau2": 0.991228070175439,
+          "tau_banking": 0.268041237113402,
+          "terminalbench_hard": 0.507575757575758,
+          "terminalbench_v2_1": 0.779026217228464,
+          "coding_index": 68.8
         },
         "aa_img": {
           "omniscience_index": 4,
@@ -13245,7 +14070,8 @@
       "creator": "Z AI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-01"
+        "release_date": "2026-04-01",
+        "context_window": 202752
       },
       "pricing": {
         "aa": {
@@ -13276,7 +14102,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.809
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.809,
+          "mmlu_pro": null,
+          "hle": 0.158,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.610884353741497,
+          "lcr": 0.61,
+          "scicode": 0.435,
+          "tau2": 0.985380116959064,
+          "tau_banking": null,
+          "terminalbench_hard": 0.325757575757576,
+          "terminalbench_v2_1": null
         },
         "livebench": {
           "average": 48.78,
@@ -13299,6 +14140,9 @@
       "id": "gpt-3.5-turbo",
       "name": "OpenAI: GPT-3.5 Turbo",
       "creator": "openai",
+      "meta": {
+        "context_window": 16385
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -13316,6 +14160,9 @@
       "id": "gpt-3.5-turbo-0613",
       "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
       "creator": "openai",
+      "meta": {
+        "context_window": 4095
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -13333,6 +14180,9 @@
       "id": "gpt-3.5-turbo-16k",
       "name": "OpenAI: GPT-3.5 Turbo 16k",
       "creator": "openai",
+      "meta": {
+        "context_window": 16385
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -13350,6 +14200,9 @@
       "id": "gpt-3.5-turbo-instruct",
       "name": "OpenAI: GPT-3.5 Turbo Instruct",
       "creator": "openai",
+      "meta": {
+        "context_window": 4095
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -13367,6 +14220,9 @@
       "id": "gpt-4",
       "name": "OpenAI: GPT-4",
       "creator": "openai",
+      "meta": {
+        "context_window": 8191
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -13384,6 +14240,9 @@
       "id": "gpt-4-turbo",
       "name": "OpenAI: GPT-4 Turbo",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -13401,6 +14260,9 @@
       "id": "gpt-4-turbo-preview",
       "name": "OpenAI: GPT-4 Turbo Preview",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -13418,6 +14280,9 @@
       "id": "gpt-4.1",
       "name": "OpenAI: GPT-4.1",
       "creator": "openai",
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -13437,6 +14302,9 @@
       "id": "gpt-4.1-mini",
       "name": "OpenAI: GPT-4.1 Mini",
       "creator": "openai",
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -13456,6 +14324,9 @@
       "id": "gpt-4.1-nano",
       "name": "OpenAI: GPT-4.1 Nano",
       "creator": "openai",
+      "meta": {
+        "context_window": 1047576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -13475,6 +14346,9 @@
       "id": "gpt-4o",
       "name": "OpenAI: GPT-4o",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -13492,6 +14366,9 @@
       "id": "gpt-4o-2024-05-13",
       "name": "OpenAI: GPT-4o (2024-05-13)",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -13509,6 +14386,9 @@
       "id": "gpt-4o-2024-08-06",
       "name": "OpenAI: GPT-4o (2024-08-06)",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -13528,6 +14408,9 @@
       "id": "gpt-4o-2024-11-20",
       "name": "OpenAI: GPT-4o (2024-11-20)",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -13545,6 +14428,9 @@
     },
     {
       "id": "gpt-4o-mini",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -13569,6 +14455,9 @@
       "id": "gpt-4o-mini-2024-07-18",
       "name": "OpenAI: GPT-4o-mini (2024-07-18)",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -13588,6 +14477,9 @@
       "id": "gpt-4o-mini-search-preview",
       "name": "OpenAI: GPT-4o-mini Search Preview",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -13605,6 +14497,9 @@
       "id": "gpt-4o-search-preview",
       "name": "OpenAI: GPT-4o Search Preview",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -13622,6 +14517,9 @@
       "id": "gpt-5",
       "name": "OpenAI: GPT-5",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -13676,7 +14574,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-17",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -13698,8 +14597,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 56.1,
-          "gpqa": 0.875
+          "aa_coding_index": 56.1,
+          "aa_math_index": null,
+          "gpqa": 0.875,
+          "mmlu_pro": null,
+          "hle": 0.266,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.73265306122449,
+          "lcr": 0.693333333333333,
+          "scicode": 0.499,
+          "tau2": 0.833333333333333,
+          "tau_banking": 0.214432989690722,
+          "terminalbench_hard": 0.522727272727273,
+          "terminalbench_v2_1": 0.591760299625468,
+          "coding_index": 56.1
         },
         "aa_img": {
           "omniscience_accuracy": 37,
@@ -13725,7 +14639,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-03-17"
+        "release_date": "2026-03-17",
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -13747,7 +14662,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.823
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.823,
+          "mmlu_pro": null,
+          "hle": 0.171,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.647619047619048,
+          "lcr": 0.613333333333333,
+          "scicode": 0.442,
+          "tau2": 0.365497076023392,
+          "tau_banking": null,
+          "terminalbench_hard": 0.340909090909091,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -13761,7 +14691,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-17",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -13783,8 +14714,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 56.1,
-          "gpqa": 0.817
+          "aa_coding_index": 56.1,
+          "aa_math_index": null,
+          "gpqa": 0.817,
+          "mmlu_pro": null,
+          "hle": 0.265,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.759183673469388,
+          "lcr": 0.66,
+          "scicode": 0.469,
+          "tau2": 0.760233918128655,
+          "tau_banking": 0.210309278350515,
+          "terminalbench_hard": 0.424242424242424,
+          "terminalbench_v2_1": 0.606741573033708,
+          "coding_index": 56.1
         },
         "aa_img": {
           "omniscience_hallucination_rate": 50,
@@ -13806,7 +14752,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-03-17"
+        "release_date": "2026-03-17",
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -13828,7 +14775,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.761
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.761,
+          "mmlu_pro": null,
+          "hle": 0.147,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.64421768707483,
+          "lcr": 0.573333333333333,
+          "scicode": 0.384,
+          "tau2": 0.526315789473684,
+          "tau_banking": null,
+          "terminalbench_hard": 0.333333333333333,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -13841,7 +14803,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-25"
+        "release_date": "2026-06-25",
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -13863,8 +14826,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 39.4,
-          "gpqa": 0.823
+          "aa_coding_index": 39.4,
+          "aa_math_index": null,
+          "gpqa": 0.823,
+          "mmlu_pro": null,
+          "hle": 0.186,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": 0.64,
+          "scicode": 0.486,
+          "tau2": null,
+          "tau_banking": 0.115463917525773,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.348314606741573,
+          "coding_index": 39.4
         }
       },
       "aliases": {
@@ -13875,6 +14853,9 @@
       "id": "gpt-5-chat",
       "name": "OpenAI: GPT-5 Chat",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -13894,6 +14875,9 @@
       "id": "gpt-5-codex",
       "name": "OpenAI: GPT-5 Codex",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -13913,6 +14897,9 @@
       "id": "gpt-5-image",
       "name": "OpenAI: GPT-5 Image",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -13932,6 +14919,9 @@
       "id": "gpt-5-image-mini",
       "name": "OpenAI: GPT-5 Image Mini",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -13952,6 +14942,9 @@
       "name": "gpt-5-medium",
       "creator": "OpenAI",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "arena_code": {
           "elo": 1395,
@@ -13966,6 +14959,9 @@
     {
       "id": "gpt-5-mini",
       "name": "gpt-5-mini",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -13997,6 +14993,9 @@
     {
       "id": "gpt-5-mini-high",
       "name": "gpt-5-mini-high",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 66.6,
@@ -14016,6 +15015,9 @@
     {
       "id": "gpt-5-mini-low",
       "name": "gpt-5-mini-low",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 52.38,
@@ -14054,6 +15056,9 @@
     {
       "id": "gpt-5-nano",
       "name": "gpt-5-nano",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -14085,6 +15090,9 @@
     {
       "id": "gpt-5-nano-high",
       "name": "gpt-5-nano-high",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 48.83,
@@ -14104,6 +15112,9 @@
     {
       "id": "gpt-5-nano-low",
       "name": "gpt-5-nano-low",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 33.66,
@@ -14124,6 +15135,9 @@
       "id": "gpt-5-pro",
       "name": "OpenAI: GPT-5 Pro",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -14160,6 +15174,9 @@
       "id": "gpt-5.1",
       "name": "OpenAI: GPT-5.1",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14255,6 +15272,9 @@
       "id": "gpt-5.1-chat",
       "name": "OpenAI: GPT-5.1 Chat",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14273,6 +15293,9 @@
     {
       "id": "gpt-5.1-codex",
       "name": "gpt-5.1-codex",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14304,6 +15327,9 @@
     {
       "id": "gpt-5.1-codex-max",
       "name": "gpt-5.1-codex-max",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -14335,6 +15361,9 @@
     {
       "id": "gpt-5.1-codex-max-high",
       "name": "gpt-5.1-codex-max-high",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 74.36,
@@ -14354,6 +15383,9 @@
     {
       "id": "gpt-5.1-codex-mini",
       "name": "gpt-5.1-codex-mini",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -14387,6 +15419,9 @@
       "name": "gpt-5.1-medium",
       "creator": "OpenAI",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "arena_code": {
           "elo": 1391,
@@ -14403,6 +15438,9 @@
       "name": "gpt-5.2",
       "creator": "OpenAI",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -14506,6 +15544,9 @@
       "id": "gpt-5.2-chat",
       "name": "OpenAI: GPT-5.2 Chat",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -14543,7 +15584,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-12-11"
+        "release_date": "2025-12-11",
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14574,7 +15616,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.899
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.899,
+          "mmlu_pro": null,
+          "hle": 0.335,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.776190476190476,
+          "lcr": 0.756666666666667,
+          "scicode": 0.546,
+          "tau2": 0.921052631578947,
+          "tau_banking": null,
+          "terminalbench_hard": 0.371212121212121,
+          "terminalbench_v2_1": null
         },
         "livebench": {
           "average": 74.33,
@@ -14597,6 +15654,9 @@
       "id": "gpt-5.2-pro",
       "name": "OpenAI: GPT-5.2 Pro",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.1e-05,
@@ -14614,6 +15674,9 @@
       "id": "gpt-5.3-chat",
       "name": "OpenAI: GPT-5.3 Chat",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -14636,7 +15699,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-05",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 400000
       },
       "pricing": {
         "aa": {
@@ -14667,7 +15731,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.915
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.915,
+          "mmlu_pro": null,
+          "hle": 0.399,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.753741496598639,
+          "lcr": 0.74,
+          "scicode": 0.532,
+          "tau2": 0.859649122807018,
+          "tau_banking": null,
+          "terminalbench_hard": 0.53030303030303,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_index": 10,
@@ -14701,6 +15780,9 @@
     {
       "id": "gpt-5.3-codex-high",
       "name": "gpt-5.3-codex-high",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 73.18,
@@ -14720,6 +15802,9 @@
     {
       "id": "gpt-5.3-codex-xhigh",
       "name": "gpt-5.3-codex-xhigh",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 71.97,
@@ -14762,7 +15847,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-05",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -14793,8 +15879,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 71.1,
-          "gpqa": 0.92
+          "aa_coding_index": 71.1,
+          "aa_math_index": null,
+          "gpqa": 0.92,
+          "mmlu_pro": null,
+          "hle": 0.416,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.739455782312925,
+          "lcr": 0.74,
+          "scicode": 0.566,
+          "tau2": 0.871345029239766,
+          "tau_banking": 0.303092783505155,
+          "terminalbench_hard": 0.575757575757576,
+          "terminalbench_v2_1": 0.782771535580524,
+          "coding_index": 71.1
         },
         "aa_img": {
           "omniscience_index": 6,
@@ -14824,6 +15925,9 @@
       "id": "gpt-5.4-high",
       "name": "gpt-5.4-high",
       "creator": "OpenAI",
+      "meta": {
+        "context_window": 1050000
+      },
       "benchmarks": {
         "livebench": {
           "average": 75.6,
@@ -14866,6 +15970,9 @@
       "id": "gpt-5.4-image-2",
       "name": "OpenAI: GPT-5.4 Image 2",
       "creator": "openai",
+      "meta": {
+        "context_window": 272000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-06,
@@ -14900,6 +16007,9 @@
     {
       "id": "gpt-5.4-mini",
       "name": "gpt-5.4-mini",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -14932,6 +16042,9 @@
       "id": "gpt-5.4-mini-high",
       "name": "gpt-5.4-mini-high",
       "creator": "OpenAI",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 63.65,
@@ -14957,6 +16070,9 @@
     {
       "id": "gpt-5.4-mini-low",
       "name": "gpt-5.4-mini-low",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 48.18,
@@ -14976,6 +16092,9 @@
     {
       "id": "gpt-5.4-mini-medium",
       "name": "gpt-5.4-mini-medium",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 58.12,
@@ -14995,6 +16114,9 @@
     {
       "id": "gpt-5.4-mini-xhigh",
       "name": "gpt-5.4-mini-xhigh",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 67.74,
@@ -15014,6 +16136,9 @@
     {
       "id": "gpt-5.4-nano",
       "name": "gpt-5.4-nano",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -15045,6 +16170,9 @@
     {
       "id": "gpt-5.4-nano-high",
       "name": "gpt-5.4-nano-high",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 63.64,
@@ -15064,6 +16192,9 @@
     {
       "id": "gpt-5.4-nano-low",
       "name": "gpt-5.4-nano-low",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 47.7,
@@ -15083,6 +16214,9 @@
     {
       "id": "gpt-5.4-nano-medium",
       "name": "gpt-5.4-nano-medium",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 58.96,
@@ -15102,6 +16236,9 @@
     {
       "id": "gpt-5.4-nano-xhigh",
       "name": "gpt-5.4-nano-xhigh",
+      "meta": {
+        "context_window": 400000
+      },
       "benchmarks": {
         "livebench": {
           "average": 71.31,
@@ -15122,6 +16259,9 @@
       "id": "gpt-5.4-pro",
       "name": "OpenAI: GPT-5.4 Pro",
       "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-05,
@@ -15138,6 +16278,9 @@
     {
       "id": "gpt-5.4-xhigh",
       "name": "gpt-5.4-xhigh",
+      "meta": {
+        "context_window": 1050000
+      },
       "benchmarks": {
         "livebench": {
           "average": 80.91,
@@ -15159,6 +16302,9 @@
       "name": "gpt-5.5",
       "creator": "OpenAI",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -15205,7 +16351,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -15235,8 +16382,23 @@
           "iq_per_dollar": 0.0303626,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 32.9353,
-          "coding_index": 71.6,
-          "gpqa": 0.932
+          "aa_coding_index": 71.6,
+          "aa_math_index": null,
+          "gpqa": 0.932,
+          "mmlu_pro": null,
+          "hle": 0.43,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.716326530612245,
+          "lcr": 0.733333333333333,
+          "scicode": 0.559,
+          "tau2": 0.929824561403509,
+          "tau_banking": 0.294845360824742,
+          "terminalbench_hard": 0.598484848484849,
+          "terminalbench_v2_1": 0.794007490636704,
+          "coding_index": 71.6
         },
         "aa_img": {
           "omniscience_index": 18,
@@ -15309,7 +16471,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -15339,8 +16502,23 @@
           "iq_per_dollar": 0.1125419,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 8.8856,
-          "coding_index": 60.9,
-          "gpqa": 0.91
+          "aa_coding_index": 60.9,
+          "aa_math_index": null,
+          "gpqa": 0.91,
+          "mmlu_pro": null,
+          "hle": 0.31,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.643537414965986,
+          "lcr": 0.72,
+          "scicode": 0.516,
+          "tau2": 0.839181286549708,
+          "tau_banking": 0.212371134020619,
+          "terminalbench_hard": 0.522727272727273,
+          "terminalbench_v2_1": 0.655430711610487,
+          "coding_index": 60.9
         },
         "aa_img": {
           "omniscience_index": 15,
@@ -15362,7 +16540,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -15392,8 +16571,23 @@
           "iq_per_dollar": 0.052563000000000006,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 19.0248,
-          "coding_index": 71.5,
-          "gpqa": 0.926
+          "aa_coding_index": 71.5,
+          "aa_math_index": null,
+          "gpqa": 0.926,
+          "mmlu_pro": null,
+          "hle": 0.406,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.70952380952381,
+          "lcr": 0.723333333333333,
+          "scicode": 0.535,
+          "tau2": 0.91812865497076,
+          "tau_banking": 0.257731958762887,
+          "terminalbench_hard": 0.575757575757576,
+          "terminalbench_v2_1": 0.805243445692884,
+          "coding_index": 71.5
         },
         "aa_img": {
           "omniscience_index": 17,
@@ -15427,7 +16621,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-23"
+        "release_date": "2026-04-23",
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -15455,7 +16650,23 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -15470,7 +16681,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1050000
       },
       "pricing": {
         "aa": {
@@ -15500,8 +16712,23 @@
           "iq_per_dollar": 0.019511900000000002,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 51.2507,
-          "coding_index": 74.9,
-          "gpqa": 0.935
+          "aa_coding_index": 74.9,
+          "aa_math_index": null,
+          "gpqa": 0.935,
+          "mmlu_pro": null,
+          "hle": 0.443,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.758503401360544,
+          "lcr": 0.743333333333333,
+          "scicode": 0.561,
+          "tau2": 0.93859649122807,
+          "tau_banking": 0.31340206185567,
+          "terminalbench_hard": 0.606060606060606,
+          "terminalbench_v2_1": 0.842696629213483,
+          "coding_index": 74.9
         },
         "aa_img": {
           "omniscience_index": 20,
@@ -15549,6 +16776,9 @@
       "id": "gpt-audio",
       "name": "OpenAI: GPT Audio",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -15566,6 +16796,9 @@
       "id": "gpt-audio-mini",
       "name": "OpenAI: GPT Audio Mini",
       "creator": "openai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -15583,6 +16816,9 @@
       "id": "gpt-chat-latest",
       "name": "OpenAI: GPT Chat Latest",
       "creator": "openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -15602,6 +16838,9 @@
       "id": "gpt-latest",
       "name": "OpenAI GPT Latest",
       "creator": "~openai",
+      "meta": {
+        "context_window": 1050000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-06,
@@ -15621,6 +16860,9 @@
       "id": "gpt-mini-latest",
       "name": "OpenAI GPT Mini Latest",
       "creator": "~openai",
+      "meta": {
+        "context_window": 400000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -15643,7 +16885,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-05",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -15680,10 +16923,24 @@
           "iq_per_dollar": 0.249273,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.0117,
-          "coding_index": 30.4,
-          "math_index": 93.4,
+          "aa_coding_index": 30.4,
+          "aa_math_index": 93.4,
+          "gpqa": 0.782,
           "mmlu_pro": 0.808,
-          "gpqa": 0.782
+          "hle": 0.185,
+          "aime": null,
+          "aime_25": 0.934416666666667,
+          "math_500": null,
+          "livecodebench": 0.878,
+          "ifbench": 0.689795918367347,
+          "lcr": 0.506666666,
+          "scicode": 0.389,
+          "tau2": 0.657894736842105,
+          "tau_banking": 0.120274914089347,
+          "terminalbench_hard": 0.234848484848485,
+          "terminalbench_v2_1": 0.262172284644195,
+          "coding_index": 30.4,
+          "math_index": 93.4
         },
         "aa_img": {
           "openness_index": 39,
@@ -15716,7 +16973,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-08-05"
+        "release_date": "2025-08-05",
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -15738,9 +16996,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 66.7,
+          "aa_coding_index": null,
+          "aa_math_index": 66.7,
+          "gpqa": 0.672,
           "mmlu_pro": 0.775,
-          "gpqa": 0.672
+          "hle": 0.052,
+          "aime": null,
+          "aime_25": 0.666666666666667,
+          "math_500": null,
+          "livecodebench": 0.707,
+          "ifbench": 0.582993197278912,
+          "lcr": 0.436666666666667,
+          "scicode": 0.36,
+          "tau2": 0.450292397660819,
+          "tau_banking": null,
+          "terminalbench_hard": 0.053030303030303,
+          "terminalbench_v2_1": null,
+          "math_index": 66.7
         }
       },
       "aliases": {
@@ -15751,6 +17023,9 @@
       "id": "gpt-oss-120b:free",
       "name": "OpenAI: gpt-oss-120b (free)",
       "creator": "openai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -15771,7 +17046,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-05",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -15808,10 +17084,24 @@
           "iq_per_dollar": 0.5021761,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 1.9913,
-          "coding_index": 20.7,
-          "math_index": 89.3,
+          "aa_coding_index": 20.7,
+          "aa_math_index": 89.3,
+          "gpqa": 0.688,
           "mmlu_pro": 0.748,
-          "gpqa": 0.688
+          "hle": 0.098,
+          "aime": null,
+          "aime_25": 0.893333333333333,
+          "math_500": null,
+          "livecodebench": 0.777,
+          "ifbench": 0.651020408163265,
+          "lcr": 0.306666666666667,
+          "scicode": 0.344,
+          "tau2": 0.60233918128655,
+          "tau_banking": 0.0701030927835052,
+          "terminalbench_hard": 0.106060606060606,
+          "terminalbench_v2_1": 0.138576779026217,
+          "coding_index": 20.7,
+          "math_index": 89.3
         },
         "aa_img": {
           "openness_index": 39,
@@ -15830,7 +17120,8 @@
       "creator": "OpenAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-08-05"
+        "release_date": "2025-08-05",
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -15852,9 +17143,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 62.3,
+          "aa_coding_index": null,
+          "aa_math_index": 62.3,
+          "gpqa": 0.611,
           "mmlu_pro": 0.718,
-          "gpqa": 0.611
+          "hle": 0.051,
+          "aime": null,
+          "aime_25": 0.623333333333333,
+          "math_500": null,
+          "livecodebench": 0.652,
+          "ifbench": 0.578231292517007,
+          "lcr": 0.31,
+          "scicode": 0.34,
+          "tau2": 0.502923976608187,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0454545454545455,
+          "terminalbench_v2_1": null,
+          "math_index": 62.3
         }
       },
       "aliases": {
@@ -15865,6 +17170,9 @@
       "id": "gpt-oss-20b:free",
       "name": "OpenAI: gpt-oss-20b (free)",
       "creator": "openai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -15882,6 +17190,9 @@
       "id": "gpt-oss-safeguard-20b",
       "name": "OpenAI: gpt-oss-safeguard-20b",
       "creator": "openai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -15901,6 +17212,9 @@
       "id": "granite-4.0-h-micro",
       "name": "IBM: Granite 4.0 Micro",
       "creator": "ibm-granite",
+      "meta": {
+        "context_window": 131000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.7e-08,
@@ -15918,6 +17232,9 @@
       "id": "granite-4.1-8b",
       "name": "IBM: Granite 4.1 8B",
       "creator": "ibm-granite",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -16004,7 +17321,8 @@
       "creator": "xAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-30"
+        "release_date": "2026-04-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -16026,7 +17344,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.843
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.843,
+          "mmlu_pro": null,
+          "hle": 0.173,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.80952380952381,
+          "lcr": 0.64,
+          "scicode": 0.419,
+          "tau2": 0.888888888888889,
+          "tau_banking": null,
+          "terminalbench_hard": 0.265151515151515,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -16039,7 +17372,8 @@
       "creator": "xAI",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-30"
+        "release_date": "2026-04-30",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -16061,7 +17395,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.89
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.89,
+          "mmlu_pro": null,
+          "hle": 0.281,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.833333333333333,
+          "lcr": 0.65,
+          "scicode": 0.446,
+          "tau2": 0.912280701754386,
+          "tau_banking": null,
+          "terminalbench_hard": 0.303030303030303,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -16088,6 +17437,9 @@
       "id": "grok-4.20",
       "name": "xAI: Grok 4.20",
       "creator": "x-ai",
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -16168,6 +17520,9 @@
       "id": "grok-4.20-multi-agent",
       "name": "xAI: Grok 4.20 Multi-Agent",
       "creator": "x-ai",
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -16206,7 +17561,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-30",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -16245,8 +17601,23 @@
           "iq_per_dollar": 0.1266793,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 7.8939,
-          "coding_index": 42.2,
-          "gpqa": 0.901
+          "aa_coding_index": 42.2,
+          "aa_math_index": null,
+          "gpqa": 0.901,
+          "mmlu_pro": null,
+          "hle": 0.35,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.812925170068027,
+          "lcr": 0.643333333333333,
+          "scicode": 0.473,
+          "tau2": 0.976608187134503,
+          "tau_banking": 0.121649484536082,
+          "terminalbench_hard": 0.378787878787879,
+          "terminalbench_v2_1": 0.397003745318352,
+          "coding_index": 42.2
         },
         "aa_img": {
           "omniscience_index": 18,
@@ -16278,6 +17649,9 @@
       "id": "grok-4.5",
       "name": "xAI: Grok 4.5",
       "creator": "x-ai",
+      "meta": {
+        "context_window": 500000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -16296,6 +17670,9 @@
     {
       "id": "grok-build-0.1",
       "name": "grok-build-0.1",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -16347,6 +17724,9 @@
       "id": "grok-latest",
       "name": "xAI: Grok Latest",
       "creator": "~x-ai",
+      "meta": {
+        "context_window": 500000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -16640,6 +18020,9 @@
       "id": "hermes-3-llama-3.1-405b",
       "name": "Nous: Hermes 3 405B Instruct",
       "creator": "nousresearch",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -16657,6 +18040,9 @@
       "id": "hermes-3-llama-3.1-405b:free",
       "name": "Nous: Hermes 3 405B Instruct (free)",
       "creator": "nousresearch",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -16678,7 +18064,8 @@
         "co2_kg": 22.415781841842687,
         "architecture": "LlamaForCausalLM",
         "license": "llama3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -16808,6 +18195,9 @@
       "id": "hermes-4-405b",
       "name": "Nous: Hermes 4 405B",
       "creator": "nousresearch",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -16825,6 +18215,9 @@
       "id": "hermes-4-70b",
       "name": "Nous: Hermes 4 70B",
       "creator": "nousresearch",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -16845,7 +18238,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-27",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -16867,9 +18261,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 69.7,
+          "aa_coding_index": null,
+          "aa_math_index": 69.7,
+          "gpqa": 0.727,
           "mmlu_pro": 0.829,
-          "gpqa": 0.727
+          "hle": 0.103,
+          "aime": null,
+          "aime_25": 0.696666666666667,
+          "math_500": null,
+          "livecodebench": 0.686,
+          "ifbench": 0.327210884353742,
+          "lcr": 0.206666666666667,
+          "scicode": 0.252,
+          "tau2": 0.222222222222222,
+          "tau_banking": null,
+          "terminalbench_hard": 0.113636363636364,
+          "terminalbench_v2_1": null,
+          "math_index": 69.7
         },
         "aa_img": {
           "openness_index": 47,
@@ -16887,7 +18295,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-27",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -16909,9 +18318,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 68.7,
+          "aa_coding_index": null,
+          "aa_math_index": 68.7,
+          "gpqa": 0.699,
           "mmlu_pro": 0.811,
-          "gpqa": 0.699
+          "hle": 0.079,
+          "aime": null,
+          "aime_25": 0.686666666666667,
+          "math_500": null,
+          "livecodebench": 0.653,
+          "ifbench": 0.312925170068027,
+          "lcr": 0.0666666666666667,
+          "scicode": 0.341,
+          "tau2": 0.225146198830409,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0454545454545455,
+          "terminalbench_v2_1": null,
+          "math_index": 68.7
         },
         "aa_img": {
           "openness_index": 47,
@@ -17395,6 +18818,9 @@
       "id": "hunyuan-a13b-instruct",
       "name": "Tencent: Hunyuan A13B Instruct",
       "creator": "tencent",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -17630,7 +19056,8 @@
       "creator": "Tencent",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-23"
+        "release_date": "2026-04-23",
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -17661,7 +19088,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.867
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.867,
+          "mmlu_pro": null,
+          "hle": 0.255,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.631292517006803,
+          "lcr": 0.546666666666667,
+          "scicode": 0.412,
+          "tau2": 0.926900584795322,
+          "tau_banking": null,
+          "terminalbench_hard": 0.340909090909091,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -17671,6 +19113,9 @@
     },
     {
       "id": "hy3-preview",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.3e-08,
@@ -17698,6 +19143,9 @@
       "id": "hy3:free",
       "name": "Tencent: Hy3 (free)",
       "creator": "tencent",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -18236,6 +19684,9 @@
       "id": "inflection-3-pi",
       "name": "Inflection: Inflection 3 Pi",
       "creator": "inflection",
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -18253,6 +19704,9 @@
       "id": "inflection-3-productivity",
       "name": "Inflection: Inflection 3 Productivity",
       "creator": "inflection",
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -18295,6 +19749,9 @@
       "id": "jamba-large-1.7",
       "name": "AI21: Jamba Large 1.7",
       "creator": "ai21",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -18589,7 +20046,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-12-31",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -18611,9 +20069,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 90.3,
+          "aa_coding_index": null,
+          "aa_math_index": 90.3,
+          "gpqa": 0.783,
           "mmlu_pro": 0.838,
-          "gpqa": 0.783
+          "hle": 0.131,
+          "aime": null,
+          "aime_25": 0.903333333333334,
+          "math_500": null,
+          "livecodebench": 0.768,
+          "ifbench": 0.646938775510204,
+          "lcr": 0.556666666666667,
+          "scicode": 0.356,
+          "tau2": 0.742690058479532,
+          "tau_banking": null,
+          "terminalbench_hard": 0.227272727272727,
+          "terminalbench_v2_1": null,
+          "math_index": 90.3
         }
       },
       "aliases": {
@@ -18624,6 +20096,9 @@
       "id": "k2-think-v2",
       "name": "K2 Think V2",
       "creator": "Google",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.0,
@@ -18653,6 +20128,9 @@
       "id": "kat-coder-pro-v2",
       "name": "Kwaipilot: KAT-Coder-Pro V2",
       "creator": "kwaipilot",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -18672,6 +20150,9 @@
       "id": "kimi-k2",
       "name": "MoonshotAI: Kimi K2 0711",
       "creator": "moonshotai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5.7e-07,
@@ -18689,6 +20170,9 @@
       "id": "kimi-k2-0905",
       "name": "MoonshotAI: Kimi K2 0905",
       "creator": "moonshotai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -18708,7 +20192,8 @@
       "creator": "Kimi",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-01-27"
+        "release_date": "2026-01-27",
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -18730,7 +20215,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.879
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.879,
+          "mmlu_pro": null,
+          "hle": 0.294,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.702040816326531,
+          "lcr": 0.653333333333333,
+          "scicode": 0.49,
+          "tau2": 0.95906432748538,
+          "tau_banking": null,
+          "terminalbench_hard": 0.348484848484849,
+          "terminalbench_v2_1": null
         },
         "dirac": {
           "cache_hit_rate_max": 80.7
@@ -18766,7 +20266,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-11-06",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 131072
       },
       "pricing": {
         "aa": {
@@ -18797,9 +20298,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 94.7,
+          "aa_coding_index": null,
+          "aa_math_index": 94.7,
+          "gpqa": 0.838,
           "mmlu_pro": 0.848,
-          "gpqa": 0.838
+          "hle": 0.223,
+          "aime": null,
+          "aime_25": 0.946666666666667,
+          "math_500": null,
+          "livecodebench": 0.853,
+          "ifbench": 0.680952380952381,
+          "lcr": 0.663333333333333,
+          "scicode": 0.424,
+          "tau2": 0.929824561403509,
+          "tau_banking": null,
+          "terminalbench_hard": 0.310606060606061,
+          "terminalbench_v2_1": null,
+          "math_index": 94.7
         },
         "aa_img": {
           "e2e_response_time_s": 20.4,
@@ -18824,6 +20339,9 @@
     },
     {
       "id": "kimi-k2.5",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.75e-07,
@@ -18859,6 +20377,9 @@
       "id": "kimi-k2.5-thinking",
       "name": "kimi-k2.5-thinking",
       "creator": "Moonshot",
+      "meta": {
+        "context_window": 262144
+      },
       "benchmarks": {
         "livebench": {
           "average": 69.16,
@@ -18888,7 +20409,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-20",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -18927,8 +20449,23 @@
           "iq_per_dollar": 0.0517237,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 19.3335,
-          "coding_index": 61.8,
-          "gpqa": 0.911
+          "aa_coding_index": 61.8,
+          "aa_math_index": null,
+          "gpqa": 0.911,
+          "mmlu_pro": null,
+          "hle": 0.359,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.759863945578231,
+          "lcr": 0.696666666666667,
+          "scicode": 0.535,
+          "tau2": 0.95906432748538,
+          "tau_banking": 0.206185567010309,
+          "terminalbench_hard": 0.439393939393939,
+          "terminalbench_v2_1": 0.659176029962547,
+          "coding_index": 61.8
         },
         "aa_img": {
           "omniscience_index": 6,
@@ -18956,6 +20493,9 @@
     {
       "id": "kimi-k2.6-thinking",
       "name": "kimi-k2.6-thinking",
+      "meta": {
+        "context_window": 262144
+      },
       "benchmarks": {
         "livebench": {
           "average": 72.39,
@@ -18979,7 +20519,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-12",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -19018,8 +20559,23 @@
           "iq_per_dollar": 0.0800671,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 12.4895,
-          "coding_index": 60.8,
-          "gpqa": 0.896
+          "aa_coding_index": 60.8,
+          "aa_math_index": null,
+          "gpqa": 0.896,
+          "mmlu_pro": null,
+          "hle": 0.328,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.631292517006803,
+          "lcr": 0.663333333333333,
+          "scicode": 0.475,
+          "tau2": 0.900584795321637,
+          "tau_banking": 0.181443298969072,
+          "terminalbench_hard": 0.446969696969697,
+          "terminalbench_v2_1": 0.674157303370786,
+          "coding_index": 60.8
         },
         "aa_img": {
           "omniscience_accuracy": 39,
@@ -19053,6 +20609,9 @@
       "id": "kimi-latest",
       "name": "MoonshotAI Kimi Latest",
       "creator": "~moonshotai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -19097,6 +20656,9 @@
       "id": "l3-lunaris-8b",
       "name": "Sao10K: Llama 3 8B Lunaris",
       "creator": "sao10k",
+      "meta": {
+        "context_window": 8192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-08,
@@ -19114,6 +20676,9 @@
       "id": "l3.1-70b-hanami-x1",
       "name": "Sao10K: Llama 3.1 70B Hanami x1",
       "creator": "sao10k",
+      "meta": {
+        "context_window": 16000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -19156,6 +20721,9 @@
       "id": "l3.1-euryale-70b",
       "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
       "creator": "sao10k",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8.5e-07,
@@ -19197,6 +20765,9 @@
       "id": "l3.3-euryale-70b",
       "name": "Sao10K: Llama 3.3 Euryale 70B",
       "creator": "sao10k",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -19214,6 +20785,9 @@
       "id": "laguna-m.1",
       "name": "Poolside: Laguna M.1",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -19233,6 +20807,9 @@
       "id": "laguna-m.1:free",
       "name": "Poolside: Laguna M.1 (free)",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -19250,6 +20827,9 @@
       "id": "laguna-xs-2.1",
       "name": "Poolside: Laguna XS 2.1",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -19269,6 +20849,9 @@
       "id": "laguna-xs-2.1:free",
       "name": "Poolside: Laguna XS 2.1 (free)",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -19286,6 +20869,9 @@
       "id": "laguna-xs.2",
       "name": "Poolside: Laguna XS.2",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -19305,6 +20891,9 @@
       "id": "laguna-xs.2:free",
       "name": "Poolside: Laguna XS.2 (free)",
       "creator": "poolside",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -19519,6 +21108,9 @@
       "id": "lfm-2-24b-a2b",
       "name": "LiquidAI: LFM2-24B-A2B",
       "creator": "liquid",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-08,
@@ -19536,6 +21128,9 @@
       "id": "lfm-2.5-1.2b-instruct:free",
       "name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
       "creator": "liquid",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -19553,6 +21148,9 @@
       "id": "lfm-2.5-1.2b-thinking:free",
       "name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
       "creator": "liquid",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -19595,6 +21193,9 @@
       "id": "ling-2.6-1t",
       "name": "inclusionAI: Ling-2.6-1T",
       "creator": "inclusionai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -19614,6 +21215,9 @@
       "id": "ling-2.6-flash",
       "name": "inclusionAI: Ling-2.6-flash",
       "creator": "inclusionai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-08,
@@ -20339,7 +21943,8 @@
         "co2_kg": 2.3322217617350347,
         "architecture": "LlamaForCausalLM",
         "license": "llama3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 8192
       },
       "pricing": {
         "openrouter": {
@@ -23967,7 +25572,8 @@
         "co2_kg": 40.22182401425256,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.1",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -24249,7 +25855,8 @@
         "co2_kg": 2.1060373342307948,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.1",
-        "precision": "float16"
+        "precision": "float16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -25671,6 +27278,9 @@
       "id": "llama-3.2-11b-vision-instruct",
       "name": "Meta: Llama 3.2 11B Vision Instruct",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.45e-07,
@@ -25765,7 +27375,8 @@
         "co2_kg": 0.722639371510048,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.2",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -26192,7 +27803,8 @@
         "co2_kg": 1.9279617086879264,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.2",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -26272,6 +27884,9 @@
       "id": "llama-3.2-3b-instruct:free",
       "name": "Meta: Llama 3.2 3B Instruct (free)",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -27083,7 +28698,8 @@
         "co2_kg": 76.55907410745293,
         "architecture": "LlamaForCausalLM",
         "license": "llama3.3",
-        "precision": "bfloat16"
+        "precision": "bfloat16",
+        "context_window": 131072
       },
       "pricing": {
         "openrouter": {
@@ -27114,6 +28730,9 @@
       "id": "llama-3.3-70b-instruct:free",
       "name": "Meta: Llama 3.3 70B Instruct (free)",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -27131,6 +28750,9 @@
       "id": "llama-3.3-nemotron-super-49b-v1.5",
       "name": "NVIDIA: Llama 3.3 Nemotron Super 49B V1.5",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -27223,6 +28845,9 @@
       "id": "llama-4-maverick",
       "name": "Meta: Llama 4 Maverick",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -27240,6 +28865,9 @@
       "id": "llama-4-scout",
       "name": "Meta: Llama 4 Scout",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 10000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -27579,6 +29207,9 @@
       "id": "llama-guard-4-12b",
       "name": "Meta: Llama Guard 4 12B",
       "creator": "meta-llama",
+      "meta": {
+        "context_window": 163840
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.8e-07,
@@ -31810,6 +33441,9 @@
       "id": "lyria-3-clip-preview",
       "name": "Google: Lyria 3 Clip Preview",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -31827,6 +33461,9 @@
       "id": "lyria-3-pro-preview",
       "name": "Google: Lyria 3 Pro Preview",
       "creator": "google",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -31868,6 +33505,9 @@
       "id": "magnum-v4-72b",
       "name": "Magnum v4 72B",
       "creator": "anthracite-org",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -32087,7 +33727,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-20",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -32118,7 +33759,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.77
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.77,
+          "mmlu_pro": null,
+          "hle": 0.155,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.697959183673469,
+          "lcr": 0.363333333333333,
+          "scicode": 0.387,
+          "tau2": 0.707602339181287,
+          "tau_banking": null,
+          "terminalbench_hard": 0.265151515151515,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "e2e_response_time_s": 4.6
@@ -32836,7 +34492,8 @@
       "creator": "Xiaomi",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-22"
+        "release_date": "2026-04-22",
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -32858,7 +34515,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.849
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.849,
+          "mmlu_pro": null,
+          "hle": 0.252,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.671428571428571,
+          "lcr": 0.626666666666667,
+          "scicode": 0.431,
+          "tau2": 0.906432748538012,
+          "tau_banking": null,
+          "terminalbench_hard": 0.416666666666667,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -32880,7 +34552,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-18",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -32902,7 +34575,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.87
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.87,
+          "mmlu_pro": null,
+          "hle": 0.283,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.68843537414966,
+          "lcr": 0.606666666666667,
+          "scicode": 0.425,
+          "tau2": 0.950292397660819,
+          "tau_banking": null,
+          "terminalbench_hard": 0.409090909090909,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_index": 5,
@@ -32933,6 +34621,9 @@
     {
       "id": "mimo-v2.5",
       "creator": "Xiaomi",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.05e-07,
@@ -32968,7 +34659,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-22",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -33007,8 +34699,23 @@
           "iq_per_dollar": 0.4265258,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 2.3445,
-          "coding_index": 60.2,
-          "gpqa": 0.866
+          "aa_coding_index": 60.2,
+          "aa_math_index": null,
+          "gpqa": 0.866,
+          "mmlu_pro": null,
+          "hle": 0.338,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.798639455782313,
+          "lcr": 0.733333333333333,
+          "scicode": 0.502,
+          "tau2": 0.941520467836257,
+          "tau_banking": 0.0865979381443299,
+          "terminalbench_hard": 0.431818181818182,
+          "terminalbench_v2_1": 0.651685393258427,
+          "coding_index": 60.2
         },
         "aa_img": {
           "omniscience_index": 4,
@@ -33069,6 +34776,9 @@
       "id": "minimax-01",
       "name": "MiniMax: MiniMax-01",
       "creator": "minimax",
+      "meta": {
+        "context_window": 1000192
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -33086,6 +34796,9 @@
       "id": "minimax-m1",
       "name": "MiniMax: MiniMax M1",
       "creator": "minimax",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -33103,6 +34816,9 @@
       "id": "minimax-m2",
       "name": "MiniMax: MiniMax M2",
       "creator": "minimax",
+      "meta": {
+        "context_window": 204800
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.55e-07,
@@ -33136,6 +34852,9 @@
       "id": "minimax-m2-her",
       "name": "MiniMax: MiniMax M2-her",
       "creator": "minimax",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -33155,6 +34874,9 @@
       "id": "minimax-m2.1",
       "name": "MiniMax: MiniMax M2.1",
       "creator": "minimax",
+      "meta": {
+        "context_window": 204800
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -33175,6 +34897,9 @@
       "name": "minimax-m2.1-preview",
       "creator": "MiniMax",
       "model_type": "open",
+      "meta": {
+        "context_window": 204800
+      },
       "benchmarks": {
         "arena_code": {
           "elo": 1391,
@@ -33193,7 +34918,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-12",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 204800
       },
       "pricing": {
         "aa": {
@@ -33222,7 +34948,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.848
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.848,
+          "mmlu_pro": null,
+          "hle": 0.191,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.716326530612245,
+          "lcr": 0.66,
+          "scicode": 0.426,
+          "tau2": 0.953216374269006,
+          "tau_banking": null,
+          "terminalbench_hard": 0.348484848484849,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "ttft_variance": -1.8
@@ -33251,7 +34992,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-18",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 204800
       },
       "pricing": {
         "aa": {
@@ -33288,8 +35030,23 @@
           "iq_per_dollar": 0.26438459999999997,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 3.7824,
-          "coding_index": 52.6,
-          "gpqa": 0.874
+          "aa_coding_index": 52.6,
+          "aa_math_index": null,
+          "gpqa": 0.874,
+          "mmlu_pro": null,
+          "hle": 0.281,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.757142857142857,
+          "lcr": 0.686666666666667,
+          "scicode": 0.47,
+          "tau2": 0.847953216374269,
+          "tau_banking": 0.088659793814433,
+          "terminalbench_hard": 0.393939393939394,
+          "terminalbench_v2_1": 0.554307116104869,
+          "coding_index": 52.6
         },
         "aa_img": {
           "omniscience_hallucination_rate": 34,
@@ -33327,7 +35084,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-01",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -33366,8 +35124,23 @@
           "iq_per_dollar": 0.21583439999999998,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 4.6332,
-          "coding_index": 58.6,
-          "gpqa": 0.929
+          "aa_coding_index": 58.6,
+          "aa_math_index": null,
+          "gpqa": 0.929,
+          "mmlu_pro": null,
+          "hle": 0.371,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.828571428571429,
+          "lcr": 0.74,
+          "scicode": 0.454,
+          "tau2": 0.888888888888889,
+          "tau_banking": 0.129896907216495,
+          "terminalbench_hard": 0.424242424242424,
+          "terminalbench_v2_1": 0.651685393258427,
+          "coding_index": 58.6
         },
         "aa_img": {
           "omniscience_hallucination_rate": 16,
@@ -33431,6 +35204,9 @@
       "id": "ministral-14b-2512",
       "name": "Mistral: Ministral 3 14B 2512",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -33450,6 +35226,9 @@
       "id": "ministral-3b-2512",
       "name": "Mistral: Ministral 3 3B 2512",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -33469,6 +35248,9 @@
       "id": "ministral-8b-2512",
       "name": "Mistral: Ministral 3 8B 2512",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -34542,6 +36324,9 @@
       "id": "mistral-large",
       "name": "Mistral Large",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -34561,6 +36346,9 @@
       "id": "mistral-large-2407",
       "name": "Mistral Large 2407",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -34580,6 +36368,9 @@
       "id": "mistral-large-2512",
       "name": "Mistral: Mistral Large 3 2512",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-07,
@@ -34624,6 +36415,9 @@
       "id": "mistral-medium-3",
       "name": "Mistral: Mistral Medium 3",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -34643,6 +36437,9 @@
       "id": "mistral-medium-3.1",
       "name": "Mistral: Mistral Medium 3.1",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -34662,6 +36459,9 @@
       "id": "mistral-medium-3.5",
       "name": "Mistral Medium 3.5",
       "creator": "Mistral",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.5,
@@ -34757,6 +36557,9 @@
       "id": "mistral-nemo",
       "name": "Mistral: Mistral Nemo",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-08,
@@ -35599,6 +37402,9 @@
       "id": "mistral-saba",
       "name": "Mistral: Saba",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -35668,6 +37474,9 @@
       "id": "mistral-small-24b-instruct-2501",
       "name": "Mistral: Mistral Small 3",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -35785,6 +37594,9 @@
       "id": "mistral-small-2603",
       "name": "Mistral: Mistral Small 4",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -35804,6 +37616,9 @@
       "id": "mistral-small-3.1-24b-instruct",
       "name": "Mistral: Mistral Small 3.1 24B",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.51e-07,
@@ -35821,6 +37636,9 @@
       "id": "mistral-small-3.2-24b-instruct",
       "name": "Mistral: Mistral Small 3.2 24B",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -36436,6 +38254,9 @@
       "id": "mixtral-8x22b-instruct",
       "name": "Mistral: Mixtral 8x22B Instruct",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -36628,6 +38449,9 @@
       "id": "morph-v3-fast",
       "name": "Morph: Morph V3 Fast",
       "creator": "morph",
+      "meta": {
+        "context_window": 81920
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -36645,6 +38469,9 @@
       "id": "morph-v3-large",
       "name": "Morph: Morph V3 Large",
       "creator": "morph",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-07,
@@ -36690,7 +38517,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-08",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1048576
       },
       "pricing": {
         "aa": {
@@ -36712,8 +38540,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 58.6,
-          "gpqa": 0.884
+          "aa_coding_index": 58.6,
+          "aa_math_index": null,
+          "gpqa": 0.884,
+          "mmlu_pro": null,
+          "hle": 0.399,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.759183673469388,
+          "lcr": 0.696666666666667,
+          "scicode": 0.515,
+          "tau2": 0.915204678362573,
+          "tau_banking": 0.195876288659794,
+          "terminalbench_hard": 0.454545454545455,
+          "terminalbench_v2_1": 0.621722846441948,
+          "coding_index": 58.6
         },
         "aa_img": {
           "omniscience_index": 4,
@@ -36740,6 +38583,9 @@
       "id": "mythomax-l2-13b",
       "name": "MythoMax 13B",
       "creator": "gryphe",
+      "meta": {
+        "context_window": 4096
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -36956,6 +38802,9 @@
       "id": "nemotron-3-nano-30b-a3b",
       "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5e-08,
@@ -36973,6 +38822,9 @@
       "id": "nemotron-3-nano-30b-a3b:free",
       "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -36993,7 +38845,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-29",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -37015,7 +38868,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.469
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.469,
+          "mmlu_pro": null,
+          "hle": 0.053,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.631972789115646,
+          "lcr": 0.356666666666667,
+          "scicode": 0.278,
+          "tau2": 0.453216374269006,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0833333333333333,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "openness_index": 83,
@@ -37031,6 +38899,9 @@
       "id": "nemotron-3-nano-omni-30b-a3b-reasoning:free",
       "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37051,7 +38922,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-11",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37088,8 +38960,23 @@
           "iq_per_dollar": 0.0848724,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 11.7824,
-          "coding_index": 37.7,
-          "gpqa": 0.8
+          "aa_coding_index": 37.7,
+          "aa_math_index": null,
+          "gpqa": 0.8,
+          "mmlu_pro": null,
+          "hle": 0.192,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.714965986394558,
+          "lcr": 0.6,
+          "scicode": 0.36,
+          "tau2": 0.678362573099415,
+          "tau_banking": 0.101030927835052,
+          "terminalbench_hard": 0.287878787878788,
+          "terminalbench_v2_1": 0.385767790262172,
+          "coding_index": 37.7
         },
         "aa_img": {
           "openness_index": 83,
@@ -37117,6 +39004,9 @@
       "id": "nemotron-3-super-120b-a12b:free",
       "name": "NVIDIA: Nemotron 3 Super (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37137,7 +39027,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-04",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37176,8 +39067,23 @@
           "iq_per_dollar": 0.085657,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 11.6745,
-          "coding_index": 49.3,
-          "gpqa": 0.867
+          "aa_coding_index": 49.3,
+          "aa_math_index": null,
+          "gpqa": 0.867,
+          "mmlu_pro": null,
+          "hle": 0.266,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.813605442176871,
+          "lcr": 0.67,
+          "scicode": 0.399,
+          "tau2": 0.833333333333333,
+          "tau_banking": 0.138144329896907,
+          "terminalbench_hard": 0.363636363636364,
+          "terminalbench_v2_1": 0.539325842696629,
+          "coding_index": 49.3
         },
         "aa_img": {
           "omniscience_hallucination_rate": 29,
@@ -37211,6 +39117,9 @@
       "id": "nemotron-3-ultra-550b-a55b:free",
       "name": "NVIDIA: Nemotron 3 Ultra (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37228,6 +39137,9 @@
       "id": "nemotron-3.5-content-safety:free",
       "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37247,7 +39159,8 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-03-19"
+        "release_date": "2026-03-19",
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -37269,7 +39182,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.758
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.758,
+          "mmlu_pro": null,
+          "hle": 0.114,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.804081632653061,
+          "lcr": 0.34,
+          "scicode": 0.348,
+          "tau2": 0.532163742690059,
+          "tau_banking": null,
+          "terminalbench_hard": 0.212121212121212,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -37280,6 +39208,9 @@
       "id": "nemotron-nano-12b-v2-vl:free",
       "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37297,6 +39228,9 @@
       "id": "nemotron-nano-9b-v2:free",
       "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
       "creator": "nvidia",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37438,6 +39372,9 @@
       "id": "nex-n2-mini",
       "name": "Nex AGI: Nex-N2-Mini",
       "creator": "nex-agi",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-08,
@@ -37460,7 +39397,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -37491,8 +39429,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 59.1,
-          "gpqa": 0.892
+          "aa_coding_index": 59.1,
+          "aa_math_index": null,
+          "gpqa": 0.892,
+          "mmlu_pro": null,
+          "hle": 0.324,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.661904761904762,
+          "lcr": 0.676666666666667,
+          "scicode": 0.418,
+          "tau2": 0.815789473684211,
+          "tau_banking": 0.169072164948454,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.677902621722846,
+          "coding_index": 59.1
         },
         "aa_img": {
           "agentic_index": 31.0,
@@ -37558,6 +39511,9 @@
       "id": "north-mini-code:free",
       "name": "Cohere: North Mini Code (free)",
       "creator": "cohere",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -37627,7 +39583,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-10-29"
+        "release_date": "2025-10-29",
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -37649,10 +39606,24 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 23,
-          "math_index": 94.3,
+          "aa_coding_index": 23,
+          "aa_math_index": 94.3,
+          "gpqa": 0.811,
           "mmlu_pro": 0.818,
-          "gpqa": 0.811
+          "hle": 0.109,
+          "aime": null,
+          "aime_25": 0.943333333333333,
+          "math_500": null,
+          "livecodebench": 0.711,
+          "ifbench": 0.707482993197279,
+          "lcr": 0.553333333333333,
+          "scicode": 0.369,
+          "tau2": 0.728070175438596,
+          "tau_banking": 0.0680412371134021,
+          "terminalbench_hard": 0.166666666666667,
+          "terminalbench_v2_1": 0.161048689138577,
+          "coding_index": 23,
+          "math_index": 94.3
         }
       },
       "aliases": {
@@ -37665,7 +39636,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-10-29"
+        "release_date": "2025-10-29",
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -37687,9 +39659,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 46.7,
+          "aa_coding_index": null,
+          "aa_math_index": 46.7,
+          "gpqa": 0.698,
           "mmlu_pro": 0.788,
-          "gpqa": 0.698
+          "hle": 0.042,
+          "aime": null,
+          "aime_25": 0.466666666666667,
+          "math_500": null,
+          "livecodebench": 0.469,
+          "ifbench": 0.612244897959184,
+          "lcr": 0.52,
+          "scicode": 0.333,
+          "tau2": 0.719298245614035,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0378787878787879,
+          "terminalbench_v2_1": null,
+          "math_index": 46.7
         }
       },
       "aliases": {
@@ -37702,7 +39688,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-10-29"
+        "release_date": "2025-10-29",
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -37724,9 +39711,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 88.7,
+          "aa_coding_index": null,
+          "aa_math_index": 88.7,
+          "gpqa": 0.768,
           "mmlu_pro": 0.813,
-          "gpqa": 0.768
+          "hle": 0.086,
+          "aime": null,
+          "aime_25": 0.886666666666667,
+          "math_500": null,
+          "livecodebench": 0.663,
+          "ifbench": 0.685034013605442,
+          "lcr": 0.583333333333333,
+          "scicode": 0.368,
+          "tau2": 0.757309941520468,
+          "tau_banking": null,
+          "terminalbench_hard": 0.174242424242424,
+          "terminalbench_v2_1": null,
+          "math_index": 88.7
         }
       },
       "aliases": {
@@ -37739,7 +39740,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-26"
+        "release_date": "2025-11-26",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37761,9 +39763,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 56,
+          "aa_coding_index": null,
+          "aa_math_index": 56,
+          "gpqa": 0.699,
           "mmlu_pro": 0.798,
-          "gpqa": 0.699
+          "hle": 0.04,
+          "aime": null,
+          "aime_25": 0.56,
+          "math_500": null,
+          "livecodebench": 0.592,
+          "ifbench": 0.617687074829932,
+          "lcr": 0.51,
+          "scicode": 0.343,
+          "tau2": 0.678362573099415,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0378787878787879,
+          "terminalbench_v2_1": null,
+          "math_index": 56
         }
       },
       "aliases": {
@@ -37776,7 +39792,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-26"
+        "release_date": "2025-11-26",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37798,9 +39815,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 89.7,
+          "aa_coding_index": null,
+          "aa_math_index": 89.7,
+          "gpqa": 0.76,
           "mmlu_pro": 0.809,
-          "gpqa": 0.76
+          "hle": 0.068,
+          "aime": null,
+          "aime_25": 0.896666666666667,
+          "math_500": null,
+          "livecodebench": 0.66,
+          "ifbench": 0.661904761904762,
+          "lcr": 0.536666666666667,
+          "scicode": 0.362,
+          "tau2": 0.804093567251462,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0454545454545455,
+          "terminalbench_v2_1": null,
+          "math_index": 89.7
         }
       },
       "aliases": {
@@ -37813,7 +39844,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-27"
+        "release_date": "2025-11-27",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37835,10 +39867,24 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 25.9,
-          "math_index": 63.3,
+          "aa_coding_index": 25.9,
+          "aa_math_index": 63.3,
+          "gpqa": 0.751,
           "mmlu_pro": 0.822,
-          "gpqa": 0.751
+          "hle": 0.052,
+          "aime": null,
+          "aime_25": 0.633333333333333,
+          "math_500": null,
+          "livecodebench": 0.638,
+          "ifbench": 0.795918367346939,
+          "lcr": 0.616666666666667,
+          "scicode": 0.387,
+          "tau2": 0.906432748538012,
+          "tau_banking": 0.0907216494845361,
+          "terminalbench_hard": 0.174242424242424,
+          "terminalbench_v2_1": 0.194756554307116,
+          "coding_index": 25.9,
+          "math_index": 63.3
         }
       },
       "aliases": {
@@ -37849,6 +39895,9 @@
       "id": "nova-2-lite-v1",
       "name": "Amazon: Nova 2 Lite",
       "creator": "amazon",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -37868,7 +39917,8 @@
       "creator": "Amazon",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-11-27"
+        "release_date": "2025-11-27",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -37898,10 +39948,24 @@
           "iq_per_dollar": 0.0771621,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 12.9597,
-          "coding_index": 34,
-          "math_index": 89,
+          "aa_coding_index": 34,
+          "aa_math_index": 89,
+          "gpqa": 0.785,
           "mmlu_pro": 0.83,
-          "gpqa": 0.785
+          "hle": 0.089,
+          "aime": null,
+          "aime_25": 0.89,
+          "math_500": null,
+          "livecodebench": 0.73,
+          "ifbench": 0.790476190476191,
+          "lcr": 0.543333333333333,
+          "scicode": 0.427,
+          "tau2": 0.926900584795322,
+          "tau_banking": 0.0762886597938144,
+          "terminalbench_hard": 0.242424242424242,
+          "terminalbench_v2_1": 0.295880149812734,
+          "coding_index": 34,
+          "math_index": 89
         }
       },
       "aliases": {
@@ -37912,6 +39976,9 @@
       "id": "nova-lite-v1",
       "name": "Amazon: Nova Lite 1.0",
       "creator": "amazon",
+      "meta": {
+        "context_window": 300000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-08,
@@ -37929,6 +39996,9 @@
       "id": "nova-micro-v1",
       "name": "Amazon: Nova Micro 1.0",
       "creator": "amazon",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.5e-08,
@@ -37946,6 +40016,9 @@
       "id": "nova-premier-v1",
       "name": "Amazon: Nova Premier 1.0",
       "creator": "amazon",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -37965,6 +40038,9 @@
       "id": "nova-pro-v1",
       "name": "Amazon: Nova Pro 1.0",
       "creator": "amazon",
+      "meta": {
+        "context_window": 300000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -38422,7 +40498,8 @@
       "creator": "NVIDIA",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-12-15"
+        "release_date": "2025-12-15",
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -38444,10 +40521,24 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 14.4,
-          "math_index": 91,
+          "aa_coding_index": 14.4,
+          "aa_math_index": 91,
+          "gpqa": 0.757,
           "mmlu_pro": 0.794,
-          "gpqa": 0.757
+          "hle": 0.102,
+          "aime": null,
+          "aime_25": 0.91,
+          "math_500": null,
+          "livecodebench": 0.741,
+          "ifbench": 0.710884353741497,
+          "lcr": 0.336666666666667,
+          "scicode": 0.296,
+          "tau2": 0.409356725146199,
+          "tau_banking": 0.0597938144329897,
+          "terminalbench_hard": 0.136363636363636,
+          "terminalbench_v2_1": 0.0674157303370786,
+          "coding_index": 14.4,
+          "math_index": 91
         }
       },
       "aliases": {
@@ -38482,6 +40573,9 @@
       "id": "o1",
       "name": "OpenAI: o1",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-05,
@@ -38501,6 +40595,9 @@
       "id": "o1-pro",
       "name": "OpenAI: o1-pro",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.00015,
@@ -38518,6 +40615,9 @@
       "id": "o3",
       "name": "OpenAI: o3",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -38537,6 +40637,9 @@
       "id": "o3-deep-research",
       "name": "OpenAI: o3 Deep Research",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-05,
@@ -38556,6 +40659,9 @@
       "id": "o3-mini",
       "name": "OpenAI: o3 Mini",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -38575,6 +40681,9 @@
       "id": "o3-mini-high",
       "name": "OpenAI: o3 Mini High",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -38594,6 +40703,9 @@
       "id": "o3-pro",
       "name": "OpenAI: o3 Pro",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-05,
@@ -38611,6 +40723,9 @@
       "id": "o4-mini",
       "name": "OpenAI: o4 Mini",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -38630,6 +40745,9 @@
       "id": "o4-mini-deep-research",
       "name": "OpenAI: o4 Mini Deep Research",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -38649,6 +40767,9 @@
       "id": "o4-mini-high",
       "name": "OpenAI: o4 Mini High",
       "creator": "openai",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-06,
@@ -38668,6 +40789,9 @@
       "id": "olmo-3-32b-think",
       "name": "AllenAI: Olmo 3 32B Think",
       "creator": "allenai",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -39168,6 +41292,9 @@
       "id": "palmyra-x5",
       "name": "Writer: Palmyra X5",
       "creator": "writer",
+      "meta": {
+        "context_window": 1040000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6e-07,
@@ -39210,6 +41337,9 @@
       "id": "pareto-code",
       "name": "Pareto Code Router",
       "creator": "openrouter",
+      "meta": {
+        "context_window": 2000000
+      },
       "pricing": {
         "openrouter": {
           "vendor": "openrouter"
@@ -39273,6 +41403,9 @@
       "id": "perceptron-mk1",
       "name": "Perceptron: Perceptron Mk1",
       "creator": "perceptron",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -39315,6 +41448,9 @@
       "id": "phi-4",
       "name": "Microsoft: Phi 4",
       "creator": "microsoft",
+      "meta": {
+        "context_window": 16384
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-08,
@@ -40152,6 +42288,9 @@
       "id": "qwen-2.5-72b-instruct",
       "name": "Qwen2.5 72B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.6e-07,
@@ -40289,6 +42428,9 @@
       "id": "qwen-2.5-7b-instruct",
       "name": "Qwen: Qwen2.5 7B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-08,
@@ -40428,6 +42570,9 @@
       "id": "qwen-2.5-coder-32b-instruct",
       "name": "Qwen2.5 Coder 32B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.6e-07,
@@ -40742,6 +42887,9 @@
       "id": "qwen-plus",
       "name": "Qwen: Qwen-Plus",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -40763,6 +42911,9 @@
       "id": "qwen-plus-2025-07-28",
       "name": "Qwen: Qwen Plus 0728",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -40780,6 +42931,9 @@
       "id": "qwen-plus-2025-07-28:thinking",
       "name": "Qwen: Qwen Plus 0728 (thinking)",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -49305,6 +51459,9 @@
       "id": "qwen2.5-vl-72b-instruct",
       "name": "Qwen: Qwen2.5 VL 72B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-07,
@@ -49422,6 +51579,9 @@
       "id": "qwen3-14b",
       "name": "Qwen: Qwen3 14B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131702
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -49439,6 +51599,9 @@
       "id": "qwen3-235b-a22b",
       "name": "Qwen: Qwen3 235B A22B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.55e-07,
@@ -49456,6 +51619,9 @@
       "id": "qwen3-235b-a22b-2507",
       "name": "Qwen: Qwen3 235B A22B Instruct 2507",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-08,
@@ -49493,6 +51659,9 @@
     {
       "id": "qwen3-235b-a22b-thinking-2507",
       "name": "qwen3-235b-a22b-thinking-2507",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.495e-07,
@@ -49523,6 +51692,9 @@
       "id": "qwen3-30b-a3b",
       "name": "Qwen: Qwen3 30B A3B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.2e-07,
@@ -49540,6 +51712,9 @@
       "id": "qwen3-30b-a3b-instruct-2507",
       "name": "Qwen: Qwen3 30B A3B Instruct 2507",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.815e-08,
@@ -49556,6 +51731,9 @@
     {
       "id": "qwen3-30b-a3b-thinking",
       "name": "qwen3-30b-a3b-thinking",
+      "meta": {
+        "context_window": 131072
+      },
       "benchmarks": {
         "livebench": {
           "average": 38.85,
@@ -49576,6 +51754,9 @@
       "id": "qwen3-30b-a3b-thinking-2507",
       "name": "Qwen: Qwen3 30B A3B Thinking 2507",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -49593,6 +51774,9 @@
       "id": "qwen3-32b",
       "name": "Qwen: Qwen3 32B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8e-08,
@@ -49609,6 +51793,9 @@
     {
       "id": "qwen3-32b-thinking",
       "name": "qwen3-32b-thinking",
+      "meta": {
+        "context_window": 131072
+      },
       "benchmarks": {
         "livebench": {
           "average": 42.7,
@@ -49648,7 +51835,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-22",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -49670,8 +51858,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 53.7,
-          "gpqa": 0.842
+          "aa_coding_index": 53.7,
+          "aa_math_index": null,
+          "gpqa": 0.842,
+          "mmlu_pro": null,
+          "hle": 0.216,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.675510204081633,
+          "lcr": 0.686666666666667,
+          "scicode": 0.398,
+          "tau2": 0.941520467836257,
+          "tau_banking": 0.152577319587629,
+          "terminalbench_hard": 0.348484848484849,
+          "terminalbench_v2_1": 0.606741573033708,
+          "coding_index": 53.7
         },
         "aa_img": {
           "omniscience_hallucination_rate": 48,
@@ -49698,7 +51901,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-16",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -49720,8 +51924,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 41.9,
-          "gpqa": 0.841
+          "aa_coding_index": 41.9,
+          "aa_math_index": null,
+          "gpqa": 0.841,
+          "mmlu_pro": null,
+          "hle": 0.202,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.643537414965986,
+          "lcr": 0.636666666666667,
+          "scicode": 0.358,
+          "tau2": 0.953216374269006,
+          "tau_banking": 0.0865979381443299,
+          "terminalbench_hard": 0.348484848484849,
+          "terminalbench_v2_1": 0.449438202247191,
+          "coding_index": 41.9
         },
         "aa_img": {
           "omniscience_hallucination_rate": 50,
@@ -49743,7 +51962,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-20",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -49765,7 +51985,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.888
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.888,
+          "mmlu_pro": null,
+          "hle": 0.289,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.765986394557823,
+          "lcr": 0.696666666666667,
+          "scicode": 0.469,
+          "tau2": 0.95906432748538,
+          "tau_banking": null,
+          "terminalbench_hard": 0.439393939393939,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "omniscience_index": 10,
@@ -49784,7 +52019,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -49806,8 +52042,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 54.5,
-          "gpqa": 0.882
+          "aa_coding_index": 54.5,
+          "aa_math_index": null,
+          "gpqa": 0.882,
+          "mmlu_pro": null,
+          "hle": 0.257,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.751700680272109,
+          "lcr": 0.696666666666667,
+          "scicode": 0.407,
+          "tau2": 0.976608187134503,
+          "tau_banking": 0.164948453608247,
+          "terminalbench_hard": 0.439393939393939,
+          "terminalbench_v2_1": 0.614232209737828,
+          "coding_index": 54.5
         },
         "aa_img": {
           "omniscience_hallucination_rate": 32,
@@ -49825,7 +52076,8 @@
       "creator": "Alibaba",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-06-01"
+        "release_date": "2026-06-01",
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -49847,8 +52099,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 55.9,
-          "gpqa": 0.9
+          "aa_coding_index": 55.9,
+          "aa_math_index": null,
+          "gpqa": 0.9,
+          "mmlu_pro": null,
+          "hle": 0.334,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.779591836734694,
+          "lcr": 0.65,
+          "scicode": 0.455,
+          "tau2": 0.929824561403509,
+          "tau_banking": 0.178694158075601,
+          "terminalbench_hard": 0.46969696969697,
+          "terminalbench_v2_1": 0.610486891385768,
+          "coding_index": 55.9
         }
       },
       "aliases": {
@@ -49859,6 +52126,9 @@
       "id": "qwen3-8b",
       "name": "Qwen: Qwen3 8B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -49876,6 +52146,9 @@
       "id": "qwen3-coder",
       "name": "Qwen: Qwen3 Coder 480B A35B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.2e-07,
@@ -49893,6 +52166,9 @@
       "id": "qwen3-coder-30b-a3b-instruct",
       "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 160000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7e-08,
@@ -49910,6 +52186,9 @@
       "id": "qwen3-coder-flash",
       "name": "Qwen: Qwen3 Coder Flash",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.95e-07,
@@ -49929,6 +52208,9 @@
     },
     {
       "id": "qwen3-coder-next",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.1e-07,
@@ -49953,6 +52235,9 @@
       "id": "qwen3-coder-plus",
       "name": "Qwen: Qwen3 Coder Plus",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-07,
@@ -49974,6 +52259,9 @@
       "id": "qwen3-coder:free",
       "name": "Qwen: Qwen3 Coder 480B A35B (free)",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1048576
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -49991,6 +52279,9 @@
       "id": "qwen3-max",
       "name": "Qwen: Qwen3 Max",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.8e-07,
@@ -50012,6 +52303,9 @@
       "id": "qwen3-max-thinking",
       "name": "Qwen: Qwen3 Max Thinking",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.8e-07,
@@ -50028,6 +52322,9 @@
     {
       "id": "qwen3-next-80b-a3b-instruct",
       "name": "qwen3-next-80b-a3b-instruct",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9e-08,
@@ -50058,6 +52355,9 @@
       "id": "qwen3-next-80b-a3b-instruct:free",
       "name": "Qwen: Qwen3 Next 80B A3B Instruct (free)",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 0.0,
@@ -50074,6 +52374,9 @@
     {
       "id": "qwen3-next-80b-a3b-thinking",
       "name": "qwen3-next-80b-a3b-thinking",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 9.75e-08,
@@ -50104,6 +52407,9 @@
       "id": "qwen3-vl-235b-a22b-instruct",
       "name": "Qwen: Qwen3 VL 235B A22B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -50123,6 +52429,9 @@
       "id": "qwen3-vl-235b-a22b-thinking",
       "name": "Qwen: Qwen3 VL 235B A22B Thinking",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -50140,6 +52449,9 @@
       "id": "qwen3-vl-30b-a3b-instruct",
       "name": "Qwen: Qwen3 VL 30B A3B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -50157,6 +52469,9 @@
       "id": "qwen3-vl-30b-a3b-thinking",
       "name": "Qwen: Qwen3 VL 30B A3B Thinking",
       "creator": "qwen",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.3e-07,
@@ -50174,6 +52489,9 @@
       "id": "qwen3-vl-32b-instruct",
       "name": "Qwen: Qwen3 VL 32B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.04e-07,
@@ -50191,6 +52509,9 @@
       "id": "qwen3-vl-8b-instruct",
       "name": "Qwen: Qwen3 VL 8B Instruct",
       "creator": "qwen",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -50208,6 +52529,9 @@
       "id": "qwen3-vl-8b-thinking",
       "name": "Qwen: Qwen3 VL 8B Thinking",
       "creator": "qwen",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.17e-07,
@@ -50225,6 +52549,9 @@
       "id": "qwen3.5-122b-a10b",
       "name": "Qwen: Qwen3.5-122B-A10B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -50242,6 +52569,9 @@
       "id": "qwen3.5-27b",
       "name": "Qwen: Qwen3.5-27B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.95e-07,
@@ -50259,6 +52589,9 @@
       "id": "qwen3.5-35b-a3b",
       "name": "Qwen: Qwen3.5-35B-A3B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -50278,6 +52611,9 @@
       "id": "qwen3.5-397b-a17b",
       "name": "Qwen3.5 397B (A17B)",
       "creator": "Alibaba",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.6,
@@ -50331,6 +52667,9 @@
       "id": "qwen3.5-9b",
       "name": "Qwen: Qwen3.5-9B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -50348,6 +52687,9 @@
       "id": "qwen3.5-flash-02-23",
       "name": "Qwen: Qwen3.5-Flash",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.5e-08,
@@ -50365,6 +52707,9 @@
       "id": "qwen3.5-plus-02-15",
       "name": "Qwen: Qwen3.5 Plus 2026-02-15",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.6e-07,
@@ -50382,6 +52727,9 @@
       "id": "qwen3.5-plus-20260420",
       "name": "Qwen: Qwen3.5 Plus 2026-04-20",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-07,
@@ -50400,6 +52748,9 @@
     {
       "id": "qwen3.6-27b",
       "name": "qwen3.6-27b",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.85e-07,
@@ -50432,6 +52783,9 @@
       "id": "qwen3.6-35b-a3b",
       "name": "Qwen: Qwen3.6 35B A3B",
       "creator": "qwen",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -50448,6 +52802,9 @@
     {
       "id": "qwen3.6-flash",
       "name": "qwen3.6-flash",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.875e-07,
@@ -50481,6 +52838,9 @@
       "name": "qwen3.6-max-preview",
       "creator": "Alibaba",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1.04e-06,
@@ -50508,6 +52868,9 @@
       "id": "qwen3.6-plus",
       "name": "qwen3.6-plus",
       "creator": "Alibaba",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.25e-07,
@@ -50549,7 +52912,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-19",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 1000000
       },
       "pricing": {
         "aa": {
@@ -50590,8 +52954,23 @@
           "iq_per_dollar": 0.0344273,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": 29.0467,
-          "coding_index": 66,
-          "gpqa": 0.923
+          "aa_coding_index": 66,
+          "aa_math_index": null,
+          "gpqa": 0.923,
+          "mmlu_pro": null,
+          "hle": 0.381,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.805442176870748,
+          "lcr": 0.69,
+          "scicode": 0.488,
+          "tau2": 0.947368421052632,
+          "tau_banking": 0.109278350515464,
+          "terminalbench_hard": 0.507575757575758,
+          "terminalbench_v2_1": 0.745318352059925,
+          "coding_index": 66
         },
         "aa_img": {
           "omniscience_index": 14,
@@ -50642,6 +53021,9 @@
       "name": "qwen3.7-max-preview",
       "creator": "Alibaba",
       "model_type": "proprietary",
+      "meta": {
+        "context_window": 1000000
+      },
       "benchmarks": {
         "arena_text": {
           "elo": 1475,
@@ -50657,6 +53039,9 @@
       "id": "qwen3.7-plus",
       "name": "Qwen: Qwen3.7 Plus",
       "creator": "qwen",
+      "meta": {
+        "context_window": 1000000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3.2e-07,
@@ -54219,6 +56604,9 @@
       "id": "reka-edge",
       "name": "Reka Edge",
       "creator": "rekaai",
+      "meta": {
+        "context_window": 16384
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -54239,7 +56627,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-03-10",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 65536
       },
       "pricing": {
         "aa": {
@@ -54268,9 +56657,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "math_index": 33.7,
+          "aa_coding_index": null,
+          "aa_math_index": 33.7,
+          "gpqa": 0.529,
           "mmlu_pro": 0.669,
-          "gpqa": 0.529
+          "hle": 0.051,
+          "aime": 0.51,
+          "aime_25": 0.336666666666667,
+          "math_500": 0.892666666666667,
+          "livecodebench": 0.435,
+          "ifbench": 0.304081632653061,
+          "lcr": 0,
+          "scicode": 0.267,
+          "tau2": 0,
+          "tau_banking": null,
+          "terminalbench_hard": 0,
+          "terminalbench_v2_1": null,
+          "math_index": 33.7
         },
         "aa_img": {
           "openness_index": 39
@@ -54285,6 +56688,9 @@
       "id": "relace-apply-3",
       "name": "Relace: Relace Apply 3",
       "creator": "relace",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 8.5e-07,
@@ -54302,6 +56708,9 @@
       "id": "relace-search",
       "name": "Relace: Relace Search",
       "creator": "relace",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -54319,6 +56728,9 @@
       "id": "remm-slerp-l2-13b",
       "name": "ReMM SLERP 13B",
       "creator": "undi95",
+      "meta": {
+        "context_window": 6144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.5e-07,
@@ -54580,6 +56992,9 @@
       "id": "ring-2.6-1t",
       "name": "inclusionAI: Ring-2.6-1T",
       "creator": "inclusionai",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -54599,6 +57014,9 @@
       "id": "rocinante-12b",
       "name": "TheDrummer: Rocinante 12B",
       "creator": "thedrummer",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -55388,6 +57806,9 @@
       "id": "seed-1.6",
       "name": "ByteDance Seed: Seed 1.6",
       "creator": "bytedance-seed",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -55405,6 +57826,9 @@
       "id": "seed-1.6-flash",
       "name": "ByteDance Seed: Seed 1.6 Flash",
       "creator": "bytedance-seed",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-08,
@@ -55422,6 +57846,9 @@
       "id": "seed-2.0-lite",
       "name": "ByteDance Seed: Seed-2.0-Lite",
       "creator": "bytedance-seed",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -55439,6 +57866,9 @@
       "id": "seed-2.0-mini",
       "name": "ByteDance Seed: Seed-2.0-Mini",
       "creator": "bytedance-seed",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -56064,6 +58494,9 @@
       "id": "skyfall-36b-v2",
       "name": "TheDrummer: Skyfall 36B V2",
       "creator": "thedrummer",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 5.5e-07,
@@ -56310,7 +58743,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-12-17",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -56332,7 +58766,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.657
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.657,
+          "mmlu_pro": null,
+          "hle": 0.092,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.57687074829932,
+          "lcr": 0.36,
+          "scicode": 0.269,
+          "tau2": 0.482456140350877,
+          "tau_banking": null,
+          "terminalbench_hard": 0.0227272727272727,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -56346,7 +58795,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-06",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 128000
       },
       "pricing": {
         "aa": {
@@ -56377,8 +58827,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 16.2,
-          "gpqa": 0.724
+          "aa_coding_index": 16.2,
+          "aa_math_index": null,
+          "gpqa": 0.724,
+          "mmlu_pro": null,
+          "hle": 0.101,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.712018140589569,
+          "lcr": 0.27,
+          "scicode": 0.247,
+          "tau2": 0.862573099415205,
+          "tau_banking": 0.0804123711340206,
+          "terminalbench_hard": 0.0757575757575758,
+          "terminalbench_v2_1": 0.119850187265918,
+          "coding_index": 16.2
         }
       },
       "aliases": {
@@ -56390,6 +58855,9 @@
       "id": "sonar",
       "name": "Perplexity: Sonar",
       "creator": "perplexity",
+      "meta": {
+        "context_window": 127072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-06,
@@ -56407,6 +58875,9 @@
       "id": "sonar-deep-research",
       "name": "Perplexity: Sonar Deep Research",
       "creator": "perplexity",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-06,
@@ -56424,6 +58895,9 @@
       "id": "sonar-pro",
       "name": "Perplexity: Sonar Pro",
       "creator": "perplexity",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -56441,6 +58915,9 @@
       "id": "sonar-pro-search",
       "name": "Perplexity: Sonar Pro Search",
       "creator": "perplexity",
+      "meta": {
+        "context_window": 200000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 3e-06,
@@ -56460,7 +58937,8 @@
       "creator": "Perplexity",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-01-28"
+        "release_date": "2025-01-28",
+        "context_window": 127072
       },
       "pricing": {
         "aa": {
@@ -56482,7 +58960,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.623
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.623,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": 0.77,
+          "aime_25": null,
+          "math_500": 0.921333333333333,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -56495,7 +58988,8 @@
       "creator": "Perplexity",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2025-01-28"
+        "release_date": "2025-01-28",
+        "context_window": 200000
       },
       "pricing": {
         "aa": {
@@ -56523,7 +59017,23 @@
           "intel": 18,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": null,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": 0.79,
+          "aime_25": null,
+          "math_500": 0.957333333333333,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -56686,7 +59196,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -56708,7 +59219,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.826
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.826,
+          "mmlu_pro": null,
+          "hle": 0.226,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.66530612244898,
+          "lcr": 0.543333333333333,
+          "scicode": 0.385,
+          "tau2": 0.874269005847953,
+          "tau_banking": null,
+          "terminalbench_hard": 0.325757575757576,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "e2e_response_time_s": 15.6,
@@ -56729,7 +59255,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-29",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 256000
       },
       "pricing": {
         "aa": {
@@ -56751,8 +59278,23 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "coding_index": 37.3,
-          "gpqa": 0.809
+          "aa_coding_index": 37.3,
+          "aa_math_index": null,
+          "gpqa": 0.809,
+          "mmlu_pro": null,
+          "hle": 0.199,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.672789115646258,
+          "lcr": 0.636666666666667,
+          "scicode": 0.4,
+          "tau2": 0.985380116959064,
+          "tau_banking": 0.11340206185567,
+          "terminalbench_hard": 0.356060606060606,
+          "terminalbench_v2_1": 0.359550561797753,
+          "coding_index": 37.3
         },
         "aa_img": {
           "openness_index": 39,
@@ -56768,6 +59310,9 @@
       "id": "step-3.5-flash",
       "name": "StepFun: Step 3.5 Flash",
       "creator": "stepfun",
+      "meta": {
+        "context_window": 262144
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -56785,6 +59330,9 @@
       "id": "step-3.7-flash",
       "name": "StepFun: Step 3.7 Flash",
       "creator": "stepfun",
+      "meta": {
+        "context_window": 256000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 2e-07,
@@ -57606,7 +60154,8 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-01",
-        "confirmed_scraped": true
+        "confirmed_scraped": true,
+        "context_window": 262144
       },
       "pricing": {
         "aa": {
@@ -57637,7 +60186,22 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "gpqa": 0.752
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.752,
+          "mmlu_pro": null,
+          "hle": 0.147,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": 0.562585034013605,
+          "lcr": 0.33,
+          "scicode": 0.361,
+          "tau2": 0.900584795321637,
+          "tau_banking": null,
+          "terminalbench_hard": 0.227272727272727,
+          "terminalbench_v2_1": null
         },
         "aa_img": {
           "openness_index": 44,
@@ -57654,6 +60218,9 @@
       "id": "trinity-mini",
       "name": "Arcee AI: Trinity Mini",
       "creator": "arcee-ai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4.5e-08,
@@ -57671,6 +60238,9 @@
       "id": "ui-tars-1.5-7b",
       "name": "ByteDance: UI-TARS 7B ",
       "creator": "bytedance",
+      "meta": {
+        "context_window": 128000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -57690,6 +60260,9 @@
       "id": "unslopnemo-12b",
       "name": "TheDrummer: UnslopNemo 12B",
       "creator": "thedrummer",
+      "meta": {
+        "context_window": 32768
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 4e-07,
@@ -57732,6 +60305,9 @@
       "id": "virtuoso-large",
       "name": "Arcee AI: Virtuoso Large",
       "creator": "arcee-ai",
+      "meta": {
+        "context_window": 131072
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -57749,6 +60325,9 @@
       "id": "voxtral-small-24b-2507",
       "name": "Mistral: Voxtral Small 24B 2507",
       "creator": "mistralai",
+      "meta": {
+        "context_window": 32000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 1e-07,
@@ -57768,6 +60347,9 @@
       "id": "weaver",
       "name": "Mancer: Weaver (alpha)",
       "creator": "mancer",
+      "meta": {
+        "context_window": 8000
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 7.5e-07,
@@ -57785,6 +60367,9 @@
       "id": "wizardlm-2-8x22b",
       "name": "WizardLM-2 8x22B",
       "creator": "microsoft",
+      "meta": {
+        "context_window": 65536
+      },
       "pricing": {
         "openrouter": {
           "inp_price": 6.2e-07,

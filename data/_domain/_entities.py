@@ -236,6 +236,7 @@ class RegistryModelMeta:
     precision: Optional[str] = None
     release_date: Optional[str] = None
     confirmed_scraped: Optional[bool] = None
+    context_window: Optional[int] = None
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {}
@@ -287,6 +288,7 @@ class RegistryModel:
             precision=meta.get("precision"),
             release_date=meta.get("release_date"),
             confirmed_scraped=meta.get("confirmed_scraped"),
+            context_window=meta.get("context_window"),
         )
         mt = d.get("model_type")
         model_type = None
