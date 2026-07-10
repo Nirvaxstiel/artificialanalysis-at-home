@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
 **Source:** Artificial Analysis — Intelligence Index v4.1 (6 Jul '26)
-**Data:** 85 models, 24 creators — reasoning models only
+**Data:** 104 models, 24 creators in the rendered dashboard (2262 in the full registry, 8 sources)
 
 ## What it is
 
@@ -9,7 +9,7 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 
 | Tab | What it shows |
 |-----|---------------|
-| 01 Crossover | X/Y scatter, any pair of IQ/$/M/$/task/TOK/Speed, bubble = output tokens |
+| 01 Crossover | X/Y scatter, any pair of IQ/$/M/$/task/TOK/Speed, **bubble size = context window** (OpenRouter `context_length`) |
 | 02 Cost Breakdown | Per-model cost split (Input / Cached / Answer / Reasoning) with cache hit rate toggle |
 | 03 Provider Archetypes | Radar per creator: IQ / Speed / Token Eff / Cache Eff / Cost Eff |
 | 04 Speed-Adjusted Cost | Speed × $/task scatter with sweet-spot quadrant |
@@ -19,11 +19,16 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 ## Files
 
 - `dashboard.html` — the viz (single file, ~150KB with inline data)
-- `data/processed.js` — 101 models, primary dataset (loaded by dashboard)
-- `data/sources/aa/raw/aa_models_scraped.json` — 99 raw AA scrapes
-- `data/model_registry.json` — 2242 models, 6 sources
-- `data/axes_catalog.json` — 47 axes, typed
+- `data/processed.js` — 104 models, primary dataset (loaded by dashboard)
+- `data/sources/aa/enriched/aa_model_data.json` — 99 AA scrapes (enriched)
+- `data/sources/aa/aa_api_live.json` — 551 models, live AA API pull (release_date, creator, 16 eval scores)
+- `data/sources/aa/aa_scrape_progress.json` — 99 slugs, image-chart scrape tracker
+- `data/sources/aa/img/aa_img_models.json` — AA image-chart transcriptions (vision-benchmark scores)
+- `data/sources/dirac/cache_hit_rates.json` — 276 rows, observed cache hit rates
+- `data/model_registry.json` — 2262 models, 8 sources (serialized via `RegistryModel`)
+- `data/axes_catalog.json` — 80 axes, typed
 - `data/_build_*.py` — pipeline scripts
+- `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`, `RegistryModelMeta`)
 - `viz/` — 6 viz scripts + shared config
 - `README.md` — quick start, current state
 - `ARCHITECTURE-REFERENCE.md` — design doc, trade-offs, gap audit (gitignored)
@@ -32,34 +37,43 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 
 | Source | Coverage | Used for |
 |--------|----------|----------|
-| Artificial Analysis (primary) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
-| OpenRouter API | 49/85 | Pricing fallback for models without AA pricing |
-| LiveBench | 23/85 | Coding/agentic scores |
-| Chatbot Arena | 18/85 | Code Elo |
-| Dirac.run / OpenRouter (manual) | 30 in `CACHE_HIT_RATES` | Observed cache hit rates |
-| Old data (pre-AA batch) | 18 models | Historical cost_per_task, archetypes, LiveBench |
+| Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
+| Artificial Analysis (live API) | 551 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) — repurposed orphan enrichment |
+| AA image charts | 99 models | Omniscience, Briefcase Elo (vision-transcribed) |
+| OpenRouter API | 2262 models | Pricing, **context window** (`context_length`) |
+| LiveBench | — | Coding/agentic/reasoning scores |
+| Chatbot Arena (Code + Text) | — | Code/Text Elo |
+| OpenLLM v2 | — | Params (B), IFEval, BBH, MATH-lvl5, GPQA, MMLU-Pro, MuSR |
+| Dirac.run | 276 rows | Observed cache hit rates (Dirac.run + OpenRouter Effective Pricing) |
 
-## Data gap audit (6 July 2026)
+### Provenance rules
+- **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
+- **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
+- **`confirmed_scraped`** flag (AA_IMG models) marks which speculative models the image scraper actually fetched — provenance, not data.
 
-### Coverage
-- **IQ**: 98% (2 models missing: gpt-5-5-instant-06-26, gpt-5-5-pro)
-- **Pricing (inp+out)**: 64% (31 models missing)
-- **Speed**: 74%
-- **Tokens (output M)**: 35% — only old data + some AA
-- **Cost per task**: 31% — only old data
-- **LiveBench / Arena**: 27% / 21%
+## Data additions since the initial build
 
-### Easy wins (deferred, see ARCHITECTURE-REFERENCE)
+- **Dirac cache hit rate** (`cache_hit_rate_max`, 11/104) — observed %, distinct from AA's cache *price*.
+- **Live AA benchmarks** — 16 axes promoted from `aa_api_live.json` (`aa.hle`, `aa.gpqa`, `aa.lcr`, `aa.terminalbench_v2_1`, etc.). These are AA-sourced evals; where they overlap LiveBench axes (e.g. `gpqa`, `mmlu_pro`) they stay as a separate `aa.*` namespace — multi-source switchability is the feature.
+- **`release_date`** (99/104) and **`creator`** (104/104, live data backfills static nulls) — from `aa_api_live.json`.
+- **`context_window`** (104/104) — OpenRouter `context_length`, drives the crossover bubble size. Serialized through `RegistryModelMeta` (regression-guarded).
+- **`RegistryModel` entity layer** — the previously-dead typed domain model is now the registry's validating serializer (`RegistryModel.from_flat`). Pipeline stores pricing/benchmarks as plain dicts; `RegistryModelMeta` types the `meta` block.
 
-1. **Fallback pricing**: 11 of 31 unpriced models have OpenRouter data → use as `inp_price`/`out_price` fallback
-2. **Re-scrape AA pages**: extract more `tokens_m` and `params_b` from page text
-3. **Re-run `_pull_sources.py`**: refresh LiveBench/Arena
-4. **Pure derivations**: `iq_per_mtok`, `iq_per_1k_pt`, `cost_per_iq_pt`, `reasoning_tax_pct` (all just division)
+## Data gap audit
 
-### Hard problems (no public API)
+### Coverage (rendered 104-model set)
+- **IQ**: 99/104
+- **Pricing (inp+out)**: 104/104
+- **Speed**: 103/104
+- **Context window**: 104/104
+- **Output tokens (`tokens_m`)**: 32/104 — verbosity metric, sparse
+- **Cache hit rate (Dirac)**: 11/104
+- **IQ per dollar**: 29/104
+- **Live AA benchmarks**: 4–93/104 (sparse for older evals like AIME, MATH-500)
+- **LiveBench / Arena**: partial
 
-- `cost_seg_*` (Input / Cached / Answer / Reasoning) for new models — only on AA bar chart (color-coded, no labels)
-- Observed cache hit rates — no public analytics API
+### Still open
+- `cost_seg_*` (Input / Cached / Answer / Reasoning) — only on AA bar chart (color-coded, no labels)
 - **Harness data** (codex, claude-code, aider) — not exposed by any source. Future axis: `metric × harness`
 
 ## Methodology
@@ -68,7 +82,7 @@ Static HTML dashboard at `dashboard.html`. Six viz tabs:
 
 **Cost per Task** = (input×input_price + cache_hit×cache_hit_price + cache_write×cache_write_price + reasoning×output_price + answer×output_price) / task_count, weighted by eval importance. Uses measured per-model per-eval token counts.
 
-**Cache hit rate** is observed (Dirac.run, OpenRouter analytics) — AA only shows the cache *price* ($/M for cached tokens), not what % of input was actually cached.
+**Cache hit rate** is observed (Dirac.run, OpenRouter analytics) — AA only shows the cache *price* ($/M for cached tokens), not what % of input was actually cached. The radar `cache_eff` stays computed from AA's price discount only; Dirac's observed rate is a separate axis (`cache_hit_rate_max`), never conflated.
 
 **Archetypes** (computed in `archetype` field): derive from intel tier × price tier.
 - `frontier`: intel ≥ 55

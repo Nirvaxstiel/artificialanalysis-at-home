@@ -47,18 +47,23 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 | `out_price` | float | $/M output tokens |
 | `cache_hit_price` | float | $/M cached input tokens |
 | `speed_tps` | float | Output tokens per second |
-| `tokens_m` | float | Output tokens in millions (from AA eval) |
-| `cost_per_task` | float | USD per task (old data only, ~29/85) |
+| `tokens_m` | float | Output tokens in millions (from AA eval; verbosity, not quality) |
+| `cost_per_task` | float | USD per task (dirac-derived for some models) |
 | `cost_seg_total` | float | Per-task total (AA breakdown) |
 | `cost_seg_input` | float | Per-task input cost |
 | `cost_seg_cache_hit` | float | Per-task cache hit cost |
 | `cost_seg_cache_write` | float | Per-task cache write cost |
 | `cost_seg_answer` | float | Per-task answer cost |
 | `cost_seg_reasoning` | float | Per-task reasoning cost |
-| `livebench_average` | float | LiveBench score (17/85) |
-| `arena_code_elo` | float | Chatbot Arena Code Elo (18/85) |
-| `openrouter_inp_price_per_m` | float | OR pricing (49/85) |
-| `params_b` | float | Parameters in billions (24/85, AA page) |
+| `context_window` | int | Context window in tokens (OpenRouter `context_length`); drives crossover bubble size |
+| `cache_hit_rate_max` | float | Observed cache hit rate % (Dirac.run) |
+| `release_date` | string | Model release date (AA live API) |
+| `confirmed_scraped` | bool | True if image-chart scraper fetched this AA_IMG model |
+| `aa_hle` / `aa_gpqa` / `aa_lcr` / `aa_aime_25` / `aa_terminalbench_v2_1` / … | float | 16 AA live-API eval scores (0-1) |
+| `livebench_average` | float | LiveBench score |
+| `arena_code_elo` | float | Chatbot Arena Code Elo |
+| `openrouter_inp_price_per_m` | float | OR pricing |
+| `params_b` | float | Parameters in billions (OpenLLM v2) |
 | `archetype` | string | "frontier"/"sweet-spot"/"premium"/"budget"/"commodity"/"mid-tier" |
 | `pareto_optimal` | bool | On the IQ-vs-cost frontier |
 
@@ -81,7 +86,7 @@ Each viz is a self-contained JS file in this directory. The dashboard shell load
 - `buildTooltip(model)` — full data tooltip builder
 - `attachTooltip(el, model)` — convenience: attaches mouseenter/move/leave
 - `getTooltipEl()` — returns the shared `#tooltip` div
-- `window.PROCESSED_DATA` — array of all models (85)
+- `window.PROCESSED_DATA` — array of all models (104)
 
 ## Current viz files
 

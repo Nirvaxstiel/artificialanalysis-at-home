@@ -6,7 +6,7 @@ Built for users who want to pick a model and care about more than one axis.
 
 ## What it shows
 
-85 reasoning models, 24 creators, 6 visualizations:
+104 models (rendered), 2262 in registry, 24 creators, 6 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
@@ -74,22 +74,26 @@ See [ARCHITECTURE-REFERENCE.md](ARCHITECTURE-REFERENCE.md) for design decisions,
 ├── LLM Provider Pricing Analysis.md  ← Obsidian note
 ├── ARCHITECTURE-REFERENCE.md   ← design doc (gitignored)
 └── data/
-    ├── processed.js           ← 101 models, primary dataset (loaded by dashboard)
+    ├── processed.js           ← 104 models, primary dataset (loaded by dashboard)
     ├── sources/                ← all source data + per-source build modules
     │   ├── aa/
-    │   │   ├── raw/aa_models_scraped.json  ← 99 AA-scraped models (raw)
-    │   │   ├── enriched/aa_model_data.json ← 38 models (blended, tokens_m, iq)
+    │   │   ├── enriched/aa_model_data.json ← 99 AA-scraped models (blended, tokens_m, iq)
+    │   │   ├── aa_api_live.json    ← 551 models, live AA API (release_date, creator, 16 evals)
+    │   │   ├── aa_scrape_progress.json ← 99 slugs, image-chart scrape tracker
+    │   │   ├── img/aa_img_models.json ← vision-transcribed benchmark scores
     │   │   ├── enriched/aa_cost_breakdown.json ← 30 models (cost segments)
-    │   │   └── _build.py          ← merges raw + enriched → domain entries
+    │   │   └── _build.py          ← merges raw + enriched + live → domain entries
     │   ├── openrouter_models.json
+    │   ├── dirac/cache_hit_rates.json ← 276 rows, observed cache hit rates
     │   ├── livebench_*.csv
     │   ├── arena_*.json
     │   └── openllm_*.json
-    ├── model_registry.json     ← 2242 models, 6 sources
-    ├── axes_catalog.json       ← 47 axes, typed
+    ├── model_registry.json     ← 2262 models, 8 sources (serialized via RegistryModel)
+    ├── axes_catalog.json       ← 80 axes, typed
     ├── _build_*.py             ← pipeline scripts
+    ├── _domain/                ← typed domain layer (ProjectionRow, RegistryModel)
     ├── _pull_sources.py        ← fetches LiveBench/Arena/OpenRouter
-    ├── project_axes.py         ← ProjectionEngine (N-axis query)
+    └── project_axes.py         ← ProjectionEngine (N-axis query)
 └── viz/
     ├── _shared.js              ← legend filter, color maps, config
     ├── 01-crossover.js
@@ -129,8 +133,8 @@ Scraped AA data (`aa_models_scraped.json`) is pulled separately via the AA scrap
 | Step | Input(s) | Output | Models |
 |------|----------|--------|--------|
 | `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | N/A |
-| `_build_registry` | `sources/*`, `data/sources/aa/raw/*`, `data/sources/aa/enriched/*` | `model_registry.json` | 2242 |
-| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 101 |
+| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2262 |
+| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 104 |
 
 **To update the committed snapshot:** run the pipeline, verify `processed.js` has the expected models, then commit.
 
