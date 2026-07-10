@@ -10,6 +10,7 @@ from ._values import (
     IntelligenceScore, IQ_PerDollarPoint, IQ_PerMToken, IQ_PerMTokenDollar,
     Elo, CIMargin, VoteCount, BenchmarkScore,
     ParameterCount, CarbonKg, ContextWindow, Percentile,
+    ResponseTime, OmniscienceIndex, AxisMetric,
 )
 
 
@@ -97,6 +98,11 @@ def safe_ttft(v) -> Optional[TimeToFirstToken]:
     return TimeToFirstToken(v) if v is not None else None
 
 
+def safe_axis_metric(v) -> Optional[AxisMetric]:
+    v = safe_float(v)
+    return AxisMetric(v) if v is not None else None
+
+
 def safe_useful_cost(v) -> Optional[UsefulCost]:
     v = safe_float(v)
     return UsefulCost(v) if v is not None else None
@@ -182,3 +188,13 @@ def safe_ctx_window(v) -> Optional[ContextWindow]:
 def safe_pct(v) -> Optional[Percentile]:
     v = safe_float(v)
     return Percentile(v) if v is not None else None
+
+
+def safe_omniscience(v) -> Optional[OmniscienceIndex]:
+    v = safe_float(v)
+    return OmniscienceIndex(v) if v is not None else None
+
+
+def safe_response_time(v) -> Optional[ResponseTime]:
+    v = safe_float(v)
+    return ResponseTime(v) if v is not None else None

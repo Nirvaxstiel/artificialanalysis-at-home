@@ -2,10 +2,11 @@
   "meta": {
     "generated": "2026-07-10",
     "version": "1.0",
-    "total_axes": 47,
-    "total_models": 2241,
+    "total_axes": 61,
+    "total_models": 2242,
     "sources": [
       "AA",
+      "AA_IMG",
       "Arena Code",
       "Arena Text",
       "LiveBench",
@@ -38,6 +39,26 @@
           "aa.iq_per_dollar"
         ],
         "count": 20
+      },
+      "AA_IMG": {
+        "source": "AA_IMG",
+        "axes": [
+          "meta.params_total_b",
+          "meta.params_active_b",
+          "aa_img.agentic_index",
+          "aa_img.ttft_variance",
+          "aa_img.coding_index",
+          "aa_img.openness_index",
+          "aa_img.omniscience_hallucination_rate",
+          "aa_img.omniscience_index",
+          "aa_img.omniscience_accuracy",
+          "aa_img.briefcase_analytical_quality_elo",
+          "aa_img.briefcase_presentation_elo",
+          "aa_img.briefcase_elo",
+          "aa_img.briefcase_rubric_score",
+          "aa_img.e2e_response_time_s"
+        ],
+        "count": 14
       },
       "Arena Code": {
         "source": "Arena Code",
@@ -430,6 +451,272 @@
       "range": null,
       "group": "AA Quality",
       "normalize_range": null
+    },
+    {
+      "id": "meta.params_total_b",
+      "label": "Total Parameters (B)",
+      "source": "AA_IMG",
+      "type": "meta",
+      "unit": "B",
+      "higher_is_better": true,
+      "description": "Model total parameter count in billions (from AA image charts)",
+      "models_have": 26,
+      "range": [
+        34,
+        1600
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "meta.params_active_b",
+      "label": "Active Parameters (B)",
+      "source": "AA_IMG",
+      "type": "meta",
+      "unit": "B",
+      "higher_is_better": true,
+      "description": "Model active (inference) parameter count in billions (from AA image charts)",
+      "models_have": 25,
+      "range": [
+        34,
+        1551
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.agentic_index",
+      "label": "Agentic Index",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA agentic capabilities index (0-100)",
+      "models_have": 28,
+      "range": [
+        24.6,
+        52.8
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.ttft_variance",
+      "label": "TTFT Variance (s)",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "s",
+      "higher_is_better": false,
+      "description": "AA time-to-first-token variance (lower = more stable)",
+      "models_have": 28,
+      "range": [
+        -2.4,
+        -0.8
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.coding_index",
+      "label": "Coding Index",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA coding index (0-100), weighted Terminal-Bench + SciCode",
+      "models_have": 27,
+      "range": [
+        52.6,
+        76.5
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.openness_index",
+      "label": "Openness Index",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA openness index (0-100), higher = more open",
+      "models_have": 26,
+      "range": [
+        33,
+        83
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.omniscience_hallucination_rate",
+      "label": "Omniscience Hallucination (%)",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "%",
+      "higher_is_better": false,
+      "description": "AA omniscience incorrect / (incorrect + partial + not attempted)",
+      "models_have": 25,
+      "range": [
+        16,
+        55
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.omniscience_index",
+      "label": "AA Omniscience Index",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA omniscience index (-100..100): rewards correct, penalizes hallucination",
+      "models_have": 24,
+      "range": [
+        4,
+        40
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.omniscience_accuracy",
+      "label": "Omniscience Accuracy (%)",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "%",
+      "higher_is_better": true,
+      "description": "AA omniscience share of questions answered correctly",
+      "models_have": 23,
+      "range": [
+        37,
+        61
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.briefcase_analytical_quality_elo",
+      "label": "Briefcase Analytical Elo",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA-Briefcase analytical quality Elo",
+      "models_have": 23,
+      "range": [
+        264,
+        1765
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.briefcase_presentation_elo",
+      "label": "Briefcase Presentation Elo",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA-Briefcase presentation Elo",
+      "models_have": 23,
+      "range": [
+        336,
+        1501
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.briefcase_elo",
+      "label": "Briefcase Elo",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "points",
+      "higher_is_better": true,
+      "description": "AA-Briefcase agentic knowledge-work Elo (rubric + analytical + presentation)",
+      "models_have": 21,
+      "range": [
+        445,
+        1584
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.briefcase_rubric_score",
+      "label": "Briefcase Rubric (%)",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "%",
+      "higher_is_better": true,
+      "description": "AA-Briefcase rubric pass rate",
+      "models_have": 21,
+      "range": [
+        12.4,
+        56.0
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa_img.e2e_response_time_s",
+      "label": "End-to-End Response Time (s)",
+      "source": "AA_IMG",
+      "type": "quality",
+      "unit": "s",
+      "higher_is_better": false,
+      "description": "AA time to output 500 tokens (incl. thinking)",
+      "models_have": 20,
+      "range": [
+        4.6,
+        22.7
+      ],
+      "group": "AA Image Charts",
+      "normalize_range": [
+        0,
+        100
+      ]
     },
     {
       "id": "arena_code.ci",

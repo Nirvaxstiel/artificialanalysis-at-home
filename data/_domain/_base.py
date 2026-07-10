@@ -48,6 +48,7 @@ class Archetype(str, Enum):
 
 class SourceKey(str, Enum):
     AA = "aa"
+    AA_IMG = "aa_img"
     LIVEBENCH = "livebench"
     ARENA_CODE = "arena_code"
     ARENA_TEXT = "arena_text"

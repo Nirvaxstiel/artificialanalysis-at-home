@@ -17,6 +17,7 @@ from _domain import (
     safe_elo, safe_ci, safe_votes, safe_benchmark,
     safe_params, safe_carbon, safe_pct,
     safe_ctx_window,
+    safe_omniscience, safe_response_time, safe_axis_metric,
     try_model_type, try_archetype,
 )
 
@@ -79,6 +80,13 @@ def build(ctx=None):
         "openrouter.inp_price_per_m", "openrouter.out_price_per_m",
         "openrouter.cache_read_price_per_m",
         "meta.params_b", "meta.co2_kg",
+        "meta.params_total_b", "meta.params_active_b",
+        "aa_img.omniscience_index", "aa_img.omniscience_accuracy",
+        "aa_img.omniscience_hallucination_rate", "aa_img.briefcase_elo",
+        "aa_img.briefcase_analytical_quality_elo", "aa_img.briefcase_presentation_elo",
+        "aa_img.briefcase_rubric_score", "aa_img.agentic_index",
+        "aa_img.coding_index", "aa_img.openness_index",
+        "aa_img.e2e_response_time_s", "aa_img.ttft_variance",
     ]
 
     raw = pe.project(ALL_AXES)
@@ -154,8 +162,22 @@ def build(ctx=None):
             openrouter_cache_read_price_per_m=safe_ppm(a.get("openrouter.cache_read_price_per_m")),
             openrouter_vendor=reg.get("pricing", {}).get("openrouter", {}).get("vendor"),
             params_b=safe_params(a.get("meta.params_b")),
+            params_total_b=safe_params(a.get("meta.params_total_b")),
+            params_active_b=safe_params(a.get("meta.params_active_b")),
             co2_kg=safe_carbon(a.get("meta.co2_kg")),
             context_window=safe_ctx_window(meta.get("context_window")),
+            omniscience_index=safe_omniscience(a.get("aa_img.omniscience_index")),
+            omniscience_accuracy=safe_benchmark(a.get("aa_img.omniscience_accuracy")),
+            omniscience_hallucination_rate=safe_benchmark(a.get("aa_img.omniscience_hallucination_rate")),
+            briefcase_elo=safe_elo(a.get("aa_img.briefcase_elo")),
+            briefcase_analytical_quality_elo=safe_elo(a.get("aa_img.briefcase_analytical_quality_elo")),
+            briefcase_presentation_elo=safe_elo(a.get("aa_img.briefcase_presentation_elo")),
+            briefcase_rubric_score=safe_benchmark(a.get("aa_img.briefcase_rubric_score")),
+            agentic_index=safe_benchmark(a.get("aa_img.agentic_index")),
+            coding_index=safe_benchmark(a.get("aa_img.coding_index")),
+            openness_index=safe_benchmark(a.get("aa_img.openness_index")),
+            e2e_response_time_s=safe_response_time(a.get("aa_img.e2e_response_time_s")),
+            ttft_variance=safe_axis_metric(a.get("aa_img.ttft_variance")),
         )
 
         row.compute_derived()

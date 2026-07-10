@@ -84,7 +84,7 @@ class ProjectionEngine:
                 return sub.get(parts[2])
         
         # Other benchmark-only sources
-        if source in ("livebench", "arena_text", "arena_code", "openllm"):
+        if source in ("livebench", "arena_text", "arena_code", "openllm", "aa_img"):
             sec = model.get("benchmarks", {}).get(source, {})
             if len(parts) == 2:
                 return sec.get(dict_key or parts[1])

@@ -71,6 +71,11 @@ class TimeToFirstToken(DomainValue):
 
 
 @dataclass(frozen=True)
+class AxisMetric(DomainValue):
+    value: float
+
+
+@dataclass(frozen=True)
 class UsefulCost(DomainValue):
     usd: float
 
@@ -185,6 +190,24 @@ class CostPerIQPoint(DomainValue):
     def __post_init__(self):
         if self.usd_per_iq < 0:
             raise ValueError(f"Negative cost per IQ point: {self.usd_per_iq}")
+
+
+@dataclass(frozen=True)
+class ResponseTime(DomainValue):
+    seconds: float
+
+    def __post_init__(self):
+        if self.seconds < 0:
+            raise ValueError(f"Negative response time: {self.seconds}")
+
+
+@dataclass(frozen=True)
+class OmniscienceIndex(DomainValue):
+    value: float
+
+    def __post_init__(self):
+        if not (-100 <= self.value <= 100):
+            raise ValueError(f"Omniscience index out of [-100, 100]: {self.value}")
 
 
 @dataclass(frozen=True)

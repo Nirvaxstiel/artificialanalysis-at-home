@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 
 from .sources.aa._build import get_aa_models
+from .sources.aa.img._build import get_aa_img_models
 from ._canonical import (
     resolve_from_slug, livebench_name_to_canonical,
     openrouter_id_to_canonical, openllm_name_to_canonical,
@@ -35,6 +36,21 @@ def run(ctx=None):
     # ── AA (from data/sources/aa/_build.py) ──
     aa_models = get_aa_models(BASE)
     all_models.update(aa_models)
+
+    # ── AA IMAGE CHARTS (vision-transcribed scalars) ──
+    aa_img_models = get_aa_img_models(BASE)
+    for cid, img in aa_img_models.items():
+        if cid not in all_models:
+            all_models[cid] = {"id": cid, "name": None, "creator": None,
+                               "model_type": None, "meta": {}, "pricing": {},
+                               "benchmarks": {}, "aliases": {}}
+        existing = all_models[cid]
+        img_b = img.get("benchmarks", {}).get("aa_img")
+        if img_b:
+            existing.setdefault("benchmarks", {}).setdefault("aa_img", {}).update(img_b)
+        img_meta = img.get("meta", {})
+        if img_meta:
+            existing.setdefault("meta", {}).update(img_meta)
 
     # ── LIVEBENCH ──
     lb_path = os.path.join(SRC, "livebench_2026_01_08.csv")

@@ -8,7 +8,7 @@ from ._values import (
     CacheHitRate, CostSegment, IntelligenceScore, Elo, CIMargin,
     VoteCount, BenchmarkScore, IQ_PerMToken, IQ_PerMTokenDollar,
     IQ_PerDollarPoint, CostPerIQPoint, ParameterCount, CarbonKg,
-    ContextWindow, Percentile, Count,
+    ContextWindow, Percentile, Count, ResponseTime, OmniscienceIndex, AxisMetric,
 )
 from ._entities import (
     Axis, AAPricing, CostBreakdownPricing, OpenRouterPricing,
@@ -24,5 +24,6 @@ from ._serialize import (
     safe_intel, safe_elo, safe_ci, safe_votes, safe_benchmark,
     safe_iq_per_mtok, safe_iq_per_mtokdollar, safe_iq_per_dollar,
     safe_params, safe_carbon, safe_ctx_window, safe_pct,
+    safe_omniscience, safe_response_time, safe_axis_metric,
     try_model_type, try_archetype,
 )

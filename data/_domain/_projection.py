@@ -10,6 +10,7 @@ from ._values import (
     CostPerIQPoint,
     Elo, CIMargin, VoteCount, BenchmarkScore,
     ParameterCount, CarbonKg, ContextWindow, Percentile,
+    ResponseTime, OmniscienceIndex, AxisMetric,
 )
 
 
@@ -75,8 +76,22 @@ class ProjectionRow:
     openrouter_cache_read_price_per_m: Optional[PricePerMToken] = None
     openrouter_vendor: Optional[str] = None
     params_b: Optional[ParameterCount] = None
+    params_total_b: Optional[ParameterCount] = None
+    params_active_b: Optional[ParameterCount] = None
     co2_kg: Optional[CarbonKg] = None
     context_window: Optional[ContextWindow] = None
+    omniscience_index: Optional[OmniscienceIndex] = None
+    omniscience_accuracy: Optional[BenchmarkScore] = None
+    omniscience_hallucination_rate: Optional[BenchmarkScore] = None
+    briefcase_elo: Optional[Elo] = None
+    briefcase_analytical_quality_elo: Optional[Elo] = None
+    briefcase_presentation_elo: Optional[Elo] = None
+    briefcase_rubric_score: Optional[BenchmarkScore] = None
+    agentic_index: Optional[BenchmarkScore] = None
+    coding_index: Optional[BenchmarkScore] = None
+    openness_index: Optional[BenchmarkScore] = None
+    e2e_response_time_s: Optional[ResponseTime] = None
+    ttft_variance: Optional[AxisMetric] = None
     iq_per_1k_pt: Optional[IQ_PerDollarPoint] = None
     cost_per_iq_pt: Optional[CostPerIQPoint] = None
     radar_intel: Optional[float] = None
@@ -124,6 +139,20 @@ class ProjectionRow:
         "openrouter_vendor": Provenance.SOURCED,
         "params_b": Provenance.SOURCED, "co2_kg": Provenance.SOURCED,
         "context_window": Provenance.SOURCED,
+        "params_total_b": Provenance.SOURCED,
+        "params_active_b": Provenance.SOURCED,
+        "omniscience_index": Provenance.SOURCED,
+        "omniscience_accuracy": Provenance.SOURCED,
+        "omniscience_hallucination_rate": Provenance.SOURCED,
+        "briefcase_elo": Provenance.SOURCED,
+        "briefcase_analytical_quality_elo": Provenance.SOURCED,
+        "briefcase_presentation_elo": Provenance.SOURCED,
+        "briefcase_rubric_score": Provenance.SOURCED,
+        "agentic_index": Provenance.SOURCED,
+        "coding_index": Provenance.SOURCED,
+        "openness_index": Provenance.SOURCED,
+        "e2e_response_time_s": Provenance.SOURCED,
+        "ttft_variance": Provenance.SOURCED,
         "archetype": Provenance.DERIVED,
         "iq_per_1k_pt": Provenance.DERIVED, "cost_per_iq_pt": Provenance.DERIVED,
         "radar_intel": Provenance.DERIVED, "radar_speed": Provenance.DERIVED,
@@ -207,8 +236,22 @@ class ProjectionRow:
             "openrouter_out_price_per_m": self.openrouter_out_price_per_m,
             "openrouter_cache_read_price_per_m": self.openrouter_cache_read_price_per_m,
             "params_b": self.params_b,
+            "params_total_b": self.params_total_b,
+            "params_active_b": self.params_active_b,
             "co2_kg": self.co2_kg,
             "context_window": self.context_window,
+            "omniscience_index": self.omniscience_index,
+            "omniscience_accuracy": self.omniscience_accuracy,
+            "omniscience_hallucination_rate": self.omniscience_hallucination_rate,
+            "briefcase_elo": self.briefcase_elo,
+            "briefcase_analytical_quality_elo": self.briefcase_analytical_quality_elo,
+            "briefcase_presentation_elo": self.briefcase_presentation_elo,
+            "briefcase_rubric_score": self.briefcase_rubric_score,
+            "agentic_index": self.agentic_index,
+            "coding_index": self.coding_index,
+            "openness_index": self.openness_index,
+            "e2e_response_time_s": self.e2e_response_time_s,
+            "ttft_variance": self.ttft_variance,
             "iq_per_1k_pt": self.iq_per_1k_pt,
             "cost_per_iq_pt": self.cost_per_iq_pt,
             "radar_intel": self.radar_intel,

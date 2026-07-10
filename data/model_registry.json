@@ -2,7 +2,7 @@
   "meta": {
     "generated": "2026-07-10",
     "version": "1.0",
-    "model_count": 2241,
+    "model_count": 2242,
     "source_count": {
       "aa": 104,
       "livebench": 127,
@@ -215,6 +215,15 @@
     "aa:qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
     "arena_code:qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
     "openrouter:qwen/qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
+    "arena:claude-opus-4-6": "claude-opus-4.6",
+    "arena_code:claude-opus-4-6": "claude-opus-4.6",
+    "openrouter:anthropic/claude-opus-4.6": "claude-opus-4.6",
+    "arena:gemini-3-flash": "gemini-3-flash",
+    "arena_code:gemini-3-flash": "gemini-3-flash",
+    "arena_code:mimo-v2.5": "mimo-v2.5",
+    "openrouter:xiaomi/mimo-v2.5": "mimo-v2.5",
+    "openrouter:moonshotai/kimi-k2.5": "kimi-k2.5",
+    "openrouter:tencent/hy3-preview": "hy3-preview",
     "livebench:arcee-trinity-large-preview": "arcee-trinity-large-preview",
     "livebench:claude-4-1-opus-20250805-base": "claude-4-1-opus-base",
     "livebench:claude-4-1-opus-20250805-thinking-32k": "claude-4-1-opus-thinking-32k",
@@ -352,9 +361,6 @@
     "arena_code:claude-opus-4-6-thinking": "claude-opus-4-6-thinking",
     "arena:claude-opus-4-7-thinking": "claude-opus-4-7-thinking",
     "arena_code:claude-opus-4-7-thinking": "claude-opus-4-7-thinking",
-    "arena:claude-opus-4-6": "claude-opus-4.6",
-    "arena_code:claude-opus-4-6": "claude-opus-4.6",
-    "openrouter:anthropic/claude-opus-4.6": "claude-opus-4.6",
     "arena:claude-opus-4-8-thinking": "claude-opus-4-8-thinking",
     "arena_code:claude-opus-4-8-thinking": "claude-opus-4-8-thinking",
     "arena:gpt-5.2-chat-latest-20260210": "gpt-5.2-chat-latest-20260210",
@@ -362,8 +368,6 @@
     "arena:gpt-5.5": "gpt-5.5",
     "openrouter:openai/gpt-5.5": "gpt-5.5",
     "arena:grok-4.20-beta1": "grok-4.20-beta1",
-    "arena:gemini-3-flash": "gemini-3-flash",
-    "arena_code:gemini-3-flash": "gemini-3-flash",
     "arena:claude-opus-4-5-20251101-thinking-32k": "claude-opus-4-5-20251101-thinking-32k",
     "arena_code:claude-opus-4-5-20251101-thinking-32k": "claude-opus-4-5-20251101-thinking-32k",
     "arena:gpt-5.5-instant": "gpt-5.5-instant",
@@ -388,8 +392,6 @@
     "arena_code:deepseek-v4-pro-thinking": "deepseek-v4-pro-thinking",
     "arena_code:gpt-5.5 (codex-harness)": "gpt-5.5 (codex-harness)",
     "arena_code:gpt-5.4-medium (codex-harness)": "gpt-5.4-medium (codex-harness)",
-    "arena_code:mimo-v2.5": "mimo-v2.5",
-    "openrouter:xiaomi/mimo-v2.5": "mimo-v2.5",
     "arena_code:kimi-k2.5-instant": "kimi-k2.5-instant",
     "arena_code:gpt-5.3-codex (codex-harness)": "gpt-5.3-codex (codex-harness)",
     "arena_code:gpt-5.2": "gpt-5.2",
@@ -2175,7 +2177,6 @@
     "openrouter:qwen/qwen3.5-plus-20260420": "qwen3.5-plus-20260420",
     "openrouter:qwen/qwen3.6-35b-a3b": "qwen3.6-35b-a3b",
     "openrouter:inclusionai/ling-2.6-1t": "ling-2.6-1t",
-    "openrouter:tencent/hy3-preview": "hy3-preview",
     "openrouter:openai/gpt-5.4-image-2": "gpt-5.4-image-2",
     "openrouter:inclusionai/ling-2.6-flash": "ling-2.6-flash",
     "openrouter:~anthropic/claude-opus-latest": "claude-opus-latest",
@@ -2210,7 +2211,6 @@
     "openrouter:qwen/qwen3-coder-next": "qwen3-coder-next",
     "openrouter:openrouter/free": "free",
     "openrouter:stepfun/step-3.5-flash": "step-3.5-flash",
-    "openrouter:moonshotai/kimi-k2.5": "kimi-k2.5",
     "openrouter:minimax/minimax-m2-her": "minimax-m2-her",
     "openrouter:writer/palmyra-x5": "palmyra-x5",
     "openrouter:liquid/lfm-2.5-1.2b-thinking:free": "lfm-2.5-1.2b-thinking:free",
@@ -4791,6 +4791,12 @@
           "math_index": 88,
           "mmlu_pro": 0.875,
           "gpqa": 0.834
+        },
+        "aa_img": {
+          "omniscience_index": 13,
+          "omniscience_accuracy": 46,
+          "omniscience_hallucination_rate": 47,
+          "agentic_index": 24.6
         }
       },
       "aliases": {
@@ -4843,6 +4849,17 @@
           "iq_per_mtokdollar": 93.842,
           "coding_index": 76.5,
           "gpqa": 0.926
+        },
+        "aa_img": {
+          "omniscience_index": 40,
+          "omniscience_accuracy": 61,
+          "omniscience_hallucination_rate": 55,
+          "briefcase_elo": 1584,
+          "briefcase_analytical_quality_elo": 1765,
+          "briefcase_presentation_elo": 1496,
+          "briefcase_rubric_score": 56.0,
+          "agentic_index": 52.8,
+          "coding_index": 76.5
         },
         "arena_text": {
           "elo": 1509,
@@ -5659,9 +5676,9 @@
     },
     {
       "id": "claude-opus-4.6",
-      "name": "claude-opus-4-6",
+      "name": null,
       "creator": "Anthropic",
-      "model_type": "proprietary",
+      "model_type": null,
       "meta": {
         "context_window": 1000000
       },
@@ -5679,6 +5696,10 @@
         }
       },
       "benchmarks": {
+        "aa_img": {
+          "omniscience_index": 14,
+          "omniscience_accuracy": 46
+        },
         "arena_text": {
           "elo": 1499,
           "ci": 4,
@@ -5742,6 +5763,17 @@
           "iq_per_mtokdollar": null,
           "coding_index": 73.6,
           "gpqa": 0.914
+        },
+        "aa_img": {
+          "omniscience_index": 26,
+          "omniscience_accuracy": 46,
+          "omniscience_hallucination_rate": 36,
+          "briefcase_elo": 1290,
+          "briefcase_analytical_quality_elo": 1306,
+          "briefcase_presentation_elo": 1370,
+          "briefcase_rubric_score": 39.3,
+          "agentic_index": 44.4,
+          "coding_index": 73.6
         },
         "arena_text": {
           "elo": 1494,
@@ -5841,6 +5873,17 @@
           "iq_per_mtokdollar": 67.0098,
           "coding_index": 74.3,
           "gpqa": 0.92
+        },
+        "aa_img": {
+          "omniscience_index": 27,
+          "omniscience_accuracy": 47,
+          "omniscience_hallucination_rate": 36,
+          "briefcase_elo": 1354,
+          "briefcase_analytical_quality_elo": 1355,
+          "briefcase_presentation_elo": 1501,
+          "briefcase_rubric_score": 38.7,
+          "agentic_index": 47.2,
+          "coding_index": 74.3
         },
         "arena_text": {
           "elo": 1477,
@@ -6243,6 +6286,19 @@
           "iq_per_mtokdollar": 113.494,
           "coding_index": 71.5,
           "gpqa": 0.911
+        },
+        "aa_img": {
+          "omniscience_index": 15,
+          "omniscience_accuracy": 38,
+          "omniscience_hallucination_rate": 37,
+          "briefcase_elo": 1391,
+          "briefcase_analytical_quality_elo": 1465,
+          "briefcase_presentation_elo": 1456,
+          "briefcase_rubric_score": 42.3,
+          "agentic_index": 46.7,
+          "coding_index": 71.5,
+          "e2e_response_time_s": 20.0,
+          "ttft_variance": -1.5
         }
       },
       "aliases": {
@@ -8755,6 +8811,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 284,
+        "params_active_b": 271,
         "context_window": 1048576
       },
       "pricing": {
@@ -8796,6 +8854,17 @@
           "iq_per_mtokdollar": 1.8105,
           "coding_index": 56.2,
           "gpqa": 0.894
+        },
+        "aa_img": {
+          "omniscience_accuracy": 37,
+          "briefcase_elo": 810,
+          "briefcase_analytical_quality_elo": 750,
+          "briefcase_presentation_elo": 875,
+          "briefcase_rubric_score": 17.7,
+          "agentic_index": 31.1,
+          "coding_index": 56.2,
+          "openness_index": 50,
+          "ttft_variance": -1.3
         },
         "livebench": {
           "average": 67.67,
@@ -8865,6 +8934,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 1600,
+        "params_active_b": 1551,
         "context_window": 1048576
       },
       "pricing": {
@@ -8906,6 +8977,17 @@
           "iq_per_mtokdollar": 4.0077,
           "coding_index": 59.4,
           "gpqa": 0.888
+        },
+        "aa_img": {
+          "omniscience_accuracy": 43,
+          "briefcase_elo": 932,
+          "briefcase_analytical_quality_elo": 898,
+          "briefcase_presentation_elo": 942,
+          "briefcase_rubric_score": 23.9,
+          "agentic_index": 36.4,
+          "coding_index": 59.4,
+          "openness_index": 50,
+          "ttft_variance": -1.8
         },
         "livebench": {
           "average": 74.39,
@@ -10611,6 +10693,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 34,
+        "params_active_b": 34,
         "context_window": 262144
       },
       "pricing": {
@@ -12675,6 +12759,9 @@
           "iq_per_mtokdollar": null,
           "coding_index": 34.7,
           "gpqa": 0.822
+        },
+        "aa_img": {
+          "e2e_response_time_s": 6.8
         }
       },
       "aliases": {
@@ -12723,12 +12810,16 @@
     },
     {
       "id": "gemini-3-flash",
-      "name": "gemini-3-flash",
+      "name": null,
       "creator": "Google",
-      "model_type": "proprietary",
+      "model_type": null,
       "meta": {},
       "pricing": {},
       "benchmarks": {
+        "aa_img": {
+          "omniscience_index": 12,
+          "omniscience_accuracy": 54
+        },
         "arena_text": {
           "elo": 1473,
           "ci": 4,
@@ -12917,6 +13008,10 @@
           "math_index": 95.7,
           "mmlu_pro": 0.898,
           "gpqa": 0.908
+        },
+        "aa_img": {
+          "omniscience_index": 16,
+          "omniscience_accuracy": 56
         },
         "arena_text": {
           "elo": 1486,
@@ -13273,6 +13368,14 @@
           "coding_index": 68.8,
           "gpqa": 0.941
         },
+        "aa_img": {
+          "omniscience_index": 33,
+          "omniscience_accuracy": 55,
+          "omniscience_hallucination_rate": 50,
+          "briefcase_analytical_quality_elo": 264,
+          "briefcase_presentation_elo": 336,
+          "coding_index": 68.8
+        },
         "arena_text": {
           "elo": 1486,
           "ci": 4,
@@ -13396,6 +13499,16 @@
           "iq_per_mtokdollar": 20.8176,
           "coding_index": 70.1,
           "gpqa": 0.922
+        },
+        "aa_img": {
+          "omniscience_index": 23,
+          "omniscience_accuracy": 52,
+          "briefcase_analytical_quality_elo": 700,
+          "briefcase_presentation_elo": 882,
+          "briefcase_rubric_score": 27.7,
+          "agentic_index": 37.4,
+          "coding_index": 70.1,
+          "e2e_response_time_s": 22.7
         },
         "arena_text": {
           "elo": 1479,
@@ -13636,6 +13749,10 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.753
+        },
+        "aa_img": {
+          "openness_index": 39,
+          "ttft_variance": -2.4
         }
       },
       "aliases": {
@@ -13677,6 +13794,9 @@
           "iq_per_mtokdollar": null,
           "coding_index": 39.3,
           "gpqa": 0.792
+        },
+        "aa_img": {
+          "openness_index": 39
         }
       },
       "aliases": {
@@ -13762,6 +13882,10 @@
           "iq_per_mtokdollar": null,
           "coding_index": 43.4,
           "gpqa": 0.857
+        },
+        "aa_img": {
+          "openness_index": 39,
+          "ttft_variance": -1.1
         }
       },
       "aliases": {
@@ -13860,6 +13984,10 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.433
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 33,
+          "openness_index": 39
         }
       },
       "aliases": {
@@ -13900,6 +14028,10 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.576
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 31,
+          "openness_index": 39
         }
       },
       "aliases": {
@@ -14267,6 +14399,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 744,
+        "params_active_b": 704,
         "context_window": 202752
       },
       "pricing": {
@@ -14299,6 +14433,11 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.82
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 34,
+          "openness_index": 50,
+          "ttft_variance": -1.6
         },
         "livebench": {
           "average": 68.7,
@@ -14384,6 +14523,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 744,
+        "params_active_b": 704,
         "context_window": 202752
       },
       "pricing": {
@@ -14417,6 +14558,17 @@
           "iq_per_mtokdollar": null,
           "coding_index": 55.8,
           "gpqa": 0.868
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 29,
+          "briefcase_elo": 975,
+          "briefcase_analytical_quality_elo": 956,
+          "briefcase_presentation_elo": 974,
+          "briefcase_rubric_score": 25.8,
+          "agentic_index": 29.9,
+          "coding_index": 55.8,
+          "openness_index": 44,
+          "ttft_variance": -1.4
         },
         "livebench": {
           "average": 70.62,
@@ -14458,6 +14610,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 753,
+        "params_active_b": 713,
         "context_window": 1048576
       },
       "pricing": {
@@ -14499,6 +14653,19 @@
           "iq_per_mtokdollar": 18.2878,
           "coding_index": 68.8,
           "gpqa": 0.895
+        },
+        "aa_img": {
+          "omniscience_index": 4,
+          "omniscience_hallucination_rate": 28,
+          "briefcase_elo": 1261,
+          "briefcase_analytical_quality_elo": 1331,
+          "briefcase_presentation_elo": 1292,
+          "briefcase_rubric_score": 36.1,
+          "agentic_index": 43.1,
+          "coding_index": 68.8,
+          "openness_index": 44,
+          "e2e_response_time_s": 14.9,
+          "ttft_variance": -1.4
         },
         "livebench": {
           "average": 76.18,
@@ -15037,6 +15204,20 @@
       }
     },
     {
+      "id": "gpt-5-2-codex",
+      "name": null,
+      "creator": null,
+      "model_type": null,
+      "meta": {},
+      "pricing": {},
+      "benchmarks": {
+        "aa_img": {
+          "omniscience_accuracy": 41
+        }
+      },
+      "aliases": {}
+    },
+    {
       "id": "gpt-5-4-mini",
       "name": "GPT-5.4 mini (xhigh)",
       "creator": "OpenAI",
@@ -15071,6 +15252,16 @@
           "iq_per_mtokdollar": null,
           "coding_index": 56.1,
           "gpqa": 0.875
+        },
+        "aa_img": {
+          "omniscience_accuracy": 37,
+          "briefcase_elo": 631,
+          "briefcase_analytical_quality_elo": 595,
+          "briefcase_presentation_elo": 761,
+          "briefcase_rubric_score": 12.4,
+          "agentic_index": 30.2,
+          "coding_index": 56.1,
+          "e2e_response_time_s": 11.5
         }
       },
       "aliases": {
@@ -15152,6 +15343,12 @@
           "iq_per_mtokdollar": null,
           "coding_index": 56.1,
           "gpqa": 0.817
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 50,
+          "agentic_index": 25.6,
+          "coding_index": 56.1,
+          "e2e_response_time_s": 7.2
         }
       },
       "aliases": {
@@ -16203,6 +16400,13 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.915
+        },
+        "aa_img": {
+          "omniscience_index": 10,
+          "omniscience_accuracy": 52,
+          "briefcase_elo": 865,
+          "briefcase_analytical_quality_elo": 863,
+          "briefcase_presentation_elo": 827
         }
       },
       "aliases": {
@@ -16345,6 +16549,12 @@
           "iq_per_mtokdollar": null,
           "coding_index": 71.1,
           "gpqa": 0.92
+        },
+        "aa_img": {
+          "omniscience_index": 6,
+          "omniscience_accuracy": 50,
+          "agentic_index": 41.1,
+          "coding_index": 71.1
         },
         "arena_text": {
           "elo": 1467,
@@ -16873,6 +17083,16 @@
           "coding_index": 71.6,
           "gpqa": 0.932
         },
+        "aa_img": {
+          "omniscience_index": 18,
+          "omniscience_accuracy": 56,
+          "briefcase_elo": 1103,
+          "briefcase_analytical_quality_elo": 1158,
+          "briefcase_presentation_elo": 1085,
+          "briefcase_rubric_score": 30.6,
+          "agentic_index": 43.5,
+          "coding_index": 71.6
+        },
         "livebench": {
           "average": 77.07,
           "Mathematics": 96.07,
@@ -16974,6 +17194,14 @@
           "iq_per_mtokdollar": 8.8856,
           "coding_index": 60.9,
           "gpqa": 0.91
+        },
+        "aa_img": {
+          "omniscience_index": 15,
+          "omniscience_accuracy": 54,
+          "agentic_index": 30.4,
+          "coding_index": 60.9,
+          "e2e_response_time_s": 9.1,
+          "ttft_variance": -1.9
         }
       },
       "aliases": {
@@ -17023,6 +17251,16 @@
           "iq_per_mtokdollar": 19.0248,
           "coding_index": 71.5,
           "gpqa": 0.926
+        },
+        "aa_img": {
+          "omniscience_index": 17,
+          "omniscience_accuracy": 56,
+          "briefcase_elo": 1000,
+          "briefcase_analytical_quality_elo": 1000,
+          "briefcase_presentation_elo": 1000,
+          "briefcase_rubric_score": 26.6,
+          "agentic_index": 37.8,
+          "coding_index": 71.5
         },
         "livebench": {
           "average": 68.96,
@@ -17130,6 +17368,16 @@
           "iq_per_mtokdollar": 51.2507,
           "coding_index": 74.9,
           "gpqa": 0.935
+        },
+        "aa_img": {
+          "omniscience_index": 20,
+          "omniscience_accuracy": 57,
+          "briefcase_elo": 1159,
+          "briefcase_analytical_quality_elo": 1228,
+          "briefcase_presentation_elo": 1124,
+          "briefcase_rubric_score": 33.4,
+          "agentic_index": 44.9,
+          "coding_index": 74.9
         },
         "livebench": {
           "average": 81.28,
@@ -17292,6 +17540,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 117,
+        "params_active_b": 112,
         "context_window": 131072
       },
       "pricing": {
@@ -17333,6 +17583,11 @@
           "math_index": 93.4,
           "mmlu_pro": 0.808,
           "gpqa": 0.782
+        },
+        "aa_img": {
+          "openness_index": 39,
+          "e2e_response_time_s": 10.3,
+          "ttft_variance": -0.9
         },
         "livebench": {
           "average": 46.35,
@@ -17467,6 +17722,11 @@
           "math_index": 89.3,
           "mmlu_pro": 0.748,
           "gpqa": 0.688
+        },
+        "aa_img": {
+          "openness_index": 39,
+          "e2e_response_time_s": 11.4,
+          "ttft_variance": -0.8
         }
       },
       "aliases": {
@@ -17963,6 +18223,15 @@
           "iq_per_mtokdollar": 7.8939,
           "coding_index": 42.2,
           "gpqa": 0.901
+        },
+        "aa_img": {
+          "omniscience_index": 18,
+          "omniscience_hallucination_rate": 25,
+          "briefcase_elo": 705,
+          "briefcase_analytical_quality_elo": 608,
+          "briefcase_presentation_elo": 810,
+          "briefcase_rubric_score": 16.8,
+          "e2e_response_time_s": 21.7
         },
         "livebench": {
           "average": 67.37,
@@ -18643,6 +18912,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 406,
+        "params_active_b": 406,
         "context_window": 131072
       },
       "pricing": {
@@ -18668,6 +18939,10 @@
           "math_index": 69.7,
           "mmlu_pro": 0.829,
           "gpqa": 0.727
+        },
+        "aa_img": {
+          "openness_index": 47,
+          "ttft_variance": -2.4
         }
       },
       "aliases": {
@@ -18685,6 +18960,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 71,
+        "params_active_b": 71,
         "context_window": 131072
       },
       "pricing": {
@@ -18710,6 +18987,10 @@
           "math_index": 68.7,
           "mmlu_pro": 0.811,
           "gpqa": 0.699
+        },
+        "aa_img": {
+          "openness_index": 47,
+          "ttft_variance": -1.4
         }
       },
       "aliases": {
@@ -19559,10 +19840,12 @@
     },
     {
       "id": "hy3-preview",
-      "name": "Tencent: Hy3 preview",
-      "creator": "tencent",
+      "name": null,
+      "creator": null,
       "model_type": null,
       "meta": {
+        "params_total_b": 295,
+        "params_active_b": 274,
         "context_window": 262144
       },
       "pricing": {
@@ -19576,7 +19859,11 @@
           "vendor": "tencent"
         }
       },
-      "benchmarks": {},
+      "benchmarks": {
+        "aa_img": {
+          "e2e_response_time_s": 19.8
+        }
+      },
       "aliases": {
         "openrouter": "tencent/hy3-preview"
       }
@@ -20599,6 +20886,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 236,
+        "params_active_b": 213,
         "context_window": 256000
       },
       "pricing": {
@@ -20810,6 +21099,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 1000,
+        "params_active_b": 968,
         "context_window": 131072
       },
       "pricing": {
@@ -20845,6 +21136,10 @@
           "mmlu_pro": 0.848,
           "gpqa": 0.838
         },
+        "aa_img": {
+          "e2e_response_time_s": 20.4,
+          "ttft_variance": -1.4
+        },
         "livebench": {
           "average": 62.28,
           "Mathematics": 81.1,
@@ -20864,10 +21159,12 @@
     },
     {
       "id": "kimi-k2.5",
-      "name": "MoonshotAI: Kimi K2.5",
-      "creator": "moonshotai",
+      "name": null,
+      "creator": null,
       "model_type": null,
       "meta": {
+        "params_total_b": 1000,
+        "params_active_b": 968,
         "context_window": 262144
       },
       "pricing": {
@@ -20946,6 +21243,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 1000,
+        "params_active_b": 968,
         "context_window": 262144
       },
       "pricing": {
@@ -20987,6 +21286,17 @@
           "iq_per_mtokdollar": 19.3335,
           "coding_index": 61.8,
           "gpqa": 0.911
+        },
+        "aa_img": {
+          "omniscience_index": 6,
+          "omniscience_hallucination_rate": 39,
+          "briefcase_elo": 805,
+          "briefcase_analytical_quality_elo": 780,
+          "briefcase_presentation_elo": 753,
+          "briefcase_rubric_score": 18.7,
+          "agentic_index": 30.3,
+          "coding_index": 56.0,
+          "ttft_variance": -2.3
         },
         "arena_code": {
           "elo": 1514,
@@ -21077,6 +21387,11 @@
           "iq_per_mtokdollar": 12.4895,
           "coding_index": 60.8,
           "gpqa": 0.896
+        },
+        "aa_img": {
+          "omniscience_accuracy": 39,
+          "agentic_index": 29.6,
+          "coding_index": 60.8
         },
         "livebench": {
           "average": 71.93,
@@ -35815,6 +36130,9 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.77
+        },
+        "aa_img": {
+          "e2e_response_time_s": 4.6
         }
       },
       "aliases": {
@@ -36674,6 +36992,10 @@
           "iq_per_mtokdollar": null,
           "gpqa": 0.87
         },
+        "aa_img": {
+          "omniscience_index": 5,
+          "omniscience_hallucination_rate": 30
+        },
         "livebench": {
           "average": 58.35,
           "Mathematics": 76.96,
@@ -36698,10 +37020,12 @@
     },
     {
       "id": "mimo-v2.5",
-      "name": "mimo-v2.5",
+      "name": null,
       "creator": "Xiaomi",
-      "model_type": "open",
+      "model_type": null,
       "meta": {
+        "params_total_b": 310,
+        "params_active_b": 295,
         "context_window": 1048576
       },
       "pricing": {
@@ -36716,6 +37040,11 @@
         }
       },
       "benchmarks": {
+        "aa_img": {
+          "omniscience_hallucination_rate": 32,
+          "openness_index": 39,
+          "ttft_variance": -2.4
+        },
         "arena_code": {
           "elo": 1430,
           "ci": 8,
@@ -36738,6 +37067,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 1023,
+        "params_active_b": 981,
         "context_window": 1048576
       },
       "pricing": {
@@ -36779,6 +37110,18 @@
           "iq_per_mtokdollar": 2.3445,
           "coding_index": 60.2,
           "gpqa": 0.866
+        },
+        "aa_img": {
+          "omniscience_index": 4,
+          "omniscience_hallucination_rate": 25,
+          "briefcase_elo": 871,
+          "briefcase_analytical_quality_elo": 765,
+          "briefcase_presentation_elo": 929,
+          "briefcase_rubric_score": 20.6,
+          "agentic_index": 29.1,
+          "coding_index": 60.2,
+          "openness_index": 39,
+          "ttft_variance": -2.4
         },
         "arena_text": {
           "elo": 1466,
@@ -36971,6 +37314,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 230,
+        "params_active_b": 220,
         "context_window": 204800
       },
       "pricing": {
@@ -37002,6 +37347,9 @@
           "iq_per_mtokdollar": null,
           "gpqa": 0.848
         },
+        "aa_img": {
+          "ttft_variance": -1.8
+        },
         "livebench": {
           "average": 60.27,
           "Mathematics": 77.41,
@@ -37030,6 +37378,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 230,
+        "params_active_b": 220,
         "context_window": 204800
       },
       "pricing": {
@@ -37070,6 +37420,12 @@
           "coding_index": 52.6,
           "gpqa": 0.874
         },
+        "aa_img": {
+          "omniscience_hallucination_rate": 34,
+          "agentic_index": 25.6,
+          "coding_index": 52.6,
+          "ttft_variance": -1.9
+        },
         "livebench": {
           "average": 65.0,
           "Mathematics": 80.54,
@@ -37104,6 +37460,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 428,
+        "params_active_b": 405,
         "context_window": 1048576
       },
       "pricing": {
@@ -37145,6 +37503,17 @@
           "iq_per_mtokdollar": 4.6332,
           "coding_index": 58.6,
           "gpqa": 0.929
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 16,
+          "briefcase_elo": 1112,
+          "briefcase_analytical_quality_elo": 1082,
+          "briefcase_presentation_elo": 1196,
+          "briefcase_rubric_score": 30.3,
+          "agentic_index": 35.4,
+          "coding_index": 58.6,
+          "openness_index": 33,
+          "ttft_variance": -1.7
         },
         "livebench": {
           "average": 70.05,
@@ -40933,6 +41302,16 @@
           "coding_index": 58.6,
           "gpqa": 0.884
         },
+        "aa_img": {
+          "omniscience_index": 4,
+          "omniscience_accuracy": 45,
+          "briefcase_elo": 445,
+          "briefcase_analytical_quality_elo": 570,
+          "briefcase_presentation_elo": 505,
+          "briefcase_rubric_score": 12.5,
+          "agentic_index": 28.7,
+          "coding_index": 58.6
+        },
         "arena_text": {
           "elo": 1487,
           "ci": 6,
@@ -41267,6 +41646,11 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.469
+        },
+        "aa_img": {
+          "openness_index": 83,
+          "e2e_response_time_s": 9.6,
+          "ttft_variance": -1.0
         }
       },
       "aliases": {
@@ -41306,6 +41690,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 121,
+        "params_active_b": 108,
         "context_window": 1000000
       },
       "pricing": {
@@ -41345,6 +41731,11 @@
           "iq_per_mtokdollar": 11.7824,
           "coding_index": 37.7,
           "gpqa": 0.8
+        },
+        "aa_img": {
+          "openness_index": 83,
+          "e2e_response_time_s": 12.9,
+          "ttft_variance": -1.7
         },
         "livebench": {
           "average": 32.02,
@@ -41396,6 +41787,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 550,
+        "params_active_b": 495,
         "context_window": 1000000
       },
       "pricing": {
@@ -41437,6 +41830,17 @@
           "iq_per_mtokdollar": 11.6745,
           "coding_index": 49.3,
           "gpqa": 0.867
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 29,
+          "briefcase_elo": 871,
+          "briefcase_analytical_quality_elo": 834,
+          "briefcase_presentation_elo": 861,
+          "briefcase_rubric_score": 22.0,
+          "agentic_index": 27.4,
+          "openness_index": 83,
+          "e2e_response_time_s": 15.7,
+          "ttft_variance": -1.2
         },
         "livebench": {
           "average": 50.71,
@@ -41757,6 +42161,7 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 397,
         "context_window": 262144
       },
       "pricing": {
@@ -41790,6 +42195,12 @@
           "iq_per_mtokdollar": null,
           "coding_index": 59.1,
           "gpqa": 0.892
+        },
+        "aa_img": {
+          "agentic_index": 31.0,
+          "coding_index": 59.1,
+          "openness_index": 39,
+          "ttft_variance": -1.8
         }
       },
       "aliases": {
@@ -55533,6 +55944,16 @@
           "iq_per_mtokdollar": null,
           "coding_index": 53.7,
           "gpqa": 0.842
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 48,
+          "briefcase_elo": 751,
+          "briefcase_analytical_quality_elo": 656,
+          "briefcase_presentation_elo": 914,
+          "briefcase_rubric_score": 17.3,
+          "agentic_index": 27.0,
+          "coding_index": 53.7,
+          "openness_index": 39
         }
       },
       "aliases": {
@@ -55574,6 +55995,11 @@
           "iq_per_mtokdollar": null,
           "coding_index": 41.9,
           "gpqa": 0.841
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 50,
+          "openness_index": 39,
+          "ttft_variance": -2.4
         }
       },
       "aliases": {
@@ -55614,6 +56040,11 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.888
+        },
+        "aa_img": {
+          "omniscience_index": 10,
+          "omniscience_accuracy": 38,
+          "omniscience_hallucination_rate": 44
         }
       },
       "aliases": {
@@ -55655,6 +56086,11 @@
           "iq_per_mtokdollar": null,
           "coding_index": 54.5,
           "gpqa": 0.882
+        },
+        "aa_img": {
+          "omniscience_hallucination_rate": 32,
+          "agentic_index": 27.6,
+          "coding_index": 54.5
         }
       },
       "aliases": {
@@ -56601,6 +57037,17 @@
           "iq_per_mtokdollar": 29.0467,
           "coding_index": 66,
           "gpqa": 0.923
+        },
+        "aa_img": {
+          "omniscience_index": 14,
+          "omniscience_hallucination_rate": 23,
+          "briefcase_elo": 907,
+          "briefcase_analytical_quality_elo": 800,
+          "briefcase_presentation_elo": 965,
+          "briefcase_rubric_score": 23.7,
+          "agentic_index": 30.6,
+          "coding_index": 66.0,
+          "e2e_response_time_s": 17.1
         },
         "livebench": {
           "average": 75.15,
@@ -60727,6 +61174,9 @@
           "math_index": 33.7,
           "mmlu_pro": 0.669,
           "gpqa": 0.529
+        },
+        "aa_img": {
+          "openness_index": 39
         }
       },
       "aliases": {
@@ -63041,6 +63491,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 102,
+        "params_active_b": 102,
         "context_window": 128000
       },
       "pricing": {
@@ -63081,6 +63533,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 102,
+        "params_active_b": 102,
         "context_window": 128000
       },
       "pricing": {
@@ -63496,6 +63950,10 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.826
+        },
+        "aa_img": {
+          "e2e_response_time_s": 15.6,
+          "ttft_variance": -1.2
         }
       },
       "aliases": {
@@ -63513,6 +63971,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 198,
+        "params_active_b": 187,
         "context_window": 256000
       },
       "pricing": {
@@ -63537,6 +63997,11 @@
           "iq_per_mtokdollar": null,
           "coding_index": 39.6,
           "gpqa": 0.809
+        },
+        "aa_img": {
+          "openness_index": 39,
+          "e2e_response_time_s": 7.3,
+          "ttft_variance": -0.9
         }
       },
       "aliases": {
@@ -64495,6 +64960,8 @@
         "cost_percentile": null,
         "iq_percentile": null,
         "has_breakdown": false,
+        "params_total_b": 399,
+        "params_active_b": 386,
         "context_window": 262144
       },
       "pricing": {
@@ -64527,6 +64994,11 @@
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
           "gpqa": 0.752
+        },
+        "aa_img": {
+          "openness_index": 44,
+          "e2e_response_time_s": 13.0,
+          "ttft_variance": -1.1
         }
       },
       "aliases": {
