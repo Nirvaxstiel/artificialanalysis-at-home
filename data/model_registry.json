@@ -4723,7 +4723,7 @@
           "tokens_m": 88,
           "speed_tps": 102.0,
           "useful_cost": 6.1255,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 62.5,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
             "answer_usd": 0.05,
@@ -4769,7 +4769,7 @@
           "tokens_m": 64,
           "speed_tps": 48.2,
           "useful_cost": 22.7936,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 43.9,
           "ttft": 7.847,
           "cost_segments": {
             "total_cost_per_task_usd": 0.41,
@@ -5842,7 +5842,7 @@
           "tokens_m": 120,
           "speed_tps": 64.9,
           "useful_cost": 31.2713,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 44.4,
           "ttft": 28.169,
           "cost_segments": {
             "total_cost_per_task_usd": 1.8,
@@ -6209,7 +6209,7 @@
           "tokens_m": 200,
           "speed_tps": 51.0,
           "useful_cost": 16.7793,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 43.9,
           "cost_segments": {
             "total_cost_per_task_usd": 1.14,
             "answer_usd": 0.3,
@@ -6255,7 +6255,7 @@
           "tokens_m": 300,
           "speed_tps": 78.1,
           "useful_cost": 20.0506,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 43.7,
           "ttft": 132.063,
           "cost_segments": {
             "total_cost_per_task_usd": 2.29,
@@ -8825,7 +8825,7 @@
           "tokens_m": 230,
           "speed_tps": 101.0,
           "useful_cost": 0.3149,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 100.0,
           "ttft": 0.867,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
@@ -8948,7 +8948,7 @@
           "tokens_m": 180,
           "speed_tps": 65.5,
           "useful_cost": 0.9797,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 100.0,
           "ttft": 1.027,
           "cost_segments": {
             "total_cost_per_task_usd": 0.04,
@@ -13336,7 +13336,7 @@
           "tokens_m": 56,
           "speed_tps": 130.4,
           "useful_cost": 14.5555,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 17.2,
           "ttft": 20.953,
           "cost_segments": {
             "total_cost_per_task_usd": 0.29,
@@ -13468,7 +13468,7 @@
           "tokens_m": 75,
           "speed_tps": 174.4,
           "useful_cost": 13.8784,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 33.9,
           "ttft": 12.721,
           "cost_segments": {
             "total_cost_per_task_usd": 0.59,
@@ -14624,7 +14624,7 @@
           "tokens_m": 140,
           "speed_tps": 185.2,
           "useful_cost": 6.662,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 100.0,
           "ttft": 0.893,
           "cost_segments": {
             "total_cost_per_task_usd": 0.48,
@@ -17062,7 +17062,7 @@
           "tokens_m": 43,
           "speed_tps": 67.2,
           "useful_cost": 40.5947,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 58.0,
           "ttft": 20.648,
           "cost_segments": {
             "total_cost_per_task_usd": 0.69,
@@ -17174,7 +17174,7 @@
           "tokens_m": null,
           "speed_tps": 68.6,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 36.4,
           "ttft": 1.75,
           "cost_segments": {
             "total_cost_per_task_usd": 0.22,
@@ -17231,7 +17231,7 @@
           "tokens_m": 21,
           "speed_tps": 66.9,
           "useful_cost": 45.2971,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 52.4,
           "ttft": 4.565,
           "cost_segments": {
             "total_cost_per_task_usd": 0.42,
@@ -17348,7 +17348,7 @@
           "tokens_m": 72,
           "speed_tps": 71.4,
           "useful_cost": 39.1499,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 63.1,
           "ttft": 35.786,
           "cost_segments": {
             "total_cost_per_task_usd": 1.03,
@@ -17554,7 +17554,7 @@
           "tokens_m": 87,
           "speed_tps": 303.4,
           "useful_cost": 1.1067,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 0.521,
           "cost_segments": {
             "total_cost_per_task_usd": 0.06,
@@ -17693,7 +17693,7 @@
           "tokens_m": 67,
           "speed_tps": 234.0,
           "useful_cost": 0.4458,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 0.421,
           "cost_segments": {
             "total_cost_per_task_usd": 0.02,
@@ -18194,7 +18194,7 @@
           "tokens_m": 83,
           "speed_tps": 120.9,
           "useful_cost": 3.6141,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 30.525,
           "cost_segments": {
             "total_cost_per_task_usd": 0.16,
@@ -21257,7 +21257,7 @@
           "tokens_m": 160,
           "speed_tps": 42.6,
           "useful_cost": 5.1959,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 25.8,
           "ttft": 1.308,
           "cost_segments": {
             "total_cost_per_task_usd": 0.31,
@@ -21358,7 +21358,7 @@
           "tokens_m": 100,
           "speed_tps": 43.6,
           "useful_cost": 5.2456,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 1.317,
           "cost_segments": {
             "total_cost_per_task_usd": 0.18,
@@ -37081,7 +37081,7 @@
           "tokens_m": 96,
           "speed_tps": 43.5,
           "useful_cost": 1.0257,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 2.01,
           "cost_segments": {
             "total_cost_per_task_usd": 0.03,
@@ -37392,7 +37392,7 @@
           "tokens_m": 85,
           "speed_tps": 51.1,
           "useful_cost": 1.6909,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 1.451,
           "cost_segments": {
             "total_cost_per_task_usd": 0.07,
@@ -37474,7 +37474,7 @@
           "tokens_m": 89,
           "speed_tps": 91.2,
           "useful_cost": 2.2906,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 33.3,
           "ttft": 1.512,
           "cost_segments": {
             "total_cost_per_task_usd": 0.12,
@@ -38991,7 +38991,7 @@
           "tokens_m": 91,
           "speed_tps": 118.0,
           "useful_cost": 16.3011,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 100.0,
           "cost_segments": {
             "total_cost_per_task_usd": 1.2,
             "answer_usd": 0.0,
@@ -41704,7 +41704,7 @@
           "tokens_m": 110,
           "speed_tps": 296.5,
           "useful_cost": 2.6778,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 0.891,
           "cost_segments": {
             "total_cost_per_task_usd": 0.25,
@@ -41801,7 +41801,7 @@
           "tokens_m": 110,
           "speed_tps": 172.8,
           "useful_cost": 4.033,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "ttft": 0.865,
           "cost_segments": {
             "total_cost_per_task_usd": 0.24,
@@ -42639,7 +42639,7 @@
           "tokens_m": 36,
           "speed_tps": 126.4,
           "useful_cost": 12.9597,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 58.8,
           "ttft": 14.601,
           "cost_segments": {
             "total_cost_per_task_usd": 0.17,
@@ -56687,7 +56687,7 @@
           "tokens_m": 88,
           "speed_tps": 51.0,
           "useful_cost": 6.0007,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 0.0,
           "cost_segments": {
             "total_cost_per_task_usd": 0.33,
             "answer_usd": 0.0,
@@ -57006,7 +57006,7 @@
           "tokens_m": 100,
           "speed_tps": 198.8,
           "useful_cost": 13.3615,
-          "reasoning_tax_pct": null,
+          "reasoning_tax_pct": 100.0,
           "ttft": 1.566,
           "cost_segments": {
             "total_cost_per_task_usd": 1.06,

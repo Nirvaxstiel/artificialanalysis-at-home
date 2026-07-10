@@ -306,10 +306,16 @@
       "unit": "%",
       "higher_is_better": false,
       "description": "AA premium percentage paid for reasoning tokens",
-      "models_have": 0,
-      "range": null,
+      "models_have": 28,
+      "range": [
+        0.0,
+        100.0
+      ],
       "group": "Pricing",
-      "normalize_range": null
+      "normalize_range": [
+        0,
+        100
+      ]
     },
     {
       "id": "aa.cost_seg_total",

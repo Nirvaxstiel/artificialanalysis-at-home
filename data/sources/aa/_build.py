@@ -115,16 +115,20 @@ def get_aa_models(base: Path) -> dict[str, dict]:
 
         p = all_models[cid].setdefault("pricing", {})
         aa = p.setdefault("aa", {})
+        seg_total = m.get("total_cost_per_task_usd")
         aa["cost_segments"] = {
-            "total_cost_per_task_usd": m.get("total_cost_per_task_usd"),
+            "total_cost_per_task_usd": seg_total,
             "answer_usd": m.get("answer_usd"),
             "reasoning_usd": m.get("reasoning_usd"),
             "cache_write_usd": m.get("cache_write_usd"),
             "cache_hit_usd": m.get("cache_hit_usd"),
             "input_usd": m.get("input_usd"),
         }
-        if m.get("total_cost_per_task_usd") is not None:
-            aa["cost_per_task"] = m.get("total_cost_per_task_usd")
+        if seg_total is not None:
+            aa["cost_per_task"] = seg_total
+            reasoning = m.get("reasoning_usd")
+            if reasoning is not None and seg_total > 0:
+                aa["reasoning_tax_pct"] = round(reasoning / seg_total * 100, 1)
 
     return all_models
 
