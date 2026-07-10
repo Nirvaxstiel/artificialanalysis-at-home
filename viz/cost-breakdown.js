@@ -240,7 +240,7 @@
     });
 
     // Wire tooltips
-    const tt = window.getTooltipEl ? window.getTooltipEl() : null;
+    const tt = document.getElementById('tooltip');
     if (tt) {
       const svgEl = container.querySelector('svg');
       if (svgEl) {
