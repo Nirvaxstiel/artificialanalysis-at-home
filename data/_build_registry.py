@@ -12,7 +12,23 @@ from ._canonical import (
     canonical_to_or_id, resolve_or_context,
 )
 from ._domain._entities import RegistryModel
+from _result import ok, err
 
+
+def _load_json(path: str):
+    try:
+        with open(path) as f:
+            return ok(json.load(f))
+    except (OSError, json.JSONDecodeError) as e:  # noqa: BLE001
+        return err(f"{os.path.basename(path)}: {e}")
+
+
+def _load_csv(path: str):
+    try:
+        with open(path, newline="") as f:
+            return ok(list(csv.DictReader(f)))
+    except (OSError, csv.Error) as e:  # noqa: BLE001
+        return err(f"{os.path.basename(path)}: {e}")
 
 def _ensure(all_models, cid, **overrides):
     if cid not in all_models:
@@ -39,8 +55,9 @@ def run(ctx=None):
     # ── AA (from data/sources/aa/_build.py) ──
     aa = get_aa_models(BASE)
     if aa.is_err():
-        raise RuntimeError(f"aa build: {aa.error}")
-    all_models.update(aa.unwrap())
+        return err(f"aa build: {aa.error}")
+    aa_models = aa.unwrap()
+    all_models.update(aa_models)
 
     # ── AA IMAGE CHARTS (vision-transcribed scalars) ──
     aa_img_models = get_aa_img_models(BASE)
@@ -96,17 +113,20 @@ def run(ctx=None):
     lb_path = os.path.join(SRC, "livebench_2026_01_08.csv")
     cat_path = os.path.join(SRC, "livebench_categories_2026_01_08.json")
 
-    with open(cat_path) as f:
-        lb_categories = json.load(f)
+    cat = _load_json(cat_path)
+    if cat.is_err():
+        return err(cat.error)
+    lb_categories = cat.unwrap()
 
     task_to_cat = {}
     for cat_name, tasks in lb_categories.items():
         for t in tasks:
             task_to_cat[t] = cat_name
 
-    with open(lb_path) as f:
-        reader = csv.DictReader(f)
-        lb_models = list(reader)
+    lb = _load_csv(lb_path)
+    if lb.is_err():
+        return err(lb.error)
+    lb_models = lb.unwrap()
 
     for m in lb_models:
         name = m["model"]
@@ -146,8 +166,10 @@ def run(ctx=None):
 
     # ── ARENA AI (TEXT) ──
     arena_text_path = os.path.join(SRC, "arena_text.json")
-    with open(arena_text_path) as f:
-        arena_text_data = json.load(f)
+    at = _load_json(arena_text_path)
+    if at.is_err():
+        return err(at.error)
+    arena_text_data = at.unwrap()
 
     for m in arena_text_data.get("models", []):
         aid = m["model"]
@@ -165,8 +187,10 @@ def run(ctx=None):
 
     # ── ARENA AI (CODE) ──
     arena_code_path = os.path.join(SRC, "arena_code.json")
-    with open(arena_code_path) as f:
-        arena_code_data = json.load(f)
+    ac = _load_json(arena_code_path)
+    if ac.is_err():
+        return err(ac.error)
+    arena_code_data = ac.unwrap()
 
     for m in arena_code_data.get("models", []):
         aid = m["model"]
@@ -184,8 +208,10 @@ def run(ctx=None):
 
     # ── OPENLLM v2 (AA subset) ──
     ollm_path = os.path.join(SRC, "openllm_aa_subset.json")
-    with open(ollm_path) as f:
-        ollm_models = json.load(f)
+    ol = _load_json(ollm_path)
+    if ol.is_err():
+        return err(ol.error)
+    ollm_models = ol.unwrap()
 
     for m in ollm_models:
         fullname = m.get("fullname", "")
@@ -225,8 +251,10 @@ def run(ctx=None):
 
     # ── OPENROUTER ──
     or_path = os.path.join(SRC, "openrouter_models.json")
-    with open(or_path) as f:
-        or_models = json.load(f)
+    orr = _load_json(or_path)
+    if orr.is_err():
+        return err(orr.error)
+    or_models = orr.unwrap()
 
     for m in or_models:
         rid = m["id"]
@@ -359,7 +387,10 @@ def run(ctx=None):
         b = [s for s in m.get("benchmarks", {}) if m["benchmarks"][s]]
         print(f"  {m['id']:40s} P:{','.join(p):25s} B:{','.join(b)}")
 
-    return {"model_count": len(output_models), "name_map_size": len(name_map)}
+    return ok({"model_count": len(output_models), "name_map_size": len(name_map)})
 
 if __name__ == "__main__":
-    run()
+    result = run()
+    if result.is_err():
+        print("REGISTRY BUILD FAILED:", result.error)
+        raise SystemExit(1)
