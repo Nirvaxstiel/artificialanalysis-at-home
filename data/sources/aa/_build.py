@@ -3,6 +3,16 @@ import json, os, re
 from pathlib import Path
 
 from ..._canonical import resolve_from_slug, costbd_name_to_canonical
+from _result import ok, err
+
+
+def _load_json(path: str):
+    """Read + parse a JSON source file. Ok(dict) or Err(reason)."""
+    try:
+        with open(path) as f:
+            return ok(json.load(f))
+    except (OSError, json.JSONDecodeError) as e:  # noqa: BLE001
+        return err(f"{os.path.basename(path)}: {e}")
 
 
 def get_aa_live_models(aa_dir: str) -> dict[str, dict]:
@@ -344,9 +354,10 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             all_models.setdefault(cid, rec)
         else:
             _merge_fill_nulls(all_models[cid], rec)
-    scraped_path = os.path.join(AA_DIR, "raw", "aa_models_scraped.json")
-    with open(scraped_path) as f:
-        scraped_models = json.load(f)
+    scraped = _load_json(os.path.join(AA_DIR, "raw", "aa_models_scraped.json"))
+    if scraped.is_err():
+        return err(scraped.error)
+    scraped_models = scraped.unwrap()
 
     # Warn on duplicate slugs
     seen_slugs = set()
@@ -438,9 +449,10 @@ def get_aa_models(base: Path) -> dict[str, dict]:
                 _overlay_aa_api(model, aa_m)
 
     # === 2) Enrich from aa_model_data.json (blended, tokens_m, etc.) ===
-    enriched_path = os.path.join(AA_DIR, "enriched", "aa_model_data.json")
-    with open(enriched_path) as f:
-        aa_raw = json.load(f)
+    enriched = _load_json(os.path.join(AA_DIR, "enriched", "aa_model_data.json"))
+    if enriched.is_err():
+        return err(enriched.error)
+    aa_raw = enriched.unwrap()
 
     for slug, raw in aa_raw.items():
         cid = resolve_from_slug(slug)
@@ -454,14 +466,11 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             _overlay_enriched(all_models[cid], raw)
 
     # === 3) Cost segments from aa_cost_breakdown.json ===
-    costbd_path = os.path.join(AA_DIR, "enriched", "aa_cost_breakdown.json")
-    try:
-        with open(costbd_path) as f:
-            costbd_data = json.load(f)
-    except FileNotFoundError:
-        return all_models  # cost breakdown is optional
+    costbd = _load_json(os.path.join(AA_DIR, "enriched", "aa_cost_breakdown.json")).unwrap_or(None)
+    if costbd is None:
+        return ok(all_models)  # cost breakdown is optional
 
-    for m in costbd_data.get("models", []):
+    for m in costbd.get("models", []):
         display_name = m.get("name", "")
         cid = costbd_name_to_canonical(display_name).unwrap_or(None)
         if not cid or cid not in all_models:
@@ -484,7 +493,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
             if reasoning is not None and seg_total > 0:
                 aa["reasoning_tax_pct"] = round(reasoning / seg_total * 100, 1)
 
-    return all_models
+    return ok(all_models)
 
 
 # ── helpers ──

@@ -37,8 +37,10 @@ def run(ctx=None):
     all_models = {}  # canonical_id -> model record
 
     # ── AA (from data/sources/aa/_build.py) ──
-    aa_models = get_aa_models(BASE)
-    all_models.update(aa_models)
+    aa = get_aa_models(BASE)
+    if aa.is_err():
+        raise RuntimeError(f"aa build: {aa.error}")
+    all_models.update(aa.unwrap())
 
     # ── AA IMAGE CHARTS (vision-transcribed scalars) ──
     aa_img_models = get_aa_img_models(BASE)
