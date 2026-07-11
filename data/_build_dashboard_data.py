@@ -254,19 +254,17 @@ def _normalize_radar_scores(output):
         row.radar_ctx = (raws[4] / maxes[4]) if raws[4] is not None else None
 
 
-def build(ctx=None):
-    projection_engine = ProjectionEngine()
-
-    raw_rows = projection_engine.project(_PROJECTION_AXES)
+def _project_rows(engine, axes):
+    raw_rows = engine.project(axes)
     aa_models = _select_aa_models(raw_rows)
-    registry_by_id = {m["id"]: m for m in projection_engine.models}
-
+    registry_by_id = {m["id"]: m for m in engine.models}
     output = [_build_projection_row(r, registry_by_id) for r in aa_models]
     output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
+    return output
 
-    _normalize_radar_scores(output)
 
-    payload = {
+def _build_payload(output):
+    return {
         "meta": {
             "generated": _today(),
             "version": "3.0",
@@ -288,20 +286,19 @@ def build(ctx=None):
         "models": output,
     }
 
-    rows_dict = [r.to_dict() for r in output]
-    wrapper = {
+
+def _build_js_wrapper(payload):
+    rows_dict = [r.to_dict() for r in payload["models"]]
+    return {
         "meta": payload["meta"],
         "sources": payload["meta"]["sources"],
         "sources_meta": payload["meta"]["sources_meta"],
         "models": rows_dict,
     }
 
-    js_path = BASE / "processed.js"
-    wrote = _write_js(js_path, wrapper)
-    if wrote.is_err():
-        return err(wrote.error)
 
-    print(f"✅ Wrote {len(output)} models to {js_path}")
+def _print_dashboard_summary(output):
+    print(f"✅ Wrote {len(output)} models to processed.js")
     print(f"   With AA intel: {sum(1 for m in output if m.intel is not None)}")
     print(f"   With LiveBench avg: {sum(1 for m in output if m.livebench_average is not None)}")
     print(f"   With Arena Code elo: {sum(1 for m in output if m.arena_code_elo is not None)}")
@@ -309,7 +306,25 @@ def build(ctx=None):
     print(f"   With OpenRouter price: {sum(1 for m in output if m.openrouter_inp_price_per_m is not None)}")
     print(f"   With cost breakdown: {sum(1 for m in output if m.cost_seg_total is not None)}")
 
-    return ok(payload)
+
+def build(ctx=None):
+    state = {"engine": ProjectionEngine()}
+
+    steps = (
+        ("project_rows", lambda: ok(_project_rows(state["engine"], _PROJECTION_AXES))),
+        ("normalize_radar", lambda: ok(_normalize_radar_scores(state["project_rows"]) or state["project_rows"])),
+        ("payload", lambda: ok(_build_payload(state["project_rows"]))),
+        ("wrapper", lambda: ok(_build_js_wrapper(state["payload"]))),
+        ("write_js", lambda: _write_js(BASE / "processed.js", state["wrapper"])),
+    )
+    for name, fn in steps:
+        r = fn()
+        if r.is_err():
+            return err(r.error)
+        state[name] = r.unwrap()
+
+    _print_dashboard_summary(state["project_rows"])
+    return ok(state["payload"])
 
 
 if __name__ == "__main__":
