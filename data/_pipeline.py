@@ -94,7 +94,8 @@ def build_from_cache(ctx: dict | None = None):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "build":
+    arg = sys.argv[1] if len(sys.argv) > 1 else "build"
+    if arg in ("build", "build_from_cache"):
         build_from_cache()
     else:
         build()
