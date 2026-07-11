@@ -269,4 +269,6 @@
     subtitle: 'Sortable multi-view tables — multi-column sort with shift+click',
     render
   });
+
+  window.DATA_TABLE = { VIEWS, applySort, matchesSearch };
 })();
