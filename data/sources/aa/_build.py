@@ -463,7 +463,7 @@ def get_aa_models(base: Path) -> dict[str, dict]:
 
     for m in costbd_data.get("models", []):
         display_name = m.get("name", "")
-        cid = costbd_name_to_canonical(display_name)
+        cid = costbd_name_to_canonical(display_name).unwrap_or(None)
         if not cid or cid not in all_models:
             continue
 

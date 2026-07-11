@@ -1,5 +1,6 @@
 import re
 
+from _result import ok, err
 
 SLUG_TO_CANONICAL = {
     "gpt-oss-20b":                  "gpt-oss-20b",
@@ -103,9 +104,9 @@ def openrouter_id_to_canonical(rid: str) -> str:
     return resolve_from_slug(slug)
 
 
-def openllm_name_to_canonical(name: str) -> str | None:
+def openllm_name_to_canonical(name: str) -> "Ok[str] | Err[str]":
     if not name:
-        return None
+        return err(name)
     n = name.strip()
     if "href=" in n:
         m = re.search(r'href="([^"]+)"', n)
@@ -115,7 +116,7 @@ def openllm_name_to_canonical(name: str) -> str | None:
     if "/" in n:
         n = n.split("/")[-1]
     n = re.sub(r'-20\d{6}', '', n)
-    return resolve_from_slug(n)
+    return ok(resolve_from_slug(n))
 
 
 OR_ID_MAP = {
@@ -163,8 +164,9 @@ OR_SUFFIXES = [
 ]
 
 
-def canonical_to_or_id(canonical: str) -> str | None:
-    return OR_ID_MAP.get(canonical)
+def canonical_to_or_id(canonical: str) -> "Ok[str] | Err[str]":
+    or_id = OR_ID_MAP.get(canonical)
+    return ok(or_id) if or_id is not None else err(canonical)
 
 
 def resolve_or_context(all_models: dict, or_models: list[dict]) -> None:
@@ -196,8 +198,9 @@ def resolve_or_context(all_models: dict, or_models: list[dict]) -> None:
                     break
 
 
-def costbd_name_to_canonical(display_name: str) -> str | None:
-    return COSTBD_NAME_MAP.get(display_name)
+def costbd_name_to_canonical(display_name: str) -> "Ok[str] | Err[str]":
+    cid = COSTBD_NAME_MAP.get(display_name)
+    return ok(cid) if cid is not None else err(display_name)
 
 
 AA_IMG_NAME_MAP = {
@@ -286,8 +289,9 @@ AA_IMG_NAME_MAP = {
 }
 
 
-def aa_img_name_to_canonical(display_name: str) -> str | None:
-    return AA_IMG_NAME_MAP.get(display_name)
+def aa_img_name_to_canonical(display_name: str) -> "Ok[str] | Err[str]":
+    cid = AA_IMG_NAME_MAP.get(display_name)
+    return ok(cid) if cid is not None else err(display_name)
 
 
 # Dirac.run "Cache Hit Rates of Inference" full table (dirac.run/posts/cache-hit-rates-agents).
@@ -338,5 +342,6 @@ DIRAC_NAME_MAP = {
 }
 
 
-def dirac_name_to_canonical(model_name: str) -> str | None:
-    return DIRAC_NAME_MAP.get(model_name.strip())
+def dirac_name_to_canonical(model_name: str) -> "Ok[str] | Err[str]":
+    cid = DIRAC_NAME_MAP.get(model_name.strip())
+    return ok(cid) if cid is not None else err(model_name)

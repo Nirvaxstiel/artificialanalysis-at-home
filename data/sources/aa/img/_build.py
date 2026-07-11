@@ -39,7 +39,7 @@ def get_aa_img_models(base: Path) -> dict[str, dict]:
     for display_name, rec in raw.items():
         if display_name == "_meta":
             continue
-        cid = aa_img_name_to_canonical(display_name)
+        cid = aa_img_name_to_canonical(display_name).unwrap_or(None)
         if not cid:
             continue
         b = out.setdefault(cid, {}).setdefault("benchmarks", {}).setdefault("aa_img", {})

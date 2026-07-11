@@ -187,7 +187,7 @@ def run(ctx=None):
 
     for m in ollm_models:
         fullname = m.get("fullname", "")
-        cid = openllm_name_to_canonical(fullname)
+        cid = openllm_name_to_canonical(fullname).unwrap_or(None)
         if not cid:
             continue
 

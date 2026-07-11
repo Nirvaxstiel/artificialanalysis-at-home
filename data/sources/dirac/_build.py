@@ -25,7 +25,7 @@ def get_dirac_models(base: Path) -> dict[str, dict]:
 
     out: dict[str, dict] = {}
     for r in rows:
-        cid = dirac_name_to_canonical(r.get("model", ""))
+        cid = dirac_name_to_canonical(r.get("model", "")).unwrap_or(None)
         if not cid:
             continue
         rec = out.setdefault(cid, {
