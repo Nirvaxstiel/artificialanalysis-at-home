@@ -1,6 +1,16 @@
 import json, os, csv, re
 from pathlib import Path
 
+from _result import ok, err
+
+
+def _load_json(path: str):
+    try:
+        with open(path) as f:
+            return ok(json.load(f))
+    except (OSError, json.JSONDecodeError) as e:  # noqa: BLE001
+        return err(f"{os.path.basename(path)}: {e}")
+
 
 def _build_axis(models, axis_id, source, label, type_, unit, hib, desc, group,
                 path, key=None, range_decimals=None):
@@ -58,8 +68,10 @@ def run(ctx=None):
     REG = os.path.join(BASE, "data", "model_registry.json")
     OUT = os.path.join(BASE, "data", "axes_catalog.json")
 
-    with open(REG) as f:
-        reg = json.load(f)
+    reg_r = _load_json(REG)
+    if reg_r.is_err():
+        return err(reg_r.error)
+    reg = reg_r.unwrap()
 
     models = reg["models"]
     axes = []
@@ -391,7 +403,10 @@ def run(ctx=None):
     print("\n── CROSS-SOURCE OVERLAP (models with both) ──")
     for pair, count in sorted(n_axis_pairs.items(), key=lambda x: -x[1]):
         print(f"  {pair:40s} {count:4d} models")
-    return {"axis_count": len(axes), "source_count": len(source_groups)}
+    return ok({"axis_count": len(axes), "source_count": len(source_groups)})
 
 if __name__ == "__main__":
-    run()
+    result = run()
+    if result.is_err():
+        print("AXES BUILD FAILED:", result.error)
+        raise SystemExit(1)
