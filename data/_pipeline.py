@@ -82,12 +82,14 @@ def build():
         .run())
 
 
-def build_from_cache():
+def build_from_cache(ctx: dict | None = None):
     """Rebuild from cached sources (skip pull)."""
-    (Pipeline()
+    if ctx is None:
+        ctx = {"root": ROOT}
+    (Pipeline(ctx)
         .then("build_registry", step("_build_registry"))
         .then("build_axes", step("_build_axes"))
-        .then("build_dashboard", lambda ctx: _resolve_module("_build_dashboard_data").build(ctx))
+        .then("build_dashboard", lambda c: _resolve_module("_build_dashboard_data").build(c))
         .run())
 
 
