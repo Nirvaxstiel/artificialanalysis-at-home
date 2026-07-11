@@ -1,11 +1,7 @@
 // JS domain model — typed wrappers + helpers mirroring data/_domain.py
 // Loads after processed.js, before viz scripts. Enables typed model access.
 
-(function() {
-
-// ═══════════════════════════════════════════════════
-// Enums
-// ═══════════════════════════════════════════════════
+(function () {
 
 const Archetype = Object.freeze({
   FRONTIER: 'frontier',
@@ -30,10 +26,6 @@ const SourceKey = Object.freeze({
   OPENROUTER: 'openrouter',
 });
 
-// ═══════════════════════════════════════════════════
-// Model wrapper
-// ═══════════════════════════════════════════════════
-
 class ProjectionRow {
   /** Wrap a raw model dict from PROCESSED_DATA into a typed domain object.
    *  Copies all raw properties so `row.intel`, `row.cost_per_task` work directly.
@@ -41,8 +33,6 @@ class ProjectionRow {
   constructor(raw) {
     Object.assign(this, raw);
   }
-
-  // ── Computed getters ──
 
   /** 'none' | 'low' | 'mid' | 'high' — reasoning tax tier. */
   get reasoningBucket() {
@@ -63,8 +53,6 @@ class ProjectionRow {
   get contextWindow() { return this.context_window; }
   get hasContext() { return this.context_window != null; }
 
-  // ── Static helpers ──
-
   /** Compute pareto frontier over a sorted cost → quality space.
    *  Returns filtered array (frontier models). Mutates by setting `pareto_optimal`. */
   static paretoFrontier(models, costKey, qualityKey) {
@@ -83,9 +71,13 @@ class ProjectionRow {
     return frontier;
   }
 
-  /** Wrap raw PROCESSED_DATA array. Returns MODELS array. */
+  /** Load raw PROCESSED_DATA into typed MODELS. Returns Result<ProjectionRow[]>.
+   *  On a missing/invalid payload, returns Err (data not loaded yet or wrong shape). */
   static load(raw) {
-    return Array.isArray(raw) ? raw.map(r => new ProjectionRow(r)) : [];
+    if (Array.isArray(raw)) {
+      return window.Result.ok(raw.map(r => new ProjectionRow(r)));
+    }
+    return window.Result.err('PROCESSED_DATA is not an array');
   }
 
   /** Enums exposed as static properties for convenience. */
@@ -93,10 +85,6 @@ class ProjectionRow {
   static get ModelType() { return ModelType; }
   static get SourceKey() { return SourceKey; }
 }
-
-// ═══════════════════════════════════════════════════
-// Standalone helpers (usable from viz scripts)
-// ═══════════════════════════════════════════════════
 
 const REASONING_COLORS = {
   none:  '#888888',
@@ -121,21 +109,20 @@ function reasoningColor(pct) {
   return reasoningColorByBucket(bucketByReasoning(pct));
 }
 
-// ═══════════════════════════════════════════════════
-// Auto-wrap on load
-// ═══════════════════════════════════════════════════
-
-(function wrapData() {
-  if (!Array.isArray(window.PROCESSED_DATA)) {
-    if (window.PROCESSED_DATA && Array.isArray(window.PROCESSED_DATA.models)) {
-      // Handle { meta, models } payload shape
-      window.PROCESSED_DATA = window.PROCESSED_DATA.models;
+/** Normalize whatever PROCESSED_DATA holds into a Result<ProjectionRow[]>.
+ *  Handles the { meta, models } payload shape (unwrap .models) and the raw array
+ *  shape directly. Skips DOM — pure load boundary, testable in node. */
+function loadModels(payload) {
+  let raw = payload;
+  if (!Array.isArray(raw)) {
+    if (raw && Array.isArray(raw.models)) {
+      raw = raw.models;
     } else {
-      return; // data not loaded yet, _boot.js retries
+      return window.Result.err('PROCESSED_DATA missing or wrong shape');
     }
   }
-  window.MODELS = ProjectionRow.load(window.PROCESSED_DATA);
-})();
+  return ProjectionRow.load(raw);
+}
 
 // ── Export to window ──
 
@@ -146,5 +133,11 @@ window.ProjectionRow = ProjectionRow;
 window.bucketByReasoning = bucketByReasoning;
 window.reasoningColor = reasoningColor;
 window.REASONING_COLORS = REASONING_COLORS;
+window.loadProjectionModels = loadModels;
+
+const _wrapped = loadModels(window.PROCESSED_DATA);
+if (_wrapped.isOk()) {
+  window.MODELS = _wrapped.unwrap();
+}
 
 })();

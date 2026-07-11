@@ -45,7 +45,7 @@ function creatorColor(name) {
   return `hsl(${hue.toFixed(0)}, ${sat}%, ${light}%)`;
 }
 
-// ── Number formatting ── single source of truth for suffixes / separators / currency.
+// Number formatting — single source of truth for suffixes / separators / currency.
 // Each formatter takes (value, opts?) and returns a string, or '—' for null/NaN.
 window.VIZ_NUM = (function () {
   const DASH = '—';
