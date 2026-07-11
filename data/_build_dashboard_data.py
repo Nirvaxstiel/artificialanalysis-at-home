@@ -7,6 +7,7 @@ BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE))
 
 from project_axes import ProjectionEngine
+from _result import ok, err
 from _domain import (
     ProjectionRow, ProjectionRowMeta,
     Archetype, ModelType,
@@ -21,6 +22,17 @@ from _domain import (
     safe_cache,
     try_model_type, try_archetype,
 )
+
+
+def _write_js(path: Path, wrapper: dict) -> "Ok[None]|Err[str]":
+    try:
+        with open(path, "w") as f:
+            f.write("window.PROCESSED_DATA = ")
+            json.dump(wrapper, f, indent=2)
+            f.write(";\n")
+        return ok(None)
+    except OSError as e:  # noqa: BLE001
+        return err(f"{path.name}: {e}")
 
 
 def _clean_name(name):
@@ -286,10 +298,9 @@ def build(ctx=None):
     }
 
     js_path = BASE / "processed.js"
-    with open(js_path, "w") as f:
-        f.write("window.PROCESSED_DATA = ")
-        json.dump(wrapper, f, indent=2)
-        f.write(";\n")
+    wrote = _write_js(js_path, wrapper)
+    if wrote.is_err():
+        return err(wrote.error)
 
     print(f"✅ Wrote {len(output)} models to {js_path}")
     print(f"   With AA intel: {sum(1 for m in output if m.intel is not None)}")
@@ -299,8 +310,11 @@ def build(ctx=None):
     print(f"   With OpenRouter price: {sum(1 for m in output if m.openrouter_inp_price_per_m is not None)}")
     print(f"   With cost breakdown: {sum(1 for m in output if m.cost_seg_total is not None)}")
 
-    return payload
+    return ok(payload)
 
 
 if __name__ == "__main__":
-    build()
+    result = build()
+    if result.is_err():
+        print("DASHBOARD BUILD FAILED:", result.error)
+        raise SystemExit(1)
