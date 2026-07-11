@@ -310,4 +310,6 @@
     subtitle: 'Per-task cost split by token type (input / cached / answer / reasoning)',
     render
   });
+
+  window.COST_BREAKDOWN = { buildCostData, applyExternalCache, getCacheHitRate };
 })();
