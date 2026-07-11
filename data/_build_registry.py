@@ -12,7 +12,7 @@ from ._canonical import (
     canonical_to_or_id, resolve_or_context,
 )
 from ._domain._entities import RegistryModel
-from _result import ok, err, pipe
+from _result import ok, err
 
 
 BASE = None
@@ -316,15 +316,17 @@ def run(ctx=None):
         "counts": {},
     }
 
-    result = pipe(state,
-                 step_aa, step_aa_img, step_scrape_progress, step_dirac,
+    s = state
+    for step in (step_aa, step_aa_img, step_scrape_progress, step_dirac,
                  step_livebench, step_arena_text, step_arena_code,
                  step_openllm, step_openrouter, step_misc,
-                 step_name_map, step_write)
-    if result.is_err():
-        return err(result.error)
+                 step_name_map, step_write):
+        r = step(s)
+        if r.is_err():
+            return err(r.error)
+        s = r.unwrap()
 
-    output_models = state["output_models"]
+    output_models = s["output_models"]
 
     # ── Summary ──
     print("\n── SOURCE COVERAGE ──")
@@ -360,7 +362,7 @@ def run(ctx=None):
         p = [s_ for s_ in m.get("pricing", {}) if m["pricing"][s_]]
         b = [s_ for s_ in m.get("benchmarks", {}) if m["benchmarks"][s_]]
         print(f"  {m['id']:40s} P:{','.join(p):25s} B:{','.join(b)}")
-    return ok({"model_count": len(output_models), "name_map_size": len(state["name_map"])})
+    return ok({"model_count": len(output_models), "name_map_size": len(s["name_map"])})
 
 if __name__ == "__main__":
     result = run()
