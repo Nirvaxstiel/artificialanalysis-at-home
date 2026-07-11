@@ -1,21 +1,35 @@
-// Tab navigation, lazy render, banner stats, legend wiring
+// Tab navigation, lazy render, banner stats, legend wiring.
+// Boot orchestrated via the shared Pipeline().then().run() idiom (mirrors
+// data/_pipeline.Pipeline) so the flow is unambiguous: load models -> build
+// shell -> render first viz -> wire interactive concerns. render() internals
+// in each viz file are untouched.
 
-(function boot() {
-  if (!window.PROCESSED_DATA || !window.VIZ_REGISTRY) {
-    return setTimeout(boot, 50);
+(function () {
+
+const { ok, err } = window.Result;
+
+function bootstrapModels(ctx) {
+  const loaded = window.loadProjectionModels(window.PROCESSED_DATA);
+  if (loaded.isErr()) {
+    return err(`model load failed: ${loaded.error}`);
   }
-  const data = window.MODELS;
-  const registry = window.VIZ_REGISTRY.slice();
+  ctx.models = loaded.unwrap();
+  ctx.registry = window.VIZ_REGISTRY.slice();
+  return ok(ctx);
+}
 
-  // Inject dynamic model/creator count into header
+function injectHeaderMeta(ctx) {
   const metaEl = document.getElementById('header-meta');
   if (metaEl) {
-    const creators = new Set(data.map(m => m.creator).filter(Boolean));
-    metaEl.textContent += ` · ${data.length} MODELS · ${creators.size} CREATORS`;
+    const creators = new Set(ctx.models.map(m => m.creator).filter(Boolean));
+    metaEl.textContent += ` · ${ctx.models.length} MODELS · ${creators.size} CREATORS`;
   }
+  return ok(ctx);
+}
 
+function buildShell(ctx) {
   const tabsEl = document.getElementById('tabs');
-  tabsEl.innerHTML = registry.map((v, i) => `
+  tabsEl.innerHTML = ctx.registry.map((v, i) => `
     <button data-viz="${v.id}" class="${i === 0 ? 'active' : ''}">
       <span class="num">${i + 1}</span> ${v.name}
       <span class="sub">${v.subtitle}</span>
@@ -23,7 +37,7 @@
   `).join('');
 
   const panelsEl = document.getElementById('panels');
-  panelsEl.innerHTML = registry.map((v, i) => `
+  panelsEl.innerHTML = ctx.registry.map((v, i) => `
     <div class="viz-panel ${i === 0 ? 'active' : ''}" data-viz="${v.id}">
       <div class="chart">
         <div class="chart-head">
@@ -35,69 +49,74 @@
       </div>
     </div>
   `).join('');
+  return ok(ctx);
+}
 
-  // Lazy render: only render when tab becomes active (or re-render on switch
-  // so a filter set in another viz carries forward — filter state lives on
-  // window.__legendFilter and is read at render time, so the viz must re-render
-  // to reflect it).
-  const rendered = new Set();
-  function renderViz(id, force) {
-    if (rendered.has(id) && !force) return;
-    const v = registry.find(r => r.id === id);
-    if (!v) return;
-    const mount = document.getElementById(`mount-${id}`);
-    v.render(mount, data);
-    rendered.add(id);
-  }
-  renderViz(registry[0].id);
+function renderFirst(ctx) {
+  const v = ctx.registry[0];
+  if (!v) return ok(ctx);
+  const mount = document.getElementById(`mount-${v.id}`);
+  v.render(mount, ctx.models);
+  return ok(ctx);
+}
 
+function wireTabs(ctx) {
+  const tabsEl = document.getElementById('tabs');
+  const rendered = new Set([ctx.registry[0].id]);
   tabsEl.addEventListener('click', e => {
     const btn = e.target.closest('button[data-viz]');
     if (!btn) return;
     const id = btn.dataset.viz;
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.viz === id));
     document.querySelectorAll('.viz-panel').forEach(p => p.classList.toggle('active', p.dataset.viz === id));
-    renderViz(id, true);
+    if (!rendered.has(id)) {
+      const v = ctx.registry.find(r => r.id === id);
+      if (v) { v.render(document.getElementById(`mount-${id}`), ctx.models); rendered.add(id); }
+    }
     window.__renderCreatorLegend();
   });
+  return ok(ctx);
+}
 
-  const legendEl = document.getElementById('creator-legend');
-  if (legendEl) { legendEl.style.display = ''; window.__renderCreatorLegend(); }
+function wireFilterSync(ctx) {
   window.__filterSubscribers.add(function onFilter() {
     const btn = document.querySelector('nav.tabs button.active');
     if (!btn) return;
     const id = btn.dataset.viz;
-    const v = registry.find(r => r.id === id);
+    const v = ctx.registry.find(r => r.id === id);
     if (!v) return;
-    v.render(document.getElementById(`mount-${id}`), data);
+    v.render(document.getElementById(`mount-${id}`), ctx.models);
   });
+  return ok(ctx);
+}
 
-  const byIntel = [...data].filter(m => m.intel != null).sort((a,b) => b.intel - a.intel);
-  const byCost = [...data].filter(m => m.cost_per_task != null).sort((a,b) => a.cost_per_task - b.cost_per_task);
+function renderBannerStats(ctx) {
+  const data = ctx.models;
+  const byIntel = [...data].filter(m => m.intel != null).sort((a, b) => b.intel - a.intel);
+  const byCost = [...data].filter(m => m.cost_per_task != null).sort((a, b) => a.cost_per_task - b.cost_per_task);
   const byValue = [...data]
     .filter(m => m.intel != null && m.cost_per_task != null && m.cost_per_task > 0)
-    .sort((a,b) => (b.intel / b.cost_per_task) - (a.intel / a.cost_per_task));
+    .sort((a, b) => (b.intel / b.cost_per_task) - (a.intel / a.cost_per_task));
+  const champ = byIntel[0], cheapest = byCost[0], bestValue = byValue[0];
 
-  const champ = byIntel[0];
-  const cheapest = byCost[0];
-  const bestValue = byValue[0];
-
-  function setBannerStat(sel, model, slug, view, sortKey, sortDir) {
+  function setStat(sel, model, slug, view, sortKey, sortDir) {
     const el = document.querySelector(sel);
     if (!el) return;
     const valEl = el.querySelector('.val');
-    const iq = model.intel != null ? ` (${window.VIZ_HELPERS.fmtV(model.intel)})` : '';
     if (valEl) valEl.innerHTML = model.creator.split('/')[0] + ' <span>' + model.slug + '</span>';
     el.dataset.slug = slug;
     el.dataset.view = view;
     el.dataset.sortKey = sortKey;
     el.dataset.sortDir = sortDir;
   }
+  setStat('[data-metric="champion"]', champ, champ.slug, 'model', 'intel', 'desc');
+  setStat('[data-metric="cheapest"]', cheapest, cheapest.slug, 'model', 'cost_per_task', 'asc');
+  setStat('[data-metric="value"]', bestValue, bestValue.slug, 'model', 'iqPerK', 'desc');
+  return ok(ctx);
+}
 
-  setBannerStat('[data-metric="champion"]', champ, champ.slug, 'model', 'intel', 'desc');
-  setBannerStat('[data-metric="cheapest"]', cheapest, cheapest.slug, 'model', 'cost_per_task', 'asc');
-  setBannerStat('[data-metric="value"]', bestValue, bestValue.slug, 'model', 'iqPerK', 'desc');
-
+function renderParetoCount(ctx) {
+  const data = ctx.models;
   let count = 0;
   let maxQ = -Infinity;
   const sorted = [...data].filter(m => m.hasCost && m.hasIntel)
@@ -107,16 +126,20 @@
   }
   document.getElementById('pareto-count').textContent = count;
   document.getElementById('total-count').textContent = data.length;
+  return ok(ctx);
+}
 
-  // Click-through: banner model → data table with sort + highlight
+function wireBannerNavigation(ctx) {
+  const data = ctx.models;
+  const registry = ctx.registry;
   const dtId = registry.find(r => r.name === 'Data Tables')?.id || 'data-table';
-  window.navigateTable = function(view, sortKey, sortDir, highlight) {
+  window.navigateTable = function (view, sortKey, sortDir, highlight) {
     const mount = document.getElementById(`mount-${dtId}`);
     if (!mount) return;
     mount.__view = view;
     mount.__sort = [{ key: sortKey, dir: sortDir }];
     mount.__highlight = highlight;
-    const btn = tabsEl.querySelector(`button[data-viz="${dtId}"]`);
+    const btn = document.querySelector(`nav.tabs button[data-viz="${dtId}"]`);
     if (btn) btn.click();
     const v = registry.find(r => r.id === dtId);
     if (v) v.render(mount, data);
@@ -137,7 +160,10 @@
       if (slug) window.navigateTable(view || 'model', sortKey || 'intel', sortDir || 'desc', slug);
     });
   });
+  return ok(ctx);
+}
 
+function renderRepoLinks(ctx) {
   const repoEl = document.getElementById('repo-links');
   if (repoEl) {
     const gh = 'Nirvaxstiel/artificialanalysis-at-home';
@@ -146,5 +172,30 @@
     const cbIcon = '<svg class="repo-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.99 0C5.37 0 0 5.37 0 12s5.37 12 11.99 12C18.63 24 24 18.63 24 12S18.63 0 11.99 0zm-2.3 5.5l8.85 5.42-8.85 5.42V5.5z"/></svg>';
     repoEl.innerHTML = `<a href="https://github.com/${gh}" target="_blank">${ghIcon} <span class="cmt">//</span> github</a> <a href="https://codeberg.org/${cb}" target="_blank">${cbIcon} <span class="cmt">//</span> codeberg</a>`;
   }
+  return ok(ctx);
+}
+
+function boot() {
+  if (!window.PROCESSED_DATA || !window.VIZ_REGISTRY) {
+    return setTimeout(boot, 50);
+  }
+  const pipeline = window.Result.Pipeline({})
+    .then('bootstrap_models', bootstrapModels)
+    .then('header_meta', injectHeaderMeta)
+    .then('build_shell', buildShell)
+    .then('render_first', renderFirst)
+    .then('wire_tabs', wireTabs)
+    .then('wire_filter_sync', wireFilterSync)
+    .then('banner_stats', renderBannerStats)
+    .then('pareto_count', renderParetoCount)
+    .then('banner_nav', wireBannerNavigation)
+    .then('repo_links', renderRepoLinks);
+  pipeline.run();
+  if (pipeline.ctx._failed_step) {
+    console.error(`Viz boot failed at '${pipeline.ctx._failed_step}': ${pipeline.ctx._error}`);
+  }
+}
+
+boot();
 
 })();

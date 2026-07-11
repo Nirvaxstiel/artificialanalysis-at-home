@@ -38,9 +38,44 @@ function fromFn(fn) {
   }
 }
 
+// Monadic pipeline — compose boot/render steps that return Result, threading a
+// shared ctx. Mirrors data/_pipeline.Pipeline: each .then(name, fn) runs
+// fn(ctx); a thrown error or returned Err short-circuits the rest. Steps that
+// return a plain value are coerced to ok(value).
+function Pipeline(ctx) {
+  const self = {};
+  self.ctx = ctx || {};
+  self._steps = [];
+  self.then = function (name, fn) {
+    self._steps.push({ name, fn });
+    return self;
+  };
+  self.run = function () {
+    for (const step of self._steps) {
+      let returned;
+      try {
+        returned = step.fn(self.ctx);
+      } catch (e) {
+        self.ctx._failed_step = step.name;
+        self.ctx._error = e;
+        return self.ctx;
+      }
+      const result = returned && typeof returned.isErr === 'function' ? returned : ok(returned);
+      if (result.isErr()) {
+        self.ctx._failed_step = step.name;
+        self.ctx._error = result.error;
+        return self.ctx;
+      }
+      self.ctx[step.name] = result.unwrap();
+    }
+    return self.ctx;
+  };
+  return self;
+}
+
 if (typeof window !== 'undefined') {
-  window.Result = { ok, err, fromFn };
+  window.Result = { ok, err, fromFn, Pipeline };
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ok, err, fromFn };
+  module.exports = { ok, err, fromFn, Pipeline };
 }
