@@ -243,7 +243,7 @@ def get_aa_charts_models(aa_dir: str) -> dict[str, dict]:
     path = os.path.join(aa_dir, "aa_charts_export.json")
     if not os.path.exists(path):
         return {}
-    charts = parse_aa_charts(path)
+    charts = parse_aa_charts(path).unwrap_or({})
 
     out: dict[str, dict] = {}
 

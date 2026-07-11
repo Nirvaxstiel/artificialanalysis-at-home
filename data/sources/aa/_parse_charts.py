@@ -3,6 +3,17 @@ import os
 import re
 from pathlib import Path
 
+from _result import ok, err
+
+
+def _load_json(path: str):
+    """Read + parse a JSON source file. Ok(dict) or Err(reason)."""
+    try:
+        with open(path) as f:
+            return ok(json.load(f))
+    except (OSError, json.JSONDecodeError) as e:  # noqa: BLE001
+        return err(f"{os.path.basename(path)}: {e}")
+
 
 CHART_MAP = {
     0: "coding_index",
@@ -137,15 +148,13 @@ def _parse_pricing(svg: str):
     return out
 
 
-def parse_aa_charts(json_path: str) -> dict[str, list]:
-    """Parse the method-2 SVG scrape → {chart_key: [(slug, value), ...]}.
-
-    Only the 7 ranking/bar charts (keys in CHART_MAP) are parsed; the scatter
-    charts (intelligence-vs-cost etc.) carry no href/value text and are skipped.
-    The Pricing chart (#9) uses a dedicated x-aligned parser.
-    """
-    with open(json_path) as f:
-        data = json.load(f)
+def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
+    """Parse the method-2 SVG scrape -> {chart_key: [(slug, value), ...]}.
+    Ok(dict) on success, Err(reason) if the source file can't be read/parsed."""
+    loaded = _load_json(json_path)
+    if loaded.is_err():
+        return err(loaded.error)
+    data = loaded.unwrap()
     out = {}
     for idx, key in CHART_MAP.items():
         if idx >= len(data):
@@ -155,12 +164,15 @@ def parse_aa_charts(json_path: str) -> dict[str, list]:
             out[key] = _parse_pricing(svg)
         else:
             out[key] = _parse_chart(svg)
-    return out
+    return ok(out)
 
 
 if __name__ == "__main__":
     here = Path(__file__).resolve().parent
     p = here / "aa_charts_export.json"
     res = parse_aa_charts(str(p))
-    for k, v in res.items():
+    if res.is_err():
+        print("PARSE FAILED:", res.error)
+        raise SystemExit(1)
+    for k, v in res.unwrap().items():
         print(f"{k}: {len(v)} rows; sample {v[:2]}")

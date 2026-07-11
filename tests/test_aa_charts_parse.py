@@ -16,7 +16,7 @@ def _parse_module():
     import sys
     sys.path.insert(0, str(REPO / "data"))
     from sources.aa._parse_charts import parse_aa_charts, CHART_MAP
-    return parse_aa_charts(str(CHARTS)), CHART_MAP
+    return parse_aa_charts(str(CHARTS)).unwrap(), CHART_MAP
 
 
 # ── Phase A: core extraction ──
