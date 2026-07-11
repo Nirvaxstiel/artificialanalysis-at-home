@@ -1,8 +1,8 @@
 # Data Acquisition Reference
 
-How every source in the pipeline is **obtained** — method, auth, script, freshness, and repro steps. This complements `LLM Provider Pricing Analysis.md` (what each source is *used for*) and `README.md` (build order).
+How every source in the pipeline is **obtained** — method, auth, script, freshness, and repro steps. This complements `LLM Provider Pricing Analysis.md` (what each source is *used for*) and `README.md` (build order and orchestrator modes).
 
-> **Golden rule:** `_build_registry.py` reads raw source files only — never pipeline output. Each source below lands as a file under `data/sources/`; the build scripts consume files, not live endpoints.
+> **Golden rule:** `_build_registry.py` reads raw source files only — never pipeline output. Each source below lands as a file under `data/sources/`; the build scripts consume files, not live endpoints. The only network access in the pipeline is `_pull_sources.py` (OpenRouter / LiveBench / OpenLLM), invoked by the full build only.
 
 ## Acquisition matrix
 
@@ -13,7 +13,7 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 | 1B | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` |
 | 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (551 models) | pulled 2026-07-09 |
 | 3 | AA image charts | **Vision / OCR transcription** | none | Screenshots of AA chart images → transcribed to JSON | `aa/img/aa_img_models.json` (99 models) | manual, per batch |
-| 4 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (2262 models) | on `_pull_sources` run |
+| 4 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (~344 models) | on full build (pull) |
 | 5 | LiveBench | **CSV download** (GitHub raw) | none | `_pull_sources.py` | `livebench_2026_01_08.csv`, `livebench_categories_2026_01_08.json` | pinned date 2026-01-08 |
 | 6 | OpenLLM v2 | **Parquet file** (manually placed) | none | Downloaded separately → `openllm_v2.parquet`, then `_pull_sources.py` reads it | `openllm_v2.parquet` → `openllm_aa_subset.json` | manual, not fetched by script |
 | 7 | Dirac.run | **Manual HTML table transcription** | none | Copy the full table from `dirac.run/posts/cache-hit-rates-agents` → `cache_hit_rates.json` | `dirac/cache_hit_rates.json` (276 rows) | manual, per snapshot |
@@ -118,6 +118,7 @@ Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. T
 > **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), and live-API (#2) all feed the same `aa.*` namespace via `get_aa_models()` merge. The SVG scrape (#1A) is now the preferred way to add new models + authoritative metrics without vision/scraping.
 
 ## Repro checklist (full refresh)
+
 ```bash
 # Manual (outside script):
 #  - run external AA scraper → aa/raw + aa/enriched
@@ -128,9 +129,11 @@ Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. T
 #  - download Arena JSON → arena_code.json, arena_text.json
 #  - download openllm_v2.parquet → data/sources/
 
-# Automated:
-python data/_pull_sources.py        # OpenRouter, LiveBench, OpenLLM(parquet)
-python data/_build_registry.py      # merge all → model_registry.json
-python data/_build_axes.py          # → axes_catalog.json
-python data/_build_dashboard_data.py# → processed.js
+# Full build (network pull of OpenRouter/LiveBench/OpenLLM, then registry → axes → dashboard):
+python -m data._pipeline            # no arg → build() pulls + builds
+
+# Offline rebuild (uses committed sources, no network):
+python -m data._pipeline build      # or: build_from_cache
 ```
+
+`_pull_sources.py` itself (with no arg) only fetches OpenRouter / LiveBench / OpenLLM v2. The manual sources above are committed files consumed by `_build_registry` regardless of pull.
