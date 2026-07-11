@@ -7,7 +7,7 @@ import sys, os
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "data"))
-from _result import ok, err, pipe, do, from_fn  # noqa: E402
+from _result import ok, err, from_fn  # noqa: E402
 
 
 def test_ok_unwrap():
@@ -44,33 +44,9 @@ def test_map_transforms_ok_only():
     assert err("e").map(lambda v: v + 5).is_err()
 
 
-def test_pipe_left_to_right():
-    inc = lambda v: ok(v + 1)
-    dbl = lambda v: ok(v * 2)
-    r = pipe(1, inc, dbl, inc)
-    assert r.unwrap() == 5  # ((1+1)*2)+1
-
-
-def test_pipe_stops_at_first_err():
-    calls = []
-    r = pipe(1,
-             lambda v: (calls.append(v), ok(v))[1],
-             lambda _: err("fail"),
-             lambda v: (calls.append("late"), ok(v))[1])
-    assert r.is_err()
-    assert r.error == "fail"
-    assert calls == [1]  # third step never ran
-
-
-def test_do_collects_when_all_ok():
-    r = do(lambda: ok(1), lambda: ok(2), lambda: ok(3))
-    assert r.unwrap() == [1, 2, 3]
-
-
-def test_do_stops_at_first_err():
-    r = do(lambda: ok(1), lambda: err("nope"), lambda: ok(3))
-    assert r.is_err()
-    assert r.error == "nope"
+def test_unwrap_or_default_chain():
+    assert err("e").unwrap_or(0) == 0
+    assert ok(9).unwrap_or(0) == 9
 
 
 def test_from_fn_captures_exception():

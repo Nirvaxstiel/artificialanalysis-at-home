@@ -1,7 +1,7 @@
 import json, os, re
 from pathlib import Path
 
-from _result import ok, err, pipe
+from _result import ok, err
 
 BASE = Path(__file__).resolve().parent if "__file__" in dir() else Path.cwd()
 DATA = BASE / "data" if (BASE / "data").exists() else BASE

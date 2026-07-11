@@ -1,9 +1,7 @@
 """Result monad (Either) for result-oriented, error-short-circuiting pipelines.
 
 A Result is either Ok(value) or Err(error). `.bind` (>>=) threads a value through
-a step that returns another Result; on Err the chain short-circuits. `.pipe` composes
-a left-to-right flow: pipe(x, f, g, h) == f(x).bind(g).bind(h). `do` collects a list
-of steps, stops at the first Err, and returns Ok([...]) with every Ok value.
+a step that returns another Result; on Err the chain short-circuits.
 
 No dependencies, no I/O. Importable from tests and pipeline stages alike.
 """
@@ -79,27 +77,6 @@ def ok(value: T) -> Ok[T]:
 
 def err(error: E) -> Err[E]:
     return Err(error)
-
-
-def pipe(value: T, *steps: Callable[[Any], "Result[Any, E]"]) -> "Result[Any, E]":
-    """Left-to-right Result flow. pipe(x, f, g) == f(x).bind(g)."""
-    result: Result[Any, E] = ok(value)
-    for step in steps:
-        if result.is_err():
-            return result
-        result = result.bind(step)
-    return result
-
-
-def do(*steps: Callable[[], "Result[T, E]"]) -> "Result[list[T], E]":
-    """Run steps in order; stop at first Err; Ok collects every Ok value."""
-    values: list[T] = []
-    for step in steps:
-        r = step()
-        if r.is_err():
-            return r
-        values.append(r.unwrap())
-    return ok(values)
 
 
 def from_fn(fn: Callable[[], T]) -> "Result[T, Exception]":

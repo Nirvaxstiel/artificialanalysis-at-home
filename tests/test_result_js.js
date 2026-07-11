@@ -1,6 +1,6 @@
 // Black-box contract tests for viz/_result.js. Node-only, no jsdom, no deps.
 // Import the module via require; assert observable Result behaviour by input->output.
-const { ok, err, pipe, do: doSteps, fromFn } = require("../viz/_result.js");
+const { ok, err, fromFn } = require("../viz/_result.js");
 
 let pass = 0, fail = 0;
 function check(name, cond) {
@@ -25,18 +25,9 @@ check("ok bind chains", r2.unwrap() === 40);
 // map
 check("map ok only", ok(2).map(v => v + 5).unwrap() === 7 && err("e").map(v => v).isErr());
 
-// pipe left-to-right, stops at err
-check("pipe chains", pipe(1, v => ok(v + 1), v => ok(v * 2), v => ok(v + 1)).unwrap() === 5);
-let calls = [];
-let r3 = pipe(1,
-  v => { calls.push(v); return ok(v); },
-  () => err("fail"),
-  v => { calls.push("late"); return ok(v); });
-check("pipe stops at err", r3.isErr() && r3.error === "fail" && calls.length === 1);
-
-// do collects / stops
-check("do collects", doSteps(() => ok(1), () => ok(2), () => ok(3)).unwrap().join(",") === "1,2,3");
-check("do stops", doSteps(() => ok(1), () => err("nope"), () => ok(3)).isErr());
+// unwrapOr
+check("err unwrapOr", err("e").unwrapOr(0) === 0);
+check("ok unwrapOr", ok(9).unwrapOr(0) === 9);
 
 // fromFn
 check("fromFn catches", fromFn(() => { throw new Error("boom"); }).isErr());

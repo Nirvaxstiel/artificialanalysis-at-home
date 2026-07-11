@@ -1,6 +1,5 @@
 // Result monad (Either) for result-oriented, error-short-circuiting pipelines.
 // Mirrors data/_result.py. Ok(value) | Err(error). .bind short-circuits on Err.
-// pipe(x, f, g) composes left-to-right; do(...steps) stops at first Err.
 // No dependencies, no DOM — importable from viz modules and node tests.
 
 function ok(value) {
@@ -31,25 +30,6 @@ function err(error) {
   };
 }
 
-function pipe(value, ...steps) {
-  let result = ok(value);
-  for (const step of steps) {
-    if (result.isErr()) return result;
-    result = result.bind(step);
-  }
-  return result;
-}
-
-function doSteps(...steps) {
-  const values = [];
-  for (const step of steps) {
-    const r = step();
-    if (r.isErr()) return r;
-    values.push(r.unwrap());
-  }
-  return ok(values);
-}
-
 function fromFn(fn) {
   try {
     return ok(fn());
@@ -59,8 +39,8 @@ function fromFn(fn) {
 }
 
 if (typeof window !== 'undefined') {
-  window.Result = { ok, err, pipe, do: doSteps, fromFn };
+  window.Result = { ok, err, fromFn };
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ok, err, pipe, do: doSteps, fromFn };
+  module.exports = { ok, err, fromFn };
 }
