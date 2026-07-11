@@ -302,21 +302,7 @@ def _build_meta_axes(models):
             for mid, label, typ, unit, hib, desc in specs]
 
 
-def run(ctx=None):
-    if ctx and ctx.get("root"):
-        BASE = Path(ctx["root"])
-    else:
-        BASE = Path(__file__).resolve().parent.parent
-
-    REG = os.path.join(BASE, "data", "model_registry.json")
-    OUT = os.path.join(BASE, "data", "axes_catalog.json")
-
-    reg_r = _load_json(REG)
-    if reg_r.is_err():
-        return err(reg_r.error)
-    reg = reg_r.unwrap()
-
-    models = reg["models"]
+def _assemble_axes(models):
     axes = (
         _build_aa_pricing_axes(models)
         + _build_cost_breakdown_axes(models)
@@ -334,15 +320,20 @@ def run(ctx=None):
         + _build_openrouter_axes(models)
         + _build_meta_axes(models)
     )
-
     axes.sort(key=lambda a: (a["source"], a["type"], -a["models_have"]))
+    return axes
 
+
+def _finalize_axis_ranges(axes):
     for a in axes:
         if a["range"] and a["range"][0] != a["range"][1]:
             a["normalize_range"] = [0, 100]
         else:
             a["normalize_range"] = None
+    return axes
 
+
+def _group_sources(axes):
     source_groups = {}
     speculative_sources = {"AA_IMG"}
     for a in axes:
@@ -352,7 +343,10 @@ def run(ctx=None):
                                 "speculative": g in speculative_sources}
         source_groups[g]["axes"].append(a["id"])
         source_groups[g]["count"] += 1
+    return source_groups
 
+
+def _compute_axis_pairs(models, axes, source_groups):
     sources_list = sorted(set(a["source"] for a in axes))
     n_axis_pairs = {}
     for s1 in sources_list:
@@ -371,7 +365,11 @@ def run(ctx=None):
                     overlap += 1
             if overlap >= 3:
                 n_axis_pairs[f"{s1}×{s2}"] = overlap
+    return n_axis_pairs, source_groups
 
+
+def _write_axes_catalog(axes, models, reg, source_groups, n_axis_pairs, BASE):
+    OUT = os.path.join(BASE, "data", "axes_catalog.json")
     output = {
         "meta": {
             "generated": reg["meta"]["generated"],
@@ -387,10 +385,13 @@ def run(ctx=None):
             "notes": "number of models with data from both source groups (non-meta axes only)",
         }
     }
-
     with open(OUT, "w") as f:
         json.dump(output, f, indent=2)
+    _print_axes_summary(axes, source_groups, n_axis_pairs, OUT)
+    return ok({"axis_count": len(axes), "source_count": len(source_groups)})
 
+
+def _print_axes_summary(axes, source_groups, n_axis_pairs, OUT):
     print(f"Axes catalog: {len(axes)} axes from {len(source_groups)} sources → {OUT}")
     print(f"  {len(n_axis_pairs)} source-pair overlaps tracked")
     print("\n── AXES BY SOURCE ──")
@@ -406,7 +407,39 @@ def run(ctx=None):
     print("\n── CROSS-SOURCE OVERLAP (models with both) ──")
     for pair, count in sorted(n_axis_pairs.items(), key=lambda x: -x[1]):
         print(f"  {pair:40s} {count:4d} models")
-    return ok({"axis_count": len(axes), "source_count": len(source_groups)})
+
+
+def run(ctx=None):
+    if ctx and ctx.get("root"):
+        BASE = Path(ctx["root"])
+    else:
+        BASE = Path(__file__).resolve().parent.parent
+
+    REG = os.path.join(BASE, "data", "model_registry.json")
+    OUT = os.path.join(BASE, "data", "axes_catalog.json")
+
+    state = {}
+
+    steps = (
+        ("load_registry", lambda: _load_json(REG)),
+        ("axes", lambda: ok(_assemble_axes(state["load_registry"]["models"]))),
+        ("finalize_ranges", lambda: ok(_finalize_axis_ranges(state["axes"]))),
+        ("group_sources", lambda: ok(_group_sources(state["axes"]))),
+        ("compute_pairs", lambda: ok(_compute_axis_pairs(
+            state["load_registry"]["models"], state["axes"], state["group_sources"]))),
+    )
+    for name, fn in steps:
+        r = fn()
+        if r.is_err():
+            return err(r.error)
+        state[name] = r.unwrap()
+
+    n_axis_pairs, source_groups = state["compute_pairs"]
+    return _write_axes_catalog(
+        state["finalize_ranges"], state["load_registry"]["models"],
+        state["load_registry"], source_groups, n_axis_pairs, BASE,
+    )
+
 
 if __name__ == "__main__":
     result = run()
