@@ -124,7 +124,7 @@ function loadModels(payload) {
   return ProjectionRow.load(raw);
 }
 
-// ── Export to window ──
+// Expose domain API on window
 
 window.Archetype = Archetype;
 window.ModelType = ModelType;
