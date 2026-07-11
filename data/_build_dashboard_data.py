@@ -8,6 +8,7 @@ sys.path.insert(0, str(BASE))
 
 from project_axes import ProjectionEngine
 from _result import ok, err
+from _pipeline import Pipeline
 from _domain import (
     ProjectionRow, ProjectionRowMeta,
     Archetype, ModelType,
@@ -308,23 +309,17 @@ def _print_dashboard_summary(output):
 
 
 def build(ctx=None):
-    state = {"engine": ProjectionEngine()}
-
-    steps = (
-        ("project_rows", lambda: ok(_project_rows(state["engine"], _PROJECTION_AXES))),
-        ("normalize_radar", lambda: ok(_normalize_radar_scores(state["project_rows"]) or state["project_rows"])),
-        ("payload", lambda: ok(_build_payload(state["project_rows"]))),
-        ("wrapper", lambda: ok(_build_js_wrapper(state["payload"]))),
-        ("write_js", lambda: _write_js(BASE / "processed.js", state["wrapper"])),
-    )
-    for name, fn in steps:
-        r = fn()
-        if r.is_err():
-            return err(r.error)
-        state[name] = r.unwrap()
-
-    _print_dashboard_summary(state["project_rows"])
-    return ok(state["payload"])
+    pipeline = (Pipeline({"engine": ProjectionEngine(), "js_path": str(BASE / "processed.js")})
+        .then("project_rows", lambda c: ok(_project_rows(c["engine"], _PROJECTION_AXES)))
+        .then("normalize_radar", lambda c: ok(_normalize_radar_scores(c["project_rows"]) or c["project_rows"]))
+        .then("payload", lambda c: ok(_build_payload(c["project_rows"])))
+        .then("wrapper", lambda c: ok(_build_js_wrapper(c["payload"])))
+        .then("write_js", lambda c: _write_js(c["js_path"], c["wrapper"])))
+    pipeline.run()
+    if pipeline.ctx.get("_failed_step"):
+        return err(pipeline.ctx["_error"])
+    _print_dashboard_summary(pipeline.ctx["project_rows"])
+    return ok(pipeline.ctx["payload"])
 
 
 if __name__ == "__main__":

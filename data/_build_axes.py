@@ -2,6 +2,7 @@ import json, os, csv, re
 from pathlib import Path
 
 from _result import ok, err
+from _pipeline import Pipeline
 
 
 def _load_json(path: str):
@@ -416,29 +417,21 @@ def run(ctx=None):
         BASE = Path(__file__).resolve().parent.parent
 
     REG = os.path.join(BASE, "data", "model_registry.json")
-    OUT = os.path.join(BASE, "data", "axes_catalog.json")
 
-    state = {}
-
-    steps = (
-        ("load_registry", lambda: _load_json(REG)),
-        ("axes", lambda: ok(_assemble_axes(state["load_registry"]["models"]))),
-        ("finalize_ranges", lambda: ok(_finalize_axis_ranges(state["axes"]))),
-        ("group_sources", lambda: ok(_group_sources(state["axes"]))),
-        ("compute_pairs", lambda: ok(_compute_axis_pairs(
-            state["load_registry"]["models"], state["axes"], state["group_sources"]))),
-    )
-    for name, fn in steps:
-        r = fn()
-        if r.is_err():
-            return err(r.error)
-        state[name] = r.unwrap()
-
-    n_axis_pairs, source_groups = state["compute_pairs"]
-    return _write_axes_catalog(
-        state["finalize_ranges"], state["load_registry"]["models"],
-        state["load_registry"], source_groups, n_axis_pairs, BASE,
-    )
+    pipeline = (Pipeline({"reg_path": REG, "base": BASE})
+        .then("load_registry", lambda c: _load_json(c["reg_path"]))
+        .then("axes", lambda c: ok(_assemble_axes(c["load_registry"]["models"])))
+        .then("finalize_ranges", lambda c: ok(_finalize_axis_ranges(c["axes"])))
+        .then("group_sources", lambda c: ok(_group_sources(c["axes"])))
+        .then("compute_pairs", lambda c: _compute_axis_pairs(
+            c["load_registry"]["models"], c["axes"], c["group_sources"])[0])
+        .then("write", lambda c: _write_axes_catalog(
+            c["finalize_ranges"], c["load_registry"]["models"],
+            c["load_registry"], c["group_sources"], c["compute_pairs"], c["base"])))
+    pipeline.run()
+    if pipeline.ctx.get("_failed_step"):
+        return err(pipeline.ctx["_error"])
+    return ok(pipeline.ctx["write"])
 
 
 if __name__ == "__main__":

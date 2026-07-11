@@ -13,6 +13,7 @@ from ._canonical import (
 )
 from ._domain._entities import RegistryModel
 from _result import ok, err
+from _pipeline import Pipeline
 
 
 BASE = None
@@ -321,17 +322,25 @@ def run(ctx=None):
         "counts": {},
     }
 
-    current_state = state
-    for step in (step_aa, step_aa_img, step_scrape_progress, step_dirac,
-                 step_livebench, step_arena_text, step_arena_code,
-                 step_openllm, step_openrouter, step_misc,
-                 step_name_map, step_write):
-        result = step(current_state)
-        if result.is_err():
-            return err(result.error)
-        current_state = result.unwrap()
+    pipeline = (Pipeline(state)
+        .then("step_aa", lambda c: step_aa(c))
+        .then("step_aa_img", lambda c: step_aa_img(c))
+        .then("step_scrape_progress", lambda c: step_scrape_progress(c))
+        .then("step_dirac", lambda c: step_dirac(c))
+        .then("step_livebench", lambda c: step_livebench(c))
+        .then("step_arena_text", lambda c: step_arena_text(c))
+        .then("step_arena_code", lambda c: step_arena_code(c))
+        .then("step_openllm", lambda c: step_openllm(c))
+        .then("step_openrouter", lambda c: step_openrouter(c))
+        .then("step_misc", lambda c: step_misc(c))
+        .then("step_name_map", lambda c: step_name_map(c))
+        .then("step_write", lambda c: step_write(c)))
+    pipeline.run()
 
-    output_models = current_state["output_models"]
+    if pipeline.ctx.get("_failed_step"):
+        return err(pipeline.ctx["_error"])
+
+    output_models = pipeline.ctx["output_models"]
 
     # ── Summary ──
     print("\n── SOURCE COVERAGE ──")
@@ -367,7 +376,7 @@ def run(ctx=None):
         p = [s_ for s_ in m.get("pricing", {}) if m["pricing"][s_]]
         b = [s_ for s_ in m.get("benchmarks", {}) if m["benchmarks"][s_]]
         print(f"  {m['id']:40s} P:{','.join(p):25s} B:{','.join(b)}")
-    return ok({"model_count": len(output_models), "name_map_size": len(current_state["name_map"])})
+    return ok({"model_count": len(output_models), "name_map_size": len(pipeline.ctx["name_map"])})
 
 if __name__ == "__main__":
     result = run()
