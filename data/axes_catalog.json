@@ -642,7 +642,7 @@
       "type": "quality",
       "unit": "s",
       "higher_is_better": false,
-      "description": "Wall-clock seconds to complete one Intelligence Index task; lower is better",
+      "description": "Wall-clock seconds to complete one Intelligence Index Task; lower is better",
       "models_have": 53,
       "range": [
         0.3,

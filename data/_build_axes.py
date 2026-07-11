@@ -59,78 +59,72 @@ def _get_value(m, aid):
     return None
 
 
-def run(ctx=None):
-    if ctx and ctx.get("root"):
-        BASE = Path(ctx["root"])
-    else:
-        BASE = Path(__file__).resolve().parent.parent
+def _build_aa_pricing_axes(models):
+    return [
+        _build_axis(models, "aa.inp_price", "AA", "Input Price ($/Mtok)", "pricing", "$/M tok", False,
+                    "AA input price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.out_price", "AA", "Output Price ($/Mtok)", "pricing", "$/M tok", False,
+                    "AA output price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.blended", "AA", "Blended Price ($/Mtok)", "pricing", "$/M tok", False,
+                    "AA blended (weighted average) price", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.cache_hit_price", "AA", "Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
+                    "AA cache read price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.cost_per_task", "AA", "Cost per Task ($)", "pricing", "$", False,
+                    "AA estimated cost per standard task", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.tokens_m", "AA", "Tokens per Task (M) - verbosity", "pricing", "M tokens", False,
+                    "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.useful_cost", "AA", "Useful Cost ($)", "pricing", "$", False,
+                    "AA cost attributable to useful output (non-reasoning)", "Pricing", ["pricing", "aa"], range_decimals=4),
+        _build_axis(models, "aa.reasoning_tax_pct", "AA", "Reasoning Tax (%)", "pricing", "%", False,
+                    "AA premium percentage paid for reasoning tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
+    ]
 
-    REG = os.path.join(BASE, "data", "model_registry.json")
-    OUT = os.path.join(BASE, "data", "axes_catalog.json")
 
-    reg_r = _load_json(REG)
-    if reg_r.is_err():
-        return err(reg_r.error)
-    reg = reg_r.unwrap()
-
-    models = reg["models"]
-    axes = []
-
-    ba = lambda *a, **kw: axes.append(_build_axis(models, *a, **kw))
-
-    # ── AA PRICING ──
-    ba("aa.inp_price", "AA", "Input Price ($/Mtok)", "pricing", "$/M tok", False,
-      "AA input price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.out_price", "AA", "Output Price ($/Mtok)", "pricing", "$/M tok", False,
-      "AA output price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.blended", "AA", "Blended Price ($/Mtok)", "pricing", "$/M tok", False,
-      "AA blended (weighted average) price", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.cache_hit_price", "AA", "Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
-      "AA cache read price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.cost_per_task", "AA", "Cost per Task ($)", "pricing", "$", False,
-      "AA estimated cost per standard task", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.tokens_m", "AA", "Tokens per Task (M) - verbosity", "pricing", "M tokens", False,
-      "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.useful_cost", "AA", "Useful Cost ($)", "pricing", "$", False,
-      "AA cost attributable to useful output (non-reasoning)", "Pricing", ["pricing", "aa"], range_decimals=4)
-    ba("aa.reasoning_tax_pct", "AA", "Reasoning Tax (%)", "pricing", "%", False,
-      "AA premium percentage paid for reasoning tokens", "Pricing", ["pricing", "aa"], range_decimals=4)
-
-    # ── COST BREAKDOWN ──
+def _build_cost_breakdown_axes(models):
     cb_path = ["pricing", "aa", "cost_segments"]
-    ba("aa.cost_seg_total", "AA", "Total Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — total per task", "Cost Breakdown", cb_path, range_decimals=4)
-    ba("aa.cost_seg_answer", "AA", "Answer Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — answer tokens", "Cost Breakdown", cb_path, range_decimals=4)
-    ba("aa.cost_seg_reasoning", "AA", "Reasoning Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — reasoning tokens", "Cost Breakdown", cb_path, range_decimals=4)
-    ba("aa.cost_seg_cache_write", "AA", "Cache Write Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — cache write", "Cost Breakdown", cb_path, range_decimals=4)
-    ba("aa.cost_seg_cache_hit", "AA", "Cache Hit Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — cache read", "Cost Breakdown", cb_path, range_decimals=4)
-    ba("aa.cost_seg_input", "AA", "Input Cost per Task ($)", "pricing", "$", False,
-      "Cost breakdown — input tokens", "Cost Breakdown", cb_path, range_decimals=4)
+    return [
+        _build_axis(models, "aa.cost_seg_total", "AA", "Total Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — total per task", "Cost Breakdown", cb_path, range_decimals=4),
+        _build_axis(models, "aa.cost_seg_answer", "AA", "Answer Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — answer tokens", "Cost Breakdown", cb_path, range_decimals=4),
+        _build_axis(models, "aa.cost_seg_reasoning", "AA", "Reasoning Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — reasoning tokens", "Cost Breakdown", cb_path, range_decimals=4),
+        _build_axis(models, "aa.cost_seg_cache_write", "AA", "Cache Write Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — cache write", "Cost Breakdown", cb_path, range_decimals=4),
+        _build_axis(models, "aa.cost_seg_cache_hit", "AA", "Cache Hit Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — cache read", "Cost Breakdown", cb_path, range_decimals=4),
+        _build_axis(models, "aa.cost_seg_input", "AA", "Input Cost per Task ($)", "pricing", "$", False,
+                    "Cost breakdown — input tokens", "Cost Breakdown", cb_path, range_decimals=4),
+    ]
 
-    # ── AA PERFORMANCE ──
+
+def _build_aa_performance_axes(models):
     perf_path = ["pricing", "aa"]
-    ba("aa.speed_tps", "AA", "Speed (tokens/s)", "performance", "tok/s", True,
-      "AA output speed in tokens per second", "Performance", perf_path, range_decimals=0)
-    ba("aa.ttft", "AA", "Time to First Token (s)", "performance", "s", False,
-      "AA median time to first token in seconds", "Performance", perf_path, range_decimals=0)
+    return [
+        _build_axis(models, "aa.speed_tps", "AA", "Speed (tokens/s)", "performance", "tok/s", True,
+                    "AA output speed in tokens per second", "Performance", perf_path, range_decimals=0),
+        _build_axis(models, "aa.ttft", "AA", "Time to First Token (s)", "performance", "s", False,
+                    "AA median time to first token in seconds", "Performance", perf_path, range_decimals=0),
+    ]
 
-    # ── AA QUALITY ──
+
+def _build_aa_quality_axes(models):
     qual_path = ["benchmarks", "aa"]
-    ba("aa.intel", "AA", "AA Intelligence Score (0-100)", "quality", "points", True,
-      "AA composite intelligence score (Pareto index)", "AA Quality", qual_path, range_decimals=4)
-    ba("aa.iq_per_dollar", "AA", "IQ per Dollar ($⁻¹)", "quality", "IQ/$", True,
-      "AA intelligence per dollar spent", "AA Quality", qual_path, range_decimals=4)
-    ba("aa.iq_per_mtok", "AA", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
-      "AA intelligence per million tokens", "AA Quality", qual_path, range_decimals=4)
-    ba("aa.iq_per_mtokdollar", "AA", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
-      "AA intelligence per million token-dollars", "AA Quality", qual_path, range_decimals=4)
+    return [
+        _build_axis(models, "aa.intel", "AA", "AA Intelligence Score (0-100)", "quality", "points", True,
+                    "AA composite intelligence score (Pareto index)", "AA Quality", qual_path, range_decimals=4),
+        _build_axis(models, "aa.iq_per_dollar", "AA", "IQ per Dollar ($⁻¹)", "quality", "IQ/$", True,
+                    "AA intelligence per dollar spent", "AA Quality", qual_path, range_decimals=4),
+        _build_axis(models, "aa.iq_per_mtok", "AA", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
+                    "AA intelligence per million tokens", "AA Quality", qual_path, range_decimals=4),
+        _build_axis(models, "aa.iq_per_mtokdollar", "AA", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
+                    "AA intelligence per million token-dollars", "AA Quality", qual_path, range_decimals=4),
+    ]
 
-    # ── AA LIVE API BENCHMARKS (aa_api_live.json: real eval scores) ──
-    for aid, label, desc in [
+
+def _build_aa_benchmark_axes(models):
+    qual_path = ["benchmarks", "aa"]
+    live_api = [
         ("aa.aa_coding_index", "AA Coding Index", "AA composite coding capability index"),
         ("aa.aa_math_index", "AA Math Index", "AA composite math capability index"),
         ("aa.gpqa", "GPQA", "Graduate-level Google-proof QA accuracy (0-1)"),
@@ -147,85 +141,64 @@ def run(ctx=None):
         ("aa.tau_banking", "TAU2 Banking", "TAU-bench banking split accuracy (0-1)"),
         ("aa.terminalbench_hard", "TerminalBench Hard", "TerminalBench hard subset accuracy (0-1)"),
         ("aa.terminalbench_v2_1", "TerminalBench v2.1", "TerminalBench v2.1 accuracy (0-1)"),
-    ]:
-        ba(aid, "AA", label, "quality", "score", True, desc, "AA Benchmarks", qual_path, range_decimals=4)
+    ]
+    axes = [_build_axis(models, aid, "AA", label, "quality", "score", True, desc, "AA Benchmarks", qual_path, range_decimals=4)
+            for aid, label, desc in live_api]
+    axes.append(_build_axis(models, "aa.omniscience_hallucination_rate", "AA", "Omniscience Hallucination Rate", "quality", "%", False,
+                            "AA omniscience incorrect rate (0-1); lower is better", "AA Benchmarks", qual_path, range_decimals=4))
+    axes.append(_build_axis(models, "aa.briefcase_analytical_quality_elo", "AA", "Briefcase Analytical Quality Elo", "quality", "elo", True,
+                            "AA-Briefcase analytical-quality Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1))
+    axes.append(_build_axis(models, "aa.briefcase_presentation_elo", "AA", "Briefcase Presentation Elo", "quality", "elo", True,
+                            "AA-Briefcase presentation Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1))
+    axes.append(_build_axis(models, "aa.time_per_task", "AA", "Time per Intelligence Index Task", "quality", "s", False,
+                            "Wall-clock seconds to complete one Intelligence Index Task; lower is better", "AA Benchmarks", qual_path, range_decimals=4))
+    return axes
 
-    # ── AA JSON-LD EXPORT (console query) ──
-    ba("aa.omniscience_hallucination_rate", "AA", "Omniscience Hallucination Rate", "quality", "%", False,
-       "AA omniscience incorrect rate (0-1); lower is better", "AA Benchmarks", qual_path, range_decimals=4)
-    ba("aa.briefcase_analytical_quality_elo", "AA", "Briefcase Analytical Quality Elo", "quality", "elo", True,
-       "AA-Briefcase analytical-quality Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1)
-    ba("aa.briefcase_presentation_elo", "AA", "Briefcase Presentation Elo", "quality", "elo", True,
-       "AA-Briefcase presentation Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1)
-    ba("aa.time_per_task", "AA", "Time per Intelligence Index Task", "quality", "s", False,
-       "Wall-clock seconds to complete one Intelligence Index task; lower is better", "AA Benchmarks", qual_path, range_decimals=4)
 
-    # ── AA IMAGE CHARTS (vision-transcribed) ──
+def _build_aa_image_axes(models):
     img_qual_path = ["benchmarks", "aa_img"]
-    for aid, label, unit, hib, desc in [
-        ("aa_img.omniscience_index", "AA Omniscience Index", "points", True,
-         "AA omniscience index (-100..100): rewards correct, penalizes hallucination"),
-        ("aa_img.omniscience_accuracy", "Omniscience Accuracy (%)", "%", True,
-         "AA omniscience share of questions answered correctly"),
-        ("aa_img.omniscience_hallucination_rate", "Omniscience Hallucination (%)", "%", False,
-         "AA omniscience incorrect / (incorrect + partial + not attempted)"),
-        ("aa_img.briefcase_elo", "Briefcase Elo", "points", True,
-         "AA-Briefcase agentic knowledge-work Elo (rubric + analytical + presentation)"),
-        ("aa_img.briefcase_analytical_quality_elo", "Briefcase Analytical Elo", "points", True,
-         "AA-Briefcase analytical quality Elo"),
-        ("aa_img.briefcase_presentation_elo", "Briefcase Presentation Elo", "points", True,
-         "AA-Briefcase presentation Elo"),
-        ("aa_img.briefcase_rubric_score", "Briefcase Rubric (%)", "%", True,
-         "AA-Briefcase rubric pass rate"),
-        ("aa_img.agentic_index", "Agentic Index", "points", True,
-         "AA agentic capabilities index (0-100)"),
-        ("aa_img.coding_index", "Coding Index", "points", True,
-         "AA coding index (0-100), weighted Terminal-Bench + SciCode"),
-        ("aa_img.openness_index", "Openness Index", "points", True,
-         "AA openness index (0-100), higher = more open"),
-        ("aa_img.e2e_response_time_s", "End-to-End Response Time (s)", "s", False,
-         "AA time to output 500 tokens (incl. thinking)"),
-        ("aa_img.ttft_variance", "TTFT Variance (s)", "s", False,
-         "AA time-to-first-token variance (lower = more stable)"),
-    ]:
-        axes.append(_build_axis(
-            models, aid, "AA_IMG", label, "quality", unit, hib, desc,
-            "AA Image Charts", img_qual_path, range_decimals=4))
+    img_quality = [
+        ("aa_img.omniscience_index", "AA Omniscience Index", "points", True, "AA omniscience index (-100..100): rewards correct, penalizes hallucination"),
+        ("aa_img.omniscience_accuracy", "Omniscience Accuracy (%)", "%", True, "AA omniscience share of questions answered correctly"),
+        ("aa_img.omniscience_hallucination_rate", "Omniscience Hallucination (%)", "%", False, "AA omniscience incorrect / (incorrect + partial + not attempted)"),
+        ("aa_img.briefcase_elo", "Briefcase Elo", "points", True, "AA-Briefcase agentic knowledge-work Elo (rubric + analytical + presentation)"),
+        ("aa_img.briefcase_analytical_quality_elo", "Briefcase Analytical Elo", "points", True, "AA-Briefcase analytical quality Elo"),
+        ("aa_img.briefcase_presentation_elo", "Briefcase Presentation Elo", "points", True, "AA-Briefcase presentation Elo"),
+        ("aa_img.briefcase_rubric_score", "Briefcase Rubric (%)", "%", True, "AA-Briefcase rubric pass rate"),
+        ("aa_img.agentic_index", "Agentic Index", "points", True, "AA agentic capabilities index (0-100)"),
+        ("aa_img.coding_index", "Coding Index", "points", True, "AA coding index (0-100), weighted Terminal-Bench + SciCode"),
+        ("aa_img.openness_index", "Openness Index", "points", True, "AA openness index (0-100), higher = more open"),
+        ("aa_img.e2e_response_time_s", "End-to-End Response Time (s)", "s", False, "AA time to output 500 tokens (incl. thinking)"),
+        ("aa_img.ttft_variance", "TTFT Variance (s)", "s", False, "AA time-to-first-token variance (lower = more stable)"),
+    ]
+    img_meta = [
+        ("meta.params_total_b", "Total Parameters (B)", True, "Model total parameter count in billions (from AA image charts)"),
+        ("meta.params_active_b", "Active Parameters (B)", True, "Model active (inference) parameter count in billions (from AA image charts)"),
+    ]
+    axes = [_build_axis(models, aid, "AA_IMG", label, "quality", unit, hib, desc, "AA Image Charts", img_qual_path, range_decimals=4)
+            for aid, label, unit, hib, desc in img_quality]
+    for aid, label, hib, desc in img_meta:
+        axes.append(_build_axis(models, aid, "AA_IMG", label, "meta", "B", hib, desc, "AA Image Charts", ["meta"]))
+    return axes
 
-    for aid, label, hib, desc in [
-        ("meta.params_total_b", "Total Parameters (B)", True,
-         "Model total parameter count in billions (from AA image charts)"),
-        ("meta.params_active_b", "Active Parameters (B)", True,
-         "Model active (inference) parameter count in billions (from AA image charts)"),
-    ]:
-        axes.append(_build_axis(
-            models, aid, "AA_IMG", label, "meta", "B", hib, desc,
-            "AA Image Charts", ["meta"]))
 
-    # ── DIRAC.RUN (observed cache hit rates) ──
+def _build_dirac_axes(models):
     dirac_path = ["benchmarks", "dirac"]
-    axes.append(_build_axis(
-        models, "dirac.cache_hit_rate_max", "Dirac.run", "Cache Hit Rate (max, %)",
-        "performance", "%", True,
-        "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). "
-        "Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
-        "Cache Efficiency", dirac_path, range_decimals=2))
+    return [_build_axis(models, "dirac.cache_hit_rate_max", "Dirac.run", "Cache Hit Rate (max, %)", "performance", "%", True,
+                        "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.", "Cache Efficiency", dirac_path, range_decimals=2)]
 
-    # ── RELEASE DATE (from aa_api_live.json, AA API) ──
-    axes.append(_build_axis(
-        models, "meta.release_date", "AA", "Release Date", "meta", "date", True,
-        "Model release date from the live Artificial Analysis API (aa_api_live.json). "
-        "Useful for recency/version-comparison; not a quality metric.",
-        "Provenance", ["meta"], range_decimals=0))
 
-    # ── CONTEXT WINDOW (from OpenRouter context_length) ──
-    axes.append(_build_axis(
-        models, "meta.context_window", "OpenRouter", "Context Window (tokens)", "meta", "tokens", True,
-        "Model context window in tokens, sourced from OpenRouter context_length. "
-        "Drives the crossover viz circle size. Higher = larger context.",
-        "Provenance", ["meta"], range_decimals=0))
+def _build_release_date_axes(models):
+    return [_build_axis(models, "meta.release_date", "AA", "Release Date", "meta", "date", True,
+                        "Model release date from the live Artificial Analysis API (aa_api_live.json). Useful for recency/version-comparison; not a quality metric.", "Provenance", ["meta"], range_decimals=0)]
 
-    # ── LIVEBENCH ──
+
+def _build_context_window_axes(models):
+    return [_build_axis(models, "meta.context_window", "OpenRouter", "Context Window (tokens)", "meta", "tokens", True,
+                        "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.", "Provenance", ["meta"], range_decimals=0)]
+
+
+def _build_livebench_axes(models):
     lb_orig_keys = set()
     for m in models:
         sec = m.get("benchmarks", {}).get("livebench", {})
@@ -233,7 +206,6 @@ def run(ctx=None):
             for k in sec:
                 if k not in ("tasks",) and k != "average":
                     lb_orig_keys.add(k)
-
     lb_labels = {
         "average": ("LiveBench Average", "Overall average across all LiveBench tasks"),
         "reasoning": ("LiveBench Reasoning", "Reasoning category average"),
@@ -244,53 +216,59 @@ def run(ctx=None):
         "language": ("LiveBench Language", "Language understanding category average"),
         "instruction_following": ("LiveBench Instruction Following", "Instruction following category average"),
     }
-
     lb_lower_to_orig = {}
     for orig in lb_orig_keys:
         low = orig.casefold().replace(" ", "_").replace("-", "_")
         lb_lower_to_orig[low] = orig
     lb_lower_to_orig["average"] = "average"
-
+    axes = []
     for category in ["average"] + sorted(lb_lower_to_orig.keys()):
         if category == "tasks":
             continue
         label, desc = lb_labels.get(category, (f"LiveBench {category}", f"LiveBench {category} category"))
         orig_key = lb_lower_to_orig.get(category, category)
-        axes.append(_build_axis(
-            models, f"livebench.{category}", "LiveBench", label, "quality", "points", True, desc,
-            "LiveBench", ["benchmarks", "livebench"], key=orig_key, range_decimals=2,
-        ))
-        axes[-1]["_dict_key"] = orig_key
+        axis = _build_axis(models, f"livebench.{category}", "LiveBench", label, "quality", "points", True, desc,
+                           "LiveBench", ["benchmarks", "livebench"], key=orig_key, range_decimals=2)
+        axis["_dict_key"] = orig_key
+        axes.append(axis)
+    return axes
 
-    # ── ARENA TEXT ──
+
+def _build_arena_text_axes(models):
     arena_t_path = ["benchmarks", "arena_text"]
-    for metric, label, desc in [
+    specs = [
         ("elo", "Arena Text Elo", "Arena AI text leaderboard Elo score"),
         ("ci", "Arena Text CI", "Arena AI text Elo confidence interval"),
         ("votes", "Arena Text Votes", "Arena AI text total votes"),
-    ]:
-        a = _build_axis(models, f"arena_text.{metric}", "Arena Text", label,
-                        "quality" if metric == "elo" else "meta",
-                        "points" if metric in ("elo", "ci") else "votes",
-                        metric != "ci", desc, "Arena", arena_t_path)
-        axes.append(a)
+    ]
+    axes = []
+    for metric, label, desc in specs:
+        axes.append(_build_axis(models, f"arena_text.{metric}", "Arena Text", label,
+                                "quality" if metric == "elo" else "meta",
+                                "points" if metric in ("elo", "ci") else "votes",
+                                metric != "ci", desc, "Arena", arena_t_path))
+    return axes
 
-    # ── ARENA CODE ──
+
+def _build_arena_code_axes(models):
     arena_c_path = ["benchmarks", "arena_code"]
-    for metric, label, desc in [
+    specs = [
         ("elo", "Arena Code Elo", "Arena AI code leaderboard Elo score"),
         ("ci", "Arena Code CI", "Arena AI code Elo confidence interval"),
         ("votes", "Arena Code Votes", "Arena AI code total votes"),
-    ]:
-        a = _build_axis(models, f"arena_code.{metric}", "Arena Code", label,
-                        "quality" if metric == "elo" else "meta",
-                        "points" if metric in ("elo", "ci") else "votes",
-                        metric != "ci", desc, "Arena", arena_c_path)
-        axes.append(a)
+    ]
+    axes = []
+    for metric, label, desc in specs:
+        axes.append(_build_axis(models, f"arena_code.{metric}", "Arena Code", label,
+                                "quality" if metric == "elo" else "meta",
+                                "points" if metric in ("elo", "ci") else "votes",
+                                metric != "ci", desc, "Arena", arena_c_path))
+    return axes
 
-    # ── OPENLLM ──
+
+def _build_openllm_axes(models):
     ollm_path = ["benchmarks", "openllm"]
-    for key, label, desc in [
+    specs = [
         ("average", "OpenLLM Average", "OpenLLM average across all eval dimensions"),
         ("ifeval", "IFEval", "OpenLLM instruction following eval"),
         ("bbh", "BBH", "OpenLLM Big-Bench Hard"),
@@ -298,38 +276,65 @@ def run(ctx=None):
         ("gpqa", "GPQA", "OpenLLM GPQA (graduate-level Q&A)"),
         ("musr", "MUSR", "OpenLLM MUSR (multi-step reasoning)"),
         ("mmlu_pro", "MMLU-PRO", "OpenLLM MMLU Pro"),
-    ]:
-        axes.append(_build_axis(
-            models, f"openllm.{key}", "OpenLLM v2", label, "quality", "points", True, desc,
-            "OpenLLM", ollm_path, range_decimals=2))
+    ]
+    return [_build_axis(models, f"openllm.{key}", "OpenLLM v2", label, "quality", "points", True, desc, "OpenLLM", ollm_path, range_decimals=2)
+            for key, label, desc in specs]
 
-    # ── OPENROUTER ──
+
+def _build_openrouter_axes(models):
     or_path = ["pricing", "openrouter"]
-    for key, label, typ, unit, hib, desc in [
-        ("inp_price_per_m", "OR Input Price ($/Mtok)", "pricing", "$/M tok", False,
-         "OpenRouter input price per million tokens"),
-        ("out_price_per_m", "OR Output Price ($/Mtok)", "pricing", "$/M tok", False,
-         "OpenRouter output price per million tokens"),
-        ("cache_read_price_per_m", "OR Cache Read Price ($/Mtok)", "pricing", "$/M tok", False,
-         "OpenRouter cache-read price per million tokens"),
-    ]:
-        axes.append(_build_axis(
-            models, f"openrouter.{key}", "OpenRouter", label, typ, unit, hib, desc,
-            "OpenRouter Pricing", or_path,
-            range_decimals=6 if key == "inp_price_per_m" else 4))
+    specs = [
+        ("inp_price_per_m", "OR Input Price ($/Mtok)", "pricing", "$/M tok", False, "OpenRouter input price per million tokens"),
+        ("out_price_per_m", "OR Output Price ($/Mtok)", "pricing", "$/M tok", False, "OpenRouter output price per million tokens"),
+        ("cache_read_price_per_m", "OR Cache Read Price ($/Mtok)", "pricing", "$/M tok", False, "OpenRouter cache-read price per million tokens"),
+    ]
+    return [_build_axis(models, f"openrouter.{key}", "OpenRouter", label, typ, unit, hib, desc, "OpenRouter Pricing", or_path,
+                        range_decimals=6 if key == "inp_price_per_m" else 4)
+            for key, label, typ, unit, hib, desc in specs]
 
-    # ── META ──
-    for mid, label, typ, unit, hib, desc in [
-        ("meta.params_b", "# Params (B)", "meta", "B", True,
-         "Model parameter count in billions"),
-        ("meta.co2_kg", "CO₂ Cost (kg)", "meta", "kg", False,
-         "Estimated CO₂ cost of training"),
-    ]:
-        axes.append(_build_axis(
-            models, mid, "OpenLLM v2", label, typ, unit, hib, desc,
-            "Model Meta", ["meta"]))
 
-    # 2. SORT AND TAG
+def _build_meta_axes(models):
+    specs = [
+        ("meta.params_b", "# Params (B)", "meta", "B", True, "Model parameter count in billions"),
+        ("meta.co2_kg", "CO₂ Cost (kg)", "meta", "kg", False, "Estimated CO₂ cost of training"),
+    ]
+    return [_build_axis(models, mid, "OpenLLM v2", label, typ, unit, hib, desc, "Model Meta", ["meta"])
+            for mid, label, typ, unit, hib, desc in specs]
+
+
+def run(ctx=None):
+    if ctx and ctx.get("root"):
+        BASE = Path(ctx["root"])
+    else:
+        BASE = Path(__file__).resolve().parent.parent
+
+    REG = os.path.join(BASE, "data", "model_registry.json")
+    OUT = os.path.join(BASE, "data", "axes_catalog.json")
+
+    reg_r = _load_json(REG)
+    if reg_r.is_err():
+        return err(reg_r.error)
+    reg = reg_r.unwrap()
+
+    models = reg["models"]
+    axes = (
+        _build_aa_pricing_axes(models)
+        + _build_cost_breakdown_axes(models)
+        + _build_aa_performance_axes(models)
+        + _build_aa_quality_axes(models)
+        + _build_aa_benchmark_axes(models)
+        + _build_aa_image_axes(models)
+        + _build_dirac_axes(models)
+        + _build_release_date_axes(models)
+        + _build_context_window_axes(models)
+        + _build_livebench_axes(models)
+        + _build_arena_text_axes(models)
+        + _build_arena_code_axes(models)
+        + _build_openllm_axes(models)
+        + _build_openrouter_axes(models)
+        + _build_meta_axes(models)
+    )
+
     axes.sort(key=lambda a: (a["source"], a["type"], -a["models_have"]))
 
     for a in axes:
@@ -348,7 +353,6 @@ def run(ctx=None):
         source_groups[g]["axes"].append(a["id"])
         source_groups[g]["count"] += 1
 
-    # 3. BUILD N-AXIS FEASIBILITY MATRIX
     sources_list = sorted(set(a["source"] for a in axes))
     n_axis_pairs = {}
     for s1 in sources_list:
@@ -368,7 +372,6 @@ def run(ctx=None):
             if overlap >= 3:
                 n_axis_pairs[f"{s1}×{s2}"] = overlap
 
-    # 4. WRITE OUTPUT
     output = {
         "meta": {
             "generated": reg["meta"]["generated"],
