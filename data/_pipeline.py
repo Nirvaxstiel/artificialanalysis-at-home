@@ -1,4 +1,8 @@
-"""Orchestrated monadic build pipeline — pull → registry → axes → dashboard.
+"""Orchestrated monadic build pipeline — pull -> registry -> axes -> dashboard.
+
+Each stage returns a Result (Ok(ctx_update) | Err(reason)); the pipeline threads
+the shared ctx and short-circuits at the first Err instead of raising. Steps that
+throw are captured into Err so a failed stage is a value, not an exception.
 
 Usage:
     python -m data._pipeline          # full rebuild (pull sources + build)
@@ -7,19 +11,25 @@ Usage:
 
 import time, sys, os
 from pathlib import Path
-from typing import Any, Callable
+
+from _result import ok
 
 ROOT = Path(__file__).resolve().parent.parent  # repo root
 
 
+def _is_result(x) -> bool:
+    """Duck-type a Result (Ok/Err both expose is_ok/is_err)."""
+    return hasattr(x, "is_ok") and hasattr(x, "is_err")
+
+
 class Pipeline:
-    """Monadic pipeline — compose build steps with error handling & timing."""
+    """Monadic pipeline — compose build steps that return Result, with timing."""
 
     def __init__(self, ctx: dict | None = None):
         self.ctx = ctx or {"root": ROOT}
-        self._steps: list[tuple[str, Callable]] = []
+        self._steps: list[tuple[str, callable]] = []
 
-    def then(self, name: str, fn: Callable[[dict], Any]) -> "Pipeline":
+    def then(self, name: str, fn: callable) -> "Pipeline":
         self._steps.append((name, fn))
         return self
 
@@ -28,12 +38,20 @@ class Pipeline:
             t0 = time.time()
             print(f"\n─── {name} ───")
             try:
-                result = fn(self.ctx)
-                self.ctx[name] = result
-                print(f"  ✓ {name} ({time.time()-t0:.1f}s)")
-            except Exception as e:
+                returned = fn(self.ctx)
+            except Exception as e:  # noqa: BLE001 — capture stage failure as Err
                 print(f"  ✗ {name} FAILED: {e}")
-                raise
+                self.ctx["_failed_step"] = name
+                self.ctx["_error"] = e
+                return self.ctx
+            result = returned if _is_result(returned) else ok(returned)
+            if result.is_err():
+                print(f"  ✗ {name} FAILED: {result.error}")
+                self.ctx["_failed_step"] = name
+                self.ctx["_error"] = result.error
+                return self.ctx
+            self.ctx[name] = result.unwrap()
+            print(f"  ✓ {name} ({time.time()-t0:.1f}s)")
         print(f"\n{'='*50}\nPipeline complete ({time.time()-self.ctx.get('_start', time.time()):.1f}s)")
         return self.ctx
 
@@ -44,8 +62,8 @@ def _resolve_module(name: str):
     return importlib.import_module(f"data.{name}")
 
 
-def step(name: str) -> Callable:
-    """Wrap a module's run() as a pipeline step."""
+def step(name: str) -> callable:
+    """Wrap a module's run() (which returns a Result) as a pipeline step."""
     mod = _resolve_module(name)
     def _step(ctx):
         return mod.run(ctx)
