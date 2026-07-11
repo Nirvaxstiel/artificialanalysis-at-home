@@ -108,12 +108,12 @@ class ProjectionEngine:
 
             all_present = True
             for aid in axis_ids:
-                r = self.get_value(m, aid)
-                if r.is_err():
-                    raise ValueError(r.error)
-                v = r.unwrap()
-                row["axes"][aid] = v
-                if v is None:
+                resolved = self.get_value(m, aid)
+                if resolved.is_err():
+                    raise ValueError(resolved.error)
+                value = resolved.unwrap()
+                row["axes"][aid] = value
+                if value is None:
                     all_present = False
 
             if require_all and not all_present:
@@ -126,28 +126,28 @@ class ProjectionEngine:
 
     def feasibility_report(self, min_overlap=3):
         axes_by_source = {}
-        for a in self.catalog["axes"]:
-            s = a["source"]
-            if a["type"] == "meta":
+        for axis in self.catalog["axes"]:
+            source = axis["source"]
+            if axis["type"] == "meta":
                 continue
-            if s not in axes_by_source:
-                axes_by_source[s] = []
-            axes_by_source[s].append(a["id"])
+            if source not in axes_by_source:
+                axes_by_source[source] = []
+            axes_by_source[source].append(axis["id"])
 
         sources = sorted(axes_by_source.keys())
         pairs = {}
-        for i, s1 in enumerate(sources):
-            for s2 in sources[i + 1:]:
-                a1 = axes_by_source[s1][:1]
-                a2 = axes_by_source[s2][:1]
-                matrix = self.project(a1 + a2)
-                overlap = sum(1 for r in matrix if r["axes"][a1[0]] is not None and r["axes"][a2[0]] is not None)
+        for i, source_a in enumerate(sources):
+            for source_b in sources[i + 1:]:
+                axes_a = axes_by_source[source_a][:1]
+                axes_b = axes_by_source[source_b][:1]
+                matrix = self.project(axes_a + axes_b)
+                overlap = sum(1 for row in matrix if row["axes"][axes_a[0]] is not None and row["axes"][axes_b[0]] is not None)
                 if overlap >= min_overlap:
-                    pairs[f"{s1}×{s2}"] = {
+                    pairs[f"{source_a}×{source_b}"] = {
                         "models": overlap,
-                        "representative_axes": [a1[0], a2[0]],
-                        "all_axes_s1": axes_by_source[s1],
-                        "all_axes_s2": axes_by_source[s2],
+                        "representative_axes": [axes_a[0], axes_b[0]],
+                        "all_axes_s1": axes_by_source[source_a],
+                        "all_axes_s2": axes_by_source[source_b],
                     }
 
         return {
@@ -185,11 +185,11 @@ if __name__ == "__main__":
                      model_ids=[m["id"] for m in pe.models if m.get("meta", {}).get("archetype") == "sweet-spot"])
     for r in m1[:10]:
         iq = r['axes']['aa.intel']
-        inp = r['axes']['aa.inp_price']
-        spd = r['axes']['aa.speed_tps']
+        input_price = r['axes']['aa.inp_price']
+        speed = r['axes']['aa.speed_tps']
         print(f"  {r['id']:35s} IQ={iq if iq is not None else '-':>5}  "
-              f"${inp if inp is not None else '-':>6}/Mtok  "
-              f"{spd if spd is not None else '-':>6} t/s")
+              f"${input_price if input_price is not None else '-':>6}/Mtok  "
+              f"{speed if speed is not None else '-':>6} t/s")
 
     print("\n── Query 2: 4-axis crossover (require_all=True) ──")
     axes_4 = ["aa.intel", "livebench.coding", "arena_code.elo", "openrouter.inp_price_per_m"]
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     print(f"  Models with ALL 4 axes: {len(m2)}")
     for r in sorted(m2, key=lambda x: -(x["axes"]["aa.intel"] or 0))[:8]:
         iq = r['axes']['aa.intel']
-        lb = r['axes']['livebench.coding']
+        livebench_coding = r['axes']['livebench.coding']
         elo = r['axes']['arena_code.elo']
         orp = r['axes']['openrouter.inp_price_per_m']
         print(f"  {r['id']:35s} IQ={iq if iq is not None else '-':>5}  "

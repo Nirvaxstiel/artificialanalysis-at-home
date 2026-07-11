@@ -251,13 +251,13 @@ def run(ctx=None):
         lb_lower_to_orig[low] = orig
     lb_lower_to_orig["average"] = "average"
 
-    for cat in ["average"] + sorted(lb_lower_to_orig.keys()):
-        if cat == "tasks":
+    for category in ["average"] + sorted(lb_lower_to_orig.keys()):
+        if category == "tasks":
             continue
-        label, desc = lb_labels.get(cat, (f"LiveBench {cat}", f"LiveBench {cat} category"))
-        orig_key = lb_lower_to_orig.get(cat, cat)
+        label, desc = lb_labels.get(category, (f"LiveBench {category}", f"LiveBench {category} category"))
+        orig_key = lb_lower_to_orig.get(category, category)
         axes.append(_build_axis(
-            models, f"livebench.{cat}", "LiveBench", label, "quality", "points", True, desc,
+            models, f"livebench.{category}", "LiveBench", label, "quality", "points", True, desc,
             "LiveBench", ["benchmarks", "livebench"], key=orig_key, range_decimals=2,
         ))
         axes[-1]["_dict_key"] = orig_key

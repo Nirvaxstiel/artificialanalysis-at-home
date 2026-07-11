@@ -74,26 +74,26 @@ def pull_openrouter(src):
 
     try:
         items = or_data.get("data", [])
-        out = []
-        for m in items:
-            pid = m["id"]
-            pr = m.get("pricing", {})
-            out.append({
-                "id": pid,
-                "name": m.get("name", pid),
-                "vendor": pid.split("/")[0] if "/" in pid else "",
-                "input_price": pr.get("prompt"),
-                "output_price": pr.get("completion"),
-                "cache_read_price": pr.get("input_cache_read"),
-                "cache_write_price": pr.get("input_cache_write"),
-                "context_length": m.get("context_length"),
+        fetched_models = []
+        for model in items:
+            provider_id = model["id"]
+            pricing = model.get("pricing", {})
+            fetched_models.append({
+                "id": provider_id,
+                "name": model.get("name", provider_id),
+                "vendor": provider_id.split("/")[0] if "/" in provider_id else "",
+                "input_price": pricing.get("prompt"),
+                "output_price": pricing.get("completion"),
+                "cache_read_price": pricing.get("input_cache_read"),
+                "cache_write_price": pricing.get("input_cache_write"),
+                "context_length": model.get("context_length"),
             })
         with open(os.path.join(src, "openrouter_models.json"), "w") as f:
-            json.dump(out, f, indent=2)
+            json.dump(fetched_models, f, indent=2)
     except Exception as e:  # noqa: BLE001
         return err(f"openrouter normalize: {e}")
 
-    return ok({"json": "openrouter_models.json", "models": len(out)})
+    return ok({"json": "openrouter_models.json", "models": len(fetched_models)})
 
 
 def run(ctx=None):
@@ -121,7 +121,7 @@ if __name__ == "__main__":
     if result.is_err():
         print("PULL FAILED:", result.error)
         sys.exit(1)
-    s = result.unwrap()
+    pipeline_state = result.unwrap()
     print("=" * 60)
     print("DATA COLLECTION COMPLETE")
     print("=" * 60)

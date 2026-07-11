@@ -98,9 +98,9 @@ def livebench_name_to_canonical(name: str) -> str:
 
 
 def openrouter_id_to_canonical(rid: str) -> str:
-    r = rid.strip().lower()
-    parts = r.split("/")
-    slug = parts[-1] if len(parts) >= 2 else r
+    normalized = rid.strip().lower()
+    parts = normalized.split("/")
+    slug = parts[-1] if len(parts) >= 2 else normalized
     return resolve_from_slug(slug)
 
 
@@ -171,10 +171,10 @@ def canonical_to_or_id(canonical: str) -> "Ok[str] | Err[str]":
 
 def resolve_or_context(all_models: dict, or_models: list[dict]) -> None:
     or_ctx = {}
-    for m in or_models:
-        rid = m["id"]
-        canonical = openrouter_id_to_canonical(rid)
-        ctx = m.get("context_length")
+    for model in or_models:
+        entry_id = model["id"]
+        canonical = openrouter_id_to_canonical(entry_id)
+        ctx = model.get("context_length")
         if ctx is not None and isinstance(ctx, (int, float)) and ctx > 0:
             or_ctx[canonical] = int(ctx)
 

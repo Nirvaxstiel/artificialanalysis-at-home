@@ -55,7 +55,7 @@ def _extract_slugs(svg: str):
 def _extract_values(svg: str):
     """All numeric-ish label values in render order (from <text> nodes)."""
     texts = re.findall(r"<text[^>]*>(.*?)</text>", svg, re.S)
-    out = []
+    extracted_values = []
     for t in texts:
         inner = re.sub(r"<[^>]+>", "", t).strip()
         if not inner:
@@ -63,8 +63,8 @@ def _extract_values(svg: str):
         if re.search(r"[\d]", inner) and not re.search(r"[A-Za-z]", inner.replace("%", "").replace("$", "").replace("<", "").replace(",", "").replace(".", "")):
             v = _norm_value(inner)
             if v is not None:
-                out.append(v)
-    return out
+                extracted_values.append(v)
+    return extracted_values
 
 
 def _parse_chart(svg: str):
@@ -98,10 +98,10 @@ def _extract_label_lists(svg: str):
 
 def _extract_x_values(group_svg: str):
     """All ($)numeric <text> values in a group, with their x-coordinate."""
-    out = []
+    x_values = []
     for x, v in re.findall(r'<text[^>]*x="([\d.]+)"[^>]*>\s*\$?<?\s*([\d.]+)\s*</text>', group_svg):
-        out.append((float(x), float(v)))
-    return out
+        x_values.append((float(x), float(v)))
+    return x_values
 
 
 def _align_x_to_models(xvals: list, ref_xs: list):
@@ -111,11 +111,11 @@ def _align_x_to_models(xvals: list, ref_xs: list):
         return {}
     ref = sorted(ref_xs)
     span = (ref[-1] - ref[0]) / max(1, len(ref) - 1)
-    out = {}
+    aligned = {}
     for x, v in xvals:
         idx = round((x - ref[0]) / span) if span > 0 else 0
-        out[idx] = v
-    return out
+        aligned[idx] = v
+    return aligned
 
 
 def _parse_pricing(svg: str):
@@ -140,12 +140,12 @@ def _parse_pricing(svg: str):
     for name, xvals in zip(series, parsed):
         for idx, val in _align_x_to_models(xvals, ref_xs).items():
             per_model.setdefault(idx, {})[name] = val
-    out = []
+    parsed_rows = []
     for idx in sorted(per_model):
         if idx >= len(hrefs):
             continue
-        out.append((hrefs[idx], per_model[idx]))
-    return out
+        parsed_rows.append((hrefs[idx], per_model[idx]))
+    return parsed_rows
 
 
 def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
@@ -155,16 +155,16 @@ def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
     if loaded.is_err():
         return err(loaded.error)
     data = loaded.unwrap()
-    out = {}
+    chart_data = {}
     for idx, key in CHART_MAP.items():
         if idx >= len(data):
             continue
         svg = data[idx].get("svg") or ""
         if key == "pricing":
-            out[key] = _parse_pricing(svg)
+            chart_data[key] = _parse_pricing(svg)
         else:
-            out[key] = _parse_chart(svg)
-    return ok(out)
+            chart_data[key] = _parse_chart(svg)
+    return ok(chart_data)
 
 
 if __name__ == "__main__":

@@ -43,259 +43,264 @@ def _ensure(all_models, cid, **overrides):
     return all_models[cid]
 
 
-def step_aa(s):
-    r = get_aa_models(BASE)
-    if r.is_err():
-        return err(f"aa build: {r.error}")
-    models = r.unwrap()
-    s["all_models"].update(models)
-    s["counts"]["aa"] = len(models)
-    return ok(s)
+def step_aa(state):
+    result = get_aa_models(BASE)
+    if result.is_err():
+        return err(f"aa build: {result.error}")
+    models = result.unwrap()
+    state["all_models"].update(models)
+    state["counts"]["aa"] = len(models)
+    return ok(state)
 
 
-def step_aa_img(s):
-    for cid, img in get_aa_img_models(BASE).items():
-        m = s["all_models"].setdefault(cid, {
-            "id": cid, "name": None, "creator": None, "model_type": None,
+def step_aa_img(state):
+    for canonical_id, img in get_aa_img_models(BASE).items():
+        model = state["all_models"].setdefault(canonical_id, {
+            "id": canonical_id, "name": None, "creator": None, "model_type": None,
             "meta": {}, "pricing": {}, "benchmarks": {}, "aliases": {}})
-        img_b = img.get("benchmarks", {}).get("aa_img")
-        if img_b:
-            m.setdefault("benchmarks", {}).setdefault("aa_img", {}).update(img_b)
-        img_p = img.get("pricing", {}).get("aa")
-        if img_p:
-            ep = m.setdefault("pricing", {}).setdefault("aa", {})
-            for k, v in img_p.items():
-                if v is not None and ep.get(k) is None:
-                    ep[k] = v
+        img_benchmarks = img.get("benchmarks", {}).get("aa_img")
+        if img_benchmarks:
+            model.setdefault("benchmarks", {}).setdefault("aa_img", {}).update(img_benchmarks)
+        img_pricing = img.get("pricing", {}).get("aa")
+        if img_pricing:
+            pricing_entry = model.setdefault("pricing", {}).setdefault("aa", {})
+            for key, value in img_pricing.items():
+                if value is not None and pricing_entry.get(key) is None:
+                    pricing_entry[key] = value
         img_meta = img.get("meta", {})
         if img_meta:
-            m.setdefault("meta", {}).update(img_meta)
-    return ok(s)
+            model.setdefault("meta", {}).update(img_meta)
+    return ok(state)
 
 
-def step_scrape_progress(s):
-    scrape_path = os.path.join(s["src"], "aa", "aa_scrape_progress.json")
+def step_scrape_progress(state):
+    scrape_path = os.path.join(state["src"], "aa", "aa_scrape_progress.json")
     scraped_slugs = set()
     if os.path.exists(scrape_path):
         try:
             with open(scrape_path) as f:
-                sp = json.load(f)
-            scraped_slugs = set(sp.get("scraped", []))
+                scrape_progress = json.load(f)
+            scraped_slugs = set(scrape_progress.get("scraped", []))
         except (OSError, ValueError):
             pass
-    for cid in get_aa_img_models(BASE):
-        if cid in scraped_slugs:
-            s["all_models"].setdefault(cid, {}).setdefault("meta", {})["aa_img_scraped"] = True
-    return ok(s)
+    for canonical_id in get_aa_img_models(BASE):
+        if canonical_id in scraped_slugs:
+            state["all_models"].setdefault(canonical_id, {}).setdefault("meta", {})["aa_img_scraped"] = True
+    return ok(state)
 
 
-def step_dirac(s):
-    for cid, d in get_dirac_models(BASE).items():
-        m = s["all_models"].setdefault(cid, {
-            "id": cid, "name": None, "creator": None, "model_type": None,
+def step_dirac(state):
+    for canonical_id, record in get_dirac_models(BASE).items():
+        model = state["all_models"].setdefault(canonical_id, {
+            "id": canonical_id, "name": None, "creator": None, "model_type": None,
             "meta": {}, "pricing": {}, "benchmarks": {}, "aliases": {}})
-        db = d.get("benchmarks", {}).get("dirac")
-        if db:
-            m.setdefault("benchmarks", {}).setdefault("dirac", {}).update(db)
-        dmeta = d.get("meta", {})
-        if dmeta:
-            m.setdefault("meta", {}).update(dmeta)
-    return ok(s)
+        dirac_benchmarks = record.get("benchmarks", {}).get("dirac")
+        if dirac_benchmarks:
+            model.setdefault("benchmarks", {}).setdefault("dirac", {}).update(dirac_benchmarks)
+        dirac_meta = record.get("meta", {})
+        if dirac_meta:
+            model.setdefault("meta", {}).update(dirac_meta)
+    return ok(state)
 
 
-def step_livebench(s):
-    cat = _load_json(os.path.join(s["src"], "livebench_categories_2026_01_08.json"))
-    if cat.is_err():
-        return err(cat.error)
-    lb_categories = cat.unwrap()
-    task_to_cat = {t: cn for cn, tasks in lb_categories.items() for t in tasks}
-    lb = _load_csv(os.path.join(s["src"], "livebench_2026_01_08.csv"))
-    if lb.is_err():
-        return err(lb.error)
-    for m in lb.unwrap():
-        name = m["model"]
-        cid = livebench_name_to_canonical(name)
-        scores, cat_scores = {}, {}
-        for task, val in m.items():
-            if task == "model" or val == "" or val is None:
+def step_livebench(state):
+    categories_result = _load_json(os.path.join(state["src"], "livebench_categories_2026_01_08.json"))
+    if categories_result.is_err():
+        return err(categories_result.error)
+    category_map = categories_result.unwrap()
+    task_to_category = {task: cat for cat, tasks in category_map.items() for task in tasks}
+    rows_result = _load_csv(os.path.join(state["src"], "livebench_2026_01_08.csv"))
+    if rows_result.is_err():
+        return err(rows_result.error)
+    livebench_rows = rows_result.unwrap()
+    for row in livebench_rows:
+        model_name = row["model"]
+        canonical_id = livebench_name_to_canonical(model_name)
+        task_scores, category_scores = {}, {}
+        for task_name, value in row.items():
+            if task_name == "model" or value == "" or value is None:
                 continue
             try:
-                v = float(val)
+                numeric = float(value)
             except (ValueError, TypeError):
                 continue
-            scores[task] = v
-            cat = task_to_cat.get(task, "Other")
-            cat_scores.setdefault(cat, []).append(v)
-        cat_avgs = {c: round(sum(vs) / len(vs), 2) for c, vs in cat_scores.items()}
-        overall = round(sum(scores.values()) / len(scores), 2) if scores else None
-        _ensure(s["all_models"], cid, name=name)
-        s["all_models"][cid]["aliases"]["livebench"] = name
-        s["all_models"][cid]["benchmarks"]["livebench"] = {
-            "average": overall, **cat_avgs, "tasks": scores}
-    s["counts"]["livebench"] = len(lb.unwrap())
-    return ok(s)
+            task_scores[task_name] = numeric
+            category = task_to_category.get(task_name, "Other")
+            category_scores.setdefault(category, []).append(numeric)
+        category_averages = {cat: round(sum(vals) / len(vals), 2) for cat, vals in category_scores.items()}
+        overall = round(sum(task_scores.values()) / len(task_scores), 2) if task_scores else None
+        _ensure(state["all_models"], canonical_id, name=model_name)
+        state["all_models"][canonical_id]["aliases"]["livebench"] = model_name
+        state["all_models"][canonical_id]["benchmarks"]["livebench"] = {
+            "average": overall, **category_averages, "tasks": task_scores}
+    state["counts"]["livebench"] = len(livebench_rows)
+    return ok(state)
 
 
-def step_arena_text(s):
-    r = _load_json(os.path.join(s["src"], "arena_text.json"))
-    if r.is_err():
-        return err(r.error)
-    for m in r.unwrap().get("models", []):
-        aid = m["model"]
-        cid = resolve_from_slug(aid)
-        _ensure(s["all_models"], cid, name=aid, creator=m.get("vendor"), model_type=m.get("license"))
-        s["all_models"][cid]["aliases"]["arena"] = aid
-        s["all_models"][cid]["creator"] = s["all_models"][cid].get("creator") or m.get("vendor")
-        s["all_models"][cid]["benchmarks"]["arena_text"] = {
-            "elo": m.get("score"), "ci": m.get("ci"), "votes": m.get("votes")}
-    s["counts"]["arena_text"] = len(r.unwrap().get("models", []))
-    return ok(s)
+def step_arena_text(state):
+    result = _load_json(os.path.join(state["src"], "arena_text.json"))
+    if result.is_err():
+        return err(result.error)
+    for model in result.unwrap().get("models", []):
+        arena_id = model["model"]
+        canonical_id = resolve_from_slug(arena_id)
+        _ensure(state["all_models"], canonical_id, name=arena_id,
+                creator=model.get("vendor"), model_type=model.get("license"))
+        state["all_models"][canonical_id]["aliases"]["arena"] = arena_id
+        state["all_models"][canonical_id]["creator"] = \
+            state["all_models"][canonical_id].get("creator") or model.get("vendor")
+        state["all_models"][canonical_id]["benchmarks"]["arena_text"] = {
+            "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
+    state["counts"]["arena_text"] = len(result.unwrap().get("models", []))
+    return ok(state)
 
 
-def step_arena_code(s):
-    r = _load_json(os.path.join(s["src"], "arena_code.json"))
-    if r.is_err():
-        return err(r.error)
-    for m in r.unwrap().get("models", []):
-        aid = m["model"]
-        cid = resolve_from_slug(aid)
-        _ensure(s["all_models"], cid, name=aid, creator=m.get("vendor"), model_type=m.get("license"))
-        s["all_models"][cid]["aliases"]["arena_code"] = aid
-        s["all_models"][cid]["creator"] = s["all_models"][cid].get("creator") or m.get("vendor")
-        s["all_models"][cid]["benchmarks"]["arena_code"] = {
-            "elo": m.get("score"), "ci": m.get("ci"), "votes": m.get("votes")}
-    s["counts"]["arena_code"] = len(r.unwrap().get("models", []))
-    return ok(s)
+def step_arena_code(state):
+    result = _load_json(os.path.join(state["src"], "arena_code.json"))
+    if result.is_err():
+        return err(result.error)
+    for model in result.unwrap().get("models", []):
+        arena_id = model["model"]
+        canonical_id = resolve_from_slug(arena_id)
+        _ensure(state["all_models"], canonical_id, name=arena_id,
+                creator=model.get("vendor"), model_type=model.get("license"))
+        state["all_models"][canonical_id]["aliases"]["arena_code"] = arena_id
+        state["all_models"][canonical_id]["creator"] = \
+            state["all_models"][canonical_id].get("creator") or model.get("vendor")
+        state["all_models"][canonical_id]["benchmarks"]["arena_code"] = {
+            "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
+    state["counts"]["arena_code"] = len(result.unwrap().get("models", []))
+    return ok(state)
 
 
-def step_openllm(s):
-    r = _load_json(os.path.join(s["src"], "openllm_aa_subset.json"))
-    if r.is_err():
-        return err(r.error)
-    for m in r.unwrap():
-        cid = openllm_name_to_canonical(m.get("fullname", "")).unwrap_or(None)
-        if not cid:
+def step_openllm(state):
+    result = _load_json(os.path.join(state["src"], "openllm_aa_subset.json"))
+    if result.is_err():
+        return err(result.error)
+    for model in result.unwrap():
+        canonical_id = openllm_name_to_canonical(model.get("fullname", "")).unwrap_or(None)
+        if not canonical_id:
             continue
-        _ensure(s["all_models"], cid, name=m.get("fullname"))
-        s["all_models"][cid]["aliases"]["openllm"] = m.get("fullname")
-        s["all_models"][cid]["benchmarks"]["openllm"] = {
-            "average": m.get("Average ⬆️"), "ifeval": m.get("IFEval"), "bbh": m.get("BBH"),
-            "math_lvl_5": m.get("MATH Lvl 5"), "gpqa": m.get("GPQA"),
-            "musr": m.get("MUSR"), "mmlu_pro": m.get("MMLU-PRO")}
+        _ensure(state["all_models"], canonical_id, name=model.get("fullname"))
+        state["all_models"][canonical_id]["aliases"]["openllm"] = model.get("fullname")
+        state["all_models"][canonical_id]["benchmarks"]["openllm"] = {
+            "average": model.get("Average ⬆️"), "ifeval": model.get("IFEval"), "bbh": model.get("BBH"),
+            "math_lvl_5": model.get("MATH Lvl 5"), "gpqa": model.get("GPQA"),
+            "musr": model.get("MUSR"), "mmlu_pro": model.get("MMLU-PRO")}
         meta_updates = {}
-        if m.get("#Params (B)") is not None:
-            meta_updates["params_b"] = m.get("#Params (B)")
-        if m.get("CO₂ cost (kg)") is not None:
-            meta_updates["co2_kg"] = m.get("CO₂ cost (kg)")
-        if m.get("Architecture"):
-            meta_updates["architecture"] = m.get("Architecture")
-        if m.get("Hub License"):
-            meta_updates["license"] = m.get("Hub License")
-        if m.get("Precision"):
-            meta_updates["precision"] = m.get("Precision")
+        if model.get("#Params (B)") is not None:
+            meta_updates["params_b"] = model.get("#Params (B)")
+        if model.get("CO₂ cost (kg)") is not None:
+            meta_updates["co2_kg"] = model.get("CO₂ cost (kg)")
+        if model.get("Architecture"):
+            meta_updates["architecture"] = model.get("Architecture")
+        if model.get("Hub License"):
+            meta_updates["license"] = model.get("Hub License")
+        if model.get("Precision"):
+            meta_updates["precision"] = model.get("Precision")
         if meta_updates:
-            s["all_models"][cid].setdefault("meta", {}).update(meta_updates)
-    s["counts"]["openllm_aa_subset"] = len(r.unwrap())
-    return ok(s)
+            state["all_models"][canonical_id].setdefault("meta", {}).update(meta_updates)
+    state["counts"]["openllm_aa_subset"] = len(result.unwrap())
+    return ok(state)
 
 
-def step_openrouter(s):
-    r = _load_json(os.path.join(s["src"], "openrouter_models.json"))
-    if r.is_err():
-        return err(r.error)
-    or_models = r.unwrap()
+def step_openrouter(state):
+    result = _load_json(os.path.join(state["src"], "openrouter_models.json"))
+    if result.is_err():
+        return err(result.error)
+    openrouter_models = result.unwrap()
 
-    def or_price(price_str):
+    def parse_price(price_str):
         if price_str is None or price_str == "" or float(price_str) < 0:
             return None
         return float(price_str)
 
-    for m in or_models:
-        rid = m["id"]
-        cid = openrouter_id_to_canonical(rid)
-        _ensure(s["all_models"], cid, name=m.get("name", rid), creator=m.get("vendor"))
-        s["all_models"][cid]["aliases"]["openrouter"] = rid
-        s["all_models"][cid]["pricing"]["openrouter"] = {}
-        inp = or_price(m.get("input_price"))
-        out = or_price(m.get("output_price"))
-        cache = or_price(m.get("cache_read_price"))
-        cache_write = or_price(m.get("cache_write_price"))
-        if inp is not None:
-            s["all_models"][cid]["pricing"]["openrouter"]["inp_price"] = inp
-            s["all_models"][cid]["pricing"]["openrouter"]["inp_price_per_m"] = inp * 1_000_000
-        if out is not None:
-            s["all_models"][cid]["pricing"]["openrouter"]["out_price"] = out
-            s["all_models"][cid]["pricing"]["openrouter"]["out_price_per_m"] = out * 1_000_000
-        if cache is not None:
-            s["all_models"][cid]["pricing"]["openrouter"]["cache_read_price"] = cache
-            s["all_models"][cid]["pricing"]["openrouter"]["cache_read_price_per_m"] = cache * 1_000_000
-        if cache_write is not None:
-            s["all_models"][cid]["pricing"]["openrouter"]["cache_write_price"] = cache_write
-            s["all_models"][cid]["pricing"]["openrouter"]["cache_write_price_per_m"] = cache_write * 1_000_000
-        s["all_models"][cid]["pricing"]["openrouter"]["vendor"] = m.get("vendor")
-    s["counts"]["openrouter"] = len(or_models)
-    resolve_or_context(s["all_models"], or_models)
-    return ok(s)
+    for model in openrouter_models:
+        openrouter_id = model["id"]
+        canonical_id = openrouter_id_to_canonical(openrouter_id)
+        _ensure(state["all_models"], canonical_id, name=model.get("name", openrouter_id), creator=model.get("vendor"))
+        state["all_models"][canonical_id]["aliases"]["openrouter"] = openrouter_id
+        state["all_models"][canonical_id]["pricing"]["openrouter"] = {}
+        input_price = parse_price(model.get("input_price"))
+        output_price = parse_price(model.get("output_price"))
+        cache_read_price = parse_price(model.get("cache_read_price"))
+        cache_write_price = parse_price(model.get("cache_write_price"))
+        if input_price is not None:
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["inp_price"] = input_price
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["inp_price_per_m"] = input_price * 1_000_000
+        if output_price is not None:
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["out_price"] = output_price
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["out_price_per_m"] = output_price * 1_000_000
+        if cache_read_price is not None:
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_read_price"] = cache_read_price
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_read_price_per_m"] = cache_read_price * 1_000_000
+        if cache_write_price is not None:
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_write_price"] = cache_write_price
+            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_write_price_per_m"] = cache_write_price * 1_000_000
+        state["all_models"][canonical_id]["pricing"]["openrouter"]["vendor"] = model.get("vendor")
+    state["counts"]["openrouter"] = len(openrouter_models)
+    resolve_or_context(state["all_models"], openrouter_models)
+    return ok(state)
 
 
-def step_misc(s):
-    misc_path = os.path.join(s["src"], "misc.json")
+def step_misc(state):
+    misc_path = os.path.join(state["src"], "misc.json")
     if os.path.exists(misc_path):
         try:
             with open(misc_path) as f:
                 misc = json.load(f)
         except (OSError, ValueError):
-            return ok(s)
-        for cid, record in misc.items():
-            if cid not in s["all_models"]:
+            return ok(state)
+        for canonical_id, record in misc.items():
+            if canonical_id not in state["all_models"]:
                 continue
-            meta = s["all_models"][cid].setdefault("meta", {})
-            for key, val in record.items():
+            meta = state["all_models"][canonical_id].setdefault("meta", {})
+            for key, value in record.items():
                 if key not in meta or meta[key] is None:
-                    meta[key] = val
-    return ok(s)
+                    meta[key] = value
+    return ok(state)
 
 
-def step_name_map(s):
+def step_name_map(state):
     name_map = {}
-    for cid, model in s["all_models"].items():
-        for source, sid in model.get("aliases", {}).items():
-            name_map[f"{source}:{sid}"] = cid
-    s["name_map"] = name_map
-    return ok(s)
+    for canonical_id, model in state["all_models"].items():
+        for source, source_id in model.get("aliases", {}).items():
+            name_map[f"{source}:{source_id}"] = canonical_id
+    state["name_map"] = name_map
+    return ok(state)
 
 
-def step_write(s):
+def step_write(state):
     output_models = []
-    for cid in sorted(s["all_models"].keys()):
-        model = s["all_models"][cid]
+    for canonical_id in sorted(state["all_models"].keys()):
+        model = state["all_models"][canonical_id]
         if "livebench" in model.get("benchmarks", {}):
-            lb = model["benchmarks"]["livebench"]
-            if "tasks" in lb:
-                del lb["tasks"]
+            livebench = model["benchmarks"]["livebench"]
+            if "tasks" in livebench:
+                del livebench["tasks"]
         output_models.append(model)
     output = {
         "meta": {
-            "generated": s["today"],
+            "generated": state["today"],
             "version": "1.0",
             "model_count": len(output_models),
-            "source_count": s["counts"],
+            "source_count": state["counts"],
             "sources": ["AA", "LiveBench", "Arena Text", "Arena Code", "OpenLLM v2", "OpenRouter", "Cost Breakdown"],
-            "name_map_size": len(s["name_map"]),
+            "name_map_size": len(state["name_map"]),
         },
-        "name_map": s["name_map"],
+        "name_map": state["name_map"],
         "models": [RegistryModel.from_flat(m).to_dict() for m in output_models],
     }
     try:
-        with open(s["out"], "w") as f:
+        with open(state["out"], "w") as f:
             json.dump(output, f, indent=2)
     except OSError as e:  # noqa: BLE001
-        return err(f"{os.path.basename(s['out'])}: {e}")
-    print(f"Written {len(output_models)} models to {s['out']}")
-    print(f"Name map: {len(s['name_map'])} alias entries")
+        return err(f"{os.path.basename(state['out'])}: {e}")
+    print(f"Written {len(output_models)} models to {state['out']}")
+    print(f"Name map: {len(state['name_map'])} alias entries")
     print(f"Model registry size: {len(json.dumps(output)):,} bytes")
-    s["output_models"] = output_models
-    return ok(s)
+    state["output_models"] = output_models
+    return ok(state)
 
 
 def run(ctx=None):
@@ -316,17 +321,17 @@ def run(ctx=None):
         "counts": {},
     }
 
-    s = state
+    current_state = state
     for step in (step_aa, step_aa_img, step_scrape_progress, step_dirac,
                  step_livebench, step_arena_text, step_arena_code,
                  step_openllm, step_openrouter, step_misc,
                  step_name_map, step_write):
-        r = step(s)
-        if r.is_err():
-            return err(r.error)
-        s = r.unwrap()
+        result = step(current_state)
+        if result.is_err():
+            return err(result.error)
+        current_state = result.unwrap()
 
-    output_models = s["output_models"]
+    output_models = current_state["output_models"]
 
     # ── Summary ──
     print("\n── SOURCE COVERAGE ──")
@@ -362,7 +367,7 @@ def run(ctx=None):
         p = [s_ for s_ in m.get("pricing", {}) if m["pricing"][s_]]
         b = [s_ for s_ in m.get("benchmarks", {}) if m["benchmarks"][s_]]
         print(f"  {m['id']:40s} P:{','.join(p):25s} B:{','.join(b)}")
-    return ok({"model_count": len(output_models), "name_map_size": len(s["name_map"])})
+    return ok({"model_count": len(output_models), "name_map_size": len(current_state["name_map"])})
 
 if __name__ == "__main__":
     result = run()

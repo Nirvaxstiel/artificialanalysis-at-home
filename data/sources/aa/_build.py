@@ -573,10 +573,10 @@ def _load_aa_api(base: Path) -> dict:
     """Load live AA models: prefer the cached aa_api_live.json (gitignored workflow
     artifact from the aa-api-live-fill skill), fall back to a live HTTPS call using the
     Free-tier /free endpoint (the /data/llms/models path 403s even with a valid key)."""
-    cache = os.path.join(base, "data", "sources", "aa", "aa_api_live.json")
-    if os.path.exists(cache):
+    cache_path = os.path.join(base, "data", "sources", "aa", "aa_api_live.json")
+    if os.path.exists(cache_path):
         try:
-            with open(cache) as f:
+            with open(cache_path) as f:
                 d = json.load(f)
             models = d.get("data") or d.get("models") or []
             return {m["slug"]: m for m in models if m.get("slug")}
