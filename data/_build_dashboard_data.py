@@ -36,7 +36,6 @@ def _write_js(path: Path, wrapper: dict) -> "Ok[None]|Err[str]":
 
 
 def _clean_name(name):
-    """Strip parenthetical qualifiers for display."""
     if not name:
         return None
     return re.sub(
@@ -49,8 +48,6 @@ def _today():
     from datetime import date
     return date.today().isoformat()
 
-
-# ── Archetype classification ──
 
 ArchetypePriority = [
     ("frontier", lambda r: r.intel is not None and r.intel.as_primitive() >= 50),
@@ -72,187 +69,178 @@ def classify_archetype(row: ProjectionRow) -> Archetype:
     return Archetype.UNCATEGORIZED
 
 
-def build(ctx=None):
-    pe = ProjectionEngine()
+_PROJECTION_AXES = [
+    "aa.inp_price", "aa.out_price", "aa.blended",
+    "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps", "aa.ttft",
+    "aa.useful_cost", "aa.reasoning_tax_pct",
+    "aa.cache_hit_price",
+    "aa.intel", "aa.iq_per_mtok", "aa.iq_per_dollar", "aa.iq_per_mtokdollar",
+    "aa.aa_coding_index", "aa.aa_math_index", "aa.gpqa", "aa.mmlu_pro",
+    "aa.hle", "aa.aime", "aa.aime_25", "aa.math_500", "aa.livecodebench",
+    "aa.ifbench", "aa.lcr", "aa.scicode", "aa.tau2", "aa.tau_banking",
+    "aa.terminalbench_hard", "aa.terminalbench_v2_1",
+    "aa.omniscience_hallucination_rate", "aa.briefcase_analytical_quality_elo",
+    "aa.briefcase_presentation_elo", "aa.time_per_task",
+    "aa.cost_seg_total", "aa.cost_seg_answer", "aa.cost_seg_reasoning",
+    "aa.cost_seg_cache_write", "aa.cost_seg_cache_hit", "aa.cost_seg_input",
+    "livebench.average", "livebench.coding", "livebench.reasoning",
+    "livebench.mathematics", "livebench.language", "livebench.data_analysis",
+    "livebench.agentic_coding", "livebench.if",
+    "arena_code.elo", "arena_code.ci", "arena_code.votes",
+    "arena_text.elo", "arena_text.ci", "arena_text.votes",
+    "openllm.average", "openllm.ifeval", "openllm.bbh",
+    "openllm.math_lvl_5", "openllm.gpqa", "openllm.musr", "openllm.mmlu_pro",
+    "openrouter.inp_price_per_m", "openrouter.out_price_per_m",
+    "openrouter.cache_read_price_per_m",
+    "meta.params_b", "meta.co2_kg",
+    "meta.params_total_b", "meta.params_active_b", "meta.release_date",
+    "meta.context_window",
+    "aa_img.omniscience_index", "aa_img.omniscience_accuracy",
+    "aa_img.omniscience_hallucination_rate", "aa_img.briefcase_elo",
+    "aa_img.briefcase_analytical_quality_elo", "aa_img.briefcase_presentation_elo",
+    "aa_img.briefcase_rubric_score", "aa_img.agentic_index",
+    "aa_img.coding_index", "aa_img.openness_index",
+    "aa_img.e2e_response_time_s", "aa_img.ttft_variance",
+    "dirac.cache_hit_rate_max",
+]
 
-    ALL_AXES = [
-        "aa.inp_price", "aa.out_price", "aa.blended",
-        "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps", "aa.ttft",
-        "aa.useful_cost", "aa.reasoning_tax_pct",
-        "aa.cache_hit_price",
-        "aa.intel", "aa.iq_per_mtok", "aa.iq_per_dollar", "aa.iq_per_mtokdollar",
-        "aa.aa_coding_index", "aa.aa_math_index", "aa.gpqa", "aa.mmlu_pro",
-        "aa.hle", "aa.aime", "aa.aime_25", "aa.math_500", "aa.livecodebench",
-        "aa.ifbench", "aa.lcr", "aa.scicode", "aa.tau2", "aa.tau_banking",
-        "aa.terminalbench_hard", "aa.terminalbench_v2_1",
-        "aa.omniscience_hallucination_rate", "aa.briefcase_analytical_quality_elo",
-        "aa.briefcase_presentation_elo", "aa.time_per_task",
-        "aa.cost_seg_total", "aa.cost_seg_answer", "aa.cost_seg_reasoning",
-        "aa.cost_seg_cache_write", "aa.cost_seg_cache_hit", "aa.cost_seg_input",
-        "livebench.average", "livebench.coding", "livebench.reasoning",
-        "livebench.mathematics", "livebench.language", "livebench.data_analysis",
-        "livebench.agentic_coding", "livebench.if",
-        "arena_code.elo", "arena_code.ci", "arena_code.votes",
-        "arena_text.elo", "arena_text.ci", "arena_text.votes",
-        "openllm.average", "openllm.ifeval", "openllm.bbh",
-        "openllm.math_lvl_5", "openllm.gpqa", "openllm.musr", "openllm.mmlu_pro",
-        "openrouter.inp_price_per_m", "openrouter.out_price_per_m",
-        "openrouter.cache_read_price_per_m",
-        "meta.params_b", "meta.co2_kg",
-        "meta.params_total_b", "meta.params_active_b", "meta.release_date",
-        "meta.context_window",
-        "aa_img.omniscience_index", "aa_img.omniscience_accuracy",
-        "aa_img.omniscience_hallucination_rate", "aa_img.briefcase_elo",
-        "aa_img.briefcase_analytical_quality_elo", "aa_img.briefcase_presentation_elo",
-        "aa_img.briefcase_rubric_score", "aa_img.agentic_index",
-        "aa_img.coding_index", "aa_img.openness_index",
-        "aa_img.e2e_response_time_s", "aa_img.ttft_variance",
-        "dirac.cache_hit_rate_max",
-    ]
 
-    raw = pe.project(ALL_AXES)
-    aa_models = [r for r in raw if any(
+def _select_aa_models(raw_rows):
+    return [r for r in raw_rows if any(
         k.startswith("aa.") and v is not None
         for k, v in r["axes"].items()
     )]
 
-    reg_by_id = {m["id"]: m for m in pe.models}
 
-    output = []
-    for r in aa_models:
-        mid = r["id"]
-        a = r["axes"]
-        reg = reg_by_id.get(mid, {})
-        meta = reg.get("meta", {})
+def _build_projection_row(row, registry_by_id):
+    mid = row["id"]
+    axes = row["axes"]
+    registry = registry_by_id.get(mid, {})
+    meta = registry.get("meta", {})
 
-        row = ProjectionRow(
-            slug=mid,
-            name=_clean_name(r.get("name")) or mid,
-            creator=r.get("creator"),
-            type=try_model_type(r.get("model_type")),
-            meta=ProjectionRowMeta(
-                archetype=try_archetype(meta.get("archetype")),
-                pareto_optimal=meta.get("pareto_optimal", False),
-                has_breakdown=meta.get("has_breakdown", False),
-                cost_percentile=safe_pct(meta.get("cost_percentile")),
-                iq_percentile=safe_pct(meta.get("iq_percentile")),
-                release_date=meta.get("release_date"),
-                confirmed_scraped=meta.get("confirmed_scraped"),
-            ),
-            inp_price=safe_ppm(a.get("aa.inp_price")),
-            out_price=safe_ppm(a.get("aa.out_price")),
-            blended=safe_ppm(a.get("aa.blended")),
-            cache_hit_price=safe_ppm(a.get("aa.cache_hit_price")),
-            cost_per_task=safe_cost(a.get("aa.cost_per_task")),
-            tokens_m=safe_tok_per_task(a.get("aa.tokens_m")),
-            speed_tps=safe_tps(a.get("aa.speed_tps")),
-            ttft=safe_ttft(a.get("aa.ttft")),
-            useful_cost=safe_useful_cost(a.get("aa.useful_cost")),
-            reasoning_tax_pct=safe_reasoning_tax(a.get("aa.reasoning_tax_pct")),
-            intel=safe_intel(a.get("aa.intel")),
-            iq_per_mtok=safe_iq_per_mtok(a.get("aa.iq_per_mtok")),
-            iq_per_mtokdollar=safe_iq_per_mtokdollar(a.get("aa.iq_per_mtokdollar")),
-            cost_seg_total=safe_cost_segment(a.get("aa.cost_seg_total")),
-            cost_seg_answer=safe_cost_segment(a.get("aa.cost_seg_answer")),
-            cost_seg_reasoning=safe_cost_segment(a.get("aa.cost_seg_reasoning")),
-            cost_seg_cache_write=safe_cost_segment(a.get("aa.cost_seg_cache_write")),
-            cost_seg_cache_hit=safe_cost_segment(a.get("aa.cost_seg_cache_hit")),
-            cost_seg_input=safe_cost_segment(a.get("aa.cost_seg_input")),
-            livebench_average=safe_benchmark(a.get("livebench.average")),
-            livebench_coding=safe_benchmark(a.get("livebench.coding")),
-            livebench_reasoning=safe_benchmark(a.get("livebench.reasoning")),
-            livebench_mathematics=safe_benchmark(a.get("livebench.mathematics")),
-            livebench_language=safe_benchmark(a.get("livebench.language")),
-            livebench_data_analysis=safe_benchmark(a.get("livebench.data_analysis")),
-            livebench_agentic_coding=safe_benchmark(a.get("livebench.agentic_coding")),
-            livebench_if=safe_benchmark(a.get("livebench.if")),
-            arena_code_elo=safe_elo(a.get("arena_code.elo")),
-            arena_code_ci=safe_ci(a.get("arena_code.ci")),
-            arena_code_votes=safe_votes(a.get("arena_code.votes")),
-            arena_text_elo=safe_elo(a.get("arena_text.elo")),
-            arena_text_ci=safe_ci(a.get("arena_text.ci")),
-            arena_text_votes=safe_votes(a.get("arena_text.votes")),
-            openllm_average=safe_benchmark(a.get("openllm.average")),
-            openllm_ifeval=safe_benchmark(a.get("openllm.ifeval")),
-            openllm_bbh=safe_benchmark(a.get("openllm.bbh")),
-            openllm_math_lvl_5=safe_benchmark(a.get("openllm.math_lvl_5")),
-            openllm_gpqa=safe_benchmark(a.get("openllm.gpqa")),
-            openllm_musr=safe_benchmark(a.get("openllm.musr")),
-            openllm_mmlu_pro=safe_benchmark(a.get("openllm.mmlu_pro")),
-            aa_coding_index=safe_benchmark(a.get("aa.aa_coding_index")),
-            aa_math_index=safe_benchmark(a.get("aa.aa_math_index")),
-            aa_gpqa=safe_benchmark(a.get("aa.gpqa")),
-            aa_mmlu_pro=safe_benchmark(a.get("aa.mmlu_pro")),
-            aa_hle=safe_benchmark(a.get("aa.hle")),
-            aa_aime=safe_benchmark(a.get("aa.aime")),
-            aa_aime_25=safe_benchmark(a.get("aa.aime_25")),
-            aa_math_500=safe_benchmark(a.get("aa.math_500")),
-            aa_livecodebench=safe_benchmark(a.get("aa.livecodebench")),
-            aa_ifbench=safe_benchmark(a.get("aa.ifbench")),
-            aa_lcr=safe_benchmark(a.get("aa.lcr")),
-            aa_scicode=safe_benchmark(a.get("aa.scicode")),
-            aa_tau2=safe_benchmark(a.get("aa.tau2")),
-            aa_tau_banking=safe_benchmark(a.get("aa.tau_banking")),
-            aa_terminalbench_hard=safe_benchmark(a.get("aa.terminalbench_hard")),
-            aa_terminalbench_v2_1=safe_benchmark(a.get("aa.terminalbench_v2_1")),
-            aa_omniscience_hallucination_rate=safe_benchmark(a.get("aa.omniscience_hallucination_rate")),
-            aa_briefcase_analytical_quality_elo=safe_elo(a.get("aa.briefcase_analytical_quality_elo")),
-            aa_briefcase_presentation_elo=safe_elo(a.get("aa.briefcase_presentation_elo")),
-            aa_time_per_task=safe_response_time(a.get("aa.time_per_task")),
-            openrouter_inp_price_per_m=safe_ppm(a.get("openrouter.inp_price_per_m")),
-            openrouter_out_price_per_m=safe_ppm(a.get("openrouter.out_price_per_m")),
-            openrouter_cache_read_price_per_m=safe_ppm(a.get("openrouter.cache_read_price_per_m")),
-            openrouter_vendor=reg.get("pricing", {}).get("openrouter", {}).get("vendor"),
-            params_b=safe_params(meta.get("params_b")),
-            params_total_b=safe_params(a.get("meta.params_total_b")),
-            params_active_b=safe_params(a.get("meta.params_active_b")),
-            co2_kg=safe_carbon(a.get("meta.co2_kg")),
-            context_window=safe_ctx_window(meta.get("context_window")),
-            cache_hit_rate_max=safe_cache(a.get("dirac.cache_hit_rate_max")),
-            iq_per_dollar_pt=safe_iq_per_dollar(a.get("aa.iq_per_dollar")),
-            omniscience_index=safe_omniscience(a.get("aa_img.omniscience_index")),
-            omniscience_accuracy=safe_benchmark(a.get("aa_img.omniscience_accuracy")),
-            omniscience_hallucination_rate=safe_benchmark(a.get("aa_img.omniscience_hallucination_rate")),
-            briefcase_elo=safe_elo(a.get("aa_img.briefcase_elo")),
-            briefcase_analytical_quality_elo=safe_elo(a.get("aa_img.briefcase_analytical_quality_elo")),
-            briefcase_presentation_elo=safe_elo(a.get("aa_img.briefcase_presentation_elo")),
-            briefcase_rubric_score=safe_benchmark(a.get("aa_img.briefcase_rubric_score")),
-            agentic_index=safe_benchmark(a.get("aa_img.agentic_index")),
-            coding_index=safe_benchmark(a.get("aa_img.coding_index")),
-            openness_index=safe_benchmark(a.get("aa_img.openness_index")),
-            e2e_response_time_s=safe_response_time(a.get("aa_img.e2e_response_time_s")),
-            ttft_variance=safe_axis_metric(a.get("aa_img.ttft_variance")),
-        )
+    projection = ProjectionRow(
+        slug=mid,
+        name=_clean_name(row.get("name")) or mid,
+        creator=row.get("creator"),
+        type=try_model_type(row.get("model_type")),
+        meta=ProjectionRowMeta(
+            archetype=try_archetype(meta.get("archetype")),
+            pareto_optimal=meta.get("pareto_optimal", False),
+            has_breakdown=meta.get("has_breakdown", False),
+            cost_percentile=safe_pct(meta.get("cost_percentile")),
+            iq_percentile=safe_pct(meta.get("iq_percentile")),
+            release_date=meta.get("release_date"),
+            confirmed_scraped=meta.get("confirmed_scraped"),
+        ),
+        inp_price=safe_ppm(axes.get("aa.inp_price")),
+        out_price=safe_ppm(axes.get("aa.out_price")),
+        blended=safe_ppm(axes.get("aa.blended")),
+        cache_hit_price=safe_ppm(axes.get("aa.cache_hit_price")),
+        cost_per_task=safe_cost(axes.get("aa.cost_per_task")),
+        tokens_m=safe_tok_per_task(axes.get("aa.tokens_m")),
+        speed_tps=safe_tps(axes.get("aa.speed_tps")),
+        ttft=safe_ttft(axes.get("aa.ttft")),
+        useful_cost=safe_useful_cost(axes.get("aa.useful_cost")),
+        reasoning_tax_pct=safe_reasoning_tax(axes.get("aa.reasoning_tax_pct")),
+        intel=safe_intel(axes.get("aa.intel")),
+        iq_per_mtok=safe_iq_per_mtok(axes.get("aa.iq_per_mtok")),
+        iq_per_mtokdollar=safe_iq_per_mtokdollar(axes.get("aa.iq_per_mtokdollar")),
+        cost_seg_total=safe_cost_segment(axes.get("aa.cost_seg_total")),
+        cost_seg_answer=safe_cost_segment(axes.get("aa.cost_seg_answer")),
+        cost_seg_reasoning=safe_cost_segment(axes.get("aa.cost_seg_reasoning")),
+        cost_seg_cache_write=safe_cost_segment(axes.get("aa.cost_seg_cache_write")),
+        cost_seg_cache_hit=safe_cost_segment(axes.get("aa.cost_seg_cache_hit")),
+        cost_seg_input=safe_cost_segment(axes.get("aa.cost_seg_input")),
+        livebench_average=safe_benchmark(axes.get("livebench.average")),
+        livebench_coding=safe_benchmark(axes.get("livebench.coding")),
+        livebench_reasoning=safe_benchmark(axes.get("livebench.reasoning")),
+        livebench_mathematics=safe_benchmark(axes.get("livebench.mathematics")),
+        livebench_language=safe_benchmark(axes.get("livebench.language")),
+        livebench_data_analysis=safe_benchmark(axes.get("livebench.data_analysis")),
+        livebench_agentic_coding=safe_benchmark(axes.get("livebench.agentic_coding")),
+        livebench_if=safe_benchmark(axes.get("livebench.if")),
+        arena_code_elo=safe_elo(axes.get("arena_code.elo")),
+        arena_code_ci=safe_ci(axes.get("arena_code.ci")),
+        arena_code_votes=safe_votes(axes.get("arena_code.votes")),
+        arena_text_elo=safe_elo(axes.get("arena_text.elo")),
+        arena_text_ci=safe_ci(axes.get("arena_text.ci")),
+        arena_text_votes=safe_votes(axes.get("arena_text.votes")),
+        openllm_average=safe_benchmark(axes.get("openllm.average")),
+        openllm_ifeval=safe_benchmark(axes.get("openllm.ifeval")),
+        openllm_bbh=safe_benchmark(axes.get("openllm.bbh")),
+        openllm_math_lvl_5=safe_benchmark(axes.get("openllm.math_lvl_5")),
+        openllm_gpqa=safe_benchmark(axes.get("openllm.gpqa")),
+        openllm_musr=safe_benchmark(axes.get("openllm.musr")),
+        openllm_mmlu_pro=safe_benchmark(axes.get("openllm.mmlu_pro")),
+        aa_coding_index=safe_benchmark(axes.get("aa.aa_coding_index")),
+        aa_math_index=safe_benchmark(axes.get("aa.aa_math_index")),
+        aa_gpqa=safe_benchmark(axes.get("aa.gpqa")),
+        aa_mmlu_pro=safe_benchmark(axes.get("aa.mmlu_pro")),
+        aa_hle=safe_benchmark(axes.get("aa.hle")),
+        aa_aime=safe_benchmark(axes.get("aa.aime")),
+        aa_aime_25=safe_benchmark(axes.get("aa.aime_25")),
+        aa_math_500=safe_benchmark(axes.get("aa.math_500")),
+        aa_livecodebench=safe_benchmark(axes.get("aa.livecodebench")),
+        aa_ifbench=safe_benchmark(axes.get("aa.ifbench")),
+        aa_lcr=safe_benchmark(axes.get("aa.lcr")),
+        aa_scicode=safe_benchmark(axes.get("aa.scicode")),
+        aa_tau2=safe_benchmark(axes.get("aa.tau2")),
+        aa_tau_banking=safe_benchmark(axes.get("aa.tau_banking")),
+        aa_terminalbench_hard=safe_benchmark(axes.get("aa.terminalbench_hard")),
+        aa_terminalbench_v2_1=safe_benchmark(axes.get("aa.terminalbench_v2_1")),
+        aa_omniscience_hallucination_rate=safe_benchmark(axes.get("aa.omniscience_hallucination_rate")),
+        aa_briefcase_analytical_quality_elo=safe_elo(axes.get("aa.briefcase_analytical_quality_elo")),
+        aa_briefcase_presentation_elo=safe_elo(axes.get("aa.briefcase_presentation_elo")),
+        aa_time_per_task=safe_response_time(axes.get("aa.time_per_task")),
+        openrouter_inp_price_per_m=safe_ppm(axes.get("openrouter.inp_price_per_m")),
+        openrouter_out_price_per_m=safe_ppm(axes.get("openrouter.out_price_per_m")),
+        openrouter_cache_read_price_per_m=safe_ppm(axes.get("openrouter.cache_read_price_per_m")),
+        openrouter_vendor=registry.get("pricing", {}).get("openrouter", {}).get("vendor"),
+        params_b=safe_params(meta.get("params_b")),
+        params_total_b=safe_params(axes.get("meta.params_total_b")),
+        params_active_b=safe_params(axes.get("meta.params_active_b")),
+        co2_kg=safe_carbon(axes.get("meta.co2_kg")),
+        context_window=safe_ctx_window(meta.get("context_window")),
+        cache_hit_rate_max=safe_cache(axes.get("dirac.cache_hit_rate_max")),
+        iq_per_dollar_pt=safe_iq_per_dollar(axes.get("aa.iq_per_dollar")),
+        omniscience_index=safe_omniscience(axes.get("aa_img.omniscience_index")),
+        omniscience_accuracy=safe_benchmark(axes.get("aa_img.omniscience_accuracy")),
+        omniscience_hallucination_rate=safe_benchmark(axes.get("aa_img.omniscience_hallucination_rate")),
+        briefcase_elo=safe_elo(axes.get("aa_img.briefcase_elo")),
+        briefcase_analytical_quality_elo=safe_elo(axes.get("aa_img.briefcase_analytical_quality_elo")),
+        briefcase_presentation_elo=safe_elo(axes.get("aa_img.briefcase_presentation_elo")),
+        briefcase_rubric_score=safe_benchmark(axes.get("aa_img.briefcase_rubric_score")),
+        agentic_index=safe_benchmark(axes.get("aa_img.agentic_index")),
+        coding_index=safe_benchmark(axes.get("aa_img.coding_index")),
+        openness_index=safe_benchmark(axes.get("aa_img.openness_index")),
+        e2e_response_time_s=safe_response_time(axes.get("aa_img.e2e_response_time_s")),
+        ttft_variance=safe_axis_metric(axes.get("aa_img.ttft_variance")),
+    )
 
-        row.compute_derived()
-        row.meta.archetype = classify_archetype(row)
+    projection.compute_derived()
+    projection.meta.archetype = classify_archetype(projection)
 
-        # tokens_m is AA's "Output Tokens per Intelligence Index Task" (millions).
-        # It spans the ENTIRE eval suite, not a single context window — so it is
-        # legitimately far larger than context_window. Sanity bound only: positive
-        # + within AA's observed range (~10M–500M tokens per task).
-        if row.tokens_m is not None:
-            tm = row.tokens_m.as_primitive()
-            if tm <= 0 or tm > 10_000:
-                row.tokens_m = None
+    if projection.tokens_m is not None:
+        tokens_m_primitive = projection.tokens_m.as_primitive()
+        if tokens_m_primitive <= 0 or tokens_m_primitive > 10_000:
+            projection.tokens_m = None
 
-        output.append(row)
+    return projection
 
-    # Sort: by intel descending, then slug
-    output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
 
-    # ── Compute radar-normalized scores ──
-    def _radar_raws(row):
-        intel_raw = row.intel.as_primitive() if row.intel else None
-        speed_raw = row.speed_tps.as_primitive() if row.speed_tps else None
-        cache_raw = (1 - row.cache_hit_price.as_primitive() / row.inp_price.as_primitive()) \
-            if row.cache_hit_price and row.inp_price and row.inp_price.as_primitive() > 0 else None
-        cost_raw = 1 / row.cost_per_task.as_primitive() \
-            if row.cost_per_task and row.cost_per_task.as_primitive() > 0 else None
-        ctx_raw = float(row.context_window.as_primitive()) if row.context_window else None
-        return intel_raw, speed_raw, cache_raw, cost_raw, ctx_raw
+def _extract_radar_raws(row):
+    intel_raw = row.intel.as_primitive() if row.intel else None
+    speed_raw = row.speed_tps.as_primitive() if row.speed_tps else None
+    cache_raw = (1 - row.cache_hit_price.as_primitive() / row.inp_price.as_primitive()) \
+        if row.cache_hit_price and row.inp_price and row.inp_price.as_primitive() > 0 else None
+    cost_raw = 1 / row.cost_per_task.as_primitive() \
+        if row.cost_per_task and row.cost_per_task.as_primitive() > 0 else None
+    ctx_raw = float(row.context_window.as_primitive()) if row.context_window else None
+    return intel_raw, speed_raw, cache_raw, cost_raw, ctx_raw
 
-    all_raws = [_radar_raws(r) for r in output]
+
+def _normalize_radar_scores(output):
+    all_raws = [_extract_radar_raws(r) for r in output]
     maxes = []
     for axis_idx in range(5):
         vals = [r[axis_idx] for r in all_raws if r[axis_idx] is not None]
@@ -264,6 +252,19 @@ def build(ctx=None):
         row.radar_cache_eff = (raws[2] / maxes[2]) if raws[2] is not None else None
         row.radar_cost_eff = (raws[3] / maxes[3]) if raws[3] is not None else None
         row.radar_ctx = (raws[4] / maxes[4]) if raws[4] is not None else None
+
+
+def build(ctx=None):
+    projection_engine = ProjectionEngine()
+
+    raw_rows = projection_engine.project(_PROJECTION_AXES)
+    aa_models = _select_aa_models(raw_rows)
+    registry_by_id = {m["id"]: m for m in projection_engine.models}
+
+    output = [_build_projection_row(r, registry_by_id) for r in aa_models]
+    output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
+
+    _normalize_radar_scores(output)
 
     payload = {
         "meta": {
@@ -287,8 +288,6 @@ def build(ctx=None):
         "models": output,
     }
 
-    # Serialize to processed.js — wrapper carries meta + sources + models so the
-    # artifact is self-describing (model_count/version/date) and the UI unwraps .models.
     rows_dict = [r.to_dict() for r in output]
     wrapper = {
         "meta": payload["meta"],
