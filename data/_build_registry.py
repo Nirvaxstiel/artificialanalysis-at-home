@@ -304,45 +304,7 @@ def step_write(state):
     return ok(state)
 
 
-def run(ctx=None):
-    global BASE
-    if ctx and ctx.get("root"):
-        BASE = Path(ctx["root"])
-    else:
-        BASE = Path(__file__).resolve().parent.parent
-
-    SRC = os.path.join(BASE, "data", "sources")
-    OUT = os.path.join(BASE, "data", "model_registry.json")
-
-    state = {
-        "all_models": {},
-        "src": SRC,
-        "out": OUT,
-        "today": date.today().isoformat(),
-        "counts": {},
-    }
-
-    pipeline = (Pipeline(state)
-        .then("step_aa", lambda c: step_aa(c))
-        .then("step_aa_img", lambda c: step_aa_img(c))
-        .then("step_scrape_progress", lambda c: step_scrape_progress(c))
-        .then("step_dirac", lambda c: step_dirac(c))
-        .then("step_livebench", lambda c: step_livebench(c))
-        .then("step_arena_text", lambda c: step_arena_text(c))
-        .then("step_arena_code", lambda c: step_arena_code(c))
-        .then("step_openllm", lambda c: step_openllm(c))
-        .then("step_openrouter", lambda c: step_openrouter(c))
-        .then("step_misc", lambda c: step_misc(c))
-        .then("step_name_map", lambda c: step_name_map(c))
-        .then("step_write", lambda c: step_write(c)))
-    pipeline.run()
-
-    if pipeline.ctx.get("_failed_step"):
-        return err(pipeline.ctx["_error"])
-
-    output_models = pipeline.ctx["output_models"]
-
-    # ── Summary ──
+def _print_summary(output_models, name_map):
     print("\n── SOURCE COVERAGE ──")
     source_count = {"aa": 0, "livebench": 0, "arena": 0, "openllm": 0, "openrouter": 0}
     multi_source = 0
@@ -376,7 +338,48 @@ def run(ctx=None):
         p = [s_ for s_ in m.get("pricing", {}) if m["pricing"][s_]]
         b = [s_ for s_ in m.get("benchmarks", {}) if m["benchmarks"][s_]]
         print(f"  {m['id']:40s} P:{','.join(p):25s} B:{','.join(b)}")
-    return ok({"model_count": len(output_models), "name_map_size": len(pipeline.ctx["name_map"])})
+    return ok({"model_count": len(output_models), "name_map_size": len(name_map)})
+
+
+def run(ctx=None):
+    global BASE
+    if ctx and ctx.get("root"):
+        BASE = Path(ctx["root"])
+    else:
+        BASE = Path(__file__).resolve().parent.parent
+
+    SRC = os.path.join(BASE, "data", "sources")
+    OUT = os.path.join(BASE, "data", "model_registry.json")
+
+    state = {
+        "all_models": {},
+        "src": SRC,
+        "out": OUT,
+        "today": date.today().isoformat(),
+        "counts": {},
+    }
+
+    pipeline = (Pipeline(state)
+        .then("step_aa", lambda c: step_aa(c))
+        .then("step_aa_img", lambda c: step_aa_img(c))
+        .then("step_scrape_progress", lambda c: step_scrape_progress(c))
+        .then("step_dirac", lambda c: step_dirac(c))
+        .then("step_livebench", lambda c: step_livebench(c))
+        .then("step_arena_text", lambda c: step_arena_text(c))
+        .then("step_arena_code", lambda c: step_arena_code(c))
+        .then("step_openllm", lambda c: step_openllm(c))
+        .then("step_openrouter", lambda c: step_openrouter(c))
+        .then("step_misc", lambda c: step_misc(c))
+        .then("step_name_map", lambda c: step_name_map(c))
+        .then("step_write", lambda c: step_write(c))
+        .then("print_summary", lambda c: _print_summary(c["output_models"], c["name_map"])))
+    pipeline.run()
+
+    if pipeline.ctx.get("_failed_step"):
+        return err(pipeline.ctx["_error"])
+
+    output_models = pipeline.ctx["output_models"]
+    return ok(pipeline.ctx["print_summary"])
 
 if __name__ == "__main__":
     result = run()
