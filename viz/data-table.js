@@ -161,65 +161,41 @@
     const filtered = search ? rows.filter(m => matchesSearch(m, search)) : rows;
     const sorted = applySort(filtered, sortSpec);
 
-    // Build controls
-    let html = `<div class="dt-controls">`;
+    if (container.__builtFor !== viewKey) {
+      buildShell(container, view, viewKey, data);
+      container.__builtFor = viewKey;
+    }
+    patchControls(container, view, viewKey, sortSpec, filtered.length, data.length);
+    patchTable(container, view, sortSpec, sorted, container.__highlight);
+  }
 
+  function buildShell(container, view, viewKey, data) {
+    let html = `<div class="dt-controls">`;
     html += `<div class="dt-view-btns" style="display:flex;gap:4px;">`;
     for (const vk of VIEW_KEYS) {
       const active = vk === viewKey ? ' active' : '';
       html += `<button class="dt-view-btn${active}" data-view="${vk}">${VIEWS[vk].label}</button>`;
     }
     html += `</div>`;
-
     html += `<div class="dt-search-row" style="display:flex;align-items:center;gap:8px;margin-top:6px;">`;
-    html += `<input class="dt-search" type="text" placeholder="Search name / creator / slug …" value="${search.replace(/"/g,'&quot;')}" style="flex:1;">`;
-    html += `<span style="color:#666;font-size:10px;font-family:monospace;">${filtered.length} / ${data.length}</span>`;
+    html += `<input class="dt-search" type="text" placeholder="Search name / creator / slug …" style="flex:1;">`;
+    html += `<span class="dt-count" style="color:#666;font-size:10px;font-family:monospace;"></span>`;
     html += `</div>`;
     html += `</div>`;
-
-    // Sort indicator
-    if (sortSpec.length > 0) {
-      const labels = sortSpec.map(s => {
-        const col = view.cols.find(c => c.key === s.key);
-        return `${col ? col.label : s.key} ${s.dir === 'asc' ? '↑' : '↓'}`;
-      }).join(', ');
-      html += `<div style="color:#888;font-size:9px;font-family:monospace;margin:4px 0;">Sorted by: ${labels}  <span style="color:#555;">(shift+click for multi-column sort)</span></div>`;
-    }
-
     html += `<div class="dt-scroll" style="overflow-x:auto;">`;
     html += `<table class="dt-table"><thead><tr>`;
     for (let i = 0; i < view.cols.length; i++) {
       const col = view.cols[i];
-      const indicator = getSortIndicator(sortSpec, col.key);
-      const active = sortSpec.some(s => s.key === col.key);
-      html += `<th class="${col.cls || ''}${active ? ' sorted' : ''}" data-col="${col.key}" data-idx="${i}">${col.label} ${indicator}</th>`;
+      html += `<th class="${col.cls || ''}" data-col="${col.key}" data-idx="${i}">${col.label}</th>`;
     }
-    html += `</tr></thead><tbody>`;
-
-    for (let i = 0; i < sorted.length; i++) {
-      const r = sorted[i];
-      const hl = container.__highlight && r.slug === container.__highlight;
-      const dimmed = window.__legendFilter && window.__modelOpacity(r) < 1;
-      const hidden = window.__filterMode === 'hide' && window.__modelOpacity(r) === 0;
-      html += `<tr class="${hl ? 'hl' : ''}" data-slug="${r.slug}" style="${hidden ? 'display:none' : dimmed ? 'opacity:0.15' : ''}">`;
-      for (let j = 0; j < view.cols.length; j++) {
-        const col = view.cols[j];
-        const val = col.render(r, i);
-        html += `<td class="${col.cls || ''}">${val}</td>`;
-      }
-      html += `</tr>`;
-    }
-
-    html += `</tbody></table></div>`;
+    html += `</tr></thead><tbody></tbody></table></div>`;
     container.innerHTML = html;
 
-    // Wire clickable headers
     container.querySelectorAll('th[data-col]').forEach(th => {
       th.addEventListener('click', e => {
         const key = th.dataset.col;
         const shift = e.shiftKey;
         let newSort = container.__sort ? [...container.__sort] : [];
-
         if (shift) {
           const existing = newSort.find(s => s.key === key);
           if (existing) {
@@ -240,7 +216,6 @@
       });
     });
 
-    // Wire view buttons
     container.querySelectorAll('.dt-view-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         container.__view = btn.dataset.view;
@@ -252,7 +227,6 @@
       });
     });
 
-    // Wire search
     const searchInput = container.querySelector('.dt-search');
     if (searchInput) {
       searchInput.addEventListener('input', () => {
@@ -260,6 +234,50 @@
         render(container, data);
       });
     }
+  }
+
+  function patchControls(container, view, viewKey, sortSpec, filteredCount, total) {
+    const count = container.querySelector('.dt-count');
+    if (count) count.textContent = `${filteredCount} / ${total}`;
+    container.querySelectorAll('.dt-view-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.view === viewKey);
+    });
+    container.querySelectorAll('th[data-col]').forEach(th => {
+      const key = th.dataset.col;
+      const active = sortSpec.some(s => s.key === key);
+      th.classList.toggle('sorted', active);
+      const ind = getSortIndicator(sortSpec, key);
+      const label = view.cols.find(c => c.key === key);
+      th.firstChild ? (th.childNodes[0].nodeValue = `${label ? label.label : key} `) : null;
+      const existing = th.querySelector('.sort-indicator');
+      if (existing) existing.remove();
+      if (ind) {
+        const span = document.createElement('span');
+        span.className = 'sort-indicator';
+        span.textContent = ind;
+        th.appendChild(span);
+      }
+    });
+  }
+
+  function patchTable(container, view, sortSpec, sorted, highlight) {
+    const tbody = container.querySelector('.dt-table tbody');
+    if (!tbody) return;
+    let html = '';
+    for (let i = 0; i < sorted.length; i++) {
+      const r = sorted[i];
+      const hl = highlight && r.slug === highlight;
+      const dimmed = window.__legendFilter && window.__modelOpacity(r) < 1;
+      const hidden = window.__filterMode === 'hide' && window.__modelOpacity(r) === 0;
+      html += `<tr class="${hl ? 'hl' : ''}" data-slug="${r.slug}" style="${hidden ? 'display:none' : dimmed ? 'opacity:0.15' : ''}">`;
+      for (let j = 0; j < view.cols.length; j++) {
+        const col = view.cols[j];
+        const val = col.render(r, i);
+        html += `<td class="${col.cls || ''}">${val}</td>`;
+      }
+      html += `</tr>`;
+    }
+    tbody.innerHTML = html;
   }
 
   window.VIZ_REGISTRY = window.VIZ_REGISTRY || [];
