@@ -228,7 +228,7 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
   box-shadow: inset 3px 3px 0 #000;
 }
 .dt-search:focus {
-  border-color: var(--neon, #b6ff3c);
+  border-color: #444;
 }
 .dt-search:focus-visible,
 nav.tabs button:focus-visible,

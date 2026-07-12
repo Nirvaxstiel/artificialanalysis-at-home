@@ -134,11 +134,10 @@
 
   function getSortIndicator(sortSpec, key) {
     const idx = sortSpec.findIndex(s => s.key === key);
-    if (idx === -1) return '<span class="sort-indicator"></span>';
+    if (idx === -1) return '';
     const dir = sortSpec[idx].dir;
     const arrow = dir === 'asc' ? '▲' : '▼';
-    const text = sortSpec.length > 1 ? `${arrow}${idx + 1}` : arrow;
-    return `<span class="sort-indicator">${text}</span>`;
+    return sortSpec.length > 1 ? `${arrow}${idx + 1}` : arrow;
   }
 
   function matchesSearch(m, search) {
