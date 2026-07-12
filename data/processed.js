@@ -1,11 +1,10 @@
 window.PROCESSED_DATA = {
   "meta": {
-    "generated": "2026-07-11",
+    "generated": "2026-07-12",
     "version": "3.0",
     "model_count": 117,
     "sources": [
       "AA",
-      "AA_IMG",
       "Dirac.run",
       "LiveBench",
       "Arena Code",
@@ -16,10 +15,6 @@ window.PROCESSED_DATA = {
     "sources_meta": {
       "AA": {
         "speculative": false
-      },
-      "AA_IMG": {
-        "speculative": true,
-        "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."
       },
       "Dirac.run": {
         "speculative": false,
@@ -44,7 +39,6 @@ window.PROCESSED_DATA = {
   },
   "sources": [
     "AA",
-    "AA_IMG",
     "Dirac.run",
     "LiveBench",
     "Arena Code",
@@ -55,10 +49,6 @@ window.PROCESSED_DATA = {
   "sources_meta": {
     "AA": {
       "speculative": false
-    },
-    "AA_IMG": {
-      "speculative": true,
-      "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."
     },
     "Dirac.run": {
       "speculative": false,
@@ -129,15 +119,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 10.0,
       "openrouter_out_price_per_m": 50.0,
       "openrouter_cache_read_price_per_m": 1.0,
-      "omniscience_index": 40,
-      "omniscience_accuracy": 61,
-      "omniscience_hallucination_rate": 55,
-      "briefcase_elo": 1584,
-      "briefcase_analytical_quality_elo": 1765,
-      "briefcase_presentation_elo": 1496,
-      "briefcase_rubric_score": 56.0,
-      "agentic_index": 52.8,
-      "coding_index": 76.5,
       "iq_per_1k_pt": 21819.6,
       "cost_per_iq_pt": 0.04583,
       "radar_intel": 1.0,
@@ -146,7 +127,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.007273193019225955,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-06-09",
-      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -269,15 +249,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 5.0,
       "openrouter_out_price_per_m": 25.0,
       "openrouter_cache_read_price_per_m": 0.5,
-      "omniscience_index": 27,
-      "omniscience_accuracy": 47,
-      "omniscience_hallucination_rate": 36,
-      "briefcase_elo": 1354,
-      "briefcase_analytical_quality_elo": 1355,
-      "briefcase_presentation_elo": 1501,
-      "briefcase_rubric_score": 38.7,
-      "agentic_index": 47.2,
-      "coding_index": 74.3,
       "iq_per_1k_pt": 31111.1,
       "cost_per_iq_pt": 0.032143,
       "radar_intel": 0.9333333333333333,
@@ -286,7 +257,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.011111111111111112,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-05-28",
-      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -402,14 +372,6 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 881.0,
       "aa_briefcase_presentation_elo": 770.0,
       "aa_time_per_task": 4.0,
-      "omniscience_index": 20,
-      "omniscience_accuracy": 57,
-      "briefcase_elo": 1159,
-      "briefcase_analytical_quality_elo": 1228,
-      "briefcase_presentation_elo": 1124,
-      "briefcase_rubric_score": 33.4,
-      "agentic_index": 44.9,
-      "coding_index": 74.9,
       "iq_per_1k_pt": 53398.1,
       "cost_per_iq_pt": 0.018727,
       "radar_intel": 0.9166666666666666,
@@ -417,8 +379,7 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.908256880733945,
       "radar_cost_eff": 0.01941747572815534,
       "radar_ctx": 1.0,
-      "release_date": "2026-04-23",
-      "confirmed_scraped": true
+      "release_date": "2026-04-23"
     },
     {
       "slug": "claude-opus-4.7",
@@ -468,21 +429,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 5.0,
       "openrouter_out_price_per_m": 25.0,
       "openrouter_cache_read_price_per_m": 0.5,
-      "omniscience_index": 26,
-      "omniscience_accuracy": 46,
-      "omniscience_hallucination_rate": 36,
-      "briefcase_elo": 1290,
-      "briefcase_analytical_quality_elo": 1306,
-      "briefcase_presentation_elo": 1370,
-      "briefcase_rubric_score": 39.3,
-      "agentic_index": 44.4,
-      "coding_index": 73.6,
       "radar_intel": 0.9,
       "radar_speed": 0.056993588221325095,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-04-16",
-      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -591,17 +542,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 2.0,
       "openrouter_out_price_per_m": 10.0,
       "openrouter_cache_read_price_per_m": 0.19999999999999998,
-      "omniscience_index": 15,
-      "omniscience_accuracy": 38,
-      "omniscience_hallucination_rate": 37,
-      "briefcase_elo": 1391,
-      "briefcase_analytical_quality_elo": 1465,
-      "briefcase_presentation_elo": 1456,
-      "briefcase_rubric_score": 42.3,
-      "agentic_index": 46.7,
-      "coding_index": 71.5,
-      "e2e_response_time_s": 20.0,
-      "ttft_variance": -1.5,
       "iq_per_1k_pt": 23144.1,
       "cost_per_iq_pt": 0.043208,
       "radar_intel": 0.8833333333333333,
@@ -610,7 +550,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.008733624454148471,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-06-30",
-      "confirmed_scraped": true,
       "openrouter_vendor": "anthropic"
     },
     {
@@ -669,14 +608,6 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 703.0,
       "aa_briefcase_presentation_elo": 755.0,
       "aa_time_per_task": 2.5,
-      "omniscience_index": 18,
-      "omniscience_accuracy": 56,
-      "briefcase_elo": 1103,
-      "briefcase_analytical_quality_elo": 1158,
-      "briefcase_presentation_elo": 1085,
-      "briefcase_rubric_score": 30.6,
-      "agentic_index": 43.5,
-      "coding_index": 71.6,
       "iq_per_1k_pt": 76811.6,
       "cost_per_iq_pt": 0.013019,
       "radar_intel": 0.8833333333333333,
@@ -684,8 +615,7 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.908256880733945,
       "radar_cost_eff": 0.028985507246376815,
       "radar_ctx": 1.0,
-      "release_date": "2026-04-23",
-      "confirmed_scraped": true
+      "release_date": "2026-04-23"
     },
     {
       "slug": "gpt-5-6-terra-xhigh",
@@ -773,17 +703,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.84,
       "openrouter_out_price_per_m": 2.64,
       "openrouter_cache_read_price_per_m": 0.156,
-      "omniscience_index": 4,
-      "omniscience_hallucination_rate": 28,
-      "briefcase_elo": 1261,
-      "briefcase_analytical_quality_elo": 1331,
-      "briefcase_presentation_elo": 1292,
-      "briefcase_rubric_score": 36.1,
-      "agentic_index": 43.1,
-      "coding_index": 68.8,
-      "openness_index": 44,
-      "e2e_response_time_s": 14.9,
-      "ttft_variance": -1.4,
       "iq_per_1k_pt": 106250.0,
       "cost_per_iq_pt": 0.009412,
       "radar_intel": 0.85,
@@ -792,7 +711,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.04166666666666667,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-06-16",
-      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -871,16 +789,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 2.5,
       "openrouter_out_price_per_m": 15.0,
       "openrouter_cache_read_price_per_m": 0.25,
-      "omniscience_index": 6,
-      "omniscience_accuracy": 50,
-      "agentic_index": 41.1,
-      "coding_index": 71.1,
       "radar_intel": 0.85,
       "radar_speed": 0.18166706245547376,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 1.0,
       "release_date": "2026-03-05",
-      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -937,14 +850,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.5,
       "openrouter_out_price_per_m": 9.0,
       "openrouter_cache_read_price_per_m": 0.15,
-      "omniscience_index": 23,
-      "omniscience_accuracy": 52,
-      "briefcase_analytical_quality_elo": 700,
-      "briefcase_presentation_elo": 882,
-      "briefcase_rubric_score": 27.7,
-      "agentic_index": 37.4,
-      "coding_index": 70.1,
-      "e2e_response_time_s": 22.7,
       "iq_per_1k_pt": 84745.8,
       "cost_per_iq_pt": 0.0118,
       "radar_intel": 0.8333333333333334,
@@ -953,7 +858,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.03389830508474576,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-05-19",
-      "confirmed_scraped": true,
       "openrouter_vendor": "google"
     },
     {
@@ -1009,14 +913,6 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 613.0,
       "aa_briefcase_presentation_elo": 784.0,
       "aa_time_per_task": 1.4,
-      "omniscience_index": 17,
-      "omniscience_accuracy": 56,
-      "briefcase_elo": 1000,
-      "briefcase_analytical_quality_elo": 1000,
-      "briefcase_presentation_elo": 1000,
-      "briefcase_rubric_score": 26.6,
-      "agentic_index": 37.8,
-      "coding_index": 71.5,
       "iq_per_1k_pt": 119047.6,
       "cost_per_iq_pt": 0.0084,
       "radar_intel": 0.8333333333333334,
@@ -1024,8 +920,7 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.908256880733945,
       "radar_cost_eff": 0.047619047619047616,
       "radar_ctx": 1.0,
-      "release_date": "2026-04-23",
-      "confirmed_scraped": true
+      "release_date": "2026-04-23"
     },
     {
       "slug": "gpt-5-6-luna-xhigh",
@@ -1177,12 +1072,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 2.0,
       "openrouter_out_price_per_m": 12.0,
       "openrouter_cache_read_price_per_m": 0.19999999999999998,
-      "omniscience_index": 33,
-      "omniscience_accuracy": 55,
-      "omniscience_hallucination_rate": 50,
-      "briefcase_analytical_quality_elo": 264,
-      "briefcase_presentation_elo": 336,
-      "coding_index": 68.8,
       "iq_per_1k_pt": 158620.7,
       "cost_per_iq_pt": 0.006304,
       "radar_intel": 0.7666666666666667,
@@ -1191,7 +1080,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.06896551724137931,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-02-19",
-      "confirmed_scraped": true,
       "openrouter_vendor": "google"
     },
     {
@@ -1320,15 +1208,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.25,
       "openrouter_out_price_per_m": 3.75,
       "openrouter_cache_read_price_per_m": 0.25,
-      "omniscience_index": 14,
-      "omniscience_hallucination_rate": 23,
-      "briefcase_elo": 907,
-      "briefcase_analytical_quality_elo": 800,
-      "briefcase_presentation_elo": 965,
-      "briefcase_rubric_score": 23.7,
-      "agentic_index": 30.6,
-      "coding_index": 66.0,
-      "e2e_response_time_s": 17.1,
       "iq_per_1k_pt": 43396.2,
       "cost_per_iq_pt": 0.023043,
       "radar_intel": 0.7666666666666667,
@@ -1337,7 +1216,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.018867924528301886,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-05-19",
-      "confirmed_scraped": true,
       "openrouter_vendor": "qwen"
     },
     {
@@ -1479,15 +1357,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.435,
       "openrouter_out_price_per_m": 0.87,
       "openrouter_cache_read_price_per_m": 0.003625,
-      "omniscience_accuracy": 43,
-      "briefcase_elo": 932,
-      "briefcase_analytical_quality_elo": 898,
-      "briefcase_presentation_elo": 942,
-      "briefcase_rubric_score": 23.9,
-      "agentic_index": 36.4,
-      "coding_index": 59.4,
-      "openness_index": 50,
-      "ttft_variance": -1.8,
       "cache_hit_rate_max": 89.8,
       "iq_per_1k_pt": 1100000.0,
       "cost_per_iq_pt": 0.000909,
@@ -1497,7 +1366,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.5,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-04-24",
-      "confirmed_scraped": true,
       "openrouter_vendor": "deepseek"
     },
     {
@@ -1538,17 +1406,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.75,
       "openrouter_out_price_per_m": 14.0,
       "openrouter_cache_read_price_per_m": 0.175,
-      "omniscience_index": 10,
-      "omniscience_accuracy": 52,
-      "briefcase_elo": 865,
-      "briefcase_analytical_quality_elo": 863,
-      "briefcase_presentation_elo": 827,
       "radar_intel": 0.7333333333333333,
       "radar_speed": 0.10721918784136783,
       "radar_cache_eff": 0.9053735255570118,
       "radar_ctx": 0.38095238095238093,
       "release_date": "2026-02-05",
-      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -1602,15 +1464,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.65,
       "openrouter_out_price_per_m": 3.41,
       "openrouter_cache_read_price_per_m": 0.14,
-      "omniscience_index": 6,
-      "omniscience_hallucination_rate": 39,
-      "briefcase_elo": 805,
-      "briefcase_analytical_quality_elo": 780,
-      "briefcase_presentation_elo": 753,
-      "briefcase_rubric_score": 18.7,
-      "agentic_index": 30.3,
-      "coding_index": 56.0,
-      "ttft_variance": -2.3,
       "iq_per_1k_pt": 141935.5,
       "cost_per_iq_pt": 0.007045,
       "radar_intel": 0.7333333333333333,
@@ -1619,7 +1472,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.06451612903225806,
       "radar_ctx": 0.24966095238095237,
       "release_date": "2026-04-20",
-      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -1681,15 +1533,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.3,
       "openrouter_out_price_per_m": 1.2,
       "openrouter_cache_read_price_per_m": 0.06,
-      "omniscience_hallucination_rate": 16,
-      "briefcase_elo": 1112,
-      "briefcase_analytical_quality_elo": 1082,
-      "briefcase_presentation_elo": 1196,
-      "briefcase_rubric_score": 30.3,
-      "agentic_index": 35.4,
-      "coding_index": 58.6,
-      "openness_index": 33,
-      "ttft_variance": -1.7,
       "iq_per_1k_pt": 366666.7,
       "cost_per_iq_pt": 0.002727,
       "radar_intel": 0.7333333333333333,
@@ -1698,7 +1541,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.16666666666666669,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-06-01",
-      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -1744,12 +1586,6 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.655430711610487,
       "aa_omniscience_hallucination_rate": 0.86,
       "aa_time_per_task": 0.6,
-      "omniscience_index": 15,
-      "omniscience_accuracy": 54,
-      "agentic_index": 30.4,
-      "coding_index": 60.9,
-      "e2e_response_time_s": 9.1,
-      "ttft_variance": -1.9,
       "iq_per_1k_pt": 195454.5,
       "cost_per_iq_pt": 0.005116,
       "radar_intel": 0.7166666666666667,
@@ -1757,8 +1593,7 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.908256880733945,
       "radar_cost_eff": 0.09090909090909091,
       "radar_ctx": 1.0,
-      "release_date": "2026-04-23",
-      "confirmed_scraped": true
+      "release_date": "2026-04-23"
     },
     {
       "slug": "muse-spark",
@@ -1800,19 +1635,10 @@ window.PROCESSED_DATA = {
       "aa_omniscience_hallucination_rate": 0.73,
       "aa_briefcase_analytical_quality_elo": 898.0,
       "aa_briefcase_presentation_elo": 878.0,
-      "omniscience_index": 4,
-      "omniscience_accuracy": 45,
-      "briefcase_elo": 445,
-      "briefcase_analytical_quality_elo": 570,
-      "briefcase_presentation_elo": 505,
-      "briefcase_rubric_score": 12.5,
-      "agentic_index": 28.7,
-      "coding_index": 58.6,
       "radar_intel": 0.7166666666666667,
       "radar_speed": 0.0,
       "radar_ctx": 0.9986438095238095,
-      "release_date": "2026-04-08",
-      "confirmed_scraped": true
+      "release_date": "2026-04-08"
     },
     {
       "slug": "kimi-k2.7-code",
@@ -1871,9 +1697,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.74,
       "openrouter_out_price_per_m": 3.5,
       "openrouter_cache_read_price_per_m": 0.15,
-      "omniscience_accuracy": 39,
-      "agentic_index": 29.6,
-      "coding_index": 60.8,
       "iq_per_1k_pt": 233333.3,
       "cost_per_iq_pt": 0.004286,
       "radar_intel": 0.7,
@@ -1882,7 +1705,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.1111111111111111,
       "radar_ctx": 0.24966095238095237,
       "release_date": "2026-06-12",
-      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -1939,16 +1761,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.435,
       "openrouter_out_price_per_m": 0.87,
       "openrouter_cache_read_price_per_m": 0.0036,
-      "omniscience_index": 4,
-      "omniscience_hallucination_rate": 25,
-      "briefcase_elo": 871,
-      "briefcase_analytical_quality_elo": 765,
-      "briefcase_presentation_elo": 929,
-      "briefcase_rubric_score": 20.6,
-      "agentic_index": 29.1,
-      "coding_index": 60.2,
-      "openness_index": 39,
-      "ttft_variance": -2.4,
       "iq_per_1k_pt": 1400000.0,
       "cost_per_iq_pt": 0.000714,
       "radar_intel": 0.7,
@@ -1957,7 +1769,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.6666666666666667,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-04-22",
-      "confirmed_scraped": true,
       "openrouter_vendor": "xiaomi"
     },
     {
@@ -2081,16 +1892,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.25,
       "openrouter_out_price_per_m": 1.0,
       "openrouter_cache_read_price_per_m": 0.024999999999999998,
-      "agentic_index": 31.0,
-      "coding_index": 59.1,
-      "openness_index": 39,
-      "ttft_variance": -1.8,
       "radar_intel": 0.6833333333333333,
       "radar_speed": 0.12882925670862028,
       "radar_cache_eff": 0.5045871559633027,
       "radar_ctx": 0.24966095238095237,
       "release_date": "2026-06-02",
-      "confirmed_scraped": true,
       "openrouter_vendor": "nex-agi"
     },
     {
@@ -2149,15 +1955,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.09,
       "openrouter_out_price_per_m": 0.18,
       "openrouter_cache_read_price_per_m": 0.018,
-      "omniscience_accuracy": 37,
-      "briefcase_elo": 810,
-      "briefcase_analytical_quality_elo": 750,
-      "briefcase_presentation_elo": 875,
-      "briefcase_rubric_score": 17.7,
-      "agentic_index": 31.1,
-      "coding_index": 56.2,
-      "openness_index": 50,
-      "ttft_variance": -1.3,
       "iq_per_1k_pt": 2000000.0,
       "cost_per_iq_pt": 0.0005,
       "radar_intel": 0.6666666666666666,
@@ -2166,7 +1963,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 1.0,
       "radar_ctx": 0.9986438095238095,
       "release_date": "2026-04-24",
-      "confirmed_scraped": true,
       "openrouter_vendor": "deepseek"
     },
     {
@@ -2212,14 +2008,11 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.871345029239766,
       "aa_terminalbench_hard": 0.416666666666667,
       "aa_omniscience_hallucination_rate": 0.91,
-      "omniscience_index": 16,
-      "omniscience_accuracy": 56,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.06241523809523809,
-      "release_date": "2025-11-18",
-      "confirmed_scraped": true
+      "release_date": "2025-11-18"
     },
     {
       "slug": "glm-5",
@@ -2268,16 +2061,12 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.6,
       "openrouter_out_price_per_m": 1.92,
       "openrouter_cache_read_price_per_m": 0.12,
-      "omniscience_hallucination_rate": 34,
-      "openness_index": 50,
-      "ttft_variance": -1.6,
       "cache_hit_rate_max": 85.3,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.08335312277368796,
       "radar_cache_eff": 0.8073394495412844,
       "radar_ctx": 0.19309714285714286,
       "release_date": "2026-02-11",
-      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -2336,21 +2125,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.966,
       "openrouter_out_price_per_m": 3.036,
       "openrouter_cache_read_price_per_m": 0.1794,
-      "omniscience_hallucination_rate": 29,
-      "briefcase_elo": 975,
-      "briefcase_analytical_quality_elo": 956,
-      "briefcase_presentation_elo": 974,
-      "briefcase_rubric_score": 25.8,
-      "agentic_index": 29.9,
-      "coding_index": 55.8,
-      "openness_index": 44,
-      "ttft_variance": -1.4,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.0822844929945381,
       "radar_cache_eff": 0.8217562254259502,
       "radar_ctx": 0.19309714285714286,
       "release_date": "2026-04-07",
-      "confirmed_scraped": true,
       "openrouter_vendor": "z-ai"
     },
     {
@@ -2392,21 +2171,12 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 929.0,
       "aa_briefcase_presentation_elo": 914.0,
       "aa_time_per_task": 8.2,
-      "omniscience_accuracy": 37,
-      "briefcase_elo": 631,
-      "briefcase_analytical_quality_elo": 595,
-      "briefcase_presentation_elo": 761,
-      "briefcase_rubric_score": 12.4,
-      "agentic_index": 30.2,
-      "coding_index": 56.1,
-      "e2e_response_time_s": 11.5,
       "cache_hit_rate_max": 61.5,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.2197815245784849,
       "radar_cache_eff": 0.9015290519877676,
       "radar_ctx": 0.38095238095238093,
-      "release_date": "2026-03-17",
-      "confirmed_scraped": true
+      "release_date": "2026-03-17"
     },
     {
       "slug": "gpt-5.2-codex",
@@ -2541,13 +2311,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.950292397660819,
       "aa_terminalbench_hard": 0.409090909090909,
       "aa_omniscience_hallucination_rate": 0.3,
-      "omniscience_index": 5,
-      "omniscience_hallucination_rate": 30,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.05058180954642603,
       "radar_ctx": 0.9986438095238095,
-      "release_date": "2026-03-18",
-      "confirmed_scraped": true
+      "release_date": "2026-03-18"
     },
     {
       "slug": "qwen3-6-max",
@@ -2582,15 +2349,11 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.95906432748538,
       "aa_terminalbench_hard": 0.439393939393939,
       "aa_omniscience_hallucination_rate": 0.44,
-      "omniscience_index": 10,
-      "omniscience_accuracy": 38,
-      "omniscience_hallucination_rate": 44,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.052837805746853476,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.9523809523809523,
-      "release_date": "2026-04-20",
-      "confirmed_scraped": true
+      "release_date": "2026-04-20"
     },
     {
       "slug": "qwen3-6-plus",
@@ -2629,15 +2392,11 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.614232209737828,
       "aa_omniscience_hallucination_rate": 0.32,
       "aa_time_per_task": 6.4,
-      "omniscience_hallucination_rate": 32,
-      "agentic_index": 27.6,
-      "coding_index": 54.5,
       "radar_intel": 0.6666666666666666,
       "radar_speed": 0.06245547375920209,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.9523809523809523,
-      "release_date": "2026-04-02",
-      "confirmed_scraped": true
+      "release_date": "2026-04-02"
     },
     {
       "slug": "qwen3-7-plus",
@@ -2814,17 +2573,12 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.606741573033708,
       "aa_omniscience_hallucination_rate": 0.74,
       "aa_time_per_task": 7.1,
-      "omniscience_hallucination_rate": 50,
-      "agentic_index": 25.6,
-      "coding_index": 56.1,
-      "e2e_response_time_s": 7.2,
       "cache_hit_rate_max": 62.8,
       "radar_intel": 0.6333333333333333,
       "radar_speed": 0.20778912372358108,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.38095238095238093,
-      "release_date": "2026-03-17",
-      "confirmed_scraped": true
+      "release_date": "2026-03-17"
     },
     {
       "slug": "gpt-5-6-luna-medium",
@@ -2917,13 +2671,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.25,
       "openrouter_out_price_per_m": 2.5,
       "openrouter_cache_read_price_per_m": 0.19999999999999998,
-      "omniscience_index": 18,
-      "omniscience_hallucination_rate": 25,
-      "briefcase_elo": 705,
-      "briefcase_analytical_quality_elo": 608,
-      "briefcase_presentation_elo": 810,
-      "briefcase_rubric_score": 16.8,
-      "e2e_response_time_s": 21.7,
       "iq_per_1k_pt": 237500.0,
       "cost_per_iq_pt": 0.004211,
       "radar_intel": 0.6333333333333333,
@@ -2932,7 +2679,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.125,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-04-30",
-      "confirmed_scraped": true,
       "openrouter_vendor": "x-ai"
     },
     {
@@ -3031,10 +2777,6 @@ window.PROCESSED_DATA = {
       "aa_time_per_task": 6.3,
       "openrouter_inp_price_per_m": 0.18,
       "openrouter_out_price_per_m": 0.72,
-      "omniscience_hallucination_rate": 34,
-      "agentic_index": 25.6,
-      "coding_index": 52.6,
-      "ttft_variance": -1.9,
       "iq_per_1k_pt": 542857.1,
       "cost_per_iq_pt": 0.001842,
       "radar_intel": 0.6333333333333333,
@@ -3043,7 +2785,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.2857142857142857,
       "radar_ctx": 0.19504761904761905,
       "release_date": "2026-03-18",
-      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -3102,15 +2843,6 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.5,
       "openrouter_out_price_per_m": 2.2,
       "openrouter_cache_read_price_per_m": 0.09999999999999999,
-      "omniscience_hallucination_rate": 29,
-      "briefcase_elo": 871,
-      "briefcase_analytical_quality_elo": 834,
-      "briefcase_presentation_elo": 861,
-      "briefcase_rubric_score": 22.0,
-      "agentic_index": 27.4,
-      "openness_index": 83,
-      "e2e_response_time_s": 15.7,
-      "ttft_variance": -1.2,
       "iq_per_1k_pt": 158333.3,
       "cost_per_iq_pt": 0.006316,
       "radar_intel": 0.6333333333333333,
@@ -3119,7 +2851,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.08333333333333334,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-06-04",
-      "confirmed_scraped": true,
       "openrouter_vendor": "nvidia"
     },
     {
@@ -3199,20 +2930,11 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 1656.0,
       "aa_briefcase_presentation_elo": 1504.0,
       "aa_time_per_task": 7.2,
-      "omniscience_hallucination_rate": 48,
-      "briefcase_elo": 751,
-      "briefcase_analytical_quality_elo": 656,
-      "briefcase_presentation_elo": 914,
-      "briefcase_rubric_score": 17.3,
-      "agentic_index": 27.0,
-      "coding_index": 53.7,
-      "openness_index": 39,
       "cache_hit_rate_max": 32.8,
       "radar_intel": 0.6166666666666667,
       "radar_speed": 0.06411778674899074,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2026-04-22",
-      "confirmed_scraped": true
+      "release_date": "2026-04-22"
     },
     {
       "slug": "claude-4.5-sonnet-thinking",
@@ -3261,10 +2983,6 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.558052434456929,
       "aa_omniscience_hallucination_rate": 0.47,
       "aa_time_per_task": 5.4,
-      "omniscience_index": 13,
-      "omniscience_accuracy": 46,
-      "omniscience_hallucination_rate": 47,
-      "agentic_index": 24.6,
       "iq_per_1k_pt": 87804.9,
       "cost_per_iq_pt": 0.011389,
       "radar_intel": 0.6,
@@ -3272,8 +2990,7 @@ window.PROCESSED_DATA = {
       "radar_cache_eff": 0.908256880733945,
       "radar_cost_eff": 0.04878048780487805,
       "radar_ctx": 0.19047619047619047,
-      "release_date": "2025-09-29",
-      "confirmed_scraped": true
+      "release_date": "2025-09-29"
     },
     {
       "slug": "grok-4-3-medium",
@@ -3488,13 +3205,11 @@ window.PROCESSED_DATA = {
       "aa_omniscience_hallucination_rate": 0.89,
       "openrouter_inp_price_per_m": 0.12,
       "openrouter_out_price_per_m": 0.48,
-      "ttft_variance": -1.8,
       "radar_intel": 0.5666666666666667,
       "radar_speed": 0.28544288767513654,
       "radar_cache_eff": 0.908256880733945,
       "radar_ctx": 0.19504761904761905,
       "release_date": "2026-02-12",
-      "confirmed_scraped": true,
       "openrouter_vendor": "minimax"
     },
     {
@@ -3631,14 +3346,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.6,
       "openrouter_out_price_per_m": 2.5,
       "openrouter_cache_read_price_per_m": 0.15,
-      "e2e_response_time_s": 20.4,
-      "ttft_variance": -1.4,
       "radar_intel": 0.55,
       "radar_speed": 0.14699596295416764,
       "radar_cache_eff": 0.0,
       "radar_ctx": 0.12483047619047619,
       "release_date": "2025-11-06",
-      "confirmed_scraped": true,
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -3682,15 +3394,11 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.449438202247191,
       "aa_omniscience_hallucination_rate": 0.5,
       "aa_time_per_task": 3.0,
-      "omniscience_hallucination_rate": 50,
-      "openness_index": 39,
-      "ttft_variance": -2.4,
       "cache_hit_rate_max": 47.6,
       "radar_intel": 0.5333333333333333,
       "radar_speed": 0.20790786036570885,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2026-04-16",
-      "confirmed_scraped": true
+      "release_date": "2026-04-16"
     },
     {
       "slug": "claude-4.5-haiku-reasoning",
@@ -3882,15 +3590,11 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_v2_1": 0.359550561797753,
       "aa_omniscience_hallucination_rate": 0.84,
       "aa_time_per_task": 2.1,
-      "openness_index": 39,
-      "e2e_response_time_s": 7.3,
-      "ttft_variance": -0.9,
       "radar_intel": 0.5,
       "radar_speed": 0.4785086677748753,
       "radar_cache_eff": 0.8073394495412844,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2026-05-29",
-      "confirmed_scraped": true
+      "release_date": "2026-05-29"
     },
     {
       "slug": "gemma-4-31b",
@@ -3930,14 +3634,11 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 859.0,
       "aa_briefcase_presentation_elo": 809.0,
       "aa_time_per_task": 5.5,
-      "openness_index": 39,
-      "ttft_variance": -1.1,
       "cache_hit_rate_max": 31.8,
       "radar_intel": 0.48333333333333334,
       "radar_speed": 0.041320351460460696,
       "radar_ctx": 0.24966095238095237,
-      "release_date": "2026-04-02",
-      "confirmed_scraped": true
+      "release_date": "2026-04-02"
     },
     {
       "slug": "gpt-5-5-instant-06-26",
@@ -4019,14 +3720,12 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_hard": 0.1364,
       "aa_terminalbench_v2_1": 0.389513108614232,
       "aa_omniscience_hallucination_rate": 0.81,
-      "openness_index": 39,
       "cache_hit_rate_max": 74.6,
       "radar_intel": 0.43333333333333335,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.310515172900494,
       "radar_ctx": 0.24966095238095237,
-      "release_date": "2026-04-02",
-      "confirmed_scraped": true
+      "release_date": "2026-04-02"
     },
     {
       "slug": "step-3-5-flash",
@@ -4061,15 +3760,12 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.874269005847953,
       "aa_terminalbench_hard": 0.325757575757576,
       "aa_omniscience_hallucination_rate": 0.92,
-      "e2e_response_time_s": 15.6,
-      "ttft_variance": -1.2,
       "cache_hit_rate_max": 86.1,
       "radar_intel": 0.43333333333333335,
       "radar_speed": 0.22844929945381143,
       "radar_cache_eff": 0.8073394495412844,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2026-04-02",
-      "confirmed_scraped": true
+      "release_date": "2026-04-02"
     },
     {
       "slug": "gemini-3-1-flash-lite-preview",
@@ -4115,13 +3811,11 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 751.0,
       "aa_briefcase_presentation_elo": 759.0,
       "aa_time_per_task": 1.1,
-      "e2e_response_time_s": 6.8,
       "radar_intel": 0.4166666666666667,
       "radar_speed": 0.33281880788411305,
       "radar_cache_eff": 0.8880733944954128,
       "radar_ctx": 0.9986438095238095,
-      "release_date": "2026-03-03",
-      "confirmed_scraped": true
+      "release_date": "2026-03-03"
     },
     {
       "slug": "k-exaone",
@@ -4162,8 +3856,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.4166666666666667,
       "radar_speed": 0.0,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2025-12-31",
-      "confirmed_scraped": true
+      "release_date": "2025-12-31"
     },
     {
       "slug": "mercury-2",
@@ -4201,13 +3894,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.25,
       "openrouter_out_price_per_m": 0.75,
       "openrouter_cache_read_price_per_m": 0.024999999999999998,
-      "e2e_response_time_s": 4.6,
       "radar_intel": 0.4166666666666667,
       "radar_speed": 1.0,
       "radar_cache_eff": 0.8880733944954128,
       "radar_ctx": 0.1219047619047619,
       "release_date": "2026-02-20",
-      "confirmed_scraped": true,
       "openrouter_vendor": "inception"
     },
     {
@@ -4265,9 +3956,6 @@ window.PROCESSED_DATA = {
       "aa_time_per_task": 2.7,
       "openrouter_inp_price_per_m": 0.08,
       "openrouter_out_price_per_m": 0.44999999999999996,
-      "openness_index": 83,
-      "e2e_response_time_s": 12.9,
-      "ttft_variance": -1.7,
       "iq_per_1k_pt": 100000.0,
       "cost_per_iq_pt": 0.01,
       "radar_intel": 0.4166666666666667,
@@ -4276,7 +3964,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.08,
       "radar_ctx": 0.9523809523809523,
       "release_date": "2026-03-11",
-      "confirmed_scraped": true,
       "openrouter_vendor": "nvidia"
     },
     {
@@ -4338,9 +4025,6 @@ window.PROCESSED_DATA = {
       "aa_time_per_task": 2.1,
       "openrouter_inp_price_per_m": 0.03,
       "openrouter_out_price_per_m": 0.15,
-      "openness_index": 39,
-      "e2e_response_time_s": 10.3,
-      "ttft_variance": -0.9,
       "cache_hit_rate_max": 57.0,
       "iq_per_1k_pt": 400000.0,
       "cost_per_iq_pt": 0.0025,
@@ -4350,7 +4034,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 0.33333333333333337,
       "radar_ctx": 0.12483047619047619,
       "release_date": "2025-08-05",
-      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -4415,15 +4098,11 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.25,
       "openrouter_out_price_per_m": 0.7999999999999999,
       "openrouter_cache_read_price_per_m": 0.06,
-      "openness_index": 44,
-      "e2e_response_time_s": 13.0,
-      "ttft_variance": -1.1,
       "radar_intel": 0.4,
       "radar_speed": 0.14165281405841842,
       "radar_cache_eff": 0.3363914373088684,
       "radar_ctx": 0.24966095238095237,
       "release_date": "2026-04-01",
-      "confirmed_scraped": true,
       "openrouter_vendor": "arcee-ai"
     },
     {
@@ -4461,8 +4140,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.38333333333333336,
       "radar_speed": 0.0,
       "radar_ctx": 0.24966095238095237,
-      "release_date": "2026-04-09",
-      "confirmed_scraped": true
+      "release_date": "2026-04-09"
     },
     {
       "slug": "gemma-4-12b",
@@ -4496,13 +4174,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.362573099415205,
       "aa_terminalbench_hard": 0.181818181818182,
       "aa_omniscience_hallucination_rate": 0.81,
-      "openness_index": 39,
-      "ttft_variance": -2.4,
       "radar_intel": 0.36666666666666664,
       "radar_speed": 0.1429589171218238,
       "radar_ctx": 0.24966095238095237,
-      "release_date": "2026-06-03",
-      "confirmed_scraped": true
+      "release_date": "2026-06-03"
     },
     {
       "slug": "nova-2.0-pro-reasoning-medium",
@@ -4983,9 +4658,6 @@ window.PROCESSED_DATA = {
       "aa_time_per_task": 1.5,
       "openrouter_inp_price_per_m": 0.029,
       "openrouter_out_price_per_m": 0.14,
-      "openness_index": 39,
-      "e2e_response_time_s": 11.4,
-      "ttft_variance": -0.8,
       "iq_per_1k_pt": 750000.0,
       "cost_per_iq_pt": 0.001333,
       "radar_intel": 0.25,
@@ -4993,7 +4665,6 @@ window.PROCESSED_DATA = {
       "radar_cost_eff": 1.0,
       "radar_ctx": 0.12483047619047619,
       "release_date": "2025-08-05",
-      "confirmed_scraped": true,
       "openrouter_vendor": "openai"
     },
     {
@@ -5028,14 +4699,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.453216374269006,
       "aa_terminalbench_hard": 0.0833333333333333,
       "aa_omniscience_hallucination_rate": 0.83,
-      "openness_index": 83,
-      "e2e_response_time_s": 9.6,
-      "ttft_variance": -1.0,
       "radar_intel": 0.25,
       "radar_speed": 0.3213013535977203,
       "radar_ctx": 0.2438095238095238,
-      "release_date": "2026-04-29",
-      "confirmed_scraped": true
+      "release_date": "2026-04-29"
     },
     {
       "slug": "solar-open-100b-reasoning",
@@ -5072,8 +4739,7 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.25,
       "radar_speed": 0.0,
       "radar_ctx": 0.1219047619047619,
-      "release_date": "2025-12-17",
-      "confirmed_scraped": true
+      "release_date": "2025-12-17"
     },
     {
       "slug": "gpt-oss-20b-low",
@@ -5210,7 +4876,6 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.0,
       "radar_ctx": 0.1219047619047619,
       "release_date": "2026-04-06",
-      "confirmed_scraped": true,
       "openrouter_vendor": "upstage"
     },
     {
@@ -5283,13 +4948,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.207602339181287,
       "aa_terminalbench_hard": 0.0833333333333333,
       "aa_omniscience_hallucination_rate": 0.31,
-      "omniscience_hallucination_rate": 31,
-      "openness_index": 39,
       "radar_intel": 0.2,
       "radar_speed": 0.0,
       "radar_ctx": 0.9523809523809523,
-      "release_date": "2026-04-03",
-      "confirmed_scraped": true
+      "release_date": "2026-04-03"
     },
     {
       "slug": "sonar-reasoning",
@@ -5402,13 +5064,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.225146198830409,
       "aa_terminalbench_hard": 0.0454545454545455,
       "aa_omniscience_hallucination_rate": 0.95,
-      "openness_index": 47,
-      "ttft_variance": -1.4,
       "radar_intel": 0.16666666666666666,
       "radar_speed": 0.09665162669199716,
       "radar_ctx": 0.12483047619047619,
-      "release_date": "2025-08-27",
-      "confirmed_scraped": true
+      "release_date": "2025-08-27"
     },
     {
       "slug": "gemma-4-e2b",
@@ -5442,13 +5101,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.207602339181287,
       "aa_terminalbench_hard": 0.0303030303030303,
       "aa_omniscience_hallucination_rate": 0.33,
-      "omniscience_hallucination_rate": 33,
-      "openness_index": 39,
       "radar_intel": 0.15,
       "radar_speed": 0.0,
       "radar_ctx": 0.9523809523809523,
-      "release_date": "2026-04-02",
-      "confirmed_scraped": true
+      "release_date": "2026-04-02"
     },
     {
       "slug": "hermes-4-llama-3-1-405b-reasoning",
@@ -5486,13 +5142,10 @@ window.PROCESSED_DATA = {
       "aa_tau2": 0.222222222222222,
       "aa_terminalbench_hard": 0.113636363636364,
       "aa_omniscience_hallucination_rate": 0.95,
-      "openness_index": 47,
-      "ttft_variance": -2.4,
       "radar_intel": 0.15,
       "radar_speed": 0.043101401092377103,
       "radar_ctx": 0.12483047619047619,
-      "release_date": "2025-08-27",
-      "confirmed_scraped": true
+      "release_date": "2025-08-27"
     },
     {
       "slug": "reka-flash-3",
@@ -5534,12 +5187,10 @@ window.PROCESSED_DATA = {
       "aa_omniscience_hallucination_rate": 0.9,
       "openrouter_inp_price_per_m": 0.09999999999999999,
       "openrouter_out_price_per_m": 0.19999999999999998,
-      "openness_index": 39,
       "radar_intel": 0.06666666666666667,
       "radar_speed": 0.11274281643315126,
       "radar_ctx": 0.06241523809523809,
       "release_date": "2025-03-10",
-      "confirmed_scraped": true,
       "openrouter_vendor": "rekaai"
     },
     {

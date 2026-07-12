@@ -74,7 +74,7 @@ Stages (each a `Result`-returning `run()`/`build()`):
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
 | `_build_dashboard_data` | `model_registry.json` | `processed.js` | 117 |
 
-`_build_registry.run()` merges sources into a unified registry: `step_aa`, `step_aa_img`, `step_scrape_progress`, `step_dirac`, `step_livebench`, `step_arena_text`, `step_arena_code`, `step_openllm`, `step_openrouter`, `step_misc`, `step_name_map`, `step_write` — each a `Result` step over shared `ctx`, short-circuiting on the first `Err`.
+`_build_registry.run()` merges sources into a unified registry: `step_aa`, `step_dirac`, `step_livebench`, `step_arena_text`, `step_arena_code`, `step_openllm`, `step_openrouter`, `step_misc`, `step_name_map`, `step_write` — each a `Result` step over shared `ctx`, short-circuiting on the first `Err`.
 
 Serialized via the typed domain layer in `data/_domain/` (`RegistryModel`, `ProjectionRow`).
 
@@ -140,7 +140,7 @@ python -m data._pipeline build            # or: build_from_cache
 python -m data._pipeline                  # no arg → build() pulls + builds
 ```
 
-`_pull_sources.py` covers only 3 of 8 sources (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet). The other five — AA scraped, AA live API, AA image charts, Dirac.run, Chatbot Arena — are acquired **manually** (scrape / API curl / vision-transcription / table-copy / JSON download) and committed as files. See `DATA-ACQUISITION.md` for the full per-source method, auth, and repro steps.
+`_pull_sources.py` covers only 3 of 7 sources (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet). The other four — AA scraped, AA live API, Dirac.run, Chatbot Arena — are acquired **manually** (scrape / API curl / table-copy / JSON download) and committed as files. See `DATA-ACQUISITION.md` for the full per-source method, auth, and repro steps.
 
 **Build order matters.** `_build_registry.py` reads AA data from `data/sources/aa/` — never from pipeline output. No circular dependency.
 

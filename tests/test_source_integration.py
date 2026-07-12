@@ -144,13 +144,6 @@ class TestAaApiLiveEnrichment:
         assert len(rd) >= 10, f"release_date should be sourced into registry meta, got {len(rd)}"
 
 
-class TestAaImgScrapeProgress:
-    def test_confirmed_scraped_reaches_output(self, processed_js):
-        # aa_scrape_progress.json repurposed as provenance flag on speculative AA_IMG models
-        have = [m for m in processed_js if m.get("confirmed_scraped") is True]
-        assert len(have) >= 10, f"expected >=10 confirmed_scraped models, got {len(have)}"
-
-
 # ── (H) RegistryModel entity layer wired as typed serializer ──
 
 

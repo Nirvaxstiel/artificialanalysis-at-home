@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated": "2026-07-11",
+    "generated": "2026-07-12",
     "version": "1.0",
-    "model_count": 2275,
+    "model_count": 2274,
     "source_count": {
       "aa": 117,
       "livebench": 127,
@@ -228,16 +228,8 @@
     "aa:qwen3-5-397b-a17b": "qwen3.5-397b-a17b",
     "arena_code:qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
     "openrouter:qwen/qwen3.5-397b-a17b": "qwen3.5-397b-a17b",
-    "arena:claude-opus-4-6": "claude-opus-4.6",
-    "arena_code:claude-opus-4-6": "claude-opus-4.6",
-    "openrouter:anthropic/claude-opus-4.6": "claude-opus-4.6",
-    "arena:gemini-3-flash": "gemini-3-flash",
-    "arena_code:gemini-3-flash": "gemini-3-flash",
-    "arena_code:mimo-v2.5": "mimo-v2.5",
-    "openrouter:xiaomi/mimo-v2.5": "mimo-v2.5",
-    "openrouter:moonshotai/kimi-k2.5": "kimi-k2.5",
-    "openrouter:tencent/hy3-preview": "hy3-preview",
     "openrouter:qwen/qwen3-coder-next": "qwen3-coder-next",
+    "openrouter:tencent/hy3-preview": "hy3-preview",
     "openrouter:openai/gpt-4o-mini": "gpt-4o-mini",
     "livebench:qwen3-235b-a22b-instruct-2507": "qwen3-235b-a22b-instruct-2507",
     "livebench:arcee-trinity-large-preview": "arcee-trinity-large-preview",
@@ -376,6 +368,9 @@
     "arena_code:claude-opus-4-6-thinking": "claude-opus-4-6-thinking",
     "arena:claude-opus-4-7-thinking": "claude-opus-4-7-thinking",
     "arena_code:claude-opus-4-7-thinking": "claude-opus-4-7-thinking",
+    "arena:claude-opus-4-6": "claude-opus-4.6",
+    "arena_code:claude-opus-4-6": "claude-opus-4.6",
+    "openrouter:anthropic/claude-opus-4.6": "claude-opus-4.6",
     "arena:claude-opus-4-8-thinking": "claude-opus-4-8-thinking",
     "arena_code:claude-opus-4-8-thinking": "claude-opus-4-8-thinking",
     "arena:gpt-5.2-chat-latest-20260210": "gpt-5.2-chat-latest-20260210",
@@ -383,6 +378,8 @@
     "arena:gpt-5.5": "gpt-5.5",
     "openrouter:openai/gpt-5.5": "gpt-5.5",
     "arena:grok-4.20-beta1": "grok-4.20-beta1",
+    "arena:gemini-3-flash": "gemini-3-flash",
+    "arena_code:gemini-3-flash": "gemini-3-flash",
     "arena:claude-opus-4-5-20251101-thinking-32k": "claude-opus-4-5-20251101-thinking-32k",
     "arena_code:claude-opus-4-5-20251101-thinking-32k": "claude-opus-4-5-20251101-thinking-32k",
     "arena:gpt-5.5-instant": "gpt-5.5-instant",
@@ -407,6 +404,8 @@
     "arena_code:deepseek-v4-pro-thinking": "deepseek-v4-pro-thinking",
     "arena_code:gpt-5.5 (codex-harness)": "gpt-5.5 (codex-harness)",
     "arena_code:gpt-5.4-medium (codex-harness)": "gpt-5.4-medium (codex-harness)",
+    "arena_code:mimo-v2.5": "mimo-v2.5",
+    "openrouter:xiaomi/mimo-v2.5": "mimo-v2.5",
     "arena_code:kimi-k2.5-instant": "kimi-k2.5-instant",
     "arena_code:gpt-5.3-codex (codex-harness)": "gpt-5.3-codex (codex-harness)",
     "arena_code:gpt-5.2": "gpt-5.2",
@@ -2225,6 +2224,7 @@
     "openrouter:qwen/qwen3-max-thinking": "qwen3-max-thinking",
     "openrouter:openrouter/free": "free",
     "openrouter:stepfun/step-3.5-flash": "step-3.5-flash",
+    "openrouter:moonshotai/kimi-k2.5": "kimi-k2.5",
     "openrouter:minimax/minimax-m2-her": "minimax-m2-her",
     "openrouter:writer/palmyra-x5": "palmyra-x5",
     "openrouter:liquid/lfm-2.5-1.2b-thinking:free": "lfm-2.5-1.2b-thinking:free",
@@ -4523,7 +4523,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-09-29",
-        "confirmed_scraped": true,
         "context_window": 200000
       },
       "pricing": {
@@ -4576,12 +4575,6 @@
           "time_per_task": 5.4,
           "coding_index": 52.1,
           "math_index": 88
-        },
-        "aa_img": {
-          "omniscience_index": 13,
-          "omniscience_accuracy": 46,
-          "omniscience_hallucination_rate": 47,
-          "agentic_index": 24.6
         }
       },
       "aliases": {
@@ -4595,7 +4588,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-09",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -4650,17 +4642,6 @@
           "briefcase_analytical_quality_elo": 1764.0,
           "briefcase_presentation_elo": 1592.0,
           "time_per_task": 4.9,
-          "coding_index": 76.5
-        },
-        "aa_img": {
-          "omniscience_index": 40,
-          "omniscience_accuracy": 61,
-          "omniscience_hallucination_rate": 55,
-          "briefcase_elo": 1584,
-          "briefcase_analytical_quality_elo": 1765,
-          "briefcase_presentation_elo": 1496,
-          "briefcase_rubric_score": 56.0,
-          "agentic_index": 52.8,
           "coding_index": 76.5
         },
         "arena_text": {
@@ -5430,7 +5411,9 @@
     },
     {
       "id": "claude-opus-4.6",
+      "name": "claude-opus-4-6",
       "creator": "Anthropic",
+      "model_type": "proprietary",
       "meta": {
         "context_window": 1000000
       },
@@ -5448,10 +5431,6 @@
         }
       },
       "benchmarks": {
-        "aa_img": {
-          "omniscience_index": 14,
-          "omniscience_accuracy": 46
-        },
         "arena_text": {
           "elo": 1499,
           "ci": 4,
@@ -5476,7 +5455,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-16",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -5533,17 +5511,6 @@
           "time_per_task": 6.2,
           "coding_index": 73.6
         },
-        "aa_img": {
-          "omniscience_index": 26,
-          "omniscience_accuracy": 46,
-          "omniscience_hallucination_rate": 36,
-          "briefcase_elo": 1290,
-          "briefcase_analytical_quality_elo": 1306,
-          "briefcase_presentation_elo": 1370,
-          "briefcase_rubric_score": 39.3,
-          "agentic_index": 44.4,
-          "coding_index": 73.6
-        },
         "arena_text": {
           "elo": 1494,
           "ci": 4,
@@ -5593,7 +5560,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-28",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -5655,17 +5621,6 @@
           "briefcase_analytical_quality_elo": 1301.0,
           "briefcase_presentation_elo": 1370.0,
           "time_per_task": 7.1,
-          "coding_index": 74.3
-        },
-        "aa_img": {
-          "omniscience_index": 27,
-          "omniscience_accuracy": 47,
-          "omniscience_hallucination_rate": 36,
-          "briefcase_elo": 1354,
-          "briefcase_analytical_quality_elo": 1355,
-          "briefcase_presentation_elo": 1501,
-          "briefcase_rubric_score": 38.7,
-          "agentic_index": 47.2,
           "coding_index": 74.3
         },
         "arena_text": {
@@ -5996,7 +5951,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-30",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -6059,19 +6013,6 @@
           "briefcase_presentation_elo": 1241.0,
           "time_per_task": 8.8,
           "coding_index": 71.5
-        },
-        "aa_img": {
-          "omniscience_index": 15,
-          "omniscience_accuracy": 38,
-          "omniscience_hallucination_rate": 37,
-          "briefcase_elo": 1391,
-          "briefcase_analytical_quality_elo": 1465,
-          "briefcase_presentation_elo": 1456,
-          "briefcase_rubric_score": 42.3,
-          "agentic_index": 46.7,
-          "coding_index": 71.5,
-          "e2e_response_time_s": 20.0,
-          "ttft_variance": -1.5
         }
       },
       "aliases": {
@@ -8414,7 +8355,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-24",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -8475,17 +8415,6 @@
           "briefcase_presentation_elo": 1122.0,
           "time_per_task": 6.1,
           "coding_index": 56.2
-        },
-        "aa_img": {
-          "omniscience_accuracy": 37,
-          "briefcase_elo": 810,
-          "briefcase_analytical_quality_elo": 750,
-          "briefcase_presentation_elo": 875,
-          "briefcase_rubric_score": 17.7,
-          "agentic_index": 31.1,
-          "coding_index": 56.2,
-          "openness_index": 50,
-          "ttft_variance": -1.3
         },
         "livebench": {
           "average": 67.67,
@@ -8567,7 +8496,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-24",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -8628,17 +8556,6 @@
           "briefcase_presentation_elo": 0.0,
           "time_per_task": 8.5,
           "coding_index": 59.4
-        },
-        "aa_img": {
-          "omniscience_accuracy": 43,
-          "briefcase_elo": 932,
-          "briefcase_analytical_quality_elo": 898,
-          "briefcase_presentation_elo": 942,
-          "briefcase_rubric_score": 23.9,
-          "agentic_index": 36.4,
-          "coding_index": 59.4,
-          "openness_index": 50,
-          "ttft_variance": -1.8
         },
         "dirac": {
           "cache_hit_rate_max": 89.8
@@ -10245,7 +10162,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-09",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -12085,7 +12001,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-03",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -12136,9 +12051,6 @@
           "briefcase_presentation_elo": 759.0,
           "time_per_task": 1.1,
           "coding_index": 34.7
-        },
-        "aa_img": {
-          "e2e_response_time_s": 6.8
         }
       },
       "aliases": {
@@ -12203,12 +12115,10 @@
     },
     {
       "id": "gemini-3-flash",
+      "name": "gemini-3-flash",
       "creator": "Google",
+      "model_type": "proprietary",
       "benchmarks": {
-        "aa_img": {
-          "omniscience_index": 12,
-          "omniscience_accuracy": 54
-        },
         "arena_text": {
           "elo": 1473,
           "ci": 4,
@@ -12373,7 +12283,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-11-18",
-        "confirmed_scraped": true,
         "context_window": 65536
       },
       "pricing": {
@@ -12418,10 +12327,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null,
           "math_index": 95.7
-        },
-        "aa_img": {
-          "omniscience_index": 16,
-          "omniscience_accuracy": 56
         },
         "arena_text": {
           "elo": 1486,
@@ -12720,7 +12625,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-19",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -12782,14 +12686,6 @@
           "briefcase_analytical_quality_elo": 874.0,
           "briefcase_presentation_elo": 822.0,
           "time_per_task": 1.5,
-          "coding_index": 68.8
-        },
-        "aa_img": {
-          "omniscience_index": 33,
-          "omniscience_accuracy": 55,
-          "omniscience_hallucination_rate": 50,
-          "briefcase_analytical_quality_elo": 264,
-          "briefcase_presentation_elo": 336,
           "coding_index": 68.8
         },
         "arena_text": {
@@ -12863,7 +12759,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-19",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -12926,16 +12821,6 @@
           "briefcase_presentation_elo": 1291.0,
           "time_per_task": 2.8,
           "coding_index": 70.1
-        },
-        "aa_img": {
-          "omniscience_index": 23,
-          "omniscience_accuracy": 52,
-          "briefcase_analytical_quality_elo": 700,
-          "briefcase_presentation_elo": 882,
-          "briefcase_rubric_score": 27.7,
-          "agentic_index": 37.4,
-          "coding_index": 70.1,
-          "e2e_response_time_s": 22.7
         },
         "arena_text": {
           "elo": 1479,
@@ -13132,7 +13017,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-03",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -13176,10 +13060,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "openness_index": 39,
-          "ttft_variance": -2.4
         }
       },
       "aliases": {
@@ -13193,7 +13073,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -13244,9 +13123,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null,
           "coding_index": 39.3
-        },
-        "aa_img": {
-          "openness_index": 39
         },
         "dirac": {
           "cache_hit_rate_max": 74.6
@@ -13303,7 +13179,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -13348,10 +13223,6 @@
           "briefcase_presentation_elo": 809.0,
           "time_per_task": 5.5,
           "coding_index": 43.4
-        },
-        "aa_img": {
-          "openness_index": 39,
-          "ttft_variance": -1.1
         },
         "dirac": {
           "cache_hit_rate_max": 31.8
@@ -13422,7 +13293,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -13466,10 +13336,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 33,
-          "openness_index": 39
         }
       },
       "aliases": {
@@ -13483,7 +13349,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-03",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -13527,10 +13392,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 31,
-          "openness_index": 39
         }
       },
       "aliases": {
@@ -13874,7 +13735,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-11",
-        "confirmed_scraped": true,
         "context_window": 202752
       },
       "pricing": {
@@ -13927,11 +13787,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 34,
-          "openness_index": 50,
-          "ttft_variance": -1.6
         },
         "dirac": {
           "cache_hit_rate_max": 85.3
@@ -14040,7 +13895,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-07",
-        "confirmed_scraped": true,
         "context_window": 202752
       },
       "pricing": {
@@ -14095,17 +13949,6 @@
           "time_per_task": 5.8,
           "coding_index": 55.8
         },
-        "aa_img": {
-          "omniscience_hallucination_rate": 29,
-          "briefcase_elo": 975,
-          "briefcase_analytical_quality_elo": 956,
-          "briefcase_presentation_elo": 974,
-          "briefcase_rubric_score": 25.8,
-          "agentic_index": 29.9,
-          "coding_index": 55.8,
-          "openness_index": 44,
-          "ttft_variance": -1.4
-        },
         "livebench": {
           "average": 70.62,
           "Mathematics": 84.89,
@@ -14142,7 +13985,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-16",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -14203,19 +14045,6 @@
           "briefcase_presentation_elo": 952.0,
           "time_per_task": 3.3,
           "coding_index": 68.8
-        },
-        "aa_img": {
-          "omniscience_index": 4,
-          "omniscience_hallucination_rate": 28,
-          "briefcase_elo": 1261,
-          "briefcase_analytical_quality_elo": 1331,
-          "briefcase_presentation_elo": 1292,
-          "briefcase_rubric_score": 36.1,
-          "agentic_index": 43.1,
-          "coding_index": 68.8,
-          "openness_index": 44,
-          "e2e_response_time_s": 14.9,
-          "ttft_variance": -1.4
         },
         "livebench": {
           "average": 76.18,
@@ -14749,14 +14578,6 @@
       }
     },
     {
-      "id": "gpt-5-2-codex",
-      "benchmarks": {
-        "aa_img": {
-          "omniscience_accuracy": 41
-        }
-      }
-    },
-    {
       "id": "gpt-5-3-codex",
       "benchmarks": {
         "dirac": {
@@ -14771,7 +14592,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-17",
-        "confirmed_scraped": true,
         "context_window": 400000
       },
       "pricing": {
@@ -14816,16 +14636,6 @@
           "briefcase_presentation_elo": 914.0,
           "time_per_task": 8.2,
           "coding_index": 56.1
-        },
-        "aa_img": {
-          "omniscience_accuracy": 37,
-          "briefcase_elo": 631,
-          "briefcase_analytical_quality_elo": 595,
-          "briefcase_presentation_elo": 761,
-          "briefcase_rubric_score": 12.4,
-          "agentic_index": 30.2,
-          "coding_index": 56.1,
-          "e2e_response_time_s": 11.5
         },
         "dirac": {
           "cache_hit_rate_max": 61.5
@@ -14898,7 +14708,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-17",
-        "confirmed_scraped": true,
         "context_window": 400000
       },
       "pricing": {
@@ -14949,12 +14758,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": 7.1,
           "coding_index": 56.1
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 50,
-          "agentic_index": 25.6,
-          "coding_index": 56.1,
-          "e2e_response_time_s": 7.2
         },
         "dirac": {
           "cache_hit_rate_max": 62.8
@@ -16535,7 +16338,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-05",
-        "confirmed_scraped": true,
         "context_window": 400000
       },
       "pricing": {
@@ -16588,13 +16390,6 @@
           "briefcase_analytical_quality_elo": 1195.0,
           "briefcase_presentation_elo": 1087.0,
           "time_per_task": null
-        },
-        "aa_img": {
-          "omniscience_index": 10,
-          "omniscience_accuracy": 52,
-          "briefcase_elo": 865,
-          "briefcase_analytical_quality_elo": 863,
-          "briefcase_presentation_elo": 827
         }
       },
       "aliases": {
@@ -16688,7 +16483,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-05",
-        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -16741,12 +16535,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": 3.4,
-          "coding_index": 71.1
-        },
-        "aa_img": {
-          "omniscience_index": 6,
-          "omniscience_accuracy": 50,
-          "agentic_index": 41.1,
           "coding_index": 71.1
         },
         "arena_text": {
@@ -17197,7 +16985,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17248,16 +17035,6 @@
           "briefcase_analytical_quality_elo": 703.0,
           "briefcase_presentation_elo": 755.0,
           "time_per_task": 2.5,
-          "coding_index": 71.6
-        },
-        "aa_img": {
-          "omniscience_index": 18,
-          "omniscience_accuracy": 56,
-          "briefcase_elo": 1103,
-          "briefcase_analytical_quality_elo": 1158,
-          "briefcase_presentation_elo": 1085,
-          "briefcase_rubric_score": 30.6,
-          "agentic_index": 43.5,
           "coding_index": 71.6
         },
         "livebench": {
@@ -17321,7 +17098,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17373,14 +17149,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": 0.6,
           "coding_index": 60.9
-        },
-        "aa_img": {
-          "omniscience_index": 15,
-          "omniscience_accuracy": 54,
-          "agentic_index": 30.4,
-          "coding_index": 60.9,
-          "e2e_response_time_s": 9.1,
-          "ttft_variance": -1.9
         }
       },
       "aliases": {
@@ -17394,7 +17162,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17445,16 +17212,6 @@
           "briefcase_analytical_quality_elo": 613.0,
           "briefcase_presentation_elo": 784.0,
           "time_per_task": 1.4,
-          "coding_index": 71.5
-        },
-        "aa_img": {
-          "omniscience_index": 17,
-          "omniscience_accuracy": 56,
-          "briefcase_elo": 1000,
-          "briefcase_analytical_quality_elo": 1000,
-          "briefcase_presentation_elo": 1000,
-          "briefcase_rubric_score": 26.6,
-          "agentic_index": 37.8,
           "coding_index": 71.5
         },
         "livebench": {
@@ -17539,7 +17296,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-23",
-        "confirmed_scraped": true,
         "context_window": 1050000
       },
       "pricing": {
@@ -17590,16 +17346,6 @@
           "briefcase_analytical_quality_elo": 881.0,
           "briefcase_presentation_elo": 770.0,
           "time_per_task": 4.0,
-          "coding_index": 74.9
-        },
-        "aa_img": {
-          "omniscience_index": 20,
-          "omniscience_accuracy": 57,
-          "briefcase_elo": 1159,
-          "briefcase_analytical_quality_elo": 1228,
-          "briefcase_presentation_elo": 1124,
-          "briefcase_rubric_score": 33.4,
-          "agentic_index": 44.9,
           "coding_index": 74.9
         },
         "livebench": {
@@ -17747,7 +17493,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-05",
-        "confirmed_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -17807,11 +17552,6 @@
           "time_per_task": 2.1,
           "coding_index": 30.4,
           "math_index": 93.4
-        },
-        "aa_img": {
-          "openness_index": 39,
-          "e2e_response_time_s": 10.3,
-          "ttft_variance": -0.9
         },
         "dirac": {
           "cache_hit_rate_max": 57.0
@@ -17917,7 +17657,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-05",
-        "confirmed_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -17977,11 +17716,6 @@
           "time_per_task": 1.5,
           "coding_index": 20.7,
           "math_index": 89.3
-        },
-        "aa_img": {
-          "openness_index": 39,
-          "e2e_response_time_s": 11.4,
-          "ttft_variance": -0.8
         }
       },
       "aliases": {
@@ -18501,7 +18235,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-30",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -18562,15 +18295,6 @@
           "briefcase_presentation_elo": 964.0,
           "time_per_task": 2.7,
           "coding_index": 42.2
-        },
-        "aa_img": {
-          "omniscience_index": 18,
-          "omniscience_hallucination_rate": 25,
-          "briefcase_elo": 705,
-          "briefcase_analytical_quality_elo": 608,
-          "briefcase_presentation_elo": 810,
-          "briefcase_rubric_score": 16.8,
-          "e2e_response_time_s": 21.7
         },
         "livebench": {
           "average": 67.37,
@@ -19182,7 +18906,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-27",
-        "confirmed_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -19227,10 +18950,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null,
           "math_index": 69.7
-        },
-        "aa_img": {
-          "openness_index": 47,
-          "ttft_variance": -2.4
         }
       },
       "aliases": {
@@ -19244,7 +18963,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-08-27",
-        "confirmed_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -19289,10 +19007,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null,
           "math_index": 68.7
-        },
-        "aa_img": {
-          "openness_index": 47,
-          "ttft_variance": -1.4
         }
       },
       "aliases": {
@@ -20087,9 +19801,6 @@
         }
       },
       "benchmarks": {
-        "aa_img": {
-          "e2e_response_time_s": 19.8
-        },
         "dirac": {
           "cache_hit_rate_max": 84.3
         }
@@ -21005,7 +20716,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-12-31",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -21235,7 +20945,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-11-06",
-        "confirmed_scraped": true,
         "context_window": 131072
       },
       "pricing": {
@@ -21290,10 +20999,6 @@
           "time_per_task": null,
           "math_index": 94.7
         },
-        "aa_img": {
-          "e2e_response_time_s": 20.4,
-          "ttft_variance": -1.4
-        },
         "livebench": {
           "average": 62.28,
           "Mathematics": 81.1,
@@ -21313,6 +21018,8 @@
     },
     {
       "id": "kimi-k2.5",
+      "name": "MoonshotAI: Kimi K2.5",
+      "creator": "moonshotai",
       "meta": {
         "context_window": 262144
       },
@@ -21383,7 +21090,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-20",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -21445,17 +21151,6 @@
           "time_per_task": 14.2,
           "coding_index": 61.8
         },
-        "aa_img": {
-          "omniscience_index": 6,
-          "omniscience_hallucination_rate": 39,
-          "briefcase_elo": 805,
-          "briefcase_analytical_quality_elo": 780,
-          "briefcase_presentation_elo": 753,
-          "briefcase_rubric_score": 18.7,
-          "agentic_index": 30.3,
-          "coding_index": 56.0,
-          "ttft_variance": -2.3
-        },
         "arena_code": {
           "elo": 1514,
           "ci": 8,
@@ -21497,7 +21192,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-12",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -21557,11 +21251,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": 6.5,
-          "coding_index": 60.8
-        },
-        "aa_img": {
-          "omniscience_accuracy": 39,
-          "agentic_index": 29.6,
           "coding_index": 60.8
         },
         "livebench": {
@@ -34709,7 +34398,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-20",
-        "confirmed_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -34762,9 +34450,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "e2e_response_time_s": 4.6
         }
       },
       "aliases": {
@@ -35544,7 +35229,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-18",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -35589,10 +35273,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null
         },
-        "aa_img": {
-          "omniscience_index": 5,
-          "omniscience_hallucination_rate": 30
-        },
         "livebench": {
           "average": 58.35,
           "Mathematics": 76.96,
@@ -35617,7 +35297,9 @@
     },
     {
       "id": "mimo-v2.5",
+      "name": "mimo-v2.5",
       "creator": "Xiaomi",
+      "model_type": "open",
       "meta": {
         "context_window": 1048576
       },
@@ -35633,11 +35315,6 @@
         }
       },
       "benchmarks": {
-        "aa_img": {
-          "omniscience_hallucination_rate": 32,
-          "openness_index": 39,
-          "ttft_variance": -2.4
-        },
         "arena_code": {
           "elo": 1430,
           "ci": 8,
@@ -35656,7 +35333,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-22",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -35717,18 +35393,6 @@
           "briefcase_presentation_elo": 1496.0,
           "time_per_task": 7.0,
           "coding_index": 60.2
-        },
-        "aa_img": {
-          "omniscience_index": 4,
-          "omniscience_hallucination_rate": 25,
-          "briefcase_elo": 871,
-          "briefcase_analytical_quality_elo": 765,
-          "briefcase_presentation_elo": 929,
-          "briefcase_rubric_score": 20.6,
-          "agentic_index": 29.1,
-          "coding_index": 60.2,
-          "openness_index": 39,
-          "ttft_variance": -2.4
         },
         "arena_text": {
           "elo": 1466,
@@ -35919,7 +35583,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-12",
-        "confirmed_scraped": true,
         "context_window": 204800
       },
       "pricing": {
@@ -35971,9 +35634,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null
         },
-        "aa_img": {
-          "ttft_variance": -1.8
-        },
         "livebench": {
           "average": 60.27,
           "Mathematics": 77.41,
@@ -35998,7 +35658,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-18",
-        "confirmed_scraped": true,
         "context_window": 204800
       },
       "pricing": {
@@ -36058,12 +35717,6 @@
           "time_per_task": 6.3,
           "coding_index": 52.6
         },
-        "aa_img": {
-          "omniscience_hallucination_rate": 34,
-          "agentic_index": 25.6,
-          "coding_index": 52.6,
-          "ttft_variance": -1.9
-        },
         "livebench": {
           "average": 65.0,
           "Mathematics": 80.54,
@@ -36094,7 +35747,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-01",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -36155,17 +35807,6 @@
           "briefcase_presentation_elo": 711.0,
           "time_per_task": 4.1,
           "coding_index": 58.6
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 16,
-          "briefcase_elo": 1112,
-          "briefcase_analytical_quality_elo": 1082,
-          "briefcase_presentation_elo": 1196,
-          "briefcase_rubric_score": 30.3,
-          "agentic_index": 35.4,
-          "coding_index": 58.6,
-          "openness_index": 33,
-          "ttft_variance": -1.7
         },
         "livebench": {
           "average": 70.05,
@@ -39531,7 +39172,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-08",
-        "confirmed_scraped": true,
         "context_window": 1048576
       },
       "pricing": {
@@ -39575,16 +39215,6 @@
           "briefcase_analytical_quality_elo": 898.0,
           "briefcase_presentation_elo": 878.0,
           "time_per_task": null,
-          "coding_index": 58.6
-        },
-        "aa_img": {
-          "omniscience_index": 4,
-          "omniscience_accuracy": 45,
-          "briefcase_elo": 445,
-          "briefcase_analytical_quality_elo": 570,
-          "briefcase_presentation_elo": 505,
-          "briefcase_rubric_score": 12.5,
-          "agentic_index": 28.7,
           "coding_index": 58.6
         },
         "arena_text": {
@@ -39864,7 +39494,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-29",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -39908,11 +39537,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "openness_index": 83,
-          "e2e_response_time_s": 9.6,
-          "ttft_variance": -1.0
         }
       },
       "aliases": {
@@ -39946,7 +39570,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-11",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -40006,11 +39629,6 @@
           "time_per_task": 2.7,
           "coding_index": 37.7
         },
-        "aa_img": {
-          "openness_index": 83,
-          "e2e_response_time_s": 12.9,
-          "ttft_variance": -1.7
-        },
         "livebench": {
           "average": 32.02,
           "Mathematics": 36.43,
@@ -40055,7 +39673,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-04",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -40116,17 +39733,6 @@
           "briefcase_presentation_elo": 1000.0,
           "time_per_task": 2.2,
           "coding_index": 49.3
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 29,
-          "briefcase_elo": 871,
-          "briefcase_analytical_quality_elo": 834,
-          "briefcase_presentation_elo": 861,
-          "briefcase_rubric_score": 22.0,
-          "agentic_index": 27.4,
-          "openness_index": 83,
-          "e2e_response_time_s": 15.7,
-          "ttft_variance": -1.2
         },
         "livebench": {
           "average": 50.71,
@@ -40434,7 +40040,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-02",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -40488,12 +40093,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": 3.4,
           "coding_index": 59.1
-        },
-        "aa_img": {
-          "agentic_index": 31.0,
-          "coding_index": 59.1,
-          "openness_index": 39,
-          "ttft_variance": -1.8
         }
       },
       "aliases": {
@@ -52928,7 +52527,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-22",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -52974,16 +52572,6 @@
           "time_per_task": 7.2,
           "coding_index": 53.7
         },
-        "aa_img": {
-          "omniscience_hallucination_rate": 48,
-          "briefcase_elo": 751,
-          "briefcase_analytical_quality_elo": 656,
-          "briefcase_presentation_elo": 914,
-          "briefcase_rubric_score": 17.3,
-          "agentic_index": 27.0,
-          "coding_index": 53.7,
-          "openness_index": 39
-        },
         "dirac": {
           "cache_hit_rate_max": 32.8
         }
@@ -52999,7 +52587,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-16",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -53051,11 +52638,6 @@
           "time_per_task": 3.0,
           "coding_index": 41.9
         },
-        "aa_img": {
-          "omniscience_hallucination_rate": 50,
-          "openness_index": 39,
-          "ttft_variance": -2.4
-        },
         "dirac": {
           "cache_hit_rate_max": 47.6
         }
@@ -53071,7 +52653,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-20",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -53115,11 +52696,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "omniscience_index": 10,
-          "omniscience_accuracy": 38,
-          "omniscience_hallucination_rate": 44
         }
       },
       "aliases": {
@@ -53133,7 +52709,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -53177,11 +52752,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": 6.4,
-          "coding_index": 54.5
-        },
-        "aa_img": {
-          "omniscience_hallucination_rate": 32,
-          "agentic_index": 27.6,
           "coding_index": 54.5
         }
       },
@@ -54042,7 +53612,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-19",
-        "confirmed_scraped": true,
         "context_window": 1000000
       },
       "pricing": {
@@ -54105,17 +53674,6 @@
           "briefcase_presentation_elo": 123.0,
           "time_per_task": 1.6,
           "coding_index": 66
-        },
-        "aa_img": {
-          "omniscience_index": 14,
-          "omniscience_hallucination_rate": 23,
-          "briefcase_elo": 907,
-          "briefcase_analytical_quality_elo": 800,
-          "briefcase_presentation_elo": 965,
-          "briefcase_rubric_score": 23.7,
-          "agentic_index": 30.6,
-          "coding_index": 66.0,
-          "e2e_response_time_s": 17.1
         },
         "livebench": {
           "average": 75.15,
@@ -57761,7 +57319,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-03-10",
-        "confirmed_scraped": true,
         "context_window": 65536
       },
       "pricing": {
@@ -57813,9 +57370,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null,
           "math_index": 33.7
-        },
-        "aa_img": {
-          "openness_index": 39
         }
       },
       "aliases": {
@@ -59882,7 +59436,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2025-12-17",
-        "confirmed_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -59939,7 +59492,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-06",
-        "confirmed_scraped": true,
         "context_window": 128000
       },
       "pricing": {
@@ -60355,7 +59907,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-02",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -60400,10 +59951,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": null
         },
-        "aa_img": {
-          "e2e_response_time_s": 15.6,
-          "ttft_variance": -1.2
-        },
         "dirac": {
           "cache_hit_rate_max": 86.1
         }
@@ -60419,7 +59966,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-05-29",
-        "confirmed_scraped": true,
         "context_window": 256000
       },
       "pricing": {
@@ -60464,11 +60010,6 @@
           "briefcase_presentation_elo": null,
           "time_per_task": 2.1,
           "coding_index": 37.3
-        },
-        "aa_img": {
-          "openness_index": 39,
-          "e2e_response_time_s": 7.3,
-          "ttft_variance": -0.9
         }
       },
       "aliases": {
@@ -61323,7 +60864,6 @@
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-01",
-        "confirmed_scraped": true,
         "context_window": 262144
       },
       "pricing": {
@@ -61376,11 +60916,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
-        },
-        "aa_img": {
-          "openness_index": 44,
-          "e2e_response_time_s": 13.0,
-          "ttft_variance": -1.1
         }
       },
       "aliases": {

@@ -156,33 +156,6 @@ def _build_aa_benchmark_axes(models):
     return axes
 
 
-def _build_aa_image_axes(models):
-    img_qual_path = ["benchmarks", "aa_img"]
-    img_quality = [
-        ("aa_img.omniscience_index", "AA Omniscience Index", "points", True, "AA omniscience index (-100..100): rewards correct, penalizes hallucination"),
-        ("aa_img.omniscience_accuracy", "Omniscience Accuracy (%)", "%", True, "AA omniscience share of questions answered correctly"),
-        ("aa_img.omniscience_hallucination_rate", "Omniscience Hallucination (%)", "%", False, "AA omniscience incorrect / (incorrect + partial + not attempted)"),
-        ("aa_img.briefcase_elo", "Briefcase Elo", "points", True, "AA-Briefcase agentic knowledge-work Elo (rubric + analytical + presentation)"),
-        ("aa_img.briefcase_analytical_quality_elo", "Briefcase Analytical Elo", "points", True, "AA-Briefcase analytical quality Elo"),
-        ("aa_img.briefcase_presentation_elo", "Briefcase Presentation Elo", "points", True, "AA-Briefcase presentation Elo"),
-        ("aa_img.briefcase_rubric_score", "Briefcase Rubric (%)", "%", True, "AA-Briefcase rubric pass rate"),
-        ("aa_img.agentic_index", "Agentic Index", "points", True, "AA agentic capabilities index (0-100)"),
-        ("aa_img.coding_index", "Coding Index", "points", True, "AA coding index (0-100), weighted Terminal-Bench + SciCode"),
-        ("aa_img.openness_index", "Openness Index", "points", True, "AA openness index (0-100), higher = more open"),
-        ("aa_img.e2e_response_time_s", "End-to-End Response Time (s)", "s", False, "AA time to output 500 tokens (incl. thinking)"),
-        ("aa_img.ttft_variance", "TTFT Variance (s)", "s", False, "AA time-to-first-token variance (lower = more stable)"),
-    ]
-    img_meta = [
-        ("meta.params_total_b", "Total Parameters (B)", True, "Model total parameter count in billions (from AA image charts)"),
-        ("meta.params_active_b", "Active Parameters (B)", True, "Model active (inference) parameter count in billions (from AA image charts)"),
-    ]
-    axes = [_build_axis(models, aid, "AA_IMG", label, "quality", unit, hib, desc, "AA Image Charts", img_qual_path, range_decimals=4)
-            for aid, label, unit, hib, desc in img_quality]
-    for aid, label, hib, desc in img_meta:
-        axes.append(_build_axis(models, aid, "AA_IMG", label, "meta", "B", hib, desc, "AA Image Charts", ["meta"]))
-    return axes
-
-
 def _build_dirac_axes(models):
     dirac_path = ["benchmarks", "dirac"]
     return [_build_axis(models, "dirac.cache_hit_rate_max", "Dirac.run", "Cache Hit Rate (max, %)", "performance", "%", True,
@@ -310,7 +283,6 @@ def _assemble_axes(models):
         + _build_aa_performance_axes(models)
         + _build_aa_quality_axes(models)
         + _build_aa_benchmark_axes(models)
-        + _build_aa_image_axes(models)
         + _build_dirac_axes(models)
         + _build_release_date_axes(models)
         + _build_context_window_axes(models)
@@ -336,7 +308,7 @@ def _finalize_axis_ranges(axes):
 
 def _group_sources(axes):
     source_groups = {}
-    speculative_sources = {"AA_IMG"}
+    speculative_sources = set()
     for a in axes:
         g = a["source"]
         if g not in source_groups:

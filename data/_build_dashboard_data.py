@@ -94,14 +94,8 @@ _PROJECTION_AXES = [
     "openrouter.inp_price_per_m", "openrouter.out_price_per_m",
     "openrouter.cache_read_price_per_m",
     "meta.params_b", "meta.co2_kg",
-    "meta.params_total_b", "meta.params_active_b", "meta.release_date",
+    "meta.release_date",
     "meta.context_window",
-    "aa_img.omniscience_index", "aa_img.omniscience_accuracy",
-    "aa_img.omniscience_hallucination_rate", "aa_img.briefcase_elo",
-    "aa_img.briefcase_analytical_quality_elo", "aa_img.briefcase_presentation_elo",
-    "aa_img.briefcase_rubric_score", "aa_img.agentic_index",
-    "aa_img.coding_index", "aa_img.openness_index",
-    "aa_img.e2e_response_time_s", "aa_img.ttft_variance",
     "dirac.cache_hit_rate_max",
 ]
 
@@ -204,18 +198,6 @@ def _build_projection_row(row, registry_by_id):
         context_window=safe_ctx_window(meta.get("context_window")),
         cache_hit_rate_max=safe_cache(axes.get("dirac.cache_hit_rate_max")),
         iq_per_dollar_pt=safe_iq_per_dollar(axes.get("aa.iq_per_dollar")),
-        omniscience_index=safe_omniscience(axes.get("aa_img.omniscience_index")),
-        omniscience_accuracy=safe_benchmark(axes.get("aa_img.omniscience_accuracy")),
-        omniscience_hallucination_rate=safe_benchmark(axes.get("aa_img.omniscience_hallucination_rate")),
-        briefcase_elo=safe_elo(axes.get("aa_img.briefcase_elo")),
-        briefcase_analytical_quality_elo=safe_elo(axes.get("aa_img.briefcase_analytical_quality_elo")),
-        briefcase_presentation_elo=safe_elo(axes.get("aa_img.briefcase_presentation_elo")),
-        briefcase_rubric_score=safe_benchmark(axes.get("aa_img.briefcase_rubric_score")),
-        agentic_index=safe_benchmark(axes.get("aa_img.agentic_index")),
-        coding_index=safe_benchmark(axes.get("aa_img.coding_index")),
-        openness_index=safe_benchmark(axes.get("aa_img.openness_index")),
-        e2e_response_time_s=safe_response_time(axes.get("aa_img.e2e_response_time_s")),
-        ttft_variance=safe_axis_metric(axes.get("aa_img.ttft_variance")),
     )
 
     projection.compute_derived()
@@ -270,11 +252,9 @@ def _build_payload(output):
             "generated": _today(),
             "version": "3.0",
             "model_count": len(output),
-            "sources": ["AA", "AA_IMG", "Dirac.run", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
+            "sources": ["AA", "Dirac.run", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
             "sources_meta": {
                 "AA": {"speculative": False},
-                "AA_IMG": {"speculative": True,
-                           "note": "Vision-transcribed from AA chart images (future/speculative model projections). Values as-transcribed; some best-effort."},
                 "Dirac.run": {"speculative": False,
                               "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."},
                 "LiveBench": {"speculative": False},

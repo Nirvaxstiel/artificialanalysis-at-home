@@ -26,7 +26,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (551 models), `aa_scrape_progress.json`, `img/aa_img_models.json`, `aa_charts_export.json`, `aa_jsonld_export.json`
+- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (551 models), `aa_charts_export.json`, `aa_jsonld_export.json`
 - `data/sources/dirac/cache_hit_rates.json` — 276 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
@@ -38,7 +38,6 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 |--------|----------|----------|
 | Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
 | Artificial Analysis (live API) | 551 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
-| AA image charts | 99 models | Omniscience, Briefcase Elo (vision-transcribed) |
 | OpenRouter API | ~344 models | Pricing, **context window** (`context_length`) |
 | LiveBench | 127 models | Coding/agentic/reasoning scores |
 | Chatbot Arena (Code + Text) | 30 / 50 models | Code/Text Elo |
@@ -49,7 +48,6 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
 - **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
-- **`confirmed_scraped`** flag (AA_IMG models) marks which speculative models the image scraper actually fetched — provenance, not data.
 
 ## Projection schema (rendered 117-model set)
 

@@ -75,7 +75,7 @@ class ProjectionEngine:
                 sub = sec.get(parts[1], {})
                 return ok(sub.get(parts[2]))
 
-        if source in ("livebench", "arena_text", "arena_code", "openllm", "aa_img", "dirac"):
+        if source in ("livebench", "arena_text", "arena_code", "openllm", "dirac"):
             sec = model.get("benchmarks", {}).get(source, {})
             if len(parts) == 2:
                 return ok(sec.get(dict_key or parts[1]))

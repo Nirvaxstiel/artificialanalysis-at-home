@@ -80,7 +80,6 @@ Each model is a `ProjectionRow` with these fields (117 models total):
 | `useful_cost` / `reasoning_tax_pct` | float | Derived cost metrics |
 | `blended` | bool | Blended/eval-average model |
 | `release_date` | string | Model release date (AA live API) |
-| `confirmed_scraped` | bool | True if image-chart scraper fetched this AA_IMG model |
 
 Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at render time by `cost-breakdown.js` from `cost_seg_*` when present on the source model — they are not stored on the projection row.
 

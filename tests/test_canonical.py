@@ -11,7 +11,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "data"))
 from _canonical import (  # noqa: E402
     openllm_name_to_canonical,
     costbd_name_to_canonical,
-    aa_img_name_to_canonical,
     dirac_name_to_canonical,
     canonical_to_or_id,
 )
@@ -35,13 +34,6 @@ def test_costbd_hit_ok_miss_err():
     assert costbd_name_to_canonical("No Such Model XYZ").is_err()
 
 
-def test_aa_img_hit_ok_miss_err():
-    hit = aa_img_name_to_canonical("GPT-5.5 (xhigh)")
-    assert hit.is_ok()
-    assert hit.unwrap() == "gpt-5.5-xhigh"
-    assert aa_img_name_to_canonical("Definitely Not A Chart").is_err()
-
-
 def test_dirac_hit_ok_miss_err():
     hit = dirac_name_to_canonical("DeepSeek_DeepSeek_V4_Pro")
     assert hit.is_ok()
@@ -60,5 +52,4 @@ def test_unwrap_or_round_trips_old_behavior():
     # .unwrap_or(None) reproduces the prior None-returning contract for callers
     assert openllm_name_to_canonical("").unwrap_or(None) is None
     assert dirac_name_to_canonical("Novel_Model_99").unwrap_or(None) is None
-    assert aa_img_name_to_canonical("GPT-5.5 (xhigh)").unwrap_or(None) == "gpt-5.5-xhigh"
     assert isinstance(costbd_name_to_canonical("DeepSeek V4 Pro (max)").unwrap_or(None), str)

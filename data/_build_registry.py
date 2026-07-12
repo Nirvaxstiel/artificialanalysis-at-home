@@ -3,12 +3,11 @@ from datetime import date
 from pathlib import Path
 
 from .sources.aa._build import get_aa_models
-from .sources.aa.img._build import get_aa_img_models
 from .sources.dirac._build import get_dirac_models
 from ._canonical import (
     resolve_from_slug, livebench_name_to_canonical,
     openrouter_id_to_canonical, openllm_name_to_canonical,
-    aa_img_name_to_canonical, costbd_name_to_canonical,
+    costbd_name_to_canonical,
     canonical_to_or_id, resolve_or_context,
 )
 from ._domain._entities import RegistryModel
@@ -51,42 +50,6 @@ def step_aa(state):
     models = result.unwrap()
     state["all_models"].update(models)
     state["counts"]["aa"] = len(models)
-    return ok(state)
-
-
-def step_aa_img(state):
-    for canonical_id, img in get_aa_img_models(BASE).items():
-        model = state["all_models"].setdefault(canonical_id, {
-            "id": canonical_id, "name": None, "creator": None, "model_type": None,
-            "meta": {}, "pricing": {}, "benchmarks": {}, "aliases": {}})
-        img_benchmarks = img.get("benchmarks", {}).get("aa_img")
-        if img_benchmarks:
-            model.setdefault("benchmarks", {}).setdefault("aa_img", {}).update(img_benchmarks)
-        img_pricing = img.get("pricing", {}).get("aa")
-        if img_pricing:
-            pricing_entry = model.setdefault("pricing", {}).setdefault("aa", {})
-            for key, value in img_pricing.items():
-                if value is not None and pricing_entry.get(key) is None:
-                    pricing_entry[key] = value
-        img_meta = img.get("meta", {})
-        if img_meta:
-            model.setdefault("meta", {}).update(img_meta)
-    return ok(state)
-
-
-def step_scrape_progress(state):
-    scrape_path = os.path.join(state["src"], "aa", "aa_scrape_progress.json")
-    scraped_slugs = set()
-    if os.path.exists(scrape_path):
-        try:
-            with open(scrape_path) as f:
-                scrape_progress = json.load(f)
-            scraped_slugs = set(scrape_progress.get("scraped", []))
-        except (OSError, ValueError):
-            pass
-    for canonical_id in get_aa_img_models(BASE):
-        if canonical_id in scraped_slugs:
-            state["all_models"].setdefault(canonical_id, {}).setdefault("meta", {})["aa_img_scraped"] = True
     return ok(state)
 
 
@@ -361,8 +324,6 @@ def run(ctx=None):
 
     pipeline = (Pipeline(state)
         .then("step_aa", lambda c: step_aa(c))
-        .then("step_aa_img", lambda c: step_aa_img(c))
-        .then("step_scrape_progress", lambda c: step_scrape_progress(c))
         .then("step_dirac", lambda c: step_dirac(c))
         .then("step_livebench", lambda c: step_livebench(c))
         .then("step_arena_text", lambda c: step_arena_text(c))
