@@ -228,9 +228,11 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
   box-shadow: inset 3px 3px 0 #000;
 }
 .dt-search:focus {
-  border-color: #444;
+  border-color: var(--neon, #b6ff3c);
 }
-.dt-search:focus-visible,
+.dt-search:focus-visible {
+  outline: none;
+}
 nav.tabs button:focus-visible,
 .cache-toggle-btn:focus-visible,
 .color-toggle-btn:focus-visible,
