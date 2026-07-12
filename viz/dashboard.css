@@ -308,7 +308,17 @@ svg .label { cursor: pointer; }
 .tooltip .tt-row .v.neon { color: var(--neon); }
 .tooltip .tt-seg { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #333; }
 
-/* Comment / quote */
+.schema-error {
+  background: #2a0a0a;
+  border: 2px solid #ff3366;
+  color: #ff6688;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+
 .comment { color: var(--muted); font-style: italic; padding: 12px 16px;
   border-left: 3px solid var(--neon2); margin: 16px 0; font-size: 13px; }
 .comment::before { content: "// "; color: var(--neon2); font-style: normal; }

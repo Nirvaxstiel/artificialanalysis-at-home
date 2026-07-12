@@ -175,12 +175,43 @@ function renderRepoLinks(ctx) {
   return ok(ctx);
 }
 
+function validateSchema(ctx) {
+  const REQUIRED_KEYS = ['slug', 'name', 'creator', 'intel', 'cost_per_task', 'speed_tps', 'context_window'];
+  const models = ctx.models;
+  if (!Array.isArray(models) || models.length === 0) {
+    return err('schema: PROCESSED_DATA has no models');
+  }
+  const first = models[0];
+  const missing = REQUIRED_KEYS.filter(k => !(k in first));
+  if (missing.length) {
+    return err(`schema: missing required fields [${missing.join(', ')}] — ProjectionRow contract drifted from the Python build`);
+  }
+  const badTypes = models.filter(m =>
+    (m.slug != null && typeof m.slug !== 'string') ||
+    (m.intel != null && typeof m.intel !== 'number') ||
+    (m.cost_per_task != null && typeof m.cost_per_task !== 'number')
+  );
+  if (badTypes.length) {
+    return err(`schema: ${badTypes.length} model(s) have wrong types for slug/intel/cost_per_task`);
+  }
+  return ok(ctx);
+}
+
+function showSchemaError(message) {
+  const el = document.getElementById('schema-error');
+  if (el) {
+    el.textContent = message;
+    el.style.display = 'block';
+  }
+}
+
 function boot() {
   if (!window.PROCESSED_DATA || !window.VIZ_REGISTRY) {
     return setTimeout(boot, 50);
   }
   const pipeline = window.Result.Pipeline({})
     .then('bootstrap_models', bootstrapModels)
+    .then('validate_schema', validateSchema)
     .then('header_meta', injectHeaderMeta)
     .then('build_shell', buildShell)
     .then('render_first', renderFirst)
@@ -193,6 +224,7 @@ function boot() {
   pipeline.run();
   if (pipeline.ctx._failed_step) {
     console.error(`Viz boot failed at '${pipeline.ctx._failed_step}': ${pipeline.ctx._error}`);
+    showSchemaError(`Boot stopped at '${pipeline.ctx._failed_step}': ${pipeline.ctx._error}`);
   }
 }
 
