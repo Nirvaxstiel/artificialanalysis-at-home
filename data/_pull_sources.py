@@ -125,8 +125,8 @@ if __name__ == "__main__":
     print("=" * 60)
     print("DATA COLLECTION COMPLETE")
     print("=" * 60)
-    print(f"\nFiles in {s['src_dir']}:")
-    for f in s["files"]:
-        print(f"  {f:45s} {os.path.getsize(os.path.join(s['src_dir'], f)):>8,} bytes")
-    if s["failed_sources"]:
-        print(f"\nFailed sources: {s['failed_sources']}")
+    print(f"\nFiles in {pipeline_state['src_dir']}:")
+    for f in pipeline_state["files"]:
+        print(f"  {f:45s} {os.path.getsize(os.path.join(pipeline_state['src_dir'], f)):>8,} bytes")
+    if pipeline_state["failed_sources"]:
+        print(f"\nFailed sources: {pipeline_state['failed_sources']}")
