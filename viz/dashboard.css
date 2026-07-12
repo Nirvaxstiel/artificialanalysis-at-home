@@ -225,9 +225,19 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
   font-family: inherit;
   font-size: 11px;
   outline: none;
+  box-shadow: inset 3px 3px 0 #000;
 }
 .dt-search:focus {
   border-color: var(--neon, #b6ff3c);
+}
+.dt-search:focus-visible,
+nav.tabs button:focus-visible,
+.cache-toggle-btn:focus-visible,
+.color-toggle-btn:focus-visible,
+.dt-view-btn:focus-visible,
+.lg-fi:focus-visible {
+  outline: 2px solid var(--neon, #b6ff3c);
+  outline-offset: 2px;
 }
 .dt-view-btn {
   background: transparent;
