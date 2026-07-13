@@ -151,6 +151,7 @@ window.__renderCreatorLegend = function() {
       }).join('')
     + toggleHtml;
   const newEl = el.cloneNode(true);
+  newEl.style.display = 'flex';
   el.parentNode.replaceChild(newEl, el);
   window.__creatorLegendEl = newEl;
   newEl.addEventListener('click', e => {

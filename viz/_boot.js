@@ -214,6 +214,7 @@ function boot() {
     .then('validate_schema', validateSchema)
     .then('header_meta', injectHeaderMeta)
     .then('build_shell', buildShell)
+    .then('render_legend', ctx => { window.__renderCreatorLegend(); return ok(ctx); })
     .then('render_first', renderFirst)
     .then('wire_tabs', wireTabs)
     .then('wire_filter_sync', wireFilterSync)

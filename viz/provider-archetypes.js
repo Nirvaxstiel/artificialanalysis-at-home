@@ -271,7 +271,8 @@
     }
 
     // Clear legend (redundant with chart header)
-    const legendEl = container.parentElement.querySelector('.viz-legend');
+    const parent = container.parentElement;
+    const legendEl = parent ? parent.querySelector('.viz-legend') : null;
     if (legendEl) legendEl.innerHTML = '';
   }
 
