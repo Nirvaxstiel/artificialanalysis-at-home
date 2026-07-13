@@ -2,7 +2,7 @@
 import json, os, re
 from pathlib import Path
 
-from ..._canonical import resolve_from_slug, costbd_name_to_canonical
+from ..._canonical import resolve_from_slug, costbd_name_to_canonical, normalize_creator
 from _result import ok, err
 
 
@@ -34,7 +34,7 @@ def get_aa_live_models(aa_dir: str) -> dict[str, dict]:
         creator = (m.get("model_creator") or {}).get("name")
         out[slug] = {
             "release_date": m.get("release_date"),
-            "creator": creator,
+            "creator": normalize_creator(creator),
             "evaluations": m.get("evaluations", {}),
         }
     return out
@@ -489,8 +489,6 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         return err(r.error)
     all_models = r.unwrap()
 
-    all_models = _step_live_api(all_models, base)
-
     r = _step_enriched(all_models, AA_DIR)
     if r.is_err():
         return err(r.error)
@@ -501,6 +499,8 @@ def get_aa_models(base: Path) -> dict[str, dict]:
         return err(r.error)
     all_models = r.unwrap()
 
+    all_models = _step_live_api(all_models, base)
+
     return ok(all_models)
 
 
@@ -510,7 +510,7 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
     return {
         "id": cid,
         "name": raw.get("name"),
-        "creator": raw.get("creator"),
+        "creator": normalize_creator(raw.get("creator")),
         "model_type": None,
         "meta": {
             "archetype": None,
@@ -556,7 +556,7 @@ def _overlay_aa_api(model: dict, aa_m: dict) -> None:
     if model.get("creator") is None:
         creator = (aa_m.get("model_creator") or {}).get("name")
         if creator:
-            model["creator"] = creator
+            model["creator"] = normalize_creator(creator)
     if model.get("meta", {}).get("release_date") is None:
         rd = aa_m.get("release_date")
         if rd:

@@ -9,6 +9,7 @@ from ._canonical import (
     openrouter_id_to_canonical, openllm_name_to_canonical,
     costbd_name_to_canonical,
     canonical_to_or_id, resolve_or_context,
+    normalize_creator,
 )
 from ._domain._entities import RegistryModel
 from _result import ok, err
@@ -109,10 +110,10 @@ def step_arena_text(state):
         arena_id = model["model"]
         canonical_id = resolve_from_slug(arena_id)
         _ensure(state["all_models"], canonical_id, name=arena_id,
-                creator=model.get("vendor"), model_type=model.get("license"))
+                creator=normalize_creator(model.get("vendor")), model_type=model.get("license"))
         state["all_models"][canonical_id]["aliases"]["arena"] = arena_id
         state["all_models"][canonical_id]["creator"] = \
-            state["all_models"][canonical_id].get("creator") or model.get("vendor")
+            state["all_models"][canonical_id].get("creator") or normalize_creator(model.get("vendor"))
         state["all_models"][canonical_id]["benchmarks"]["arena_text"] = {
             "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
     state["counts"]["arena_text"] = len(result.unwrap().get("models", []))
@@ -127,10 +128,10 @@ def step_arena_code(state):
         arena_id = model["model"]
         canonical_id = resolve_from_slug(arena_id)
         _ensure(state["all_models"], canonical_id, name=arena_id,
-                creator=model.get("vendor"), model_type=model.get("license"))
+                creator=normalize_creator(model.get("vendor")), model_type=model.get("license"))
         state["all_models"][canonical_id]["aliases"]["arena_code"] = arena_id
         state["all_models"][canonical_id]["creator"] = \
-            state["all_models"][canonical_id].get("creator") or model.get("vendor")
+            state["all_models"][canonical_id].get("creator") or normalize_creator(model.get("vendor"))
         state["all_models"][canonical_id]["benchmarks"]["arena_code"] = {
             "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
     state["counts"]["arena_code"] = len(result.unwrap().get("models", []))
@@ -182,7 +183,7 @@ def step_openrouter(state):
     for model in openrouter_models:
         openrouter_id = model["id"]
         canonical_id = openrouter_id_to_canonical(openrouter_id)
-        _ensure(state["all_models"], canonical_id, name=model.get("name", openrouter_id), creator=model.get("vendor"))
+        _ensure(state["all_models"], canonical_id, name=model.get("name", openrouter_id), creator=normalize_creator(model.get("vendor")))
         state["all_models"][canonical_id]["aliases"]["openrouter"] = openrouter_id
         state["all_models"][canonical_id]["pricing"]["openrouter"] = {}
         input_price = parse_price(model.get("input_price"))

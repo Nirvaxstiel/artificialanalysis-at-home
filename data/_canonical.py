@@ -254,3 +254,42 @@ DIRAC_NAME_MAP = {
 def dirac_name_to_canonical(model_name: str) -> "Ok[str] | Err[str]":
     cid = DIRAC_NAME_MAP.get(model_name.strip())
     return ok(cid) if cid is not None else err(model_name)
+
+
+# Canonical creator display names, keyed by normalized (lowercased, '~'-stripped) form.
+# Single source of truth for creator casing so the legend/grouping never fragments
+# on 'google' vs 'Google' vs '~google'. Falls back to a cleaned Title-Case form.
+_CREATOR_CANON = {
+    "openai": "OpenAI", "google": "Google", "anthropic": "Anthropic", "deepseek": "DeepSeek",
+    "x-ai": "xAI", "xai": "xAI", "moonshotai": "Moonshot", "mistralai": "Mistral",
+    "nvidia": "NVIDIA", "amazon": "Amazon", "baidu": "Baidu", "bytedance": "Bytedance",
+    "bytedance-seed": "Bytedance Seed", "tencent": "Tencent", "minimax": "MiniMax",
+    "qwen": "Qwen", "meta-llama": "Meta Llama", "meta": "Meta", "z-ai": "Z.ai", "z.ai": "Z.ai",
+    "rekaai": "Reka AI", "arcee-ai": "Arcee AI", "nex-agi": "Nex AGI", "ai21": "AI21",
+    "aion-labs": "Aion Labs", "allenai": "Allen AI", "anthracite-org": "Anthracite",
+    "cognitivecomputations": "Cognitive Computations", "cohere": "Cohere",
+    "deepcogito": "Deep Cogito", "gryphe": "Gryphe", "ibm-granite": "IBM Granite",
+    "inclusionai": "InclusionAI", "inflection": "Inflection", "kwaipilot": "KuaiPilot",
+    "liquid": "Liquid", "mancer": "Mancer", "microsoft": "Microsoft", "morph": "Morph",
+    "nousresearch": "Nous Research", "openrouter": "OpenRouter", "perceptron": "Perceptron",
+    "perplexity": "Perplexity", "poolside": "Poolside", "relace": "Relace", "sakana": "Sakana",
+    "sao10k": "Sao10k", "stepfun": "StepFun", "thedrummer": "The Drummer", "undi95": "Undi95",
+    "writer": "Writer", "xiaomi": "Xiaomi", "upstage": "Upstage", "alibaba": "Alibaba",
+    "kimi": "Kimi", "lg ai research": "LG AI Research", "moonshot": "Moonshot",
+    "reka ai": "Reka AI", "nex agi": "Nex AGI", "spacexai": "SpaceXAI", "arcee ai": "Arcee AI",
+    "z ai": "Z.ai",
+}
+
+
+def normalize_creator(raw: str | None) -> str | None:
+    """Canonicalize a creator name: strip '~' prefix, case-insensitive lookup, else
+    Title-Case-with-spaces fallback (so 'mistralai' -> 'Mistralai' only if unmapped)."""
+    if not raw:
+        return raw
+    s = raw.strip().lstrip("~").strip()
+    if not s:
+        return None
+    key = s.lower()
+    if key in _CREATOR_CANON:
+        return _CREATOR_CANON[key]
+    return " ".join(p[:1].upper() + p[1:] for p in re.split(r"[\s\-_.]+", s) if p)
