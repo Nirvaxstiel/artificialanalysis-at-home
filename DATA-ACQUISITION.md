@@ -69,10 +69,11 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 ### 2. Artificial Analysis — live API (`aa_api_live.json`)
 - **Method:** `GET https://artificialanalysis.ai/api/v2/data/llms/models` with header `x-api-key: ***`
 - **Auth:** free-tier key (100 req/day). Key stored in Hermes `.env` as `AA_API_KEY` — **never hardcode**.
-- **Payload:** `status`, `prompt_options`, `data[]` (551 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
+- **Payload:** `status`, `prompt_options`, `data[]` (572 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
 - **Repro:**
   ```bash
-  curl -H "x-api-key: ***" https://artificialanalysis.ai/api/v2/data/llms/models > data/sources/aa/aa_api_live.json
+  curl -s -H "x-api-key: $AA_API_KEY" https://artificialanalysis.ai/api/v2/data/llms/models \
+    | python -m json.tool > data/sources/aa/aa_api_live.json
   ```
 - **Used for:** `release_date`, `creator` backfill, 16 live-AA benchmark axes.
 

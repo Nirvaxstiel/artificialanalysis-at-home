@@ -45,6 +45,11 @@
         "detailsUrl": "/models/glm-5-2"
       },
       {
+        "label": "Muse Spark 1.1 (xhigh)",
+        "artificialAnalysisIntelligenceIndex": 50.6229899483333,
+        "detailsUrl": "/models/muse-spark-1-1"
+      },
+      {
         "label": "Gemini 3.5 Flash",
         "artificialAnalysisIntelligenceIndex": 50.2034858842254,
         "detailsUrl": "/models/gemini-3-5-flash"
@@ -63,11 +68,6 @@
         "label": "Kimi K2.6",
         "artificialAnalysisIntelligenceIndex": 44.2196682298639,
         "detailsUrl": "/models/kimi-k2-6"
-      },
-      {
-        "label": "Muse Spark",
-        "artificialAnalysisIntelligenceIndex": 43.0555563074727,
-        "detailsUrl": "/models/muse-spark"
       },
       {
         "label": "Nemotron 3 Ultra",
@@ -108,52 +108,57 @@
     "data": [
       {
         "label": "gpt-oss-120b (high)",
-        "medianOutputSpeed": 293.740153627369,
+        "medianOutputSpeed": 319.528252623821,
         "detailsUrl": "/models/gpt-oss-120b"
       },
       {
         "label": "GLM-5.2 (max)",
-        "medianOutputSpeed": 191.369651855674,
+        "medianOutputSpeed": 206.108785416872,
         "detailsUrl": "/models/glm-5-2"
       },
       {
         "label": "Nemotron 3 Ultra",
-        "medianOutputSpeed": 168.879917133388,
+        "medianOutputSpeed": 204.175974523433,
         "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
       },
       {
         "label": "Gemini 3.5 Flash",
-        "medianOutputSpeed": 160.67446934587,
+        "medianOutputSpeed": 161.631652115517,
         "detailsUrl": "/models/gemini-3-5-flash"
       },
       {
-        "label": "MiniMax-M3",
-        "medianOutputSpeed": 99.0757303472299,
-        "detailsUrl": "/models/minimax-m3"
+        "label": "Muse Spark 1.1 (xhigh)",
+        "medianOutputSpeed": 121.367539115307,
+        "detailsUrl": "/models/muse-spark-1-1"
       },
       {
         "label": "Grok 4.5 (high)",
-        "medianOutputSpeed": 89.5447637111961,
+        "medianOutputSpeed": 119.273699957233,
         "detailsUrl": "/models/grok-4-5"
       },
       {
+        "label": "MiniMax-M3",
+        "medianOutputSpeed": 107.301895193522,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
         "label": "GPT-5.6 Sol (max)",
-        "medianOutputSpeed": 77.974515279617,
+        "medianOutputSpeed": 69.0478357416935,
         "detailsUrl": "/models/gpt-5-6-sol"
       },
       {
-        "label": "Claude Fable 5 (with fallback)",
-        "medianOutputSpeed": 62.9283550883307,
-        "detailsUrl": "/models/claude-fable-5"
-      },
-      {
         "label": "DeepSeek V4 Pro (max)",
-        "medianOutputSpeed": 59.2756781599212,
+        "medianOutputSpeed": 68.2792301791891,
         "detailsUrl": "/models/deepseek-v4-pro"
       },
       {
+        "label": "Claude Fable 5 (with fallback)",
+        "medianOutputSpeed": 60.369691536365,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
         "label": "Kimi K2.6",
-        "medianOutputSpeed": 42.9564869003978,
+        "medianOutputSpeed": 48.6434090871323,
         "detailsUrl": "/models/kimi-k2-6"
       }
     ]
@@ -200,8 +205,13 @@
       },
       {
         "label": "Nemotron 3 Ultra",
-        "costPerIntelligenceIndexTask": 0.24390316682824711,
+        "costPerIntelligenceIndexTask": 0.2339604134365895,
         "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Muse Spark 1.1 (xhigh)",
+        "costPerIntelligenceIndexTask": 0.2610220700233032,
+        "detailsUrl": "/models/muse-spark-1-1"
       },
       {
         "label": "Grok 4.5 (high)",
@@ -209,13 +219,8 @@
         "detailsUrl": "/models/grok-4-5"
       },
       {
-        "label": "Kimi K2.6",
-        "costPerIntelligenceIndexTask": 0.34554319749943396,
-        "detailsUrl": "/models/kimi-k2-6"
-      },
-      {
         "label": "GLM-5.2 (max)",
-        "costPerIntelligenceIndexTask": 0.370080167362808,
+        "costPerIntelligenceIndexTask": 0.3758425161131201,
         "detailsUrl": "/models/glm-5-2"
       },
       {
@@ -1389,6 +1394,15 @@
     "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
     "data": [
       {
+        "label": "MiMo-V2.5",
+        "answerCost": 1.45191788,
+        "reasoningCost": 18.54370896,
+        "cacheWriteCost": 2.429051177235819,
+        "cacheReadCost": 0.7580192408552836,
+        "nonCacheInputCost": 2.01017194,
+        "detailsUrl": "/models/mimo-v2-5-0424"
+      },
+      {
         "label": "gpt-oss-20b (high)",
         "answerCost": 0.7947310000000001,
         "reasoningCost": 12.672229600000001,
@@ -1410,8 +1424,8 @@
         "label": "Gemma 4 26B A4B",
         "answerCost": 2.2540632,
         "reasoningCost": 27.4816284,
-        "cacheWriteCost": 6.198066442366079,
-        "cacheReadCost": 14.460838335376026,
+        "cacheWriteCost": 6.2088942463059364,
+        "cacheReadCost": 14.453758617415348,
         "nonCacheInputCost": 1.52308663,
         "detailsUrl": "/models/gemma-4-26b-a4b"
       },
@@ -1450,15 +1464,6 @@
         "cacheReadCost": 1.0611792899999999,
         "nonCacheInputCost": 5.963311035,
         "detailsUrl": "/models/mimo-v2-5-pro"
-      },
-      {
-        "label": "GPT-5.6 Luna (medium)",
-        "answerCost": 16.805034,
-        "reasoningCost": 58.07412600000001,
-        "cacheWriteCost": 8.316556035597598,
-        "cacheReadCost": 10.681409417152192,
-        "nonCacheInputCost": 11.961277,
-        "detailsUrl": "/models/gpt-5-6-luna-medium"
       },
       {
         "label": "DeepSeek V4 Pro (max)",
@@ -1506,24 +1511,6 @@
         "detailsUrl": "/models/nvidia-nemotron-3-super-120b-a12b"
       },
       {
-        "label": "GPT-5.4 nano (xhigh)",
-        "answerCost": 8.90439875,
-        "reasoningCost": 218.58745,
-        "cacheWriteCost": 22.33047538012422,
-        "cacheReadCost": 19.38649726198758,
-        "nonCacheInputCost": 2.359461,
-        "detailsUrl": "/models/gpt-5-4-nano"
-      },
-      {
-        "label": "GPT-5.6 Luna (high)",
-        "answerCost": 24.992706,
-        "reasoningCost": 197.21515800000003,
-        "cacheWriteCost": 15.776033482546435,
-        "cacheReadCost": 25.14441992139629,
-        "nonCacheInputCost": 11.889623,
-        "detailsUrl": "/models/gpt-5-6-luna-high"
-      },
-      {
         "label": "Grok 4.3 (high)",
         "answerCost": 12.520290000000001,
         "reasoningCost": 195.56833,
@@ -1536,8 +1523,8 @@
         "label": "Qwen3.7 Plus",
         "answerCost": 7.520732800000001,
         "reasoningCost": 174.16782880000002,
-        "cacheWriteCost": 132.4071387309185,
-        "cacheReadCost": 0.9068633815265206,
+        "cacheWriteCost": 113.18156553314465,
+        "cacheReadCost": 2.4449092373484276,
         "nonCacheInputCost": 5.3356580000000005,
         "detailsUrl": "/models/qwen3-7-plus"
       },
@@ -1554,8 +1541,8 @@
         "label": "GPT-5.5 (low)",
         "answerCost": 65.19348,
         "reasoningCost": 138.69840000000002,
-        "cacheWriteCost": 70.343501170981,
-        "cacheReadCost": 24.4365713829019,
+        "cacheWriteCost": 89.29842048994576,
+        "cacheReadCost": 22.541079451005423,
         "nonCacheInputCost": 59.498810000000006,
         "detailsUrl": "/models/gpt-5-5-low"
       },
@@ -1567,6 +1554,24 @@
         "cacheReadCost": 20.645096334719998,
         "nonCacheInputCost": 14.918130000000001,
         "detailsUrl": "/models/nova-2-0-pro-reasoning-medium"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "answerCost": 33.545759925,
+        "reasoningCost": 254.9132797,
+        "cacheWriteCost": 69.54955061894552,
+        "cacheReadCost": 68.06500192816833,
+        "nonCacheInputCost": 8.99135505,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "GPT-5.6 Terra (high)",
+        "answerCost": 66.01848000000001,
+        "reasoningCost": 288.50906999999995,
+        "cacheWriteCost": 44.79927107505862,
+        "cacheReadCost": 66.69734206399531,
+        "nonCacheInputCost": 29.7497325,
+        "detailsUrl": "/models/gpt-5-6-terra-high"
       }
     ]
   },
@@ -1598,32 +1603,16 @@
       {
         "label": "gpt-oss-20b (high)",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.05
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.2
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.05 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.2 }
         ],
         "detailsUrl": "/models/gpt-oss-20b"
       },
       {
         "label": "NVIDIA Nemotron 3 Nano",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.05
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.2
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.05 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.2 }
         ],
         "detailsUrl": "/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"
       },
@@ -1635,64 +1624,32 @@
             "name": "inputPrice",
             "value": 0.060000000000000005
           },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.2
-          }
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.2 }
         ],
         "detailsUrl": "/models/gpt-oss-20b-low"
       },
       {
         "label": "Nemotron 3 Nano Omni 30B A3B Reasoning",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.075
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.3
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.075 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.3 }
         ],
         "detailsUrl": "/models/nemotron-3-nano-omni-30b-a3b"
       },
       {
         "label": "Step 3.5 Flash 2603",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.02
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.1
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.3
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.02 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.1 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.3 }
         ],
         "detailsUrl": "/models/step-3-5-flash"
       },
       {
         "label": "Gemma 4 12B",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.1
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.3
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.1 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.3 }
         ],
         "detailsUrl": "/models/gemma-4-12b"
       },
@@ -1704,37 +1661,17 @@
             "name": "cacheHitPrice",
             "value": 0.0028
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.14
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.28
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.14 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.28 }
         ],
         "detailsUrl": "/models/mimo-v2-5-0424"
       },
       {
         "label": "DeepSeek V4 Flash (high)",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.028
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.14
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.28
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.028 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.14 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.28 }
         ],
         "detailsUrl": "/models/deepseek-v4-flash-high"
       },
@@ -1746,53 +1683,25 @@
             "name": "cacheHitPrice",
             "value": 0.0028
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.14
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.28
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.14 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.28 }
         ],
         "detailsUrl": "/models/deepseek-v4-flash"
       },
       {
         "label": "Hermes 4 70B",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.13
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.4
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.13 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.4 }
         ],
         "detailsUrl": "/models/hermes-4-llama-3-1-70b-reasoning"
       },
       {
         "label": "Gemma 4 26B A4B",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.085
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.13
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.4
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.085 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.13 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.4 }
         ],
         "detailsUrl": "/models/gemma-4-26b-a4b"
       },
@@ -1804,95 +1713,43 @@
             "name": "cacheHitPrice",
             "value": 0.0445
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.123
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.43
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.123 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.43 }
         ],
         "detailsUrl": "/models/hy3"
       },
       {
         "label": "gpt-oss-120b (low)",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.15
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.15
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.6
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.15 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.15 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.6 }
         ],
         "detailsUrl": "/models/gpt-oss-120b-low"
       },
       {
         "label": "gpt-oss-120b (high)",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.15
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.15
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.6
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.15 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.15 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.6 }
         ],
         "detailsUrl": "/models/gpt-oss-120b"
       },
       {
         "label": "Mercury 2",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.025
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.25
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.75
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.025 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.25 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.75 }
         ],
         "detailsUrl": "/models/mercury-2"
       },
       {
         "label": "Reka Flash 3",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.2
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.8
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.2 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.8 }
         ],
         "detailsUrl": "/models/reka-flash-3"
       },
@@ -1904,37 +1761,17 @@
             "name": "cacheHitPrice",
             "value": 0.14250000000000002
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.25
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.775
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.25 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.775 }
         ],
         "detailsUrl": "/models/nvidia-nemotron-3-super-120b-a12b"
       },
       {
         "label": "Trinity Large Thinking",
         "pricing": [
-          {
-            "@type": "PropertyValue",
-            "name": "cacheHitPrice",
-            "value": 0.155
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.235
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.875
-          }
+          { "@type": "PropertyValue", "name": "cacheHitPrice", "value": 0.155 },
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.235 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.875 }
         ],
         "detailsUrl": "/models/trinity-large-thinking"
       },
@@ -1946,16 +1783,8 @@
             "name": "cacheHitPrice",
             "value": 0.0036
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.435
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.87
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.435 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.87 }
         ],
         "detailsUrl": "/models/mimo-v2-5-pro"
       },
@@ -1967,16 +1796,8 @@
             "name": "cacheHitPrice",
             "value": 0.0036
           },
-          {
-            "@type": "PropertyValue",
-            "name": "inputPrice",
-            "value": 0.435
-          },
-          {
-            "@type": "PropertyValue",
-            "name": "outputPrice",
-            "value": 0.87
-          }
+          { "@type": "PropertyValue", "name": "inputPrice", "value": 0.435 },
+          { "@type": "PropertyValue", "name": "outputPrice", "value": 0.87 }
         ],
         "detailsUrl": "/models/deepseek-v4-pro-high"
       }
@@ -2009,103 +1830,103 @@
     "data": [
       {
         "label": "GPT-5.6 Luna (medium)",
-        "timePerTask": 0.2963172915357475,
+        "timePerTask": 0.30299275910103385,
         "detailsUrl": "/models/gpt-5-6-luna-medium"
       },
       {
         "label": "GPT-5.6 Terra (medium)",
-        "timePerTask": 0.5272720492399355,
+        "timePerTask": 0.5502849043832397,
         "detailsUrl": "/models/gpt-5-6-terra-medium"
       },
       {
         "label": "GPT-5.5 (low)",
-        "timePerTask": 0.5642314125105728,
+        "timePerTask": 0.59562186443223,
         "detailsUrl": "/models/gpt-5-5-low"
       },
       {
-        "label": "GPT-5.6 Luna (high)",
-        "timePerTask": 0.5915022916696738,
-        "detailsUrl": "/models/gpt-5-6-luna-high"
-      },
-      {
         "label": "Nova 2.0 Pro Preview (low)",
-        "timePerTask": 0.6922947959551776,
+        "timePerTask": 0.6533438395804948,
         "detailsUrl": "/models/nova-2-0-pro-reasoning-low"
       },
       {
+        "label": "GPT-5.6 Luna (high)",
+        "timePerTask": 0.6593469985676174,
+        "detailsUrl": "/models/gpt-5-6-luna-high"
+      },
+      {
+        "label": "GPT-5.6 Luna (xhigh)",
+        "timePerTask": 1.002959421130287,
+        "detailsUrl": "/models/gpt-5-6-luna-xhigh"
+      },
+      {
         "label": "Gemini 3.1 Flash-Lite",
-        "timePerTask": 1.064577850119302,
+        "timePerTask": 1.0802641903229044,
         "detailsUrl": "/models/gemini-3-1-flash-lite-preview"
       },
       {
         "label": "GPT-5.6 Terra (high)",
-        "timePerTask": 1.081556177510205,
+        "timePerTask": 1.093030272288369,
         "detailsUrl": "/models/gpt-5-6-terra-high"
       },
       {
         "label": "GPT-5.6 Sol (medium)",
-        "timePerTask": 1.0919853885207433,
+        "timePerTask": 1.1288080835374688,
         "detailsUrl": "/models/gpt-5-6-sol-medium"
       },
       {
-        "label": "GPT-5.6 Luna (xhigh)",
-        "timePerTask": 1.0986395892637004,
-        "detailsUrl": "/models/gpt-5-6-luna-xhigh"
-      },
-      {
-        "label": "GPT-5.6 Terra (xhigh)",
-        "timePerTask": 1.2559005698972994,
-        "detailsUrl": "/models/gpt-5-6-terra-xhigh"
-      },
-      {
         "label": "GPT-5.5 (medium)",
-        "timePerTask": 1.3585769395173068,
+        "timePerTask": 1.3355900402109435,
         "detailsUrl": "/models/gpt-5-5-medium"
       },
       {
-        "label": "gpt-oss-20b (high)",
-        "timePerTask": 1.509120546379171,
-        "detailsUrl": "/models/gpt-oss-20b"
-      },
-      {
-        "label": "GPT-5.6 Sol (high)",
-        "timePerTask": 1.5122779717390664,
-        "detailsUrl": "/models/gpt-5-6-sol-high"
-      },
-      {
         "label": "GPT-5.6 Luna (max)",
-        "timePerTask": 1.519231600024437,
+        "timePerTask": 1.3754955630660177,
         "detailsUrl": "/models/gpt-5-6-luna"
       },
       {
-        "label": "Gemini 3.1 Pro Preview",
-        "timePerTask": 1.5355056719890878,
-        "detailsUrl": "/models/gemini-3-1-pro-preview"
+        "label": "gpt-oss-20b (high)",
+        "timePerTask": 1.3810023141279653,
+        "detailsUrl": "/models/gpt-oss-20b"
+      },
+      {
+        "label": "GPT-5.6 Terra (xhigh)",
+        "timePerTask": 1.4183933529048833,
+        "detailsUrl": "/models/gpt-5-6-terra-xhigh"
       },
       {
         "label": "Nova 2.0 Pro Preview (medium)",
-        "timePerTask": 1.601691814018582,
+        "timePerTask": 1.5107724413288333,
         "detailsUrl": "/models/nova-2-0-pro-reasoning-medium"
       },
       {
+        "label": "Gemini 3.1 Pro Preview",
+        "timePerTask": 1.5154537347094463,
+        "detailsUrl": "/models/gemini-3-1-pro-preview"
+      },
+      {
         "label": "Qwen3.7 Max",
-        "timePerTask": 1.6221611352504148,
+        "timePerTask": 1.6038836811868284,
         "detailsUrl": "/models/qwen3-7-max"
       },
       {
-        "label": "gpt-oss-120b (high)",
-        "timePerTask": 2.062114534896426,
-        "detailsUrl": "/models/gpt-oss-120b"
+        "label": "NVIDIA Nemotron 3 Super",
+        "timePerTask": 1.6756757688741206,
+        "detailsUrl": "/models/nvidia-nemotron-3-super-120b-a12b"
+      },
+      {
+        "label": "GPT-5.6 Sol (high)",
+        "timePerTask": 1.6809623625748207,
+        "detailsUrl": "/models/gpt-5-6-sol-high"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "timePerTask": 1.7942083565995688,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
       },
       {
         "label": "Step 3.7 Flash",
-        "timePerTask": 2.1389725889056335,
+        "timePerTask": 1.8166155354149371,
         "detailsUrl": "/models/step-3-7-flash"
-      },
-      {
-        "label": "GPT-5.6 Terra (max)",
-        "timePerTask": 2.1809766179018397,
-        "detailsUrl": "/models/gpt-5-6-terra"
       }
     ]
   },
@@ -2118,7 +1939,7 @@
         "name": "Which is the most intelligent AI model?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) currently leads the Artificial Analysis Intelligence Index with a score of 60, out of 136 models evaluated."
+          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) currently leads the Artificial Analysis Intelligence Index with a score of 60, out of 140 models evaluated."
         }
       },
       {
@@ -2134,7 +1955,7 @@
         "name": "Which is the fastest AI model?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Mercury 2 is the fastest at 792.3 tokens per second, followed by Granite 4.0 H Small (491.7 t/s) and LFM2.5-VL-1.6B (426.9 t/s)."
+          "text": "Mercury 2 is the fastest at 782.8 tokens per second, followed by LFM2.5-VL-1.6B (431.1 t/s) and Step 3.7 Flash (390.8 t/s)."
         }
       },
       {
@@ -2150,7 +1971,7 @@
         "name": "Which AI model has the lowest latency?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "North Mini Code has the lowest time to first token at 0.32s, followed by Gemini 2.5 Flash-Lite (Non-reasoning) (0.34s) and Command A+ (0.42s)."
+          "text": "North Mini Code has the lowest time to first token at 0.32s, followed by Gemini 2.5 Flash-Lite (Non-reasoning) (0.36s) and Command A+ (0.41s)."
         }
       },
       {
@@ -2158,7 +1979,7 @@
         "name": "Which is the best open weights AI model?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "GLM-5.2 (max) is the highest-ranked open weights model with an Intelligence Index score of 51. There are 72 open weights models out of 136 total evaluated."
+          "text": "GLM-5.2 (max) is the highest-ranked open weights model with an Intelligence Index score of 51. There are 75 open weights models out of 140 total evaluated."
         }
       },
       {
@@ -2174,7 +1995,7 @@
         "name": "Which is the best reasoning model?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) leads among 97 reasoning models with an Intelligence Index score of 60. Reasoning models use extended thinking to work through complex problems before providing answers."
+          "text": "Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) leads among 99 reasoning models with an Intelligence Index score of 60. Reasoning models use extended thinking to work through complex problems before providing answers."
         }
       },
       {
@@ -2182,7 +2003,7 @@
         "name": "How are AI models compared on Artificial Analysis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Models are compared across multiple dimensions including intelligence (quality), pricing, output speed (tokens per second), latency (time to first token), end-to-end response time, and context window size. Performance metrics are measured directly using standardized prompts across 570 models."
+          "text": "Models are compared across multiple dimensions including intelligence (quality), pricing, output speed (tokens per second), latency (time to first token), end-to-end response time, and context window size. Performance metrics are measured directly using standardized prompts across 572 models."
         }
       },
       {

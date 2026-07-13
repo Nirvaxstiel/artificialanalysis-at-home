@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated": "2026-07-12",
+    "generated": "2026-07-13",
     "version": "1.0",
     "total_axes": 70,
-    "total_models": 2274,
+    "total_models": 2277,
     "sources": [
       "AA",
       "Arena Code",
@@ -24,8 +24,8 @@
           "aa.out_price",
           "aa.blended",
           "aa.cache_hit_price",
-          "aa.tokens_m",
           "aa.cost_per_task",
+          "aa.tokens_m",
           "aa.useful_cost",
           "aa.reasoning_tax_pct",
           "aa.cost_seg_total",
@@ -35,8 +35,8 @@
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
           "aa.intel",
-          "aa.omniscience_hallucination_rate",
           "aa.gpqa",
+          "aa.omniscience_hallucination_rate",
           "aa.hle",
           "aa.lcr",
           "aa.scicode",
@@ -144,10 +144,10 @@
       "unit": "date",
       "higher_is_better": true,
       "description": "Model release date from the live Artificial Analysis API (aa_api_live.json). Useful for recency/version-comparison; not a quality metric.",
-      "models_have": 99,
+      "models_have": 113,
       "range": [
         "2025-01-28",
-        "2026-06-30"
+        "2026-07-09"
       ],
       "group": "Provenance",
       "normalize_range": [
@@ -163,7 +163,7 @@
       "unit": "tok/s",
       "higher_is_better": true,
       "description": "AA output speed in tokens per second",
-      "models_have": 105,
+      "models_have": 117,
       "range": [
         0,
         842.0
@@ -182,10 +182,10 @@
       "unit": "s",
       "higher_is_better": false,
       "description": "AA median time to first token in seconds",
-      "models_have": 100,
+      "models_have": 113,
       "range": [
         0,
-        134.0
+        109.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -201,7 +201,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 117,
+      "models_have": 118,
       "range": [
         0,
         10.0
@@ -220,7 +220,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 117,
+      "models_have": 118,
       "range": [
         0,
         50.0
@@ -239,7 +239,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA blended (weighted average) price",
-      "models_have": 117,
+      "models_have": 118,
       "range": [
         0,
         40.0
@@ -270,6 +270,25 @@
       ]
     },
     {
+      "id": "aa.cost_per_task",
+      "label": "Cost per Task ($)",
+      "source": "AA",
+      "type": "pricing",
+      "unit": "$",
+      "higher_is_better": false,
+      "description": "AA estimated cost per standard task",
+      "models_have": 32,
+      "range": [
+        0.02,
+        2.7498
+      ],
+      "group": "Pricing",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
       "id": "aa.tokens_m",
       "label": "Tokens per Task (M) - verbosity",
       "source": "AA",
@@ -281,25 +300,6 @@
       "range": [
         21,
         300
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_per_task",
-      "label": "Cost per Task ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA estimated cost per standard task",
-      "models_have": 31,
-      "range": [
-        0.02,
-        2.7498
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -431,12 +431,31 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "AA composite intelligence score (Pareto index)",
-      "models_have": 112,
+      "models_have": 113,
       "range": [
         3.0,
         60.0
       ],
       "group": "AA Quality",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.gpqa",
+      "label": "GPQA",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "Graduate-level Google-proof QA accuracy (0-1)",
+      "models_have": 107,
+      "range": [
+        0.433,
+        0.941
+      ],
+      "group": "AA Benchmarks",
       "normalize_range": [
         0,
         100
@@ -454,25 +473,6 @@
       "range": [
         0.16,
         0.96
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.gpqa",
-      "label": "GPQA",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "Graduate-level Google-proof QA accuracy (0-1)",
-      "models_have": 94,
-      "range": [
-        0.433,
-        0.941
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -602,7 +602,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "AA composite coding capability index",
-      "models_have": 58,
+      "models_have": 59,
       "range": [
         14.4,
         78.3
@@ -640,7 +640,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TAU-bench banking split accuracy (0-1)",
-      "models_have": 47,
+      "models_have": 48,
       "range": [
         0.0598,
         0.3134
@@ -659,7 +659,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TerminalBench v2.1 accuracy (0-1)",
-      "models_have": 46,
+      "models_have": 47,
       "range": [
         0.0674,
         0.8464
@@ -1365,7 +1365,7 @@
       "unit": "tokens",
       "higher_is_better": true,
       "description": "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.",
-      "models_have": 444,
+      "models_have": 445,
       "range": [
         4095,
         10000000
@@ -1384,7 +1384,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter input price per million tokens",
-      "models_have": 340,
+      "models_have": 341,
       "range": [
         0.0,
         150.0
@@ -1403,7 +1403,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter output price per million tokens",
-      "models_have": 340,
+      "models_have": 341,
       "range": [
         0.0,
         600.0
@@ -1422,7 +1422,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter cache-read price per million tokens",
-      "models_have": 164,
+      "models_have": 168,
       "range": [
         0.002,
         7.5
@@ -1446,7 +1446,7 @@
       "Arena Text\u00d7LiveBench": 4,
       "Arena Text\u00d7OpenRouter": 11,
       "LiveBench\u00d7OpenRouter": 38,
-      "OpenLLM v2\u00d7OpenRouter": 8
+      "OpenLLM v2\u00d7OpenRouter": 7
     },
     "notes": "number of models with data from both source groups (non-meta axes only)"
   }

@@ -553,6 +553,15 @@ def _overlay_aa_api(model: dict, aa_m: dict) -> None:
     p = model.setdefault("pricing", {}).setdefault("aa", {})
     b = model.setdefault("benchmarks", {}).setdefault("aa", {})
 
+    if model.get("creator") is None:
+        creator = (aa_m.get("model_creator") or {}).get("name")
+        if creator:
+            model["creator"] = creator
+    if model.get("meta", {}).get("release_date") is None:
+        rd = aa_m.get("release_date")
+        if rd:
+            model.setdefault("meta", {})["release_date"] = rd
+
     fills = [
         (p, {
             "inp_price": pr.get("price_1m_input_tokens"),

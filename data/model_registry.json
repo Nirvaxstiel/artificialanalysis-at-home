@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generated": "2026-07-12",
+    "generated": "2026-07-13",
     "version": "1.0",
-    "model_count": 2274,
+    "model_count": 2277,
     "source_count": {
-      "aa": 117,
+      "aa": 118,
       "livebench": 127,
       "arena_text": 30,
       "arena_code": 50,
       "openllm_aa_subset": 1783,
-      "openrouter": 344
+      "openrouter": 345
     },
     "sources": [
       "AA",
@@ -20,7 +20,7 @@
       "OpenRouter",
       "Cost Breakdown"
     ],
-    "name_map_size": 2393
+    "name_map_size": 2395
   },
   "name_map": {
     "aa:gpt-5-6-sol-xhigh": "gpt-5-6-sol-xhigh",
@@ -217,6 +217,7 @@
     "aa:claude-sonnet-5-high": "claude-sonnet-5-high",
     "aa:claude-sonnet-5-medium": "claude-sonnet-5-medium",
     "aa:claude-sonnet-5-low": "claude-sonnet-5-low",
+    "aa:muse-spark-1-1": "muse-spark-1-1",
     "aa:grok-4-5": "grok-4-5",
     "aa:gpt-5-5-pro": "gpt-5.5-pro",
     "openrouter:openai/gpt-5.5-pro": "gpt-5.5-pro",
@@ -428,7 +429,6 @@
     "openllm:AGI-0/Artificium-llama3.1-8B-001": "artificium-llama3.1-8b-001",
     "openllm:AGI-0/smartllama3.1-8B-001": "smartllama3.1-8b-001",
     "openllm:AI-Sweden-Models/Llama-3-8B-instruct": "llama-3-8b-instruct",
-    "openrouter:meta-llama/llama-3-8b-instruct": "llama-3-8b-instruct",
     "openllm:Aashraf995/Qwen-Evo-7B": "qwen-evo-7b",
     "openllm:Aashraf995/QwenStock-14B": "qwenstock-14b",
     "openllm:Alibaba-NLP/gte-Qwen2-7B-instruct": "gte-qwen2-7b-instruct",
@@ -2150,6 +2150,12 @@
     "openllm:yuvraj17/Llama3-8B-SuperNova-Spectrum-dare_ties": "llama3-8b-supernova-spectrum-dare_ties",
     "openllm:yuvraj17/Llama3-8B-abliterated-Spectrum-slerp": "llama3-8b-abliterated-spectrum-slerp",
     "openllm:zetasepic/Qwen2.5-32B-Instruct-abliterated-v2": "qwen2.5-32b-instruct-abliterated-v2",
+    "openrouter:openai/gpt-5.6-luna-pro": "gpt-5.6-luna-pro",
+    "openrouter:openai/gpt-5.6-luna": "gpt-5.6-luna",
+    "openrouter:openai/gpt-5.6-terra-pro": "gpt-5.6-terra-pro",
+    "openrouter:openai/gpt-5.6-terra": "gpt-5.6-terra",
+    "openrouter:openai/gpt-5.6-sol-pro": "gpt-5.6-sol-pro",
+    "openrouter:openai/gpt-5.6-sol": "gpt-5.6-sol",
     "openrouter:x-ai/grok-4.5": "grok-4.5",
     "openrouter:~x-ai/grok-latest": "grok-latest",
     "openrouter:aion-labs/aion-3.0-mini": "aion-3.0-mini",
@@ -2177,8 +2183,6 @@
     "openrouter:openai/gpt-chat-latest": "gpt-chat-latest",
     "openrouter:ibm-granite/granite-4.1-8b": "granite-4.1-8b",
     "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": "nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "openrouter:poolside/laguna-xs.2:free": "laguna-xs.2:free",
-    "openrouter:poolside/laguna-xs.2": "laguna-xs.2",
     "openrouter:poolside/laguna-m.1:free": "laguna-m.1:free",
     "openrouter:poolside/laguna-m.1": "laguna-m.1",
     "openrouter:~anthropic/claude-haiku-latest": "claude-haiku-latest",
@@ -2217,7 +2221,6 @@
     "openrouter:qwen/qwen3.5-27b": "qwen3.5-27b",
     "openrouter:qwen/qwen3.5-122b-a10b": "qwen3.5-122b-a10b",
     "openrouter:qwen/qwen3.5-flash-02-23": "qwen3.5-flash-02-23",
-    "openrouter:liquid/lfm-2-24b-a2b": "lfm-2-24b-a2b",
     "openrouter:google/gemini-3.1-pro-preview-customtools": "gemini-3.1-pro-preview-customtools",
     "openrouter:aion-labs/aion-2.0": "aion-2.0",
     "openrouter:qwen/qwen3.5-plus-02-15": "qwen3.5-plus-02-15",
@@ -2247,7 +2250,6 @@
     "openrouter:mistralai/ministral-8b-2512": "ministral-8b-2512",
     "openrouter:mistralai/ministral-3b-2512": "ministral-3b-2512",
     "openrouter:mistralai/mistral-large-2512": "mistral-large-2512",
-    "openrouter:arcee-ai/trinity-mini": "trinity-mini",
     "openrouter:anthropic/claude-opus-4.5": "claude-opus-4.5",
     "openrouter:allenai/olmo-3-32b-think": "olmo-3-32b-think",
     "openrouter:google/gemini-3-pro-image-preview": "gemini-3-pro-image-preview",
@@ -2276,7 +2278,6 @@
     "openrouter:openai/gpt-5-pro": "gpt-5-pro",
     "openrouter:thedrummer/cydonia-24b-v4.1": "cydonia-24b-v4.1",
     "openrouter:relace/relace-apply-3": "relace-apply-3",
-    "openrouter:google/gemini-2.5-flash-lite-preview-09-2025": "gemini-2.5-flash-lite-preview-09-2025",
     "openrouter:qwen/qwen3-vl-235b-a22b-thinking": "qwen3-vl-235b-a22b-thinking",
     "openrouter:qwen/qwen3-vl-235b-a22b-instruct": "qwen3-vl-235b-a22b-instruct",
     "openrouter:qwen/qwen3-max": "qwen3-max",
@@ -2313,6 +2314,7 @@
     "openrouter:qwen/qwen3-235b-a22b-2507": "qwen3-235b-a22b-2507",
     "openrouter:moonshotai/kimi-k2": "kimi-k2",
     "openrouter:cognitivecomputations/dolphin-mistral-24b-venice-edition:free": "dolphin-mistral-24b-venice-edition:free",
+    "openrouter:cognitivecomputations/dolphin-mistral-24b-venice-edition": "dolphin-mistral-24b-venice-edition",
     "openrouter:tencent/hunyuan-a13b-instruct": "hunyuan-a13b-instruct",
     "openrouter:morph/morph-v3-large": "morph-v3-large",
     "openrouter:morph/morph-v3-fast": "morph-v3-fast",
@@ -2383,11 +2385,11 @@
     "openrouter:thedrummer/unslopnemo-12b": "unslopnemo-12b",
     "openrouter:anthracite-org/magnum-v4-72b": "magnum-v4-72b",
     "openrouter:qwen/qwen-2.5-7b-instruct": "qwen-2.5-7b-instruct",
-    "openrouter:inflection/inflection-3-pi": "inflection-3-pi",
     "openrouter:inflection/inflection-3-productivity": "inflection-3-productivity",
+    "openrouter:inflection/inflection-3-pi": "inflection-3-pi",
     "openrouter:thedrummer/rocinante-12b": "rocinante-12b",
-    "openrouter:meta-llama/llama-3.2-3b-instruct:free": "llama-3.2-3b-instruct:free",
     "openrouter:meta-llama/llama-3.2-11b-vision-instruct": "llama-3.2-11b-vision-instruct",
+    "openrouter:meta-llama/llama-3.2-3b-instruct:free": "llama-3.2-3b-instruct:free",
     "openrouter:qwen/qwen-2.5-72b-instruct": "qwen-2.5-72b-instruct",
     "openrouter:cohere/command-r-08-2024": "command-r-08-2024",
     "openrouter:cohere/command-r-plus-08-2024": "command-r-plus-08-2024",
@@ -4544,7 +4546,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 11.465
+          "ttft": 11.571
         }
       },
       "benchmarks": {
@@ -4598,11 +4600,11 @@
           "cache_hit_price": 1.0,
           "cost_per_task": 2.7498239008825984,
           "tokens_m": 87,
-          "speed_tps": 62.9283550883307,
+          "speed_tps": 60.369691536365,
           "useful_cost": 64.7186,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 46.224
+          "ttft": 73.282
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4956,7 +4958,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 10.696
+          "ttft": 13.683
         }
       },
       "benchmarks": {
@@ -5078,7 +5080,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 14.228
+          "ttft": 18.49
         }
       },
       "benchmarks": {
@@ -5469,7 +5471,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 18.55
+          "ttft": 22.261
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5581,7 +5583,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.2
           },
-          "ttft": 25.404
+          "ttft": 25.405
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5972,7 +5974,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 134.449
+          "ttft": 109.124
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -6041,7 +6043,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.516
+          "ttft": 3.42
         }
       },
       "benchmarks": {
@@ -6093,11 +6095,11 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 66.294,
+          "speed_tps": 63.793,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.676
+          "ttft": 1.176
         }
       },
       "benchmarks": {
@@ -6149,11 +6151,11 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 66.76,
+          "speed_tps": 66.269,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.709
+          "ttft": 1.465
         }
       },
       "benchmarks": {
@@ -6224,11 +6226,11 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 73.91,
+          "speed_tps": 79.767,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 23.62
+          "ttft": 23.515
         }
       },
       "benchmarks": {
@@ -8246,12 +8248,12 @@
       },
       "pricing": {
         "openrouter": {
-          "inp_price": 2.288e-07,
-          "inp_price_per_m": 0.2288,
-          "out_price": 3.432e-07,
-          "out_price_per_m": 0.3432,
-          "cache_read_price": 2.288e-08,
-          "cache_read_price_per_m": 0.02288,
+          "inp_price": 2.145e-07,
+          "inp_price_per_m": 0.2145,
+          "out_price": 3.2175e-07,
+          "out_price_per_m": 0.32175,
+          "cache_read_price": 2.145e-08,
+          "cache_read_price_per_m": 0.02145,
           "vendor": "deepseek"
         }
       },
@@ -8376,15 +8378,15 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.928
+          "ttft": 0.874
         },
         "openrouter": {
-          "inp_price": 9e-08,
-          "inp_price_per_m": 0.09,
-          "out_price": 1.8e-07,
-          "out_price_per_m": 0.18,
-          "cache_read_price": 1.8e-08,
-          "cache_read_price_per_m": 0.018,
+          "inp_price": 7.7e-08,
+          "inp_price_per_m": 0.077,
+          "out_price": 1.54e-07,
+          "out_price_per_m": 0.154,
+          "cache_read_price": 1.54e-08,
+          "cache_read_price_per_m": 0.015399999999999999,
           "vendor": "deepseek"
         }
       },
@@ -8506,7 +8508,7 @@
           "cache_hit_price": 0.004,
           "cost_per_task": 0.04,
           "tokens_m": 180,
-          "speed_tps": 59.2756781599212,
+          "speed_tps": 68.2792301791891,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -8517,7 +8519,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.037
+          "ttft": 1.043
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -8604,7 +8606,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.126
+          "ttft": 1.083
         }
       },
       "benchmarks": {
@@ -9096,6 +9098,26 @@
       },
       "aliases": {
         "openllm": "cognitivecomputations/dolphin-2.9.4-llama3.1-8b"
+      }
+    },
+    {
+      "id": "dolphin-mistral-24b-venice-edition",
+      "name": "Venice: Uncensored",
+      "creator": "cognitivecomputations",
+      "meta": {
+        "context_window": 128000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2e-07,
+          "inp_price_per_m": 0.19999999999999998,
+          "out_price": 9e-07,
+          "out_price_per_m": 0.8999999999999999,
+          "vendor": "cognitivecomputations"
+        }
+      },
+      "aliases": {
+        "openrouter": "cognitivecomputations/dolphin-mistral-24b-venice-edition"
       }
     },
     {
@@ -11842,30 +11864,6 @@
       }
     },
     {
-      "id": "gemini-2.5-flash-lite-preview-09-2025",
-      "name": "Google: Gemini 2.5 Flash Lite Preview 09-2025",
-      "creator": "google",
-      "meta": {
-        "context_window": 1048576
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 1e-07,
-          "inp_price_per_m": 0.09999999999999999,
-          "out_price": 4e-07,
-          "out_price_per_m": 0.39999999999999997,
-          "cache_read_price": 1e-08,
-          "cache_read_price_per_m": 0.01,
-          "cache_write_price": 8.333333333333334e-08,
-          "cache_write_price_per_m": 0.08333333333333334,
-          "vendor": "google"
-        }
-      },
-      "aliases": {
-        "openrouter": "google/gemini-2.5-flash-lite-preview-09-2025"
-      }
-    },
-    {
       "id": "gemini-2.5-flash-lite-preview-09-2025-highthinking",
       "name": "gemini-2.5-flash-lite-preview-09-2025-highthinking",
       "benchmarks": {
@@ -12021,7 +12019,7 @@
             "cache_hit_usd": 1.7679439904617862,
             "input_usd": 2.9360455
           },
-          "ttft": 5.074
+          "ttft": 4.942
         }
       },
       "benchmarks": {
@@ -12078,7 +12076,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 11.354
+          "ttft": 12.804
         }
       },
       "benchmarks": {
@@ -12240,7 +12238,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.857
+          "ttft": 5.095
         }
       },
       "benchmarks": {
@@ -12646,7 +12644,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 25.936
+          "ttft": 27.375
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -12769,7 +12767,7 @@
           "cache_hit_price": 0.15,
           "cost_per_task": 0.59,
           "tokens_m": 75,
-          "speed_tps": 160.67446934587,
+          "speed_tps": 161.631652115517,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": 33.9,
           "cost_segments": {
@@ -12780,7 +12778,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.09
           },
-          "ttft": 16.506
+          "ttft": 13.012
         },
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -13031,7 +13029,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.328
+          "ttft": 1.41
         }
       },
       "benchmarks": {
@@ -13089,8 +13087,8 @@
           "cost_segments": {
             "answer_usd": 2.2540632,
             "reasoning_usd": 27.4816284,
-            "cache_write_usd": 6.198066442366079,
-            "cache_hit_usd": 14.460838335376026,
+            "cache_write_usd": 6.2088942463059364,
+            "cache_hit_usd": 14.453758617415348,
             "input_usd": 1.52308663
           },
           "ttft": 0
@@ -13193,7 +13191,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.927
+          "ttft": 0.921
         }
       },
       "benchmarks": {
@@ -13601,14 +13599,14 @@
       "id": "glm-4.6",
       "name": "glm-4.6",
       "meta": {
-        "context_window": 202752
+        "context_window": 200000
       },
       "pricing": {
         "openrouter": {
           "inp_price": 4.3e-07,
           "inp_price_per_m": 0.43,
-          "out_price": 1.74e-06,
-          "out_price_per_m": 1.74,
+          "out_price": 1.75e-06,
+          "out_price_per_m": 1.75,
           "cache_read_price": 8e-08,
           "cache_read_price_per_m": 0.08,
           "vendor": "z-ai"
@@ -13749,7 +13747,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.079
+          "ttft": 0.754
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -13909,7 +13907,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.831
+          "ttft": 0.876
         },
         "openrouter": {
           "inp_price": 9.66e-07,
@@ -13995,7 +13993,7 @@
           "cache_hit_price": 0.26,
           "cost_per_task": 0.48,
           "tokens_m": 140,
-          "speed_tps": 191.369651855674,
+          "speed_tps": 206.108785416872,
           "useful_cost": 6.662,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -14006,15 +14004,15 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.904
+          "ttft": 0.839
         },
         "openrouter": {
-          "inp_price": 8.4e-07,
-          "inp_price_per_m": 0.84,
-          "out_price": 2.64e-06,
-          "out_price_per_m": 2.64,
-          "cache_read_price": 1.56e-07,
-          "cache_read_price_per_m": 0.156,
+          "inp_price": 9.3e-07,
+          "inp_price_per_m": 0.9299999999999999,
+          "out_price": 3e-06,
+          "out_price_per_m": 3.0,
+          "cache_read_price": 1.8e-07,
+          "cache_read_price_per_m": 0.18,
           "vendor": "z-ai"
         }
       },
@@ -14606,7 +14604,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 10.94
+          "ttft": 5.769
         }
       },
       "benchmarks": {
@@ -14666,7 +14664,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 7.209
+          "ttft": 7.52
         }
       },
       "benchmarks": {
@@ -14721,14 +14719,8 @@
           "speed_tps": 175.0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": {
-            "answer_usd": 8.90439875,
-            "reasoning_usd": 218.58745,
-            "cache_write_usd": 22.33047538012422,
-            "cache_hit_usd": 19.38649726198758,
-            "input_usd": 2.359461
-          },
-          "ttft": 2.399
+          "cost_segments": null,
+          "ttft": 2.797
         }
       },
       "benchmarks": {
@@ -14788,7 +14780,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.227
+          "ttft": 2.976
         }
       },
       "benchmarks": {
@@ -14883,6 +14875,10 @@
     {
       "id": "gpt-5-6-luna",
       "name": "GPT-5.6 Luna (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -14891,10 +14887,11 @@
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 254.683,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 71.639
         }
       },
       "benchmarks": {
@@ -14905,7 +14902,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 71.4,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.911,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -14922,7 +14919,8 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.5
+          "time_per_task": 1.5,
+          "coding_index": 71.4
         }
       },
       "aliases": {
@@ -14931,6 +14929,10 @@
     },
     {
       "id": "gpt-5-6-luna-high",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -14939,16 +14941,11 @@
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 217.382,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": {
-            "answer_usd": 24.992706,
-            "reasoning_usd": 197.21515800000003,
-            "cache_write_usd": 15.776033482546435,
-            "cache_hit_usd": 25.14441992139629,
-            "input_usd": 11.889623
-          }
+          "cost_segments": null,
+          "ttft": 5.844
         }
       },
       "benchmarks": {
@@ -14959,7 +14956,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 63.3,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.892,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -14976,7 +14973,8 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.6
+          "time_per_task": 0.6,
+          "coding_index": 63.3
         }
       },
       "aliases": {
@@ -14985,6 +14983,10 @@
     },
     {
       "id": "gpt-5-6-luna-medium",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -14993,16 +14995,11 @@
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 212.294,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": {
-            "answer_usd": 16.805034,
-            "reasoning_usd": 58.07412600000001,
-            "cache_write_usd": 8.316556035597598,
-            "cache_hit_usd": 10.681409417152192,
-            "input_usd": 11.961277
-          }
+          "cost_segments": null,
+          "ttft": 1.794
         }
       },
       "benchmarks": {
@@ -15013,7 +15010,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 50.7,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.859,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15030,7 +15027,8 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.3
+          "time_per_task": 0.3,
+          "coding_index": 50.7
         }
       },
       "aliases": {
@@ -15040,6 +15038,10 @@
     {
       "id": "gpt-5-6-luna-xhigh",
       "name": "GPT-5.6 Luna (xhigh)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -15048,10 +15050,11 @@
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 236.103,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 28.704
         }
       },
       "benchmarks": {
@@ -15062,7 +15065,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 68.6,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.895,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15079,7 +15082,8 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.1
+          "time_per_task": 1.1,
+          "coding_index": 68.6
         }
       },
       "aliases": {
@@ -15089,6 +15093,10 @@
     {
       "id": "gpt-5-6-sol",
       "name": "GPT-5.6 Sol (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 5.0,
@@ -15097,10 +15105,11 @@
           "cache_hit_price": 0.5,
           "cost_per_task": 1.0373301565994435,
           "tokens_m": null,
-          "speed_tps": 77.974515279617,
+          "speed_tps": 69.0478357416935,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 84.124
         }
       },
       "benchmarks": {
@@ -15111,7 +15120,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 77.4,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.941,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15128,7 +15137,8 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": 1355.0,
           "briefcase_presentation_elo": 1460.0,
-          "time_per_task": 3.2
+          "time_per_task": 3.2,
+          "coding_index": 77.4
         }
       },
       "aliases": {
@@ -15138,6 +15148,10 @@
     {
       "id": "gpt-5-6-sol-high",
       "name": "GPT-5.6 Sol (high)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 5.0,
@@ -15146,10 +15160,11 @@
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 72.659,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 9.543
         }
       },
       "benchmarks": {
@@ -15160,7 +15175,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 77.2,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.928,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15177,7 +15192,8 @@
           "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.5
+          "time_per_task": 1.5,
+          "coding_index": 77.2
         }
       },
       "aliases": {
@@ -15187,6 +15203,10 @@
     {
       "id": "gpt-5-6-sol-medium",
       "name": "GPT-5.6 Sol (medium)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 5.0,
@@ -15195,10 +15215,11 @@
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 70.062,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 4.514
         }
       },
       "benchmarks": {
@@ -15209,7 +15230,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 76.3,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.926,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15226,7 +15247,8 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.1
+          "time_per_task": 1.1,
+          "coding_index": 76.3
         }
       },
       "aliases": {
@@ -15236,6 +15258,10 @@
     {
       "id": "gpt-5-6-sol-xhigh",
       "name": "GPT-5.6 Sol (xhigh)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 5.0,
@@ -15244,10 +15270,11 @@
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 75.902,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 29.206
         }
       },
       "benchmarks": {
@@ -15258,7 +15285,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 78.3,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.931,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15275,7 +15302,8 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 2.3
+          "time_per_task": 2.3,
+          "coding_index": 78.3
         }
       },
       "aliases": {
@@ -15285,6 +15313,10 @@
     {
       "id": "gpt-5-6-terra",
       "name": "GPT-5.6 Terra (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.5,
@@ -15293,10 +15325,11 @@
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 172.109,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 108.762
         }
       },
       "benchmarks": {
@@ -15307,7 +15340,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 76.7,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.925,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15324,7 +15357,8 @@
           "omniscience_hallucination_rate": 0.85,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 2.2
+          "time_per_task": 2.2,
+          "coding_index": 76.7
         }
       },
       "aliases": {
@@ -15334,6 +15368,10 @@
     {
       "id": "gpt-5-6-terra-high",
       "name": "GPT-5.6 Terra (high)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.5,
@@ -15342,10 +15380,17 @@
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 127.962,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": {
+            "answer_usd": 66.01848000000001,
+            "reasoning_usd": 288.50906999999995,
+            "cache_write_usd": 44.79927107505862,
+            "cache_hit_usd": 66.69734206399531,
+            "input_usd": 29.7497325
+          },
+          "ttft": 2.129
         }
       },
       "benchmarks": {
@@ -15356,7 +15401,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 67.1,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.896,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15373,7 +15418,8 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.1
+          "time_per_task": 1.1,
+          "coding_index": 67.1
         }
       },
       "aliases": {
@@ -15382,6 +15428,10 @@
     },
     {
       "id": "gpt-5-6-terra-medium",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.5,
@@ -15390,7 +15440,7 @@
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 135.39,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": {
@@ -15399,7 +15449,8 @@
             "cache_write_usd": 26.328064488486504,
             "cache_hit_usd": 27.96191509092108,
             "input_usd": 29.5973875
-          }
+          },
+          "ttft": 1.427
         }
       },
       "benchmarks": {
@@ -15410,7 +15461,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 64.7,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.872,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15427,7 +15478,8 @@
           "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.5
+          "time_per_task": 0.5,
+          "coding_index": 64.7
         }
       },
       "aliases": {
@@ -15437,6 +15489,10 @@
     {
       "id": "gpt-5-6-terra-xhigh",
       "name": "GPT-5.6 Terra (xhigh)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.5,
@@ -15445,10 +15501,11 @@
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": null,
+          "speed_tps": 134.116,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null
+          "cost_segments": null,
+          "ttft": 10.153
         }
       },
       "benchmarks": {
@@ -15459,7 +15516,7 @@
           "iq_per_mtokdollar": null,
           "aa_coding_index": 70.6,
           "aa_math_index": null,
-          "gpqa": null,
+          "gpqa": 0.908,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -15476,7 +15533,8 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.3
+          "time_per_task": 1.3,
+          "coding_index": 70.6
         }
       },
       "aliases": {
@@ -16233,7 +16291,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.074
+          "ttft": 1.645
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16352,7 +16410,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 89.087
+          "ttft": 53.861
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16497,7 +16555,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 124.634
+          "ttft": 103.535
         },
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -17006,7 +17064,7 @@
             "cache_hit_usd": 0.12,
             "input_usd": 0.02
           },
-          "ttft": 20.797
+          "ttft": 17.136
         }
       },
       "benchmarks": {
@@ -17119,7 +17177,7 @@
             "cache_hit_usd": 0.02,
             "input_usd": 0.02
           },
-          "ttft": 1.633
+          "ttft": 1.687
         }
       },
       "benchmarks": {
@@ -17183,7 +17241,7 @@
             "cache_hit_usd": 0.08,
             "input_usd": 0.02
           },
-          "ttft": 5.29
+          "ttft": 4.91
         }
       },
       "benchmarks": {
@@ -17317,7 +17375,7 @@
             "cache_hit_usd": 0.15,
             "input_usd": 0.03
           },
-          "ttft": 45.195
+          "ttft": 29.261
         }
       },
       "benchmarks": {
@@ -17378,6 +17436,150 @@
       },
       "aliases": {
         "arena_code": "gpt-5.5-xhigh (codex-harness)"
+      }
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "name": "OpenAI: GPT-5.6 Luna",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 1e-06,
+          "inp_price_per_m": 1.0,
+          "out_price": 6e-06,
+          "out_price_per_m": 6.0,
+          "cache_read_price": 1e-07,
+          "cache_read_price_per_m": 0.09999999999999999,
+          "cache_write_price": 1.25e-06,
+          "cache_write_price_per_m": 1.25,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-luna"
+      }
+    },
+    {
+      "id": "gpt-5.6-luna-pro",
+      "name": "OpenAI: GPT-5.6 Luna Pro",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 1e-06,
+          "inp_price_per_m": 1.0,
+          "out_price": 6e-06,
+          "out_price_per_m": 6.0,
+          "cache_read_price": 1e-07,
+          "cache_read_price_per_m": 0.09999999999999999,
+          "cache_write_price": 1.25e-06,
+          "cache_write_price_per_m": 1.25,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-luna-pro"
+      }
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "name": "OpenAI: GPT-5.6 Sol",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 5e-06,
+          "inp_price_per_m": 5.0,
+          "out_price": 3e-05,
+          "out_price_per_m": 30.0,
+          "cache_read_price": 5e-07,
+          "cache_read_price_per_m": 0.5,
+          "cache_write_price": 6.25e-06,
+          "cache_write_price_per_m": 6.25,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-sol"
+      }
+    },
+    {
+      "id": "gpt-5.6-sol-pro",
+      "name": "OpenAI: GPT-5.6 Sol Pro",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 5e-06,
+          "inp_price_per_m": 5.0,
+          "out_price": 3e-05,
+          "out_price_per_m": 30.0,
+          "cache_read_price": 5e-07,
+          "cache_read_price_per_m": 0.5,
+          "cache_write_price": 6.25e-06,
+          "cache_write_price_per_m": 6.25,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-sol-pro"
+      }
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "name": "OpenAI: GPT-5.6 Terra",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2.5e-06,
+          "inp_price_per_m": 2.5,
+          "out_price": 1.5e-05,
+          "out_price_per_m": 15.0,
+          "cache_read_price": 2.5e-07,
+          "cache_read_price_per_m": 0.25,
+          "cache_write_price": 3.125e-06,
+          "cache_write_price_per_m": 3.125,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-terra"
+      }
+    },
+    {
+      "id": "gpt-5.6-terra-pro",
+      "name": "OpenAI: GPT-5.6 Terra Pro",
+      "creator": "openai",
+      "meta": {
+        "context_window": 1050000
+      },
+      "pricing": {
+        "openrouter": {
+          "inp_price": 2.5e-06,
+          "inp_price_per_m": 2.5,
+          "out_price": 1.5e-05,
+          "out_price_per_m": 15.0,
+          "cache_read_price": 2.5e-07,
+          "cache_read_price_per_m": 0.25,
+          "cache_write_price": 3.125e-06,
+          "cache_write_price_per_m": 3.125,
+          "vendor": "openai"
+        }
+      },
+      "aliases": {
+        "openrouter": "openai/gpt-5.6-terra-pro"
       }
     },
     {
@@ -17457,6 +17659,8 @@
           "out_price_per_m": 30.0,
           "cache_read_price": 5e-07,
           "cache_read_price_per_m": 0.5,
+          "cache_write_price": 6.25e-06,
+          "cache_write_price_per_m": 6.25,
           "vendor": "~openai"
         }
       },
@@ -17503,7 +17707,7 @@
           "cache_hit_price": 0.15,
           "cost_per_task": 0.06,
           "tokens_m": 87,
-          "speed_tps": 293.740153627369,
+          "speed_tps": 319.528252623821,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -17514,13 +17718,13 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.06
           },
-          "ttft": 0.516
+          "ttft": 0.505
         },
         "openrouter": {
-          "inp_price": 3e-08,
-          "inp_price_per_m": 0.03,
-          "out_price": 1.5e-07,
-          "out_price_per_m": 0.15,
+          "inp_price": 3.6e-08,
+          "inp_price_per_m": 0.036,
+          "out_price": 1.8e-07,
+          "out_price_per_m": 0.18,
           "vendor": "openai"
         }
       },
@@ -17594,7 +17798,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.502
+          "ttft": 0.536
         }
       },
       "benchmarks": {
@@ -17678,7 +17882,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 0.48
+          "ttft": 0.402
         },
         "openrouter": {
           "inp_price": 2.9e-08,
@@ -17744,7 +17948,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.496
+          "ttft": 0.443
         }
       },
       "benchmarks": {
@@ -17950,7 +18154,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 7.915
+          "ttft": 6.582
         }
       },
       "benchmarks": {
@@ -18006,7 +18210,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 21.73
+          "ttft": 16.797
         }
       },
       "benchmarks": {
@@ -18043,6 +18247,10 @@
     },
     {
       "id": "grok-4-5",
+      "creator": "SpaceXAI",
+      "meta": {
+        "release_date": "2026-07-08"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2,
@@ -18051,11 +18259,11 @@
           "cache_hit_price": null,
           "cost_per_task": 0.3110838295302332,
           "tokens_m": null,
-          "speed_tps": 89.5447637111961,
+          "speed_tps": 119.273699957233,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 17.192
+          "ttft": 15.567
         }
       },
       "benchmarks": {
@@ -18256,7 +18464,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 32.832
+          "ttft": 36.581
         },
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -18920,7 +19128,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.796
+          "ttft": 0.734
         }
       },
       "benchmarks": {
@@ -18977,7 +19185,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.571
+          "ttft": 0.582
         }
       },
       "benchmarks": {
@@ -19739,7 +19947,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.774
+          "ttft": 1.633
         },
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -20881,7 +21089,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.278
+          "ttft": 1.085
         }
       },
       "benchmarks": {
@@ -20959,7 +21167,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.776
+          "ttft": 0.88
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -21100,7 +21308,7 @@
           "cache_hit_price": 0.16,
           "cost_per_task": 0.31,
           "tokens_m": 160,
-          "speed_tps": 42.9564869003978,
+          "speed_tps": 48.6434090871323,
           "useful_cost": 5.1959,
           "reasoning_tax_pct": 25.8,
           "cost_segments": {
@@ -21111,15 +21319,15 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.05
           },
-          "ttft": 1.253
+          "ttft": 1.166
         },
         "openrouter": {
-          "inp_price": 6.5e-07,
-          "inp_price_per_m": 0.65,
+          "inp_price": 6.6e-07,
+          "inp_price_per_m": 0.66,
           "out_price": 3.41e-06,
           "out_price_per_m": 3.41,
-          "cache_read_price": 1.4e-07,
-          "cache_read_price_per_m": 0.14,
+          "cache_read_price": 1.5e-07,
+          "cache_read_price_per_m": 0.15,
           "vendor": "moonshotai"
         }
       },
@@ -21213,15 +21421,15 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 1.351
+          "ttft": 1.17
         },
         "openrouter": {
-          "inp_price": 7.4e-07,
-          "inp_price_per_m": 0.74,
-          "out_price": 3.5e-06,
-          "out_price_per_m": 3.5,
-          "cache_read_price": 1.5e-07,
-          "cache_read_price_per_m": 0.15,
+          "inp_price": 7.19e-07,
+          "inp_price_per_m": 0.719,
+          "out_price": 3.49e-06,
+          "out_price_per_m": 3.49,
+          "cache_read_price": 1.49e-07,
+          "cache_read_price_per_m": 0.149,
           "vendor": "moonshotai"
         }
       },
@@ -21285,12 +21493,12 @@
       },
       "pricing": {
         "openrouter": {
-          "inp_price": 6.5e-07,
-          "inp_price_per_m": 0.65,
+          "inp_price": 6.6e-07,
+          "inp_price_per_m": 0.66,
           "out_price": 3.41e-06,
           "out_price_per_m": 3.41,
-          "cache_read_price": 1.4e-07,
-          "cache_read_price_per_m": 0.14,
+          "cache_read_price": 1.5e-07,
+          "cache_read_price_per_m": 0.15,
           "vendor": "~moonshotai"
         }
       },
@@ -21537,48 +21745,6 @@
       }
     },
     {
-      "id": "laguna-xs.2",
-      "name": "Poolside: Laguna XS.2",
-      "creator": "poolside",
-      "meta": {
-        "context_window": 262144
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 1e-07,
-          "inp_price_per_m": 0.09999999999999999,
-          "out_price": 2e-07,
-          "out_price_per_m": 0.19999999999999998,
-          "cache_read_price": 5e-08,
-          "cache_read_price_per_m": 0.049999999999999996,
-          "vendor": "poolside"
-        }
-      },
-      "aliases": {
-        "openrouter": "poolside/laguna-xs.2"
-      }
-    },
-    {
-      "id": "laguna-xs.2:free",
-      "name": "Poolside: Laguna XS.2 (free)",
-      "creator": "poolside",
-      "meta": {
-        "context_window": 262144
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 0.0,
-          "inp_price_per_m": 0.0,
-          "out_price": 0.0,
-          "out_price_per_m": 0.0,
-          "vendor": "poolside"
-        }
-      },
-      "aliases": {
-        "openrouter": "poolside/laguna-xs.2:free"
-      }
-    },
-    {
       "id": "lamarck-14b-v0.4-qwenvergence",
       "name": "sometimesanotion/Lamarck-14B-v0.4-Qwenvergence",
       "meta": {
@@ -21773,26 +21939,6 @@
       },
       "aliases": {
         "openllm": "LenguajeNaturalAI/leniachat-qwen2-1.5B-v0"
-      }
-    },
-    {
-      "id": "lfm-2-24b-a2b",
-      "name": "LiquidAI: LFM2-24B-A2B",
-      "creator": "liquid",
-      "meta": {
-        "context_window": 128000
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 3e-08,
-          "inp_price_per_m": 0.03,
-          "out_price": 1.2e-07,
-          "out_price_per_m": 0.12,
-          "vendor": "liquid"
-        }
-      },
-      "aliases": {
-        "openrouter": "liquid/lfm-2-24b-a2b"
       }
     },
     {
@@ -22614,17 +22760,7 @@
         "co2_kg": 2.3322217617350347,
         "architecture": "LlamaForCausalLM",
         "license": "llama3",
-        "precision": "bfloat16",
-        "context_window": 8192
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 1.4e-07,
-          "inp_price_per_m": 0.14,
-          "out_price": 1.4e-07,
-          "out_price_per_m": 0.14,
-          "vendor": "meta-llama"
-        }
+        "precision": "bfloat16"
       },
       "benchmarks": {
         "openllm": {
@@ -22638,8 +22774,7 @@
         }
       },
       "aliases": {
-        "openllm": "AI-Sweden-Models/Llama-3-8B-instruct",
-        "openrouter": "meta-llama/llama-3-8b-instruct"
+        "openllm": "AI-Sweden-Models/Llama-3-8B-instruct"
       }
     },
     {
@@ -29521,10 +29656,10 @@
       },
       "pricing": {
         "openrouter": {
-          "inp_price": 1.5e-07,
-          "inp_price_per_m": 0.15,
-          "out_price": 6e-07,
-          "out_price_per_m": 0.6,
+          "inp_price": 2e-07,
+          "inp_price_per_m": 0.19999999999999998,
+          "out_price": 8e-07,
+          "out_price_per_m": 0.7999999999999999,
           "vendor": "meta-llama"
         }
       },
@@ -34412,7 +34547,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.077
+          "ttft": 3.798
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -35178,8 +35313,14 @@
           "speed_tps": 71.4,
           "useful_cost": null,
           "reasoning_tax_pct": null,
-          "cost_segments": null,
-          "ttft": 1.734
+          "cost_segments": {
+            "answer_usd": 1.45191788,
+            "reasoning_usd": 18.54370896,
+            "cache_write_usd": 2.429051177235819,
+            "cache_hit_usd": 0.7580192408552836,
+            "input_usd": 2.01017194
+          },
+          "ttft": 2.35
         }
       },
       "benchmarks": {
@@ -35188,7 +35329,7 @@
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "aa_coding_index": 56.8,
           "aa_math_index": null,
           "gpqa": 0.849,
           "mmlu_pro": null,
@@ -35201,13 +35342,14 @@
           "lcr": 0.626666666666667,
           "scicode": 0.431,
           "tau2": 0.906432748538012,
-          "tau_banking": null,
+          "tau_banking": 0.065979381443299,
           "terminalbench_hard": 0.416666666666667,
-          "terminalbench_v2_1": null,
+          "terminalbench_v2_1": 0.636704119850187,
           "omniscience_hallucination_rate": 0.32,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null
+          "time_per_task": null,
+          "coding_index": 56.8
         }
       },
       "aliases": {
@@ -35354,7 +35496,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 1.915
+          "ttft": 2.348
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -35597,13 +35739,15 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.372
+          "ttft": 1.284
         },
         "openrouter": {
-          "inp_price": 1.2e-07,
-          "inp_price_per_m": 0.12,
-          "out_price": 4.8e-07,
-          "out_price_per_m": 0.48,
+          "inp_price": 1.5e-07,
+          "inp_price_per_m": 0.15,
+          "out_price": 9e-07,
+          "out_price_per_m": 0.8999999999999999,
+          "cache_read_price": 5e-08,
+          "cache_read_price_per_m": 0.049999999999999996,
           "vendor": "minimax"
         }
       },
@@ -35679,13 +35823,13 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 1.453
+          "ttft": 1.465
         },
         "openrouter": {
-          "inp_price": 1.8e-07,
-          "inp_price_per_m": 0.18,
-          "out_price": 7.2e-07,
-          "out_price_per_m": 0.72,
+          "inp_price": 2.4e-07,
+          "inp_price_per_m": 0.24,
+          "out_price": 9.6e-07,
+          "out_price_per_m": 0.96,
           "vendor": "minimax"
         }
       },
@@ -35757,7 +35901,7 @@
           "cache_hit_price": 0.06,
           "cost_per_task": 0.12,
           "tokens_m": 89,
-          "speed_tps": 99.0757303472299,
+          "speed_tps": 107.301895193522,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": 33.3,
           "cost_segments": {
@@ -35768,7 +35912,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.01
           },
-          "ttft": 1.428
+          "ttft": 1.467
         },
         "openrouter": {
           "inp_price": 3e-07,
@@ -39229,6 +39373,60 @@
       }
     },
     {
+      "id": "muse-spark-1-1",
+      "creator": "Meta",
+      "meta": {
+        "release_date": "2026-07-09"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.25,
+          "out_price": 4.25,
+          "blended": 2,
+          "cache_hit_price": null,
+          "cost_per_task": 0.2610220700233032,
+          "tokens_m": null,
+          "speed_tps": 121.367539115307,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 0.983
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 50.6,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_mtokdollar": null,
+          "aa_coding_index": null,
+          "aa_math_index": null,
+          "gpqa": 0.898,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": null,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": null,
+          "coding_index": 71.3
+        }
+      },
+      "aliases": {
+        "aa": "muse-spark-1-1"
+      }
+    },
+    {
       "id": "mythomax-l2-13b",
       "name": "MythoMax 13B",
       "creator": "gryphe",
@@ -39508,7 +39706,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.573
+          "ttft": 0.546
         }
       },
       "benchmarks": {
@@ -39591,7 +39789,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.25
           },
-          "ttft": 0.98
+          "ttft": 1.044
         },
         "openrouter": {
           "inp_price": 8e-08,
@@ -39683,7 +39881,7 @@
           "cache_hit_price": 0.25,
           "cost_per_task": 0.24,
           "tokens_m": 110,
-          "speed_tps": 168.879917133388,
+          "speed_tps": 204.175974523433,
           "useful_cost": 4.033,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -39694,7 +39892,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 0.92
+          "ttft": 0.869
         },
         "openrouter": {
           "inp_price": 5e-07,
@@ -40054,7 +40252,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.037
+          "ttft": 0.923
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -40239,7 +40437,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 19.759
+          "ttft": 14.473
         }
       },
       "benchmarks": {
@@ -40297,7 +40495,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.813
+          "ttft": 4.663
         }
       },
       "benchmarks": {
@@ -40354,7 +40552,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 16.908
+          "ttft": 19.675
         }
       },
       "benchmarks": {
@@ -40531,7 +40729,7 @@
             "cache_hit_usd": 68.5784022,
             "input_usd": 15.0330275
           },
-          "ttft": 7.905
+          "ttft": 5.653
         }
       },
       "benchmarks": {
@@ -40616,7 +40814,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 16.127
+          "ttft": 23.384
         }
       },
       "benchmarks": {
@@ -41200,7 +41398,7 @@
             "cache_hit_usd": 10.218873530235125,
             "input_usd": 0.5891819
           },
-          "ttft": 0.914
+          "ttft": 0.826
         }
       },
       "benchmarks": {
@@ -52156,12 +52354,10 @@
       },
       "pricing": {
         "openrouter": {
-          "inp_price": 8e-07,
-          "inp_price_per_m": 0.7999999999999999,
-          "out_price": 1e-06,
-          "out_price_per_m": 1.0,
-          "cache_read_price": 4e-07,
-          "cache_read_price_per_m": 0.39999999999999997,
+          "inp_price": 2.5e-07,
+          "inp_price_per_m": 0.25,
+          "out_price": 7.5e-07,
+          "out_price_per_m": 0.75,
           "vendor": "qwen"
         }
       },
@@ -52318,8 +52514,8 @@
         "openrouter": {
           "inp_price": 9e-08,
           "inp_price_per_m": 0.09,
-          "out_price": 1e-07,
-          "out_price_per_m": 0.09999999999999999,
+          "out_price": 5.5e-07,
+          "out_price_per_m": 0.55,
           "vendor": "qwen"
         }
       },
@@ -52541,7 +52737,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.508
+          "ttft": 1.489
         }
       },
       "benchmarks": {
@@ -52607,7 +52803,7 @@
             "cache_hit_usd": 105.443378424,
             "input_usd": 3.2333962240000003
           },
-          "ttft": 1.407
+          "ttft": 1.272
         }
       },
       "benchmarks": {
@@ -52667,7 +52863,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 2.307
+          "ttft": 2.246
         }
       },
       "benchmarks": {
@@ -52723,7 +52919,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.799
+          "ttft": 1.513
         }
       },
       "benchmarks": {
@@ -52782,11 +52978,11 @@
           "cost_segments": {
             "answer_usd": 7.520732800000001,
             "reasoning_usd": 174.16782880000002,
-            "cache_write_usd": 132.4071387309185,
-            "cache_hit_usd": 0.9068633815265206,
+            "cache_write_usd": 113.18156553314465,
+            "cache_hit_usd": 2.4449092373484276,
             "input_usd": 5.3356580000000005
           },
-          "ttft": 2.373
+          "ttft": 1.878
         }
       },
       "benchmarks": {
@@ -53633,7 +53829,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.57
+          "ttft": 1.644
         },
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -57329,11 +57525,11 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 94.952,
+          "speed_tps": 95.9,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 99.701
+          "ttft": 5.308
         },
         "openrouter": {
           "inp_price": 1e-07,
@@ -59921,7 +60117,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.918
+          "ttft": 0.776
         }
       },
       "benchmarks": {
@@ -59980,7 +60176,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.752
+          "ttft": 0.691
         }
       },
       "benchmarks": {
@@ -60004,12 +60200,12 @@
           "tau2": 0.985380116959064,
           "tau_banking": 0.11340206185567,
           "terminalbench_hard": 0.356060606060606,
-          "terminalbench_v2_1": 0.359550561797753,
+          "terminalbench_v2_1": 0.393258426966292,
           "omniscience_hallucination_rate": 0.84,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": 2.1,
-          "coding_index": 37.3
+          "coding_index": 39.6
         }
       },
       "aliases": {
@@ -60878,7 +61074,7 @@
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.682
+          "ttft": 0.717
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -60921,26 +61117,6 @@
       "aliases": {
         "aa": "trinity-large-thinking",
         "openrouter": "arcee-ai/trinity-large-thinking"
-      }
-    },
-    {
-      "id": "trinity-mini",
-      "name": "Arcee AI: Trinity Mini",
-      "creator": "arcee-ai",
-      "meta": {
-        "context_window": 131072
-      },
-      "pricing": {
-        "openrouter": {
-          "inp_price": 4.5e-08,
-          "inp_price_per_m": 0.045,
-          "out_price": 1.5e-07,
-          "out_price_per_m": 0.15,
-          "vendor": "arcee-ai"
-        }
-      },
-      "aliases": {
-        "openrouter": "arcee-ai/trinity-mini"
       }
     },
     {

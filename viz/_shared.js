@@ -27,6 +27,7 @@ const CREATOR_COLORS = {
   "Nex AGI":       "#9bff5d",
   "Tencent":       "#00d0ff",
   "Arcee AI":      "#ffc24d",
+  "SpaceXAI":       "#c77dff",
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
 

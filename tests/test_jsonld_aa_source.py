@@ -135,8 +135,8 @@ class TestJsonLdIngestion:
             "gpt-5-6-sol should have aa_briefcase_analytical_quality_elo"
 
     def test_cost_segments_populated(self, processed):
-        luna_med = next(m for m in processed if m["slug"] == "gpt-5-6-luna-medium")
+        opus = next(m for m in processed if m["slug"] == "claude-opus-4.8")
         # Output exposes flattened cost segments (cost_seg_reasoning etc.), not a
         # nested cost_segments dict.
-        assert luna_med.get("cost_seg_reasoning") is not None, \
-            "gpt-5-6-luna-medium should have cost_seg_reasoning from JSON-LD"
+        assert opus.get("cost_seg_reasoning") is not None, \
+            "claude-opus-4.8 should have cost_seg_reasoning from JSON-LD"
