@@ -6,7 +6,7 @@ Built for users who want to pick a model and care about more than one axis.
 
 ## What it shows
 
-117 models (rendered), 2275 in the registry, 24 creators, 5 visualizations:
+120 models (rendered), 2276 in the registry, 25 creators, 5 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
@@ -42,13 +42,13 @@ Or just open `dashboard.html` directly in a modern browser (it loads `processed.
 | Source | What we get |
 |--------|-------------|
 | **Artificial Analysis** (primary) | Intelligence Index, $/M input/output/cache, speed, output tokens, cost segments, 16 eval scores |
-| **OpenRouter API** | Pricing + context window for ~345 models (cross-check / context) |
+| **OpenRouter API** | Pricing + context window for ~342 models (cross-check / context) |
 | **LiveBench** | Coding/agentic/reasoning scores (127 models) |
 | **Chatbot Arena** | Code + Text Elo (30 / 50 models) |
 | **OpenLLM v2** | Parameter counts (1783 models in subset) |
 | **Dirac.run** | Observed cache hit rates |
 
-Data is current as of **11 July 2026**, AA Intelligence Index v4.
+Data is current as of **23 July 2026**, AA Intelligence Index v4.1.
 
 ## Architecture
 
@@ -70,9 +70,9 @@ Stages (each a `Result`-returning `run()`/`build()`):
 | Stage | Inputs | Output | Models |
 |-------|--------|--------|--------|
 | `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | (writes caches) |
-| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2275 |
+| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2276 |
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
-| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 117 |
+| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 120 |
 
 `_build_registry.run()` merges sources into a unified registry: `step_aa`, `step_dirac`, `step_livebench`, `step_arena_text`, `step_arena_code`, `step_openllm`, `step_openrouter`, `step_misc`, `step_name_map`, `step_write` — each a `Result` step over shared `ctx`, short-circuiting on the first `Err`.
 
@@ -82,7 +82,7 @@ Serialized via the typed domain layer in `data/_domain/` (`RegistryModel`, `Proj
 JS uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/`fromFn`/`Pipeline` (mirrors `data/_pipeline.Pipeline`). `_boot.js` orchestrates load via `window.Result.Pipeline({}).then(bootstrap_models).then(build_shell)...run()` — identical shape to the Python stages. Each viz file is self-contained, registering itself in `window.VIZ_REGISTRY`.
 
 Shared config in `viz/_shared.js`:
-- `CREATOR_COLORS` — 24 creators with distinct hex colors
+- `CREATOR_COLORS` — 25 creators with distinct hex colors
 - `SKU_PATTERNS` — slug-based splits (OSS / Mini / Nano / Flash / Code)
 - `RADAR_AXES` — 5 radar axes (IQ / Speed / Token Eff / Cache Eff / Cost Eff)
 - `FIELD_LABELS` — display names for table columns
@@ -100,8 +100,8 @@ Generic filter: `window.__legendFilter = { dim, val }` — shared across all vie
 ├── README.md
 ├── dashboard.html              ← the viz (loads data/processed.js)
 ├── data/
-│   ├── processed.js           ← 117 models, primary dataset (loaded by dashboard)
-│   ├── model_registry.json     ← 2277 models, 8 sources (serialized via RegistryModel)
+│   ├── processed.js           ← 120 models, primary dataset (loaded by dashboard)
+│   ├── model_registry.json     ← 2276 models, 8 sources (serialized via RegistryModel)
 │   ├── axes_catalog.json       ← typed axis catalog
 │   ├── _pipeline.py            ← orchestrator: build / build_from_cache / build() (pull)
 │   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter

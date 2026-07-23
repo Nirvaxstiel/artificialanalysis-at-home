@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
-**Source:** Artificial Analysis — Intelligence Index v4 (11 Jul '26)
-**Data:** 117 models, 24 creators in the rendered dashboard (2275 in the full registry, 8 sources)
+**Source:** Artificial Analysis — Intelligence Index v4.1 (23 Jul '26)
+**Data:** 120 models, 25 creators in the rendered dashboard (2276 in the full registry, 8 sources)
 
 ## What it is
 
@@ -18,16 +18,16 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 ## Files
 
 - `dashboard.html` — the viz (loads `data/processed.js` as `window.PROCESSED_DATA`)
-- `data/processed.js` — 117 models, primary dataset (surfaced as `window.MODELS`)
-- `data/model_registry.json` — 2277 models, 8 sources (serialized via `RegistryModel`)
+- `data/processed.js` — 120 models, primary dataset (surfaced as `window.MODELS`)
+- `data/model_registry.json` — 2276 models, 8 sources (serialized via `RegistryModel`)
 - `data/axes_catalog.json` — typed axis catalog
 - `data/_pipeline.py` — orchestrator: `build` / `build_from_cache` (offline) or full pull
 - `data/_build_registry.py` — merges sources → `model_registry.json`
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (551 models), `aa_charts_export.json`, `aa_jsonld_export.json`
-- `data/sources/dirac/cache_hit_rates.json` — 276 rows, observed cache hit rates
+- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (579 models), `aa_charts_export.json`, `aa_jsonld_export.json`
+- `data/sources/dirac/cache_hit_rates.json` — 398 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
 - `DATA-ACQUISITION.md` — **how each source is obtained** (scrape / API / vision / manual table) + repro steps
@@ -37,19 +37,19 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 | Source | Coverage | Used for |
 |--------|----------|----------|
 | Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
-| Artificial Analysis (live API) | 551 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
-| OpenRouter API | ~344 models | Pricing, **context window** (`context_length`) |
+| Artificial Analysis (live API) | 579 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
+| OpenRouter API | ~342 models | Pricing, **context window** (`context_length`) |
 | LiveBench | 127 models | Coding/agentic/reasoning scores |
 | Chatbot Arena (Code + Text) | 30 / 50 models | Code/Text Elo |
 | OpenLLM v2 | 1783 models in subset | Params (B) |
-| Dirac.run | 276 rows | Observed cache hit rates |
+| Dirac.run | 398 rows | Observed cache hit rates |
 
 ### Provenance rules
 
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
 - **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
 
-## Projection schema (rendered 117-model set)
+## Projection schema (rendered 120-model set)
 
 Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
@@ -62,7 +62,7 @@ Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
 ## Methodology
 
-**AA Intelligence Index v4** — weighted evals (GDPval-AA v2, Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
+**AA Intelligence Index v4.1** — weighted evals (GDPval-AA v2, Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
 
 **Cost per Task** = (input×input_price + cache_hit×cache_hit_price + cache_write×cache_write_price + reasoning×output_price + answer×output_price) / task_count, weighted by eval importance. Uses measured per-model per-eval token counts.
 

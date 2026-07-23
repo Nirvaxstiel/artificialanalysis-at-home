@@ -1,5 +1,115 @@
 [
   {
+    "id": "poolside/laguna-s-2.1",
+    "name": "Poolside: Laguna S 2.1",
+    "vendor": "poolside",
+    "input_price": "0.0000001",
+    "output_price": "0.0000002",
+    "cache_read_price": "0.00000001",
+    "cache_write_price": null,
+    "context_length": 1048576
+  },
+  {
+    "id": "poolside/laguna-s-2.1:free",
+    "name": "Poolside: Laguna S 2.1 (free)",
+    "vendor": "poolside",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 262144
+  },
+  {
+    "id": "google/gemini-3.6-flash",
+    "name": "Google: Gemini 3.6 Flash",
+    "vendor": "google",
+    "input_price": "0.0000015",
+    "output_price": "0.0000075",
+    "cache_read_price": "0.00000015",
+    "cache_write_price": "0.00000008333333333333334",
+    "context_length": 1048576
+  },
+  {
+    "id": "google/gemini-3.5-flash-lite",
+    "name": "Google: Gemini 3.5 Flash Lite",
+    "vendor": "google",
+    "input_price": "0.0000003",
+    "output_price": "0.0000025",
+    "cache_read_price": "0.00000003",
+    "cache_write_price": "0.00000008333333333333334",
+    "context_length": 1048576
+  },
+  {
+    "id": "meituan/longcat-2.0",
+    "name": "Meituan: LongCat 2.0",
+    "vendor": "meituan",
+    "input_price": "0.0000003",
+    "output_price": "0.0000012",
+    "cache_read_price": "0.000000006",
+    "cache_write_price": null,
+    "context_length": 1048756
+  },
+  {
+    "id": "thinkingmachines/inkling",
+    "name": "Thinking Machines: Inkling",
+    "vendor": "thinkingmachines",
+    "input_price": "0.000001",
+    "output_price": "0.00000405",
+    "cache_read_price": "0.00000017",
+    "cache_write_price": null,
+    "context_length": 524288
+  },
+  {
+    "id": "openrouter/auto-beta",
+    "name": "Auto Router (Beta)",
+    "vendor": "openrouter",
+    "input_price": "-1",
+    "output_price": "-1",
+    "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 2000000
+  },
+  {
+    "id": "moonshotai/kimi-k3",
+    "name": "MoonshotAI: Kimi K3",
+    "vendor": "moonshotai",
+    "input_price": "0.000003",
+    "output_price": "0.000015",
+    "cache_read_price": "0.0000003",
+    "cache_write_price": null,
+    "context_length": 1048576
+  },
+  {
+    "id": "meta/muse-spark-1.1",
+    "name": "Meta: Muse Spark 1.1",
+    "vendor": "meta",
+    "input_price": "0.00000125",
+    "output_price": "0.00000425",
+    "cache_read_price": "0.00000015",
+    "cache_write_price": null,
+    "context_length": 1048576
+  },
+  {
+    "id": "kwaipilot/kat-coder-air-v2.5",
+    "name": "Kwaipilot: KAT-Coder-Air V2.5",
+    "vendor": "kwaipilot",
+    "input_price": "0.00000015",
+    "output_price": "0.0000006",
+    "cache_read_price": "0.00000003",
+    "cache_write_price": null,
+    "context_length": 256000
+  },
+  {
+    "id": "kwaipilot/kat-coder-pro-v2.5",
+    "name": "Kwaipilot: KAT-Coder-Pro V2.5",
+    "vendor": "kwaipilot",
+    "input_price": "0.00000074",
+    "output_price": "0.00000296",
+    "cache_read_price": "0.00000015",
+    "cache_write_price": null,
+    "context_length": 256000
+  },
+  {
     "id": "openai/gpt-5.6-luna-pro",
     "name": "OpenAI: GPT-5.6 Luna Pro",
     "vendor": "openai",
@@ -65,7 +175,7 @@
     "vendor": "x-ai",
     "input_price": "0.000002",
     "output_price": "0.000006",
-    "cache_read_price": "0.0000005",
+    "cache_read_price": "0.0000003",
     "cache_write_price": null,
     "context_length": 500000
   },
@@ -75,7 +185,7 @@
     "vendor": "~x-ai",
     "input_price": "0.000002",
     "output_price": "0.000006",
-    "cache_read_price": "0.0000005",
+    "cache_read_price": "0.0000003",
     "cache_write_price": null,
     "context_length": 500000
   },
@@ -100,16 +210,6 @@
     "context_length": 131072
   },
   {
-    "id": "tencent/hy3:free",
-    "name": "Tencent: Hy3 (free)",
-    "vendor": "tencent",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 262144
-  },
-  {
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "vendor": "tencent",
@@ -120,22 +220,22 @@
     "context_length": 262144
   },
   {
-    "id": "poolside/laguna-xs-2.1:free",
-    "name": "Poolside: Laguna XS 2.1 (free)",
-    "vendor": "poolside",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 262144
-  },
-  {
     "id": "poolside/laguna-xs-2.1",
     "name": "Poolside: Laguna XS 2.1",
     "vendor": "poolside",
     "input_price": "0.00000006",
     "output_price": "0.00000012",
     "cache_read_price": "0.00000003",
+    "cache_write_price": null,
+    "context_length": 262144
+  },
+  {
+    "id": "poolside/laguna-xs-2.1:free",
+    "name": "Poolside: Laguna XS 2.1 (free)",
+    "vendor": "poolside",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -197,7 +297,7 @@
     "output_price": "0.000012",
     "cache_read_price": "0.0000002",
     "cache_write_price": "0.000000375",
-    "context_length": 65536
+    "context_length": 131072
   },
   {
     "id": "cohere/north-mini-code:free",
@@ -213,9 +313,9 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "vendor": "z-ai",
-    "input_price": "0.00000093",
-    "output_price": "0.000003",
-    "cache_read_price": "0.00000018",
+    "input_price": "0.0000008008",
+    "output_price": "0.0000025168",
+    "cache_read_price": "0.00000014872",
     "cache_write_price": null,
     "context_length": 1048576
   },
@@ -233,9 +333,9 @@
     "id": "moonshotai/kimi-k2.7-code",
     "name": "MoonshotAI: Kimi K2.7 Code",
     "vendor": "moonshotai",
-    "input_price": "0.000000719",
-    "output_price": "0.00000349",
-    "cache_read_price": "0.000000149",
+    "input_price": "0.00000082",
+    "output_price": "0.00000375",
+    "cache_read_price": "0.00000016",
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -280,22 +380,22 @@
     "context_length": 128000
   },
   {
-    "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "name": "NVIDIA: Nemotron 3 Ultra (free)",
-    "vendor": "nvidia",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 1000000
-  },
-  {
     "id": "nvidia/nemotron-3-ultra-550b-a55b",
     "name": "NVIDIA: Nemotron 3 Ultra",
     "vendor": "nvidia",
     "input_price": "0.0000005",
     "output_price": "0.0000022",
     "cache_read_price": "0.0000001",
+    "cache_write_price": null,
+    "context_length": 512288
+  },
+  {
+    "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "name": "NVIDIA: Nemotron 3 Ultra (free)",
+    "vendor": "nvidia",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 1000000
   },
@@ -327,7 +427,7 @@
     "output_price": "0.00000115",
     "cache_read_price": "0.00000004",
     "cache_write_price": null,
-    "context_length": 256000
+    "context_length": 262144
   },
   {
     "id": "anthropic/claude-opus-4.8-fast",
@@ -353,10 +453,10 @@
     "id": "qwen/qwen3.7-max",
     "name": "Qwen: Qwen3.7 Max",
     "vendor": "qwen",
-    "input_price": "0.00000125",
-    "output_price": "0.00000375",
-    "cache_read_price": "0.00000025",
-    "cache_write_price": "0.0000015625",
+    "input_price": "0.000001475",
+    "output_price": "0.000004425",
+    "cache_read_price": "0.000000295",
+    "cache_write_price": "0.00000184375",
     "context_length": 1000000
   },
   {
@@ -470,22 +570,22 @@
     "context_length": 256000
   },
   {
-    "id": "poolside/laguna-m.1:free",
-    "name": "Poolside: Laguna M.1 (free)",
-    "vendor": "poolside",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 262144
-  },
-  {
     "id": "poolside/laguna-m.1",
     "name": "Poolside: Laguna M.1",
     "vendor": "poolside",
     "input_price": "0.0000002",
     "output_price": "0.0000004",
     "cache_read_price": "0.0000001",
+    "cache_write_price": null,
+    "context_length": 262144
+  },
+  {
+    "id": "poolside/laguna-m.1:free",
+    "name": "Poolside: Laguna M.1 (free)",
+    "vendor": "poolside",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -523,18 +623,18 @@
     "id": "~moonshotai/kimi-latest",
     "name": "MoonshotAI Kimi Latest",
     "vendor": "~moonshotai",
-    "input_price": "0.00000066",
-    "output_price": "0.00000341",
-    "cache_read_price": "0.00000015",
+    "input_price": "0.000003",
+    "output_price": "0.000015",
+    "cache_read_price": "0.0000003",
     "cache_write_price": null,
-    "context_length": 262144
+    "context_length": 1048576
   },
   {
     "id": "~google/gemini-flash-latest",
     "name": "Google Gemini Flash Latest",
     "vendor": "~google",
     "input_price": "0.0000015",
-    "output_price": "0.000009",
+    "output_price": "0.0000075",
     "cache_read_price": "0.00000015",
     "cache_write_price": "0.00000008333333333333334",
     "context_length": 1048576
@@ -603,9 +703,9 @@
     "id": "qwen/qwen3.6-27b",
     "name": "Qwen: Qwen3.6 27B",
     "vendor": "qwen",
-    "input_price": "0.000000285",
-    "output_price": "0.0000024",
-    "cache_read_price": "0.00000015",
+    "input_price": "0.0000006",
+    "output_price": "0.0000036",
+    "cache_read_price": "0.00000012",
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -643,9 +743,9 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash",
     "vendor": "deepseek",
-    "input_price": "0.000000077",
-    "output_price": "0.000000154",
-    "cache_read_price": "0.0000000154",
+    "input_price": "0.000000098",
+    "output_price": "0.000000196",
+    "cache_read_price": "0.0000000196",
     "cache_write_price": null,
     "context_length": 1048576
   },
@@ -677,17 +777,17 @@
     "output_price": "0.00000087",
     "cache_read_price": "0.0000000036",
     "cache_write_price": null,
-    "context_length": 1048576
+    "context_length": 1050000
   },
   {
     "id": "xiaomi/mimo-v2.5",
     "name": "Xiaomi: MiMo-V2.5",
     "vendor": "xiaomi",
-    "input_price": "0.000000105",
+    "input_price": "0.00000014",
     "output_price": "0.00000028",
-    "cache_read_price": "0.000000028",
+    "cache_read_price": "0.0000000028",
     "cache_write_price": null,
-    "context_length": 1048576
+    "context_length": 1050000
   },
   {
     "id": "openai/gpt-5.4-image-2",
@@ -733,9 +833,9 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "vendor": "moonshotai",
-    "input_price": "0.00000066",
-    "output_price": "0.00000341",
-    "cache_read_price": "0.00000015",
+    "input_price": "0.000000684",
+    "output_price": "0.00000342",
+    "cache_read_price": "0.000000144",
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -757,31 +857,21 @@
     "output_price": "0.000003036",
     "cache_read_price": "0.0000001794",
     "cache_write_price": null,
-    "context_length": 202752
-  },
-  {
-    "id": "google/gemma-4-26b-a4b-it:free",
-    "name": "Google: Gemma 4 26B A4B  (free)",
-    "vendor": "google",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 262144
+    "context_length": 204800
   },
   {
     "id": "google/gemma-4-26b-a4b-it",
     "name": "Google: Gemma 4 26B A4B ",
     "vendor": "google",
-    "input_price": "0.00000006",
-    "output_price": "0.00000033",
-    "cache_read_price": null,
+    "input_price": "0.00000012",
+    "output_price": "0.00000035",
+    "cache_read_price": "0.00000005",
     "cache_write_price": null,
     "context_length": 262144
   },
   {
-    "id": "google/gemma-4-31b-it:free",
-    "name": "Google: Gemma 4 31B (free)",
+    "id": "google/gemma-4-26b-a4b-it:free",
+    "name": "Google: Gemma 4 26B A4B  (free)",
     "vendor": "google",
     "input_price": "0",
     "output_price": "0",
@@ -796,6 +886,16 @@
     "input_price": "0.00000012",
     "output_price": "0.00000035",
     "cache_read_price": "0.00000009",
+    "cache_write_price": null,
+    "context_length": 262144
+  },
+  {
+    "id": "google/gemma-4-31b-it:free",
+    "name": "Google: Gemma 4 31B (free)",
+    "vendor": "google",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -877,7 +977,7 @@
     "output_price": "0.0000012",
     "cache_read_price": "0.00000006",
     "cache_write_price": null,
-    "context_length": 256000
+    "context_length": 262144
   },
   {
     "id": "rekaai/reka-edge",
@@ -893,9 +993,9 @@
     "id": "minimax/minimax-m2.7",
     "name": "MiniMax: MiniMax M2.7",
     "vendor": "minimax",
-    "input_price": "0.00000024",
-    "output_price": "0.00000096",
-    "cache_read_price": null,
+    "input_price": "0.00000025",
+    "output_price": "0.000001",
+    "cache_read_price": "0.00000005",
     "cache_write_price": null,
     "context_length": 204800
   },
@@ -937,17 +1037,7 @@
     "output_price": "0.000004",
     "cache_read_price": "0.00000024",
     "cache_write_price": null,
-    "context_length": 262144
-  },
-  {
-    "id": "nvidia/nemotron-3-super-120b-a12b:free",
-    "name": "NVIDIA: Nemotron 3 Super (free)",
-    "vendor": "nvidia",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 1000000
+    "context_length": 202752
   },
   {
     "id": "nvidia/nemotron-3-super-120b-a12b",
@@ -958,6 +1048,16 @@
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 1000000
+  },
+  {
+    "id": "nvidia/nemotron-3-super-120b-a12b:free",
+    "name": "NVIDIA: Nemotron 3 Super (free)",
+    "vendor": "nvidia",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 262144
   },
   {
     "id": "bytedance-seed/seed-2.0-lite",
@@ -1055,7 +1155,7 @@
     "vendor": "qwen",
     "input_price": "0.00000014",
     "output_price": "0.000001",
-    "cache_read_price": "0.00000005",
+    "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -1063,8 +1163,8 @@
     "id": "qwen/qwen3.5-27b",
     "name": "Qwen: Qwen3.5-27B",
     "vendor": "qwen",
-    "input_price": "0.000000195",
-    "output_price": "0.00000156",
+    "input_price": "0.00000026",
+    "output_price": "0.0000026",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
@@ -1097,7 +1197,7 @@
     "output_price": "0.000012",
     "cache_read_price": "0.0000002",
     "cache_write_price": "0.000000375",
-    "context_length": 1048756
+    "context_length": 1048576
   },
   {
     "id": "openai/gpt-5.3-codex",
@@ -1153,11 +1253,11 @@
     "id": "qwen/qwen3.5-397b-a17b",
     "name": "Qwen: Qwen3.5 397B A17B",
     "vendor": "qwen",
-    "input_price": "0.000000385",
-    "output_price": "0.00000245",
-    "cache_read_price": "0.000000111",
+    "input_price": "0.00000039",
+    "output_price": "0.00000234",
+    "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 256000
+    "context_length": 262144
   },
   {
     "id": "minimax/minimax-m2.5",
@@ -1173,11 +1273,11 @@
     "id": "z-ai/glm-5",
     "name": "Z.ai: GLM 5",
     "vendor": "z-ai",
-    "input_price": "0.0000006",
-    "output_price": "0.00000192",
-    "cache_read_price": "0.00000012",
+    "input_price": "0.00000095",
+    "output_price": "0.00000315",
+    "cache_read_price": "0.00000019",
     "cache_write_price": null,
-    "context_length": 202752
+    "context_length": 204800
   },
   {
     "id": "qwen/qwen3-max-thinking",
@@ -1233,9 +1333,9 @@
     "id": "moonshotai/kimi-k2.5",
     "name": "MoonshotAI: Kimi K2.5",
     "vendor": "moonshotai",
-    "input_price": "0.000000375",
-    "output_price": "0.000002025",
-    "cache_read_price": "0.000000203",
+    "input_price": "0.00000057",
+    "output_price": "0.00000285",
+    "cache_read_price": "0.000000095",
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -1268,26 +1368,6 @@
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 1040000
-  },
-  {
-    "id": "liquid/lfm-2.5-1.2b-thinking:free",
-    "name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
-    "vendor": "liquid",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 32768
-  },
-  {
-    "id": "liquid/lfm-2.5-1.2b-instruct:free",
-    "name": "LiquidAI: LFM2.5-1.2B-Instruct (free)",
-    "vendor": "liquid",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 32768
   },
   {
     "id": "openai/gpt-audio",
@@ -1367,7 +1447,7 @@
     "output_price": "0.00000175",
     "cache_read_price": "0.00000008",
     "cache_write_price": null,
-    "context_length": 202752
+    "context_length": 204800
   },
   {
     "id": "google/gemini-3-flash-preview",
@@ -1380,16 +1460,6 @@
     "context_length": 1048576
   },
   {
-    "id": "nvidia/nemotron-3-nano-30b-a3b:free",
-    "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
-    "vendor": "nvidia",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 256000
-  },
-  {
     "id": "nvidia/nemotron-3-nano-30b-a3b",
     "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
     "vendor": "nvidia",
@@ -1398,6 +1468,16 @@
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
+  },
+  {
+    "id": "nvidia/nemotron-3-nano-30b-a3b:free",
+    "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
+    "vendor": "nvidia",
+    "input_price": "0",
+    "output_price": "0",
+    "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 256000
   },
   {
     "id": "openai/gpt-5.2-chat",
@@ -1533,11 +1613,11 @@
     "id": "deepseek/deepseek-v3.2",
     "name": "DeepSeek: DeepSeek V3.2",
     "vendor": "deepseek",
-    "input_price": "0.0000002145",
-    "output_price": "0.00000032175",
-    "cache_read_price": "0.00000002145",
+    "input_price": "0.000000269",
+    "output_price": "0.0000004",
+    "cache_read_price": "0.0000001345",
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 163840
   },
   {
     "id": "anthropic/claude-opus-4.5",
@@ -1585,7 +1665,7 @@
     "vendor": "openai",
     "input_price": "0.00000125",
     "output_price": "0.00001",
-    "cache_read_price": "0.00000013",
+    "cache_read_price": "0.000000125",
     "cache_write_price": null,
     "context_length": 400000
   },
@@ -1595,7 +1675,7 @@
     "vendor": "openai",
     "input_price": "0.00000125",
     "output_price": "0.00001",
-    "cache_read_price": "0.00000013",
+    "cache_read_price": "0.000000125",
     "cache_write_price": null,
     "context_length": 128000
   },
@@ -1605,7 +1685,7 @@
     "vendor": "openai",
     "input_price": "0.00000125",
     "output_price": "0.00001",
-    "cache_read_price": "0.00000013",
+    "cache_read_price": "0.000000125",
     "cache_write_price": null,
     "context_length": 400000
   },
@@ -1683,9 +1763,9 @@
     "id": "minimax/minimax-m2",
     "name": "MiniMax: MiniMax M2",
     "vendor": "minimax",
-    "input_price": "0.000000255",
-    "output_price": "0.00000102",
-    "cache_read_price": null,
+    "input_price": "0.0000003",
+    "output_price": "0.0000012",
+    "cache_read_price": "0.00000003",
     "cache_write_price": null,
     "context_length": 204800
   },
@@ -1697,7 +1777,7 @@
     "output_price": "0.000000416",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 262144
+    "context_length": 131072
   },
   {
     "id": "ibm-granite/granite-4.0-h-micro",
@@ -1737,7 +1817,7 @@
     "output_price": "0.000001365",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 256000
+    "context_length": 131072
   },
   {
     "id": "qwen/qwen3-vl-8b-instruct",
@@ -1747,7 +1827,7 @@
     "output_price": "0.000000455",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 256000
+    "context_length": 262144
   },
   {
     "id": "openai/gpt-5-image",
@@ -1780,16 +1860,6 @@
     "context_length": 200000
   },
   {
-    "id": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
-    "name": "NVIDIA: Llama 3.3 Nemotron Super 49B V1.5",
-    "vendor": "nvidia",
-    "input_price": "0.0000004",
-    "output_price": "0.0000004",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
     "id": "google/gemini-2.5-flash-image",
     "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
     "vendor": "google",
@@ -1807,14 +1877,14 @@
     "output_price": "0.00000156",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 262144
   },
   {
     "id": "qwen/qwen3-vl-30b-a3b-instruct",
     "name": "Qwen: Qwen3 VL 30B A3B Instruct",
     "vendor": "qwen",
-    "input_price": "0.00000013",
-    "output_price": "0.00000052",
+    "input_price": "0.00000015",
+    "output_price": "0.0000006",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
@@ -1833,11 +1903,11 @@
     "id": "z-ai/glm-4.6",
     "name": "Z.ai: GLM 4.6",
     "vendor": "z-ai",
-    "input_price": "0.00000043",
-    "output_price": "0.00000175",
-    "cache_read_price": "0.00000008",
+    "input_price": "0.0000005",
+    "output_price": "0.000002",
+    "cache_read_price": "0.0000001",
     "cache_write_price": null,
-    "context_length": 200000
+    "context_length": 204800
   },
   {
     "id": "anthropic/claude-sonnet-4.5",
@@ -1893,9 +1963,9 @@
     "id": "qwen/qwen3-vl-235b-a22b-instruct",
     "name": "Qwen: Qwen3 VL 235B A22B Instruct",
     "vendor": "qwen",
-    "input_price": "0.0000002",
-    "output_price": "0.00000088",
-    "cache_read_price": "0.00000011",
+    "input_price": "0.00000021",
+    "output_price": "0.0000019",
+    "cache_read_price": "0.0000001",
     "cache_write_price": null,
     "context_length": 262144
   },
@@ -1934,8 +2004,8 @@
     "name": "DeepSeek: DeepSeek V3.1 Terminus",
     "vendor": "deepseek",
     "input_price": "0.00000027",
-    "output_price": "0.00000095",
-    "cache_read_price": "0.00000013",
+    "output_price": "0.000001",
+    "cache_read_price": "0.000000135",
     "cache_write_price": null,
     "context_length": 163840
   },
@@ -1960,34 +2030,14 @@
     "context_length": 262144
   },
   {
-    "id": "qwen/qwen3-next-80b-a3b-instruct:free",
-    "name": "Qwen: Qwen3 Next 80B A3B Instruct (free)",
-    "vendor": "qwen",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 262144
-  },
-  {
     "id": "qwen/qwen3-next-80b-a3b-instruct",
     "name": "Qwen: Qwen3 Next 80B A3B Instruct",
     "vendor": "qwen",
-    "input_price": "0.00000009",
-    "output_price": "0.0000011",
+    "input_price": "0.00000015",
+    "output_price": "0.0000012",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
-  },
-  {
-    "id": "qwen/qwen-plus-2025-07-28:thinking",
-    "name": "Qwen: Qwen Plus 0728 (thinking)",
-    "vendor": "qwen",
-    "input_price": "0.00000026",
-    "output_price": "0.00000078",
-    "cache_read_price": null,
-    "cache_write_price": "0.000000325",
-    "context_length": 1000000
   },
   {
     "id": "qwen/qwen-plus-2025-07-28",
@@ -1997,6 +2047,16 @@
     "output_price": "0.00000078",
     "cache_read_price": null,
     "cache_write_price": null,
+    "context_length": 1000000
+  },
+  {
+    "id": "qwen/qwen-plus-2025-07-28:thinking",
+    "name": "Qwen: Qwen Plus 0728 (thinking)",
+    "vendor": "qwen",
+    "input_price": "0.00000026",
+    "output_price": "0.00000078",
+    "cache_read_price": null,
+    "cache_write_price": "0.000000325",
     "context_length": 1000000
   },
   {
@@ -2027,7 +2087,7 @@
     "output_price": "0.00000156",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 81920
   },
   {
     "id": "nousresearch/hermes-4-70b",
@@ -2053,8 +2113,8 @@
     "id": "deepseek/deepseek-chat-v3.1",
     "name": "DeepSeek: DeepSeek V3.1",
     "vendor": "deepseek",
-    "input_price": "0.00000021",
-    "output_price": "0.00000079",
+    "input_price": "0.00000025",
+    "output_price": "0.00000095",
     "cache_read_price": "0.00000013",
     "cache_write_price": null,
     "context_length": 163840
@@ -2125,27 +2185,27 @@
     "vendor": "openai",
     "input_price": "0.00000005",
     "output_price": "0.0000004",
-    "cache_read_price": "0.00000001",
+    "cache_read_price": "0.000000005",
     "cache_write_price": null,
     "context_length": 400000
-  },
-  {
-    "id": "openai/gpt-oss-120b:free",
-    "name": "OpenAI: gpt-oss-120b (free)",
-    "vendor": "openai",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
   },
   {
     "id": "openai/gpt-oss-120b",
     "name": "OpenAI: gpt-oss-120b",
     "vendor": "openai",
-    "input_price": "0.000000036",
-    "output_price": "0.00000018",
+    "input_price": "0.000000037",
+    "output_price": "0.00000017",
     "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 131072
+  },
+  {
+    "id": "openai/gpt-oss-20b",
+    "name": "OpenAI: gpt-oss-20b",
+    "vendor": "openai",
+    "input_price": "0.00000003",
+    "output_price": "0.00000013",
+    "cache_read_price": "0.00000003",
     "cache_write_price": null,
     "context_length": 131072
   },
@@ -2155,16 +2215,6 @@
     "vendor": "openai",
     "input_price": "0",
     "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
-    "id": "openai/gpt-oss-20b",
-    "name": "OpenAI: gpt-oss-20b",
-    "vendor": "openai",
-    "input_price": "0.000000029",
-    "output_price": "0.00000014",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 131072
@@ -2197,17 +2247,17 @@
     "output_price": "0.00000027",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 160000
+    "context_length": 262144
   },
   {
     "id": "qwen/qwen3-30b-a3b-instruct-2507",
     "name": "Qwen: Qwen3 30B A3B Instruct 2507",
     "vendor": "qwen",
-    "input_price": "0.00000004815",
-    "output_price": "0.00000019305",
+    "input_price": "0.0000001",
+    "output_price": "0.0000003",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 262144
   },
   {
     "id": "z-ai/glm-4.5",
@@ -2233,31 +2283,21 @@
     "id": "qwen/qwen3-235b-a22b-thinking-2507",
     "name": "Qwen: Qwen3 235B A22B Thinking 2507",
     "vendor": "qwen",
-    "input_price": "0.0000001495",
-    "output_price": "0.000001495",
+    "input_price": "0.0000003",
+    "output_price": "0.000003",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 262144
   },
   {
-    "id": "qwen/qwen3-coder:free",
-    "name": "Qwen: Qwen3 Coder 480B A35B (free)",
-    "vendor": "qwen",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 1048576
-  },
-  {
     "id": "qwen/qwen3-coder",
     "name": "Qwen: Qwen3 Coder 480B A35B",
     "vendor": "qwen",
-    "input_price": "0.00000022",
-    "output_price": "0.0000018",
-    "cache_read_price": null,
+    "input_price": "0.0000003",
+    "output_price": "0.000001",
+    "cache_read_price": "0.0000001",
     "cache_write_price": null,
-    "context_length": 1048576
+    "context_length": 262144
   },
   {
     "id": "bytedance/ui-tars-1.5-7b",
@@ -2298,16 +2338,6 @@
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 131072
-  },
-  {
-    "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
-    "name": "Venice: Uncensored (free)",
-    "vendor": "cognitivecomputations",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 32768
   },
   {
     "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
@@ -2357,23 +2387,23 @@
     "output_price": "0.00000125",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 123000
   },
   {
     "id": "mistralai/mistral-small-3.2-24b-instruct",
     "name": "Mistral: Mistral Small 3.2 24B",
     "vendor": "mistralai",
-    "input_price": "0.000000075",
-    "output_price": "0.0000002",
-    "cache_read_price": null,
+    "input_price": "0.0000001",
+    "output_price": "0.0000003",
+    "cache_read_price": "0.00000001",
     "cache_write_price": null,
-    "context_length": 128000
+    "context_length": 256000
   },
   {
     "id": "minimax/minimax-m1",
     "name": "MiniMax: MiniMax M1",
     "vendor": "minimax",
-    "input_price": "0.0000004",
+    "input_price": "0.00000055",
     "output_price": "0.0000022",
     "cache_read_price": null,
     "cache_write_price": null,
@@ -2490,16 +2520,6 @@
     "context_length": 131072
   },
   {
-    "id": "arcee-ai/coder-large",
-    "name": "Arcee AI: Coder Large",
-    "vendor": "arcee-ai",
-    "input_price": "0.0000005",
-    "output_price": "0.0000008",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 32768
-  },
-  {
     "id": "meta-llama/llama-guard-4-12b",
     "name": "Meta: Llama Guard 4 12B",
     "vendor": "meta-llama",
@@ -2507,14 +2527,14 @@
     "output_price": "0.00000018",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 163840
+    "context_length": 1048576
   },
   {
     "id": "qwen/qwen3-30b-a3b",
     "name": "Qwen: Qwen3 30B A3B",
     "vendor": "qwen",
-    "input_price": "0.00000012",
-    "output_price": "0.0000005",
+    "input_price": "0.00000013",
+    "output_price": "0.00000052",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 131072
@@ -2533,11 +2553,11 @@
     "id": "qwen/qwen3-14b",
     "name": "Qwen: Qwen3 14B",
     "vendor": "qwen",
-    "input_price": "0.0000001",
-    "output_price": "0.00000024",
+    "input_price": "0.0000002275",
+    "output_price": "0.00000091",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131702
+    "context_length": 131072
   },
   {
     "id": "qwen/qwen3-32b",
@@ -2637,14 +2657,14 @@
     "output_price": "0.0000003",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 10000000
+    "context_length": 1310720
   },
   {
     "id": "deepseek/deepseek-chat-v3-0324",
     "name": "DeepSeek: DeepSeek V3 0324",
     "vendor": "deepseek",
-    "input_price": "0.00000024",
-    "output_price": "0.0000009",
+    "input_price": "0.00000027",
+    "output_price": "0.00000112",
     "cache_read_price": "0.000000135",
     "cache_write_price": null,
     "context_length": 163840
@@ -2733,11 +2753,11 @@
     "id": "google/gemma-3-27b-it",
     "name": "Google: Gemma 3 27B",
     "vendor": "google",
-    "input_price": "0.00000008",
-    "output_price": "0.00000016",
+    "input_price": "0.0000001",
+    "output_price": "0.0000003",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 262144
   },
   {
     "id": "thedrummer/skyfall-36b-v2",
@@ -2813,11 +2833,11 @@
     "id": "qwen/qwen2.5-vl-72b-instruct",
     "name": "Qwen: Qwen2.5 VL 72B Instruct",
     "vendor": "qwen",
-    "input_price": "0.00000025",
-    "output_price": "0.00000075",
-    "cache_read_price": null,
+    "input_price": "0.0000008",
+    "output_price": "0.000001",
+    "cache_read_price": "0.0000004",
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 128000
   },
   {
     "id": "qwen/qwen-plus",
@@ -2867,7 +2887,7 @@
     "output_price": "0.0000008",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 128000
+    "context_length": 8192
   },
   {
     "id": "deepseek/deepseek-r1",
@@ -2900,16 +2920,6 @@
     "context_length": 16384
   },
   {
-    "id": "sao10k/l3.1-70b-hanami-x1",
-    "name": "Sao10K: Llama 3.1 70B Hanami x1",
-    "vendor": "sao10k",
-    "input_price": "0.000003",
-    "output_price": "0.000003",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 16000
-  },
-  {
     "id": "deepseek/deepseek-chat",
     "name": "DeepSeek: DeepSeek V3",
     "vendor": "deepseek",
@@ -2917,7 +2927,7 @@
     "output_price": "0.0000008001",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 163840
   },
   {
     "id": "sao10k/l3.3-euryale-70b",
@@ -2950,21 +2960,11 @@
     "context_length": 128000
   },
   {
-    "id": "meta-llama/llama-3.3-70b-instruct:free",
-    "name": "Meta: Llama 3.3 70B Instruct (free)",
-    "vendor": "meta-llama",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
     "id": "meta-llama/llama-3.3-70b-instruct",
     "name": "Meta: Llama 3.3 70B Instruct",
     "vendor": "meta-llama",
-    "input_price": "0.0000001",
-    "output_price": "0.00000032",
+    "input_price": "0.00000013",
+    "output_price": "0.0000004",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 131072
@@ -3027,7 +3027,7 @@
     "output_price": "0.000001",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 128000
+    "context_length": 32768
   },
   {
     "id": "thedrummer/unslopnemo-12b",
@@ -3047,7 +3047,7 @@
     "output_price": "0.000005",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 32768
+    "context_length": 16384
   },
   {
     "id": "qwen/qwen-2.5-7b-instruct",
@@ -3057,11 +3057,11 @@
     "output_price": "0.0000001",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 32768
   },
   {
-    "id": "inflection/inflection-3-productivity",
-    "name": "Inflection: Inflection 3 Productivity",
+    "id": "inflection/inflection-3-pi",
+    "name": "Inflection: Inflection 3 Pi",
     "vendor": "inflection",
     "input_price": "0.0000025",
     "output_price": "0.00001",
@@ -3070,8 +3070,8 @@
     "context_length": 8000
   },
   {
-    "id": "inflection/inflection-3-pi",
-    "name": "Inflection: Inflection 3 Pi",
+    "id": "inflection/inflection-3-productivity",
+    "name": "Inflection: Inflection 3 Productivity",
     "vendor": "inflection",
     "input_price": "0.0000025",
     "output_price": "0.00001",
@@ -3097,27 +3097,7 @@
     "output_price": "0.000000201",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
-    "id": "meta-llama/llama-3.2-11b-vision-instruct",
-    "name": "Meta: Llama 3.2 11B Vision Instruct",
-    "vendor": "meta-llama",
-    "input_price": "0.000000345",
-    "output_price": "0.000000345",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
-    "id": "meta-llama/llama-3.2-3b-instruct:free",
-    "name": "Meta: Llama 3.2 3B Instruct (free)",
-    "vendor": "meta-llama",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 60000
   },
   {
     "id": "meta-llama/llama-3.2-3b-instruct",
@@ -3137,7 +3117,7 @@
     "output_price": "0.0000004",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 131072
+    "context_length": 32768
   },
   {
     "id": "cohere/command-r-08-2024",
@@ -3180,16 +3160,6 @@
     "context_length": 131072
   },
   {
-    "id": "nousresearch/hermes-3-llama-3.1-405b:free",
-    "name": "Nous: Hermes 3 405B Instruct (free)",
-    "vendor": "nousresearch",
-    "input_price": "0",
-    "output_price": "0",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
     "id": "nousresearch/hermes-3-llama-3.1-405b",
     "name": "Nous: Hermes 3 405B Instruct",
     "vendor": "nousresearch",
@@ -3220,16 +3190,6 @@
     "context_length": 128000
   },
   {
-    "id": "meta-llama/llama-3.1-8b-instruct",
-    "name": "Meta: Llama 3.1 8B Instruct",
-    "vendor": "meta-llama",
-    "input_price": "0.00000002",
-    "output_price": "0.00000003",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 131072
-  },
-  {
     "id": "meta-llama/llama-3.1-70b-instruct",
     "name": "Meta: Llama 3.1 70B Instruct",
     "vendor": "meta-llama",
@@ -3240,18 +3200,28 @@
     "context_length": 131072
   },
   {
+    "id": "meta-llama/llama-3.1-8b-instruct",
+    "name": "Meta: Llama 3.1 8B Instruct",
+    "vendor": "meta-llama",
+    "input_price": "0.00000005",
+    "output_price": "0.00000008",
+    "cache_read_price": "0.000000025",
+    "cache_write_price": null,
+    "context_length": 131072
+  },
+  {
     "id": "mistralai/mistral-nemo",
     "name": "Mistral: Mistral Nemo",
     "vendor": "mistralai",
-    "input_price": "0.00000002",
+    "input_price": "0.000000019",
     "output_price": "0.00000003",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 131072
   },
   {
-    "id": "openai/gpt-4o-mini-2024-07-18",
-    "name": "OpenAI: GPT-4o-mini (2024-07-18)",
+    "id": "openai/gpt-4o-mini",
+    "name": "OpenAI: GPT-4o-mini",
     "vendor": "openai",
     "input_price": "0.00000015",
     "output_price": "0.0000006",
@@ -3260,8 +3230,8 @@
     "context_length": 128000
   },
   {
-    "id": "openai/gpt-4o-mini",
-    "name": "OpenAI: GPT-4o-mini",
+    "id": "openai/gpt-4o-mini-2024-07-18",
+    "name": "OpenAI: GPT-4o-mini (2024-07-18)",
     "vendor": "openai",
     "input_price": "0.00000015",
     "output_price": "0.0000006",
@@ -3280,21 +3250,21 @@
     "context_length": 8192
   },
   {
-    "id": "openai/gpt-4o-2024-05-13",
-    "name": "OpenAI: GPT-4o (2024-05-13)",
-    "vendor": "openai",
-    "input_price": "0.000005",
-    "output_price": "0.000015",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 128000
-  },
-  {
     "id": "openai/gpt-4o",
     "name": "OpenAI: GPT-4o",
     "vendor": "openai",
     "input_price": "0.0000025",
     "output_price": "0.00001",
+    "cache_read_price": "0.00000125",
+    "cache_write_price": null,
+    "context_length": 128000
+  },
+  {
+    "id": "openai/gpt-4o-2024-05-13",
+    "name": "OpenAI: GPT-4o (2024-05-13)",
+    "vendor": "openai",
+    "input_price": "0.000005",
+    "output_price": "0.000015",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 128000
@@ -3317,7 +3287,7 @@
     "output_price": "0.00000062",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 65536
+    "context_length": 65535
   },
   {
     "id": "openai/gpt-4-turbo",
@@ -3403,8 +3373,8 @@
     "id": "mancer/weaver",
     "name": "Mancer: Weaver (alpha)",
     "vendor": "mancer",
-    "input_price": "0.00000075",
-    "output_price": "0.000001",
+    "input_price": "0.0000005",
+    "output_price": "0.00000075",
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 8000
@@ -3427,17 +3397,7 @@
     "output_price": "0.00000006",
     "cache_read_price": null,
     "cache_write_price": null,
-    "context_length": 4096
-  },
-  {
-    "id": "openai/gpt-4",
-    "name": "OpenAI: GPT-4",
-    "vendor": "openai",
-    "input_price": "0.00003",
-    "output_price": "0.00006",
-    "cache_read_price": null,
-    "cache_write_price": null,
-    "context_length": 8191
+    "context_length": 8192
   },
   {
     "id": "openai/gpt-3.5-turbo",
@@ -3448,5 +3408,15 @@
     "cache_read_price": null,
     "cache_write_price": null,
     "context_length": 16385
+  },
+  {
+    "id": "openai/gpt-4",
+    "name": "OpenAI: GPT-4",
+    "vendor": "openai",
+    "input_price": "0.00003",
+    "output_price": "0.00006",
+    "cache_read_price": null,
+    "cache_write_price": null,
+    "context_length": 8191
   }
 ]

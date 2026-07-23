@@ -10,7 +10,7 @@ import pytest
 
 REPO = os.path.join(os.path.dirname(__file__), "..")
 sys.path.insert(0, os.path.join(REPO, "data"))
-from sources.aa._parse_charts import parse_aa_charts, CHART_MAP  # noqa: E402
+from sources.aa._parse_charts import parse_aa_charts, CHART_TITLE_MAP  # noqa: E402
 from _result import ok, err  # noqa: E402
 
 CHARTS = os.path.join(REPO, "data", "sources", "aa", "aa_charts_export.json")
@@ -21,7 +21,10 @@ def test_ok_on_real_export():
     assert r.is_ok()
     d = r.unwrap()
     assert isinstance(d, dict)
-    assert "coding_index" in d
+    # AA removed the standalone Coding Index / Cost to Run bar charts; those
+    # metrics are now sourced from JSON-LD. Charts file should NOT expose them.
+    assert "coding_index" not in d
+    assert "cost_to_run" not in d
     assert "intel" in d
 
 

@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated": "2026-07-13",
+    "generated": "2026-07-23",
     "version": "1.0",
     "total_axes": 70,
-    "total_models": 2277,
+    "total_models": 2276,
     "sources": [
       "AA",
       "Arena Code",
@@ -55,8 +55,8 @@
           "aa.aa_math_index",
           "aa.aime_25",
           "aa.livecodebench",
-          "aa.aime",
           "aa.math_500",
+          "aa.aime",
           "aa.iq_per_mtok"
         ],
         "count": 41,
@@ -144,10 +144,10 @@
       "unit": "date",
       "higher_is_better": true,
       "description": "Model release date from the live Artificial Analysis API (aa_api_live.json). Useful for recency/version-comparison; not a quality metric.",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         "2025-01-28",
-        "2026-07-09"
+        "2026-07-21"
       ],
       "group": "Provenance",
       "normalize_range": [
@@ -163,7 +163,7 @@
       "unit": "tok/s",
       "higher_is_better": true,
       "description": "AA output speed in tokens per second",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         0,
         842.0
@@ -182,10 +182,10 @@
       "unit": "s",
       "higher_is_better": false,
       "description": "AA median time to first token in seconds",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         0,
-        109.0
+        116.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -201,7 +201,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         0,
         10.0
@@ -220,7 +220,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         0,
         50.0
@@ -239,7 +239,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA blended (weighted average) price",
-      "models_have": 118,
+      "models_have": 120,
       "range": [
         0,
         40.0
@@ -258,7 +258,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA cache read price per million tokens",
-      "models_have": 77,
+      "models_have": 78,
       "range": [
         0.003,
         1.0
@@ -277,7 +277,7 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "AA estimated cost per standard task",
-      "models_have": 32,
+      "models_have": 34,
       "range": [
         0.02,
         2.7498
@@ -431,7 +431,7 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "AA composite intelligence score (Pareto index)",
-      "models_have": 113,
+      "models_have": 115,
       "range": [
         3.0,
         60.0
@@ -450,9 +450,9 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "Graduate-level Google-proof QA accuracy (0-1)",
-      "models_have": 112,
+      "models_have": 114,
       "range": [
-        0.433,
+        0.375,
         0.941
       ],
       "group": "AA Benchmarks",
@@ -469,7 +469,7 @@
       "unit": "%",
       "higher_is_better": false,
       "description": "AA omniscience incorrect rate (0-1); lower is better",
-      "models_have": 104,
+      "models_have": 105,
       "range": [
         0.16,
         0.96
@@ -545,7 +545,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "Instruction-following benchmark score (0-1)",
-      "models_have": 90,
+      "models_have": 89,
       "range": [
         0.2299,
         0.8333
@@ -564,7 +564,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TAU-bench agentic benchmark v2 (0-1)",
-      "models_have": 89,
+      "models_have": 88,
       "range": [
         0,
         0.9912
@@ -583,7 +583,7 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TerminalBench hard subset accuracy (0-1)",
-      "models_have": 88,
+      "models_have": 87,
       "range": [
         0,
         0.6288
@@ -602,10 +602,10 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "AA composite coding capability index",
-      "models_have": 59,
+      "models_have": 67,
       "range": [
-        14.4,
-        78.3
+        7.2,
+        78.3482
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -621,10 +621,10 @@
       "unit": "s",
       "higher_is_better": false,
       "description": "Wall-clock seconds to complete one Intelligence Index Task; lower is better",
-      "models_have": 53,
+      "models_have": 62,
       "range": [
-        0.3,
-        14.2
+        0.1,
+        18.0
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -640,9 +640,9 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TAU-bench banking split accuracy (0-1)",
-      "models_have": 48,
+      "models_have": 59,
       "range": [
-        0.0598,
+        0.0289,
         0.3134
       ],
       "group": "AA Benchmarks",
@@ -659,9 +659,9 @@
       "unit": "score",
       "higher_is_better": true,
       "description": "TerminalBench v2.1 accuracy (0-1)",
-      "models_have": 47,
+      "models_have": 58,
       "range": [
-        0.0674,
+        0.0037,
         0.8464
       ],
       "group": "AA Benchmarks",
@@ -678,10 +678,10 @@
       "unit": "elo",
       "higher_is_better": true,
       "description": "AA-Briefcase analytical-quality Elo (mid estimate)",
-      "models_have": 35,
+      "models_have": 36,
       "range": [
         0.0,
-        1764.0
+        1751.0
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -697,10 +697,10 @@
       "unit": "elo",
       "higher_is_better": true,
       "description": "AA-Briefcase presentation Elo (mid estimate)",
-      "models_have": 35,
+      "models_have": 36,
       "range": [
         0.0,
-        1592.0
+        1740.0
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -823,6 +823,25 @@
       ]
     },
     {
+      "id": "aa.math_500",
+      "label": "MATH-500",
+      "source": "AA",
+      "type": "quality",
+      "unit": "score",
+      "higher_is_better": true,
+      "description": "MATH-500 accuracy (0-1)",
+      "models_have": 5,
+      "range": [
+        0.8696,
+        0.9767
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
       "id": "aa.aime",
       "label": "AIME",
       "source": "AA",
@@ -834,25 +853,6 @@
       "range": [
         0.51,
         0.8433
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.math_500",
-      "label": "MATH-500",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "MATH-500 accuracy (0-1)",
-      "models_have": 4,
-      "range": [
-        0.8927,
-        0.9767
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -995,9 +995,9 @@
       "unit": "%",
       "higher_is_better": true,
       "description": "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
-      "models_have": 35,
+      "models_have": 38,
       "range": [
-        5.4,
+        0.0,
         94.8
       ],
       "group": "Cache Efficiency",
@@ -1365,10 +1365,10 @@
       "unit": "tokens",
       "higher_is_better": true,
       "description": "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.",
-      "models_have": 445,
+      "models_have": 442,
       "range": [
         4095,
-        10000000
+        2000000
       ],
       "group": "Provenance",
       "normalize_range": [
@@ -1384,7 +1384,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter input price per million tokens",
-      "models_have": 341,
+      "models_have": 337,
       "range": [
         0.0,
         150.0
@@ -1403,7 +1403,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter output price per million tokens",
-      "models_have": 341,
+      "models_have": 337,
       "range": [
         0.0,
         600.0
@@ -1422,7 +1422,7 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter cache-read price per million tokens",
-      "models_have": 168,
+      "models_have": 184,
       "range": [
         0.002,
         7.5
@@ -1439,7 +1439,7 @@
       "AA\u00d7Arena Code": 17,
       "AA\u00d7Arena Text": 11,
       "AA\u00d7LiveBench": 20,
-      "AA\u00d7OpenRouter": 35,
+      "AA\u00d7OpenRouter": 36,
       "Arena Code\u00d7Arena Text": 18,
       "Arena Code\u00d7LiveBench": 11,
       "Arena Code\u00d7OpenRouter": 23,

@@ -11,11 +11,11 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 | 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` |
 | 1A | AA intelligence/benchmark charts | **SVG scrape (method-2)** — PRIMARY | none (public) | Browser console query → `aa_charts_export.json` (inside repo) → `aa` source | `aa_charts_export.json` |
 | 1B | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` |
-| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (551 models) | pulled 2026-07-09 |
-| 3 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (~344 models) | on full build (pull) |
+| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (579 models) | pulled 2026-07-23 |
+| 3 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (~342 models) | on full build (pull) |
 | 5 | LiveBench | **CSV download** (GitHub raw) | none | `_pull_sources.py` | `livebench_2026_01_08.csv`, `livebench_categories_2026_01_08.json` | pinned date 2026-01-08 |
 | 6 | OpenLLM v2 | **Parquet file** (manually placed) | none | Downloaded separately → `openllm_v2.parquet`, then `_pull_sources.py` reads it | `openllm_v2.parquet` → `openllm_aa_subset.json` | manual, not fetched by script |
-| 7 | Dirac.run | **Manual HTML table transcription** | none | Copy the full table from `dirac.run/posts/cache-hit-rates-agents` → `cache_hit_rates.json` | `dirac/cache_hit_rates.json` (276 rows) | manual, per snapshot |
+| 7 | Dirac.run | **HTML table parse** | none | Fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` → `cache_hit_rates.json` | `dirac/cache_hit_rates.json` (398 rows) | 2026-07-23 |
 | 8 | Chatbot Arena (Code + Text) | **JSON download** (manual) | none | Downloaded leaderboard JSON → dropped into repo | `arena_code.json`, `arena_text.json` | manual, per snapshot |
 
 ## Per-source detail
@@ -29,15 +29,14 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 ### 1A. Artificial Analysis — SVG scrape (`aa_charts_export.json`)  ← PRIMARY
   - **Method:** the AA site renders every chart as an inline **SVG** (recharts). A console snippet grabs each chart section (`[dir=ltr].scroll-mt-24`) → its `<svg>` outerHTML + visible `<span>` texts (title/subtitle/desc). The export is `data/sources/aa/aa_charts_export.json`: a JSON array of `{ svg, spans }`, one entry per chart (16 entries total; scatter charts carry no `<a>`/value text and are skipped by the parser).
   - **Why this over #1B (JSON-LD):** the SVG charts embed **model slugs** in `<a href="/models/{slug}">` and the metric value in `<text>` nodes. A Python parser (`data/sources/aa/_parse_charts.py`) pairs them by render order → clean `slug → value`. No vision, no OCR, no manual transcription. This is the **authoritative AA chart source**; #1B JSON-LD fills only the gaps method-2 doesn't cover.
-  - **Coverage (this export):** Coding Index (58 models), Intelligence Index (106), Briefcase Elo (35, 2 values/model: analytical + presentation), Omniscience Hallucination Rate (104, rendered as `89%` → stored `0.89`), Time per Intelligence Index Task (53), Cost to Run (50), Pricing (94). **Method-2 is a SUPERSET of the JSON-LD export for these metrics** (58-106 vs 10-20 models) and is ingested FIRST (Step 0) so it wins on overlap.
+  - **Coverage (this export):** Intelligence Index (107, "by Open Weights" bar chart), Briefcase Elo (36, 2 values/model: analytical + presentation), Omniscience Hallucination Rate (105, rendered as `89%` → stored `0.89`), Time per Intelligence Index Task (62), Pricing (95). **AA removed the standalone Coding Index and Cost to Run bar charts** — those metrics now come from the JSON-LD export (#1B) instead (`aa_coding_index`, `cost_segments.*`). The parser matches charts by title (`spans[0]`), not position, so a re-order/removal on AA's side can't silently mis-map data; empty (scatter) charts are skipped.
   - **Value normalization:** parser strips `$` (pricing), `%` (omniscience → fraction), `&lt;`/`<` (less-than sentinel), thousands commas. Rounds to the SVG label precision (e.g. `0.3` not `0.2963` — the precise value lives in JSON-LD if needed).
   - **Pricing chart — SOLVED:** the 3 `recharts-label-list` groups correspond to the 3 series named in the chart title ("Cache Hit, Input, and Output"). Each value `<text>` carries an `x` coordinate; aligning values to model columns by `x` (rounding to the per-model band) yields per-model `cache_hit_price` / `inp_price` / `out_price`. Validated against the live API for `gpt-oss-20b` (0.05/0.2) and `claude-opus-4-8` (5/25) — exact match. All 12 gpt-5.6 models gain pricing this way. Parsed by `_parse_pricing()`.
-  - **Cost-to-Run chart — DEFERRED:** its SVG does not expose clean per-model series alignment (6 label-list groups at divergent x-ranges, 41 ambiguous columns for 50 models). Mapping its `$X` values to `cost_segments.*` sub-fields would be guesswork → ingestion paused. Re-scrape with the breakdown legend/series tagged, or source cost segments from `aa_cost_breakdown.json` (already handled separately).
   - **Repro (scrape script `scraped-method-2.js`):**
     ```js
     // In the AA page console — capture each chart section as { svg, spans }.
     JSON.stringify(Array.from(document.querySelectorAll('[dir=ltr].scroll-mt-24'))
-      .map(el => ({ svg: el.querySelector('svg')?.outerHTML || '',
+      .map(el => ({ svg: el.querySelector('svg[role]')?.outerHTML || '',
                     spans: Array.from(el.querySelectorAll('span')).map(s => s.textContent) })))
     ```
     Save the array as `data/sources/aa/aa_charts_export.json`.
@@ -94,17 +93,17 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 - **Repro:** download parquet externally first, then `python data/_pull_sources.py`.
 
 ### 7. Dirac.run (`dirac/cache_hit_rates.json`)
-- **Method:** **manual transcription** of the full table at `dirac.run/posts/cache-hit-rates-agents#the-full-table` (OpenRouter "Effective Pricing" hourly snapshots).
-- **No API.** 276 rows: `model`, `provider`, `cache_hit_rate`, `eff_input_price`, `eff_output_price`.
+- **Method:** fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` (the page renders the full table in HTML; extract `<tr>` rows → `model`, `provider`, `eff_input_price`, `eff_output_price`, `cache_hit_rate`). A one-off Python parse (`urllib` + regex on `<table>`) writes `cache_hit_rates.json` — no manual transcription needed.
+- **No API.** 398 rows: `model`, `provider`, `cache_hit_rate`, `eff_input_price`, `eff_output_price`.
 - **Semantics:** observed % of input served from prefix cache — distinct from AA's `cache_hit_price` ($/Mtok read price). Never conflate.
-- **Repro:** re-copy the table when a new snapshot posts.
+- **Repro:** re-fetch + re-parse when a new snapshot posts.
 
 ### 8. Chatbot Arena (Code + Text)
 - **Method:** **manual JSON download** of the leaderboard → `arena_code.json` / `arena_text.json` (each has `meta` + `models[]`).
 - **Not fetched by any script.** Place files manually; `_build_registry.py` consumes them.
 
 ## What `_pull_sources.py` actually covers
-Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. The other sources (#1, #1A, #1B, #2, #7, #8) are acquired **manually** (scrape / console-query / API curl / table-copy / JSON download) and committed as files. This is by design — those sources have no clean automatable endpoint or require keys/transcription.
+Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. The other sources (#1, #1A, #1B, #2, #8) are acquired **manually** (scrape / console-query / API curl / JSON download) and committed as files. #7 (Dirac.run) is fetched by a one-off `urllib`+regex table parse (no clean API endpoint, but no manual transcription). This is by design — those sources require keys/console-query or have no stable endpoint.
 
 > **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), and live-API (#2) all feed the same `aa.*` namespace via `get_aa_models()` merge. The SVG scrape (#1A) is now the preferred way to add new models + authoritative metrics without vision/scraping.
 
@@ -116,7 +115,7 @@ Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. T
 #  - copy aa_charts_export.json (SVG console scrape of AA page) → aa/      (PRIMARY)
 #  - copy aa_jsonld_export.json (JSON-LD console query of AA page) → aa/  (fills gaps)
 #  - curl AA live API → aa/aa_api_live.json   (needs AA_API_KEY)
-#  - copy Dirac table → dirac/cache_hit_rates.json
+#  - parse Dirac table → dirac/cache_hit_rates.json
 #  - download Arena JSON → arena_code.json, arena_text.json
 #  - download openllm_v2.parquet → data/sources/
 

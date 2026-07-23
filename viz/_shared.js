@@ -28,6 +28,7 @@ const CREATOR_COLORS = {
   "Tencent":       "#00d0ff",
   "Arcee AI":      "#ffc24d",
   "SpaceXAI":       "#c77dff",
+  "Kimi":           "#7c5cff",
 };
 const CREATOR_BORDER = { "Mistral": "#f5f5f0", "OpenAI": "#333", "xAI": "#f5f5f0" };
 

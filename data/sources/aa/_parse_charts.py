@@ -15,15 +15,26 @@ def _load_json(path: str):
         return err(f"{os.path.basename(path)}: {e}")
 
 
-CHART_MAP = {
-    0: "coding_index",
-    1: "intel",
-    2: "briefcase",
-    3: "omniscience",
-    8: "cost_to_run",
-    9: "pricing",
-    12: "time_per_task",
+# Map a chart's title (spans[0]) to its logical key. Title-based (not index-based)
+# so AA re-ordering / removing charts doesn't silently mis-map data. A chart
+# only contributes if its title matches a known key; unknown/removed charts
+# (e.g. AA dropped "Coding Index") are skipped instead of corrupting another key.
+CHART_TITLE_MAP = {
+    "intelligence index by open weights": "intel",
+    "briefcase": "briefcase",
+    "omniscience": "omniscience",
+    "cost to run": "cost_to_run",
+    "pricing": "pricing",
+    "time per intelligence": "time_per_task",
 }
+
+
+def _chart_key(spans):
+    title = (spans[0] if spans else "").lower()
+    for sub, key in CHART_TITLE_MAP.items():
+        if sub in title:
+            return key
+    return None
 
 
 def _norm_value(text: str):
@@ -156,14 +167,15 @@ def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
         return err(loaded.error)
     data = loaded.unwrap()
     chart_data = {}
-    for idx, key in CHART_MAP.items():
-        if idx >= len(data):
+    for entry in data:
+        key = _chart_key(entry.get("spans", []))
+        if key is None:
             continue
-        svg = data[idx].get("svg") or ""
-        if key == "pricing":
-            chart_data[key] = _parse_pricing(svg)
-        else:
-            chart_data[key] = _parse_chart(svg)
+        svg = entry.get("svg") or ""
+        rows = _parse_pricing(svg) if key == "pricing" else _parse_chart(svg)
+        if not rows:
+            continue
+        chart_data[key] = rows
     return ok(chart_data)
 
 
