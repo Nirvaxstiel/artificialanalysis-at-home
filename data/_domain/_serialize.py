@@ -153,7 +153,7 @@ def safe_iq_per_mtok(v) -> Optional[IQ_PerMToken]:
     return IQ_PerMToken(v) if v is not None else None
 
 
-def safe_iq_per_mtokdollar(v) -> Optional[IQ_PerMTokenDollar]:
+def safe_cost_per_iq(v) -> Optional[IQ_PerMTokenDollar]:
     v = safe_float(v)
     return IQ_PerMTokenDollar(v) if v is not None else None
 

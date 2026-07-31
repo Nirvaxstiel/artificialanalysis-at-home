@@ -20,7 +20,7 @@ from ._serialize import (
     safe_tok_per_task, safe_tps, safe_ttft, safe_useful_cost,
     safe_reasoning_tax, safe_cache, safe_cost_segment,
     safe_intel, safe_elo, safe_ci, safe_votes, safe_benchmark,
-    safe_iq_per_mtok, safe_iq_per_mtokdollar, safe_iq_per_dollar,
+    safe_iq_per_mtok, safe_cost_per_iq, safe_iq_per_dollar,
     safe_params, safe_carbon, safe_ctx_window, safe_pct,
     safe_omniscience, safe_response_time, safe_axis_metric,
     try_model_type, try_archetype,

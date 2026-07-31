@@ -51,7 +51,8 @@ class ProjectionRow:
     intel: Optional[IntelligenceScore] = None
     iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
     iq_per_mtok: Optional[IQ_PerMToken] = None
-    iq_per_mtokdollar: Optional[IQ_PerMTokenDollar] = None
+    iq_per_1k: Optional[IQ_PerDollarPoint] = None
+    cost_per_iq: Optional[IQ_PerMTokenDollar] = None
     livebench_average: Optional[BenchmarkScore] = None
     livebench_coding: Optional[BenchmarkScore] = None
     livebench_reasoning: Optional[BenchmarkScore] = None
@@ -116,8 +117,9 @@ class ProjectionRow:
     ttft_variance: Optional[AxisMetric] = None
     cache_hit_rate_max: Optional[CacheHitRate] = None
     iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
-    iq_per_1k_pt: Optional[IQ_PerDollarPoint] = None
-    cost_per_iq_pt: Optional[CostPerIQPoint] = None
+    iq_per_mtok: Optional[IQ_PerMToken] = None
+    iq_per_1k: Optional[IQ_PerDollarPoint] = None
+    cost_per_iq: Optional[IQ_PerMTokenDollar] = None
     radar_intel: Optional[float] = None
     radar_speed: Optional[float] = None
     radar_cache_eff: Optional[float] = None
@@ -141,7 +143,8 @@ class ProjectionRow:
         "cost_seg_reasoning": Provenance.SOURCED, "cost_seg_cache_write": Provenance.SOURCED,
         "cost_seg_cache_hit": Provenance.SOURCED, "cost_seg_input": Provenance.SOURCED,
         "intel": Provenance.SOURCED, "iq_per_dollar_pt": Provenance.SOURCED,
-        "iq_per_mtok": Provenance.SOURCED, "iq_per_mtokdollar": Provenance.SOURCED,
+        "iq_per_mtok": Provenance.SOURCED, "iq_per_1k": Provenance.SOURCED,
+        "cost_per_iq": Provenance.SOURCED,
         "livebench_average": Provenance.SOURCED,
         "livebench_coding": Provenance.SOURCED,
         "livebench_reasoning": Provenance.SOURCED,
@@ -192,18 +195,12 @@ class ProjectionRow:
         "cache_hit_rate_max": Provenance.SOURCED,
         "archetype": Provenance.DERIVED,
         "iq_per_dollar_pt": Provenance.SOURCED,
-        "iq_per_1k_pt": Provenance.DERIVED, "cost_per_iq_pt": Provenance.DERIVED,
         "radar_intel": Provenance.DERIVED, "radar_speed": Provenance.DERIVED,
         "radar_cache_eff": Provenance.DERIVED, "radar_cost_eff": Provenance.DERIVED,
         "radar_ctx": Provenance.DERIVED,
     }
 
     def compute_derived(self) -> 'ProjectionRow':
-        intel_val = self.intel.as_primitive() if self.intel else None
-        cost_task = self.cost_per_task.as_primitive() if self.cost_per_task else None
-        if intel_val is not None and cost_task is not None and cost_task > 0:
-            self.iq_per_1k_pt = IQ_PerDollarPoint(round(intel_val / cost_task * 1000, 1))
-            self.cost_per_iq_pt = CostPerIQPoint(round(cost_task / intel_val, 6))
         return self
 
     def to_dict(self) -> Dict[str, Any]:
@@ -220,7 +217,8 @@ class ProjectionRow:
             "out_price": self.out_price.as_primitive() if self.out_price else None,
             "iq_per_dollar_pt": None,
             "iq_per_mtok": None,
-            "iq_per_mtokdollar": None,
+            "iq_per_1k": None,
+            "cost_per_iq": None,
             "useful_cost": None,
             "reasoning_tax_pct": None,
             "archetype": self.meta.archetype.value if self.meta else None,
@@ -240,7 +238,8 @@ class ProjectionRow:
             "cache_hit_price": self.cache_hit_price,
             "iq_per_dollar_pt": self.iq_per_dollar_pt,
             "iq_per_mtok": self.iq_per_mtok,
-            "iq_per_mtokdollar": self.iq_per_mtokdollar,
+            "iq_per_1k": self.iq_per_1k,
+            "cost_per_iq": self.cost_per_iq,
             "useful_cost": self.useful_cost,
             "reasoning_tax_pct": self.reasoning_tax_pct,
             "cost_seg_total": self.cost_seg_total,
@@ -312,8 +311,6 @@ class ProjectionRow:
             "ttft_variance": self.ttft_variance,
             "cache_hit_rate_max": self.cache_hit_rate_max,
             "iq_per_dollar_pt": self.iq_per_dollar_pt,
-            "iq_per_1k_pt": self.iq_per_1k_pt,
-            "cost_per_iq_pt": self.cost_per_iq_pt,
             "radar_intel": self.radar_intel,
             "radar_speed": self.radar_speed,
             "radar_cache_eff": self.radar_cache_eff,

@@ -18,6 +18,10 @@ import pytest
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO, "data")
+# Insert both REPO (so `data` is importable as a package — needed for the
+# 3-dot relative imports inside _pipeline) and DATA_DIR, so the test is not
+# order-dependent on sibling tests having set up the path.
+sys.path.insert(0, REPO)
 sys.path.insert(0, DATA_DIR)
 
 from _pipeline import build_from_cache  # noqa: E402

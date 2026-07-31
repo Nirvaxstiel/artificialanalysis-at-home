@@ -95,9 +95,9 @@ function renderBannerStats(ctx) {
   const byIntel = [...data].filter(m => m.intel != null).sort((a, b) => b.intel - a.intel);
   const byCost = [...data].filter(m => m.cost_per_task != null).sort((a, b) => a.cost_per_task - b.cost_per_task);
   const byValue = [...data]
-    .filter(m => m.intel != null && m.cost_per_task != null && m.cost_per_task > 0)
-    .sort((a, b) => (b.intel / b.cost_per_task) - (a.intel / a.cost_per_task));
-  const champ = byIntel[0], cheapest = byCost[0], bestValue = byValue[0];
+    .filter(m => m.iq_per_1k != null)
+    .sort((a, b) => b.iq_per_1k - a.iq_per_1k);
+  const champ = byIntel[0], cheapest = byCost[0], bestValue = byValue[0] ?? null;
 
   function setStat(sel, model, slug, view, sortKey, sortDir) {
     const el = document.querySelector(sel);

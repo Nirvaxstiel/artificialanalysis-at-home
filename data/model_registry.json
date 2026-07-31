@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-07-23",
+    "generated": "2026-07-31",
     "version": "1.0",
-    "model_count": 2276,
+    "model_count": 2279,
     "source_count": {
-      "aa": 120,
+      "aa": 123,
       "livebench": 127,
       "arena_text": 30,
       "arena_code": 50,
@@ -20,7 +20,7 @@
       "OpenRouter",
       "Cost Breakdown"
     ],
-    "name_map_size": 2394
+    "name_map_size": 2397
   },
   "name_map": {
     "aa:claude-fable-5": "claude-fable-5",
@@ -64,8 +64,12 @@
     "arena:gemini-3.5-flash": "gemini-3.5-flash",
     "arena_code:gemini-3.5-flash": "gemini-3.5-flash",
     "openrouter:google/gemini-3.5-flash": "gemini-3.5-flash",
+    "aa:deepseek-v4-flash": "deepseek-v4-flash",
+    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
+    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
     "aa:gpt-5-6-luna-xhigh": "gpt-5-6-luna-xhigh",
     "aa:gpt-5-6-terra-high": "gpt-5-6-terra-high",
+    "aa:kimi-k3-low": "kimi-k3-low",
     "aa:gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
     "arena:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
     "arena_code:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
@@ -110,9 +114,7 @@
     "aa:mimo-v2-pro": "mimo-v2-pro",
     "livebench:mimo-v2-pro": "mimo-v2-pro",
     "arena_code:mimo-v2-pro": "mimo-v2-pro",
-    "aa:deepseek-v4-flash": "deepseek-v4-flash",
-    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
-    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "aa:deepseek-v4-flash-0420": "deepseek-v4-flash-0420",
     "aa:glm-5-1": "glm-5.1",
     "livebench:glm-5.1": "glm-5.1",
     "arena:glm-5.1": "glm-5.1",
@@ -147,7 +149,6 @@
     "aa:grok-4-3": "grok-4.3",
     "livebench:grok-4.3": "grok-4.3",
     "openrouter:x-ai/grok-4.3": "grok-4.3",
-    "aa:deepseek-v4-flash-high": "deepseek-v4-flash-high",
     "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
     "aa:qwen3-6-27b": "qwen3-6-27b",
     "aa:claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
@@ -176,16 +177,16 @@
     "livebench:nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
     "openrouter:nvidia/nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
     "aa:gemini-3-1-flash-lite-preview": "gemini-3-1-flash-lite-preview",
-    "aa:k-exaone": "k-exaone",
     "aa:gpt-oss-120b": "gpt-oss-120b",
     "livebench:gpt-oss-120b": "gpt-oss-120b",
     "openrouter:openai/gpt-oss-120b": "gpt-oss-120b",
-    "aa:exaone-4-5-33b": "exaone-4-5-33b",
+    "aa:k-exaone": "k-exaone",
     "aa:gemma-4-12b": "gemma-4-12b",
     "aa:nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
     "aa:mercury-2": "mercury-2",
     "openrouter:inception/mercury-2": "mercury-2",
     "aa:nova-2-0-omni-reasoning-medium": "nova-2-0-omni-reasoning-medium",
+    "aa:exaone-4-5-33b": "exaone-4-5-33b",
     "aa:nova-2-0-pro-reasoning-low": "nova-2-0-pro-reasoning-low",
     "aa:nova-2-0-lite-reasoning-medium": "nova-2-0-lite-reasoning-medium",
     "aa:nova-2-0-lite-reasoning": "nova-2-0-lite-reasoning",
@@ -222,8 +223,10 @@
     "aa:gemini-3-6-flash": "gemini-3-6-flash",
     "aa:muse-spark-1-1": "muse-spark-1-1",
     "aa:grok-4-5": "grok-4-5",
+    "aa:claude-opus-5": "claude-opus-5",
     "aa:gpt-5-5-pro": "gpt-5.5-pro",
     "openrouter:openai/gpt-5.5-pro": "gpt-5.5-pro",
+    "aa:deepseek-v4-flash-high": "deepseek-v4-flash-high",
     "aa:claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
     "aa:claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
     "aa:mistral-medium-3-5": "mistral-medium-3.5",
@@ -4503,13 +4506,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 5.0,
-          "blended": 0.7,
+          "inp_price": 1,
+          "out_price": 5,
+          "blended": 2,
           "cache_hit_price": null,
           "cost_per_task": 0.24,
           "tokens_m": 88,
-          "speed_tps": 102.0,
+          "speed_tps": 125.89,
           "useful_cost": 6.1255,
           "reasoning_tax_pct": 62.5,
           "cost_segments": {
@@ -4520,7 +4523,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 15.051
+          "ttft": 8.882
         }
       },
       "benchmarks": {
@@ -4528,10 +4531,10 @@
           "intel": 30,
           "iq_per_dollar": 0.055654499999999996,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 17.968,
-          "coding_index": 43.9,
+          "iq_per_1k": 55.6545,
+          "cost_per_iq": 17.968,
+          "aa_coding_index": 43.9,
           "math_index": 83.7,
-          "mmlu_pro": 0.76,
           "gpqa": 0.672
         }
       },
@@ -4550,13 +4553,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 3.0,
-          "out_price": 15.0,
-          "blended": 12.0,
+          "inp_price": 3,
+          "out_price": 15,
+          "blended": 6,
           "cache_hit_price": 0.3,
           "cost_per_task": 0.41,
           "tokens_m": 64,
-          "speed_tps": 48.2,
+          "speed_tps": 0,
           "useful_cost": 22.7936,
           "reasoning_tax_pct": 43.9,
           "cost_segments": {
@@ -4567,7 +4570,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 8.328
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -4575,7 +4578,8 @@
           "intel": 36.0,
           "iq_per_dollar": 0.029476500000000003,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 33.9253,
+          "iq_per_1k": 29.4765,
+          "cost_per_iq": 33.9253,
           "aa_coding_index": 52.1,
           "aa_math_index": 88,
           "gpqa": 0.834,
@@ -4595,8 +4599,7 @@
           "omniscience_hallucination_rate": 0.47,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 5.1,
-          "coding_index": 52.1,
+          "time_per_task": 5.5,
           "math_index": 88
         }
       },
@@ -4615,17 +4618,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 10.0,
-          "out_price": 50.0,
-          "blended": 40.0,
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
           "cache_hit_price": 1.0,
-          "cost_per_task": 2.7498239008825984,
+          "cost_per_task": 3.148706712412073,
           "tokens_m": 87,
-          "speed_tps": 69.9067007025236,
+          "speed_tps": 59.387,
           "useful_cost": 64.7186,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 59.379
+          "ttft": 46.868
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4644,8 +4647,9 @@
           "intel": 60.0,
           "iq_per_dollar": 0.0106562,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 93.842,
-          "aa_coding_index": 76.4911915660979,
+          "iq_per_1k": 10.6562,
+          "cost_per_iq": 93.842,
+          "aa_coding_index": 76.5,
           "aa_math_index": null,
           "gpqa": 0.926,
           "mmlu_pro": null,
@@ -4662,10 +4666,9 @@
           "terminalbench_hard": 0.628787878787879,
           "terminalbench_v2_1": 0.846441947565543,
           "omniscience_hallucination_rate": 0.55,
-          "briefcase_analytical_quality_elo": 1600.0,
-          "briefcase_presentation_elo": 1346.0,
-          "time_per_task": 4.9,
-          "coding_index": 76.5
+          "briefcase_analytical_quality_elo": 1599.0,
+          "briefcase_presentation_elo": 1344.0,
+          "time_per_task": 5.8
         },
         "arena_text": {
           "elo": 1509,
@@ -4969,17 +4972,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 25.0,
-          "blended": 20.0,
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 55.6,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 13.734
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -4987,7 +4990,8 @@
           "intel": 41.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 91.3,
           "gpqa": 0.866,
@@ -5091,17 +5095,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 25.0,
-          "blended": 20.0,
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 39.1,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 14.055
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -5109,7 +5113,8 @@
           "intel": 44.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.896,
@@ -5482,17 +5487,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 25.0,
-          "blended": 20.0,
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 48.0,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 16.853
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5511,8 +5516,9 @@
           "intel": 54.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 73.6020079067832,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 73.6,
           "aa_math_index": null,
           "gpqa": 0.914,
           "mmlu_pro": null,
@@ -5531,8 +5537,7 @@
           "omniscience_hallucination_rate": 0.36,
           "briefcase_analytical_quality_elo": 1045.0,
           "briefcase_presentation_elo": 1000.0,
-          "time_per_task": 6.1,
-          "coding_index": 73.6
+          "time_per_task": 6.9
         },
         "arena_text": {
           "elo": 1494,
@@ -5587,13 +5592,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 25.0,
-          "blended": 20.0,
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
           "cache_hit_price": 0.5,
           "cost_per_task": 1.8,
           "tokens_m": 120,
-          "speed_tps": 64.9,
+          "speed_tps": 61.901,
           "useful_cost": 31.2713,
           "reasoning_tax_pct": 44.4,
           "cost_segments": {
@@ -5604,7 +5609,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.2
           },
-          "ttft": 39.258
+          "ttft": 17.269
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5623,8 +5628,9 @@
           "intel": 56.0,
           "iq_per_dollar": 0.0149232,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 67.0098,
-          "aa_coding_index": 74.2535372451103,
+          "iq_per_1k": 14.9232,
+          "cost_per_iq": 67.0098,
+          "aa_coding_index": 74.3,
           "aa_math_index": null,
           "gpqa": 0.92,
           "mmlu_pro": null,
@@ -5641,10 +5647,9 @@
           "terminalbench_hard": 0.583333333333333,
           "terminalbench_v2_1": 0.846441947565543,
           "omniscience_hallucination_rate": 0.36,
-          "briefcase_analytical_quality_elo": 1297.0,
-          "briefcase_presentation_elo": 1322.0,
-          "time_per_task": 7.1,
-          "coding_index": 74.3
+          "briefcase_analytical_quality_elo": 1295.0,
+          "briefcase_presentation_elo": 1321.0,
+          "time_per_task": 8.5
         },
         "arena_text": {
           "elo": 1477,
@@ -5686,6 +5691,60 @@
       },
       "aliases": {
         "openrouter": "anthropic/claude-opus-4.8-fast"
+      }
+    },
+    {
+      "id": "claude-opus-5",
+      "creator": "Anthropic",
+      "meta": {
+        "release_date": "2026-07-24"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
+          "cache_hit_price": null,
+          "cost_per_task": 2.3364632606812896,
+          "tokens_m": null,
+          "speed_tps": 55.526,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 24.476
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 60.7,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 78,
+          "aa_math_index": null,
+          "gpqa": 0.932,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": null,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-opus-5"
       }
     },
     {
@@ -5937,13 +5996,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 3.0,
-          "out_price": 15.0,
-          "blended": 2.1,
+          "inp_price": 3,
+          "out_price": 15,
+          "blended": 6,
           "cache_hit_price": null,
           "cost_per_task": 1.14,
           "tokens_m": 200,
-          "speed_tps": 51.0,
+          "speed_tps": 0,
           "useful_cost": 16.7793,
           "reasoning_tax_pct": 43.9,
           "cost_segments": {
@@ -5954,7 +6013,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.14
           },
-          "ttft": 84.306
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -5962,8 +6021,9 @@
           "intel": 47,
           "iq_per_dollar": 0.0140054,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 71.4011,
-          "coding_index": 63,
+          "iq_per_1k": 14.0054,
+          "cost_per_iq": 71.4011,
+          "aa_coding_index": 63,
           "gpqa": 0.875
         }
       },
@@ -5982,13 +6042,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 10.0,
-          "blended": 8.0,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": 0.2,
           "cost_per_task": 2.29,
           "tokens_m": 300,
-          "speed_tps": 78.1,
+          "speed_tps": 85.895,
           "useful_cost": 20.0506,
           "reasoning_tax_pct": 43.7,
           "cost_segments": {
@@ -5999,7 +6059,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 90.617
+          "ttft": 108.622
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -6018,8 +6078,9 @@
           "intel": 53.0,
           "iq_per_dollar": 0.008811,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 113.494,
-          "aa_coding_index": 71.5455507005132,
+          "iq_per_1k": 8.811,
+          "cost_per_iq": 113.494,
+          "aa_coding_index": 71.5,
           "aa_math_index": null,
           "gpqa": 0.911,
           "mmlu_pro": null,
@@ -6038,8 +6099,7 @@
           "omniscience_hallucination_rate": 0.37,
           "briefcase_analytical_quality_elo": 1237.0,
           "briefcase_presentation_elo": 1220.0,
-          "time_per_task": 10.1,
-          "coding_index": 71.5
+          "time_per_task": 9.6
         }
       },
       "aliases": {
@@ -6058,17 +6118,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 10.0,
-          "blended": 8.0,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 74.5,
+          "speed_tps": 67.153,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.435
+          "ttft": 5.582
         }
       },
       "benchmarks": {
@@ -6076,7 +6136,8 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -6095,7 +6156,7 @@
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": null,
           "briefcase_analytical_quality_elo": 885.0,
-          "briefcase_presentation_elo": 900.0,
+          "briefcase_presentation_elo": 778.0,
           "time_per_task": null
         }
       },
@@ -6114,17 +6175,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 10.0,
-          "blended": 8.0,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 63.856,
+          "speed_tps": 60.803,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.441
+          "ttft": 1.186
         }
       },
       "benchmarks": {
@@ -6132,7 +6193,8 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -6170,17 +6232,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 10.0,
-          "blended": 8.0,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 65.623,
+          "speed_tps": 63.457,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.744
+          "ttft": 1.759
         }
       },
       "benchmarks": {
@@ -6188,7 +6250,8 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -6207,7 +6270,7 @@
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": null,
           "briefcase_analytical_quality_elo": 838.0,
-          "briefcase_presentation_elo": 622.0,
+          "briefcase_presentation_elo": 621.0,
           "time_per_task": null
         }
       },
@@ -6245,17 +6308,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 10.0,
-          "blended": 8.0,
+          "inp_price": 2,
+          "out_price": 10,
+          "blended": 4,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 81.127,
+          "speed_tps": 67.123,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 17.184
+          "ttft": 10.442
         }
       },
       "benchmarks": {
@@ -6263,7 +6326,8 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -6281,7 +6345,7 @@
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": null,
-          "briefcase_analytical_quality_elo": 1079.0,
+          "briefcase_analytical_quality_elo": 1077.0,
           "briefcase_presentation_elo": 1149.0,
           "time_per_task": null
         }
@@ -8357,22 +8421,22 @@
     },
     {
       "id": "deepseek-v4-flash",
-      "name": "DeepSeek V4 Flash (Reasoning, Max Effort)",
+      "name": "DeepSeek V4 Flash 0731 (max)",
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24",
+        "release_date": "2026-07-31",
         "context_window": 1048576
       },
       "pricing": {
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.245,
+          "blended": 0.175,
           "cache_hit_price": 0.003,
           "cost_per_task": 0.02,
           "tokens_m": 230,
-          "speed_tps": 101.0,
+          "speed_tps": 0,
           "useful_cost": 0.3149,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -8383,7 +8447,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.838
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 9.8e-08,
@@ -8397,31 +8461,31 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 50.0,
           "iq_per_dollar": 0.5523336000000001,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 1.8105,
-          "aa_coding_index": 56.2,
+          "iq_per_1k": 552.3336,
+          "cost_per_iq": 1.8105,
+          "aa_coding_index": 69.1,
           "aa_math_index": null,
-          "gpqa": 0.894,
+          "gpqa": 0.908,
           "mmlu_pro": null,
-          "hle": 0.321,
+          "hle": 0.368,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
-          "ifbench": 0.791836734693877,
-          "lcr": 0.63,
-          "scicode": 0.449,
-          "tau2": 0.950292397660819,
-          "tau_banking": 0.228865979381443,
-          "terminalbench_hard": 0.356060606060606,
-          "terminalbench_v2_1": 0.617977528089888,
-          "omniscience_hallucination_rate": 0.96,
-          "briefcase_analytical_quality_elo": 1199.0,
-          "briefcase_presentation_elo": 1115.0,
-          "time_per_task": 5.5,
-          "coding_index": 56.2
+          "ifbench": null,
+          "lcr": 0.656666666666667,
+          "scicode": 0.499,
+          "tau2": null,
+          "tau_banking": 0.311340206185567,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.786516853932584,
+          "omniscience_hallucination_rate": 0.84,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": null
         },
         "livebench": {
           "average": 67.67,
@@ -8441,12 +8505,65 @@
       }
     },
     {
+      "id": "deepseek-v4-flash-0420",
+      "creator": "DeepSeek",
+      "meta": {
+        "release_date": "2026-04-24"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.14,
+          "out_price": 0.28,
+          "blended": 0.175,
+          "cache_hit_price": null,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 106.728,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 0.906
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 40.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 56.2,
+          "aa_math_index": null,
+          "gpqa": 0.894,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.96,
+          "briefcase_analytical_quality_elo": 1199.0,
+          "briefcase_presentation_elo": 1115.0,
+          "time_per_task": 5.6
+        }
+      },
+      "aliases": {
+        "aa": "deepseek-v4-flash-0420"
+      }
+    },
+    {
       "id": "deepseek-v4-flash-high",
       "name": "DeepSeek V4 Flash (Reasoning, High Effort)",
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24",
         "context_window": 1048576
       },
       "pricing": {
@@ -8454,43 +8571,37 @@
           "inp_price": 0.14,
           "out_price": 0.28,
           "blended": 0.245,
-          "cache_hit_price": 0.03,
+          "cache_hit_price": 0.028,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 0,
+          "speed_tps": null,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cost_segments": null,
-          "ttft": 0
+          "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 37.0,
+          "intel": 37,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 52,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": null,
           "aa_math_index": null,
-          "gpqa": 0.867,
+          "gpqa": null,
           "mmlu_pro": null,
-          "hle": 0.278,
+          "hle": null,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
-          "ifbench": 0.734693877551021,
-          "lcr": 0.626666666666667,
-          "scicode": 0.42,
-          "tau2": 0.956140350877193,
-          "tau_banking": 0.197938144329897,
-          "terminalbench_hard": 0.386363636363636,
-          "terminalbench_v2_1": 0.569288389513109,
-          "omniscience_hallucination_rate": 0.9,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 52
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -8508,13 +8619,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.44,
+          "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.7625,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
           "cost_per_task": 0.04,
           "tokens_m": 180,
-          "speed_tps": 64.4709867534215,
+          "speed_tps": 66.384,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -8525,7 +8636,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.021
+          "ttft": 1.05
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -8542,7 +8653,8 @@
           "intel": 44.0,
           "iq_per_dollar": 0.249518,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 4.0077,
+          "iq_per_1k": 249.518,
+          "cost_per_iq": 4.0077,
           "aa_coding_index": 59.4,
           "aa_math_index": null,
           "gpqa": 0.888,
@@ -8560,10 +8672,9 @@
           "terminalbench_hard": 0.462121212121212,
           "terminalbench_v2_1": 0.640449438202247,
           "omniscience_hallucination_rate": 0.94,
-          "briefcase_analytical_quality_elo": 0.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": 8.0,
-          "coding_index": 59.4
+          "briefcase_analytical_quality_elo": 1466.0,
+          "briefcase_presentation_elo": 1485.0,
+          "time_per_task": 8.3
         },
         "dirac": {
           "cache_hit_rate_max": 89.8
@@ -8602,17 +8713,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.44,
+          "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.7625,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 81.0,
+          "speed_tps": 56.872,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.007
+          "ttft": 1.016
         }
       },
       "benchmarks": {
@@ -8620,7 +8731,8 @@
           "intel": 43.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 58.7,
           "aa_math_index": null,
           "gpqa": 0.905,
@@ -8640,8 +8752,7 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.0,
-          "coding_index": 58.7
+          "time_per_task": 6.8
         }
       },
       "aliases": {
@@ -8854,7 +8965,8 @@
           "intel": 13.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 19.7,
           "aa_math_index": null,
           "gpqa": 0.669,
@@ -8874,8 +8986,7 @@
           "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 19.7
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -10079,7 +10190,8 @@
           "intel": 3.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 50.3,
           "gpqa": 0.515,
@@ -10136,7 +10248,8 @@
           "intel": 11.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 80,
           "gpqa": 0.739,
@@ -10190,11 +10303,12 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 23.0,
+          "intel": 20.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 23.6,
           "aa_math_index": null,
           "gpqa": 0.794,
           "mmlu_pro": null,
@@ -10207,9 +10321,9 @@
           "lcr": 0.493333333333333,
           "scicode": 0.28,
           "tau2": 0.780701754385965,
-          "tau_banking": null,
+          "tau_banking": 0.111340206185567,
           "terminalbench_hard": 0.204545454545455,
-          "terminalbench_v2_1": null,
+          "terminalbench_v2_1": 0.213483146067416,
           "omniscience_hallucination_rate": 0.81,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
@@ -12000,15 +12114,15 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 1.5,
-          "blended": 1.1875,
+          "blended": 0.563,
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 280.3,
+          "speed_tps": 292.326,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.89
+          "ttft": 4.904
         }
       },
       "benchmarks": {
@@ -12016,7 +12130,8 @@
           "intel": 25.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 34.7,
           "aa_math_index": null,
           "gpqa": 0.822,
@@ -12035,9 +12150,8 @@
           "terminalbench_v2_1": 0.310861423220974,
           "omniscience_hallucination_rate": 0.82,
           "briefcase_analytical_quality_elo": 763.0,
-          "briefcase_presentation_elo": 770.0,
-          "time_per_task": 1.1,
-          "coding_index": 34.7
+          "briefcase_presentation_elo": 773.0,
+          "time_per_task": 1.1
         },
         "dirac": {
           "cache_hit_rate_max": 38.3
@@ -12059,16 +12173,16 @@
       "pricing": {
         "aa": {
           "inp_price": 1.5,
-          "out_price": 9.0,
-          "blended": 7.125,
+          "out_price": 9,
+          "blended": 3.375,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 168.3,
+          "speed_tps": 240.332,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 10.115
+          "ttft": 9.932
         }
       },
       "benchmarks": {
@@ -12076,7 +12190,8 @@
           "intel": 45.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.921,
@@ -12094,7 +12209,7 @@
           "terminalbench_hard": 0.393939393939394,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": 0.6,
-          "briefcase_analytical_quality_elo": 1443.0,
+          "briefcase_analytical_quality_elo": 1440.0,
           "briefcase_presentation_elo": 1307.0,
           "time_per_task": null
         }
@@ -12115,13 +12230,13 @@
           "out_price": 7.5,
           "blended": 3,
           "cache_hit_price": null,
-          "cost_per_task": 0.5012992785480765,
+          "cost_per_task": 0.5569335790394195,
           "tokens_m": null,
-          "speed_tps": 251.281187700046,
+          "speed_tps": 212.268,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 12.799
+          "ttft": 12.627
         }
       },
       "benchmarks": {
@@ -12129,8 +12244,9 @@
           "intel": 50.1,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 69.2,
           "aa_math_index": null,
           "gpqa": 0.928,
           "mmlu_pro": null,
@@ -12149,8 +12265,7 @@
           "omniscience_hallucination_rate": null,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 69.2
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -12275,16 +12390,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.5,
-          "out_price": 3.0,
-          "blended": 2.375,
+          "out_price": 3,
+          "blended": 1.125,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 170.5,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.951
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -12292,7 +12407,8 @@
           "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 97,
           "gpqa": 0.898,
@@ -12331,9 +12447,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 12.0,
-          "blended": 9.5,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
           "cache_hit_price": 0.23,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12349,7 +12465,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 95.7,
           "gpqa": 0.908,
@@ -12448,9 +12565,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 12.0,
-          "blended": 9.5,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
@@ -12466,7 +12583,8 @@
           "intel": 33.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 86.7,
           "gpqa": 0.887,
@@ -12673,13 +12791,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.0,
-          "out_price": 12.0,
-          "blended": 9.5,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
           "cache_hit_price": 0.2,
           "cost_per_task": 0.29,
           "tokens_m": 56,
-          "speed_tps": 130.4,
+          "speed_tps": 135.642,
           "useful_cost": 14.5555,
           "reasoning_tax_pct": 17.2,
           "cost_segments": {
@@ -12690,7 +12808,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 17.502
+          "ttft": 21.372
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -12709,8 +12827,9 @@
           "intel": 46.0,
           "iq_per_dollar": 0.0564341,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 17.7198,
-          "aa_coding_index": 68.825860036066,
+          "iq_per_1k": 56.4341,
+          "cost_per_iq": 17.7198,
+          "aa_coding_index": 68.8,
           "aa_math_index": null,
           "gpqa": 0.941,
           "mmlu_pro": null,
@@ -12727,10 +12846,9 @@
           "terminalbench_hard": 0.537878787878788,
           "terminalbench_v2_1": 0.737827715355805,
           "omniscience_hallucination_rate": 0.5,
-          "briefcase_analytical_quality_elo": 876.0,
+          "briefcase_analytical_quality_elo": 875.0,
           "briefcase_presentation_elo": 831.0,
-          "time_per_task": 2.0,
-          "coding_index": 68.8
+          "time_per_task": 1.8
         },
         "arena_text": {
           "elo": 1486,
@@ -12808,12 +12926,12 @@
       "pricing": {
         "aa": {
           "inp_price": 1.5,
-          "out_price": 9.0,
-          "blended": 7.125,
+          "out_price": 9,
+          "blended": 3.375,
           "cache_hit_price": 0.15,
           "cost_per_task": 0.59,
           "tokens_m": 75,
-          "speed_tps": 174.4,
+          "speed_tps": 220.568,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": 33.9,
           "cost_segments": {
@@ -12824,7 +12942,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.09
           },
-          "ttft": 14.026
+          "ttft": 11.298
         },
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -12843,8 +12961,9 @@
           "intel": 50.0,
           "iq_per_dollar": 0.0480363,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 20.8176,
-          "aa_coding_index": 70.1427902621723,
+          "iq_per_1k": 48.0363,
+          "cost_per_iq": 20.8176,
+          "aa_coding_index": 70.1,
           "aa_math_index": null,
           "gpqa": 0.922,
           "mmlu_pro": null,
@@ -12861,10 +12980,9 @@
           "terminalbench_hard": 0.409090909090909,
           "terminalbench_v2_1": 0.786516853932584,
           "omniscience_hallucination_rate": 0.61,
-          "briefcase_analytical_quality_elo": 1357.0,
-          "briefcase_presentation_elo": 1279.0,
-          "time_per_task": 2.4,
-          "coding_index": 70.1
+          "briefcase_analytical_quality_elo": 1354.0,
+          "briefcase_presentation_elo": 1278.0,
+          "time_per_task": 3.0
         },
         "arena_text": {
           "elo": 1479,
@@ -13115,15 +13233,15 @@
         "aa": {
           "inp_price": 0.1,
           "out_price": 0.3,
-          "blended": 0.25,
+          "blended": 0.15,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 120.4,
+          "speed_tps": 25.967,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.521
+          "ttft": 1.657
         }
       },
       "benchmarks": {
@@ -13131,8 +13249,9 @@
           "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 31,
           "aa_math_index": null,
           "gpqa": 0.753,
           "mmlu_pro": null,
@@ -13147,11 +13266,11 @@
           "tau2": 0.362573099415205,
           "tau_banking": 0.0865979381443299,
           "terminalbench_hard": 0.181818181818182,
-          "terminalbench_v2_1": null,
+          "terminalbench_v2_1": 0.273408239700375,
           "omniscience_hallucination_rate": 0.81,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null
+          "time_per_task": 13.6
         }
       },
       "aliases": {
@@ -13171,7 +13290,7 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": 0.3325,
+          "blended": 0.198,
           "cache_hit_price": 0.09,
           "cost_per_task": null,
           "tokens_m": null,
@@ -13187,7 +13306,8 @@
           "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 39.3,
           "aa_math_index": null,
           "gpqa": 0.792,
@@ -13207,8 +13327,7 @@
           "omniscience_hallucination_rate": 0.81,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 39.3
+          "time_per_task": null
         },
         "dirac": {
           "cache_hit_rate_max": 74.6
@@ -13271,17 +13390,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 38,
-          "speed_tps": 34.8,
+          "speed_tps": 35.395,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.983
+          "ttft": 1.035
         }
       },
       "benchmarks": {
@@ -13289,7 +13408,8 @@
           "intel": 29.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 43.4,
           "aa_math_index": null,
           "gpqa": 0.857,
@@ -13307,10 +13427,9 @@
           "terminalbench_hard": 0.363636363636364,
           "terminalbench_v2_1": 0.434456928838951,
           "omniscience_hallucination_rate": 0.82,
-          "briefcase_analytical_quality_elo": 864.0,
-          "briefcase_presentation_elo": 817.0,
-          "time_per_task": 5.5,
-          "coding_index": 43.4
+          "briefcase_analytical_quality_elo": 865.0,
+          "briefcase_presentation_elo": 819.0,
+          "time_per_task": 5.8
         },
         "dirac": {
           "cache_hit_rate_max": 31.8
@@ -13400,20 +13519,21 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 9.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 7.2,
           "aa_math_index": null,
-          "gpqa": 0.375,
+          "gpqa": 0.433,
           "mmlu_pro": null,
           "hle": 0.048,
           "aime": null,
           "aime_25": null,
-          "math_500": 0.8696,
+          "math_500": null,
           "livecodebench": null,
-          "ifbench": 0.351020408163265,
+          "ifbench": 0.380272108843537,
           "lcr": 0.15,
           "scicode": 0.209,
           "tau2": 0.207602339181287,
@@ -13423,8 +13543,7 @@
           "omniscience_hallucination_rate": 0.33,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 7.2
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -13444,15 +13563,15 @@
         "aa": {
           "inp_price": 0.02,
           "out_price": 0.1,
-          "blended": 0.08,
+          "blended": 0.04,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 108.677,
+          "speed_tps": 106.272,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.443
+          "ttft": 0.318
         }
       },
       "benchmarks": {
@@ -13460,7 +13579,8 @@
           "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 9.4,
           "aa_math_index": null,
           "gpqa": 0.576,
@@ -13480,8 +13600,7 @@
           "omniscience_hallucination_rate": 0.31,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.3,
-          "coding_index": 9.4
+          "time_per_task": 1.5
         }
       },
       "aliases": {
@@ -13829,17 +13948,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
+          "inp_price": 1,
           "out_price": 3.2,
-          "blended": 2.65,
+          "blended": 1.55,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 70.2,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.654
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 9.5e-07,
@@ -13856,7 +13975,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.82,
@@ -13950,7 +14070,8 @@
           "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.847,
@@ -13989,17 +14110,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.4,
+          "inp_price": 1.38,
           "out_price": 4.4,
-          "blended": 3.65,
+          "blended": 2.135,
           "cache_hit_price": 0.26,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 69.3,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.862
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 9.66e-07,
@@ -14016,7 +14137,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 55.8,
           "aa_math_index": null,
           "gpqa": 0.868,
@@ -14034,10 +14156,9 @@
           "terminalbench_hard": 0.431818181818182,
           "terminalbench_v2_1": 0.617977528089888,
           "omniscience_hallucination_rate": 0.29,
-          "briefcase_analytical_quality_elo": 585.0,
-          "briefcase_presentation_elo": 284.0,
-          "time_per_task": 5.0,
-          "coding_index": 55.8
+          "briefcase_analytical_quality_elo": 133.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 6.0
         },
         "livebench": {
           "average": 70.62,
@@ -14081,11 +14202,11 @@
         "aa": {
           "inp_price": 1.4,
           "out_price": 4.4,
-          "blended": 3.65,
+          "blended": 2.15,
           "cache_hit_price": 0.26,
           "cost_per_task": 0.48,
           "tokens_m": 140,
-          "speed_tps": 171.892097213843,
+          "speed_tps": 104.371,
           "useful_cost": 6.662,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -14096,7 +14217,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.877
+          "ttft": 0.924
         },
         "openrouter": {
           "inp_price": 8.008e-07,
@@ -14113,8 +14234,9 @@
           "intel": 51.0,
           "iq_per_dollar": 0.0546811,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 18.2878,
-          "aa_coding_index": 68.7560688028853,
+          "iq_per_1k": 54.6811,
+          "cost_per_iq": 18.2878,
+          "aa_coding_index": 68.8,
           "aa_math_index": null,
           "gpqa": 0.895,
           "mmlu_pro": null,
@@ -14131,10 +14253,9 @@
           "terminalbench_hard": 0.507575757575758,
           "terminalbench_v2_1": 0.779026217228464,
           "omniscience_hallucination_rate": 0.28,
-          "briefcase_analytical_quality_elo": 953.0,
-          "briefcase_presentation_elo": 811.0,
-          "time_per_task": 3.6,
-          "coding_index": 68.8
+          "briefcase_analytical_quality_elo": 815.0,
+          "briefcase_presentation_elo": 953.0,
+          "time_per_task": 6.2
         },
         "livebench": {
           "average": 76.18,
@@ -14213,7 +14334,8 @@
           "intel": 34.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.809,
@@ -14690,15 +14812,15 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": 3.5625,
+          "blended": 1.688,
           "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 185.1,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.799
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -14706,7 +14828,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 56.1,
           "aa_math_index": null,
           "gpqa": 0.875,
@@ -14726,8 +14849,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": 936.0,
           "briefcase_presentation_elo": 917.0,
-          "time_per_task": 7.7,
-          "coding_index": 56.1
+          "time_per_task": 7.6
         },
         "dirac": {
           "cache_hit_rate_max": 61.5
@@ -14750,15 +14872,15 @@
         "aa": {
           "inp_price": 0.75,
           "out_price": 4.5,
-          "blended": 3.5625,
+          "blended": 1.688,
           "cache_hit_price": 0.08,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 169.0,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 16.007
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -14766,7 +14888,8 @@
           "intel": 30.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.823,
@@ -14806,15 +14929,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": 0.9875,
+          "blended": 0.463,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 175.0,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.335
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -14822,7 +14945,8 @@
           "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 56.1,
           "aa_math_index": null,
           "gpqa": 0.817,
@@ -14842,8 +14966,7 @@
           "omniscience_hallucination_rate": 0.74,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 7.8,
-          "coding_index": 56.1
+          "time_per_task": 7.8
         },
         "dirac": {
           "cache_hit_rate_max": 62.8
@@ -14866,15 +14989,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.25,
-          "blended": 0.9875,
+          "blended": 0.463,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 164.3,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.389
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -14882,7 +15005,8 @@
           "intel": 30.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.761,
@@ -14920,9 +15044,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
@@ -14938,7 +15062,8 @@
           "intel": 29.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 39.4,
           "aa_math_index": null,
           "gpqa": 0.823,
@@ -14958,8 +15083,7 @@
           "omniscience_hallucination_rate": 0.73,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 39.4
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -14975,17 +15099,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 6.0,
-          "blended": 4.75,
-          "cache_hit_price": 0.1,
+          "inp_price": 0.2,
+          "out_price": 1.2,
+          "blended": 0.45,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 199.863,
+          "speed_tps": 186.687,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 94.121
+          "ttft": 60.564
         }
       },
       "benchmarks": {
@@ -14993,8 +15117,9 @@
           "intel": 51.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 71.4480163684284,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 71.4,
           "aa_math_index": null,
           "gpqa": 0.911,
           "mmlu_pro": null,
@@ -15013,8 +15138,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.8,
-          "coding_index": 71.4
+          "time_per_task": 2.0
         }
       },
       "aliases": {
@@ -15029,17 +15153,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 6.0,
-          "blended": 4.75,
-          "cache_hit_price": 0.1,
+          "inp_price": 0.2,
+          "out_price": 1.2,
+          "blended": 0.45,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 181.587,
+          "speed_tps": 172.075,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 8.339
+          "ttft": 6.372
         }
       },
       "benchmarks": {
@@ -15047,8 +15171,9 @@
           "intel": 46.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 63.3,
           "aa_math_index": null,
           "gpqa": 0.892,
           "mmlu_pro": null,
@@ -15067,8 +15192,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.8,
-          "coding_index": 63.3
+          "time_per_task": 0.9
         }
       },
       "aliases": {
@@ -15083,17 +15207,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 6.0,
-          "blended": 4.75,
-          "cache_hit_price": 0.1,
+          "inp_price": 0.2,
+          "out_price": 1.2,
+          "blended": 0.45,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 165.875,
+          "speed_tps": 161.632,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.964
+          "ttft": 1.482
         }
       },
       "benchmarks": {
@@ -15101,8 +15225,9 @@
           "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 50.7,
           "aa_math_index": null,
           "gpqa": 0.859,
           "mmlu_pro": null,
@@ -15121,8 +15246,7 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.3,
-          "coding_index": 50.7
+          "time_per_task": 0.4
         }
       },
       "aliases": {
@@ -15138,17 +15262,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 6.0,
-          "blended": 4.75,
-          "cache_hit_price": 0.1,
+          "inp_price": 0.2,
+          "out_price": 1.2,
+          "blended": 0.45,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 173.215,
+          "speed_tps": 173.967,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 31.932
+          "ttft": 17.219
         }
       },
       "benchmarks": {
@@ -15156,8 +15280,9 @@
           "intel": 49.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 68.6017478152309,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 68.6,
           "aa_math_index": null,
           "gpqa": 0.895,
           "mmlu_pro": null,
@@ -15176,8 +15301,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.2,
-          "coding_index": 68.6
+          "time_per_task": 1.2
         }
       },
       "aliases": {
@@ -15193,17 +15317,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
-          "cost_per_task": 1.0373301565994435,
+          "cost_per_task": 1.8620135972548633,
           "tokens_m": null,
-          "speed_tps": 63.3474955919067,
+          "speed_tps": 69.894,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 87.94
+          "ttft": 67.838
         }
       },
       "benchmarks": {
@@ -15211,8 +15335,9 @@
           "intel": 59.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 77.3880739353586,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 77.4,
           "aa_math_index": null,
           "gpqa": 0.941,
           "mmlu_pro": null,
@@ -15229,10 +15354,9 @@
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": 0.89,
-          "briefcase_analytical_quality_elo": 1461.0,
+          "briefcase_analytical_quality_elo": 1462.0,
           "briefcase_presentation_elo": 1364.0,
-          "time_per_task": 4.1,
-          "coding_index": 77.4
+          "time_per_task": 4.6
         }
       },
       "aliases": {
@@ -15248,17 +15372,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 56.058,
+          "speed_tps": 56.412,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 13.522
+          "ttft": 9.482
         }
       },
       "benchmarks": {
@@ -15266,8 +15390,9 @@
           "intel": 56.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 77.158759883479,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 77.2,
           "aa_math_index": null,
           "gpqa": 0.928,
           "mmlu_pro": null,
@@ -15286,8 +15411,7 @@
           "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.9,
-          "coding_index": 77.2
+          "time_per_task": 2.1
         }
       },
       "aliases": {
@@ -15303,17 +15427,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 55.469,
+          "speed_tps": 56.271,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.882
+          "ttft": 6.118
         }
       },
       "benchmarks": {
@@ -15321,8 +15445,9 @@
           "intel": 54.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 76.2553752254127,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.3,
           "aa_math_index": null,
           "gpqa": 0.926,
           "mmlu_pro": null,
@@ -15341,8 +15466,7 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.3,
-          "coding_index": 76.3
+          "time_per_task": 1.5
         }
       },
       "aliases": {
@@ -15358,17 +15482,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 60.485,
+          "speed_tps": 62.043,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 38.088
+          "ttft": 18.504
         }
       },
       "benchmarks": {
@@ -15376,8 +15500,9 @@
           "intel": 58.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 78.3482452489943,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 78.3,
           "aa_math_index": null,
           "gpqa": 0.931,
           "mmlu_pro": null,
@@ -15396,8 +15521,7 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 2.6,
-          "coding_index": 78.3
+          "time_per_task": 3.0
         }
       },
       "aliases": {
@@ -15413,17 +15537,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.5,
-          "out_price": 15.0,
-          "blended": 11.875,
-          "cache_hit_price": 0.25,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 134.382,
+          "speed_tps": 129.838,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 100.446
+          "ttft": 74.713
         }
       },
       "benchmarks": {
@@ -15431,8 +15555,9 @@
           "intel": 55.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 76.6550492440005,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.7,
           "aa_math_index": null,
           "gpqa": 0.925,
           "mmlu_pro": null,
@@ -15451,8 +15576,7 @@
           "omniscience_hallucination_rate": 0.85,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 2.3,
-          "coding_index": 76.7
+          "time_per_task": 2.7
         }
       },
       "aliases": {
@@ -15461,24 +15585,23 @@
     },
     {
       "id": "gpt-5-6-terra-high",
-      "name": "GPT-5.6 Terra (high)",
       "creator": "OpenAI",
       "meta": {
         "release_date": "2026-07-09"
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.5,
-          "out_price": 15.0,
-          "blended": 11.875,
-          "cache_hit_price": 0.25,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 114.266,
+          "speed_tps": 112.642,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 2.783
+          "ttft": 2.592
         }
       },
       "benchmarks": {
@@ -15486,8 +15609,9 @@
           "intel": 49.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 67.1,
           "aa_math_index": null,
           "gpqa": 0.896,
           "mmlu_pro": null,
@@ -15506,8 +15630,7 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.1,
-          "coding_index": 67.1
+          "time_per_task": 1.4
         }
       },
       "aliases": {
@@ -15522,17 +15645,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.5,
-          "out_price": 15.0,
-          "blended": 11.875,
-          "cache_hit_price": 0.25,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 102.647,
+          "speed_tps": 100.462,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.63
+          "ttft": 1.834
         }
       },
       "benchmarks": {
@@ -15540,8 +15663,9 @@
           "intel": 46.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 64.7,
           "aa_math_index": null,
           "gpqa": 0.872,
           "mmlu_pro": null,
@@ -15560,8 +15684,7 @@
           "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.5,
-          "coding_index": 64.7
+          "time_per_task": 0.7
         }
       },
       "aliases": {
@@ -15577,17 +15700,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 2.5,
-          "out_price": 15.0,
-          "blended": 11.875,
-          "cache_hit_price": 0.25,
+          "inp_price": 2,
+          "out_price": 12,
+          "blended": 4.5,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 110.832,
+          "speed_tps": 112.512,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 7.667
+          "ttft": 6.869
         }
       },
       "benchmarks": {
@@ -15595,8 +15718,9 @@
           "intel": 52.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 70.6399986128451,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 70.6,
           "aa_math_index": null,
           "gpqa": 0.908,
           "mmlu_pro": null,
@@ -15615,8 +15739,7 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.5,
-          "coding_index": 70.6
+          "time_per_task": 1.8
         }
       },
       "aliases": {
@@ -16364,16 +16487,16 @@
       "pricing": {
         "aa": {
           "inp_price": 1.75,
-          "out_price": 14.0,
-          "blended": 10.9375,
+          "out_price": 14,
+          "blended": 4.813,
           "cache_hit_price": 0.18,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 155.7,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.914
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16390,7 +16513,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.899,
@@ -16483,16 +16607,16 @@
       "pricing": {
         "aa": {
           "inp_price": 1.75,
-          "out_price": 14.0,
-          "blended": 10.9375,
+          "out_price": 14,
+          "blended": 4.813,
           "cache_hit_price": 0.18,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 90.3,
+          "speed_tps": 109.082,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 41.56
+          "ttft": 43.005
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16509,7 +16633,8 @@
           "intel": 44.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.915,
@@ -16527,7 +16652,7 @@
           "terminalbench_hard": 0.53030303030303,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": 1192.0,
+          "briefcase_analytical_quality_elo": 1188.0,
           "briefcase_presentation_elo": 1080.0,
           "time_per_task": null
         }
@@ -16628,16 +16753,16 @@
       "pricing": {
         "aa": {
           "inp_price": 2.5,
-          "out_price": 15.0,
-          "blended": 11.875,
+          "out_price": 15,
+          "blended": 5.625,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 153.0,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 116.447
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 2.5e-06,
@@ -16654,8 +16779,9 @@
           "intel": 51.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 71.0505097794423,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 71.1,
           "aa_math_index": null,
           "gpqa": 0.92,
           "mmlu_pro": null,
@@ -16674,8 +16800,7 @@
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 4.7,
-          "coding_index": 71.1
+          "time_per_task": 4.6
         },
         "arena_text": {
           "elo": 1467,
@@ -17129,13 +17254,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.69,
           "tokens_m": 43,
-          "speed_tps": 67.2,
+          "speed_tps": 0,
           "useful_cost": 40.5947,
           "reasoning_tax_pct": 58.0,
           "cost_segments": {
@@ -17146,7 +17271,7 @@
             "cache_hit_usd": 0.12,
             "input_usd": 0.02
           },
-          "ttft": 23.609
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -17154,8 +17279,9 @@
           "intel": 53.0,
           "iq_per_dollar": 0.0303626,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 32.9353,
-          "aa_coding_index": 71.5680919683729,
+          "iq_per_1k": 30.3626,
+          "cost_per_iq": 32.9353,
+          "aa_coding_index": 71.6,
           "aa_math_index": null,
           "gpqa": 0.932,
           "mmlu_pro": null,
@@ -17172,10 +17298,9 @@
           "terminalbench_hard": 0.598484848484849,
           "terminalbench_v2_1": 0.794007490636704,
           "omniscience_hallucination_rate": 0.86,
-          "briefcase_analytical_quality_elo": 760.0,
+          "briefcase_analytical_quality_elo": 761.0,
           "briefcase_presentation_elo": 866.0,
-          "time_per_task": 2.5,
-          "coding_index": 71.6
+          "time_per_task": 2.9
         },
         "livebench": {
           "average": 77.07,
@@ -17242,13 +17367,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.22,
           "tokens_m": null,
-          "speed_tps": 68.6,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": 36.4,
           "cost_segments": {
@@ -17259,7 +17384,7 @@
             "cache_hit_usd": 0.02,
             "input_usd": 0.02
           },
-          "ttft": 1.843
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -17267,7 +17392,8 @@
           "intel": 43.0,
           "iq_per_dollar": 0.1125419,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 8.8856,
+          "iq_per_1k": 112.5419,
+          "cost_per_iq": 8.8856,
           "aa_coding_index": 60.9,
           "aa_math_index": null,
           "gpqa": 0.91,
@@ -17287,8 +17413,7 @@
           "omniscience_hallucination_rate": 0.86,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.5,
-          "coding_index": 60.9
+          "time_per_task": 0.7
         }
       },
       "aliases": {
@@ -17306,13 +17431,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": 0.42,
           "tokens_m": 21,
-          "speed_tps": 66.9,
+          "speed_tps": 0,
           "useful_cost": 45.2971,
           "reasoning_tax_pct": 52.4,
           "cost_segments": {
@@ -17323,7 +17448,7 @@
             "cache_hit_usd": 0.08,
             "input_usd": 0.02
           },
-          "ttft": 7.734
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -17331,8 +17456,9 @@
           "intel": 50.0,
           "iq_per_dollar": 0.052563000000000006,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 19.0248,
-          "aa_coding_index": 71.5069704535997,
+          "iq_per_1k": 52.563,
+          "cost_per_iq": 19.0248,
+          "aa_coding_index": 71.5,
           "aa_math_index": null,
           "gpqa": 0.926,
           "mmlu_pro": null,
@@ -17350,9 +17476,8 @@
           "terminalbench_v2_1": 0.805243445692884,
           "omniscience_hallucination_rate": 0.86,
           "briefcase_analytical_quality_elo": 790.0,
-          "briefcase_presentation_elo": 614.0,
-          "time_per_task": 1.4,
-          "coding_index": 71.5
+          "briefcase_presentation_elo": 616.0,
+          "time_per_task": 1.7
         },
         "livebench": {
           "average": 68.96,
@@ -17381,9 +17506,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -17405,7 +17530,8 @@
           "intel": null,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -17440,13 +17566,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5.0,
-          "out_price": 30.0,
-          "blended": 23.75,
+          "inp_price": 5,
+          "out_price": 30,
+          "blended": 11.25,
           "cache_hit_price": 0.5,
           "cost_per_task": 1.03,
           "tokens_m": 72,
-          "speed_tps": 71.4,
+          "speed_tps": 0,
           "useful_cost": 39.1499,
           "reasoning_tax_pct": 63.1,
           "cost_segments": {
@@ -17457,7 +17583,7 @@
             "cache_hit_usd": 0.15,
             "input_usd": 0.03
           },
-          "ttft": 40.648
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -17465,8 +17591,9 @@
           "intel": 55.0,
           "iq_per_dollar": 0.019511900000000002,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 51.2507,
-          "aa_coding_index": 74.8911950339853,
+          "iq_per_1k": 19.5119,
+          "cost_per_iq": 51.2507,
+          "aa_coding_index": 74.9,
           "aa_math_index": null,
           "gpqa": 0.935,
           "mmlu_pro": null,
@@ -17483,10 +17610,9 @@
           "terminalbench_hard": 0.606060606060606,
           "terminalbench_v2_1": 0.842696629213483,
           "omniscience_hallucination_rate": 0.86,
-          "briefcase_analytical_quality_elo": 779.0,
+          "briefcase_analytical_quality_elo": 899.0,
           "briefcase_presentation_elo": 671.0,
-          "time_per_task": 4.3,
-          "coding_index": 74.9
+          "time_per_task": 4.4
         },
         "livebench": {
           "average": 81.28,
@@ -17785,11 +17911,11 @@
         "aa": {
           "inp_price": 0.15,
           "out_price": 0.6,
-          "blended": 0.4875,
+          "blended": 0.262,
           "cache_hit_price": 0.15,
           "cost_per_task": 0.06,
           "tokens_m": 87,
-          "speed_tps": 267.267668394315,
+          "speed_tps": 193.41,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -17800,7 +17926,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.06
           },
-          "ttft": 0.508
+          "ttft": 0.551
         },
         "openrouter": {
           "inp_price": 3.7e-08,
@@ -17815,7 +17941,8 @@
           "intel": 24.0,
           "iq_per_dollar": 0.249273,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 4.0117,
+          "iq_per_1k": 249.273,
+          "cost_per_iq": 4.0117,
           "aa_coding_index": 30.4,
           "aa_math_index": 93.4,
           "gpqa": 0.782,
@@ -17835,8 +17962,7 @@
           "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": 0.0,
           "briefcase_presentation_elo": 0.0,
-          "time_per_task": 2.2,
-          "coding_index": 30.4,
+          "time_per_task": 3.0,
           "math_index": 93.4
         },
         "dirac": {
@@ -17871,16 +17997,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.15,
-          "out_price": 0.6,
-          "blended": 0.4875,
+          "out_price": 0.595,
+          "blended": 0.261,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 340.8,
+          "speed_tps": 224.845,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.55
+          "ttft": 0.574
         }
       },
       "benchmarks": {
@@ -17888,7 +18014,8 @@
           "intel": 15.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 21.2,
           "aa_math_index": 66.7,
           "gpqa": 0.672,
@@ -17908,8 +18035,7 @@
           "omniscience_hallucination_rate": 0.78,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.1,
-          "coding_index": 21.2,
+          "time_per_task": 0.2,
           "math_index": 66.7
         }
       },
@@ -17928,13 +18054,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.06,
+          "inp_price": 0.07,
           "out_price": 0.2,
-          "blended": 0.165,
+          "blended": 0.103,
           "cache_hit_price": null,
           "cost_per_task": 0.02,
           "tokens_m": 67,
-          "speed_tps": 234.0,
+          "speed_tps": 177.841,
           "useful_cost": 0.4458,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -17945,7 +18071,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 0.413
+          "ttft": 0.548
         },
         "openrouter": {
           "inp_price": 3e-08,
@@ -17962,7 +18088,8 @@
           "intel": 15.0,
           "iq_per_dollar": 0.5021761,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 1.9913,
+          "iq_per_1k": 502.1761,
+          "cost_per_iq": 1.9913,
           "aa_coding_index": 20.7,
           "aa_math_index": 89.3,
           "gpqa": 0.688,
@@ -17981,9 +18108,8 @@
           "terminalbench_v2_1": 0.138576779026217,
           "omniscience_hallucination_rate": 0.94,
           "briefcase_analytical_quality_elo": 342.0,
-          "briefcase_presentation_elo": 168.0,
-          "time_per_task": 1.6,
-          "coding_index": 20.7,
+          "briefcase_presentation_elo": 169.0,
+          "time_per_task": 2.2,
           "math_index": 89.3
         }
       },
@@ -18004,16 +18130,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.07,
-          "out_price": 0.2,
-          "blended": 0.1675,
+          "out_price": 0.225,
+          "blended": 0.109,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 223.6,
+          "speed_tps": 196.775,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.475
+          "ttft": 0.607
         }
       },
       "benchmarks": {
@@ -18021,7 +18147,8 @@
           "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 62.3,
           "gpqa": 0.611,
@@ -18211,15 +18338,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 2.1875,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 121.5,
+          "speed_tps": 131.315,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 7.449
+          "ttft": 5.208
         }
       },
       "benchmarks": {
@@ -18227,7 +18354,8 @@
           "intel": 35.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.843,
@@ -18267,15 +18395,15 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 2.1875,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 109.2,
+          "speed_tps": 123.568,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 15.7
+          "ttft": 12.868
         }
       },
       "benchmarks": {
@@ -18283,7 +18411,8 @@
           "intel": 36.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.89,
@@ -18322,13 +18451,13 @@
           "out_price": 6,
           "blended": 3,
           "cache_hit_price": null,
-          "cost_per_task": 0.3122688040758518,
+          "cost_per_task": 0.4409601527067297,
           "tokens_m": null,
-          "speed_tps": 68.3605909325138,
+          "speed_tps": 54.776,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 12.627
+          "ttft": 10.172
         }
       },
       "benchmarks": {
@@ -18336,8 +18465,9 @@
           "intel": 53.8,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 72.4,
           "aa_math_index": null,
           "gpqa": 0.931,
           "mmlu_pro": null,
@@ -18356,8 +18486,7 @@
           "omniscience_hallucination_rate": null,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 72.4
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -18514,11 +18643,11 @@
         "aa": {
           "inp_price": 1.25,
           "out_price": 2.5,
-          "blended": 2.1875,
+          "blended": 1.563,
           "cache_hit_price": 0.2,
           "cost_per_task": 0.16,
           "tokens_m": 83,
-          "speed_tps": 120.9,
+          "speed_tps": 0,
           "useful_cost": 3.6141,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -18529,7 +18658,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 35.756
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.25e-06,
@@ -18546,7 +18675,8 @@
           "intel": 38.0,
           "iq_per_dollar": 0.1266793,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 7.8939,
+          "iq_per_1k": 126.6793,
+          "cost_per_iq": 7.8939,
           "aa_coding_index": 42.2,
           "aa_math_index": null,
           "gpqa": 0.901,
@@ -18564,10 +18694,9 @@
           "terminalbench_hard": 0.378787878787879,
           "terminalbench_v2_1": 0.397003745318352,
           "omniscience_hallucination_rate": 0.25,
-          "briefcase_analytical_quality_elo": 971.0,
-          "briefcase_presentation_elo": 969.0,
-          "time_per_task": 2.2,
-          "coding_index": 42.2
+          "briefcase_analytical_quality_elo": 972.0,
+          "briefcase_presentation_elo": 971.0,
+          "time_per_task": 2.0
         },
         "livebench": {
           "average": 67.37,
@@ -19163,17 +19292,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.0,
-          "out_price": 3.0,
-          "blended": 2.5,
+          "inp_price": 1,
+          "out_price": 3,
+          "blended": 1.5,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 36.3,
+          "speed_tps": 36.994,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.748
+          "ttft": 0.766
         }
       },
       "benchmarks": {
@@ -19181,7 +19310,8 @@
           "intel": 9.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 69.7,
           "gpqa": 0.727,
@@ -19222,15 +19352,15 @@
         "aa": {
           "inp_price": 0.13,
           "out_price": 0.4,
-          "blended": 0.3325,
+          "blended": 0.198,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 81.4,
+          "speed_tps": 88.988,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.575
+          "ttft": 0.579
         }
       },
       "benchmarks": {
@@ -19238,7 +19368,8 @@
           "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 68.7,
           "gpqa": 0.699,
@@ -19982,17 +20113,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.14,
-          "out_price": 0.58,
-          "blended": 0.47,
-          "cache_hit_price": 0.04,
+          "inp_price": 0.136,
+          "out_price": 0.557,
+          "blended": 0.241,
+          "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 160.7,
+          "speed_tps": 69.228,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.872
+          "ttft": 1.675
         },
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -20009,7 +20140,8 @@
           "intel": 41.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 58.8,
           "aa_math_index": null,
           "gpqa": 0.897,
@@ -20029,8 +20161,7 @@
           "omniscience_hallucination_rate": 0.73,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 7.0,
-          "coding_index": 58.8
+          "time_per_task": 7.0
         }
       },
       "aliases": {
@@ -20991,11 +21122,12 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 25.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 32.1,
           "aa_math_index": 90.3,
           "gpqa": 0.783,
           "mmlu_pro": 0.838,
@@ -21008,9 +21140,9 @@
           "lcr": 0.556666666666667,
           "scicode": 0.356,
           "tau2": 0.742690058479532,
-          "tau_banking": null,
+          "tau_banking": 0.142268041237113,
           "terminalbench_hard": 0.227272727272727,
-          "terminalbench_v2_1": null,
+          "terminalbench_v2_1": 0.303370786516854,
           "omniscience_hallucination_rate": 0.89,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
@@ -21032,9 +21164,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 99,
@@ -21049,8 +21181,9 @@
           "intel": 24,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "coding_index": 21,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 21,
           "gpqa": 0.713
         }
       },
@@ -21176,16 +21309,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.6,
-          "out_price": 3.0,
-          "blended": 2.4,
+          "out_price": 3,
+          "blended": 1.2,
           "cache_hit_price": 0.1,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 44.7,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.051
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -21193,7 +21326,8 @@
           "intel": 35.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 46.8,
           "aa_math_index": null,
           "gpqa": 0.879,
@@ -21213,8 +21347,7 @@
           "omniscience_hallucination_rate": 0.65,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 5.0,
-          "coding_index": 46.8
+          "time_per_task": 6.8
         },
         "dirac": {
           "cache_hit_rate_max": 92.8
@@ -21256,15 +21389,15 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 2.5,
-          "blended": 2.025,
+          "blended": 1.075,
           "cache_hit_price": 0.6,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 123.8,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.814
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 6e-07,
@@ -21281,7 +21414,8 @@
           "intel": 33.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 94.7,
           "gpqa": 0.838,
@@ -21400,12 +21534,12 @@
       "pricing": {
         "aa": {
           "inp_price": 0.95,
-          "out_price": 4.0,
-          "blended": 3.2375,
+          "out_price": 4,
+          "blended": 1.712,
           "cache_hit_price": 0.16,
           "cost_per_task": 0.31,
           "tokens_m": 160,
-          "speed_tps": 42.6,
+          "speed_tps": 0,
           "useful_cost": 5.1959,
           "reasoning_tax_pct": 25.8,
           "cost_segments": {
@@ -21416,7 +21550,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.05
           },
-          "ttft": 1.241
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 6.84e-07,
@@ -21433,7 +21567,8 @@
           "intel": 44.0,
           "iq_per_dollar": 0.0517237,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 19.3335,
+          "iq_per_1k": 51.7237,
+          "cost_per_iq": 19.3335,
           "aa_coding_index": 61.8,
           "aa_math_index": null,
           "gpqa": 0.911,
@@ -21453,8 +21588,7 @@
           "omniscience_hallucination_rate": 0.39,
           "briefcase_analytical_quality_elo": 939.0,
           "briefcase_presentation_elo": 937.0,
-          "time_per_task": 18.0,
-          "coding_index": 61.8
+          "time_per_task": 14.9
         },
         "arena_code": {
           "elo": 1514,
@@ -21502,12 +21636,12 @@
       "pricing": {
         "aa": {
           "inp_price": 0.95,
-          "out_price": 4.0,
-          "blended": 3.2375,
+          "out_price": 4,
+          "blended": 1.712,
           "cache_hit_price": 0.19,
           "cost_per_task": 0.18,
           "tokens_m": 100,
-          "speed_tps": 43.6,
+          "speed_tps": 37.573,
           "useful_cost": 5.2456,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -21518,7 +21652,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 1.122
+          "ttft": 1.176
         },
         "openrouter": {
           "inp_price": 8.2e-07,
@@ -21535,7 +21669,8 @@
           "intel": 42.0,
           "iq_per_dollar": 0.0800671,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 12.4895,
+          "iq_per_1k": 80.0671,
+          "cost_per_iq": 12.4895,
           "aa_coding_index": 60.8,
           "aa_math_index": null,
           "gpqa": 0.896,
@@ -21555,8 +21690,7 @@
           "omniscience_hallucination_rate": 0.8,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.0,
-          "coding_index": 60.8
+          "time_per_task": 6.5
         },
         "livebench": {
           "average": 71.93,
@@ -21583,7 +21717,7 @@
     },
     {
       "id": "kimi-k3",
-      "name": "Kimi K3",
+      "name": "Kimi K3 (max)",
       "creator": "Kimi",
       "meta": {
         "release_date": "2026-07-16",
@@ -21591,17 +21725,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 3.0,
-          "out_price": 15.0,
-          "blended": 12.0,
+          "inp_price": 3,
+          "out_price": 15,
+          "blended": 6,
           "cache_hit_price": 0.3,
-          "cost_per_task": 0.9541207881875711,
+          "cost_per_task": 0.8552042372493249,
           "tokens_m": null,
-          "speed_tps": 35.1715506860086,
+          "speed_tps": 33.267,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.786
+          "ttft": 2.958
         },
         "openrouter": {
           "inp_price": 3e-06,
@@ -21618,8 +21752,9 @@
           "intel": 57.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": 76.2393362463587,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.2,
           "aa_math_index": null,
           "gpqa": 0.935,
           "mmlu_pro": null,
@@ -21636,15 +21771,69 @@
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": 0.51,
-          "briefcase_analytical_quality_elo": 1751.0,
-          "briefcase_presentation_elo": 1740.0,
-          "time_per_task": 10.1,
-          "coding_index": 76.2
+          "briefcase_analytical_quality_elo": 1752.0,
+          "briefcase_presentation_elo": 1741.0,
+          "time_per_task": 11.3
         }
       },
       "aliases": {
         "aa": "kimi-k3",
         "openrouter": "moonshotai/kimi-k3"
+      }
+    },
+    {
+      "id": "kimi-k3-low",
+      "creator": "Kimi",
+      "meta": {
+        "release_date": "2026-07-16",
+        "context_window": 1048576
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 3,
+          "out_price": 15,
+          "blended": 6,
+          "cache_hit_price": 0.3,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 32.378,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 3.164
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 47.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 72,
+          "aa_math_index": null,
+          "gpqa": 0.842,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.74,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": 1.9
+        }
+      },
+      "aliases": {
+        "aa": "kimi-k3-low"
       }
     },
     {
@@ -34628,15 +34817,15 @@
         "aa": {
           "inp_price": 0.25,
           "out_price": 0.75,
-          "blended": 0.625,
+          "blended": 0.375,
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 842.2,
+          "speed_tps": 937.576,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.463
+          "ttft": 3.569
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -34653,7 +34842,8 @@
           "intel": 21.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 31.1,
           "aa_math_index": null,
           "gpqa": 0.77,
@@ -34673,8 +34863,7 @@
           "omniscience_hallucination_rate": 0.92,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.6,
-          "coding_index": 31.1
+          "time_per_task": 0.6
         }
       },
       "aliases": {
@@ -35396,15 +35585,15 @@
         "aa": {
           "inp_price": 0.14,
           "out_price": 0.28,
-          "blended": 0.245,
+          "blended": 0.175,
           "cache_hit_price": 0.003,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 71.4,
+          "speed_tps": 81.332,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.06
+          "ttft": 1.919
         }
       },
       "benchmarks": {
@@ -35412,7 +35601,8 @@
           "intel": 37.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 56.8,
           "aa_math_index": null,
           "gpqa": 0.849,
@@ -35432,8 +35622,7 @@
           "omniscience_hallucination_rate": 0.32,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 4.3,
-          "coding_index": 56.8
+          "time_per_task": 3.1
         }
       },
       "aliases": {
@@ -35465,7 +35654,7 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 42.6,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
@@ -35477,7 +35666,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.87,
@@ -35563,13 +35753,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.44,
+          "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.7625,
+          "blended": 0.544,
           "cache_hit_price": 0.004,
           "cost_per_task": 0.03,
           "tokens_m": 96,
-          "speed_tps": 43.5,
+          "speed_tps": 51.46,
           "useful_cost": 1.0257,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -35580,7 +35770,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 2.395
+          "ttft": 2.023
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -35597,7 +35787,8 @@
           "intel": 42.0,
           "iq_per_dollar": 0.4265258,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 2.3445,
+          "iq_per_1k": 426.5258,
+          "cost_per_iq": 2.3445,
           "aa_coding_index": 60.2,
           "aa_math_index": null,
           "gpqa": 0.866,
@@ -35615,10 +35806,9 @@
           "terminalbench_hard": 0.431818181818182,
           "terminalbench_v2_1": 0.651685393258427,
           "omniscience_hallucination_rate": 0.25,
-          "briefcase_analytical_quality_elo": 1467.0,
-          "briefcase_presentation_elo": 1489.0,
-          "time_per_task": 4.8,
-          "coding_index": 60.2
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 6.4
         },
         "arena_text": {
           "elo": 1466,
@@ -35817,15 +36007,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.975,
+          "blended": 0.525,
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 240.4,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.022
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -35842,7 +36032,8 @@
           "intel": 34.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.848,
@@ -35894,11 +36085,11 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.975,
+          "blended": 0.525,
           "cache_hit_price": 0.06,
           "cost_per_task": 0.07,
           "tokens_m": 85,
-          "speed_tps": 51.1,
+          "speed_tps": 0,
           "useful_cost": 1.6909,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -35909,7 +36100,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 1.167
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -35926,7 +36117,8 @@
           "intel": 38.0,
           "iq_per_dollar": 0.26438459999999997,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 3.7824,
+          "iq_per_1k": 264.3846,
+          "cost_per_iq": 3.7824,
           "aa_coding_index": 52.6,
           "aa_math_index": null,
           "gpqa": 0.874,
@@ -35946,8 +36138,7 @@
           "omniscience_hallucination_rate": 0.34,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 4.9,
-          "coding_index": 52.6
+          "time_per_task": 5.5
         },
         "livebench": {
           "average": 65.0,
@@ -35985,11 +36176,11 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 1.2,
-          "blended": 0.975,
+          "blended": 0.525,
           "cache_hit_price": 0.06,
           "cost_per_task": 0.12,
           "tokens_m": 89,
-          "speed_tps": 96.287476096197,
+          "speed_tps": 96.645,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": 33.3,
           "cost_segments": {
@@ -36000,7 +36191,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.01
           },
-          "ttft": 1.321
+          "ttft": 2.024
         },
         "openrouter": {
           "inp_price": 3e-07,
@@ -36017,7 +36208,8 @@
           "intel": 44.0,
           "iq_per_dollar": 0.21583439999999998,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 4.6332,
+          "iq_per_1k": 215.8344,
+          "cost_per_iq": 4.6332,
           "aa_coding_index": 58.6,
           "aa_math_index": null,
           "gpqa": 0.929,
@@ -36036,9 +36228,8 @@
           "terminalbench_v2_1": 0.651685393258427,
           "omniscience_hallucination_rate": 0.16,
           "briefcase_analytical_quality_elo": 719.0,
-          "briefcase_presentation_elo": 717.0,
-          "time_per_task": 4.4,
-          "coding_index": 58.6
+          "briefcase_presentation_elo": 718.0,
+          "time_per_task": 5.8
         },
         "livebench": {
           "average": 70.05,
@@ -37354,11 +37545,11 @@
         "aa": {
           "inp_price": 1.5,
           "out_price": 7.5,
-          "blended": 1.05,
+          "blended": 3,
           "cache_hit_price": null,
           "cost_per_task": 1.2,
           "tokens_m": 91,
-          "speed_tps": 118.0,
+          "speed_tps": 57.052,
           "useful_cost": 16.3011,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -37369,7 +37560,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.734
+          "ttft": 0.859
         },
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -37384,8 +37575,9 @@
           "intel": 30,
           "iq_per_dollar": 0.0202238,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 49.4467,
-          "coding_index": 46.9,
+          "iq_per_1k": 20.2238,
+          "cost_per_iq": 49.4467,
+          "aa_coding_index": 46.9,
           "gpqa": 0.748
         }
       },
@@ -39414,9 +39606,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 57,
@@ -39432,7 +39624,8 @@
           "intel": 43.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 58.6,
           "aa_math_index": null,
           "gpqa": 0.884,
@@ -39452,8 +39645,7 @@
           "omniscience_hallucination_rate": 0.73,
           "briefcase_analytical_quality_elo": 899.0,
           "briefcase_presentation_elo": 880.0,
-          "time_per_task": null,
-          "coding_index": 58.6
+          "time_per_task": null
         },
         "arena_text": {
           "elo": 1487,
@@ -39478,13 +39670,13 @@
           "out_price": 4.25,
           "blended": 2,
           "cache_hit_price": null,
-          "cost_per_task": 0.2610220700233032,
+          "cost_per_task": 0.2924085748333458,
           "tokens_m": null,
-          "speed_tps": 124.871430218595,
+          "speed_tps": 141.884,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.883
+          "ttft": 1.377
         }
       },
       "benchmarks": {
@@ -39492,8 +39684,9 @@
           "intel": 50.6,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
-          "aa_coding_index": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 71.3,
           "aa_math_index": null,
           "gpqa": 0.898,
           "mmlu_pro": null,
@@ -39512,8 +39705,7 @@
           "omniscience_hallucination_rate": null,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 71.3
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -39812,17 +40004,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.08,
+          "inp_price": 0.075,
           "out_price": 0.3,
-          "blended": 0.245,
+          "blended": 0.131,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 270.6,
+          "speed_tps": 323.905,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.54
+          "ttft": 0.538
         }
       },
       "benchmarks": {
@@ -39830,7 +40022,8 @@
           "intel": 15.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 13.8,
           "aa_math_index": null,
           "gpqa": 0.469,
@@ -39850,8 +40043,7 @@
           "omniscience_hallucination_rate": 0.83,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 13.8
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -39889,13 +40081,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.25,
-          "out_price": 0.78,
-          "blended": 0.6475,
-          "cache_hit_price": 0.14,
+          "inp_price": 0.2,
+          "out_price": 0.8,
+          "blended": 0.35,
+          "cache_hit_price": 0.2,
           "cost_per_task": 0.25,
           "tokens_m": 110,
-          "speed_tps": 296.5,
+          "speed_tps": 147.496,
           "useful_cost": 2.6778,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -39906,7 +40098,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.25
           },
-          "ttft": 1.006
+          "ttft": 1.004
         },
         "openrouter": {
           "inp_price": 8e-08,
@@ -39921,7 +40113,8 @@
           "intel": 25.0,
           "iq_per_dollar": 0.0848724,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 11.7824,
+          "iq_per_1k": 84.8724,
+          "cost_per_iq": 11.7824,
           "aa_coding_index": 37.7,
           "aa_math_index": null,
           "gpqa": 0.8,
@@ -39941,8 +40134,7 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": 28.0,
           "briefcase_presentation_elo": 0.0,
-          "time_per_task": 2.3,
-          "coding_index": 37.7
+          "time_per_task": 2.2
         },
         "livebench": {
           "average": 32.02,
@@ -39992,13 +40184,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.68,
-          "out_price": 2.68,
-          "blended": 2.18,
+          "inp_price": 0.675,
+          "out_price": 2.675,
+          "blended": 1.175,
           "cache_hit_price": 0.25,
           "cost_per_task": 0.24,
           "tokens_m": 110,
-          "speed_tps": 179.184891793336,
+          "speed_tps": 199.548,
           "useful_cost": 4.033,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -40009,7 +40201,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 0.888
+          "ttft": 0.871
         },
         "openrouter": {
           "inp_price": 5e-07,
@@ -40026,7 +40218,8 @@
           "intel": 38.0,
           "iq_per_dollar": 0.085657,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 11.6745,
+          "iq_per_1k": 85.657,
+          "cost_per_iq": 11.6745,
           "aa_coding_index": 49.3,
           "aa_math_index": null,
           "gpqa": 0.867,
@@ -40046,8 +40239,7 @@
           "omniscience_hallucination_rate": 0.29,
           "briefcase_analytical_quality_elo": 1085.0,
           "briefcase_presentation_elo": 1000.0,
-          "time_per_task": 2.1,
-          "coding_index": 49.3
+          "time_per_task": 2.0
         },
         "livebench": {
           "average": 50.71,
@@ -40135,7 +40327,8 @@
           "intel": 18.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 25.3,
           "aa_math_index": null,
           "gpqa": 0.758,
@@ -40155,8 +40348,7 @@
           "omniscience_hallucination_rate": 0.85,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": null,
-          "coding_index": 25.3
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -40362,15 +40554,15 @@
         "aa": {
           "inp_price": 0.5,
           "out_price": 2.5,
-          "blended": 2.0,
+          "blended": 1,
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 108.5,
+          "speed_tps": 132.829,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.905
+          "ttft": 0.852
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -40387,7 +40579,8 @@
           "intel": 41.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 59.1,
           "aa_math_index": null,
           "gpqa": 0.892,
@@ -40407,8 +40600,7 @@
           "omniscience_hallucination_rate": 0.95,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 3.3,
-          "coding_index": 59.1
+          "time_per_task": 3.7
         }
       },
       "aliases": {
@@ -40547,15 +40739,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 1.95,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 150.4,
+          "speed_tps": 190.335,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 14.196
+          "ttft": 12.062
         }
       },
       "benchmarks": {
@@ -40563,7 +40755,8 @@
           "intel": 18.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 23,
           "aa_math_index": 94.3,
           "gpqa": 0.811,
@@ -40583,8 +40776,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 5.7,
-          "coding_index": 23,
+          "time_per_task": 5.2,
           "math_index": 94.3
         }
       },
@@ -40605,15 +40797,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 1.95,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 131.0,
+          "speed_tps": 165.182,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.687
+          "ttft": 5.605
         }
       },
       "benchmarks": {
@@ -40621,7 +40813,8 @@
           "intel": 18.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 46.7,
           "gpqa": 0.698,
@@ -40662,15 +40855,15 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 1.95,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 123.2,
+          "speed_tps": 182.63,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 17.582
+          "ttft": 8.541
         }
       },
       "benchmarks": {
@@ -40678,7 +40871,8 @@
           "intel": 19.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 88.7,
           "gpqa": 0.768,
@@ -40719,7 +40913,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 1.95,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40735,7 +40929,8 @@
           "intel": 17.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 56,
           "gpqa": 0.699,
@@ -40776,7 +40971,7 @@
         "aa": {
           "inp_price": 0.3,
           "out_price": 2.5,
-          "blended": 1.95,
+          "blended": 0.85,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
@@ -40792,7 +40987,8 @@
           "intel": 21.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 89.7,
           "gpqa": 0.76,
@@ -40832,16 +41028,16 @@
       "pricing": {
         "aa": {
           "inp_price": 1.25,
-          "out_price": 10.0,
-          "blended": 7.8125,
+          "out_price": 10,
+          "blended": 3.438,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 122.8,
+          "speed_tps": 146.278,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.176
+          "ttft": 5.68
         }
       },
       "benchmarks": {
@@ -40849,7 +41045,8 @@
           "intel": 20.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 25.9,
           "aa_math_index": 63.3,
           "gpqa": 0.751,
@@ -40870,7 +41067,6 @@
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": 0.7,
-          "coding_index": 25.9,
           "math_index": 63.3
         }
       },
@@ -40910,12 +41106,12 @@
       "pricing": {
         "aa": {
           "inp_price": 1.25,
-          "out_price": 10.0,
-          "blended": 7.8125,
+          "out_price": 10,
+          "blended": 3.438,
           "cache_hit_price": 0.31,
           "cost_per_task": 0.17,
           "tokens_m": 36,
-          "speed_tps": 126.4,
+          "speed_tps": 140.07,
           "useful_cost": 12.9597,
           "reasoning_tax_pct": 58.8,
           "cost_segments": {
@@ -40926,7 +41122,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 17.687
+          "ttft": 15.306
         }
       },
       "benchmarks": {
@@ -40934,7 +41130,8 @@
           "intel": 22.0,
           "iq_per_dollar": 0.0771621,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 12.9597,
+          "iq_per_1k": 77.1621,
+          "cost_per_iq": 12.9597,
           "aa_coding_index": 34,
           "aa_math_index": 89,
           "gpqa": 0.785,
@@ -40954,8 +41151,7 @@
           "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.5,
-          "coding_index": 34,
+          "time_per_task": 1.7,
           "math_index": 89
         }
       },
@@ -41496,15 +41692,15 @@
         "aa": {
           "inp_price": 0.05,
           "out_price": 0.2,
-          "blended": 0.1625,
+          "blended": 0.088,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 85.1,
+          "speed_tps": 254.416,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.748
+          "ttft": 0.7
         }
       },
       "benchmarks": {
@@ -41512,7 +41708,8 @@
           "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 14.4,
           "aa_math_index": 91,
           "gpqa": 0.757,
@@ -41532,8 +41729,7 @@
           "omniscience_hallucination_rate": 0.83,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 2.9,
-          "coding_index": 14.4,
+          "time_per_task": 1.7,
           "math_index": 91
         }
       },
@@ -52837,15 +53033,15 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.6,
-          "blended": 2.85,
+          "blended": 1.35,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 54.0,
+          "speed_tps": 56.849,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.438
+          "ttft": 1.445
         }
       },
       "benchmarks": {
@@ -52853,7 +53049,8 @@
           "intel": 37.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 53.7,
           "aa_math_index": null,
           "gpqa": 0.842,
@@ -52871,10 +53068,9 @@
           "terminalbench_hard": 0.348484848484849,
           "terminalbench_v2_1": 0.606741573033708,
           "omniscience_hallucination_rate": 0.48,
-          "briefcase_analytical_quality_elo": 1666.0,
-          "briefcase_presentation_elo": 1492.0,
-          "time_per_task": 7.7,
-          "coding_index": 53.7
+          "briefcase_analytical_quality_elo": 1662.0,
+          "briefcase_presentation_elo": 1490.0,
+          "time_per_task": 8.0
         },
         "dirac": {
           "cache_hit_rate_max": 32.8
@@ -52895,17 +53091,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.25,
-          "out_price": 1.49,
-          "blended": 1.18,
+          "inp_price": 0.248,
+          "out_price": 1.485,
+          "blended": 0.557,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 175.1,
+          "speed_tps": 131.135,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.397
+          "ttft": 1.307
         }
       },
       "benchmarks": {
@@ -52913,7 +53109,8 @@
           "intel": 32.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 41.9,
           "aa_math_index": null,
           "gpqa": 0.841,
@@ -52933,8 +53130,7 @@
           "omniscience_hallucination_rate": 0.5,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 3.5,
-          "coding_index": 41.9
+          "time_per_task": 3.4
         },
         "dirac": {
           "cache_hit_rate_max": 47.6
@@ -52957,15 +53153,15 @@
         "aa": {
           "inp_price": 1.3,
           "out_price": 7.8,
-          "blended": 6.175,
+          "blended": 2.925,
           "cache_hit_price": 0.13,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 44.5,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 2.044
+          "ttft": 0
         }
       },
       "benchmarks": {
@@ -52973,7 +53169,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.888,
@@ -53012,16 +53209,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.5,
-          "out_price": 3.0,
-          "blended": 2.375,
+          "out_price": 3,
+          "blended": 1.125,
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 52.6,
+          "speed_tps": 54.606,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.69
+          "ttft": 1.591
         }
       },
       "benchmarks": {
@@ -53029,7 +53226,8 @@
           "intel": 40.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 54.5,
           "aa_math_index": null,
           "gpqa": 0.882,
@@ -53049,8 +53247,7 @@
           "omniscience_hallucination_rate": 0.32,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.4,
-          "coding_index": 54.5
+          "time_per_task": 6.4
         }
       },
       "aliases": {
@@ -53070,15 +53267,15 @@
         "aa": {
           "inp_price": 0.4,
           "out_price": 1.6,
-          "blended": 1.3,
+          "blended": 0.7,
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 49.8,
+          "speed_tps": 52.112,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.676
+          "ttft": 1.712
         }
       },
       "benchmarks": {
@@ -53086,7 +53283,8 @@
           "intel": 39.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 55.9,
           "aa_math_index": null,
           "gpqa": 0.9,
@@ -53106,8 +53304,7 @@
           "omniscience_hallucination_rate": 0.25,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.6,
-          "coding_index": 55.9
+          "time_per_task": 6.7
         }
       },
       "aliases": {
@@ -53574,11 +53771,11 @@
         "aa": {
           "inp_price": 0.6,
           "out_price": 3.6,
-          "blended": 0.48,
+          "blended": 1.35,
           "cache_hit_price": null,
           "cost_per_task": 0.33,
           "tokens_m": 88,
-          "speed_tps": 51.0,
+          "speed_tps": 67.07,
           "useful_cost": 6.0007,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -53589,7 +53786,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.33
           },
-          "ttft": 1.729
+          "ttft": 1.587
         },
         "openrouter": {
           "inp_price": 3.9e-07,
@@ -53604,8 +53801,9 @@
           "intel": 34,
           "iq_per_dollar": 0.0643866,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 15.5312,
-          "coding_index": 48.2,
+          "iq_per_1k": 64.3866,
+          "cost_per_iq": 15.5312,
+          "aa_coding_index": 48.2,
           "gpqa": 0.893
         },
         "arena_code": {
@@ -53875,11 +54073,11 @@
         "aa": {
           "inp_price": 2.5,
           "out_price": 7.5,
-          "blended": 6.25,
+          "blended": 3.75,
           "cache_hit_price": 0.25,
           "cost_per_task": 1.06,
           "tokens_m": 100,
-          "speed_tps": 198.8,
+          "speed_tps": 200.777,
           "useful_cost": 13.3615,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -53890,7 +54088,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.566
+          "ttft": 1.593
         },
         "openrouter": {
           "inp_price": 1.475e-06,
@@ -53909,7 +54107,8 @@
           "intel": 46.0,
           "iq_per_dollar": 0.0344273,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": 29.0467,
+          "iq_per_1k": 34.4273,
+          "cost_per_iq": 29.0467,
           "aa_coding_index": 66,
           "aa_math_index": null,
           "gpqa": 0.923,
@@ -53927,10 +54126,9 @@
           "terminalbench_hard": 0.507575757575758,
           "terminalbench_v2_1": 0.745318352059925,
           "omniscience_hallucination_rate": 0.23,
-          "briefcase_analytical_quality_elo": 133.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": 1.6,
-          "coding_index": 66
+          "briefcase_analytical_quality_elo": 585.0,
+          "briefcase_presentation_elo": 283.0,
+          "time_per_task": 1.6
         },
         "livebench": {
           "average": 75.15,
@@ -57582,15 +57780,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 0.8,
-          "blended": 0.65,
+          "blended": 0.35,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 91.656,
+          "speed_tps": 92.322,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 70.398
+          "ttft": 6.025
         },
         "openrouter": {
           "inp_price": 1e-07,
@@ -57605,7 +57803,8 @@
           "intel": 4.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": 33.7,
           "gpqa": 0.529,
@@ -59715,7 +59914,8 @@
           "intel": 15.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.657,
@@ -59753,17 +59953,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.0,
-          "out_price": 0.0,
-          "blended": 0.0,
-          "cache_hit_price": null,
+          "inp_price": 0.15,
+          "out_price": 0.6,
+          "blended": 0.262,
+          "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": 120,
-          "speed_tps": 0,
+          "speed_tps": 73.497,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0
+          "ttft": 1.333
         },
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -59780,7 +59980,8 @@
           "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 16.2,
           "aa_math_index": null,
           "gpqa": 0.724,
@@ -59799,9 +60000,8 @@
           "terminalbench_v2_1": 0.119850187265918,
           "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": 515.0,
-          "briefcase_presentation_elo": 354.0,
-          "time_per_task": null,
-          "coding_index": 16.2
+          "briefcase_presentation_elo": 355.0,
+          "time_per_task": 9.9
         }
       },
       "aliases": {
@@ -59918,7 +60118,8 @@
           "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.623,
@@ -59981,7 +60182,8 @@
           "intel": 18.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": null,
@@ -60170,15 +60372,15 @@
         "aa": {
           "inp_price": 0.1,
           "out_price": 0.3,
-          "blended": 0.25,
+          "blended": 0.15,
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 192.4,
+          "speed_tps": 243.857,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.742
+          "ttft": 0.666
         }
       },
       "benchmarks": {
@@ -60186,7 +60388,8 @@
           "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": null,
           "aa_math_index": null,
           "gpqa": 0.826,
@@ -60229,15 +60432,15 @@
         "aa": {
           "inp_price": 0.2,
           "out_price": 1.15,
-          "blended": 0.9125,
+          "blended": 0.438,
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 403.0,
+          "speed_tps": 379.927,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.624
+          "ttft": 1.053
         }
       },
       "benchmarks": {
@@ -60245,7 +60448,8 @@
           "intel": 30.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 39.6,
           "aa_math_index": null,
           "gpqa": 0.809,
@@ -60265,8 +60469,7 @@
           "omniscience_hallucination_rate": 0.84,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.8,
-          "coding_index": 39.6
+          "time_per_task": 1.9
         }
       },
       "aliases": {
@@ -61125,17 +61328,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.24,
-          "out_price": 0.88,
-          "blended": 0.72,
+          "inp_price": 0.235,
+          "out_price": 0.875,
+          "blended": 0.395,
           "cache_hit_price": 0.16,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 119.3,
+          "speed_tps": 209.502,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.522
+          "ttft": 0.646
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -61152,7 +61355,8 @@
           "intel": 18.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
-          "iq_per_mtokdollar": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
           "aa_coding_index": 25.8,
           "aa_math_index": null,
           "gpqa": 0.752,
@@ -61172,8 +61376,7 @@
           "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 4.5,
-          "coding_index": 25.8
+          "time_per_task": 3.5
         }
       },
       "aliases": {

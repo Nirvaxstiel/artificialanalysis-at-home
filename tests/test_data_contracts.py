@@ -46,7 +46,7 @@ class TestDerivedProperties:
     def test_derived_fields_are_explicit(self):
         derived = {k for k, v in ProjectionRow.FIELD_PROVENANCE.items()
                     if v == Provenance.DERIVED}
-        assert derived == {"iq_per_1k_pt", "cost_per_iq_pt", "archetype",
+        assert derived == {"archetype",
                            "radar_intel", "radar_speed", "radar_cache_eff",
                            "radar_cost_eff", "radar_ctx"}, \
             f"DERIVED set drifted: {derived}"
@@ -64,21 +64,12 @@ class TestDerivedProperties:
             assert "cost_per_wallsec" not in m, \
                 f"{m['slug']}: cost_per_wallsec key must be absent"
 
-    def test_derived_iq_fields_consistent(self, processed_js):
-
+    def test_derived_iq_fields_absent(self, processed_js):
+        # The unit-mismatched derived iq_per_1k_pt / cost_per_iq_pt were removed
+        # (intel/dollar is not a meaningful AA metric). Assert they never appear.
         for m in processed_js:
-            intel = m.get("intel")
-            ct = m.get("cost_per_task")
-            iq1k = m.get("iq_per_1k_pt")
-            ciq = m.get("cost_per_iq_pt")
-            if intel is not None and ct is not None and ct > 0:
-                assert abs(iq1k - intel / ct * 1000) < 1e-1, \
-                    f"{m['slug']}: iq_per_1k_pt inconsistent"
-                assert abs(ciq - ct / intel) < 1e-4, \
-                    f"{m['slug']}: cost_per_iq_pt inconsistent"
-            else:
-                assert iq1k is None and ciq is None, \
-                    f"{m['slug']}: derived IQ fields set without SOURCED inputs"
+            assert "iq_per_1k_pt" not in m, f"{m.get('slug')}: iq_per_1k_pt should be gone"
+            assert "cost_per_iq_pt" not in m, f"{m.get('slug')}: cost_per_iq_pt should be gone"
 
 
 # ── TEST 1: All creators have a color in the palette ──

@@ -118,8 +118,10 @@ def _build_aa_quality_axes(models):
                     "AA intelligence per dollar spent", "AA Quality", qual_path, range_decimals=4),
         _build_axis(models, "aa.iq_per_mtok", "AA", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
                     "AA intelligence per million tokens", "AA Quality", qual_path, range_decimals=4),
-        _build_axis(models, "aa.iq_per_mtokdollar", "AA", "IQ per $Mtok", "quality", "IQ/($·Mtok)", True,
-                    "AA intelligence per million token-dollars", "AA Quality", qual_path, range_decimals=4),
+        _build_axis(models, "aa.iq_per_1k", "AA", "IQ per $1K", "quality", "IQ/$1K", True,
+                    "AA intelligence per $1,000 spent (sourced from AA iq_per_1k)", "AA Quality", qual_path, range_decimals=2),
+        _build_axis(models, "aa.cost_per_iq", "AA", "Cost per IQ pt", "quality", "$/IQ", True,
+                    "AA cost per intelligence-index point (sourced from AA cost_per_iq)", "AA Quality", qual_path, range_decimals=4),
     ]
 
 

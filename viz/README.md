@@ -56,8 +56,7 @@ Each model is a `ProjectionRow` with these fields (117 models total):
 | `intel` | float | AA Intelligence Index v4 |
 | `cost_per_task` | float | USD per task (AA-derived) |
 | `iq_per_dollar_pt` | float | IQ per $ (point-normalized) |
-| `iq_per_mtok` / `iq_per_mtokdollar` | float | IQ per million tokens / per $M tokens |
-| `iq_per_1k_pt` / `cost_per_iq_pt` | float | IQ per 1k points / cost per IQ point (Cost per IQ tab) |
+| `iq_per_1k` / `cost_per_iq` | float | IQ per $1K / cost per IQ point — **AA-sourced only** (no derived fallback) |
 | `tokens_m` | float | Output tokens in millions (AA eval; verbosity, not quality) |
 | `speed_tps` | float | Output tokens per second |
 | `ttft` | float | Time to first token (s) |

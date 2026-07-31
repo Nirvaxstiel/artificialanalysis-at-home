@@ -6,7 +6,7 @@ Built for users who want to pick a model and care about more than one axis.
 
 ## What it shows
 
-120 models (rendered), 2276 in the registry, 25 creators, 5 visualizations:
+123 models (rendered), 2279 in the registry, 25 creators, 5 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
@@ -48,7 +48,7 @@ Or just open `dashboard.html` directly in a modern browser (it loads `processed.
 | **OpenLLM v2** | Parameter counts (1783 models in subset) |
 | **Dirac.run** | Observed cache hit rates |
 
-Data is current as of **23 July 2026**, AA Intelligence Index v4.1.
+Data is current as of **31 July 2026**, AA Intelligence Index v4.1.
 
 ## Architecture
 
@@ -70,7 +70,7 @@ Stages (each a `Result`-returning `run()`/`build()`):
 | Stage | Inputs | Output | Models |
 |-------|--------|--------|--------|
 | `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | (writes caches) |
-| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2276 |
+| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2279 |
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
 | `_build_dashboard_data` | `model_registry.json` | `processed.js` | 120 |
 
@@ -101,7 +101,7 @@ Generic filter: `window.__legendFilter = { dim, val }` — shared across all vie
 ├── dashboard.html              ← the viz (loads data/processed.js)
 ├── data/
 │   ├── processed.js           ← 120 models, primary dataset (loaded by dashboard)
-│   ├── model_registry.json     ← 2276 models, 8 sources (serialized via RegistryModel)
+│   ├── model_registry.json     ← 2279 models, 8 sources (serialized via RegistryModel)
 │   ├── axes_catalog.json       ← typed axis catalog
 │   ├── _pipeline.py            ← orchestrator: build / build_from_cache / build() (pull)
 │   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter

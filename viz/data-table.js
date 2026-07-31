@@ -28,11 +28,8 @@
         { key: 'count', label: '# MODELS', render: r => r.count, cls: 'num' },
         { key: 'avgIQ', label: 'AVG IQ', render: r => r.avgIQ != null ? r.avgIQ.toFixed(1) : '—', cls: 'num' },
         { key: 'avgCost', label: 'AVG $ / TASK', render: r => r.avgCost != null ? window.VIZ_NUM.fmtUSD(r.avgCost) : '—', cls: 'num' },
-        { key: 'avgTokens', label: 'AVG TOK (M)', render: r => r.avgTokens != null ? window.VIZ_NUM.fmtCount(r.avgTokens * 1e6, { decimals: 0 }) : '—', cls: 'num' },
-        { key: 'iqPerK', label: 'IQ / $1K', render: r => {
-          const v = r.avgIQ != null && r.avgCost != null ? (r.avgIQ / r.avgCost * 1000) : null;
-          return v != null ? `<span style="color:var(--neon);font-weight:800;">${v.toFixed(1)}</span>` : '—';
-        }, cls: 'num' },
+        { key: 'avgTokens', label: 'AVG TOK', render: r => r.avgTokens != null ? window.VIZ_NUM.fmtCount(r.avgTokens, { decimals: 0 }) : '—', cls: 'num' },
+        { key: 'iqPerK', label: '$ / 1K IQ', render: r => '—', cls: 'num' },
       ],
     },
     model: {
@@ -47,14 +44,13 @@
         { key: 'context_window', label: 'CTX', render: r => r.context_window != null
           ? window.VIZ_NUM.fmtCount(r.context_window) : '—', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r => r.cost_per_task != null ? window.VIZ_NUM.fmtUSD(r.cost_per_task) : '—', cls: 'num' },
-        { key: 'tokens_m', label: 'TOK (M)', render: r => r.tokens_m != null ? window.VIZ_NUM.fmtCount(r.tokens_m * 1e6, { decimals: 0 }) : '—', cls: 'num' },
+        { key: 'tokens_m', label: 'TOK', render: r => r.tokens_m != null ? window.VIZ_NUM.fmtCount(r.tokens_m, { decimals: 0 }) : '—', cls: 'num' },
         { key: 'speed_tps', label: 'SPEED t/s', render: r => r.speed_tps != null ? window.VIZ_NUM.fmtCompact(r.speed_tps, { decimals: 0 }) : '—', cls: 'num' },
         { key: 'out_price', label: '$ / M TOK', render: r => r.out_price != null ? window.VIZ_NUM.fmtUSD(r.out_price) : '—', cls: 'num' },
         { key: 'iqPerK', label: 'IQ / $1K', render: r => {
-          if (r.intel == null || r.cost_per_task == null) return '—';
-          return `<span style="color:var(--neon);font-weight:800;">${(r.intel / r.cost_per_task * 1000).toFixed(1)}</span>`;
+          return r.iq_per_1k != null ? `<span style="color:var(--neon);font-weight:800;">${r.iq_per_1k.toFixed(1)}</span>` : '—';
         }, cls: 'num' },
-        { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r => r.reasoning_tax_pct != null ? window.VIZ_NUM.fmtPct(r.reasoning_tax_pct) : '—', cls: 'num' },
+        { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r => r.reasoning_tax_pct != null ? r.reasoning_tax_pct.toFixed(0) + '%' : '—', cls: 'num' },
         { key: 'livebench_average', label: 'LB AVG', render: r => r.livebench_average != null ? r.livebench_average.toFixed(1) : '—', cls: 'num' },
         { key: 'arena_code_elo', label: 'CODE ELO', render: r => r.arena_code_elo ?? '—', cls: 'num' },
         { key: 'openrouter_inp_price_per_m', label: 'OR IN $/M', render: r => r.openrouter_inp_price_per_m != null ? window.VIZ_NUM.fmtUSD(r.openrouter_inp_price_per_m) : '—', cls: 'num' },
@@ -91,16 +87,16 @@
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r => r.cost_per_task != null ? window.VIZ_NUM.fmtUSD(r.cost_per_task) : '—', cls: 'num' },
         { key: 'iqPerK', label: 'IQ / $1K', render: r => {
-          if (r.intel == null || r.cost_per_task == null) return '—';
-          return `<span style="color:var(--neon);font-weight:800;">${(r.intel / r.cost_per_task * 1000).toFixed(1)}</span>`;
+          // AA-sourced only (aa.iq_per_1k). No derived fallback — intel/dollar
+          // is a meaningless, unit-mismatched ratio we must not fabricate.
+          return r.iq_per_1k != null ? `<span style="color:var(--neon);font-weight:800;">${r.iq_per_1k.toFixed(1)}</span>` : '—';
         }, cls: 'num' },
-        { key: 'costRatio', label: '$ / IQ PT', render: r => {
-          if (r.intel == null || r.intel === 0 || r.cost_per_task == null) return '—';
-          return window.VIZ_NUM.fmtUSD(r.cost_per_task / r.intel);
+        { key: 'cost_per_iq', label: '$ / IQ PT', render: r => {
+          // AA-sourced only (aa.cost_per_iq). No derived fallback.
+          return r.cost_per_iq != null ? window.VIZ_NUM.fmtUSD(r.cost_per_iq) : '—';
         }, cls: 'num' },
-        { key: 'iq_per_mtokdollar', label: 'IQ / $MTOK', render: r => r.iq_per_mtokdollar != null ? r.iq_per_mtokdollar.toFixed(1) : '—', cls: 'num' },
         { key: 'useful_cost', label: 'USEFUL $', render: r => r.useful_cost != null ? window.VIZ_NUM.fmtUSD(r.useful_cost) : '—', cls: 'num' },
-        { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r => r.reasoning_tax_pct != null ? window.VIZ_NUM.fmtPct(r.reasoning_tax_pct) : '—', cls: 'num' },
+        { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r => r.reasoning_tax_pct != null ? r.reasoning_tax_pct.toFixed(0) + '%' : '—', cls: 'num' },
       ],
     },
   };
@@ -114,12 +110,8 @@
       for (const { key, dir } of sortSpec) {
         let va = a[key], vb = b[key];
         if (key === 'iqPerK') {
-          va = (a.intel != null && a.cost_per_task != null) ? a.intel / a.cost_per_task * 1000 : null;
-          vb = (b.intel != null && b.cost_per_task != null) ? b.intel / b.cost_per_task * 1000 : null;
-        }
-        if (key === 'costRatio') {
-          va = (a.intel != null && a.intel > 0 && a.cost_per_task != null) ? a.cost_per_task / a.intel : null;
-          vb = (b.intel != null && b.intel > 0 && b.cost_per_task != null) ? b.cost_per_task / b.intel : null;
+          va = a.iq_per_1k ?? null;
+          vb = b.iq_per_1k ?? null;
         }
         if (va == null && vb == null) continue;
         if (va == null) return dir === 'asc' ? 1 : -1;

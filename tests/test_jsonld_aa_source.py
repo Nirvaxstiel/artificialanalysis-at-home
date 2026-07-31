@@ -53,13 +53,15 @@ class TestJsonLdContract:
         names = {ds.get("name") for ds in d}
         required = {
             "Intelligence", "Speed", "Cost per Task",
-            "Artificial Analysis Coding Index",
             "AA-Omniscience Hallucination Rate",
             "AA-Briefcase Analytical Quality & Presentation Elo",
             "Time per Intelligence Index Task",
         }
         missing = required - names
         assert not missing, f"missing datasets: {missing}"
+        # NOTE: AA removed the "Artificial Analysis Coding Index" dataset from
+        # the JSON-LD export (and the chart) — coding_index is no longer an AA
+        # source. Deliberately not required here.
 
     def test_two_intelligence_datasets_are_value_identical(self):
         """Safe-dedup precondition: where slugs overlap, values must match."""
@@ -115,8 +117,11 @@ class TestJsonLdIngestion:
         assert sol_max.get("speed_tps") is not None, "gpt-5-6-sol should have speed_tps"
 
     def test_coding_index_populated(self, processed):
-        sol_xhigh = next(m for m in processed if m["slug"] == "gpt-5-6-sol-xhigh")
-        assert sol_xhigh.get("aa_coding_index") is not None, "gpt-5-6-sol-xhigh should have aa_coding_index"
+        # AA dropped Coding Index from the chart + JSON-LD, but RESTORED it in
+        # the live API `evaluations` block (31jul2026). It now lands as
+        # aa_coding_index via the _overlay_aa_api ev mapping.
+        sol = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
+        assert sol.get("aa_coding_index") is not None, "gpt-5-6-sol should have aa_coding_index from live API"
 
     def test_time_per_task_axis_populated(self, processed):
         have = [m for m in processed if m.get("aa_time_per_task") is not None]

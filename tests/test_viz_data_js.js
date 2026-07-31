@@ -70,16 +70,16 @@ check('applySort desc puts null first', nullLastDesc[0].intel === null);
 const nullFirstAsc = applySort(withNulls, [{ key: 'intel', dir: 'asc' }]);
 check('applySort asc puts null last', nullFirstAsc[2].intel === null);
 
-// iqPerK special key derives intel/cost ratio; null intel sorts first in desc
+// iqPerK special key sorts by AA-sourced iq_per_1k (no derived fallback); nulls last
 const byIqPerK = applySort(
   [
-    { intel: 100, cost_per_task: 50 },  // 2000
-    { intel: 100, cost_per_task: 10 },  // 10000
-    { intel: null, cost_per_task: 1 },
+    { intel: 100, cost_per_task: 50, iq_per_1k: 200 },
+    { intel: 100, cost_per_task: 10, iq_per_1k: 1000 },
+    { intel: null, cost_per_task: 1, iq_per_1k: null },
   ],
   [{ key: 'iqPerK', dir: 'desc' }]
 );
-check('applySort iqPerK derived order', byIqPerK[1].intel === 100 && byIqPerK[1].cost_per_task === 10 && byIqPerK[2].intel === 100 && byIqPerK[2].cost_per_task === 50);
+check('applySort iqPerK AA-sourced order', byIqPerK[0].iq_per_1k === null && byIqPerK[1].iq_per_1k === 1000 && byIqPerK[2].iq_per_1k === 200);
 
 // multi-column: sort by cost asc, then intel desc
 const multi = applySort(

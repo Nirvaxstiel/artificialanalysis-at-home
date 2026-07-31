@@ -64,7 +64,7 @@ def _ensure_aa_record(out: dict, slug: str):
         }},
         "benchmarks": {"aa": {
             "intel": None, "iq_per_dollar": None, "iq_per_mtok": None,
-            "iq_per_mtokdollar": None, "aa_coding_index": None,
+            "iq_per_1k": None, "cost_per_iq": None, "aa_coding_index": None,
             "aa_math_index": None, "gpqa": None, "mmlu_pro": None, "hle": None,
             "aime": None, "aime_25": None, "math_500": None, "livecodebench": None,
             "ifbench": None, "lcr": None, "scicode": None, "tau2": None,
@@ -373,7 +373,8 @@ def _step_scraped(all_models: dict, aa_dir: str) -> "Ok[dict]|Err[str]":
                     "intel": m.get("intelligence") or live_eval.get("artificial_analysis_intelligence_index"),
                     "iq_per_dollar": None,
                     "iq_per_mtok": None,
-                    "iq_per_mtokdollar": None,
+                    "iq_per_1k": None,
+                    "cost_per_iq": None,
                     "aa_coding_index": live_eval.get("artificial_analysis_coding_index"),
                     "aa_math_index": live_eval.get("artificial_analysis_math_index"),
                     "gpqa": live_eval.get("gpqa"),
@@ -537,7 +538,8 @@ def _make_model_from_enriched(slug: str, cid: str, raw: dict) -> dict:
                 "intel": raw.get("intel"),
                 "iq_per_dollar": (raw.get("iq_per_1k") / 1000.0) if raw.get("iq_per_1k") is not None else None,
                 "iq_per_mtok": None,
-                "iq_per_mtokdollar": raw.get("cost_per_iq"),
+                "iq_per_1k": raw.get("iq_per_1k"),
+                "cost_per_iq": raw.get("cost_per_iq"),
             }
         },
         "aliases": {
@@ -572,15 +574,22 @@ def _overlay_aa_api(model: dict, aa_m: dict) -> None:
         }),
         (b, {
             "intel": ev.get("artificial_analysis_intelligence_index"),
-            "coding_index": ev.get("artificial_analysis_coding_index"),
+            "aa_coding_index": ev.get("artificial_analysis_coding_index"),
             "math_index": ev.get("artificial_analysis_math_index"),
             "mmlu_pro": ev.get("mmlu_pro"),
             "gpqa": ev.get("gpqa"),
         }),
     ]
     for sec, kv in fills:
+        # Live API is AA's authoritative, always-current pricing source — its
+        # prices OVERRIDE any earlier (chart/JSON-LD/enriched) value so AA price
+        # changes propagate. Benchmarks (intel/scores) only fill nulls, since
+        # they don't retro-change and we must not wipe chart-sourced values.
+        is_pricing = sec is p
         for k, v in kv.items():
-            if v is not None and sec.get(k) is None:
+            if v is None:
+                continue
+            if is_pricing or sec.get(k) is None:
                 sec[k] = v
 
 
@@ -666,5 +675,7 @@ def _overlay_enriched(model: dict, raw: dict) -> None:
         b["intel"] = raw.get("intel")
     if b["iq_per_dollar"] is None and raw.get("iq_per_1k") is not None:
         b["iq_per_dollar"] = raw.get("iq_per_1k") / 1000.0
-    if b["iq_per_mtokdollar"] is None:
-        b["iq_per_mtokdollar"] = raw.get("cost_per_iq")
+    if b["iq_per_1k"] is None:
+        b["iq_per_1k"] = raw.get("iq_per_1k")
+    if b["cost_per_iq"] is None:
+        b["cost_per_iq"] = raw.get("cost_per_iq")

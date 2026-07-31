@@ -236,6 +236,16 @@ def step_name_map(state):
 
 
 def step_write(state):
+    # Central blended derive: any AA pricing with inp/out but no blended must
+    # get it (AA "3-to-1" = (input + 3·output)/4), regardless of which source
+    # (chart / enriched / scraped) supplied the prices. The per-source derives
+    # only cover 2 of 3 paths, so scraped-only models (e.g. deepseek-v4-flash-high)
+    # could land without blended.
+    for model in state["all_models"].values():
+        p = model.get("pricing", {}).get("aa")
+        if p is not None and p.get("blended") is None \
+                and p.get("inp_price") is not None and p.get("out_price") is not None:
+            p["blended"] = round((p["inp_price"] + 3 * p["out_price"]) / 4, 6)
     output_models = []
     for canonical_id in sorted(state["all_models"].keys()):
         model = state["all_models"][canonical_id]

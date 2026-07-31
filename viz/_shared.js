@@ -315,13 +315,13 @@ window.buildTooltip = function(m) {
   const iq = m.intel ?? 0;
   const cost = m.cost_per_task;
   const tok = m.tokens_m;
-  const iqPerK = cost > 0 ? (iq / cost * 1000).toFixed(0) : '—';
-  const reasoningPct = m.reasoning_tax_pct != null ? N.fmtPct(m.reasoning_tax_pct) : '—';
+  const iqPerK = m.iq_per_1k != null ? m.iq_per_1k.toFixed(0) : '—';
+  const reasoningPct = m.reasoning_tax_pct != null ? m.reasoning_tax_pct.toFixed(0) + '%' : '—';
   let html = `<div class=\"tt-name\">${m.name}</div>
     <div class=\"tt-creator\">${m.creator} &middot; ${m.slug}</div>
     <div class=\"tt-row\"><span class=\"k\">IQ</span><span class=\"v neon\">${iq}</span></div>
     <div class=\"tt-row\"><span class=\"k\">$ / TASK</span><span class=\"v\">${cost != null ? N.fmtUSD(cost) : '—'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK (M)</span><span class=\"v\">${tok != null ? N.fmtCount(tok * 1e6, { decimals: 0 }) : '—'}</span></div>
+    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK</span><span class=\"v\">${tok != null ? N.fmtCount(tok, { decimals: 0 }) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">$ / M TOK</span><span class=\"v\">${m.out_price != null ? N.fmtUSD(m.out_price) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">SPEED t/s</span><span class=\"v\">${m.speed_tps != null ? N.fmtCompact(m.speed_tps, { decimals: 0 }) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">IQ / $1K</span><span class=\"v neon\">${iqPerK}</span></div>
@@ -392,7 +392,7 @@ window.COST_SEGMENTS = {
 window.FIELD_LABELS = {
   intel:                'IQ',
   cost_per_task:        '$ / TASK',
-  tokens_m:             'TOK (M)',
+  tokens_m:             'TOK',
   speed_tps:            'SPEED t/s',
   inp_price:            'INPUT $/M',
   out_price:            'OUTPUT $/M',

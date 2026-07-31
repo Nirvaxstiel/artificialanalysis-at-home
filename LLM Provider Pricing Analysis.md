@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
-**Source:** Artificial Analysis — Intelligence Index v4.1 (23 Jul '26)
-**Data:** 120 models, 25 creators in the rendered dashboard (2276 in the full registry, 8 sources)
+**Source:** Artificial Analysis — Intelligence Index v4.1 (31 Jul '26)
+**Data:** 123 models, 25 creators in the rendered dashboard (2279 in the full registry, 8 sources)
 
 ## What it is
 
@@ -19,14 +19,14 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 
 - `dashboard.html` — the viz (loads `data/processed.js` as `window.PROCESSED_DATA`)
 - `data/processed.js` — 120 models, primary dataset (surfaced as `window.MODELS`)
-- `data/model_registry.json` — 2276 models, 8 sources (serialized via `RegistryModel`)
+- `data/model_registry.json` — 2279 models, 8 sources (serialized via `RegistryModel`)
 - `data/axes_catalog.json` — typed axis catalog
 - `data/_pipeline.py` — orchestrator: `build` / `build_from_cache` (offline) or full pull
 - `data/_build_registry.py` — merges sources → `model_registry.json`
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (579 models), `aa_charts_export.json`, `aa_jsonld_export.json`
+- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (589 models), `aa_charts_export.json`, `aa_jsonld_export.json`
 - `data/sources/dirac/cache_hit_rates.json` — 398 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
@@ -37,7 +37,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 | Source | Coverage | Used for |
 |--------|----------|----------|
 | Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
-| Artificial Analysis (live API) | 579 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
+| Artificial Analysis (live API) | 589 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
 | OpenRouter API | ~342 models | Pricing, **context window** (`context_length`) |
 | LiveBench | 127 models | Coding/agentic/reasoning scores |
 | Chatbot Arena (Code + Text) | 30 / 50 models | Code/Text Elo |
@@ -49,7 +49,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
 - **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
 
-## Projection schema (rendered 120-model set)
+## Projection schema (rendered 123-model set)
 
 Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
