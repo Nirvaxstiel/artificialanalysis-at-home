@@ -67,17 +67,20 @@ class TestJsonLdContract:
         """Safe-dedup precondition: where slugs overlap, values must match."""
         d = _load_jsonld()
         by_name = {ds.get("name"): ds for ds in d}
+        intel_name = "Artificial Analysis Intelligence Index by Input Modality"
+        if intel_name not in by_name and "Artificial Analysis Intelligence Index by Open Weights / Proprietary" in by_name:
+            intel_name = "Artificial Analysis Intelligence Index by Open Weights / Proprietary"
         intel = {e["detailsUrl"].replace("/models/", ""): e
                  for e in by_name["Intelligence"]["data"]}
         ow = {e["detailsUrl"].replace("/models/", ""): e
-              for e in by_name["Artificial Analysis Intelligence Index by Open Weights / Proprietary"]["data"]}
+              for e in by_name[intel_name]["data"]}
         shared = set(intel) & set(ow)
         assert shared, "expected overlapping slugs between the two intelligence datasets"
         for s in shared:
             a = intel[s].get("artificialAnalysisIntelligenceIndex")
             b = ow[s].get("intelligenceIndex")
             assert a is not None and b is not None, f"{s}: one dataset missing value"
-            assert abs(a - b) < 1e-9, f"{s}: Intelligence ({a}) != OpenWeights ({b}) — NOT safe to dedup"
+            assert abs(a - b) < 1e-9, f"{s}: Intelligence ({a}) != InputModality ({b}) — NOT safe to dedup"
 
     def test_gpt56_variants_present_in_jsonld(self):
         d = _load_jsonld()
@@ -110,7 +113,8 @@ class TestJsonLdIngestion:
     def test_intel_populated(self, processed):
         sol_max = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
         assert sol_max.get("intel") is not None, "gpt-5-6-sol should have intel from JSON-LD"
-        assert sol_max["intel"] > 50, f"unexpected intel value: {sol_max.get('intel')}"
+        # AA v4.3 methodology (10 Sep 2026) lowered gpt-5-6-sol intel from ~59 to 47.
+        assert sol_max["intel"] > 40, f"unexpected intel value: {sol_max.get('intel')}"
 
     def test_speed_populated(self, processed):
         sol_max = next(m for m in processed if m["slug"] == "gpt-5-6-sol")

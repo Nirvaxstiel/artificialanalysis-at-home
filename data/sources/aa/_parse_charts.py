@@ -21,6 +21,7 @@ def _load_json(path: str):
 # (e.g. AA dropped "Coding Index") are skipped instead of corrupting another key.
 CHART_TITLE_MAP = {
     "intelligence index by open weights": "intel",
+    "intelligence index by input modality": "intel",
     "briefcase": "briefcase",
     "omniscience": "omniscience",
     "cost to run": "cost_to_run",

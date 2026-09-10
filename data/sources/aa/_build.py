@@ -124,8 +124,11 @@ def get_aa_jsonld_models(aa_dir: str) -> dict[str, dict]:
 
     out: dict[str, dict] = {}
 
-    # Intelligence (use Open-Weights/Proprietary superset only)
-    for e in _jsonld_entries(datasets, "Artificial Analysis Intelligence Index by Open Weights / Proprietary"):
+    # Intelligence (prefer superset; 10 Sep renamed to "by Input Modality", older files use "Open Weights / Proprietary")
+    intel_name = "Artificial Analysis Intelligence Index by Input Modality"
+    if not any(e.get("intelligenceIndex") for e in _jsonld_entries(datasets, intel_name)):
+        intel_name = "Artificial Analysis Intelligence Index by Open Weights / Proprietary"
+    for e in _jsonld_entries(datasets, intel_name):
         cid = _ensure_aa_record(out, _slug_of(e))
         if not cid:
             continue
@@ -345,7 +348,7 @@ def _step_scraped(all_models: dict, aa_dir: str) -> "Ok[dict]|Err[str]":
         scraped_record = {
             "id": cid,
             "name": m.get("name"),
-            "creator": m.get("creator") or live.get("creator"),
+            "creator": normalize_creator(m.get("creator") or live.get("creator")),
             "model_type": "reasoning" if m.get("is_reasoning") else None,
             "meta": {
                 "archetype": None,

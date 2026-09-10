@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated": "2026-07-31",
+    "generated": "2026-09-10",
     "version": "1.0",
-    "model_count": 2279,
+    "model_count": 2289,
     "source_count": {
-      "aa": 123,
+      "aa": 133,
       "livebench": 127,
       "arena_text": 30,
       "arena_code": 50,
@@ -20,112 +20,102 @@
       "OpenRouter",
       "Cost Breakdown"
     ],
-    "name_map_size": 2397
+    "name_map_size": 2407
   },
   "name_map": {
+    "aa:gpt-6-astra": "gpt-6-astra",
+    "aa:claude-fable-5-1-high": "claude-fable-5-1-high",
     "aa:claude-fable-5": "claude-fable-5",
     "arena:claude-fable-5": "claude-fable-5",
     "arena_code:claude-fable-5": "claude-fable-5",
     "openrouter:anthropic/claude-fable-5": "claude-fable-5",
+    "aa:gpt-6-astra-medium": "gpt-6-astra-medium",
+    "aa:claude-opus-5-high": "claude-opus-5-high",
     "aa:gpt-5-6-sol": "gpt-5-6-sol",
+    "aa:gpt-6-astra-low": "gpt-6-astra-low",
     "aa:gpt-5-6-sol-xhigh": "gpt-5-6-sol-xhigh",
     "aa:kimi-k3": "kimi-k3",
     "openrouter:moonshotai/kimi-k3": "kimi-k3",
     "aa:gpt-5-6-sol-high": "gpt-5-6-sol-high",
+    "aa:gpt-5-6-terra": "gpt-5-6-terra",
     "aa:claude-opus-4-8": "claude-opus-4.8",
     "arena:claude-opus-4-8": "claude-opus-4.8",
     "arena_code:claude-opus-4-8": "claude-opus-4.8",
     "openrouter:anthropic/claude-opus-4.8": "claude-opus-4.8",
-    "aa:gpt-5-6-terra": "gpt-5-6-terra",
-    "aa:gpt-5-5": "gpt-5.5-xhigh",
-    "livebench:gpt-5.5-xhigh": "gpt-5.5-xhigh",
-    "aa:gpt-5-6-sol-medium": "gpt-5-6-sol-medium",
     "aa:claude-opus-4-7": "claude-opus-4.7",
     "arena:claude-opus-4-7": "claude-opus-4.7",
     "arena_code:claude-opus-4-7": "claude-opus-4.7",
     "openrouter:anthropic/claude-opus-4.7": "claude-opus-4.7",
-    "aa:claude-sonnet-5": "claude-sonnet-5",
-    "openrouter:anthropic/claude-sonnet-5": "claude-sonnet-5",
-    "aa:gpt-5-5-high": "gpt-5.5-high",
-    "livebench:gpt-5.5-high": "gpt-5.5-high",
-    "arena:gpt-5.5-high": "gpt-5.5-high",
-    "aa:gpt-5-6-terra-xhigh": "gpt-5-6-terra-xhigh",
+    "aa:qwen3-8-flash-next": "qwen3-8-flash-next",
+    "aa:gpt-5-6-sol-medium": "gpt-5-6-sol-medium",
     "aa:gpt-5-4": "gpt-5.4",
     "arena:gpt-5.4": "gpt-5.4",
     "arena_code:gpt-5.4": "gpt-5.4",
     "openrouter:openai/gpt-5.4": "gpt-5.4",
-    "aa:gpt-5-6-luna": "gpt-5-6-luna",
     "aa:glm-5-2": "glm-5.2",
     "livebench:glm-5.2": "glm-5.2",
     "openrouter:z-ai/glm-5.2": "glm-5.2",
-    "aa:gpt-5-5-medium": "gpt-5.5-medium",
-    "livebench:gpt-5.5-medium": "gpt-5.5-medium",
-    "aa:gemini-3-5-flash": "gemini-3.5-flash",
-    "arena:gemini-3.5-flash": "gemini-3.5-flash",
-    "arena_code:gemini-3.5-flash": "gemini-3.5-flash",
-    "openrouter:google/gemini-3.5-flash": "gemini-3.5-flash",
-    "aa:deepseek-v4-flash": "deepseek-v4-flash",
-    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
-    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
-    "aa:gpt-5-6-luna-xhigh": "gpt-5-6-luna-xhigh",
-    "aa:gpt-5-6-terra-high": "gpt-5-6-terra-high",
-    "aa:kimi-k3-low": "kimi-k3-low",
-    "aa:gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
-    "arena:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
-    "arena_code:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
-    "openrouter:google/gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
-    "aa:gpt-5-6-luna-high": "gpt-5-6-luna-high",
-    "aa:qwen3-7-max": "qwen3.7-max",
-    "livebench:qwen3.7-max": "qwen3.7-max",
-    "openrouter:qwen/qwen3.7-max": "qwen3.7-max",
-    "aa:gpt-5-6-terra-medium": "gpt-5-6-terra-medium",
-    "aa:gemini-3-5-flash-medium": "gemini-3-5-flash-medium",
-    "aa:minimax-m3": "minimax-m3",
-    "livebench:minimax-m3": "minimax-m3",
-    "arena_code:minimax-m3": "minimax-m3",
-    "openrouter:minimax/minimax-m3": "minimax-m3",
+    "aa:gpt-5-5": "gpt-5.5-xhigh",
+    "livebench:gpt-5.5-xhigh": "gpt-5.5-xhigh",
+    "aa:claude-sonnet-5": "claude-sonnet-5",
+    "openrouter:anthropic/claude-sonnet-5": "claude-sonnet-5",
+    "aa:gpt-5-6-terra-xhigh": "gpt-5-6-terra-xhigh",
+    "aa:gpt-5-6-luna": "gpt-5-6-luna",
+    "aa:gpt-5-5-high": "gpt-5.5-high",
+    "livebench:gpt-5.5-high": "gpt-5.5-high",
+    "arena:gpt-5.5-high": "gpt-5.5-high",
     "aa:deepseek-v4-pro": "deepseek-v4-pro",
     "livebench:deepseek-v4-pro": "deepseek-v4-pro",
     "arena_code:deepseek-v4-pro": "deepseek-v4-pro",
     "openrouter:deepseek/deepseek-v4-pro": "deepseek-v4-pro",
+    "aa:gpt-5-6-luna-xhigh": "gpt-5-6-luna-xhigh",
+    "aa:deepseek-v4-flash": "deepseek-v4-flash",
+    "livebench:deepseek-v4-flash": "deepseek-v4-flash",
+    "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "aa:gpt-5-6-terra-high": "gpt-5-6-terra-high",
+    "aa:kimi-k3-low": "kimi-k3-low",
+    "aa:gpt-5-5-medium": "gpt-5.5-medium",
+    "livebench:gpt-5.5-medium": "gpt-5.5-medium",
+    "aa:qwen3-8-27b": "qwen3-8-27b",
+    "aa:gemini-3-5-flash-medium": "gemini-3-5-flash-medium",
+    "aa:gemini-3-5-flash": "gemini-3.5-flash",
+    "arena:gemini-3.5-flash": "gemini-3.5-flash",
+    "arena_code:gemini-3.5-flash": "gemini-3.5-flash",
+    "openrouter:google/gemini-3.5-flash": "gemini-3.5-flash",
+    "aa:gpt-5-6-luna-high": "gpt-5-6-luna-high",
+    "aa:gpt-5-6-terra-medium": "gpt-5-6-terra-medium",
     "aa:gpt-5-3-codex": "gpt-5.3-codex",
     "openrouter:openai/gpt-5.3-codex": "gpt-5.3-codex",
+    "aa:claude-opus-4-6-adaptive": "claude-opus-4-6-adaptive",
     "aa:kimi-k2-6": "kimi-k2.6",
     "arena_code:kimi-k2.6": "kimi-k2.6",
     "openrouter:moonshotai/kimi-k2.6": "kimi-k2.6",
-    "aa:claude-opus-4-6-adaptive": "claude-opus-4-6-adaptive",
-    "aa:gpt-5-5-low": "gpt-5.5-low",
-    "aa:deepseek-v4-pro-high": "deepseek-v4-pro-high",
     "aa:muse-spark": "muse-spark",
     "arena:muse-spark": "muse-spark",
-    "aa:mimo-v2-5-pro": "mimo-v2.5-pro",
-    "arena:mimo-v2.5-pro": "mimo-v2.5-pro",
-    "arena_code:mimo-v2.5-pro": "mimo-v2.5-pro",
-    "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
-    "aa:kimi-k2-7-code": "kimi-k2.7-code",
-    "livebench:kimi-k2.7-code": "kimi-k2.7-code",
-    "arena_code:kimi-k2.7-code": "kimi-k2.7-code",
-    "openrouter:moonshotai/kimi-k2.7-code": "kimi-k2.7-code",
-    "aa:hy3": "hy3",
-    "openrouter:tencent/hy3": "hy3",
-    "aa:nex-n2-pro": "nex-n2-pro",
-    "openrouter:nex-agi/nex-n2-pro": "nex-n2-pro",
+    "aa:gpt-5-5-low": "gpt-5.5-low",
+    "aa:gemini-3-1-pro-preview": "gemini-3.1-pro-preview",
+    "arena:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
+    "arena_code:gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
+    "openrouter:google/gemini-3.1-pro-preview": "gemini-3.1-pro-preview",
+    "aa:qwen3-7-max": "qwen3.7-max",
+    "livebench:qwen3.7-max": "qwen3.7-max",
+    "openrouter:qwen/qwen3.7-max": "qwen3.7-max",
+    "aa:minimax-m3": "minimax-m3",
+    "livebench:minimax-m3": "minimax-m3",
+    "arena_code:minimax-m3": "minimax-m3",
+    "openrouter:minimax/minimax-m3": "minimax-m3",
+    "aa:qwen3-8-27b-low": "qwen3-8-27b-low",
     "aa:claude-opus-4-5-thinking": "claude-opus-4-5-thinking",
     "aa:mimo-v2-pro": "mimo-v2-pro",
     "livebench:mimo-v2-pro": "mimo-v2-pro",
     "arena_code:mimo-v2-pro": "mimo-v2-pro",
-    "aa:deepseek-v4-flash-0420": "deepseek-v4-flash-0420",
-    "aa:glm-5-1": "glm-5.1",
-    "livebench:glm-5.1": "glm-5.1",
-    "arena:glm-5.1": "glm-5.1",
-    "arena_code:glm-5.1": "glm-5.1",
-    "openrouter:z-ai/glm-5.1": "glm-5.1",
     "aa:gpt-5-2-codex": "gpt-5.2-codex",
     "livebench:gpt-5.2-codex": "gpt-5.2-codex",
     "openrouter:openai/gpt-5.2-codex": "gpt-5.2-codex",
+    "aa:claude-sonnet-5-medium": "claude-sonnet-5-medium",
     "aa:qwen3-6-max": "qwen3-6-max",
-    "aa:gpt-5-4-mini": "gpt-5-4-mini",
-    "aa:qwen3-6-plus": "qwen3-6-plus",
+    "aa:nex-n2-pro": "nex-n2-pro",
+    "openrouter:nex-agi/nex-n2-pro": "nex-n2-pro",
     "aa:gemini-3-pro": "gemini-3-pro",
     "arena:gemini-3-pro": "gemini-3-pro",
     "arena_code:gemini-3-pro": "gemini-3-pro",
@@ -133,84 +123,103 @@
     "livebench:glm-5": "glm-5",
     "arena_code:glm-5": "glm-5",
     "openrouter:z-ai/glm-5": "glm-5",
+    "aa:qwen3-6-plus": "qwen3-6-plus",
+    "aa:gpt-5-5-instant-06-26": "gpt-5-5-instant-06-26",
+    "aa:glm-5-turbo": "glm-5-turbo",
+    "openrouter:z-ai/glm-5-turbo": "glm-5-turbo",
+    "aa:glm-5-1": "glm-5.1",
+    "livebench:glm-5.1": "glm-5.1",
+    "arena:glm-5.1": "glm-5.1",
+    "arena_code:glm-5.1": "glm-5.1",
+    "openrouter:z-ai/glm-5.1": "glm-5.1",
+    "aa:mimo-v2-5-pro": "mimo-v2.5-pro",
+    "arena:mimo-v2.5-pro": "mimo-v2.5-pro",
+    "arena_code:mimo-v2.5-pro": "mimo-v2.5-pro",
+    "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
+    "aa:gemini-3-flash-reasoning": "gemini-3-flash-reasoning",
+    "aa:kimi-k2-7-code": "kimi-k2.7-code",
+    "livebench:kimi-k2.7-code": "kimi-k2.7-code",
+    "arena_code:kimi-k2.7-code": "kimi-k2.7-code",
+    "openrouter:moonshotai/kimi-k2.7-code": "kimi-k2.7-code",
     "aa:qwen3-7-plus": "qwen3-7-plus",
-    "aa:gpt-5-4-nano": "gpt-5-4-nano",
+    "aa:gpt-5-6-luna-medium": "gpt-5-6-luna-medium",
+    "aa:hy3": "hy3",
+    "openrouter:tencent/hy3": "hy3",
+    "aa:grok-4-3": "grok-4.3",
+    "livebench:grok-4.3": "grok-4.3",
+    "openrouter:x-ai/grok-4.3": "grok-4.3",
+    "aa:grok-4-3-medium": "grok-4-3-medium",
+    "aa:claude-sonnet-5-low": "claude-sonnet-5-low",
+    "aa:deepseek-v4-flash-0420": "deepseek-v4-flash-0420",
+    "aa:gpt-5-4-mini": "gpt-5-4-mini",
+    "aa:grok-4-3-low": "grok-4-3-low",
+    "aa:glm-5v-turbo": "glm-5v-turbo",
+    "livebench:glm-5v-turbo": "glm-5v-turbo",
+    "openrouter:z-ai/glm-5v-turbo": "glm-5v-turbo",
+    "aa:kimi-k2-5": "kimi-k2-5",
+    "aa:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "livebench:nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
     "aa:minimax-m2-7": "minimax-m2.7",
     "livebench:minimax-m2.7": "minimax-m2.7",
     "arena_code:minimax-m2.7": "minimax-m2.7",
     "openrouter:minimax/minimax-m2.7": "minimax-m2.7",
-    "aa:glm-5-turbo": "glm-5-turbo",
-    "openrouter:z-ai/glm-5-turbo": "glm-5-turbo",
-    "aa:gpt-5-6-luna-medium": "gpt-5-6-luna-medium",
-    "aa:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "livebench:nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "openrouter:nvidia/nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
-    "aa:gemini-3-flash-reasoning": "gemini-3-flash-reasoning",
-    "aa:grok-4-3": "grok-4.3",
-    "livebench:grok-4.3": "grok-4.3",
-    "openrouter:x-ai/grok-4.3": "grok-4.3",
-    "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
-    "aa:qwen3-6-27b": "qwen3-6-27b",
-    "aa:claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
-    "aa:grok-4-3-medium": "grok-4-3-medium",
-    "aa:grok-4-3-low": "grok-4-3-low",
-    "aa:kimi-k2-5": "kimi-k2-5",
-    "aa:glm-5v-turbo": "glm-5v-turbo",
-    "livebench:glm-5v-turbo": "glm-5v-turbo",
-    "openrouter:z-ai/glm-5v-turbo": "glm-5v-turbo",
     "aa:minimax-m2-5": "minimax-m2.5",
     "livebench:minimax-m2.5": "minimax-m2.5",
     "openrouter:minimax/minimax-m2.5": "minimax-m2.5",
     "aa:gemini-3-pro-low": "gemini-3-pro-low",
+    "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
+    "aa:qwen3-6-35b-a3b": "qwen3-6-35b-a3b",
     "aa:kimi-k2-thinking": "kimi-k2-thinking",
     "livebench:kimi-k2-thinking": "kimi-k2-thinking",
     "openrouter:moonshotai/kimi-k2-thinking": "kimi-k2-thinking",
-    "aa:qwen3-6-35b-a3b": "qwen3-6-35b-a3b",
-    "aa:step-3-7-flash": "step-3-7-flash",
+    "aa:qwen3-6-27b": "qwen3-6-27b",
+    "aa:gpt-5-4-nano": "gpt-5-4-nano",
+    "aa:claude-4-5-sonnet-thinking": "claude-4.5-sonnet-thinking",
     "aa:gpt-5-4-nano-medium": "gpt-5-4-nano-medium",
     "aa:gpt-5-4-mini-medium": "gpt-5-4-mini-medium",
-    "aa:gemma-4-31b": "gemma-4-31b",
-    "aa:gpt-5-5-instant-06-26": "gpt-5-5-instant-06-26",
+    "aa:step-3-7-flash": "step-3-7-flash",
     "aa:step-3-5-flash": "step-3-5-flash",
     "aa:gemma-4-26b-a4b": "gemma-4-26b-a4b",
-    "aa:nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
-    "livebench:nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
-    "openrouter:nvidia/nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
     "aa:gemini-3-1-flash-lite-preview": "gemini-3-1-flash-lite-preview",
-    "aa:gpt-oss-120b": "gpt-oss-120b",
-    "livebench:gpt-oss-120b": "gpt-oss-120b",
-    "openrouter:openai/gpt-oss-120b": "gpt-oss-120b",
+    "aa:gemma-4-31b": "gemma-4-31b",
     "aa:k-exaone": "k-exaone",
     "aa:gemma-4-12b": "gemma-4-12b",
     "aa:nova-2-0-pro-reasoning-medium": "nova-2.0-pro-reasoning-medium",
-    "aa:mercury-2": "mercury-2",
-    "openrouter:inception/mercury-2": "mercury-2",
     "aa:nova-2-0-omni-reasoning-medium": "nova-2-0-omni-reasoning-medium",
+    "aa:nvidia-nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
+    "livebench:nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
+    "openrouter:nvidia/nemotron-3-super-120b-a12b": "nemotron-3-super-120b-a12b",
+    "aa:nova-2-0-lite-reasoning": "nova-2-0-lite-reasoning",
     "aa:exaone-4-5-33b": "exaone-4-5-33b",
     "aa:nova-2-0-pro-reasoning-low": "nova-2-0-pro-reasoning-low",
     "aa:nova-2-0-lite-reasoning-medium": "nova-2-0-lite-reasoning-medium",
-    "aa:nova-2-0-lite-reasoning": "nova-2-0-lite-reasoning",
-    "aa:trinity-large-thinking": "trinity-large-thinking",
-    "openrouter:arcee-ai/trinity-large-thinking": "trinity-large-thinking",
+    "aa:gpt-oss-120b": "gpt-oss-120b",
+    "livebench:gpt-oss-120b": "gpt-oss-120b",
+    "openrouter:openai/gpt-oss-120b": "gpt-oss-120b",
     "aa:sonar-reasoning-pro": "sonar-reasoning-pro",
     "openrouter:perplexity/sonar-reasoning-pro": "sonar-reasoning-pro",
     "aa:nova-2-0-lite-reasoning-low": "nova-2-0-lite-reasoning-low",
     "aa:nemotron-cascade-2-30b-a3b": "nemotron-cascade-2-30b-a3b",
+    "aa:mercury-2": "mercury-2",
+    "openrouter:inception/mercury-2": "mercury-2",
     "aa:nova-2-0-omni-reasoning-low": "nova-2-0-omni-reasoning-low",
+    "aa:trinity-large-thinking": "trinity-large-thinking",
+    "openrouter:arcee-ai/trinity-large-thinking": "trinity-large-thinking",
     "aa:solar-open-100b-reasoning": "solar-open-100b-reasoning",
     "aa:nemotron-3-nano-omni-30b-a3b": "nemotron-3-nano-omni-30b-a3b",
     "aa:gpt-oss-120b-low": "gpt-oss-120b-low",
+    "aa:gpt-oss-20b-low": "gpt-oss-20b-low",
+    "aa:diffusiongemma-26b-a4b": "diffusiongemma-26b-a4b",
     "aa:gpt-oss-20b": "gpt-oss-20b",
     "openrouter:openai/gpt-oss-20b": "gpt-oss-20b",
-    "aa:gpt-oss-20b-low": "gpt-oss-20b-low",
-    "aa:nvidia-nemotron-3-nano-30b-a3b-reasoning": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
-    "aa:solar-pro-3": "solar-pro-3",
-    "openrouter:upstage/solar-pro-3": "solar-pro-3",
-    "aa:diffusiongemma-26b-a4b": "diffusiongemma-26b-a4b",
     "aa:gemma-4-e4b": "gemma-4-e4b",
+    "aa:nvidia-nemotron-3-nano-30b-a3b-reasoning": "nvidia-nemotron-3-nano-30b-a3b-reasoning",
     "aa:sonar-reasoning": "sonar-reasoning",
     "aa:exaone-4-0-32b-reasoning": "exaone-4-0-32b-reasoning",
     "aa:hermes-4-llama-3-1-70b-reasoning": "hermes-4-llama-3-1-70b-reasoning",
+    "aa:solar-pro-3": "solar-pro-3",
+    "openrouter:upstage/solar-pro-3": "solar-pro-3",
     "aa:gemma-4-e2b": "gemma-4-e2b",
     "aa:hermes-4-llama-3-1-405b-reasoning": "hermes-4-llama-3-1-405b-reasoning",
     "aa:reka-flash-3": "reka-flash-3",
@@ -218,14 +227,15 @@
     "aa:exaone-4-0-1-2b-reasoning": "exaone-4-0-1-2b-reasoning",
     "aa:claude-sonnet-5-xhigh": "claude-sonnet-5-xhigh",
     "aa:claude-sonnet-5-high": "claude-sonnet-5-high",
-    "aa:claude-sonnet-5-medium": "claude-sonnet-5-medium",
-    "aa:claude-sonnet-5-low": "claude-sonnet-5-low",
-    "aa:gemini-3-6-flash": "gemini-3-6-flash",
-    "aa:muse-spark-1-1": "muse-spark-1-1",
-    "aa:grok-4-5": "grok-4-5",
+    "aa:gemini-3-8-flash": "gemini-3-8-flash",
+    "aa:muse-spark-1-3": "muse-spark-1-3",
+    "aa:claude-fable-5-1": "claude-fable-5-1",
+    "aa:glm-5-3": "glm-5-3",
+    "aa:grok-4-6": "grok-4-6",
     "aa:claude-opus-5": "claude-opus-5",
     "aa:gpt-5-5-pro": "gpt-5.5-pro",
     "openrouter:openai/gpt-5.5-pro": "gpt-5.5-pro",
+    "aa:deepseek-v4-pro-high": "deepseek-v4-pro-high",
     "aa:deepseek-v4-flash-high": "deepseek-v4-flash-high",
     "aa:claude-4-5-haiku-reasoning": "claude-4.5-haiku-reasoning",
     "aa:claude-sonnet-4-6-adaptive": "claude-sonnet-4.6-adaptive",
@@ -4512,7 +4522,7 @@
           "cache_hit_price": null,
           "cost_per_task": 0.24,
           "tokens_m": 88,
-          "speed_tps": 125.89,
+          "speed_tps": 101.083,
           "useful_cost": 6.1255,
           "reasoning_tax_pct": 62.5,
           "cost_segments": {
@@ -4523,7 +4533,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 8.882
+          "ttft": 15.465
         }
       },
       "benchmarks": {
@@ -4535,6 +4545,7 @@
           "cost_per_iq": 17.968,
           "aa_coding_index": 43.9,
           "math_index": 83.7,
+          "mmlu_pro": 0.76,
           "gpqa": 0.672
         }
       },
@@ -4575,7 +4586,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 36.0,
+          "intel": 21.0,
           "iq_per_dollar": 0.029476500000000003,
           "iq_per_mtok": null,
           "iq_per_1k": 29.4765,
@@ -4584,22 +4595,22 @@
           "aa_math_index": 88,
           "gpqa": 0.834,
           "mmlu_pro": 0.875,
-          "hle": 0.173,
+          "hle": 0.178,
           "aime": null,
           "aime_25": 0.88,
           "math_500": null,
           "livecodebench": 0.714,
           "ifbench": 0.572789115646258,
-          "lcr": 0.656666666666667,
-          "scicode": 0.447,
+          "lcr": 0.723333333333333,
+          "scicode": 0.457,
           "tau2": 0.780701754385965,
-          "tau_banking": 0.189690721649485,
+          "tau_banking": 0.245360824742268,
           "terminalbench_hard": 0.356060606060606,
           "terminalbench_v2_1": 0.558052434456929,
-          "omniscience_hallucination_rate": 0.47,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 5.5,
+          "omniscience_hallucination_rate": 0.49,
+          "briefcase_analytical_quality_elo": 926.0,
+          "briefcase_presentation_elo": 900.0,
+          "time_per_task": 5.3,
           "math_index": 88
         }
       },
@@ -4622,13 +4633,13 @@
           "out_price": 50,
           "blended": 20,
           "cache_hit_price": 1.0,
-          "cost_per_task": 3.148706712412073,
+          "cost_per_task": null,
           "tokens_m": 87,
-          "speed_tps": 59.387,
+          "speed_tps": 68.133,
           "useful_cost": 64.7186,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 46.868
+          "ttft": 53.695
         },
         "openrouter": {
           "inp_price": 1e-05,
@@ -4644,7 +4655,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 60.0,
+          "intel": 50.0,
           "iq_per_dollar": 0.0106562,
           "iq_per_mtok": null,
           "iq_per_1k": 10.6562,
@@ -4653,22 +4664,22 @@
           "aa_math_index": null,
           "gpqa": 0.926,
           "mmlu_pro": null,
-          "hle": 0.533,
+          "hle": 0.555,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.63469387755102,
-          "lcr": 0.7,
-          "scicode": 0.602,
+          "lcr": 0.823333333333333,
+          "scicode": 0.61,
           "tau2": 0.985380116959064,
-          "tau_banking": 0.268041237113402,
+          "tau_banking": 0.381443298969072,
           "terminalbench_hard": 0.628787878787879,
           "terminalbench_v2_1": 0.846441947565543,
-          "omniscience_hallucination_rate": 0.55,
-          "briefcase_analytical_quality_elo": 1599.0,
-          "briefcase_presentation_elo": 1344.0,
-          "time_per_task": 5.8
+          "omniscience_hallucination_rate": 0.64,
+          "briefcase_analytical_quality_elo": 1581.0,
+          "briefcase_presentation_elo": 1473.0,
+          "time_per_task": 10.4
         },
         "arena_text": {
           "elo": 1509,
@@ -4686,6 +4697,115 @@
         "arena": "claude-fable-5",
         "arena_code": "claude-fable-5",
         "openrouter": "anthropic/claude-fable-5"
+      }
+    },
+    {
+      "id": "claude-fable-5-1",
+      "creator": "Anthropic",
+      "meta": {
+        "release_date": "2026-09-01"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
+          "cache_hit_price": null,
+          "cost_per_task": 7.629706364004841,
+          "tokens_m": null,
+          "speed_tps": 69.904,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 137.018
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 53.4,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 81.6,
+          "aa_math_index": null,
+          "gpqa": 0.937,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": null,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": null
+        }
+      },
+      "aliases": {
+        "aa": "claude-fable-5-1"
+      }
+    },
+    {
+      "id": "claude-fable-5-1-high",
+      "name": "Claude Fable 5.1 (high with fallback)",
+      "creator": "Anthropic",
+      "meta": {
+        "release_date": "2026-09-01"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
+          "cache_hit_price": 0.25,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 53.374,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 10.126
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 51.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 79.1,
+          "aa_math_index": null,
+          "gpqa": 0.906,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.69,
+          "briefcase_analytical_quality_elo": 1815.0,
+          "briefcase_presentation_elo": 1753.0,
+          "time_per_task": 7.2
+        }
+      },
+      "aliases": {
+        "aa": "claude-fable-5-1-high"
       }
     },
     {
@@ -4987,7 +5107,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 41.0,
+          "intel": 29.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -4996,19 +5116,19 @@
           "aa_math_index": 91.3,
           "gpqa": 0.866,
           "mmlu_pro": 0.895,
-          "hle": 0.284,
+          "hle": 0.301,
           "aime": null,
           "aime_25": 0.913333333333333,
           "math_500": null,
           "livecodebench": 0.871,
           "ifbench": 0.579591836734694,
-          "lcr": 0.74,
-          "scicode": 0.495,
+          "lcr": 0.773333333333333,
+          "scicode": null,
           "tau2": 0.894736842105263,
           "tau_banking": null,
           "terminalbench_hard": 0.46969696969697,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.6,
+          "omniscience_hallucination_rate": 0.61,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -5110,7 +5230,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 44.0,
+          "intel": 32.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -5119,19 +5239,19 @@
           "aa_math_index": null,
           "gpqa": 0.896,
           "mmlu_pro": null,
-          "hle": 0.367,
+          "hle": 0.399,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.531292517006803,
-          "lcr": 0.706666666666667,
-          "scicode": 0.519,
+          "lcr": 0.78,
+          "scicode": null,
           "tau2": 0.921052631578947,
           "tau_banking": null,
           "terminalbench_hard": 0.462121212121212,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.61,
+          "omniscience_hallucination_rate": 0.63,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -5513,7 +5633,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 54.0,
+          "intel": 41.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -5522,22 +5642,22 @@
           "aa_math_index": null,
           "gpqa": 0.914,
           "mmlu_pro": null,
-          "hle": 0.396,
+          "hle": 0.423,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.586394557823129,
-          "lcr": 0.703333333333333,
-          "scicode": 0.545,
+          "lcr": 0.786666666666667,
+          "scicode": null,
           "tau2": 0.885964912280702,
-          "tau_banking": 0.288659793814433,
+          "tau_banking": 0.34639175257732,
           "terminalbench_hard": 0.515151515151515,
           "terminalbench_v2_1": 0.831460674157303,
-          "omniscience_hallucination_rate": 0.36,
-          "briefcase_analytical_quality_elo": 1045.0,
-          "briefcase_presentation_elo": 1000.0,
-          "time_per_task": 6.9
+          "omniscience_hallucination_rate": 0.42,
+          "briefcase_analytical_quality_elo": 594.0,
+          "briefcase_presentation_elo": 834.0,
+          "time_per_task": null
         },
         "arena_text": {
           "elo": 1494,
@@ -5598,7 +5718,7 @@
           "cache_hit_price": 0.5,
           "cost_per_task": 1.8,
           "tokens_m": 120,
-          "speed_tps": 61.901,
+          "speed_tps": 0,
           "useful_cost": 31.2713,
           "reasoning_tax_pct": 44.4,
           "cost_segments": {
@@ -5609,7 +5729,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.2
           },
-          "ttft": 17.269
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 5e-06,
@@ -5625,7 +5745,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 56.0,
+          "intel": 42.0,
           "iq_per_dollar": 0.0149232,
           "iq_per_mtok": null,
           "iq_per_1k": 14.9232,
@@ -5634,22 +5754,22 @@
           "aa_math_index": null,
           "gpqa": 0.92,
           "mmlu_pro": null,
-          "hle": 0.457,
+          "hle": 0.487,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.622448979591837,
-          "lcr": 0.676666666666667,
-          "scicode": 0.535,
+          "lcr": 0.776666666666667,
+          "scicode": 0.544,
           "tau2": 0.944444444444445,
-          "tau_banking": 0.276288659793814,
+          "tau_banking": 0.342268041237113,
           "terminalbench_hard": 0.583333333333333,
           "terminalbench_v2_1": 0.846441947565543,
-          "omniscience_hallucination_rate": 0.36,
-          "briefcase_analytical_quality_elo": 1295.0,
-          "briefcase_presentation_elo": 1321.0,
-          "time_per_task": 8.5
+          "omniscience_hallucination_rate": 0.39,
+          "briefcase_analytical_quality_elo": 1201.0,
+          "briefcase_presentation_elo": 1049.0,
+          "time_per_task": 12.6
         },
         "arena_text": {
           "elo": 1477,
@@ -5705,18 +5825,18 @@
           "out_price": 25,
           "blended": 10,
           "cache_hit_price": null,
-          "cost_per_task": 2.3364632606812896,
+          "cost_per_task": 5.858396237036018,
           "tokens_m": null,
-          "speed_tps": 55.526,
+          "speed_tps": 55.074,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 24.476
+          "ttft": 33.868
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 60.7,
+          "intel": 50.7,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -5745,6 +5865,61 @@
       },
       "aliases": {
         "aa": "claude-opus-5"
+      }
+    },
+    {
+      "id": "claude-opus-5-high",
+      "name": "Claude Opus 5 (high)",
+      "creator": "Anthropic",
+      "meta": {
+        "release_date": "2026-07-24"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 5,
+          "out_price": 25,
+          "blended": 10,
+          "cache_hit_price": 0.5,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 53.443,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 16.642
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 48.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.5,
+          "aa_math_index": null,
+          "gpqa": 0.937,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.61,
+          "briefcase_analytical_quality_elo": 1670.0,
+          "briefcase_presentation_elo": 1667.0,
+          "time_per_task": 9.3
+        }
+      },
+      "aliases": {
+        "aa": "claude-opus-5-high"
       }
     },
     {
@@ -6048,7 +6223,7 @@
           "cache_hit_price": 0.2,
           "cost_per_task": 2.29,
           "tokens_m": 300,
-          "speed_tps": 85.895,
+          "speed_tps": 83.464,
           "useful_cost": 20.0506,
           "reasoning_tax_pct": 43.7,
           "cost_segments": {
@@ -6059,7 +6234,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 108.622
+          "ttft": 138.821
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -6075,7 +6250,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 53.0,
+          "intel": 38.0,
           "iq_per_dollar": 0.008811,
           "iq_per_mtok": null,
           "iq_per_1k": 8.811,
@@ -6084,22 +6259,22 @@
           "aa_math_index": null,
           "gpqa": 0.911,
           "mmlu_pro": null,
-          "hle": 0.396,
+          "hle": 0.413,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": 0.706666666666667,
-          "scicode": 0.536,
+          "lcr": 0.82,
+          "scicode": 0.543,
           "tau2": null,
-          "tau_banking": 0.282474226804124,
+          "tau_banking": 0.37319587628866,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.805243445692884,
-          "omniscience_hallucination_rate": 0.37,
-          "briefcase_analytical_quality_elo": 1237.0,
-          "briefcase_presentation_elo": 1220.0,
-          "time_per_task": 9.6
+          "omniscience_hallucination_rate": 0.39,
+          "briefcase_analytical_quality_elo": 1190.0,
+          "briefcase_presentation_elo": 1056.0,
+          "time_per_task": 15.6
         }
       },
       "aliases": {
@@ -6124,11 +6299,11 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 67.153,
+          "speed_tps": 69.667,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.582
+          "ttft": 4.555
         }
       },
       "benchmarks": {
@@ -6142,21 +6317,21 @@
           "aa_math_index": null,
           "gpqa": null,
           "mmlu_pro": null,
-          "hle": null,
+          "hle": 0.357,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": null,
-          "scicode": null,
+          "lcr": 0.766666666666667,
+          "scicode": 0.543,
           "tau2": null,
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": null,
-          "briefcase_analytical_quality_elo": 885.0,
-          "briefcase_presentation_elo": 778.0,
+          "omniscience_hallucination_rate": 0.66,
+          "briefcase_analytical_quality_elo": 598.0,
+          "briefcase_presentation_elo": 640.0,
           "time_per_task": null
         }
       },
@@ -6181,16 +6356,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 60.803,
+          "speed_tps": 65.698,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.186
+          "ttft": 1.298
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": null,
+          "intel": 25.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -6199,22 +6374,22 @@
           "aa_math_index": null,
           "gpqa": null,
           "mmlu_pro": null,
-          "hle": null,
+          "hle": 0.219,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": null,
-          "scicode": null,
+          "lcr": 0.673333333333333,
+          "scicode": 0.501,
           "tau2": null,
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": null,
-          "briefcase_analytical_quality_elo": 0.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": null
+          "omniscience_hallucination_rate": 0.73,
+          "briefcase_analytical_quality_elo": 1472.0,
+          "briefcase_presentation_elo": 1458.0,
+          "time_per_task": 2.5
         }
       },
       "aliases": {
@@ -6238,16 +6413,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 63.457,
+          "speed_tps": 63.804,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.759
+          "ttft": 1.443
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": null,
+          "intel": 28.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -6256,22 +6431,22 @@
           "aa_math_index": null,
           "gpqa": null,
           "mmlu_pro": null,
-          "hle": null,
+          "hle": 0.3,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": null,
-          "scicode": null,
+          "lcr": 0.736666666666667,
+          "scicode": 0.516,
           "tau2": null,
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": null,
-          "briefcase_analytical_quality_elo": 838.0,
-          "briefcase_presentation_elo": 621.0,
-          "time_per_task": null
+          "omniscience_hallucination_rate": 0.7,
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 1439.0,
+          "time_per_task": 4.6
         }
       },
       "aliases": {
@@ -6314,11 +6489,11 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 67.123,
+          "speed_tps": 77.209,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 10.442
+          "ttft": 26.494
         }
       },
       "benchmarks": {
@@ -6332,21 +6507,21 @@
           "aa_math_index": null,
           "gpqa": null,
           "mmlu_pro": null,
-          "hle": null,
+          "hle": 0.39,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": null,
-          "scicode": null,
+          "lcr": 0.766666666666667,
+          "scicode": 0.541,
           "tau2": null,
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": null,
-          "briefcase_analytical_quality_elo": 1077.0,
-          "briefcase_presentation_elo": 1149.0,
+          "omniscience_hallucination_rate": 0.59,
+          "briefcase_analytical_quality_elo": 837.0,
+          "briefcase_presentation_elo": 621.0,
           "time_per_task": null
         }
       },
@@ -8421,7 +8596,7 @@
     },
     {
       "id": "deepseek-v4-flash",
-      "name": "DeepSeek V4 Flash 0731 (max)",
+      "name": "DeepSeek V4 Flash (Reasoning, Max Effort)",
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
@@ -8430,13 +8605,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.14,
-          "out_price": 0.28,
-          "blended": 0.175,
-          "cache_hit_price": 0.003,
+          "inp_price": 0.44,
+          "out_price": 1.32,
+          "blended": 0.66,
+          "cache_hit_price": 0.01,
           "cost_per_task": 0.02,
           "tokens_m": 230,
-          "speed_tps": 0,
+          "speed_tps": 117.668,
           "useful_cost": 0.3149,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -8447,7 +8622,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0
+          "ttft": 0.77
         },
         "openrouter": {
           "inp_price": 9.8e-08,
@@ -8461,7 +8636,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 50.0,
+          "intel": 35.0,
           "iq_per_dollar": 0.5523336000000001,
           "iq_per_mtok": null,
           "iq_per_1k": 552.3336,
@@ -8470,22 +8645,22 @@
           "aa_math_index": null,
           "gpqa": 0.908,
           "mmlu_pro": null,
-          "hle": 0.368,
+          "hle": 0.386,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": 0.656666666666667,
-          "scicode": 0.499,
+          "lcr": 0.796666666666667,
+          "scicode": 0.503,
           "tau2": null,
-          "tau_banking": 0.311340206185567,
+          "tau_banking": 0.393814432989691,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.786516853932584,
-          "omniscience_hallucination_rate": 0.84,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": null
+          "omniscience_hallucination_rate": 0.92,
+          "briefcase_analytical_quality_elo": 715.0,
+          "briefcase_presentation_elo": 712.0,
+          "time_per_task": 6.9
         },
         "livebench": {
           "average": 67.67,
@@ -8512,22 +8687,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.14,
+          "inp_price": 0.13,
           "out_price": 0.28,
-          "blended": 0.175,
-          "cache_hit_price": null,
+          "blended": 0.168,
+          "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 106.728,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.906
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 25.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -8549,9 +8724,9 @@
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
           "omniscience_hallucination_rate": 0.96,
-          "briefcase_analytical_quality_elo": 1199.0,
-          "briefcase_presentation_elo": 1115.0,
-          "time_per_task": 5.6
+          "briefcase_analytical_quality_elo": 1222.0,
+          "briefcase_presentation_elo": 1189.0,
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -8614,18 +8789,18 @@
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24",
+        "release_date": "2026-08-13",
         "context_window": 1048576
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.435,
-          "out_price": 0.87,
-          "blended": 0.544,
-          "cache_hit_price": 0.004,
+          "inp_price": 1.32,
+          "out_price": 3.96,
+          "blended": 1.98,
+          "cache_hit_price": 0.04,
           "cost_per_task": 0.04,
           "tokens_m": 180,
-          "speed_tps": 66.384,
+          "speed_tps": 63.474,
           "useful_cost": 0.9797,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -8636,7 +8811,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.05
+          "ttft": 1.062
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -8650,31 +8825,31 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 44.0,
+          "intel": 36.0,
           "iq_per_dollar": 0.249518,
           "iq_per_mtok": null,
           "iq_per_1k": 249.518,
           "cost_per_iq": 4.0077,
-          "aa_coding_index": 59.4,
+          "aa_coding_index": 68.8,
           "aa_math_index": null,
-          "gpqa": 0.888,
+          "gpqa": 0.928,
           "mmlu_pro": null,
-          "hle": 0.359,
+          "hle": 0.41,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
-          "ifbench": 0.764625850340136,
-          "lcr": 0.663333333333333,
-          "scicode": 0.5,
-          "tau2": 0.961988304093567,
-          "tau_banking": 0.257731958762887,
-          "terminalbench_hard": 0.462121212121212,
-          "terminalbench_v2_1": 0.640449438202247,
-          "omniscience_hallucination_rate": 0.94,
-          "briefcase_analytical_quality_elo": 1466.0,
-          "briefcase_presentation_elo": 1485.0,
-          "time_per_task": 8.3
+          "ifbench": null,
+          "lcr": 0.803333333333333,
+          "scicode": 0.51,
+          "tau2": null,
+          "tau_banking": 0.395876288659794,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": 0.786516853932584,
+          "omniscience_hallucination_rate": 0.95,
+          "briefcase_analytical_quality_elo": 813.0,
+          "briefcase_presentation_elo": 835.0,
+          "time_per_task": 9.9
         },
         "dirac": {
           "cache_hit_rate_max": 89.8
@@ -8708,51 +8883,44 @@
       "creator": "DeepSeek",
       "model_type": "reasoning",
       "meta": {
-        "release_date": "2026-04-24",
         "context_window": 1048576
       },
       "pricing": {
         "aa": {
           "inp_price": 0.435,
           "out_price": 0.87,
-          "blended": 0.544,
+          "blended": 0.76125,
           "cache_hit_price": 0.004,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 56.872,
+          "speed_tps": 81.0,
           "useful_cost": null,
-          "reasoning_tax_pct": null,
-          "cost_segments": null,
-          "ttft": 1.016
+          "reasoning_tax_pct": null
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 43.0,
+          "intel": 41,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
           "cost_per_iq": null,
-          "aa_coding_index": 58.7,
+          "aa_coding_index": null,
           "aa_math_index": null,
-          "gpqa": 0.905,
+          "gpqa": null,
           "mmlu_pro": null,
-          "hle": 0.335,
+          "hle": null,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
-          "ifbench": 0.712925170068027,
-          "lcr": 0.65,
-          "scicode": 0.464,
-          "tau2": 0.941520467836257,
-          "tau_banking": 0.237113402061856,
-          "terminalbench_hard": 0.416666666666667,
-          "terminalbench_v2_1": 0.647940074906367,
-          "omniscience_hallucination_rate": 0.89,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 6.8
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null
         }
       },
       "aliases": {
@@ -8962,7 +9130,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 13.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -8971,16 +9139,16 @@
           "aa_math_index": null,
           "gpqa": 0.669,
           "mmlu_pro": null,
-          "hle": 0.102,
+          "hle": 0.108,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.594557823129252,
-          "lcr": 0.143333333333333,
-          "scicode": 0.343,
+          "lcr": 0.196666666666667,
+          "scicode": null,
           "tau2": null,
-          "tau_banking": 0.065979381443299,
+          "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.123595505617978,
           "omniscience_hallucination_rate": 0.91,
@@ -10187,7 +10355,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 3.0,
+          "intel": 5.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -10196,19 +10364,19 @@
           "aa_math_index": 50.3,
           "gpqa": 0.515,
           "mmlu_pro": 0.588,
-          "hle": 0.058,
+          "hle": 0.06,
           "aime": null,
           "aime_25": 0.503333333333333,
           "math_500": null,
           "livecodebench": 0.516,
           "ifbench": 0.229931972789116,
           "lcr": 0,
-          "scicode": 0.093,
+          "scicode": null,
           "tau2": 0.16374269005848,
           "tau_banking": null,
           "terminalbench_hard": 0,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.94,
+          "omniscience_hallucination_rate": 0.93,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -10245,7 +10413,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 11.0,
+          "intel": 8.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -10254,14 +10422,14 @@
           "aa_math_index": 80,
           "gpqa": 0.739,
           "mmlu_pro": 0.818,
-          "hle": 0.105,
+          "hle": 0.114,
           "aime": 0.843333333333333,
           "aime_25": 0.8,
           "math_500": 0.976666666666667,
           "livecodebench": 0.747,
           "ifbench": 0.363265306122449,
-          "lcr": 0.14,
-          "scicode": 0.344,
+          "lcr": null,
+          "scicode": null,
           "tau2": 0.172514619883041,
           "tau_banking": null,
           "terminalbench_hard": 0.0378787878787879,
@@ -10303,7 +10471,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 20.0,
+          "intel": 13.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -10312,19 +10480,19 @@
           "aa_math_index": null,
           "gpqa": 0.794,
           "mmlu_pro": null,
-          "hle": 0.116,
+          "hle": 0.129,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.579591836734694,
-          "lcr": 0.493333333333333,
-          "scicode": 0.28,
+          "lcr": 0.546666666666667,
+          "scicode": null,
           "tau2": 0.780701754385965,
-          "tau_banking": 0.111340206185567,
+          "tau_banking": null,
           "terminalbench_hard": 0.204545454545455,
           "terminalbench_v2_1": 0.213483146067416,
-          "omniscience_hallucination_rate": 0.81,
+          "omniscience_hallucination_rate": 0.8,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -12118,16 +12286,16 @@
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 292.326,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 4.904
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 25.0,
+          "intel": 16.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -12136,22 +12304,22 @@
           "aa_math_index": null,
           "gpqa": 0.822,
           "mmlu_pro": null,
-          "hle": 0.162,
+          "hle": 0.172,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.772108843537415,
-          "lcr": 0.653333333333333,
-          "scicode": 0.419,
+          "lcr": 0.743333333333333,
+          "scicode": 0.434,
           "tau2": 0.312865497076023,
-          "tau_banking": 0.0865979381443299,
+          "tau_banking": 0.0969072164948454,
           "terminalbench_hard": 0.242424242424242,
           "terminalbench_v2_1": 0.310861423220974,
-          "omniscience_hallucination_rate": 0.82,
-          "briefcase_analytical_quality_elo": 763.0,
-          "briefcase_presentation_elo": 773.0,
-          "time_per_task": 1.1
+          "omniscience_hallucination_rate": 0.83,
+          "briefcase_analytical_quality_elo": 586.0,
+          "briefcase_presentation_elo": 527.0,
+          "time_per_task": 0.7
         },
         "dirac": {
           "cache_hit_rate_max": 38.3
@@ -12178,16 +12346,16 @@
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 240.332,
+          "speed_tps": 239.733,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 9.932
+          "ttft": 10.727
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 45.0,
+          "intel": 34.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -12196,21 +12364,21 @@
           "aa_math_index": null,
           "gpqa": 0.921,
           "mmlu_pro": null,
-          "hle": 0.399,
+          "hle": 0.413,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.745578231292517,
-          "lcr": 0.71,
-          "scicode": 0.53,
+          "lcr": 0.743333333333333,
+          "scicode": null,
           "tau2": 0.956140350877193,
           "tau_banking": null,
           "terminalbench_hard": 0.393939393939394,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.6,
-          "briefcase_analytical_quality_elo": 1440.0,
-          "briefcase_presentation_elo": 1307.0,
+          "omniscience_hallucination_rate": 0.62,
+          "briefcase_analytical_quality_elo": 1123.0,
+          "briefcase_presentation_elo": 1205.0,
           "time_per_task": null
         }
       },
@@ -12219,36 +12387,36 @@
       }
     },
     {
-      "id": "gemini-3-6-flash",
+      "id": "gemini-3-8-flash",
       "creator": "Google",
       "meta": {
-        "release_date": "2026-07-21"
+        "release_date": "2026-09-02"
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.5,
-          "out_price": 7.5,
-          "blended": 3,
+          "inp_price": 0.75,
+          "out_price": 3.75,
+          "blended": 1.5,
           "cache_hit_price": null,
-          "cost_per_task": 0.5569335790394195,
+          "cost_per_task": 1.2427947606950427,
           "tokens_m": null,
-          "speed_tps": 212.268,
+          "speed_tps": 342.779,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 12.627
+          "ttft": 9.297
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 50.1,
+          "intel": 41.2,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
           "cost_per_iq": null,
-          "aa_coding_index": 69.2,
+          "aa_coding_index": 76.3,
           "aa_math_index": null,
-          "gpqa": 0.928,
+          "gpqa": 0.953,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -12269,7 +12437,7 @@
         }
       },
       "aliases": {
-        "aa": "gemini-3-6-flash"
+        "aa": "gemini-3-8-flash"
       }
     },
     {
@@ -12404,7 +12572,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -12413,19 +12581,19 @@
           "aa_math_index": 97,
           "gpqa": 0.898,
           "mmlu_pro": 0.89,
-          "hle": 0.347,
+          "hle": 0.366,
           "aime": null,
           "aime_25": 0.97,
           "math_500": null,
           "livecodebench": 0.908,
           "ifbench": 0.779591836734694,
-          "lcr": 0.663333333333333,
-          "scicode": 0.506,
+          "lcr": 0.78,
+          "scicode": null,
           "tau2": 0.804093567251462,
-          "tau_banking": 0.175257731958763,
+          "tau_banking": 0.208247422680412,
           "terminalbench_hard": 0.386363636363636,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.92,
+          "omniscience_hallucination_rate": 0.93,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -12450,7 +12618,7 @@
           "inp_price": 2,
           "out_price": 12,
           "blended": 4.5,
-          "cache_hit_price": 0.23,
+          "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
@@ -12462,7 +12630,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 28.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -12471,14 +12639,14 @@
           "aa_math_index": 95.7,
           "gpqa": 0.908,
           "mmlu_pro": 0.898,
-          "hle": 0.372,
+          "hle": 0.397,
           "aime": null,
           "aime_25": 0.956666666666667,
           "math_500": null,
           "livecodebench": 0.917,
           "ifbench": 0.704081632653061,
-          "lcr": 0.706666666666667,
-          "scicode": 0.561,
+          "lcr": 0.76,
+          "scicode": null,
           "tau2": 0.871345029239766,
           "tau_banking": null,
           "terminalbench_hard": 0.416666666666667,
@@ -12580,7 +12748,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 33.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -12589,19 +12757,19 @@
           "aa_math_index": 86.7,
           "gpqa": 0.887,
           "mmlu_pro": 0.895,
-          "hle": 0.276,
+          "hle": 0.295,
           "aime": null,
           "aime_25": 0.866666666666667,
           "math_500": null,
           "livecodebench": 0.857,
           "ifbench": 0.496598639455782,
-          "lcr": 0.673333333333333,
-          "scicode": 0.499,
+          "lcr": 0.74,
+          "scicode": null,
           "tau2": 0.681286549707602,
           "tau_banking": null,
           "terminalbench_hard": 0.340909090909091,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.85,
+          "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -12797,7 +12965,7 @@
           "cache_hit_price": 0.2,
           "cost_per_task": 0.29,
           "tokens_m": 56,
-          "speed_tps": 135.642,
+          "speed_tps": 127.691,
           "useful_cost": 14.5555,
           "reasoning_tax_pct": 17.2,
           "cost_segments": {
@@ -12808,7 +12976,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 21.372
+          "ttft": 27.328
         },
         "openrouter": {
           "inp_price": 2e-06,
@@ -12824,7 +12992,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 46.0,
+          "intel": 30.0,
           "iq_per_dollar": 0.0564341,
           "iq_per_mtok": null,
           "iq_per_1k": 56.4341,
@@ -12833,22 +13001,22 @@
           "aa_math_index": null,
           "gpqa": 0.941,
           "mmlu_pro": null,
-          "hle": 0.447,
+          "hle": 0.47,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.771428571428571,
-          "lcr": 0.726666666666667,
-          "scicode": 0.589,
+          "lcr": 0.82,
+          "scicode": 0.587,
           "tau2": 0.956140350877193,
-          "tau_banking": 0.164948453608247,
+          "tau_banking": 0.214432989690722,
           "terminalbench_hard": 0.537878787878788,
           "terminalbench_v2_1": 0.737827715355805,
-          "omniscience_hallucination_rate": 0.5,
-          "briefcase_analytical_quality_elo": 875.0,
-          "briefcase_presentation_elo": 831.0,
-          "time_per_task": 1.8
+          "omniscience_hallucination_rate": 0.51,
+          "briefcase_analytical_quality_elo": 839.0,
+          "briefcase_presentation_elo": 827.0,
+          "time_per_task": 2.8
         },
         "arena_text": {
           "elo": 1486,
@@ -12901,7 +13069,7 @@
       "benchmarks": {
         "livebench": {
           "average": 80.71,
-          "Mathematics": 91.04,
+          "Mathematics": 91.05,
           "Coding": 76.45,
           "Language": 85.38,
           "Data Analysis": 78.54,
@@ -12916,7 +13084,7 @@
     },
     {
       "id": "gemini-3.5-flash",
-      "name": "Gemini 3.5 Flash",
+      "name": "Gemini 3.5 Flash (high)",
       "creator": "Google",
       "model_type": "reasoning",
       "meta": {
@@ -12931,7 +13099,7 @@
           "cache_hit_price": 0.15,
           "cost_per_task": 0.59,
           "tokens_m": 75,
-          "speed_tps": 220.568,
+          "speed_tps": 0,
           "useful_cost": 13.8784,
           "reasoning_tax_pct": 33.9,
           "cost_segments": {
@@ -12942,7 +13110,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.09
           },
-          "ttft": 11.298
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -12958,7 +13126,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 50.0,
+          "intel": 33.0,
           "iq_per_dollar": 0.0480363,
           "iq_per_mtok": null,
           "iq_per_1k": 48.0363,
@@ -12967,22 +13135,22 @@
           "aa_math_index": null,
           "gpqa": 0.922,
           "mmlu_pro": null,
-          "hle": 0.41,
+          "hle": 0.427,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.763265306122449,
-          "lcr": 0.693333333333333,
-          "scicode": 0.531,
+          "lcr": 0.733333333333333,
+          "scicode": 0.539,
           "tau2": 0.953216374269006,
-          "tau_banking": 0.25360824742268,
+          "tau_banking": 0.321649484536082,
           "terminalbench_hard": 0.409090909090909,
           "terminalbench_v2_1": 0.786516853932584,
-          "omniscience_hallucination_rate": 0.61,
-          "briefcase_analytical_quality_elo": 1354.0,
-          "briefcase_presentation_elo": 1278.0,
-          "time_per_task": 3.0
+          "omniscience_hallucination_rate": 0.62,
+          "briefcase_analytical_quality_elo": 1380.0,
+          "briefcase_presentation_elo": 1191.0,
+          "time_per_task": 4.1
         },
         "arena_text": {
           "elo": 1479,
@@ -13237,16 +13405,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 25.967,
+          "speed_tps": 131.882,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.657
+          "ttft": 1.296
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 22.0,
+          "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13255,22 +13423,22 @@
           "aa_math_index": null,
           "gpqa": 0.753,
           "mmlu_pro": null,
-          "hle": 0.148,
+          "hle": 0.157,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.735374149659864,
-          "lcr": 0.553333333333333,
-          "scicode": 0.382,
+          "lcr": 0.636666666666667,
+          "scicode": null,
           "tau2": 0.362573099415205,
-          "tau_banking": 0.0865979381443299,
+          "tau_banking": null,
           "terminalbench_hard": 0.181818181818182,
           "terminalbench_v2_1": 0.273408239700375,
           "omniscience_hallucination_rate": 0.81,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 13.6
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -13288,9 +13456,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.13,
-          "out_price": 0.4,
-          "blended": 0.198,
+          "inp_price": 0.115,
+          "out_price": 0.37,
+          "blended": 0.179,
           "cache_hit_price": 0.09,
           "cost_per_task": null,
           "tokens_m": null,
@@ -13303,7 +13471,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 26.0,
+          "intel": 17.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13312,19 +13480,19 @@
           "aa_math_index": null,
           "gpqa": 0.792,
           "mmlu_pro": null,
-          "hle": 0.183,
+          "hle": 0.193,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.724489795918367,
-          "lcr": 0.556666666666667,
-          "scicode": 0.4,
+          "lcr": 0.656666666666667,
+          "scicode": null,
           "tau2": 0.435672514619883,
-          "tau_banking": 0.117525773195876,
+          "tau_banking": 0.119587628865979,
           "terminalbench_hard": 0.1364,
           "terminalbench_v2_1": 0.389513108614232,
-          "omniscience_hallucination_rate": 0.81,
+          "omniscience_hallucination_rate": 0.86,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -13396,16 +13564,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": 38,
-          "speed_tps": 35.395,
+          "speed_tps": 35.418,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.035
+          "ttft": 0.944
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 29.0,
+          "intel": 15.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13414,21 +13582,21 @@
           "aa_math_index": null,
           "gpqa": 0.857,
           "mmlu_pro": null,
-          "hle": 0.227,
+          "hle": 0.236,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.75578231292517,
-          "lcr": 0.62,
-          "scicode": 0.434,
+          "lcr": 0.696666666666667,
+          "scicode": 0.455,
           "tau2": 0.599415204678363,
-          "tau_banking": 0.150515463917526,
+          "tau_banking": 0.148453608247423,
           "terminalbench_hard": 0.363636363636364,
           "terminalbench_v2_1": 0.434456928838951,
-          "omniscience_hallucination_rate": 0.82,
-          "briefcase_analytical_quality_elo": 865.0,
-          "briefcase_presentation_elo": 819.0,
+          "omniscience_hallucination_rate": 0.85,
+          "briefcase_analytical_quality_elo": 832.0,
+          "briefcase_presentation_elo": 817.0,
           "time_per_task": 5.8
         },
         "dirac": {
@@ -13519,7 +13687,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 10.0,
+          "intel": 8.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13534,13 +13702,13 @@
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.380272108843537,
-          "lcr": 0.15,
-          "scicode": 0.209,
+          "lcr": 0.163333333333333,
+          "scicode": null,
           "tau2": 0.207602339181287,
-          "tau_banking": 0.045360824742268,
+          "tau_banking": null,
           "terminalbench_hard": 0.0303030303030303,
           "terminalbench_v2_1": 0.00374531835205993,
-          "omniscience_hallucination_rate": 0.33,
+          "omniscience_hallucination_rate": 0.32,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -13567,16 +13735,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 106.272,
+          "speed_tps": 38.667,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.318
+          "ttft": 0.394
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 12.0,
+          "intel": 9.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13585,22 +13753,22 @@
           "aa_math_index": null,
           "gpqa": 0.576,
           "mmlu_pro": null,
-          "hle": 0.037,
+          "hle": 0.038,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.442176870748299,
-          "lcr": 0.306666666666667,
-          "scicode": 0.244,
+          "lcr": 0.32,
+          "scicode": null,
           "tau2": 0.207602339181287,
-          "tau_banking": 0.0536082474226804,
+          "tau_banking": null,
           "terminalbench_hard": 0.0833333333333333,
           "terminalbench_v2_1": 0.0187265917602996,
           "omniscience_hallucination_rate": 0.31,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.5
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -13940,7 +14108,7 @@
     {
       "id": "glm-5",
       "name": "GLM-5 (Reasoning)",
-      "creator": "Z AI",
+      "creator": "Z.ai",
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-02-11",
@@ -13972,7 +14140,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 28.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -13981,19 +14149,19 @@
           "aa_math_index": null,
           "gpqa": 0.82,
           "mmlu_pro": null,
-          "hle": 0.272,
+          "hle": 0.293,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.72312925170068,
-          "lcr": 0.633333333333333,
-          "scicode": 0.462,
+          "lcr": 0.756666666666667,
+          "scicode": null,
           "tau2": 0.982456140350877,
           "tau_banking": null,
           "terminalbench_hard": 0.431818181818182,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.34,
+          "omniscience_hallucination_rate": 0.35,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -14033,9 +14201,63 @@
       }
     },
     {
+      "id": "glm-5-3",
+      "creator": "Z.ai",
+      "meta": {
+        "release_date": "2026-08-18"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 1.4,
+          "out_price": 4.4,
+          "blended": 2.15,
+          "cache_hit_price": null,
+          "cost_per_task": 2.0056375150449584,
+          "tokens_m": null,
+          "speed_tps": 66.174,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 1.867
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 44.9,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 74.8,
+          "aa_math_index": null,
+          "gpqa": 0.917,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": null,
+          "briefcase_analytical_quality_elo": null,
+          "briefcase_presentation_elo": null,
+          "time_per_task": null
+        }
+      },
+      "aliases": {
+        "aa": "glm-5-3"
+      }
+    },
+    {
       "id": "glm-5-turbo",
       "name": "GLM-5-Turbo",
-      "creator": "Z AI",
+      "creator": "Z.ai",
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-03-15",
@@ -14067,7 +14289,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 27.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14076,19 +14298,19 @@
           "aa_math_index": null,
           "gpqa": 0.847,
           "mmlu_pro": null,
-          "hle": 0.254,
+          "hle": 0.278,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.731972789115646,
-          "lcr": 0.606666666666667,
-          "scicode": 0.436,
+          "lcr": 0.716666666666667,
+          "scicode": null,
           "tau2": 0.985380116959064,
           "tau_banking": null,
           "terminalbench_hard": 0.333333333333333,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.62,
+          "omniscience_hallucination_rate": 0.63,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -14102,7 +14324,7 @@
     {
       "id": "glm-5.1",
       "name": "GLM-5.1 (Reasoning)",
-      "creator": "Z AI",
+      "creator": "Z.ai",
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-07",
@@ -14110,9 +14332,9 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 1.38,
+          "inp_price": 1.2,
           "out_price": 4.4,
-          "blended": 2.135,
+          "blended": 2,
           "cache_hit_price": 0.26,
           "cost_per_task": null,
           "tokens_m": null,
@@ -14134,7 +14356,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14143,22 +14365,22 @@
           "aa_math_index": null,
           "gpqa": 0.868,
           "mmlu_pro": null,
-          "hle": 0.28,
+          "hle": 0.301,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.762585034013605,
-          "lcr": 0.623333333333333,
-          "scicode": 0.438,
+          "lcr": 0.736666666666667,
+          "scicode": 0.448,
           "tau2": 0.976608187134503,
-          "tau_banking": 0.115463917525773,
+          "tau_banking": 0.136082474226804,
           "terminalbench_hard": 0.431818181818182,
           "terminalbench_v2_1": 0.617977528089888,
-          "omniscience_hallucination_rate": 0.29,
-          "briefcase_analytical_quality_elo": 133.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": 6.0
+          "omniscience_hallucination_rate": 0.3,
+          "briefcase_analytical_quality_elo": 1520.0,
+          "briefcase_presentation_elo": 1508.0,
+          "time_per_task": 9.8
         },
         "livebench": {
           "average": 70.62,
@@ -14192,7 +14414,7 @@
     {
       "id": "glm-5.2",
       "name": "GLM-5.2 (max)",
-      "creator": "Z AI",
+      "creator": "Z.ai",
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-06-16",
@@ -14206,7 +14428,7 @@
           "cache_hit_price": 0.26,
           "cost_per_task": 0.48,
           "tokens_m": 140,
-          "speed_tps": 104.371,
+          "speed_tps": 67.88,
           "useful_cost": 6.662,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -14217,7 +14439,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.924
+          "ttft": 1.374
         },
         "openrouter": {
           "inp_price": 8.008e-07,
@@ -14231,7 +14453,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 51.0,
+          "intel": 39.0,
           "iq_per_dollar": 0.0546811,
           "iq_per_mtok": null,
           "iq_per_1k": 54.6811,
@@ -14240,22 +14462,22 @@
           "aa_math_index": null,
           "gpqa": 0.895,
           "mmlu_pro": null,
-          "hle": 0.401,
+          "hle": 0.411,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.733333333333333,
-          "lcr": 0.713333333333333,
-          "scicode": 0.505,
+          "lcr": 0.783333333333333,
+          "scicode": 0.512,
           "tau2": 0.991228070175439,
-          "tau_banking": 0.268041237113402,
+          "tau_banking": 0.34639175257732,
           "terminalbench_hard": 0.507575757575758,
           "terminalbench_v2_1": 0.779026217228464,
-          "omniscience_hallucination_rate": 0.28,
-          "briefcase_analytical_quality_elo": 815.0,
-          "briefcase_presentation_elo": 953.0,
-          "time_per_task": 6.2
+          "omniscience_hallucination_rate": 0.26,
+          "briefcase_analytical_quality_elo": 553.0,
+          "briefcase_presentation_elo": 790.0,
+          "time_per_task": null
         },
         "livebench": {
           "average": 76.18,
@@ -14299,7 +14521,7 @@
     {
       "id": "glm-5v-turbo",
       "name": "GLM 5V Turbo (Reasoning)",
-      "creator": "Z AI",
+      "creator": "Z.ai",
       "model_type": "reasoning",
       "meta": {
         "release_date": "2026-04-01",
@@ -14331,7 +14553,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 34.0,
+          "intel": 23.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14340,19 +14562,19 @@
           "aa_math_index": null,
           "gpqa": 0.809,
           "mmlu_pro": null,
-          "hle": 0.158,
+          "hle": 0.171,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.610884353741497,
-          "lcr": 0.61,
-          "scicode": 0.435,
+          "lcr": 0.703333333333333,
+          "scicode": null,
           "tau2": 0.985380116959064,
           "tau_banking": null,
           "terminalbench_hard": 0.325757575757576,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.68,
+          "omniscience_hallucination_rate": 0.69,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -14825,7 +15047,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 25.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14834,22 +15056,22 @@
           "aa_math_index": null,
           "gpqa": 0.875,
           "mmlu_pro": null,
-          "hle": 0.266,
+          "hle": 0.281,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.73265306122449,
-          "lcr": 0.693333333333333,
-          "scicode": 0.499,
+          "lcr": 0.77,
+          "scicode": 0.521,
           "tau2": 0.833333333333333,
-          "tau_banking": 0.214432989690722,
+          "tau_banking": 0.255670103092783,
           "terminalbench_hard": 0.522727272727273,
           "terminalbench_v2_1": 0.591760299625468,
           "omniscience_hallucination_rate": 0.9,
-          "briefcase_analytical_quality_elo": 936.0,
-          "briefcase_presentation_elo": 917.0,
-          "time_per_task": 7.6
+          "briefcase_analytical_quality_elo": 974.0,
+          "briefcase_presentation_elo": 967.0,
+          "time_per_task": 5.0
         },
         "dirac": {
           "cache_hit_rate_max": 61.5
@@ -14885,7 +15107,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 30.0,
+          "intel": 20.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14894,19 +15116,19 @@
           "aa_math_index": null,
           "gpqa": 0.823,
           "mmlu_pro": null,
-          "hle": 0.171,
+          "hle": 0.186,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.647619047619048,
-          "lcr": 0.613333333333333,
-          "scicode": 0.442,
+          "lcr": 0.67,
+          "scicode": null,
           "tau2": 0.365497076023392,
           "tau_banking": null,
           "terminalbench_hard": 0.340909090909091,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.89,
+          "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -14942,7 +15164,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 21.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -14951,22 +15173,22 @@
           "aa_math_index": null,
           "gpqa": 0.817,
           "mmlu_pro": null,
-          "hle": 0.265,
+          "hle": 0.283,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.759183673469388,
-          "lcr": 0.66,
-          "scicode": 0.469,
+          "lcr": 0.766666666666667,
+          "scicode": 0.472,
           "tau2": 0.760233918128655,
-          "tau_banking": 0.210309278350515,
+          "tau_banking": 0.274226804123711,
           "terminalbench_hard": 0.424242424242424,
           "terminalbench_v2_1": 0.606741573033708,
           "omniscience_hallucination_rate": 0.74,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 7.8
+          "briefcase_analytical_quality_elo": 884.0,
+          "briefcase_presentation_elo": 883.0,
+          "time_per_task": 6.6
         },
         "dirac": {
           "cache_hit_rate_max": 62.8
@@ -15002,7 +15224,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 30.0,
+          "intel": 20.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15011,19 +15233,19 @@
           "aa_math_index": null,
           "gpqa": 0.761,
           "mmlu_pro": null,
-          "hle": 0.147,
+          "hle": 0.159,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.64421768707483,
-          "lcr": 0.573333333333333,
-          "scicode": 0.384,
+          "lcr": 0.673333333333333,
+          "scicode": null,
           "tau2": 0.526315789473684,
           "tau_banking": null,
           "terminalbench_hard": 0.333333333333333,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.5,
+          "omniscience_hallucination_rate": 0.51,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -15050,16 +15272,16 @@
           "cache_hit_price": 0.5,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 0,
+          "speed_tps": 144.795,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0
+          "ttft": 0.878
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 29.0,
+          "intel": 27.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15068,22 +15290,22 @@
           "aa_math_index": null,
           "gpqa": 0.823,
           "mmlu_pro": null,
-          "hle": 0.186,
+          "hle": 0.199,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": 0.64,
-          "scicode": 0.486,
+          "lcr": 0.7,
+          "scicode": 0.525,
           "tau2": null,
-          "tau_banking": 0.115463917525773,
+          "tau_banking": 0.117525773195876,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.348314606741573,
           "omniscience_hallucination_rate": 0.73,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": null
+          "briefcase_analytical_quality_elo": 588.0,
+          "briefcase_presentation_elo": 295.0,
+          "time_per_task": 0.7
         }
       },
       "aliases": {
@@ -15092,7 +15314,6 @@
     },
     {
       "id": "gpt-5-6-luna",
-      "name": "GPT-5.6 Luna (max)",
       "creator": "OpenAI",
       "meta": {
         "release_date": "2026-07-09"
@@ -15103,18 +15324,18 @@
           "out_price": 1.2,
           "blended": 0.45,
           "cache_hit_price": 0.02,
-          "cost_per_task": null,
+          "cost_per_task": 0.17829726152289094,
           "tokens_m": null,
-          "speed_tps": 186.687,
+          "speed_tps": 123.243,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 60.564
+          "ttft": 109.083
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 51.0,
+          "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15135,10 +15356,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.9,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 2.0
+          "omniscience_hallucination_rate": 0.93,
+          "briefcase_analytical_quality_elo": 1275.0,
+          "briefcase_presentation_elo": 976.0,
+          "time_per_task": 6.3
         }
       },
       "aliases": {
@@ -15159,16 +15380,16 @@
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 172.075,
+          "speed_tps": 98.873,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 6.372
+          "ttft": 14.952
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 46.0,
+          "intel": 33.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15189,10 +15410,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.9,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 0.9
+          "omniscience_hallucination_rate": 0.92,
+          "briefcase_analytical_quality_elo": 755.0,
+          "briefcase_presentation_elo": 850.0,
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -15213,16 +15434,16 @@
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 161.632,
+          "speed_tps": 106.379,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.482
+          "ttft": 2.774
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15243,10 +15464,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.89,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 0.4
+          "omniscience_hallucination_rate": 0.91,
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -15255,7 +15476,6 @@
     },
     {
       "id": "gpt-5-6-luna-xhigh",
-      "name": "GPT-5.6 Luna (xhigh)",
       "creator": "OpenAI",
       "meta": {
         "release_date": "2026-07-09"
@@ -15268,16 +15488,16 @@
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 173.967,
+          "speed_tps": 122.775,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 17.219
+          "ttft": 31.762
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 49.0,
+          "intel": 35.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15298,10 +15518,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.9,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.2
+          "omniscience_hallucination_rate": 0.92,
+          "briefcase_analytical_quality_elo": 1129.0,
+          "briefcase_presentation_elo": 818.0,
+          "time_per_task": 3.7
         }
       },
       "aliases": {
@@ -15317,22 +15537,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5,
-          "out_price": 30,
-          "blended": 11.25,
-          "cache_hit_price": 0.5,
-          "cost_per_task": 1.8620135972548633,
+          "inp_price": 4,
+          "out_price": 20,
+          "blended": 8,
+          "cache_hit_price": 0.4,
+          "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 69.894,
+          "speed_tps": 73.005,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 67.838
+          "ttft": 46.074
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 59.0,
+          "intel": 47.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15353,10 +15573,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.89,
-          "briefcase_analytical_quality_elo": 1462.0,
-          "briefcase_presentation_elo": 1364.0,
-          "time_per_task": 4.6
+          "omniscience_hallucination_rate": 0.92,
+          "briefcase_analytical_quality_elo": 1298.0,
+          "briefcase_presentation_elo": 1413.0,
+          "time_per_task": 7.7
         }
       },
       "aliases": {
@@ -15372,22 +15592,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5,
-          "out_price": 30,
-          "blended": 11.25,
-          "cache_hit_price": 0.5,
+          "inp_price": 4,
+          "out_price": 20,
+          "blended": 8,
+          "cache_hit_price": 0.4,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 56.412,
+          "speed_tps": 72.24,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 9.482
+          "ttft": 11.744
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 56.0,
+          "intel": 42.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15408,10 +15628,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.88,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 2.1
+          "omniscience_hallucination_rate": 0.91,
+          "briefcase_analytical_quality_elo": 1382.0,
+          "briefcase_presentation_elo": 1182.0,
+          "time_per_task": 3.7
         }
       },
       "aliases": {
@@ -15427,22 +15647,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5,
-          "out_price": 30,
-          "blended": 11.25,
-          "cache_hit_price": 0.5,
+          "inp_price": 4,
+          "out_price": 20,
+          "blended": 8,
+          "cache_hit_price": 0.4,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 56.271,
+          "speed_tps": 72.495,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 6.118
+          "ttft": 5.706
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 54.0,
+          "intel": 39.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15463,10 +15683,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.5
+          "omniscience_hallucination_rate": 0.91,
+          "briefcase_analytical_quality_elo": 1000.0,
+          "briefcase_presentation_elo": 868.0,
+          "time_per_task": 2.1
         }
       },
       "aliases": {
@@ -15482,22 +15702,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 5,
-          "out_price": 30,
-          "blended": 11.25,
-          "cache_hit_price": 0.5,
+          "inp_price": 4,
+          "out_price": 20,
+          "blended": 8,
+          "cache_hit_price": 0.4,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 62.043,
+          "speed_tps": 74.991,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 18.504
+          "ttft": 26.973
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 58.0,
+          "intel": 44.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15518,10 +15738,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.89,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 3.0
+          "omniscience_hallucination_rate": 0.92,
+          "briefcase_analytical_quality_elo": 1223.0,
+          "briefcase_presentation_elo": 1396.0,
+          "time_per_task": 5.4
         }
       },
       "aliases": {
@@ -15543,16 +15763,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 129.838,
+          "speed_tps": 124.121,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 74.713
+          "ttft": 152.941
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 55.0,
+          "intel": 42.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15573,10 +15793,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.85,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 2.7
+          "omniscience_hallucination_rate": 0.88,
+          "briefcase_analytical_quality_elo": 1356.0,
+          "briefcase_presentation_elo": 1244.0,
+          "time_per_task": 7.6
         }
       },
       "aliases": {
@@ -15597,16 +15817,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 112.642,
+          "speed_tps": 99.053,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 2.592
+          "ttft": 3.787
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 49.0,
+          "intel": 34.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15627,10 +15847,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.4
+          "omniscience_hallucination_rate": 0.9,
+          "briefcase_analytical_quality_elo": 778.0,
+          "briefcase_presentation_elo": 668.0,
+          "time_per_task": 2.3
         }
       },
       "aliases": {
@@ -15651,16 +15871,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 100.462,
+          "speed_tps": 103.012,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.834
+          "ttft": 1.774
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 46.0,
+          "intel": 33.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15681,10 +15901,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.88,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 0.7
+          "omniscience_hallucination_rate": 0.9,
+          "briefcase_analytical_quality_elo": 618.0,
+          "briefcase_presentation_elo": 562.0,
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -15706,16 +15926,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 112.512,
+          "speed_tps": 104.324,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 6.869
+          "ttft": 15.737
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 52.0,
+          "intel": 38.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -15736,10 +15956,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.8
+          "omniscience_hallucination_rate": 0.89,
+          "briefcase_analytical_quality_elo": 1140.0,
+          "briefcase_presentation_elo": 1322.0,
+          "time_per_task": 3.7
         }
       },
       "aliases": {
@@ -16510,7 +16730,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 29.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -16519,14 +16739,14 @@
           "aa_math_index": null,
           "gpqa": 0.899,
           "mmlu_pro": null,
-          "hle": 0.335,
+          "hle": 0.357,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.776190476190476,
-          "lcr": 0.756666666666667,
-          "scicode": 0.546,
+          "lcr": 0.823333333333333,
+          "scicode": null,
           "tau2": 0.921052631578947,
           "tau_banking": null,
           "terminalbench_hard": 0.371212121212121,
@@ -16612,11 +16832,11 @@
           "cache_hit_price": 0.18,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 109.082,
+          "speed_tps": 143.044,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 43.005
+          "ttft": 40.719
         },
         "openrouter": {
           "inp_price": 1.75e-06,
@@ -16630,7 +16850,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 44.0,
+          "intel": 33.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -16639,21 +16859,21 @@
           "aa_math_index": null,
           "gpqa": 0.915,
           "mmlu_pro": null,
-          "hle": 0.399,
+          "hle": 0.425,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.753741496598639,
-          "lcr": 0.74,
-          "scicode": 0.532,
+          "lcr": 0.833333333333333,
+          "scicode": null,
           "tau2": 0.859649122807018,
           "tau_banking": null,
           "terminalbench_hard": 0.53030303030303,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": 1188.0,
-          "briefcase_presentation_elo": 1080.0,
+          "omniscience_hallucination_rate": 0.89,
+          "briefcase_analytical_quality_elo": 1193.0,
+          "briefcase_presentation_elo": 1103.0,
           "time_per_task": null
         }
       },
@@ -16776,7 +16996,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 51.0,
+          "intel": 39.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -16785,22 +17005,22 @@
           "aa_math_index": null,
           "gpqa": 0.92,
           "mmlu_pro": null,
-          "hle": 0.416,
+          "hle": 0.437,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.739455782312925,
-          "lcr": 0.74,
-          "scicode": 0.566,
+          "lcr": 0.82,
+          "scicode": null,
           "tau2": 0.871345029239766,
-          "tau_banking": 0.303092783505155,
+          "tau_banking": 0.395876288659794,
           "terminalbench_hard": 0.575757575757576,
           "terminalbench_v2_1": 0.782771535580524,
-          "omniscience_hallucination_rate": 0.89,
+          "omniscience_hallucination_rate": 0.92,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 4.6
+          "time_per_task": null
         },
         "arena_text": {
           "elo": 1467,
@@ -17276,7 +17496,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 53.0,
+          "intel": 37.0,
           "iq_per_dollar": 0.0303626,
           "iq_per_mtok": null,
           "iq_per_1k": 30.3626,
@@ -17285,22 +17505,22 @@
           "aa_math_index": null,
           "gpqa": 0.932,
           "mmlu_pro": null,
-          "hle": 0.43,
+          "hle": 0.45,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.716326530612245,
-          "lcr": 0.733333333333333,
-          "scicode": 0.559,
+          "lcr": 0.843333333333333,
+          "scicode": 0.561,
           "tau2": 0.929824561403509,
-          "tau_banking": 0.294845360824742,
+          "tau_banking": 0.36701030927835,
           "terminalbench_hard": 0.598484848484849,
           "terminalbench_v2_1": 0.794007490636704,
-          "omniscience_hallucination_rate": 0.86,
-          "briefcase_analytical_quality_elo": 761.0,
-          "briefcase_presentation_elo": 866.0,
-          "time_per_task": 2.9
+          "omniscience_hallucination_rate": 0.89,
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 3.3
         },
         "livebench": {
           "average": 77.07,
@@ -17389,7 +17609,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 43.0,
+          "intel": 31.0,
           "iq_per_dollar": 0.1125419,
           "iq_per_mtok": null,
           "iq_per_1k": 112.5419,
@@ -17398,22 +17618,22 @@
           "aa_math_index": null,
           "gpqa": 0.91,
           "mmlu_pro": null,
-          "hle": 0.31,
+          "hle": 0.327,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.643537414965986,
-          "lcr": 0.72,
-          "scicode": 0.516,
+          "lcr": 0.81,
+          "scicode": null,
           "tau2": 0.839181286549708,
-          "tau_banking": 0.212371134020619,
+          "tau_banking": 0.249484536082474,
           "terminalbench_hard": 0.522727272727273,
           "terminalbench_v2_1": 0.655430711610487,
-          "omniscience_hallucination_rate": 0.86,
+          "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.7
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -17453,7 +17673,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 50.0,
+          "intel": 34.0,
           "iq_per_dollar": 0.052563000000000006,
           "iq_per_mtok": null,
           "iq_per_1k": 52.563,
@@ -17462,22 +17682,22 @@
           "aa_math_index": null,
           "gpqa": 0.926,
           "mmlu_pro": null,
-          "hle": 0.406,
+          "hle": 0.424,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.70952380952381,
-          "lcr": 0.723333333333333,
-          "scicode": 0.535,
+          "lcr": 0.83,
+          "scicode": 0.545,
           "tau2": 0.91812865497076,
-          "tau_banking": 0.257731958762887,
+          "tau_banking": 0.298969072164948,
           "terminalbench_hard": 0.575757575757576,
           "terminalbench_v2_1": 0.805243445692884,
-          "omniscience_hallucination_rate": 0.86,
-          "briefcase_analytical_quality_elo": 790.0,
-          "briefcase_presentation_elo": 616.0,
-          "time_per_task": 1.7
+          "omniscience_hallucination_rate": 0.9,
+          "briefcase_analytical_quality_elo": 1536.0,
+          "briefcase_presentation_elo": 1452.0,
+          "time_per_task": 1.8
         },
         "livebench": {
           "average": 68.96,
@@ -17588,7 +17808,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 55.0,
+          "intel": 39.0,
           "iq_per_dollar": 0.019511900000000002,
           "iq_per_mtok": null,
           "iq_per_1k": 19.5119,
@@ -17597,22 +17817,22 @@
           "aa_math_index": null,
           "gpqa": 0.935,
           "mmlu_pro": null,
-          "hle": 0.443,
+          "hle": 0.458,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.758503401360544,
-          "lcr": 0.743333333333333,
-          "scicode": 0.561,
+          "lcr": 0.843333333333333,
+          "scicode": 0.558,
           "tau2": 0.93859649122807,
-          "tau_banking": 0.31340206185567,
+          "tau_banking": 0.389690721649485,
           "terminalbench_hard": 0.606060606060606,
           "terminalbench_v2_1": 0.842696629213483,
-          "omniscience_hallucination_rate": 0.86,
-          "briefcase_analytical_quality_elo": 899.0,
-          "briefcase_presentation_elo": 671.0,
-          "time_per_task": 4.4
+          "omniscience_hallucination_rate": 0.89,
+          "briefcase_analytical_quality_elo": 147.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 4.5
         },
         "livebench": {
           "average": 81.28,
@@ -17791,6 +18011,171 @@
       }
     },
     {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-09-03"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
+          "cache_hit_price": 1.0,
+          "cost_per_task": 3.2575003134834164,
+          "tokens_m": null,
+          "speed_tps": 60.822,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 211.532
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 53.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.9,
+          "aa_math_index": null,
+          "gpqa": 0.961,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.51,
+          "briefcase_analytical_quality_elo": 1641.0,
+          "briefcase_presentation_elo": 1537.0,
+          "time_per_task": 8.2
+        }
+      },
+      "aliases": {
+        "aa": "gpt-6-astra"
+      }
+    },
+    {
+      "id": "gpt-6-astra-low",
+      "name": "GPT-6 Astra (low)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-09-03"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
+          "cache_hit_price": 1.0,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 53.614,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 2.118
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 46.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 75.7,
+          "aa_math_index": null,
+          "gpqa": 0.931,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.47,
+          "briefcase_analytical_quality_elo": 1034.0,
+          "briefcase_presentation_elo": 1001.0,
+          "time_per_task": 1.6
+        }
+      },
+      "aliases": {
+        "aa": "gpt-6-astra-low"
+      }
+    },
+    {
+      "id": "gpt-6-astra-medium",
+      "name": "GPT-6 Astra (medium)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-09-03"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 10,
+          "out_price": 50,
+          "blended": 20,
+          "cache_hit_price": 1.0,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 47.652,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 4.722
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 50.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 76.7,
+          "aa_math_index": null,
+          "gpqa": 0.939,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.47,
+          "briefcase_analytical_quality_elo": 1345.0,
+          "briefcase_presentation_elo": 1355.0,
+          "time_per_task": 3.7
+        }
+      },
+      "aliases": {
+        "aa": "gpt-6-astra-medium"
+      }
+    },
+    {
       "id": "gpt-audio",
       "name": "OpenAI: GPT Audio",
       "creator": "OpenAI",
@@ -17910,12 +18295,12 @@
       "pricing": {
         "aa": {
           "inp_price": 0.15,
-          "out_price": 0.6,
-          "blended": 0.262,
-          "cache_hit_price": 0.15,
+          "out_price": 0.595,
+          "blended": 0.261,
+          "cache_hit_price": 0.13,
           "cost_per_task": 0.06,
           "tokens_m": 87,
-          "speed_tps": 193.41,
+          "speed_tps": 225.178,
           "useful_cost": 1.1067,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -17926,7 +18311,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.06
           },
-          "ttft": 0.551
+          "ttft": 0.463
         },
         "openrouter": {
           "inp_price": 3.7e-08,
@@ -17938,7 +18323,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 24.0,
+          "intel": 12.0,
           "iq_per_dollar": 0.249273,
           "iq_per_mtok": null,
           "iq_per_1k": 249.273,
@@ -17947,22 +18332,22 @@
           "aa_math_index": 93.4,
           "gpqa": 0.782,
           "mmlu_pro": 0.808,
-          "hle": 0.185,
+          "hle": 0.196,
           "aime": null,
           "aime_25": 0.934416666666667,
           "math_500": null,
           "livecodebench": 0.878,
           "ifbench": 0.689795918367347,
-          "lcr": 0.506666666,
-          "scicode": 0.389,
+          "lcr": 0.52,
+          "scicode": 0.34,
           "tau2": 0.657894736842105,
-          "tau_banking": 0.120274914089347,
+          "tau_banking": 0.127835051546392,
           "terminalbench_hard": 0.234848484848485,
           "terminalbench_v2_1": 0.262172284644195,
           "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": 0.0,
           "briefcase_presentation_elo": 0.0,
-          "time_per_task": 3.0,
+          "time_per_task": 2.2,
           "math_index": 93.4
         },
         "dirac": {
@@ -17997,21 +18382,21 @@
       "pricing": {
         "aa": {
           "inp_price": 0.15,
-          "out_price": 0.595,
-          "blended": 0.261,
+          "out_price": 0.545,
+          "blended": 0.249,
           "cache_hit_price": 0.15,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 224.845,
+          "speed_tps": 237.068,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.574
+          "ttft": 0.446
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 15.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -18020,22 +18405,22 @@
           "aa_math_index": 66.7,
           "gpqa": 0.672,
           "mmlu_pro": 0.775,
-          "hle": 0.052,
+          "hle": 0.059,
           "aime": null,
           "aime_25": 0.666666666666667,
           "math_500": null,
           "livecodebench": 0.707,
           "ifbench": 0.582993197278912,
-          "lcr": 0.436666666666667,
-          "scicode": 0.36,
+          "lcr": 0.46,
+          "scicode": null,
           "tau2": 0.450292397660819,
           "tau_banking": 0.0288659793814433,
           "terminalbench_hard": 0.053030303030303,
           "terminalbench_v2_1": 0.138576779026217,
-          "omniscience_hallucination_rate": 0.78,
+          "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.2,
+          "time_per_task": null,
           "math_index": 66.7
         }
       },
@@ -18054,13 +18439,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.07,
-          "out_price": 0.2,
-          "blended": 0.103,
+          "inp_price": 0.06,
+          "out_price": 0.19,
+          "blended": 0.092,
           "cache_hit_price": null,
           "cost_per_task": 0.02,
           "tokens_m": 67,
-          "speed_tps": 177.841,
+          "speed_tps": 217.811,
           "useful_cost": 0.4458,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -18071,7 +18456,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 0.548
+          "ttft": 0.463
         },
         "openrouter": {
           "inp_price": 3e-08,
@@ -18085,7 +18470,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 15.0,
+          "intel": 9.0,
           "iq_per_dollar": 0.5021761,
           "iq_per_mtok": null,
           "iq_per_1k": 502.1761,
@@ -18094,22 +18479,22 @@
           "aa_math_index": 89.3,
           "gpqa": 0.688,
           "mmlu_pro": 0.748,
-          "hle": 0.098,
+          "hle": 0.11,
           "aime": null,
           "aime_25": 0.893333333333333,
           "math_500": null,
           "livecodebench": 0.777,
           "ifbench": 0.651020408163265,
-          "lcr": 0.306666666666667,
-          "scicode": 0.344,
+          "lcr": 0.346666666666667,
+          "scicode": 0.389,
           "tau2": 0.60233918128655,
           "tau_banking": 0.0701030927835052,
           "terminalbench_hard": 0.106060606060606,
           "terminalbench_v2_1": 0.138576779026217,
           "omniscience_hallucination_rate": 0.94,
-          "briefcase_analytical_quality_elo": 342.0,
-          "briefcase_presentation_elo": 169.0,
-          "time_per_task": 2.2,
+          "briefcase_analytical_quality_elo": 263.0,
+          "briefcase_presentation_elo": 229.0,
+          "time_per_task": 1.6,
           "math_index": 89.3
         }
       },
@@ -18130,21 +18515,21 @@
       "pricing": {
         "aa": {
           "inp_price": 0.07,
-          "out_price": 0.225,
-          "blended": 0.109,
+          "out_price": 0.2,
+          "blended": 0.103,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 196.775,
+          "speed_tps": 252.444,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.607
+          "ttft": 0.438
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 14.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -18153,14 +18538,14 @@
           "aa_math_index": 62.3,
           "gpqa": 0.611,
           "mmlu_pro": 0.718,
-          "hle": 0.051,
+          "hle": 0.053,
           "aime": null,
           "aime_25": 0.623333333333333,
           "math_500": null,
           "livecodebench": 0.652,
           "ifbench": 0.578231292517007,
           "lcr": 0.31,
-          "scicode": 0.34,
+          "scicode": null,
           "tau2": 0.502923976608187,
           "tau_banking": null,
           "terminalbench_hard": 0.0454545454545455,
@@ -18342,16 +18727,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 131.315,
+          "speed_tps": 111.556,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.208
+          "ttft": 7.215
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 35.0,
+          "intel": 24.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -18360,19 +18745,19 @@
           "aa_math_index": null,
           "gpqa": 0.843,
           "mmlu_pro": null,
-          "hle": 0.173,
+          "hle": 0.184,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.80952380952381,
-          "lcr": 0.64,
-          "scicode": 0.419,
+          "lcr": 0.74,
+          "scicode": null,
           "tau2": 0.888888888888889,
           "tau_banking": null,
           "terminalbench_hard": 0.265151515151515,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.16,
+          "omniscience_hallucination_rate": 0.17,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -18399,16 +18784,16 @@
           "cache_hit_price": 0.2,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 123.568,
+          "speed_tps": 136.915,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 12.868
+          "ttft": 17.59
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 36.0,
+          "intel": 25.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -18417,19 +18802,19 @@
           "aa_math_index": null,
           "gpqa": 0.89,
           "mmlu_pro": null,
-          "hle": 0.281,
+          "hle": 0.3,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.833333333333333,
-          "lcr": 0.65,
-          "scicode": 0.446,
+          "lcr": 0.75,
+          "scicode": null,
           "tau2": 0.912280701754386,
           "tau_banking": null,
           "terminalbench_hard": 0.303030303030303,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.16,
+          "omniscience_hallucination_rate": 0.17,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -18440,10 +18825,10 @@
       }
     },
     {
-      "id": "grok-4-5",
+      "id": "grok-4-6",
       "creator": "SpaceXAI",
       "meta": {
-        "release_date": "2026-07-08"
+        "release_date": "2026-08-12"
       },
       "pricing": {
         "aa": {
@@ -18451,25 +18836,25 @@
           "out_price": 6,
           "blended": 3,
           "cache_hit_price": null,
-          "cost_per_task": 0.4409601527067297,
+          "cost_per_task": 1.8589423352127492,
           "tokens_m": null,
-          "speed_tps": 54.776,
+          "speed_tps": 62.454,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 10.172
+          "ttft": 38.973
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 53.8,
+          "intel": 44.4,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
           "cost_per_iq": null,
-          "aa_coding_index": 72.4,
+          "aa_coding_index": 76.8,
           "aa_math_index": null,
-          "gpqa": 0.931,
+          "gpqa": 0.949,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -18490,7 +18875,7 @@
         }
       },
       "aliases": {
-        "aa": "grok-4-5"
+        "aa": "grok-4-6"
       }
     },
     {
@@ -18672,7 +19057,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 25.0,
           "iq_per_dollar": 0.1266793,
           "iq_per_mtok": null,
           "iq_per_1k": 126.6793,
@@ -18681,22 +19066,22 @@
           "aa_math_index": null,
           "gpqa": 0.901,
           "mmlu_pro": null,
-          "hle": 0.35,
+          "hle": 0.372,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.812925170068027,
-          "lcr": 0.643333333333333,
-          "scicode": 0.473,
+          "lcr": 0.73,
+          "scicode": 0.483,
           "tau2": 0.976608187134503,
-          "tau_banking": 0.121649484536082,
+          "tau_banking": 0.123711340206186,
           "terminalbench_hard": 0.378787878787879,
           "terminalbench_v2_1": 0.397003745318352,
-          "omniscience_hallucination_rate": 0.25,
-          "briefcase_analytical_quality_elo": 972.0,
-          "briefcase_presentation_elo": 971.0,
-          "time_per_task": 2.0
+          "omniscience_hallucination_rate": 0.26,
+          "briefcase_analytical_quality_elo": 1093.0,
+          "briefcase_presentation_elo": 1088.0,
+          "time_per_task": 2.7
         },
         "livebench": {
           "average": 67.37,
@@ -19298,16 +19683,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 36.994,
+          "speed_tps": 42.211,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.766
+          "ttft": 0.789
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 9.0,
+          "intel": 7.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -19316,14 +19701,14 @@
           "aa_math_index": 69.7,
           "gpqa": 0.727,
           "mmlu_pro": 0.829,
-          "hle": 0.103,
+          "hle": 0.109,
           "aime": null,
           "aime_25": 0.696666666666667,
           "math_500": null,
           "livecodebench": 0.686,
           "ifbench": 0.327210884353742,
-          "lcr": 0.206666666666667,
-          "scicode": 0.252,
+          "lcr": 0.223333333333333,
+          "scicode": null,
           "tau2": 0.222222222222222,
           "tau_banking": null,
           "terminalbench_hard": 0.113636363636364,
@@ -19350,22 +19735,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.13,
-          "out_price": 0.4,
-          "blended": 0.198,
+          "inp_price": 0,
+          "out_price": 0,
+          "blended": 0,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 88.988,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.579
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 10.0,
+          "intel": 8.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -19374,14 +19759,14 @@
           "aa_math_index": 68.7,
           "gpqa": 0.699,
           "mmlu_pro": 0.811,
-          "hle": 0.079,
+          "hle": 0.088,
           "aime": null,
           "aime_25": 0.686666666666667,
           "math_500": null,
           "livecodebench": 0.653,
           "ifbench": 0.312925170068027,
-          "lcr": 0.0666666666666667,
-          "scicode": 0.341,
+          "lcr": 0.0966666666666667,
+          "scicode": null,
           "tau2": 0.225146198830409,
           "tau_banking": null,
           "terminalbench_hard": 0.0454545454545455,
@@ -20114,16 +20499,16 @@
       "pricing": {
         "aa": {
           "inp_price": 0.136,
-          "out_price": 0.557,
+          "out_price": 0.554,
           "blended": 0.241,
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 69.228,
+          "speed_tps": 93.009,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.675
+          "ttft": 1.575
         },
         "openrouter": {
           "inp_price": 1.4e-07,
@@ -20137,7 +20522,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 41.0,
+          "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -20146,22 +20531,22 @@
           "aa_math_index": null,
           "gpqa": 0.897,
           "mmlu_pro": null,
-          "hle": 0.316,
+          "hle": 0.335,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": null,
-          "lcr": 0.666666666666667,
-          "scicode": 0.476,
+          "lcr": 0.79,
+          "scicode": 0.486,
           "tau2": null,
-          "tau_banking": 0.208247422680412,
+          "tau_banking": 0.228865979381443,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.644194756554307,
-          "omniscience_hallucination_rate": 0.73,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 7.0
+          "omniscience_hallucination_rate": 0.74,
+          "briefcase_analytical_quality_elo": 1436.0,
+          "briefcase_presentation_elo": 1390.0,
+          "time_per_task": 8.7
         }
       },
       "aliases": {
@@ -21122,7 +21507,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 22.0,
+          "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -21131,16 +21516,16 @@
           "aa_math_index": 90.3,
           "gpqa": 0.783,
           "mmlu_pro": 0.838,
-          "hle": 0.131,
+          "hle": 0.139,
           "aime": null,
           "aime_25": 0.903333333333334,
           "math_500": null,
           "livecodebench": 0.768,
           "ifbench": 0.646938775510204,
-          "lcr": 0.556666666666667,
-          "scicode": 0.356,
+          "lcr": 0.613333333333333,
+          "scicode": null,
           "tau2": 0.742690058479532,
-          "tau_banking": 0.142268041237113,
+          "tau_banking": null,
           "terminalbench_hard": 0.227272727272727,
           "terminalbench_v2_1": 0.303370786516854,
           "omniscience_hallucination_rate": 0.89,
@@ -21309,9 +21694,9 @@
       "pricing": {
         "aa": {
           "inp_price": 0.6,
-          "out_price": 3,
-          "blended": 1.2,
-          "cache_hit_price": 0.1,
+          "out_price": 2.75,
+          "blended": 1.137,
+          "cache_hit_price": 0.35,
           "cost_per_task": null,
           "tokens_m": null,
           "speed_tps": 0,
@@ -21323,7 +21708,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 35.0,
+          "intel": 23.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -21332,22 +21717,22 @@
           "aa_math_index": null,
           "gpqa": 0.879,
           "mmlu_pro": null,
-          "hle": 0.294,
+          "hle": 0.307,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.702040816326531,
-          "lcr": 0.653333333333333,
-          "scicode": 0.49,
+          "lcr": 0.78,
+          "scicode": null,
           "tau2": 0.95906432748538,
           "tau_banking": 0.142268041237113,
           "terminalbench_hard": 0.348484848484849,
           "terminalbench_v2_1": 0.456928838951311,
-          "omniscience_hallucination_rate": 0.65,
+          "omniscience_hallucination_rate": 0.66,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.8
+          "time_per_task": null
         },
         "dirac": {
           "cache_hit_rate_max": 92.8
@@ -21411,7 +21796,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 33.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -21420,19 +21805,19 @@
           "aa_math_index": 94.7,
           "gpqa": 0.838,
           "mmlu_pro": 0.848,
-          "hle": 0.223,
+          "hle": 0.238,
           "aime": null,
           "aime_25": 0.946666666666667,
           "math_500": null,
           "livecodebench": 0.853,
           "ifbench": 0.680952380952381,
-          "lcr": 0.663333333333333,
-          "scicode": 0.424,
+          "lcr": 0.72,
+          "scicode": null,
           "tau2": 0.929824561403509,
           "tau_banking": null,
           "terminalbench_hard": 0.310606060606061,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.72,
+          "omniscience_hallucination_rate": 0.76,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -21443,7 +21828,7 @@
           "Mathematics": 81.1,
           "Coding": 67.44,
           "Language": 66.45,
-          "Data Analysis": 52.29,
+          "Data Analysis": 52.28,
           "Agentic Coding": 38.33,
           "Reasoning": 63.49,
           "IF": 62.03
@@ -21564,7 +21949,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 44.0,
+          "intel": 31.0,
           "iq_per_dollar": 0.0517237,
           "iq_per_mtok": null,
           "iq_per_1k": 51.7237,
@@ -21573,22 +21958,22 @@
           "aa_math_index": null,
           "gpqa": 0.911,
           "mmlu_pro": null,
-          "hle": 0.359,
+          "hle": 0.375,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.759863945578231,
-          "lcr": 0.696666666666667,
-          "scicode": 0.535,
+          "lcr": 0.81,
+          "scicode": 0.515,
           "tau2": 0.95906432748538,
-          "tau_banking": 0.206185567010309,
+          "tau_banking": 0.232989690721649,
           "terminalbench_hard": 0.439393939393939,
           "terminalbench_v2_1": 0.659176029962547,
-          "omniscience_hallucination_rate": 0.39,
-          "briefcase_analytical_quality_elo": 939.0,
-          "briefcase_presentation_elo": 937.0,
-          "time_per_task": 14.9
+          "omniscience_hallucination_rate": 0.41,
+          "briefcase_analytical_quality_elo": 984.0,
+          "briefcase_presentation_elo": 983.0,
+          "time_per_task": null
         },
         "arena_code": {
           "elo": 1514,
@@ -21641,7 +22026,7 @@
           "cache_hit_price": 0.19,
           "cost_per_task": 0.18,
           "tokens_m": 100,
-          "speed_tps": 37.573,
+          "speed_tps": 65.024,
           "useful_cost": 5.2456,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -21652,7 +22037,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 1.176
+          "ttft": 1.071
         },
         "openrouter": {
           "inp_price": 8.2e-07,
@@ -21666,7 +22051,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 42.0,
+          "intel": 26.0,
           "iq_per_dollar": 0.0800671,
           "iq_per_mtok": null,
           "iq_per_1k": 80.0671,
@@ -21675,22 +22060,22 @@
           "aa_math_index": null,
           "gpqa": 0.896,
           "mmlu_pro": null,
-          "hle": 0.328,
+          "hle": 0.35,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.631292517006803,
-          "lcr": 0.663333333333333,
-          "scicode": 0.475,
+          "lcr": 0.793333333333333,
+          "scicode": 0.478,
           "tau2": 0.900584795321637,
-          "tau_banking": 0.181443298969072,
+          "tau_banking": 0.202061855670103,
           "terminalbench_hard": 0.446969696969697,
           "terminalbench_v2_1": 0.674157303370786,
-          "omniscience_hallucination_rate": 0.8,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 6.5
+          "omniscience_hallucination_rate": 0.82,
+          "briefcase_analytical_quality_elo": 1178.0,
+          "briefcase_presentation_elo": 1078.0,
+          "time_per_task": 8.8
         },
         "livebench": {
           "average": 71.93,
@@ -21729,13 +22114,13 @@
           "out_price": 15,
           "blended": 6,
           "cache_hit_price": 0.3,
-          "cost_per_task": 0.8552042372493249,
+          "cost_per_task": 2.0001323004425493,
           "tokens_m": null,
-          "speed_tps": 33.267,
+          "speed_tps": 40.791,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 2.958
+          "ttft": 2.516
         },
         "openrouter": {
           "inp_price": 3e-06,
@@ -21749,7 +22134,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 57.0,
+          "intel": 44.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -21770,10 +22155,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.51,
-          "briefcase_analytical_quality_elo": 1752.0,
-          "briefcase_presentation_elo": 1741.0,
-          "time_per_task": 11.3
+          "omniscience_hallucination_rate": 0.53,
+          "briefcase_analytical_quality_elo": 1368.0,
+          "briefcase_presentation_elo": 1341.0,
+          "time_per_task": 21.6
         }
       },
       "aliases": {
@@ -21796,16 +22181,16 @@
           "cache_hit_price": 0.3,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 32.378,
+          "speed_tps": 41.791,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.164
+          "ttft": 2.382
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 47.0,
+          "intel": 34.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -21826,10 +22211,10 @@
           "tau_banking": null,
           "terminalbench_hard": null,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.74,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.9
+          "omniscience_hallucination_rate": 0.77,
+          "briefcase_analytical_quality_elo": 1393.0,
+          "briefcase_presentation_elo": 1436.0,
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -34821,11 +35206,11 @@
           "cache_hit_price": 0.03,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 937.576,
+          "speed_tps": 1039.97,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 3.569
+          "ttft": 4.424
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -34839,7 +35224,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 21.0,
+          "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -34848,22 +35233,22 @@
           "aa_math_index": null,
           "gpqa": 0.77,
           "mmlu_pro": null,
-          "hle": 0.155,
+          "hle": 0.171,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.697959183673469,
-          "lcr": 0.363333333333333,
-          "scicode": 0.387,
+          "lcr": 0.436666666666667,
+          "scicode": 0.377,
           "tau2": 0.707602339181287,
-          "tau_banking": 0.0989690721649484,
+          "tau_banking": 0.0948453608247423,
           "terminalbench_hard": 0.265151515151515,
           "terminalbench_v2_1": 0.273408239700375,
-          "omniscience_hallucination_rate": 0.92,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 0.6
+          "omniscience_hallucination_rate": 0.91,
+          "briefcase_analytical_quality_elo": 780.0,
+          "briefcase_presentation_elo": 782.0,
+          "time_per_task": 0.5
         }
       },
       "aliases": {
@@ -35589,16 +35974,16 @@
           "cache_hit_price": 0.003,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 81.332,
+          "speed_tps": 65.714,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.919
+          "ttft": 3.174
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 37.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -35607,22 +35992,22 @@
           "aa_math_index": null,
           "gpqa": 0.849,
           "mmlu_pro": null,
-          "hle": 0.252,
+          "hle": 0.272,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.671428571428571,
-          "lcr": 0.626666666666667,
-          "scicode": 0.431,
+          "lcr": 0.73,
+          "scicode": 0.439,
           "tau2": 0.906432748538012,
-          "tau_banking": 0.065979381443299,
+          "tau_banking": 0.0865979381443299,
           "terminalbench_hard": 0.416666666666667,
           "terminalbench_v2_1": 0.636704119850187,
           "omniscience_hallucination_rate": 0.32,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 3.1
+          "briefcase_analytical_quality_elo": 1323.0,
+          "briefcase_presentation_elo": 1323.0,
+          "time_per_task": 8.7
         }
       },
       "aliases": {
@@ -35663,7 +36048,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 29.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -35672,14 +36057,14 @@
           "aa_math_index": null,
           "gpqa": 0.87,
           "mmlu_pro": null,
-          "hle": 0.283,
+          "hle": 0.304,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.68843537414966,
-          "lcr": 0.606666666666667,
-          "scicode": 0.425,
+          "lcr": 0.683333333333333,
+          "scicode": null,
           "tau2": 0.950292397660819,
           "tau_banking": null,
           "terminalbench_hard": 0.409090909090909,
@@ -35759,7 +36144,7 @@
           "cache_hit_price": 0.004,
           "cost_per_task": 0.03,
           "tokens_m": 96,
-          "speed_tps": 51.46,
+          "speed_tps": 41.55,
           "useful_cost": 1.0257,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -35770,7 +36155,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.03
           },
-          "ttft": 2.023
+          "ttft": 3.383
         },
         "openrouter": {
           "inp_price": 4.35e-07,
@@ -35784,7 +36169,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 42.0,
+          "intel": 26.0,
           "iq_per_dollar": 0.4265258,
           "iq_per_mtok": null,
           "iq_per_1k": 426.5258,
@@ -35793,22 +36178,22 @@
           "aa_math_index": null,
           "gpqa": 0.866,
           "mmlu_pro": null,
-          "hle": 0.338,
+          "hle": 0.357,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.798639455782313,
-          "lcr": 0.733333333333333,
-          "scicode": 0.502,
+          "lcr": 0.796666666666667,
+          "scicode": 0.506,
           "tau2": 0.941520467836257,
-          "tau_banking": 0.0865979381443299,
+          "tau_banking": 0.0989690721649484,
           "terminalbench_hard": 0.431818181818182,
           "terminalbench_v2_1": 0.651685393258427,
           "omniscience_hallucination_rate": 0.25,
-          "briefcase_analytical_quality_elo": 0.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": 6.4
+          "briefcase_analytical_quality_elo": 1406.0,
+          "briefcase_presentation_elo": 1407.0,
+          "time_per_task": 12.8
         },
         "arena_text": {
           "elo": 1466,
@@ -36029,7 +36414,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 34.0,
+          "intel": 23.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -36038,19 +36423,19 @@
           "aa_math_index": null,
           "gpqa": 0.848,
           "mmlu_pro": null,
-          "hle": 0.191,
+          "hle": 0.205,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.716326530612245,
-          "lcr": 0.66,
-          "scicode": 0.426,
+          "lcr": 0.733333333333333,
+          "scicode": null,
           "tau2": 0.953216374269006,
           "tau_banking": null,
           "terminalbench_hard": 0.348484848484849,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.89,
+          "omniscience_hallucination_rate": 0.88,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -36114,7 +36499,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 23.0,
           "iq_per_dollar": 0.26438459999999997,
           "iq_per_mtok": null,
           "iq_per_1k": 264.3846,
@@ -36123,22 +36508,22 @@
           "aa_math_index": null,
           "gpqa": 0.874,
           "mmlu_pro": null,
-          "hle": 0.281,
+          "hle": 0.296,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.757142857142857,
-          "lcr": 0.686666666666667,
-          "scicode": 0.47,
+          "lcr": 0.783333333333333,
+          "scicode": 0.501,
           "tau2": 0.847953216374269,
-          "tau_banking": 0.088659793814433,
+          "tau_banking": 0.0989690721649484,
           "terminalbench_hard": 0.393939393939394,
           "terminalbench_v2_1": 0.554307116104869,
-          "omniscience_hallucination_rate": 0.34,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 5.5
+          "omniscience_hallucination_rate": 0.36,
+          "briefcase_analytical_quality_elo": 957.0,
+          "briefcase_presentation_elo": 1000.0,
+          "time_per_task": 5.1
         },
         "livebench": {
           "average": 65.0,
@@ -36180,7 +36565,7 @@
           "cache_hit_price": 0.06,
           "cost_per_task": 0.12,
           "tokens_m": 89,
-          "speed_tps": 96.645,
+          "speed_tps": 103.255,
           "useful_cost": 2.2906,
           "reasoning_tax_pct": 33.3,
           "cost_segments": {
@@ -36191,7 +36576,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.01
           },
-          "ttft": 2.024
+          "ttft": 1.107
         },
         "openrouter": {
           "inp_price": 3e-07,
@@ -36205,7 +36590,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 44.0,
+          "intel": 30.0,
           "iq_per_dollar": 0.21583439999999998,
           "iq_per_mtok": null,
           "iq_per_1k": 215.8344,
@@ -36214,22 +36599,22 @@
           "aa_math_index": null,
           "gpqa": 0.929,
           "mmlu_pro": null,
-          "hle": 0.371,
+          "hle": 0.39,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.828571428571429,
-          "lcr": 0.74,
-          "scicode": 0.454,
+          "lcr": 0.83,
+          "scicode": 0.471,
           "tau2": 0.888888888888889,
-          "tau_banking": 0.129896907216495,
+          "tau_banking": 0.152577319587629,
           "terminalbench_hard": 0.424242424242424,
           "terminalbench_v2_1": 0.651685393258427,
-          "omniscience_hallucination_rate": 0.16,
-          "briefcase_analytical_quality_elo": 719.0,
-          "briefcase_presentation_elo": 718.0,
-          "time_per_task": 5.8
+          "omniscience_hallucination_rate": 0.18,
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 8.2
         },
         "livebench": {
           "average": 70.05,
@@ -37549,7 +37934,7 @@
           "cache_hit_price": null,
           "cost_per_task": 1.2,
           "tokens_m": 91,
-          "speed_tps": 57.052,
+          "speed_tps": 158.119,
           "useful_cost": 16.3011,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -37560,7 +37945,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 0.859
+          "ttft": 0.674
         },
         "openrouter": {
           "inp_price": 1.5e-06,
@@ -39621,7 +40006,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 43.0,
+          "intel": 31.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -39630,21 +40015,21 @@
           "aa_math_index": null,
           "gpqa": 0.884,
           "mmlu_pro": null,
-          "hle": 0.399,
+          "hle": 0.407,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.759183673469388,
-          "lcr": 0.696666666666667,
-          "scicode": 0.515,
+          "lcr": 0.78,
+          "scicode": null,
           "tau2": 0.915204678362573,
-          "tau_banking": 0.195876288659794,
+          "tau_banking": null,
           "terminalbench_hard": 0.454545454545455,
           "terminalbench_v2_1": 0.621722846441948,
-          "omniscience_hallucination_rate": 0.73,
-          "briefcase_analytical_quality_elo": 899.0,
-          "briefcase_presentation_elo": 880.0,
+          "omniscience_hallucination_rate": 0.84,
+          "briefcase_analytical_quality_elo": 882.0,
+          "briefcase_presentation_elo": 879.0,
           "time_per_task": null
         },
         "arena_text": {
@@ -39659,10 +40044,10 @@
       }
     },
     {
-      "id": "muse-spark-1-1",
+      "id": "muse-spark-1-3",
       "creator": "Meta",
       "meta": {
-        "release_date": "2026-07-09"
+        "release_date": "2026-09-02"
       },
       "pricing": {
         "aa": {
@@ -39670,25 +40055,25 @@
           "out_price": 4.25,
           "blended": 2,
           "cache_hit_price": null,
-          "cost_per_task": 0.2924085748333458,
+          "cost_per_task": 1.6048932100125866,
           "tokens_m": null,
-          "speed_tps": 141.884,
+          "speed_tps": 328.168,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.377
+          "ttft": 22.464
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 50.6,
+          "intel": 48.2,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
           "cost_per_iq": null,
-          "aa_coding_index": 71.3,
+          "aa_coding_index": 75.8,
           "aa_math_index": null,
-          "gpqa": 0.898,
+          "gpqa": 0.935,
           "mmlu_pro": null,
           "hle": null,
           "aime": null,
@@ -39709,7 +40094,7 @@
         }
       },
       "aliases": {
-        "aa": "muse-spark-1-1"
+        "aa": "muse-spark-1-3"
       }
     },
     {
@@ -40004,22 +40389,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.075,
-          "out_price": 0.3,
-          "blended": 0.131,
+          "inp_price": 0.09,
+          "out_price": 0.36,
+          "blended": 0.158,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 323.905,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.538
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 15.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40028,19 +40413,19 @@
           "aa_math_index": null,
           "gpqa": 0.469,
           "mmlu_pro": null,
-          "hle": 0.053,
+          "hle": 0.048,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.631972789115646,
-          "lcr": 0.356666666666667,
-          "scicode": 0.278,
+          "lcr": 0.396666666666667,
+          "scicode": null,
           "tau2": 0.453216374269006,
           "tau_banking": null,
           "terminalbench_hard": 0.0833333333333333,
           "terminalbench_v2_1": 0.0674157303370786,
-          "omniscience_hallucination_rate": 0.83,
+          "omniscience_hallucination_rate": 0.86,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -40081,13 +40466,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.2,
-          "out_price": 0.8,
-          "blended": 0.35,
+          "inp_price": 0.193,
+          "out_price": 0.65,
+          "blended": 0.307,
           "cache_hit_price": 0.2,
           "cost_per_task": 0.25,
           "tokens_m": 110,
-          "speed_tps": 147.496,
+          "speed_tps": 105.583,
           "useful_cost": 2.6778,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -40098,7 +40483,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.25
           },
-          "ttft": 1.004
+          "ttft": 3.371
         },
         "openrouter": {
           "inp_price": 8e-08,
@@ -40110,7 +40495,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 25.0,
+          "intel": 14.0,
           "iq_per_dollar": 0.0848724,
           "iq_per_mtok": null,
           "iq_per_1k": 84.8724,
@@ -40119,22 +40504,22 @@
           "aa_math_index": null,
           "gpqa": 0.8,
           "mmlu_pro": null,
-          "hle": 0.192,
+          "hle": 0.208,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.714965986394558,
-          "lcr": 0.6,
-          "scicode": 0.36,
+          "lcr": 0.656666666666667,
+          "scicode": 0.362,
           "tau2": 0.678362573099415,
-          "tau_banking": 0.101030927835052,
+          "tau_banking": 0.103092783505155,
           "terminalbench_hard": 0.287878787878788,
           "terminalbench_v2_1": 0.385767790262172,
           "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": 28.0,
-          "briefcase_presentation_elo": 0.0,
-          "time_per_task": 2.2
+          "briefcase_analytical_quality_elo": 154.0,
+          "briefcase_presentation_elo": 30.0,
+          "time_per_task": 15.9
         },
         "livebench": {
           "average": 32.02,
@@ -40184,13 +40569,13 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.675,
-          "out_price": 2.675,
-          "blended": 1.175,
-          "cache_hit_price": 0.25,
+          "inp_price": 0.6,
+          "out_price": 2.6,
+          "blended": 1.1,
+          "cache_hit_price": 0.2,
           "cost_per_task": 0.24,
           "tokens_m": 110,
-          "speed_tps": 199.548,
+          "speed_tps": 163.861,
           "useful_cost": 4.033,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -40201,7 +40586,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.24
           },
-          "ttft": 0.871
+          "ttft": 1.261
         },
         "openrouter": {
           "inp_price": 5e-07,
@@ -40215,7 +40600,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 38.0,
+          "intel": 23.0,
           "iq_per_dollar": 0.085657,
           "iq_per_mtok": null,
           "iq_per_1k": 85.657,
@@ -40224,22 +40609,22 @@
           "aa_math_index": null,
           "gpqa": 0.867,
           "mmlu_pro": null,
-          "hle": 0.266,
+          "hle": 0.284,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.813605442176871,
-          "lcr": 0.67,
-          "scicode": 0.399,
+          "lcr": 0.793333333333333,
+          "scicode": 0.403,
           "tau2": 0.833333333333333,
-          "tau_banking": 0.138144329896907,
+          "tau_banking": 0.142268041237113,
           "terminalbench_hard": 0.363636363636364,
           "terminalbench_v2_1": 0.539325842696629,
-          "omniscience_hallucination_rate": 0.29,
-          "briefcase_analytical_quality_elo": 1085.0,
-          "briefcase_presentation_elo": 1000.0,
-          "time_per_task": 2.0
+          "omniscience_hallucination_rate": 0.3,
+          "briefcase_analytical_quality_elo": 1293.0,
+          "briefcase_presentation_elo": 1264.0,
+          "time_per_task": 2.9
         },
         "livebench": {
           "average": 50.71,
@@ -40324,7 +40709,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 18.0,
+          "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40333,16 +40718,16 @@
           "aa_math_index": null,
           "gpqa": 0.758,
           "mmlu_pro": null,
-          "hle": 0.114,
+          "hle": 0.12,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.804081632653061,
-          "lcr": 0.34,
-          "scicode": 0.348,
+          "lcr": 0.393333333333333,
+          "scicode": null,
           "tau2": 0.532163742690059,
-          "tau_banking": 0.101030927835052,
+          "tau_banking": null,
           "terminalbench_hard": 0.212121212121212,
           "terminalbench_v2_1": 0.205992509363296,
           "omniscience_hallucination_rate": 0.85,
@@ -40558,11 +40943,11 @@
           "cache_hit_price": 0.25,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 132.829,
+          "speed_tps": 115.751,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.852
+          "ttft": 0.943
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -40576,7 +40961,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 41.0,
+          "intel": 28.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40585,22 +40970,22 @@
           "aa_math_index": null,
           "gpqa": 0.892,
           "mmlu_pro": null,
-          "hle": 0.324,
+          "hle": 0.337,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.661904761904762,
-          "lcr": 0.676666666666667,
-          "scicode": 0.418,
+          "lcr": 0.816666666666667,
+          "scicode": 0.433,
           "tau2": 0.815789473684211,
-          "tau_banking": 0.169072164948454,
+          "tau_banking": 0.175257731958763,
           "terminalbench_hard": null,
           "terminalbench_v2_1": 0.677902621722846,
           "omniscience_hallucination_rate": 0.95,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 3.7
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -40743,16 +41128,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 190.335,
+          "speed_tps": 196.547,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 12.062
+          "ttft": 13.871
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 18.0,
+          "intel": 13.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40761,22 +41146,22 @@
           "aa_math_index": 94.3,
           "gpqa": 0.811,
           "mmlu_pro": 0.818,
-          "hle": 0.109,
+          "hle": 0.116,
           "aime": null,
           "aime_25": 0.943333333333333,
           "math_500": null,
           "livecodebench": 0.711,
           "ifbench": 0.707482993197279,
-          "lcr": 0.553333333333333,
-          "scicode": 0.369,
+          "lcr": 0.603333333333333,
+          "scicode": null,
           "tau2": 0.728070175438596,
-          "tau_banking": 0.0680412371134021,
+          "tau_banking": null,
           "terminalbench_hard": 0.166666666666667,
           "terminalbench_v2_1": 0.161048689138577,
-          "omniscience_hallucination_rate": 0.9,
+          "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 5.2,
+          "time_per_task": null,
           "math_index": 94.3
         }
       },
@@ -40801,16 +41186,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 165.182,
+          "speed_tps": 187.617,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.605
+          "ttft": 4.568
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 18.0,
+          "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40819,19 +41204,19 @@
           "aa_math_index": 46.7,
           "gpqa": 0.698,
           "mmlu_pro": 0.788,
-          "hle": 0.042,
+          "hle": 0.04,
           "aime": null,
           "aime_25": 0.466666666666667,
           "math_500": null,
           "livecodebench": 0.469,
           "ifbench": 0.612244897959184,
-          "lcr": 0.52,
-          "scicode": 0.333,
+          "lcr": 0.543333333333333,
+          "scicode": null,
           "tau2": 0.719298245614035,
           "tau_banking": null,
           "terminalbench_hard": 0.0378787878787879,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.8,
+          "omniscience_hallucination_rate": 0.87,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -40859,16 +41244,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 182.63,
+          "speed_tps": 210.85,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 8.541
+          "ttft": 14.516
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 19.0,
+          "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40877,19 +41262,19 @@
           "aa_math_index": 88.7,
           "gpqa": 0.768,
           "mmlu_pro": 0.813,
-          "hle": 0.086,
+          "hle": 0.09,
           "aime": null,
           "aime_25": 0.886666666666667,
           "math_500": null,
           "livecodebench": 0.663,
           "ifbench": 0.685034013605442,
-          "lcr": 0.583333333333333,
-          "scicode": 0.368,
+          "lcr": 0.6,
+          "scicode": null,
           "tau2": 0.757309941520468,
           "tau_banking": null,
           "terminalbench_hard": 0.174242424242424,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.9,
+          "omniscience_hallucination_rate": 0.92,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -40926,7 +41311,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 17.0,
+          "intel": 11.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40935,19 +41320,19 @@
           "aa_math_index": 56,
           "gpqa": 0.699,
           "mmlu_pro": 0.798,
-          "hle": 0.04,
+          "hle": null,
           "aime": null,
           "aime_25": 0.56,
           "math_500": null,
           "livecodebench": 0.592,
           "ifbench": 0.617687074829932,
-          "lcr": 0.51,
-          "scicode": 0.343,
+          "lcr": 0.576666666666667,
+          "scicode": null,
           "tau2": 0.678362573099415,
           "tau_banking": null,
           "terminalbench_hard": 0.0378787878787879,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.84,
+          "omniscience_hallucination_rate": 0.85,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -40984,7 +41369,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 21.0,
+          "intel": 14.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -40993,19 +41378,19 @@
           "aa_math_index": 89.7,
           "gpqa": 0.76,
           "mmlu_pro": 0.809,
-          "hle": 0.068,
+          "hle": 0.07,
           "aime": null,
           "aime_25": 0.896666666666667,
           "math_500": null,
           "livecodebench": 0.66,
           "ifbench": 0.661904761904762,
-          "lcr": 0.536666666666667,
-          "scicode": 0.362,
+          "lcr": 0.596666666666667,
+          "scicode": null,
           "tau2": 0.804093567251462,
           "tau_banking": null,
           "terminalbench_hard": 0.0454545454545455,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.92,
+          "omniscience_hallucination_rate": 0.93,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -41033,16 +41418,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 146.278,
+          "speed_tps": 133.508,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 5.68
+          "ttft": 5.744
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 20.0,
+          "intel": 13.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -41057,16 +41442,16 @@
           "math_500": null,
           "livecodebench": 0.638,
           "ifbench": 0.795918367346939,
-          "lcr": 0.616666666666667,
-          "scicode": 0.387,
+          "lcr": 0.646666666666667,
+          "scicode": null,
           "tau2": 0.906432748538012,
-          "tau_banking": 0.0907216494845361,
+          "tau_banking": null,
           "terminalbench_hard": 0.174242424242424,
           "terminalbench_v2_1": 0.194756554307116,
-          "omniscience_hallucination_rate": 0.87,
+          "omniscience_hallucination_rate": 0.7,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 0.7,
+          "time_per_task": null,
           "math_index": 63.3
         }
       },
@@ -41111,7 +41496,7 @@
           "cache_hit_price": 0.31,
           "cost_per_task": 0.17,
           "tokens_m": 36,
-          "speed_tps": 140.07,
+          "speed_tps": 131.331,
           "useful_cost": 12.9597,
           "reasoning_tax_pct": 58.8,
           "cost_segments": {
@@ -41122,12 +41507,12 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.02
           },
-          "ttft": 15.306
+          "ttft": 18.712
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 22.0,
+          "intel": 14.0,
           "iq_per_dollar": 0.0771621,
           "iq_per_mtok": null,
           "iq_per_1k": 77.1621,
@@ -41136,22 +41521,22 @@
           "aa_math_index": 89,
           "gpqa": 0.785,
           "mmlu_pro": 0.83,
-          "hle": 0.089,
+          "hle": 0.094,
           "aime": null,
           "aime_25": 0.89,
           "math_500": null,
           "livecodebench": 0.73,
           "ifbench": 0.790476190476191,
-          "lcr": 0.543333333333333,
-          "scicode": 0.427,
+          "lcr": 0.64,
+          "scicode": null,
           "tau2": 0.926900584795322,
-          "tau_banking": 0.0762886597938144,
+          "tau_banking": null,
           "terminalbench_hard": 0.242424242424242,
           "terminalbench_v2_1": 0.295880149812734,
-          "omniscience_hallucination_rate": 0.9,
+          "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.7,
+          "time_per_task": null,
           "math_index": 89
         }
       },
@@ -41696,16 +42081,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 254.416,
+          "speed_tps": 248.84,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.7
+          "ttft": 0.655
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 14.0,
+          "intel": 9.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -41714,22 +42099,22 @@
           "aa_math_index": 91,
           "gpqa": 0.757,
           "mmlu_pro": 0.794,
-          "hle": 0.102,
+          "hle": 0.114,
           "aime": null,
           "aime_25": 0.91,
           "math_500": null,
           "livecodebench": 0.741,
           "ifbench": 0.710884353741497,
-          "lcr": 0.336666666666667,
-          "scicode": 0.296,
+          "lcr": 0.38,
+          "scicode": 0.306,
           "tau2": 0.409356725146199,
           "tau_banking": 0.0597938144329897,
           "terminalbench_hard": 0.136363636363636,
           "terminalbench_v2_1": 0.0674157303370786,
           "omniscience_hallucination_rate": 0.83,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 1.7,
+          "briefcase_analytical_quality_elo": 359.0,
+          "briefcase_presentation_elo": 342.0,
+          "time_per_task": 2.0,
           "math_index": 91
         }
       },
@@ -53037,16 +53422,16 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 56.849,
+          "speed_tps": 58.325,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.445
+          "ttft": 1.362
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 37.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -53055,22 +53440,22 @@
           "aa_math_index": null,
           "gpqa": 0.842,
           "mmlu_pro": null,
-          "hle": 0.216,
+          "hle": 0.231,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.675510204081633,
-          "lcr": 0.686666666666667,
-          "scicode": 0.398,
+          "lcr": 0.773333333333333,
+          "scicode": 0.428,
           "tau2": 0.941520467836257,
-          "tau_banking": 0.152577319587629,
+          "tau_banking": 0.167010309278351,
           "terminalbench_hard": 0.348484848484849,
           "terminalbench_v2_1": 0.606741573033708,
-          "omniscience_hallucination_rate": 0.48,
-          "briefcase_analytical_quality_elo": 1662.0,
-          "briefcase_presentation_elo": 1490.0,
-          "time_per_task": 8.0
+          "omniscience_hallucination_rate": 0.49,
+          "briefcase_analytical_quality_elo": 1142.0,
+          "briefcase_presentation_elo": 1398.0,
+          "time_per_task": 8.7
         },
         "dirac": {
           "cache_hit_rate_max": 32.8
@@ -53091,22 +53476,22 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.248,
-          "out_price": 1.485,
-          "blended": 0.557,
+          "inp_price": 0.375,
+          "out_price": 2.25,
+          "blended": 0.844,
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 131.135,
+          "speed_tps": 135.891,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.307
+          "ttft": 1.049
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 32.0,
+          "intel": 22.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -53115,22 +53500,22 @@
           "aa_math_index": null,
           "gpqa": 0.841,
           "mmlu_pro": null,
-          "hle": 0.202,
+          "hle": 0.222,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.643537414965986,
-          "lcr": 0.636666666666667,
-          "scicode": 0.358,
+          "lcr": 0.716666666666667,
+          "scicode": 0.366,
           "tau2": 0.953216374269006,
-          "tau_banking": 0.0865979381443299,
+          "tau_banking": 0.0927835051546392,
           "terminalbench_hard": 0.348484848484849,
           "terminalbench_v2_1": 0.449438202247191,
-          "omniscience_hallucination_rate": 0.5,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 3.4
+          "omniscience_hallucination_rate": 0.51,
+          "briefcase_analytical_quality_elo": 952.0,
+          "briefcase_presentation_elo": 947.0,
+          "time_per_task": null
         },
         "dirac": {
           "cache_hit_rate_max": 47.6
@@ -53166,7 +53551,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 28.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -53175,19 +53560,19 @@
           "aa_math_index": null,
           "gpqa": 0.888,
           "mmlu_pro": null,
-          "hle": 0.289,
+          "hle": 0.308,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.765986394557823,
-          "lcr": 0.696666666666667,
-          "scicode": 0.469,
+          "lcr": 0.806666666666667,
+          "scicode": null,
           "tau2": 0.95906432748538,
           "tau_banking": null,
           "terminalbench_hard": 0.439393939393939,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.44,
+          "omniscience_hallucination_rate": 0.46,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -53214,16 +53599,16 @@
           "cache_hit_price": 0.05,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 54.606,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.591
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 40.0,
+          "intel": 27.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -53232,22 +53617,22 @@
           "aa_math_index": null,
           "gpqa": 0.882,
           "mmlu_pro": null,
-          "hle": 0.257,
+          "hle": 0.278,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.751700680272109,
-          "lcr": 0.696666666666667,
-          "scicode": 0.407,
+          "lcr": 0.783333333333333,
+          "scicode": null,
           "tau2": 0.976608187134503,
-          "tau_banking": 0.164948453608247,
+          "tau_banking": 0.208247422680412,
           "terminalbench_hard": 0.439393939393939,
           "terminalbench_v2_1": 0.614232209737828,
-          "omniscience_hallucination_rate": 0.32,
+          "omniscience_hallucination_rate": 0.35,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 6.4
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -53271,16 +53656,16 @@
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 52.112,
+          "speed_tps": 55.51,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.712
+          "ttft": 1.292
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 39.0,
+          "intel": 26.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -53289,26 +53674,189 @@
           "aa_math_index": null,
           "gpqa": 0.9,
           "mmlu_pro": null,
-          "hle": 0.334,
+          "hle": 0.356,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.779591836734694,
-          "lcr": 0.65,
-          "scicode": 0.455,
+          "lcr": 0.73,
+          "scicode": 0.461,
           "tau2": 0.929824561403509,
-          "tau_banking": 0.178694158075601,
+          "tau_banking": 0.175257731958763,
           "terminalbench_hard": 0.46969696969697,
           "terminalbench_v2_1": 0.610486891385768,
-          "omniscience_hallucination_rate": 0.25,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 6.7
+          "omniscience_hallucination_rate": 0.28,
+          "briefcase_analytical_quality_elo": 1581.0,
+          "briefcase_presentation_elo": 1526.0,
+          "time_per_task": 10.3
         }
       },
       "aliases": {
         "aa": "qwen3-7-plus"
+      }
+    },
+    {
+      "id": "qwen3-8-27b",
+      "creator": "Alibaba",
+      "meta": {
+        "release_date": "2026-08-14"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.5,
+          "out_price": 3,
+          "blended": 1.125,
+          "cache_hit_price": 0.05,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 47.402,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 1.167
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 34.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 68.1,
+          "aa_math_index": null,
+          "gpqa": 0.905,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.3,
+          "briefcase_analytical_quality_elo": 1256.0,
+          "briefcase_presentation_elo": 1401.0,
+          "time_per_task": 19.4
+        }
+      },
+      "aliases": {
+        "aa": "qwen3-8-27b"
+      }
+    },
+    {
+      "id": "qwen3-8-27b-low",
+      "creator": "Alibaba",
+      "meta": {
+        "release_date": "2026-08-14"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.5,
+          "out_price": 3,
+          "blended": 1.125,
+          "cache_hit_price": 0.05,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 56.444,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 1.141
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 29.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 58.2,
+          "aa_math_index": null,
+          "gpqa": 0.845,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.53,
+          "briefcase_analytical_quality_elo": 934.0,
+          "briefcase_presentation_elo": 877.0,
+          "time_per_task": null
+        }
+      },
+      "aliases": {
+        "aa": "qwen3-8-27b-low"
+      }
+    },
+    {
+      "id": "qwen3-8-flash-next",
+      "name": "Qwen3.8-Flash-Next",
+      "creator": "Alibaba",
+      "meta": {
+        "release_date": "2026-08-26"
+      },
+      "pricing": {
+        "aa": {
+          "inp_price": 0.15,
+          "out_price": 0.47,
+          "blended": 0.23,
+          "cache_hit_price": 0.02,
+          "cost_per_task": null,
+          "tokens_m": null,
+          "speed_tps": 76.306,
+          "useful_cost": null,
+          "reasoning_tax_pct": null,
+          "cost_segments": null,
+          "ttft": 1.313
+        }
+      },
+      "benchmarks": {
+        "aa": {
+          "intel": 40.0,
+          "iq_per_dollar": null,
+          "iq_per_mtok": null,
+          "iq_per_1k": null,
+          "cost_per_iq": null,
+          "aa_coding_index": 73.1,
+          "aa_math_index": null,
+          "gpqa": 0.923,
+          "mmlu_pro": null,
+          "hle": null,
+          "aime": null,
+          "aime_25": null,
+          "math_500": null,
+          "livecodebench": null,
+          "ifbench": null,
+          "lcr": null,
+          "scicode": null,
+          "tau2": null,
+          "tau_banking": null,
+          "terminalbench_hard": null,
+          "terminalbench_v2_1": null,
+          "omniscience_hallucination_rate": 0.45,
+          "briefcase_analytical_quality_elo": 1909.0,
+          "briefcase_presentation_elo": 1846.0,
+          "time_per_task": 21.4
+        }
+      },
+      "aliases": {
+        "aa": "qwen3-8-flash-next"
       }
     },
     {
@@ -53775,7 +54323,7 @@
           "cache_hit_price": null,
           "cost_per_task": 0.33,
           "tokens_m": 88,
-          "speed_tps": 67.07,
+          "speed_tps": 83.54,
           "useful_cost": 6.0007,
           "reasoning_tax_pct": 0.0,
           "cost_segments": {
@@ -53786,7 +54334,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.33
           },
-          "ttft": 1.587
+          "ttft": 1.554
         },
         "openrouter": {
           "inp_price": 3.9e-07,
@@ -54074,10 +54622,10 @@
           "inp_price": 2.5,
           "out_price": 7.5,
           "blended": 3.75,
-          "cache_hit_price": 0.25,
+          "cache_hit_price": 0.5,
           "cost_per_task": 1.06,
           "tokens_m": 100,
-          "speed_tps": 200.777,
+          "speed_tps": 0,
           "useful_cost": 13.3615,
           "reasoning_tax_pct": 100.0,
           "cost_segments": {
@@ -54088,7 +54636,7 @@
             "cache_hit_usd": 0.0,
             "input_usd": 0.0
           },
-          "ttft": 1.593
+          "ttft": 0
         },
         "openrouter": {
           "inp_price": 1.475e-06,
@@ -54104,7 +54652,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 46.0,
+          "intel": 30.0,
           "iq_per_dollar": 0.0344273,
           "iq_per_mtok": null,
           "iq_per_1k": 34.4273,
@@ -54113,22 +54661,22 @@
           "aa_math_index": null,
           "gpqa": 0.923,
           "mmlu_pro": null,
-          "hle": 0.381,
+          "hle": 0.405,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.805442176870748,
-          "lcr": 0.69,
-          "scicode": 0.488,
+          "lcr": 0.79,
+          "scicode": 0.495,
           "tau2": 0.947368421052632,
-          "tau_banking": 0.109278350515464,
+          "tau_banking": 0.117525773195876,
           "terminalbench_hard": 0.507575757575758,
           "terminalbench_v2_1": 0.745318352059925,
-          "omniscience_hallucination_rate": 0.23,
-          "briefcase_analytical_quality_elo": 585.0,
-          "briefcase_presentation_elo": 283.0,
-          "time_per_task": 1.6
+          "omniscience_hallucination_rate": 0.26,
+          "briefcase_analytical_quality_elo": 1635.0,
+          "briefcase_presentation_elo": 1279.0,
+          "time_per_task": 2.3
         },
         "livebench": {
           "average": 75.15,
@@ -57784,11 +58332,11 @@
           "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 92.322,
+          "speed_tps": 88.712,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 6.025
+          "ttft": 0.906
         },
         "openrouter": {
           "inp_price": 1e-07,
@@ -57800,7 +58348,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 4.0,
+          "intel": 6.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -57809,19 +58357,19 @@
           "aa_math_index": 33.7,
           "gpqa": 0.529,
           "mmlu_pro": 0.669,
-          "hle": 0.051,
+          "hle": 0.044,
           "aime": 0.51,
           "aime_25": 0.336666666666667,
           "math_500": 0.892666666666667,
           "livecodebench": 0.435,
           "ifbench": 0.304081632653061,
           "lcr": 0,
-          "scicode": 0.267,
+          "scicode": null,
           "tau2": 0,
           "tau_banking": null,
           "terminalbench_hard": 0,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.9,
+          "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null,
@@ -59911,7 +60459,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 15.0,
+          "intel": 10.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -59920,19 +60468,19 @@
           "aa_math_index": null,
           "gpqa": 0.657,
           "mmlu_pro": null,
-          "hle": 0.092,
+          "hle": 0.104,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.57687074829932,
-          "lcr": 0.36,
-          "scicode": 0.269,
+          "lcr": 0.41,
+          "scicode": null,
           "tau2": 0.482456140350877,
           "tau_banking": null,
           "terminalbench_hard": 0.0227272727272727,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.88,
+          "omniscience_hallucination_rate": 0.9,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -59959,11 +60507,11 @@
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": 120,
-          "speed_tps": 73.497,
+          "speed_tps": 155.876,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.333
+          "ttft": 1.454
         },
         "openrouter": {
           "inp_price": 1.5e-07,
@@ -59977,7 +60525,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 14.0,
+          "intel": 8.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -59986,22 +60534,22 @@
           "aa_math_index": null,
           "gpqa": 0.724,
           "mmlu_pro": null,
-          "hle": 0.101,
+          "hle": 0.103,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.712018140589569,
-          "lcr": 0.27,
-          "scicode": 0.247,
+          "lcr": 0.323333333333333,
+          "scicode": 0.255,
           "tau2": 0.862573099415205,
-          "tau_banking": 0.0804123711340206,
+          "tau_banking": 0.0865979381443299,
           "terminalbench_hard": 0.0757575757575758,
           "terminalbench_v2_1": 0.119850187265918,
           "omniscience_hallucination_rate": 0.88,
-          "briefcase_analytical_quality_elo": 515.0,
-          "briefcase_presentation_elo": 355.0,
-          "time_per_task": 9.9
+          "briefcase_analytical_quality_elo": 0.0,
+          "briefcase_presentation_elo": 0.0,
+          "time_per_task": 4.8
         }
       },
       "aliases": {
@@ -60115,7 +60663,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 12.0,
+          "intel": 9.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -60179,7 +60727,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 18.0,
+          "intel": 12.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -60376,16 +60924,16 @@
           "cache_hit_price": 0.02,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 243.857,
+          "speed_tps": 0,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.666
+          "ttft": 0
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 26.0,
+          "intel": 17.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -60394,19 +60942,19 @@
           "aa_math_index": null,
           "gpqa": 0.826,
           "mmlu_pro": null,
-          "hle": 0.226,
+          "hle": 0.245,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.66530612244898,
-          "lcr": 0.543333333333333,
-          "scicode": 0.385,
+          "lcr": 0.63,
+          "scicode": null,
           "tau2": 0.874269005847953,
           "tau_banking": null,
           "terminalbench_hard": 0.325757575757576,
           "terminalbench_v2_1": null,
-          "omniscience_hallucination_rate": 0.92,
+          "omniscience_hallucination_rate": 0.91,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
           "time_per_task": null
@@ -60436,16 +60984,16 @@
           "cache_hit_price": 0.04,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 379.927,
+          "speed_tps": 85.991,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 1.053
+          "ttft": 1.756
         }
       },
       "benchmarks": {
         "aa": {
-          "intel": 30.0,
+          "intel": 19.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -60454,22 +61002,22 @@
           "aa_math_index": null,
           "gpqa": 0.809,
           "mmlu_pro": null,
-          "hle": 0.199,
+          "hle": 0.214,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.672789115646258,
-          "lcr": 0.636666666666667,
-          "scicode": 0.4,
+          "lcr": 0.736666666666667,
+          "scicode": 0.439,
           "tau2": 0.985380116959064,
-          "tau_banking": 0.11340206185567,
+          "tau_banking": 0.119587628865979,
           "terminalbench_hard": 0.356060606060606,
           "terminalbench_v2_1": 0.393258426966292,
-          "omniscience_hallucination_rate": 0.84,
+          "omniscience_hallucination_rate": 0.85,
           "briefcase_analytical_quality_elo": null,
           "briefcase_presentation_elo": null,
-          "time_per_task": 1.9
+          "time_per_task": null
         }
       },
       "aliases": {
@@ -61328,17 +61876,17 @@
       },
       "pricing": {
         "aa": {
-          "inp_price": 0.235,
-          "out_price": 0.875,
-          "blended": 0.395,
-          "cache_hit_price": 0.16,
+          "inp_price": 0.25,
+          "out_price": 0.9,
+          "blended": 0.412,
+          "cache_hit_price": null,
           "cost_per_task": null,
           "tokens_m": null,
-          "speed_tps": 209.502,
+          "speed_tps": 342.116,
           "useful_cost": null,
           "reasoning_tax_pct": null,
           "cost_segments": null,
-          "ttft": 0.646
+          "ttft": 1.088
         },
         "openrouter": {
           "inp_price": 2.5e-07,
@@ -61352,7 +61900,7 @@
       },
       "benchmarks": {
         "aa": {
-          "intel": 18.0,
+          "intel": 11.0,
           "iq_per_dollar": null,
           "iq_per_mtok": null,
           "iq_per_1k": null,
@@ -61361,22 +61909,22 @@
           "aa_math_index": null,
           "gpqa": 0.752,
           "mmlu_pro": null,
-          "hle": 0.147,
+          "hle": 0.158,
           "aime": null,
           "aime_25": null,
           "math_500": null,
           "livecodebench": null,
           "ifbench": 0.562585034013605,
-          "lcr": 0.33,
-          "scicode": 0.361,
+          "lcr": 0.38,
+          "scicode": 0.406,
           "tau2": 0.900584795321637,
-          "tau_banking": 0.0556701030927835,
+          "tau_banking": 0.0577319587628866,
           "terminalbench_hard": 0.227272727272727,
           "terminalbench_v2_1": 0.205992509363296,
-          "omniscience_hallucination_rate": 0.87,
-          "briefcase_analytical_quality_elo": null,
-          "briefcase_presentation_elo": null,
-          "time_per_task": 3.5
+          "omniscience_hallucination_rate": 0.86,
+          "briefcase_analytical_quality_elo": 762.0,
+          "briefcase_presentation_elo": 748.0,
+          "time_per_task": 2.3
         }
       },
       "aliases": {
