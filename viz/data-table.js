@@ -252,9 +252,10 @@
 
     // Optional option selector (e.g. provider buttons for providerData view)
     const viewDef = VIEWS[viewKey];
+    let defaultOpt = '';
     if (viewDef.options) {
       const opts = viewDef.options.build(data);
-      const defaultOpt = opts[0]?.name || '';
+      defaultOpt = opts[0]?.name || '';
       html += `<div class="dt-opt-btns" data-opt-key="${viewDef.options.key}"` +
       ` style="display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;">`;
       for (const o of opts) {
@@ -266,10 +267,7 @@
     }
 
     // Search box
-    html += '<div class="dt-search-row" style="display:flex;align-items:center;gap:8px;margin-top:6px;">';
-    html += `<input class="dt-search" type="text" placeholder="Search …" style="flex:1;">`;
-    html += '<span class="dt-count" style="color:#666;font-size:10px;font-family:monospace;"></span>';
-    html += '</div>';
+    html += window.VIZ_HELPERS.searchBox({ placeholder: 'Search …', rowStyle: 'margin-top:6px;' });
 
     html += '</div>';
 
@@ -287,7 +285,11 @@
     container.__view = viewKey;
     container.__sort = view.defaultSort ? [...view.defaultSort] : [];
     container.__search = '';
-    container.__opt = viewDef.options ? defaultOpt : null;
+    if (viewDef.options) {
+      container.__opt = defaultOpt;
+    } else {
+      container.__opt = null;
+    }
 
     // Wire view buttons
     container.querySelectorAll('.dt-view-btn').forEach(btn => {
@@ -339,7 +341,7 @@
     });
 
     // Wire search
-    const searchInput = container.querySelector('.dt-search');
+    const searchInput = container.querySelector('.viz-search');
     if (searchInput) {
       searchInput.addEventListener('input', () => {
         container.__search = searchInput.value;
@@ -350,7 +352,7 @@
 
   // ── Shared control patching ──────────────────────────────────────────────
   function patchControls(container, view, viewKey, sortSpec, filteredCount, total) {
-    const count = container.querySelector('.dt-count');
+    const count = container.querySelector('.viz-search-count');
     if (count) count.textContent = `${filteredCount} / ${total}`;
 
     // View buttons

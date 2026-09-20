@@ -217,7 +217,7 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
 .dt-table td {
   color: #ccc;
 }
-.dt-search {
+.viz-search {
   background: #0a0a0a;
   color: #f5f5f0;
   border: 2px solid #444;
@@ -227,10 +227,10 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
   outline: none;
   box-shadow: inset 3px 3px 0 #000;
 }
-.dt-search:focus {
+.viz-search:focus {
   border-color: var(--neon, #b6ff3c);
 }
-.dt-search:focus-visible {
+.viz-search:focus-visible {
   outline: none;
 }
 nav.tabs button:focus-visible,

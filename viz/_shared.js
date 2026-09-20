@@ -163,7 +163,21 @@ window.__clearLegendFilter = function() {
   window.__filterSubscribers.forEach(fn => fn(null));
 };
 
+function applyLegendSearch(root) {
+  const q = (window.__legendSearch || '').toLowerCase();
+  let shown = 0, total = 0;
+  root.querySelectorAll('.lg-fi[data-lg-dim="creator"]').forEach(chip => {
+    total++;
+    const match = !q || chip.dataset.lgVal.toLowerCase().includes(q);
+    chip.style.display = match ? '' : 'none';
+    if (match) shown++;
+  });
+  const count = root.querySelector('.viz-search-count');
+  if (count) count.textContent = `${shown} / ${total}`;
+}
+
 window.__renderCreatorLegend = function() {
+  window.__legendSearch = window.__legendSearch || '';
   const el = window.__creatorLegendEl || document.getElementById('creator-legend');
   if (!el) return;
   window.__creatorLegendEl = el;
@@ -176,17 +190,27 @@ window.__renderCreatorLegend = function() {
     `<button class=\"lg-mode-btn ${fm==='dim'?'active':''}\" data-mode=\"dim\" style=\"background:transparent;border:1px solid ${fm==='dim'?'var(--neon)':'#444'};color:${fm==='dim'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;\">dim</button>` +
     `<button class=\"lg-mode-btn ${fm==='hide'?'active':''}\" data-mode=\"hide\" style=\"background:transparent;border:1px solid ${fm==='hide'?'var(--neon)':'#444'};color:${fm==='hide'?'var(--neon)':'#888'};padding:2px 6px;cursor:pointer;font-family:monospace;font-size:9px;\">hide out</button>` +
     `</span>`;
-  el.innerHTML = '<span class=\"lg-fi' + (isAllActive ? ' active' : '') + '\" data-lg-dim=\"\" data-lg-val=\"\">ALL</span>'
-    + creators.map(c => {
+  el.innerHTML = searchBox({ placeholder: 'Filter creators…', rowStyle: 'flex:0 0 100%;' }) +
+      '<span class="lg-fi' + (isAllActive ? ' active' : '') + '" data-lg-dim="" data-lg-val="">ALL</span>' +
+      creators.map(c => {
         const active = window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val === c;
         const color = window.creatorColor(c);
-        return `<span class=\"lg-fi${active ? ' active' : ''}\" data-lg-dim=\"creator\" data-lg-val=\"${c}\"><span class=\"cr-fs\" style=\"background:${color}\"></span>${c}</span>`;
-      }).join('')
-    + toggleHtml;
+        return `<span class="lg-fi${active ? ' active' : ''}" data-lg-dim="creator" data-lg-val="${c}"><span class="cr-fs" style="background:${color}"></span>${c}</span>`;
+      }).join('') +
+      toggleHtml;
   const newEl = el.cloneNode(true);
   newEl.style.display = 'flex';
   el.parentNode.replaceChild(newEl, el);
   window.__creatorLegendEl = newEl;
+  const searchInput = newEl.querySelector('.viz-search');
+  if (searchInput) {
+    searchInput.value = window.__legendSearch;
+    searchInput.addEventListener('input', function() {
+      window.__legendSearch = this.value;
+      applyLegendSearch(newEl);
+    });
+  }
+  applyLegendSearch(newEl);
   newEl.addEventListener('click', e => {
     const modeBtn = e.target.closest('.lg-mode-btn');
     if (modeBtn) {
@@ -304,7 +328,7 @@ function fmtV(v) {
 
 function renderEmptyState(container, message) {
   container.innerHTML = `<div style="padding:60px 20px;text-align:center;color:#888;font-family:monospace;font-size:13px;border:1px dashed #333;margin:20px 0;">
-    <div style="color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;">// NO DATA</div>
+    <div style="color:var(--neon,#b6ff3c);font-weight:700;margin-bottom:10px;">NO DATA</div>
     <div style="font-size:11px;line-height:1.6;">${message}</div>
   </div>`;
 }
@@ -332,7 +356,15 @@ function applyLegendFilter(container, models) {
   });
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, applyLegendFilter, fmtV };
+function searchBox(opts) {
+  opts = opts || {};
+  return '<div class="viz-search-row" style="display:flex;align-items:center;gap:8px;' + (opts.rowStyle || '') + '">' +
+    `<input class="viz-search" type="text" placeholder="${opts.placeholder || 'Search …'}" style="flex:1;">` +
+    '<span class="viz-search-count" style="color:#666;font-size:10px;font-family:monospace;"></span>' +
+    '</div>';
+}
+
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, renderCoverageNote, applyLegendFilter, searchBox, fmtV };
 
 window.VIZ_DEFAULTS = {
   crossover: { qualityAxis: 'intel', costAxis: 'inp_price', sizeAxis: 'context_window', colorMode: 'creator' },
