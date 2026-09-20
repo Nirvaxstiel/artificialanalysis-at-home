@@ -165,7 +165,9 @@ def safe_iq_per_dollar(v) -> Optional[IQ_PerDollarPoint]:
 
 def safe_params(v) -> Optional[ParameterCount]:
     v = safe_float(v)
-    return ParameterCount(v) if v is not None else None
+    if v is None or v <= 0:
+        return None
+    return ParameterCount(v)
 
 
 def safe_carbon(v) -> Optional[CarbonKg]:

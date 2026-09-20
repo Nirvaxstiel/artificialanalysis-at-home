@@ -162,7 +162,28 @@ def _parse_pricing(svg: str):
 
 def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
     """Parse the method-2 SVG scrape -> {chart_key: [(slug, value), ...]}.
-    Ok(dict) on success, Err(reason) if the source file can't be read/parsed."""
+
+    Ok(dict) on success, Err(reason) if the source file can't be read/parsed.
+
+    CHART COVERAGE:
+      Included (bar charts with <a href="/models/{slug}"> links — slug→value mapping):
+        intel, briefcase, omniscience, pricing, time_per_task
+
+      EXCLUDED (scatter/over-time charts — NO model <a href> links in SVG):
+        "Intelligence Index vs. Cost per Task", "vs. Context Window",
+        "vs. Total Parameters", "Latency vs. Output Speed", "Time per Task",
+        "Time to First Token Over Time", "End-to-End Response Time Over Time",
+        "Openness Index vs. Intelligence Index", "Intelligence vs. Output Tokens",
+        "Intelligence vs. Cost to Run"
+      Rationale: scatter SVGs have <circle cx= cy= data-chart-item-id=UUID> points
+      but zero <a href="/models/{slug}"> links — no slug→circle mapping is possible
+      without fragile text-label proximity matching. Worse, every scatter axis is
+      already sourced from other places (intel from JSON-LD, cost_per_task from
+      JSON-LD, context_window from OpenRouter, params_b from OpenLLM, ttft/speed_tps
+      from AA live API). Re-parsing the SVG would duplicate existing values with no
+      slug linkage and no new information. The 5 included bar charts capture all
+      per-model scalar values the SVG scrape can reliably provide.
+    """
     loaded = _load_json(json_path)
     if loaded.is_err():
         return err(loaded.error)

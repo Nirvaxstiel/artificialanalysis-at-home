@@ -23,6 +23,7 @@ class ProjectionRowMeta:
     iq_percentile: Optional[Percentile] = None
     release_date: Optional[str] = None
     confirmed_scraped: Optional[bool] = None
+    dirac_cache_hit_rates: Optional[list] = None
 
 
 @dataclass
@@ -329,6 +330,8 @@ class ProjectionRow:
                 d["release_date"] = self.meta.release_date
             if self.meta.confirmed_scraped is not None:
                 d["confirmed_scraped"] = self.meta.confirmed_scraped
+            if self.meta.dirac_cache_hit_rates is not None:
+                d["dirac_cache_hit_rates"] = self.meta.dirac_cache_hit_rates
         if self.openrouter_vendor is not None:
             d["openrouter_vendor"] = self.openrouter_vendor
         return d

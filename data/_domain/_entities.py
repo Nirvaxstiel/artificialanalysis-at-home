@@ -81,6 +81,7 @@ class RegistryModelMeta:
     release_date: Optional[str] = None
     confirmed_scraped: Optional[bool] = None
     context_window: Optional[int] = None
+    dirac_cache_hit_rates: Optional[list] = None
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {}
@@ -133,6 +134,7 @@ class RegistryModel:
             release_date=meta.get("release_date"),
             confirmed_scraped=meta.get("confirmed_scraped"),
             context_window=meta.get("context_window"),
+            dirac_cache_hit_rates=meta.get("dirac_cache_hit_rates"),
         )
         mt = d.get("model_type")
         model_type = None

@@ -203,6 +203,7 @@ def _build_projection_row(row, registry_by_id):
 
     projection.compute_derived()
     projection.meta.archetype = classify_archetype(projection)
+    projection.meta.dirac_cache_hit_rates = meta.get("dirac_cache_hit_rates")
 
     if projection.tokens_m is not None:
         tokens_m_primitive = projection.tokens_m.as_primitive()
@@ -240,9 +241,8 @@ def _normalize_radar_scores(output):
 
 def _project_rows(engine, axes):
     raw_rows = engine.project(axes)
-    aa_models = _select_aa_models(raw_rows)
     registry_by_id = {m["id"]: m for m in engine.models}
-    output = [_build_projection_row(r, registry_by_id) for r in aa_models]
+    output = [_build_projection_row(r, registry_by_id) for r in raw_rows]
     output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
     return output
 

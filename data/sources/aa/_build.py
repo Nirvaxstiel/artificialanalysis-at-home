@@ -578,7 +578,7 @@ def _overlay_aa_api(model: dict, aa_m: dict) -> None:
         (b, {
             "intel": ev.get("artificial_analysis_intelligence_index"),
             "aa_coding_index": ev.get("artificial_analysis_coding_index"),
-            "math_index": ev.get("artificial_analysis_math_index"),
+            "aa_math_index": ev.get("artificial_analysis_math_index"),
             "mmlu_pro": ev.get("mmlu_pro"),
             "gpqa": ev.get("gpqa"),
         }),
