@@ -260,6 +260,33 @@ nav.tabs button:focus-visible,
 .dt-view-btn:hover:not(.active) {
   border-color: var(--neon, #b6ff3c);
 }
+/* Option selector buttons (e.g. provider picker for Provider Data view) */
+.dt-opt-btns {
+  display: flex; gap: 4px; flex-wrap: wrap;
+}
+.dt-opt-btn {
+  background: transparent;
+  color: var(--muted, #888);
+  border: 1px solid #444;
+  padding: 2px 8px;
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+.dt-opt-btn.active {
+  background: var(--neon, #b6ff3c);
+  color: #000;
+  border-color: var(--neon, #b6ff3c);
+}
+.dt-opt-btn:hover:not(.active) {
+  border-color: var(--neon, #b6ff3c);
+}
+.dt-opt-count {
+  color: #666;
+  font-size: 9px;
+  margin-left: 2px;
+}
+.dt-opt-btn.active .dt-opt-count { color: #000; }
 .dt-scroll {
   max-height: 520px;
   overflow-y: auto;

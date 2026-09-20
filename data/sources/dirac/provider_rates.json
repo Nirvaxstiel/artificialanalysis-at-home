@@ -1,0 +1,2924 @@
+{
+  "DeepInfra": [
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 74.8,
+      "eff_input_price": 0.166,
+      "eff_output_price": 2.249
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 73.4,
+      "eff_input_price": 0.023,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 71.6,
+      "eff_input_price": 0.445,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 71.3,
+      "eff_input_price": 0.322,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 62.5,
+      "eff_input_price": 0.075,
+      "eff_output_price": 1.148
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 61.9,
+      "eff_input_price": 0.16,
+      "eff_output_price": 0.767
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 56.9,
+      "eff_input_price": 0.218,
+      "eff_output_price": 1.75
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 54.0,
+      "eff_input_price": 0.341,
+      "eff_output_price": 2.079
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 49.6,
+      "eff_input_price": 0.195,
+      "eff_output_price": 0.379
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 47.1,
+      "eff_input_price": 0.735,
+      "eff_output_price": 2.599
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 43.2,
+      "eff_input_price": 0.175,
+      "eff_output_price": 0.788
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 25.7,
+      "eff_input_price": 0.079,
+      "eff_output_price": 0.199
+    },
+    {
+      "slug": "mimo-v2-5-pro",
+      "model_name": "Xiaomi_MiMo-V25-Pro",
+      "cache_hit_rate": 11.7,
+      "eff_input_price": 0.906,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.32,
+      "eff_output_price": 3.199
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.039,
+      "eff_output_price": 0.189
+    },
+    {
+      "slug": "llama-3-1-8b-instruct",
+      "model_name": "Meta_Llama_31_8B_Instruct",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.02,
+      "eff_output_price": 0.048
+    },
+    {
+      "slug": "qwen3-5-9b",
+      "model_name": "Qwen_Qwen35-9B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.04,
+      "eff_output_price": 0.148
+    },
+    {
+      "slug": "step-3-5-flash",
+      "model_name": "StepFun_Step_35_Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.09,
+      "eff_output_price": 0.299
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.49,
+      "eff_output_price": 3.599
+    },
+    {
+      "slug": "mistral-small-3.2-24b",
+      "model_name": "Mistral_Mistral_Small_32_24B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.075,
+      "eff_output_price": 0.198
+    },
+    {
+      "slug": "llama-4-maverick",
+      "model_name": "Meta_Llama_4_Maverick",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.597
+    },
+    {
+      "slug": "mistral-nemo",
+      "model_name": "Mistral_Mistral_Nemo",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.02,
+      "eff_output_price": 0.037
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.13,
+      "eff_output_price": 0.379
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.07,
+      "eff_output_price": 0.337
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.03,
+      "eff_output_price": 0.14
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.14,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.071,
+      "eff_output_price": 0.097
+    }
+  ],
+  "NovitaAI": [
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 84.9,
+      "eff_input_price": 0.071,
+      "eff_output_price": 1.197
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 82.0,
+      "eff_input_price": 0.406,
+      "eff_output_price": 3.379
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 80.5,
+      "eff_input_price": 0.285,
+      "eff_output_price": 3.4
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 77.5,
+      "eff_input_price": 0.512,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "glm-4-5-air",
+      "model_name": "Zai_GLM_45_Air",
+      "cache_hit_rate": 72.3,
+      "eff_input_price": 0.054,
+      "eff_output_price": 0.846
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 71.1,
+      "eff_input_price": 0.232,
+      "eff_output_price": 2.849
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 66.3,
+      "eff_input_price": 0.18,
+      "eff_output_price": 1.118
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 60.6,
+      "eff_input_price": 0.072,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "mimo-v2-flash",
+      "model_name": "Xiaomi_MiMo-V2-Flash",
+      "cache_hit_rate": 58.7,
+      "eff_input_price": 0.053,
+      "eff_output_price": 0.299
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 40.8,
+      "eff_input_price": 0.37,
+      "eff_output_price": 2.005
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 33.2,
+      "eff_input_price": 0.734,
+      "eff_output_price": 3.2
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 16.8,
+      "eff_input_price": 0.13,
+      "eff_output_price": 0.4
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 15.2,
+      "eff_input_price": 0.249,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 14.3,
+      "eff_input_price": 0.061,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 5.8,
+      "eff_input_price": 0.14,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 5.7,
+      "eff_input_price": 0.262,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 5.1,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.6
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 2.5,
+      "eff_input_price": 0.05,
+      "eff_output_price": 0.249
+    },
+    {
+      "slug": "qwen3-coder-next",
+      "model_name": "Qwen_Qwen3_Coder_Next",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.2,
+      "eff_output_price": 1.499
+    },
+    {
+      "slug": "llama-3-1-8b-instruct",
+      "model_name": "Meta_Llama_31_8B_Instruct",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.02,
+      "eff_output_price": 0.048
+    },
+    {
+      "slug": "llama-4-maverick",
+      "model_name": "Meta_Llama_4_Maverick",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.27,
+      "eff_output_price": 0.846
+    },
+    {
+      "slug": "mistral-nemo",
+      "model_name": "Mistral_Mistral_Nemo",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.039,
+      "eff_output_price": 0.164
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.04,
+      "eff_output_price": 0.15
+    },
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.38,
+      "eff_output_price": 1.549
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.09,
+      "eff_output_price": 0.577
+    }
+  ],
+  "SiliconFlow": [
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 85.3,
+      "eff_input_price": 0.31,
+      "eff_output_price": 2.549
+    },
+    {
+      "slug": "hy3-preview",
+      "model_name": "Tencent_Hy3_preview",
+      "cache_hit_rate": 84.3,
+      "eff_input_price": 0.035,
+      "eff_output_price": 0.259
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 83.9,
+      "eff_input_price": 0.292,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 78.3,
+      "eff_input_price": 0.507,
+      "eff_output_price": 4.399
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 72.3,
+      "eff_input_price": 0.204,
+      "eff_output_price": 2.2
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 69.8,
+      "eff_input_price": 0.172,
+      "eff_output_price": 0.419
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 59.3,
+      "eff_input_price": 0.745,
+      "eff_output_price": 3.479
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 52.6,
+      "eff_input_price": 0.25,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 52.6,
+      "eff_input_price": 0.158,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 50.1,
+      "eff_input_price": 0.259,
+      "eff_output_price": 2.25
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 45.6,
+      "eff_input_price": 0.089,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "glm-4-5-air",
+      "model_name": "Zai_GLM_45_Air",
+      "cache_hit_rate": 42.4,
+      "eff_input_price": 0.14,
+      "eff_output_price": 0.858
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 36.8,
+      "eff_input_price": 0.27,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.2,
+      "eff_output_price": 1.6
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.05,
+      "eff_output_price": 0.449
+    },
+    {
+      "slug": "qwen3-5-9b",
+      "model_name": "Qwen_Qwen35-9B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.149
+    },
+    {
+      "slug": "step-3-5-flash",
+      "model_name": "StepFun_Step_35_Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.3
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.13,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.12,
+      "eff_output_price": 0.397
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.04,
+      "eff_output_price": 0.179
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.24,
+      "eff_output_price": 1.8
+    }
+  ],
+  "Google Vertex": [
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 78.4,
+      "eff_input_price": 0.984,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 71.1,
+      "eff_input_price": 1.969,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "gemini-3.5-flash",
+      "model_name": "Google_Gemini_35_Flash",
+      "cache_hit_rate": 70.3,
+      "eff_input_price": 0.552,
+      "eff_output_price": 9.008
+    },
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 65.3,
+      "eff_input_price": 2.458,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 63.2,
+      "eff_input_price": 0.069,
+      "eff_output_price": 0.246
+    },
+    {
+      "slug": "claude-4.5-haiku",
+      "model_name": "Anthropic_Claude_Haiku_45",
+      "cache_hit_rate": 58.2,
+      "eff_input_price": 0.489,
+      "eff_output_price": 5.0
+    },
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 49.2,
+      "eff_input_price": 0.22,
+      "eff_output_price": 1.799
+    },
+    {
+      "slug": "gemini-2.5-flash",
+      "model_name": "Google_Gemini_25_Flash",
+      "cache_hit_rate": 45.1,
+      "eff_input_price": 0.178,
+      "eff_output_price": 2.5
+    },
+    {
+      "slug": "gemini-3.1-pro-preview",
+      "model_name": "Google_Gemini_31_Pro_Preview",
+      "cache_hit_rate": 37.3,
+      "eff_input_price": 1.447,
+      "eff_output_price": 12.008
+    },
+    {
+      "slug": "claude-4-5-opus",
+      "model_name": "Anthropic_Claude_Opus_45",
+      "cache_hit_rate": 36.7,
+      "eff_input_price": 4.074,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 36.5,
+      "eff_input_price": 0.6,
+      "eff_output_price": 2.2
+    },
+    {
+      "slug": "gemini-3-flash-preview",
+      "model_name": "Google_Gemini_3_Flash_Preview",
+      "cache_hit_rate": 32.0,
+      "eff_input_price": 0.36,
+      "eff_output_price": 2.997
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 19.3,
+      "eff_input_price": 0.6,
+      "eff_output_price": 1.7
+    },
+    {
+      "slug": "gemini-3.1-flash-lite",
+      "model_name": "Google_Gemini_31_Flash_Lite",
+      "cache_hit_rate": 19.2,
+      "eff_input_price": 0.21,
+      "eff_output_price": 1.498
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 19.1,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.597
+    },
+    {
+      "slug": "gemini-3-1-flash-lite-preview",
+      "model_name": "Google_Gemini_31_Flash_Lite_Preview",
+      "cache_hit_rate": 10.4,
+      "eff_input_price": 0.23,
+      "eff_output_price": 1.499
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 8.0,
+      "eff_input_price": 0.56,
+      "eff_output_price": 1.679
+    },
+    {
+      "slug": "gemini-2.5-flash-lite",
+      "model_name": "Google_Gemini_25_Flash_Lite",
+      "cache_hit_rate": 7.4,
+      "eff_input_price": 0.094,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gemini-2-0-flash",
+      "model_name": "Google_Gemini_20_Flash",
+      "cache_hit_rate": 5.4,
+      "eff_input_price": 0.098,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 4.1,
+      "eff_input_price": 0.09,
+      "eff_output_price": 0.359
+    },
+    {
+      "slug": "gemini-2.0-flash-lite",
+      "model_name": "Google_Gemini_20_Flash_Lite",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.075,
+      "eff_output_price": 0.298
+    }
+  ],
+  "Parasail": [
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 74.2,
+      "eff_input_price": 0.312,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 71.4,
+      "eff_input_price": 0.025,
+      "eff_output_price": 0.199
+    },
+    {
+      "slug": "qwen3-coder-next",
+      "model_name": "Qwen_Qwen3_Coder_Next",
+      "cache_hit_rate": 68.4,
+      "eff_input_price": 0.086,
+      "eff_output_price": 0.799
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 62.6,
+      "eff_input_price": 0.131,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 59.0,
+      "eff_input_price": 0.091,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 54.8,
+      "eff_input_price": 0.381,
+      "eff_output_price": 2.799
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 47.6,
+      "eff_input_price": 0.102,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 45.3,
+      "eff_input_price": 0.409,
+      "eff_output_price": 3.6
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 43.1,
+      "eff_input_price": 0.078,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "mistral-small-3.2-24b",
+      "model_name": "Mistral_Mistral_Small_32_24B",
+      "cache_hit_rate": 41.9,
+      "eff_input_price": 0.073,
+      "eff_output_price": 0.598
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 41.8,
+      "eff_input_price": 0.096,
+      "eff_output_price": 0.398
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 28.6,
+      "eff_input_price": 0.772,
+      "eff_output_price": 3.2
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 25.3,
+      "eff_input_price": 1.111,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 23.6,
+      "eff_input_price": 0.089,
+      "eff_output_price": 0.749
+    },
+    {
+      "slug": "llama-4-maverick",
+      "model_name": "Meta_Llama_4_Maverick",
+      "cache_hit_rate": 19.3,
+      "eff_input_price": 0.314,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 17.2,
+      "eff_input_price": 0.254,
+      "eff_output_price": 0.447
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 14.4,
+      "eff_input_price": 0.13,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 6.7,
+      "eff_input_price": 0.427,
+      "eff_output_price": 2.1
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 6.4,
+      "eff_input_price": 0.137,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 2.1,
+      "eff_input_price": 1.722,
+      "eff_output_price": 3.478
+    }
+  ],
+  "AtlasCloud": [
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 78.5,
+      "eff_input_price": 0.502,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 78.2,
+      "eff_input_price": 0.111,
+      "eff_output_price": 1.198
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 49.6,
+      "eff_input_price": 0.322,
+      "eff_output_price": 1.85
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 47.4,
+      "eff_input_price": 0.087,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 39.7,
+      "eff_input_price": 0.637,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 38.1,
+      "eff_input_price": 0.379,
+      "eff_output_price": 2.499
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 34.5,
+      "eff_input_price": 1.145,
+      "eff_output_price": 3.38
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 22.0,
+      "eff_input_price": 0.783,
+      "eff_output_price": 3.15
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 14.4,
+      "eff_input_price": 0.241,
+      "eff_output_price": 0.379
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 7.3,
+      "eff_input_price": 0.287,
+      "eff_output_price": 0.947
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 4.0,
+      "eff_input_price": 0.214,
+      "eff_output_price": 0.877
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.161,
+      "eff_output_price": 0.965
+    },
+    {
+      "slug": "qwen3-coder-next",
+      "model_name": "Qwen_Qwen3_Coder_Next",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.18,
+      "eff_output_price": 1.349
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.55,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.225,
+      "eff_output_price": 1.8
+    },
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.78,
+      "eff_output_price": 3.798
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.2,
+      "eff_output_price": 0.876
+    }
+  ],
+  "Venice": [
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 74.6,
+      "eff_input_price": 0.162,
+      "eff_output_price": 0.499
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 73.9,
+      "eff_input_price": 0.197,
+      "eff_output_price": 1.25
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 66.5,
+      "eff_input_price": 0.799,
+      "eff_output_price": 3.795
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 63.8,
+      "eff_input_price": 0.148,
+      "eff_output_price": 1.188
+    },
+    {
+      "slug": "qwen3-5-9b",
+      "model_name": "Qwen_Qwen35-9B",
+      "cache_hit_rate": 35.5,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.149
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 19.5,
+      "eff_input_price": 0.727,
+      "eff_output_price": 4.655
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 19.3,
+      "eff_input_price": 0.75,
+      "eff_output_price": 4.5
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 14.4,
+      "eff_input_price": 0.125,
+      "eff_output_price": 0.496
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 13.6,
+      "eff_input_price": 0.151,
+      "eff_output_price": 0.349
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 12.0,
+      "eff_input_price": 0.175,
+      "eff_output_price": 0.5
+    },
+    {
+      "slug": "mistral-small-4",
+      "model_name": "Mistral_Mistral_Small_4",
+      "cache_hit_rate": 11.2,
+      "eff_input_price": 0.187,
+      "eff_output_price": 0.749
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 8.9,
+      "eff_input_price": 0.53,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 0.3,
+      "eff_input_price": 0.549,
+      "eff_output_price": 2.649
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 0.2,
+      "eff_input_price": 1.747,
+      "eff_output_price": 5.5
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.325,
+      "eff_output_price": 3.25
+    },
+    {
+      "slug": "mistral-small-3.2-24b",
+      "model_name": "Mistral_Mistral_Small_32_24B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.094,
+      "eff_output_price": 0.249
+    },
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.35,
+      "eff_output_price": 1.5
+    }
+  ],
+  "OpenAI": [
+    {
+      "slug": "gpt-5-3-codex",
+      "model_name": "OpenAI_GPT-53-Codex",
+      "cache_hit_rate": 93.2,
+      "eff_input_price": 0.282,
+      "eff_output_price": 14.0
+    },
+    {
+      "slug": "gpt-5.5",
+      "model_name": "OpenAI_GPT-55",
+      "cache_hit_rate": 92.7,
+      "eff_input_price": 1.117,
+      "eff_output_price": 30.64
+    },
+    {
+      "slug": "gpt-5.4",
+      "model_name": "OpenAI_GPT-54",
+      "cache_hit_rate": 74.9,
+      "eff_input_price": 0.898,
+      "eff_output_price": 15.119
+    },
+    {
+      "slug": "gpt-5",
+      "model_name": "OpenAI_GPT-5",
+      "cache_hit_rate": 70.6,
+      "eff_input_price": 0.455,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "model_name": "OpenAI_GPT-54_Nano",
+      "cache_hit_rate": 62.8,
+      "eff_input_price": 0.087,
+      "eff_output_price": 1.249
+    },
+    {
+      "slug": "gpt-5-4-mini",
+      "model_name": "OpenAI_GPT-54_Mini",
+      "cache_hit_rate": 61.5,
+      "eff_input_price": 0.337,
+      "eff_output_price": 4.511
+    },
+    {
+      "slug": "gpt-4.1",
+      "model_name": "OpenAI_GPT-41",
+      "cache_hit_rate": 60.0,
+      "eff_input_price": 1.1,
+      "eff_output_price": 8.0
+    },
+    {
+      "slug": "gpt-5-1-chat",
+      "model_name": "OpenAI_GPT-51_Chat",
+      "cache_hit_rate": 55.3,
+      "eff_input_price": 0.628,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gpt-5.2",
+      "model_name": "OpenAI_GPT-52",
+      "cache_hit_rate": 50.9,
+      "eff_input_price": 0.949,
+      "eff_output_price": 14.0
+    },
+    {
+      "slug": "gpt-5-mini",
+      "model_name": "OpenAI_GPT-5_Mini",
+      "cache_hit_rate": 50.7,
+      "eff_input_price": 0.133,
+      "eff_output_price": 1.996
+    },
+    {
+      "slug": "gpt-4.1-mini",
+      "model_name": "OpenAI_GPT-41_Mini",
+      "cache_hit_rate": 40.0,
+      "eff_input_price": 0.28,
+      "eff_output_price": 1.594
+    },
+    {
+      "slug": "gpt-5-1",
+      "model_name": "OpenAI_GPT-51",
+      "cache_hit_rate": 38.1,
+      "eff_input_price": 0.822,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gpt-5-nano",
+      "model_name": "OpenAI_GPT-5_Nano",
+      "cache_hit_rate": 25.1,
+      "eff_input_price": 0.038,
+      "eff_output_price": 0.396
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "model_name": "OpenAI_GPT-41_Nano",
+      "cache_hit_rate": 11.0,
+      "eff_input_price": 0.092,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gpt-4o-mini",
+      "model_name": "OpenAI_GPT-4o-mini",
+      "cache_hit_rate": 8.0,
+      "eff_input_price": 0.144,
+      "eff_output_price": 0.597
+    }
+  ],
+  "Together": [
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 77.4,
+      "eff_input_price": 0.425,
+      "eff_output_price": 4.5
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 48.4,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.6
+    },
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 41.2,
+      "eff_input_price": 0.201,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 33.8,
+      "eff_input_price": 1.457,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 6.5,
+      "eff_input_price": 1.4,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 0.8,
+      "eff_input_price": 1.0,
+      "eff_output_price": 3.2
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.6
+    },
+    {
+      "slug": "qwen3-5-9b",
+      "model_name": "Qwen_Qwen35-9B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.149
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.049,
+      "eff_output_price": 0.199
+    },
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 2.0,
+      "eff_output_price": 2.0
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.2,
+      "eff_output_price": 0.598
+    }
+  ],
+  "Alibaba Cloud Int.": [
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 61.0,
+      "eff_input_price": 0.072,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 49.1,
+      "eff_input_price": 0.923,
+      "eff_output_price": 3.36
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 32.5,
+      "eff_input_price": 0.273,
+      "eff_output_price": 1.111
+    },
+    {
+      "slug": "qwen3.6-plus",
+      "model_name": "Qwen_Qwen36_Plus",
+      "cache_hit_rate": 6.0,
+      "eff_input_price": 0.669,
+      "eff_output_price": 1.982
+    },
+    {
+      "slug": "qwen3.6-flash",
+      "model_name": "Qwen_Qwen36_Flash",
+      "cache_hit_rate": 0.3,
+      "eff_input_price": 0.192,
+      "eff_output_price": 1.14
+    },
+    {
+      "slug": "qwen3-vl-32b-instruct",
+      "model_name": "Qwen_Qwen3_VL_32B_Instruct",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.104,
+      "eff_output_price": 0.414
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.45,
+      "eff_output_price": 2.699
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.39,
+      "eff_output_price": 2.34
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.162,
+      "eff_output_price": 1.299
+    },
+    {
+      "slug": "qwen3.5-flash",
+      "model_name": "Qwen_Qwen35-Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.065,
+      "eff_output_price": 0.259
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.149,
+      "eff_output_price": 0.563
+    }
+  ],
+  "Google AI Studio": [
+    {
+      "slug": "gemini-3.5-flash",
+      "model_name": "Google_Gemini_35_Flash",
+      "cache_hit_rate": 63.5,
+      "eff_input_price": 0.634,
+      "eff_output_price": 7.904
+    },
+    {
+      "slug": "gemini-2.5-flash",
+      "model_name": "Google_Gemini_25_Flash",
+      "cache_hit_rate": 47.8,
+      "eff_input_price": 0.177,
+      "eff_output_price": 2.499
+    },
+    {
+      "slug": "gemini-3-1-flash-lite-preview",
+      "model_name": "Google_Gemini_31_Flash_Lite_Preview",
+      "cache_hit_rate": 38.3,
+      "eff_input_price": 0.164,
+      "eff_output_price": 1.499
+    },
+    {
+      "slug": "gemini-2.5-pro",
+      "model_name": "Google_Gemini_25_Pro",
+      "cache_hit_rate": 35.4,
+      "eff_input_price": 0.968,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gemini-3-flash-preview",
+      "model_name": "Google_Gemini_3_Flash_Preview",
+      "cache_hit_rate": 34.5,
+      "eff_input_price": 0.348,
+      "eff_output_price": 2.998
+    },
+    {
+      "slug": "gemini-3.1-flash-lite",
+      "model_name": "Google_Gemini_31_Flash_Lite",
+      "cache_hit_rate": 27.4,
+      "eff_input_price": 0.186,
+      "eff_output_price": 1.468
+    },
+    {
+      "slug": "gemini-3.1-pro-preview",
+      "model_name": "Google_Gemini_31_Pro_Preview",
+      "cache_hit_rate": 24.2,
+      "eff_input_price": 1.567,
+      "eff_output_price": 11.955
+    },
+    {
+      "slug": "gemini-2.5-flash-lite",
+      "model_name": "Google_Gemini_25_Flash_Lite",
+      "cache_hit_rate": 12.0,
+      "eff_input_price": 0.091,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gemini-2-0-flash",
+      "model_name": "Google_Gemini_20_Flash",
+      "cache_hit_rate": 0.6,
+      "eff_input_price": 0.101,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gemini-2.0-flash-lite",
+      "model_name": "Google_Gemini_20_Flash_Lite",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.075,
+      "eff_output_price": 0.295
+    }
+  ],
+  "Phala": [
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 35.5,
+      "eff_input_price": 0.55,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 32.9,
+      "eff_input_price": 0.2,
+      "eff_output_price": 1.379
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 14.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.489
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 6.1,
+      "eff_input_price": 1.09,
+      "eff_output_price": 4.6
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 3.5,
+      "eff_input_price": 0.85,
+      "eff_output_price": 3.299
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 2.2,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 0.7,
+      "eff_input_price": 1.21,
+      "eff_output_price": 4.2
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 0.1,
+      "eff_input_price": 1.2,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.429
+    }
+  ],
+  "Weights & Biases": [
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 70.5,
+      "eff_input_price": 1.0,
+      "eff_output_price": 1.498
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 69.0,
+      "eff_input_price": 0.05,
+      "eff_output_price": 0.2
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 50.3,
+      "eff_input_price": 0.552,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 32.3,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.095
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 31.8,
+      "eff_input_price": 0.55,
+      "eff_output_price": 1.637
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 24.2,
+      "eff_input_price": 0.299,
+      "eff_output_price": 1.196
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 12.7,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.25,
+      "eff_output_price": 1.25
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.6
+    }
+  ],
+  "Chutes": [
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 80.8,
+      "eff_input_price": 0.441,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 79.6,
+      "eff_input_price": 0.271,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 56.3,
+      "eff_input_price": 0.108,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 34.0,
+      "eff_input_price": 0.996,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 31.8,
+      "eff_input_price": 0.109,
+      "eff_output_price": 0.378
+    },
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 27.7,
+      "eff_input_price": 0.379,
+      "eff_output_price": 2.0
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 1.8,
+      "eff_input_price": 0.941,
+      "eff_output_price": 2.55
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.5,
+      "eff_output_price": 2.0
+    }
+  ],
+  "Azure (1)": [
+    {
+      "slug": "gpt-5-mini",
+      "model_name": "OpenAI_GPT-5_Mini",
+      "cache_hit_rate": 72.8,
+      "eff_input_price": 0.09,
+      "eff_output_price": 2.0
+    },
+    {
+      "slug": "gpt-4.1-mini",
+      "model_name": "OpenAI_GPT-41_Mini",
+      "cache_hit_rate": 66.0,
+      "eff_input_price": 0.202,
+      "eff_output_price": 1.593
+    },
+    {
+      "slug": "gpt-4.1",
+      "model_name": "OpenAI_GPT-41",
+      "cache_hit_rate": 61.5,
+      "eff_input_price": 1.078,
+      "eff_output_price": 8.0
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "model_name": "OpenAI_GPT-41_Nano",
+      "cache_hit_rate": 41.3,
+      "eff_input_price": 0.071,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gpt-5-nano",
+      "model_name": "OpenAI_GPT-5_Nano",
+      "cache_hit_rate": 36.5,
+      "eff_input_price": 0.035,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "gpt-4o-mini",
+      "model_name": "OpenAI_GPT-4o-mini",
+      "cache_hit_rate": 32.0,
+      "eff_input_price": 0.126,
+      "eff_output_price": 0.598
+    },
+    {
+      "slug": "gpt-5-1",
+      "model_name": "OpenAI_GPT-51",
+      "cache_hit_rate": 26.3,
+      "eff_input_price": 0.955,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gpt-5",
+      "model_name": "OpenAI_GPT-5",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 1.25,
+      "eff_output_price": 10.0
+    }
+  ],
+  "Anthropic": [
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 89.9,
+      "eff_input_price": 0.607,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 79.1,
+      "eff_input_price": 1.592,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 79.0,
+      "eff_input_price": 1.652,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-4.5-haiku",
+      "model_name": "Anthropic_Claude_Haiku_45",
+      "cache_hit_rate": 54.8,
+      "eff_input_price": 0.542,
+      "eff_output_price": 5.0
+    },
+    {
+      "slug": "claude-sonnet-4",
+      "model_name": "Anthropic_Claude_Sonnet_4",
+      "cache_hit_rate": 41.6,
+      "eff_input_price": 1.941,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4-5-opus",
+      "model_name": "Anthropic_Claude_Opus_45",
+      "cache_hit_rate": 23.0,
+      "eff_input_price": 4.412,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 5.4,
+      "eff_input_price": 3.021,
+      "eff_output_price": 15.0
+    }
+  ],
+  "Azure": [
+    {
+      "slug": "gpt-5-3-codex",
+      "model_name": "OpenAI_GPT-53-Codex",
+      "cache_hit_rate": 82.7,
+      "eff_input_price": 0.447,
+      "eff_output_price": 14.0
+    },
+    {
+      "slug": "gpt-5.5",
+      "model_name": "OpenAI_GPT-55",
+      "cache_hit_rate": 62.0,
+      "eff_input_price": 2.315,
+      "eff_output_price": 30.082
+    },
+    {
+      "slug": "gpt-5.2",
+      "model_name": "OpenAI_GPT-52",
+      "cache_hit_rate": 44.6,
+      "eff_input_price": 1.048,
+      "eff_output_price": 14.0
+    },
+    {
+      "slug": "gpt-5.4",
+      "model_name": "OpenAI_GPT-54",
+      "cache_hit_rate": 30.4,
+      "eff_input_price": 1.815,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "model_name": "OpenAI_GPT-54_Nano",
+      "cache_hit_rate": 26.1,
+      "eff_input_price": 0.153,
+      "eff_output_price": 1.249
+    },
+    {
+      "slug": "gpt-5-4-mini",
+      "model_name": "OpenAI_GPT-54_Mini",
+      "cache_hit_rate": 9.8,
+      "eff_input_price": 0.684,
+      "eff_output_price": 4.499
+    },
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 6.25,
+      "eff_output_price": 25.0
+    }
+  ],
+  "Baidu Qianfan": [
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 64.9,
+      "eff_input_price": 0.105,
+      "eff_output_price": 0.376
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 62.9,
+      "eff_input_price": 0.117,
+      "eff_output_price": 1.079
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 54.7,
+      "eff_input_price": 0.393,
+      "eff_output_price": 2.239
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 49.1,
+      "eff_input_price": 0.588,
+      "eff_output_price": 3.079
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 45.1,
+      "eff_input_price": 0.892,
+      "eff_output_price": 3.041
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 44.4,
+      "eff_input_price": 0.081,
+      "eff_output_price": 0.251
+    }
+  ],
+  "GMICloud": [
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 89.8,
+      "eff_input_price": 0.246,
+      "eff_output_price": 2.783
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 48.2,
+      "eff_input_price": 0.069,
+      "eff_output_price": 0.223
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 37.5,
+      "eff_input_price": 0.42,
+      "eff_output_price": 1.92
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 0.6,
+      "eff_input_price": 0.289,
+      "eff_output_price": 1.135
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.6
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.0,
+      "eff_output_price": 0.0
+    }
+  ],
+  "Ambient": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 57.0,
+      "eff_input_price": 0.107,
+      "eff_output_price": 0.6
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 41.6,
+      "eff_input_price": 0.102,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 33.2,
+      "eff_input_price": 0.117,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 32.8,
+      "eff_input_price": 0.267,
+      "eff_output_price": 3.2
+    },
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 18.4,
+      "eff_input_price": 0.118,
+      "eff_output_price": 0.399
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 14.0,
+      "eff_input_price": 1.4,
+      "eff_output_price": 4.4
+    }
+  ],
+  "Fireworks": [
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 80.7,
+      "eff_input_price": 0.196,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 67.6,
+      "eff_input_price": 0.416,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 39.2,
+      "eff_input_price": 0.205,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 33.7,
+      "eff_input_price": 0.058,
+      "eff_output_price": 0.299
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 26.4,
+      "eff_input_price": 1.319,
+      "eff_output_price": 3.48
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 11.1,
+      "eff_input_price": 1.273,
+      "eff_output_price": 4.399
+    }
+  ],
+  "Z.ai": [
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 98.6,
+      "eff_input_price": 0.117,
+      "eff_output_price": 2.199
+    },
+    {
+      "slug": "glm-4-5-air",
+      "model_name": "Zai_GLM_45_Air",
+      "cache_hit_rate": 73.5,
+      "eff_input_price": 0.075,
+      "eff_output_price": 1.096
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 73.1,
+      "eff_input_price": 0.566,
+      "eff_output_price": 4.399
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 66.1,
+      "eff_input_price": 0.471,
+      "eff_output_price": 3.199
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 44.2,
+      "eff_input_price": 0.043,
+      "eff_output_price": 0.399
+    }
+  ],
+  "Amazon Bedrock": [
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 81.4,
+      "eff_input_price": 1.475,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 78.4,
+      "eff_input_price": 0.94,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4.5-haiku",
+      "model_name": "Anthropic_Claude_Haiku_45",
+      "cache_hit_rate": 48.7,
+      "eff_input_price": 0.578,
+      "eff_output_price": 5.0
+    },
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 1.2,
+      "eff_input_price": 4.953,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 0.1,
+      "eff_input_price": 1.0,
+      "eff_output_price": 3.199
+    }
+  ],
+  "Friendli": [
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 79.5,
+      "eff_input_price": 0.109,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 66.3,
+      "eff_input_price": 0.644,
+      "eff_output_price": 4.4
+    },
+    {
+      "slug": "deepseek-v3-2",
+      "model_name": "DeepSeek_DeepSeek_V32",
+      "cache_hit_rate": 40.5,
+      "eff_input_price": 0.399,
+      "eff_output_price": 1.5
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 26.0,
+      "eff_input_price": 0.87,
+      "eff_output_price": 3.2
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.2,
+      "eff_output_price": 0.798
+    }
+  ],
+  "io.net": [
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.317,
+      "eff_output_price": 3.199
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.5
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 1.29,
+      "eff_output_price": 4.48
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.73,
+      "eff_output_price": 3.49
+    }
+  ],
+  "AkashML": [
+    {
+      "slug": "qwen3-6-35b-a3b",
+      "model_name": "Qwen_Qwen36_35B_A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.17,
+      "eff_output_price": 1.2
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.16,
+      "eff_output_price": 1.2
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.95,
+      "eff_output_price": 4.0
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.14,
+      "eff_output_price": 0.279
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 1.149
+    }
+  ],
+  "Claude Platform on AWS": [
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 79.3,
+      "eff_input_price": 0.937,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 77.8,
+      "eff_input_price": 0.977,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4-5-opus",
+      "model_name": "Anthropic_Claude_Opus_45",
+      "cache_hit_rate": 74.0,
+      "eff_input_price": 1.795,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 72.4,
+      "eff_input_price": 1.844,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 63.5,
+      "eff_input_price": 2.332,
+      "eff_output_price": 25.0
+    }
+  ],
+  "Google Vertex (Global)": [
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 55.1,
+      "eff_input_price": 1.61,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 52.7,
+      "eff_input_price": 1.802,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "gemini-2.5-pro",
+      "model_name": "Google_Gemini_25_Pro",
+      "cache_hit_rate": 30.1,
+      "eff_input_price": 1.041,
+      "eff_output_price": 10.065
+    },
+    {
+      "slug": "claude-sonnet-4",
+      "model_name": "Anthropic_Claude_Sonnet_4",
+      "cache_hit_rate": 29.5,
+      "eff_input_price": 2.388,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "gemini-2.5-flash",
+      "model_name": "Google_Gemini_25_Flash",
+      "cache_hit_rate": 27.5,
+      "eff_input_price": 0.233,
+      "eff_output_price": 2.499
+    }
+  ],
+  "Google Vertex (Europe)": [
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 68.2,
+      "eff_input_price": 2.3,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-sonnet-4",
+      "model_name": "Anthropic_Claude_Sonnet_4",
+      "cache_hit_rate": 58.4,
+      "eff_input_price": 1.736,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-opus-4-6",
+      "model_name": "Anthropic_Claude_Opus_46",
+      "cache_hit_rate": 44.3,
+      "eff_input_price": 3.087,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 28.7,
+      "eff_input_price": 2.439,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4.5-haiku",
+      "model_name": "Anthropic_Claude_Haiku_45",
+      "cache_hit_rate": 2.8,
+      "eff_input_price": 0.976,
+      "eff_output_price": 5.0
+    }
+  ],
+  "Amazon Bedrock (1)": [
+    {
+      "slug": "claude-4-5-opus",
+      "model_name": "Anthropic_Claude_Opus_45",
+      "cache_hit_rate": 91.9,
+      "eff_input_price": 0.935,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-sonnet-4",
+      "model_name": "Anthropic_Claude_Sonnet_4",
+      "cache_hit_rate": 53.7,
+      "eff_input_price": 1.63,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 30.4,
+      "eff_input_price": 2.285,
+      "eff_output_price": 15.001
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.07,
+      "eff_output_price": 0.15
+    }
+  ],
+  "Amazon Bedrock (2)": [
+    {
+      "slug": "claude-4-5-sonnet-thinking",
+      "model_name": "Anthropic_Claude_Sonnet_45",
+      "cache_hit_rate": 48.7,
+      "eff_input_price": 1.774,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "claude-4-5-opus",
+      "model_name": "Anthropic_Claude_Opus_45",
+      "cache_hit_rate": 41.3,
+      "eff_input_price": 3.323,
+      "eff_output_price": 25.0
+    },
+    {
+      "slug": "claude-sonnet-4",
+      "model_name": "Anthropic_Claude_Sonnet_4",
+      "cache_hit_rate": 35.1,
+      "eff_input_price": 2.151,
+      "eff_output_price": 15.0
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.07,
+      "eff_output_price": 0.15
+    }
+  ],
+  "Cloudflare": [
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 52.2,
+      "eff_input_price": 0.339,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 13.6,
+      "eff_input_price": 0.687,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "glm-5-1",
+      "model_name": "Zai_GLM_47_Flash",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.06,
+      "eff_output_price": 0.397
+    },
+    {
+      "slug": "llama-3-1-8b-instruct",
+      "model_name": "Meta_Llama_31_8B_Instruct",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.152,
+      "eff_output_price": 0.285
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.297
+    }
+  ],
+  "StreamLake": [
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 91.3,
+      "eff_input_price": 0.323,
+      "eff_output_price": 3.959
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 83.5,
+      "eff_input_price": 0.276,
+      "eff_output_price": 3.8
+    },
+    {
+      "slug": "glm-5",
+      "model_name": "Zai_GLM_5",
+      "cache_hit_rate": 35.6,
+      "eff_input_price": 0.465,
+      "eff_output_price": 2.079
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 6.8,
+      "eff_input_price": 0.305,
+      "eff_output_price": 1.199
+    }
+  ],
+  "SambaNova": [
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.6,
+      "eff_output_price": 2.399
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.14,
+      "eff_output_price": 0.949
+    },
+    {
+      "slug": "llama-4-maverick",
+      "model_name": "Meta_Llama_4_Maverick",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.63,
+      "eff_output_price": 1.797
+    },
+    {
+      "slug": "deepseek-v3-1",
+      "model_name": "DeepSeek_DeepSeek_V31",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.65,
+      "eff_output_price": 1.499
+    }
+  ],
+  "Cerebras": [
+    {
+      "slug": "llama-3-1-8b-instruct",
+      "model_name": "Meta_Llama_31_8B_Instruct",
+      "cache_hit_rate": 87.5,
+      "eff_input_price": 0.099,
+      "eff_output_price": 0.095
+    },
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 69.9,
+      "eff_input_price": 0.6,
+      "eff_output_price": 1.195
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 48.6,
+      "eff_input_price": 0.35,
+      "eff_output_price": 0.749
+    },
+    {
+      "slug": "glm-4.7",
+      "model_name": "Zai_GLM_47",
+      "cache_hit_rate": 45.6,
+      "eff_input_price": 2.25,
+      "eff_output_price": 2.75
+    }
+  ],
+  "DekaLLM": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.039,
+      "eff_output_price": 0.177
+    },
+    {
+      "slug": "mistral-nemo",
+      "model_name": "Mistral_Mistral_Nemo",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.02,
+      "eff_output_price": 0.025
+    },
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.06,
+      "eff_output_price": 0.327
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.139,
+      "eff_output_price": 1.0
+    }
+  ],
+  "Mistral": [
+    {
+      "slug": "mistral-nemo",
+      "model_name": "Mistral_Mistral_Nemo",
+      "cache_hit_rate": 44.4,
+      "eff_input_price": 0.09,
+      "eff_output_price": 0.143
+    },
+    {
+      "slug": "mistral-medium-3.5",
+      "model_name": "Mistral_Mistral_Medium_35",
+      "cache_hit_rate": 21.7,
+      "eff_input_price": 1.5,
+      "eff_output_price": 7.499
+    },
+    {
+      "slug": "mistral-small-4",
+      "model_name": "Mistral_Mistral_Small_4",
+      "cache_hit_rate": 16.1,
+      "eff_input_price": 0.128,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "mistral-small-3.2-24b",
+      "model_name": "Mistral_Mistral_Small_32_24B",
+      "cache_hit_rate": 15.9,
+      "eff_input_price": 0.086,
+      "eff_output_price": 0.299
+    }
+  ],
+  "Azure (2)": [
+    {
+      "slug": "gpt-4.1-mini",
+      "model_name": "OpenAI_GPT-41_Mini",
+      "cache_hit_rate": 49.3,
+      "eff_input_price": 0.252,
+      "eff_output_price": 1.598
+    },
+    {
+      "slug": "gpt-4o-mini",
+      "model_name": "OpenAI_GPT-4o-mini",
+      "cache_hit_rate": 33.5,
+      "eff_input_price": 0.125,
+      "eff_output_price": 0.598
+    },
+    {
+      "slug": "gpt-5-4-nano",
+      "model_name": "OpenAI_GPT-41_Nano",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.398
+    }
+  ],
+  "Xiaomi": [
+    {
+      "slug": "mimo-v2-5-pro",
+      "model_name": "Xiaomi_MiMo-V25-Pro",
+      "cache_hit_rate": 94.8,
+      "eff_input_price": 0.372,
+      "eff_output_price": 3.167
+    },
+    {
+      "slug": "mimo-v2-5",
+      "model_name": "Xiaomi_MiMo-V25",
+      "cache_hit_rate": 74.2,
+      "eff_input_price": 0.183,
+      "eff_output_price": 2.057
+    },
+    {
+      "slug": "mimo-v2-flash",
+      "model_name": "Xiaomi_MiMo-V2-Flash",
+      "cache_hit_rate": 55.0,
+      "eff_input_price": 0.05,
+      "eff_output_price": 0.298
+    }
+  ],
+  "Morph": [
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 73.9,
+      "eff_input_price": 0.279,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 64.7,
+      "eff_input_price": 0.422,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "model_name": "Qwen_Qwen36_27B",
+      "cache_hit_rate": 28.5,
+      "eff_input_price": 0.498,
+      "eff_output_price": 2.399
+    }
+  ],
+  "Groq": [
+    {
+      "slug": "llama-3-1-8b-instruct",
+      "model_name": "Meta_Llama_31_8B_Instruct",
+      "cache_hit_rate": 67.8,
+      "eff_input_price": 0.033,
+      "eff_output_price": 0.075
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 40.0,
+      "eff_input_price": 0.12,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 22.4,
+      "eff_input_price": 0.066,
+      "eff_output_price": 0.299
+    }
+  ],
+  "Nebius Token Factory": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.599
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "model_name": "Qwen_Qwen35_397B_A17B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.6,
+      "eff_output_price": 3.598
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.95,
+      "eff_output_price": 4.0
+    }
+  ],
+  "Google Vertex (EU)": [
+    {
+      "slug": "gemini-2.5-pro",
+      "model_name": "Google_Gemini_25_Pro",
+      "cache_hit_rate": 26.4,
+      "eff_input_price": 0.968,
+      "eff_output_price": 10.0
+    },
+    {
+      "slug": "gemini-2.5-flash",
+      "model_name": "Google_Gemini_25_Flash",
+      "cache_hit_rate": 25.3,
+      "eff_input_price": 0.235,
+      "eff_output_price": 2.499
+    },
+    {
+      "slug": "gemini-2.5-flash-lite",
+      "model_name": "Google_Gemini_25_Flash_Lite",
+      "cache_hit_rate": 22.7,
+      "eff_input_price": 0.08,
+      "eff_output_price": 0.399
+    }
+  ],
+  "NextBit": [
+    {
+      "slug": "gemma-4-26b-a4b",
+      "model_name": "Google_Gemma_4_26B_A4B",
+      "cache_hit_rate": 63.4,
+      "eff_input_price": 0.118,
+      "eff_output_price": 0.398
+    },
+    {
+      "slug": "gpt-oss-20b",
+      "model_name": "OpenAI_gpt-oss-20b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.449
+    },
+    {
+      "slug": "qwen3.5-35b-a3b",
+      "model_name": "Qwen_Qwen35-35B-A3B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.3,
+      "eff_output_price": 1.8
+    }
+  ],
+  "Inceptron": [
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 78.8,
+      "eff_input_price": 0.074,
+      "eff_output_price": 0.898
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 76.6,
+      "eff_input_price": 0.336,
+      "eff_output_price": 3.5
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 28.0,
+      "eff_input_price": 1.081,
+      "eff_output_price": 4.4
+    }
+  ],
+  "Amazon Bedrock (Global)": [
+    {
+      "slug": "claude-4.5-haiku",
+      "model_name": "Anthropic_Claude_Haiku_45",
+      "cache_hit_rate": 72.4,
+      "eff_input_price": 0.367,
+      "eff_output_price": 5.0
+    },
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 64.0,
+      "eff_input_price": 1.337,
+      "eff_output_price": 15.0
+    }
+  ],
+  "MiniMax": [
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 85.3,
+      "eff_input_price": 0.07,
+      "eff_output_price": 1.199
+    },
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 65.6,
+      "eff_input_price": 0.143,
+      "eff_output_price": 1.2
+    }
+  ],
+  "MiniMax Highspeed": [
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 77.8,
+      "eff_input_price": 0.18,
+      "eff_output_price": 2.399
+    },
+    {
+      "slug": "minimax-m2-7",
+      "model_name": "MiniMax_MiniMax_M27",
+      "cache_hit_rate": 64.7,
+      "eff_input_price": 0.251,
+      "eff_output_price": 2.399
+    }
+  ],
+  "Baseten": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 52.1,
+      "eff_input_price": 0.1,
+      "eff_output_price": 0.499
+    },
+    {
+      "slug": "glm-5.1",
+      "model_name": "Zai_GLM_51",
+      "cache_hit_rate": 45.6,
+      "eff_input_price": 1.3,
+      "eff_output_price": 4.3
+    }
+  ],
+  "DeepInfra (Turbo)": [
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 89.3,
+      "eff_input_price": 0.121,
+      "eff_output_price": 1.0
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.599
+    }
+  ],
+  "MARA": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.15,
+      "eff_output_price": 0.749
+    },
+    {
+      "slug": "minimax-m2-5",
+      "model_name": "MiniMax_MiniMax_M25",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.3,
+      "eff_output_price": 1.2
+    }
+  ],
+  "ModelRun": [
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 77.1,
+      "eff_input_price": 0.161,
+      "eff_output_price": 1.9
+    },
+    {
+      "slug": "deepseek-v3-0324",
+      "model_name": "DeepSeek_DeepSeek_V3_0324",
+      "cache_hit_rate": 50.4,
+      "eff_input_price": 0.185,
+      "eff_output_price": 0.798
+    }
+  ],
+  "Moonshot AI": [
+    {
+      "slug": "kimi-k2-5",
+      "model_name": "MoonshotAI_Kimi_K25",
+      "cache_hit_rate": 92.8,
+      "eff_input_price": 0.136,
+      "eff_output_price": 3.0
+    },
+    {
+      "slug": "kimi-k2-6",
+      "model_name": "MoonshotAI_Kimi_K26",
+      "cache_hit_rate": 76.8,
+      "eff_input_price": 0.343,
+      "eff_output_price": 4.0
+    }
+  ],
+  "DeepSeek": [
+    {
+      "slug": "deepseek-v4-pro",
+      "model_name": "DeepSeek_DeepSeek_V4_Pro",
+      "cache_hit_rate": 87.9,
+      "eff_input_price": 0.056,
+      "eff_output_price": 0.869
+    },
+    {
+      "slug": "deepseek-v4-flash",
+      "model_name": "DeepSeek_DeepSeek_V4_Flash",
+      "cache_hit_rate": 86.1,
+      "eff_input_price": 0.022,
+      "eff_output_price": 0.28
+    }
+  ],
+  "xAI": [
+    {
+      "slug": "grok-4-3",
+      "model_name": "xAI_Grok_43",
+      "cache_hit_rate": 47.8,
+      "eff_input_price": 0.749,
+      "eff_output_price": 2.5
+    }
+  ],
+  "Google Vertex (US East)": [
+    {
+      "slug": "claude-sonnet-4-6",
+      "model_name": "Anthropic_Claude_Sonnet_46",
+      "cache_hit_rate": 21.8,
+      "eff_input_price": 2.62,
+      "eff_output_price": 15.0
+    }
+  ],
+  "Ionstream": [
+    {
+      "slug": "qwen3-coder-next",
+      "model_name": "Qwen_Qwen3_Coder_Next",
+      "cache_hit_rate": 61.1,
+      "eff_input_price": 0.086,
+      "eff_output_price": 0.799
+    }
+  ],
+  "Amazon Bedrock (US)": [
+    {
+      "slug": "claude-opus-4-7",
+      "model_name": "Anthropic_Claude_Opus_47",
+      "cache_hit_rate": 23.7,
+      "eff_input_price": 3.952,
+      "eff_output_price": 25.0
+    }
+  ],
+  "SambaNova Dedicated": [
+    {
+      "slug": "gpt-oss-120b",
+      "model_name": "OpenAI_gpt-oss-120b",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.12,
+      "eff_output_price": 0.899
+    }
+  ],
+  "StepFun": [
+    {
+      "slug": "step-3-5-flash",
+      "model_name": "StepFun_Step_35_Flash",
+      "cache_hit_rate": 86.1,
+      "eff_input_price": 0.031,
+      "eff_output_price": 0.299
+    }
+  ],
+  "DeepInfra Turbo": [
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.12,
+      "eff_output_price": 0.369
+    }
+  ],
+  "Together (2)": [
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.39,
+      "eff_output_price": 0.969
+    }
+  ],
+  "Together (1)": [
+    {
+      "slug": "gemma-4-31b",
+      "model_name": "Google_Gemma_4_31B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.28,
+      "eff_output_price": 0.858
+    }
+  ],
+  "Google Vertex (US)": [
+    {
+      "slug": "gemini-2.5-pro",
+      "model_name": "Google_Gemini_25_Pro",
+      "cache_hit_rate": 2.6,
+      "eff_input_price": 1.22,
+      "eff_output_price": 10.0
+    }
+  ],
+  "Alibaba OpenSource": [
+    {
+      "slug": "qwen3-coder-480b-a35b",
+      "model_name": "Qwen_Qwen3_Coder_480B_A35B",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 1.373,
+      "eff_output_price": 6.87
+    }
+  ],
+  "Stealth": [
+    {
+      "slug": "owl-alpha",
+      "model_name": "Owl_Alpha",
+      "cache_hit_rate": 62.6,
+      "eff_input_price": 0.0,
+      "eff_output_price": 0.0
+    }
+  ],
+  "Google Vertex (2)": [
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 28.4,
+      "eff_input_price": 0.22,
+      "eff_output_price": 0.879
+    }
+  ],
+  "Google Vertex (1)": [
+    {
+      "slug": "qwen3-235b-a22b-instruct-2507",
+      "model_name": "Qwen_Qwen3_235B_A22B_Instruct_2507",
+      "cache_hit_rate": 0.0,
+      "eff_input_price": 0.25,
+      "eff_output_price": 1.0
+    }
+  ]
+}
