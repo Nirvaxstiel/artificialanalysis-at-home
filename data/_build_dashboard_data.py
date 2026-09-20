@@ -19,7 +19,7 @@ from _domain import (
     safe_elo, safe_ci, safe_votes, safe_benchmark,
     safe_params, safe_carbon, safe_pct,
     safe_ctx_window,
-    safe_omniscience, safe_response_time, safe_axis_metric,
+    safe_response_time,
     safe_cache,
     try_model_type, try_archetype,
 )
@@ -193,8 +193,6 @@ def _build_projection_row(row, registry_by_id):
         openrouter_cache_read_price_per_m=safe_ppm(axes.get("openrouter.cache_read_price_per_m")),
         openrouter_vendor=registry.get("pricing", {}).get("openrouter", {}).get("vendor"),
         params_b=safe_params(meta.get("params_b")),
-        params_total_b=safe_params(axes.get("meta.params_total_b")),
-        params_active_b=safe_params(axes.get("meta.params_active_b")),
         co2_kg=safe_carbon(axes.get("meta.co2_kg")),
         context_window=safe_ctx_window(meta.get("context_window")),
         cache_hit_rate_max=safe_cache(axes.get("dirac.cache_hit_rate_max")),
@@ -244,28 +242,29 @@ def _project_rows(engine, axes):
     registry_by_id = {m["id"]: m for m in engine.models}
     output = [_build_projection_row(r, registry_by_id) for r in raw_rows]
     output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
-    return output
+    return {"raw_rows": raw_rows, "rows": output}
 
 
-def _build_payload(output):
+def _counts(projection):
+    aa_rows = _select_aa_models(projection["raw_rows"])
+    return {
+        "models": len(projection["rows"]),
+        "aa_models": len(aa_rows),
+        "creators": len({r["creator"] for r in aa_rows if r.get("creator")}),
+    }
+
+
+def _build_payload(projection, registry_meta):
     return {
         "meta": {
             "generated": _today(),
             "version": "3.0",
-            "model_count": len(output),
-            "sources": ["AA", "Dirac.run", "LiveBench", "Arena Code", "Arena Text", "OpenLLM v2", "OpenRouter"],
-            "sources_meta": {
-                "AA": {"speculative": False},
-                "Dirac.run": {"speculative": False,
-                              "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."},
-                "LiveBench": {"speculative": False},
-                "Arena Code": {"speculative": False},
-                "Arena Text": {"speculative": False},
-                "OpenLLM v2": {"speculative": False},
-                "OpenRouter": {"speculative": False},
-            },
+            "model_count": len(projection["rows"]),
+            "counts": _counts(projection),
+            "sources": registry_meta.get("sources", []),
+            "sources_meta": registry_meta.get("source_meta", {}),
         },
-        "models": output,
+        "models": projection["rows"],
     }
 
 
@@ -292,14 +291,14 @@ def _print_dashboard_summary(output):
 def build(ctx=None):
     pipeline = (Pipeline({"engine": ProjectionEngine(), "js_path": str(BASE / "processed.js")})
         .then("project_rows", lambda c: ok(_project_rows(c["engine"], _PROJECTION_AXES)))
-        .then("normalize_radar", lambda c: ok(_normalize_radar_scores(c["project_rows"]) or c["project_rows"]))
-        .then("payload", lambda c: ok(_build_payload(c["project_rows"])))
+        .then("normalize_radar", lambda c: ok(_normalize_radar_scores(c["project_rows"]["rows"]) or c["project_rows"]))
+        .then("payload", lambda c: ok(_build_payload(c["project_rows"], c["engine"].registry.get("meta", {}))))
         .then("wrapper", lambda c: ok(_build_js_wrapper(c["payload"])))
         .then("write_js", lambda c: _write_js(c["js_path"], c["wrapper"])))
     pipeline.run()
     if pipeline.ctx.get("_failed_step"):
         return err(pipeline.ctx["_error"])
-    _print_dashboard_summary(pipeline.ctx["project_rows"])
+    _print_dashboard_summary(pipeline.ctx["project_rows"]["rows"])
     return ok(pipeline.ctx["payload"])
 
 

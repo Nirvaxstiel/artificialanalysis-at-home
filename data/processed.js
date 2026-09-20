@@ -1,8 +1,13 @@
 window.PROCESSED_DATA = {
   "meta": {
-    "generated": "2026-09-20",
+    "generated": "2026-09-21",
     "version": "3.0",
     "model_count": 2268,
+    "counts": {
+      "models": 2268,
+      "aa_models": 133,
+      "creators": 25
+    },
     "sources": [
       "AA",
       "Dirac.run",
@@ -14,26 +19,33 @@ window.PROCESSED_DATA = {
     ],
     "sources_meta": {
       "AA": {
-        "speculative": false
+        "models": 133,
+        "as_of": "2026-09-10"
       },
       "Dirac.run": {
-        "speculative": false,
+        "models": 61,
+        "as_of": "2026-07-23",
         "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."
       },
       "LiveBench": {
-        "speculative": false
+        "models": 127,
+        "as_of": "2026-01-08"
       },
       "Arena Code": {
-        "speculative": false
+        "models": 50,
+        "as_of": "2026-07-04"
       },
       "Arena Text": {
-        "speculative": false
+        "models": 30,
+        "as_of": "2026-07-04"
       },
       "OpenLLM v2": {
-        "speculative": false
+        "models": 1783,
+        "as_of": "2026-07-04"
       },
       "OpenRouter": {
-        "speculative": false
+        "models": 342,
+        "as_of": null
       }
     }
   },
@@ -48,26 +60,33 @@ window.PROCESSED_DATA = {
   ],
   "sources_meta": {
     "AA": {
-      "speculative": false
+      "models": 133,
+      "as_of": "2026-09-10"
     },
     "Dirac.run": {
-      "speculative": false,
+      "models": 61,
+      "as_of": "2026-07-23",
       "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."
     },
     "LiveBench": {
-      "speculative": false
+      "models": 127,
+      "as_of": "2026-01-08"
     },
     "Arena Code": {
-      "speculative": false
+      "models": 50,
+      "as_of": "2026-07-04"
     },
     "Arena Text": {
-      "speculative": false
+      "models": 30,
+      "as_of": "2026-07-04"
     },
     "OpenLLM v2": {
-      "speculative": false
+      "models": 1783,
+      "as_of": "2026-07-04"
     },
     "OpenRouter": {
-      "speculative": false
+      "models": 342,
+      "as_of": null
     }
   },
   "models": [

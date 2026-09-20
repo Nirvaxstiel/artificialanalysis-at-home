@@ -3,19 +3,19 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from ..._canonical import dirac_name_to_canonical
+from _canonical import dirac_name_to_canonical
 
 HERE = Path(__file__).resolve().parent
 RAW_PATH = HERE / "cache_hit_rates.json"
 OUT_PATH = HERE / "provider_rates.json"
 
 
-def build_provider_rates():
-    if not RAW_PATH.exists():
-        print(f"missing {RAW_PATH.name} — nothing to build")
+def build_provider_rates(raw_path=RAW_PATH, out_path=OUT_PATH):
+    if not Path(raw_path).exists():
+        print(f"missing {Path(raw_path).name} — nothing to build")
         return {}
 
-    rows = json.loads(RAW_PATH.read_text())
+    rows = json.loads(Path(raw_path).read_text())
 
     by_provider: dict[str, list] = defaultdict(list)
     unresolved = set()
@@ -36,10 +36,10 @@ def build_provider_rates():
         entries.sort(key=lambda e: -(e["cache_hit_rate"] or 0))
 
     ordered = dict(sorted(by_provider.items(), key=lambda item: -len(item[1])))
-    OUT_PATH.write_text(json.dumps(ordered, indent=2))
+    Path(out_path).write_text(json.dumps(ordered, indent=2))
 
     entries_total = sum(len(v) for v in ordered.values())
-    print(f"{OUT_PATH.name}: {len(ordered)} providers, {entries_total} model-entries, "
+    print(f"{Path(out_path).name}: {len(ordered)} providers, {entries_total} model-entries, "
           f"{len(unresolved)} dirac names unresolved by the canonical map")
     for name in sorted(unresolved):
         print(f"  unresolved: {name}")

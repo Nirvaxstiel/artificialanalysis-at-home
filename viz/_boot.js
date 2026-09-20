@@ -20,10 +20,20 @@ function bootstrapModels(ctx) {
 
 function injectHeaderMeta(ctx) {
   const metaEl = document.getElementById('header-meta');
-  if (metaEl) {
-    const creators = new Set(ctx.models.map(m => m.creator).filter(Boolean));
-    metaEl.textContent += ` · ${ctx.models.length} MODELS · ${creators.size} CREATORS`;
+  const counts = (window.PROCESSED_DATA && window.PROCESSED_DATA.meta && window.PROCESSED_DATA.meta.counts) || null;
+  if (metaEl && counts) {
+    metaEl.textContent += ` · ${counts.aa_models} AA MODELS / ${counts.models} DATASET · ${counts.creators} CREATORS`;
   }
+  return ok(ctx);
+}
+
+function injectSourceFreshness(ctx) {
+  const el = document.getElementById('source-freshness');
+  const sourcesMeta = (window.PROCESSED_DATA && window.PROCESSED_DATA.meta && window.PROCESSED_DATA.meta.sources_meta) || null;
+  if (!el || !sourcesMeta) return ok(ctx);
+  const parts = Object.entries(sourcesMeta).map(([name, source]) =>
+    `${name} <span>${source.models} · ${source.as_of || 'on pull'}</span>`);
+  el.innerHTML = `<span class="label">Snapshots:</span> ` + parts.join(' · ');
   return ok(ctx);
 }
 
@@ -213,6 +223,7 @@ function boot() {
     .then('bootstrap_models', bootstrapModels)
     .then('validate_schema', validateSchema)
     .then('header_meta', injectHeaderMeta)
+    .then('source_freshness', injectSourceFreshness)
     .then('build_shell', buildShell)
     .then('render_legend', ctx => { window.__renderCreatorLegend(); return ok(ctx); })
     .then('render_first', renderFirst)

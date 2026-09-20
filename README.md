@@ -6,7 +6,7 @@ Built for users who want to pick a model and care about more than one axis.
 
 ## What it shows
 
-123 models (rendered), 2279 in the registry, 25 creators, 5 visualizations:
+133 AA-covered models (25 creators) inside a 2268-model dataset, 5 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
@@ -46,9 +46,9 @@ Or just open `dashboard.html` directly in a modern browser (it loads `processed.
 | **LiveBench** | Coding/agentic/reasoning scores (127 models) |
 | **Chatbot Arena** | Code + Text Elo (30 / 50 models) |
 | **OpenLLM v2** | Parameter counts (1783 models in subset) |
-| **Dirac.run** | Observed cache hit rates |
+| **Dirac.run** | Observed cache hit rates + effective $/M per provider (auto-pulled) |
 
-Data is current as of **31 July 2026**, AA Intelligence Index v4.1.
+AA Intelligence Index **v4.3**, AA snapshot **10 Sep 2026**. Per-source snapshot dates and model counts are generated into `data/processed.js` meta (`sources_meta`) and rendered in the dashboard footer.
 
 ## Architecture
 
@@ -69,10 +69,10 @@ Stages (each a `Result`-returning `run()`/`build()`):
 
 | Stage | Inputs | Output | Models |
 |-------|--------|--------|--------|
-| `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV | `data/sources/*` | (writes caches) |
-| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2279 |
+| `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV, Dirac.run table | `data/sources/*` | (writes caches) |
+| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2268 |
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
-| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 120 |
+| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 2268 |
 
 `_build_registry.run()` merges sources into a unified registry: `step_aa`, `step_dirac`, `step_livebench`, `step_arena_text`, `step_arena_code`, `step_openllm`, `step_openrouter`, `step_misc`, `step_name_map`, `step_write` — each a `Result` step over shared `ctx`, short-circuiting on the first `Err`.
 
@@ -100,11 +100,11 @@ Generic filter: `window.__legendFilter = { dim, val }` — shared across all vie
 ├── README.md
 ├── dashboard.html              ← the viz (loads data/processed.js)
 ├── data/
-│   ├── processed.js           ← 120 models, primary dataset (loaded by dashboard)
-│   ├── model_registry.json     ← 2279 models, 8 sources (serialized via RegistryModel)
+│   ├── processed.js           ← 2268 models, primary dataset (loaded by dashboard)
+│   ├── model_registry.json     ← 2268 models, 7 sources (serialized via RegistryModel)
 │   ├── axes_catalog.json       ← typed axis catalog
 │   ├── _pipeline.py            ← orchestrator: build / build_from_cache / build() (pull)
-│   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter
+│   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter / Dirac.run
 │   ├── _build_registry.py      ← merges sources → model_registry.json
 │   ├── _build_axes.py          ← axes_catalog.json
 │   ├── _build_dashboard_data.py← projects registry → processed.js
@@ -136,11 +136,11 @@ Code: do whatever you want.
 # Offline (no network) — rebuild from committed sources:
 python -m data._pipeline build            # or: build_from_cache
 
-# Full refresh (network pull of OpenRouter/LiveBench/OpenLLM, then build):
+# Full refresh (network pull of OpenRouter/LiveBench/OpenLLM/Dirac.run, then build):
 python -m data._pipeline                  # no arg → build() pulls + builds
 ```
 
-`_pull_sources.py` covers only 3 of 7 sources (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet). The other four — AA scraped, AA live API, Dirac.run, Chatbot Arena — are acquired **manually** (scrape / API curl / table-copy / JSON download) and committed as files. See `DATA-ACQUISITION.md` for the full per-source method, auth, and repro steps.
+`_pull_sources.py` covers 4 of 7 sources (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet, Dirac.run HTML table). The rest are AA (scraped pages, SVG/JSON-LD console exports, live API) and Chatbot Arena — acquired **manually** (scrape / console query / API curl / JSON download) and committed as files. See `DATA-ACQUISITION.md` for the full per-source method, auth, and repro steps.
 
 **Build order matters.** `_build_registry.py` reads AA data from `data/sources/aa/` — never from pipeline output. No circular dependency.
 

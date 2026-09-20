@@ -39,13 +39,13 @@ Note: files are named by slug (`crossover.js`, `cost-breakdown.js`, …), **not*
 
 `viz/_boot.js` runs the boot sequence as a `Pipeline` (mirrors `data/_pipeline.Pipeline`):
 
-`bootstrap_models → header_meta → build_shell → render_first → wire_tabs → wire_filter_sync → banner_stats → pareto_count → banner_nav → repo_links`
+`bootstrap_models → validate_schema → header_meta → source_freshness → build_shell → render_legend → render_first → wire_tabs → wire_filter_sync → banner_stats → pareto_count → banner_nav → repo_links`
 
 Each step is a named `Result`-returning function over a shared `ctx`. `render()` internals in each viz file are untouched. The load boundary (`viz/_domain.js`) wraps `processed.js` parsing in `Result`; a parse failure short-circuits boot with `ctx._failed_step` set.
 
 ## Available data (from `window.MODELS`)
 
-Each model is a `ProjectionRow` with these fields (117 models total):
+Each model is a `ProjectionRow` with these fields (2268 models; 133 carry AA data):
 
 | Field | Type | Notes |
 |-------|------|-------|
@@ -68,23 +68,22 @@ Each model is a `ProjectionRow` with these fields (117 models total):
 | `arena_code_elo` / `arena_code_ci` / `arena_code_votes` | float | Chatbot Arena Code |
 | `arena_text_elo` / `arena_text_ci` / `arena_text_votes` | float | Chatbot Arena Text |
 | `aa_coding_index` / `aa_gpqa` / `aa_hle` / `aa_ifbench` / `aa_lcr` / `aa_scicode` / `aa_tau2` / `aa_tau_banking` / `aa_terminalbench_hard` / `aa_terminalbench_v2_1` / `aa_omniscience_hallucination_rate` / `aa_briefcase_analytical_quality_elo` / `aa_briefcase_presentation_elo` / `aa_time_per_task` | float | AA live-API eval scores (0–1) |
-| `omniscience_index` / `omniscience_accuracy` / `omniscience_hallucination_rate` | float | Omniscience composite |
-| `briefcase_elo` / `briefcase_analytical_quality_elo` / `briefcase_presentation_elo` / `briefcase_rubric_score` | float | Briefcase Elo |
-| `agentic_index` / `coding_index` | float | Composite indices |
+| `params_b` / `co2_kg` | float | OpenLLM v2 parameters (B) / CO₂ cost (kg) |
+| `cache_hit_rate_max` | float | Observed prefix-cache hit rate (Dirac.run, max across providers) |
 | `radar_intel` / `radar_speed` / `radar_cache_eff` / `radar_cost_eff` / `radar_ctx` | float | Normalized radar values (Provider Archetypes) |
-| `archetype` | string | "frontier" / "sweet-spot" / "premium" / "budget" / "commodity" / "mid-tier" |
+| `archetype` | string | "frontier" / "reasoning" / "cheap" / "fast" / "compact" / "uncategorized" |
 | `pareto_optimal` | bool | On the IQ-vs-cost frontier |
 | `cost_percentile` / `iq_percentile` | float | Ranking percentiles |
 | `has_breakdown` | bool | True if AA cost-segment data exists (Cost Breakdown tab) |
 | `useful_cost` / `reasoning_tax_pct` | float | Derived cost metrics |
-| `blended` | bool | Blended/eval-average model |
+| `blended` | float | AA blended $/M (3:1 input:output) |
 | `release_date` | string | Model release date (AA live API) |
 
 Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at render time by `cost-breakdown.js` from `cost_seg_*` when present on the source model — they are not stored on the projection row.
 
 ## Shared config (`_shared.js`)
 
-- `window.CREATOR_COLORS` — creator → hex color map (24 creators)
+- `window.CREATOR_COLORS` — creator → hex color map (25 creators)
 - `window.VIZ_REGISTRY` — array of `{id, name, subtitle, render}`
 - `window.__legendFilter` — global filter state `{ dim, val } | null`
 - `window.__setLegendFilter(dim, val)` — toggle helper
@@ -101,8 +100,8 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 
 - `buildTooltip(model)` — full data tooltip builder
 - `attachTooltip(el, model)` — convenience: attaches mouseenter/move/leave
-- `window.PROCESSED_DATA` — the raw generated dataset object
-- `window.MODELS` — array of all models (117), after the `_domain.js` load boundary
+- `window.PROCESSED_DATA` — the raw generated dataset object (`{meta, sources, sources_meta, models}`); `meta.counts` = `{models, aa_models, creators}`, `meta.sources_meta` = per-source `{models, as_of, note?}`
+- `window.MODELS` — array of all models (2268), after the `_domain.js` load boundary
 
 ## Current viz files
 

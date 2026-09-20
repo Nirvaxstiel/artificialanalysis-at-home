@@ -278,7 +278,11 @@
       svg += `<text class="label" x="${placed.x}" y="${placed.y}" text-anchor="${placed.anchor}" font-size="9" font-weight="700" fill="#f5f5f0" stroke="#000" stroke-width="2.5" paint-order="stroke" opacity="${lo}" data-slug="${m.slug}">${shortLabel}</text>`;
     }
 
-    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`;
+    container.innerHTML = `<svg viewBox="0 0 ${W} ${H}">${svg}</svg>`
+      + window.VIZ_HELPERS.axisProvenanceNote([['X', cCfg], ['Y', qCfg]])
+      + `<div style="font-family:monospace;font-size:11px;color:#555;text-align:center;padding:0 8px 6px;">`
+      + `<span style="color:var(--neon2,#6a6);opacity:0.5;">//</span> plotting ${pts.length}/${data.length} models `
+      + `<span style="color:#555;">(needs both axes)</span> · size = ${sCfg.label}</div>`;
 
     // Click-to-filter via generic legend filter (creator + reasoning)
     container.querySelectorAll('.leg-cr, .leg-rg').forEach(el => {
@@ -466,7 +470,11 @@
       }
       for (const opt of filtered) {
         const item = document.createElement('div');
-        item.textContent = opt.label;
+        const prov = window.VIZ_HELPERS.axisProvenance(opt.key);
+        item.innerHTML = prov
+          ? `${opt.label}<span style="color:#666;font-size:9px;margin-left:6px;">${prov}</span>`
+          : opt.label;
+        item.title = prov;
         item.dataset.value = opt.key;
         item.style.cssText =
           'padding:5px 8px;cursor:pointer;font-family:monospace;font-size:11px;color:#ccc;'

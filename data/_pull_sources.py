@@ -3,6 +3,8 @@ from pathlib import Path
 
 from _result import ok, err, from_fn
 
+from sources.dirac._fetch import pull_dirac
+
 
 def _src_dir(ctx):
     base = str(ctx["root"]) if (ctx and ctx.get("root")) else str(Path(__file__).resolve().parent.parent)
@@ -103,6 +105,7 @@ def run(ctx=None):
         "livebench": pull_livebench(src),
         "openllm": pull_openllm(src),
         "openrouter": pull_openrouter(src),
+        "dirac": pull_dirac(src),
     }
 
     ok_sources = [n for n, r in sources.items() if r.is_ok()]

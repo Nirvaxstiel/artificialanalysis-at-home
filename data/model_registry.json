@@ -1,26 +1,48 @@
 {
   "meta": {
-    "generated": "2026-09-20",
+    "generated": "2026-09-21",
     "version": "1.0",
     "model_count": 2268,
-    "source_count": {
-      "aa": 133,
-      "livebench": 127,
-      "arena_text": 30,
-      "arena_code": 50,
-      "openllm_aa_subset": 1783,
-      "openrouter": 342,
-      "dirac": 61
-    },
     "sources": [
       "AA",
+      "Dirac.run",
       "LiveBench",
-      "Arena Text",
       "Arena Code",
+      "Arena Text",
       "OpenLLM v2",
-      "OpenRouter",
-      "Cost Breakdown"
+      "OpenRouter"
     ],
+    "source_meta": {
+      "AA": {
+        "models": 133,
+        "as_of": "2026-09-10"
+      },
+      "Dirac.run": {
+        "models": 61,
+        "as_of": "2026-07-23",
+        "note": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing."
+      },
+      "LiveBench": {
+        "models": 127,
+        "as_of": "2026-01-08"
+      },
+      "Arena Code": {
+        "models": 50,
+        "as_of": "2026-07-04"
+      },
+      "Arena Text": {
+        "models": 30,
+        "as_of": "2026-07-04"
+      },
+      "OpenLLM v2": {
+        "models": 1783,
+        "as_of": "2026-07-04"
+      },
+      "OpenRouter": {
+        "models": 342,
+        "as_of": null
+      }
+    },
     "name_map_size": 2407
   },
   "name_map": {

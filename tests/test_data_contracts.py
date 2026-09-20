@@ -270,7 +270,7 @@ class TestProcessedJS:
                      if m.get("cost_per_task") is not None and m["cost_per_task"] > SANE_MAX]
         assert not offenders, f"cost_per_task exceeds {SANE_MAX}: {offenders[:5]}"
 
-
+    def test_archetype_distribution_is_populated(self, processed_js):
         counts = {}
         for m in processed_js:
             a = m.get("archetype", "uncategorized")
@@ -279,4 +279,3 @@ class TestProcessedJS:
         assert "uncategorized" in counts, "expected some uncategorized models"
         assert counts.get("uncategorized", 0) < len(processed_js), \
             "all models are uncategorized — classifier not running"
-        print(f"\n  Archetype distribution: {counts}")

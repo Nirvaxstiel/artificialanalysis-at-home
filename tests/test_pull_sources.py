@@ -62,7 +62,8 @@ def test_run_err_when_all_sources_fail(tmp_path):
     src = str(tmp_path)
     with mock.patch.object(ps, "pull_livebench", return_value=ps.err("lb down")), \
          mock.patch.object(ps, "pull_openllm", return_value=ps.err("ol down")), \
-         mock.patch.object(ps, "pull_openrouter", return_value=ps.err("or down")):
+         mock.patch.object(ps, "pull_openrouter", return_value=ps.err("or down")), \
+         mock.patch.object(ps, "pull_dirac", return_value=ps.err("dirac down")):
         r = ps.run({"root": str(tmp_path.parent)})
     assert r.is_err()
     assert "all sources failed" in r.error
@@ -72,10 +73,12 @@ def test_run_ok_records_failed_subset(tmp_path):
     src = str(tmp_path)
     with mock.patch.object(ps, "pull_livebench", return_value=ps.err("lb down")), \
          mock.patch.object(ps, "pull_openllm", return_value=ps.ok({"rows": 0})), \
-         mock.patch.object(ps, "pull_openrouter", return_value=ps.ok({"models": 0})):
+         mock.patch.object(ps, "pull_openrouter", return_value=ps.ok({"models": 0})), \
+         mock.patch.object(ps, "pull_dirac", return_value=ps.ok({"rows": 0})):
         r = ps.run({"root": str(tmp_path.parent)})
     assert r.is_ok()
     s = r.unwrap()
     assert "livebench" in s["failed_sources"]
     assert "openllm" in s["ok_sources"]
     assert "openrouter" in s["ok_sources"]
+    assert "dirac" in s["ok_sources"]

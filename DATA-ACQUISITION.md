@@ -3,20 +3,23 @@
 How every source in the pipeline is **obtained** — method, auth, script, freshness, and repro steps. This complements `LLM Provider Pricing Analysis.md` (what each source is *used for*) and `README.md` (build order and orchestrator modes).
 
 > **Golden rule:** `_build_registry.py` reads raw source files only — never pipeline output. Each source below lands as a file under `data/sources/`; the build scripts consume files, not live endpoints. The only network access in the pipeline is `_pull_sources.py` (OpenRouter / LiveBench / OpenLLM), invoked by the full build only.
+>
+> Snapshot dates and per-source model counts are declared once in `data/_build_registry.py` (`SOURCE_NAMES`, `UNDATED_SNAPSHOTS`, `SOURCE_NOTES`; Arena/LiveBench dates are read from the source files), generated into `model_registry.json` meta (`source_meta`) → `processed.js` meta (`sources_meta`), and rendered in the dashboard footer. The Freshness column below mirrors that generated meta.
 
 ## Acquisition matrix
 
 | # | Source | Method | Auth | Acquired by | File(s) | Freshness |
 |---|--------|--------|------|-------------|---------|-----------|
-| 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` |
-| 1A | AA intelligence/benchmark charts | **SVG scrape (method-2)** — PRIMARY | none (public) | Browser console query → `aa_charts_export.json` (inside repo) → `aa` source | `aa_charts_export.json` |
-| 1B | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` |
-| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (589 models) | pulled 2026-07-31 |
+| 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` | AA snapshot 2026-09-10 |
+| 1A | AA intelligence/benchmark charts | **SVG scrape (method-2)** — PRIMARY | none (public) | Browser console query → `aa_charts_export.json` (inside repo) → `aa` source | `aa_charts_export.json` | AA snapshot 2026-09-10 |
+| 1B | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` | AA snapshot 2026-09-10 |
+| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (644 models) | pulled 2026-09-10 |
 | 3 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (~342 models) | on full build (pull) |
 | 5 | LiveBench | **CSV download** (GitHub raw) | none | `_pull_sources.py` | `livebench_2026_01_08.csv`, `livebench_categories_2026_01_08.json` | pinned date 2026-01-08 |
 | 6 | OpenLLM v2 | **Parquet file** (manually placed) | none | Downloaded separately → `openllm_v2.parquet`, then `_pull_sources.py` reads it | `openllm_v2.parquet` → `openllm_aa_subset.json` | manual, not fetched by script |
-| 7 | Dirac.run | **HTML table parse** | none | Fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` → `cache_hit_rates.json` | `dirac/cache_hit_rates.json` (398 rows) | 2026-07-23 |
-| 8 | Chatbot Arena (Code + Text) | **JSON download** (manual) | none | Downloaded leaderboard JSON → dropped into repo | `arena_code.json`, `arena_text.json` | manual, per snapshot |
+| 7 | Dirac.run | **HTML table parse** (automated) | none | `_pull_sources.py` → `sources/dirac/_fetch.py`: fetch `dirac.run/posts/cache-hit-rates-agents`, parse `#the-full-table` → `cache_hit_rates.json` + `provider_rates.json` | `dirac/cache_hit_rates.json` (398 rows), `dirac/provider_rates.json` (68 providers) | on full build (pull) |
+| 8 | Chatbot Arena (Code + Text) | **JSON download** (manual) | none | Downloaded leaderboard JSON → dropped into repo | `arena_code.json`, `arena_text.json` | fetched 2026-07-04 |
+| 9 | misc.json (context-window overlay) | **Hand-written JSON** | none | Maintained in-repo; fills `meta.context_window` where OpenRouter has no entry | `misc.json` (43 models) | 2026-07-10 |
 
 ## Per-source detail
 
@@ -68,7 +71,7 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 ### 2. Artificial Analysis — live API (`aa_api_live.json`)
 - **Method:** `GET https://artificialanalysis.ai/api/v2/data/llms/models` with header `x-api-key: ***`
 - **Auth:** free-tier key (100 req/day). Key stored in Hermes `.env` as `AA_API_KEY` — **never hardcode**.
-- **Payload:** `status`, `prompt_options`, `data[]` (572 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
+- **Payload:** `status`, `prompt_options`, `data[]` (644 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
 - **Repro:**
   ```bash
   curl -s -H "x-api-key: $AA_API_KEY" https://artificialanalysis.ai/api/v2/data/llms/models \
@@ -93,19 +96,25 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 - **Repro:** download parquet externally first, then `python data/_pull_sources.py`.
 
 ### 7. Dirac.run (`dirac/cache_hit_rates.json` → `dirac/provider_rates.json`)
-- **Method:** fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` (the page renders the full table in HTML; extract `<tr>` rows → `model`, `provider`, `eff_input_price`, `eff_output_price`, `cache_hit_rate`). A one-off Python parse (`urllib` + regex on `<table>`) writes `cache_hit_rates.json` — no manual transcription needed.
+- **Method:** fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` (the page renders the full table in HTML; extract `<tr>` rows → `model`, `provider`, `eff_input_price`, `eff_output_price`, `cache_hit_rate`). **Automated:** `data/sources/dirac/_fetch.py` (`pull_dirac`) runs as part of `_pull_sources` — fetch → parse → write raw table → rebuild the provider artifact. No manual transcription.
+- **403 pitfall:** dirac.run rejects the default `urllib` User-Agent; `_fetch.py` sends a browser UA.
 - **No API.** 398 rows: `model`, `provider`, `cache_hit_rate`, `eff_input_price`, `eff_output_price`.
 - **Semantics:** observed % of input served from prefix cache — distinct from AA's `cache_hit_price` ($/Mtok read price). Never conflate. `eff_input_price` / `eff_output_price` are observed *effective* $/M (cache effect already blended in).
 - **Provider-centric artifact:** `dirac/provider_rates.json` = `{provider: [{slug, model_name, cache_hit_rate, eff_input_price, eff_output_price}]}`, sorted by provider coverage then per-provider hit rate. This is the provider→model mapping the dashboard toggles on.
-- **Repro:** `PYTHONPATH=data python -m data.sources.dirac._build_provider_rates` (raw table → provider artifact; re-run on a new snapshot, then rebuild).
+- **Repro:** `PYTHONPATH=data python -m data._pull_sources` (fetches the table and rebuilds the provider artifact). Offline rebuild of just the provider artifact from the committed table: `PYTHONPATH=data python -m data.sources.dirac._build_provider_rates`.
 - **Id resolution happens at registry time, in code — not in the file.** `data/sources/dirac/_build.py` resolves each `model_name` through `DIRAC_NAME_MAP` (`data/_canonical.py`) and falls back to the file's `slug`; `step_dirac` attaches the record **only to a model that already exists** (exact id, else a unique dot/dash-normalized match) and counts the rest as unresolved. It never invents a record — a stale map target used to create a nameless shell model next to the real one (57 of 74 provider-mapped models were such shells; `glm-5.1` had its provider rows split 19+6 across both ids).
 
 ### 8. Chatbot Arena (Code + Text)
 - **Method:** **manual JSON download** of the leaderboard → `arena_code.json` / `arena_text.json` (each has `meta` + `models[]`).
 - **Not fetched by any script.** Place files manually; `_build_registry.py` consumes them.
 
+### 9. misc.json (context-window overlay)
+- **Method:** hand-written JSON — `{slug: {context_window: int}}`, 43 entries.
+- **Consumed by:** `step_misc` in `_build_registry.py`; fills `meta.context_window` only where the field is absent or null (an OpenRouter `context_length` wins on overlap).
+- **Not fetched by any script.** Edit in place when a model's context window is missing from OpenRouter.
+
 ## What `_pull_sources.py` actually covers
-Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. The other sources (#1, #1A, #1B, #2, #8) are acquired **manually** (scrape / console-query / API curl / JSON download) and committed as files. #7 (Dirac.run) is fetched by a one-off `urllib`+regex table parse (no clean API endpoint, but no manual transcription). This is by design — those sources require keys/console-query or have no stable endpoint.
+Only **#3 OpenRouter, #5 LiveBench, #6 OpenLLM v2, #7 Dirac.run** are fetched by the script. The other sources (#1, #1A, #1B, #2, #8) are acquired **manually** (scrape / console-query / API curl / JSON download) and committed as files; #9 is hand-maintained. This is by design — those sources require keys/console-query or have no stable endpoint.
 
 > **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), and live-API (#2) all feed the same `aa.*` namespace via `get_aa_models()` merge. The SVG scrape (#1A) is now the preferred way to add new models + authoritative metrics without vision/scraping.
 
@@ -117,15 +126,15 @@ Only **#4 OpenRouter, #5 LiveBench, #6 OpenLLM v2** are fetched by the script. T
 #  - copy aa_charts_export.json (SVG console scrape of AA page) → aa/      (PRIMARY)
 #  - copy aa_jsonld_export.json (JSON-LD console query of AA page) → aa/  (fills gaps)
 #  - curl AA live API → aa/aa_api_live.json   (needs AA_API_KEY)
-#  - parse Dirac table → dirac/cache_hit_rates.json
 #  - download Arena JSON → arena_code.json, arena_text.json
 #  - download openllm_v2.parquet → data/sources/
+#  - bump UNDATED_SNAPSHOTS in data/_build_registry.py to the new snapshot dates
 
-# Full build (network pull of OpenRouter/LiveBench/OpenLLM, then registry → axes → dashboard):
+# Full build (network pull of OpenRouter/LiveBench/OpenLLM/Dirac.run, then registry → axes → dashboard):
 python -m data._pipeline            # no arg → build() pulls + builds
 
 # Offline rebuild (uses committed sources, no network):
 python -m data._pipeline build      # or: build_from_cache
 ```
 
-`_pull_sources.py` itself (with no arg) only fetches OpenRouter / LiveBench / OpenLLM v2. The manual sources above are committed files consumed by `_build_registry` regardless of pull.
+`_pull_sources.py` itself (with no arg) fetches OpenRouter / LiveBench / OpenLLM v2 / Dirac.run. The manual sources above are committed files consumed by `_build_registry` regardless of pull.

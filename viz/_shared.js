@@ -343,6 +343,54 @@ function renderCoverageNote(container, shown, total, missingFields) {
   return `<div style="font-family:monospace;font-size:11px;color:#888;text-align:center;padding:8px;margin-top:8px;"><span style="color:var(--neon2,#6a6);opacity:0.5;">//</span> Showing ${shown}/${total} models <span style="color:#555;">(${pct}%)</span> — requires <span style="color:#999;">${missingFields}</span></div>`;
 }
 
+const AXIS_SOURCE_PREFIXES = [
+  ['livebench_', 'LiveBench'],
+  ['arena_code_', 'Arena Code'],
+  ['arena_text_', 'Arena Text'],
+  ['openllm_', 'OpenLLM v2'],
+  ['openrouter_', 'OpenRouter'],
+];
+
+const AXIS_SOURCES = {
+  intel: 'AA', inp_price: 'AA', out_price: 'AA', blended: 'AA', cache_hit_price: 'AA',
+  cost_per_task: 'AA', tokens_m: 'AA', speed_tps: 'AA', ttft: 'AA',
+  useful_cost: 'AA', reasoning_tax_pct: 'AA',
+  iq_per_1k: 'AA', cost_per_iq: 'AA', iq_per_mtok: 'AA', iq_per_dollar_pt: 'AA',
+  params_b: 'OpenLLM v2', co2_kg: 'OpenLLM v2',
+  context_window: 'OpenRouter',
+  cache_hit_rate_max: 'Dirac.run',
+};
+
+function axisSource(key) {
+  const prefixed = AXIS_SOURCE_PREFIXES.find(([prefix]) => key.startsWith(prefix));
+  if (prefixed) return prefixed[1];
+  return AXIS_SOURCES[key] || null;
+}
+
+/** "LiveBench · 127 models · 2026-01-08" — where an axis' values come from and how old they are. */
+function axisProvenance(key) {
+  const source = axisSource(key);
+  if (!source) return '';
+  const meta = (window.PROCESSED_DATA && window.PROCESSED_DATA.meta) || {};
+  const info = (meta.sources_meta || {})[source] || {};
+  const bits = [source];
+  if (info.models != null) bits.push(`${info.models} models`);
+  if (info.as_of) bits.push(info.as_of);
+  return bits.join(' · ');
+}
+
+function axisProvenanceNote(axes) {
+  const rows = axes
+    .map(([tag, cfg]) => [tag, cfg, axisProvenance(cfg.key)])
+    .filter(([, cfg, text]) => text && cfg);
+  if (!rows.length) return '';
+  return '<div style="font-family:monospace;font-size:11px;color:var(--muted,#888);text-align:center;padding:6px 8px;">' +
+    rows.map(([tag, cfg, text]) =>
+      `<span style="color:#555;">${tag}:</span> ${cfg.label} <span style="color:var(--neon2,#6a6);">${text}</span>`
+    ).join(' &nbsp;·&nbsp; ') +
+    '</div>';
+}
+
 function applyLegendFilter(container, models) {
   if (!window.__legendFilter) return;
   const slugOpacity = {};
@@ -368,7 +416,7 @@ function searchBox(opts) {
     '</div>';
 }
 
-window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, emptyStateHtml, renderCoverageNote, applyLegendFilter, searchBox, fmtV };
+window.VIZ_HELPERS = { wireTooltips, placeLabel, renderEmptyState, emptyStateHtml, renderCoverageNote, applyLegendFilter, searchBox, fmtV, axisSource, axisProvenance, axisProvenanceNote };
 
 window.VIZ_DEFAULTS = {
   crossover: { qualityAxis: 'intel', costAxis: 'inp_price', sizeAxis: 'context_window', colorMode: 'creator' },

@@ -58,6 +58,58 @@ def _normalize_id(model_id: str) -> str:
     return model_id.replace(".", "").replace("-", "").replace("_", "").lower()
 
 
+SOURCE_NAMES = {
+    "aa": "AA",
+    "dirac": "Dirac.run",
+    "livebench": "LiveBench",
+    "arena_code": "Arena Code",
+    "arena_text": "Arena Text",
+    "openllm_aa_subset": "OpenLLM v2",
+    "openrouter": "OpenRouter",
+}
+
+UNDATED_SNAPSHOTS = {
+    "aa": "2026-09-10",
+    "dirac": "2026-07-23",
+    "openllm_aa_subset": "2026-07-04",
+}
+
+SOURCE_NOTES = {
+    "dirac": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing.",
+}
+
+
+def _snapshot_date_from_file(src, filename, *path):
+    result = _load_json(os.path.join(src, filename))
+    if result.is_err():
+        return None
+    node = result.unwrap()
+    for key in path:
+        node = node.get(key, {}) if isinstance(node, dict) else {}
+    return (node or "")[:10] or None
+
+
+def _livebench_snapshot_date(src):
+    match = re.search(r"livebench_(\d{4})_(\d{2})_(\d{2})", " ".join(os.listdir(src)))
+    return "-".join(match.groups()) if match else None
+
+
+def _source_meta(state):
+    as_of = {
+        **UNDATED_SNAPSHOTS,
+        "arena_code": _snapshot_date_from_file(state["src"], "arena_code.json", "meta", "fetched_at"),
+        "arena_text": _snapshot_date_from_file(state["src"], "arena_text.json", "meta", "fetched_at"),
+        "livebench": _livebench_snapshot_date(state["src"]),
+    }
+    meta = {}
+    for source_id, name in SOURCE_NAMES.items():
+        entry = {"models": state["counts"].get(source_id, 0), "as_of": as_of.get(source_id)}
+        if source_id in SOURCE_NOTES:
+            entry["note"] = SOURCE_NOTES[source_id]
+        meta[name] = entry
+    return meta
+
+
 def _resolve_existing(all_models: dict, canonical_id: str) -> str | None:
     if canonical_id in all_models and all_models[canonical_id].get("name"):
         return canonical_id
@@ -280,8 +332,8 @@ def step_write(state):
             "generated": state["today"],
             "version": "1.0",
             "model_count": len(output_models),
-            "source_count": state["counts"],
-            "sources": ["AA", "LiveBench", "Arena Text", "Arena Code", "OpenLLM v2", "OpenRouter", "Cost Breakdown"],
+            "sources": list(SOURCE_NAMES.values()),
+            "source_meta": _source_meta(state),
             "name_map_size": len(state["name_map"]),
         },
         "name_map": state["name_map"],

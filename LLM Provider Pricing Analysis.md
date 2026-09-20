@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
-**Source:** Artificial Analysis — Intelligence Index v4.1 (31 Jul '26)
-**Data:** 123 models, 25 creators in the rendered dashboard (2279 in the full registry, 8 sources)
+**Source:** Artificial Analysis — Intelligence Index v4.3 (AA snapshot 10 Sep '26)
+**Data:** 133 AA-covered models, 25 creators (2268 in the full dataset, 7 sources). Per-source dates in `data/processed.js` meta (`sources_meta`).
 
 ## What it is
 
@@ -18,15 +18,15 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 ## Files
 
 - `dashboard.html` — the viz (loads `data/processed.js` as `window.PROCESSED_DATA`)
-- `data/processed.js` — 120 models, primary dataset (surfaced as `window.MODELS`)
-- `data/model_registry.json` — 2279 models, 8 sources (serialized via `RegistryModel`)
+- `data/processed.js` — 2268 models, primary dataset (surfaced as `window.MODELS`)
+- `data/model_registry.json` — 2268 models, 7 sources (serialized via `RegistryModel`)
 - `data/axes_catalog.json` — typed axis catalog
 - `data/_pipeline.py` — orchestrator: `build` / `build_from_cache` (offline) or full pull
 - `data/_build_registry.py` — merges sources → `model_registry.json`
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (589 models), `aa_charts_export.json`, `aa_jsonld_export.json`
+- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (644 models), `aa_charts_export.json`, `aa_jsonld_export.json`
 - `data/sources/dirac/cache_hit_rates.json` — 398 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
@@ -37,7 +37,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 | Source | Coverage | Used for |
 |--------|----------|----------|
 | Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
-| Artificial Analysis (live API) | 589 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
+| Artificial Analysis (live API) | 644 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
 | OpenRouter API | ~342 models | Pricing, **context window** (`context_length`) |
 | LiveBench | 127 models | Coding/agentic/reasoning scores |
 | Chatbot Arena (Code + Text) | 30 / 50 models | Code/Text Elo |
@@ -49,7 +49,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
 - **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
 
-## Projection schema (rendered 123-model set)
+## Projection schema (2268-model set)
 
 Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
@@ -62,19 +62,19 @@ Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
 ## Methodology
 
-**AA Intelligence Index v4.1** — weighted evals (GDPval-AA v2, Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
+**AA Intelligence Index v4.3** — weighted evals (GDPval-AA v2, Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
 
 **Cost per Task** = (input×input_price + cache_hit×cache_hit_price + cache_write×cache_write_price + reasoning×output_price + answer×output_price) / task_count, weighted by eval importance. Uses measured per-model per-eval token counts.
 
 **Cache hit rate** is observed (Dirac.run, OpenRouter analytics) — AA only shows the cache *price* ($/M for cached tokens), not what % of input was actually cached. The radar `cache_eff` is computed from AA's price discount only; Dirac's observed rate is a separate axis (`cache_hit_rate_max`), never conflated.
 
-**Archetypes** (computed in `archetype` field): derive from intel tier × price tier.
-- `frontier`: intel ≥ 55
-- `premium`: intel ≥ 40, price > $3/M
-- `sweet-spot`: intel ≥ 40, price ≤ $3/M
-- `mid-tier`: intel 20–40
-- `budget`: intel < 30, price ≤ $1/M
-- `commodity`: intel < 20
+**Archetypes** (computed in `archetype` field, first match wins): derive from intel tier × cost × speed × params.
+- `frontier`: intel ≥ 50
+- `reasoning`: reasoning_tax_pct ≥ 20
+- `cheap`: cost_per_task < $0.50 and intel ≥ 30
+- `fast`: speed_tps ≥ 150
+- `compact`: params < 30B and intel ≥ 30
+- `uncategorized`: none of the above (most non-AA models — they carry no intel)
 
 ## Key findings
 
