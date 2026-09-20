@@ -95,13 +95,12 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 - `window.RADAR_AXES` — 5 radar axes (key, label, angle)
 - `window.COST_SEGMENTS` — color + label for cost breakdown
 - `window.FIELD_LABELS` — display names for table columns
-- `window.CACHE_HIT_RATES` — observed rates from Dirac.run / OpenRouter
+- `model.dirac_cache_hit_rates` — observed cache hit % + effective $/M per provider (Dirac.run / OpenRouter effective pricing)
 
 ## Shell globals (defined in dashboard.html)
 
 - `buildTooltip(model)` — full data tooltip builder
 - `attachTooltip(el, model)` — convenience: attaches mouseenter/move/leave
-- `getTooltipEl()` — returns the shared `#tooltip` div
 - `window.PROCESSED_DATA` — the raw generated dataset object
 - `window.MODELS` — array of all models (117), after the `_domain.js` load boundary
 
@@ -112,7 +111,7 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 - `_shared.js` — shared state, config, tooltip wiring
 - `_boot.js` — boot orchestration pipeline
 - `crossover.js` — scatter with x/y axis dropdowns, bubble size = context window
-- `cost-breakdown.js` — stacked bars with cache hit rate toggle
+- `cost-breakdown.js` — stacked bars on the AA baseline, or repriced per cache provider (scaled $/task + effective-rate block)
 - `provider-archetypes.js` — radar charts per creator
 - `cost-per-iq.js` — cost per IQ point bar chart
 - `data-table.js` — sortable, filterable multi-view table (multi-column sort with shift+click)

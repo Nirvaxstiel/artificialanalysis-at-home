@@ -2,7 +2,7 @@ window.PROCESSED_DATA = {
   "meta": {
     "generated": "2026-09-20",
     "version": "3.0",
-    "model_count": 2299,
+    "model_count": 2268,
     "sources": [
       "AA",
       "Dirac.run",
@@ -845,11 +845,50 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 5.0,
       "openrouter_out_price_per_m": 25.0,
       "openrouter_cache_read_price_per_m": 0.5,
+      "cache_hit_rate_max": 79.1,
       "radar_intel": 0.7677902621722846,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.5,
       "release_date": "2026-04-16",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Google Vertex",
+          "cache_hit_rate": 65.3,
+          "eff_input_price": 2.458,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Anthropic",
+          "cache_hit_rate": 79.1,
+          "eff_input_price": 1.592,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Amazon Bedrock",
+          "cache_hit_rate": 1.2,
+          "eff_input_price": 4.953,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Claude Platform on AWS",
+          "cache_hit_rate": 72.4,
+          "eff_input_price": 1.844,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Google Vertex (Europe)",
+          "cache_hit_rate": 68.2,
+          "eff_input_price": 2.3,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Amazon Bedrock (US)",
+          "cache_hit_rate": 23.7,
+          "eff_input_price": 3.952,
+          "eff_output_price": 25.0
+        }
+      ],
       "openrouter_vendor": "anthropic"
     },
     {
@@ -1929,11 +1968,86 @@ window.PROCESSED_DATA = {
       "aa_gpqa": 0.893,
       "openrouter_inp_price_per_m": 0.39,
       "openrouter_out_price_per_m": 2.34,
+      "cache_hit_rate_max": 79.6,
       "radar_intel": 0.6367041198501873,
       "radar_speed": 0.08032924026654616,
       "radar_cost_eff": 0.06060606060606061,
       "radar_ctx": 0.131072,
       "release_date": "2026-02-16",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.49,
+          "eff_output_price": 3.599
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 5.1,
+          "eff_input_price": 0.6,
+          "eff_output_price": 3.6
+        },
+        {
+          "provider": "Parasail",
+          "cache_hit_rate": 45.3,
+          "eff_input_price": 0.409,
+          "eff_output_price": 3.6
+        },
+        {
+          "provider": "AtlasCloud",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.55,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "Venice",
+          "cache_hit_rate": 19.3,
+          "eff_input_price": 0.75,
+          "eff_output_price": 4.5
+        },
+        {
+          "provider": "Together",
+          "cache_hit_rate": 48.4,
+          "eff_input_price": 0.6,
+          "eff_output_price": 3.6
+        },
+        {
+          "provider": "Alibaba Cloud Int.",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.39,
+          "eff_output_price": 2.34
+        },
+        {
+          "provider": "Phala",
+          "cache_hit_rate": 35.5,
+          "eff_input_price": 0.55,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "Chutes",
+          "cache_hit_rate": 79.6,
+          "eff_input_price": 0.271,
+          "eff_output_price": 3.0
+        },
+        {
+          "provider": "GMICloud",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.6,
+          "eff_output_price": 3.6
+        },
+        {
+          "provider": "Morph",
+          "cache_hit_rate": 64.7,
+          "eff_input_price": 0.422,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "Nebius Token Factory",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.6,
+          "eff_output_price": 3.598
+        }
+      ],
       "openrouter_vendor": "qwen"
     },
     {
@@ -2124,11 +2238,26 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.75,
       "openrouter_out_price_per_m": 14.0,
       "openrouter_cache_read_price_per_m": 0.175,
+      "cache_hit_rate_max": 93.2,
       "radar_intel": 0.6179775280898877,
       "radar_speed": 0.1375462753733281,
       "radar_cache_eff": 0.9054690089492873,
       "radar_ctx": 0.2,
       "release_date": "2026-02-05",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "OpenAI",
+          "cache_hit_rate": 93.2,
+          "eff_input_price": 0.282,
+          "eff_output_price": 14.0
+        },
+        {
+          "provider": "Azure",
+          "cache_hit_rate": 82.7,
+          "eff_input_price": 0.447,
+          "eff_output_price": 14.0
+        }
+      ],
       "openrouter_vendor": "openai"
     },
     {
@@ -2270,12 +2399,123 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.684,
       "openrouter_out_price_per_m": 3.42,
       "openrouter_cache_read_price_per_m": 0.144,
+      "cache_hit_rate_max": 83.9,
       "radar_intel": 0.5805243445692884,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.8392966174136035,
       "radar_cost_eff": 0.06451612903225806,
       "radar_ctx": 0.131072,
       "release_date": "2026-04-20",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 71.3,
+          "eff_input_price": 0.322,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 80.5,
+          "eff_input_price": 0.285,
+          "eff_output_price": 3.4
+        },
+        {
+          "provider": "SiliconFlow",
+          "cache_hit_rate": 83.9,
+          "eff_input_price": 0.292,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "Parasail",
+          "cache_hit_rate": 74.2,
+          "eff_input_price": 0.312,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "AtlasCloud",
+          "cache_hit_rate": 39.7,
+          "eff_input_price": 0.637,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "Venice",
+          "cache_hit_rate": 19.5,
+          "eff_input_price": 0.727,
+          "eff_output_price": 4.655
+        },
+        {
+          "provider": "Together",
+          "cache_hit_rate": 77.4,
+          "eff_input_price": 0.425,
+          "eff_output_price": 4.5
+        },
+        {
+          "provider": "Phala",
+          "cache_hit_rate": 6.1,
+          "eff_input_price": 1.09,
+          "eff_output_price": 4.6
+        },
+        {
+          "provider": "Weights & Biases",
+          "cache_hit_rate": 50.3,
+          "eff_input_price": 0.552,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "Chutes",
+          "cache_hit_rate": 80.8,
+          "eff_input_price": 0.441,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "Fireworks",
+          "cache_hit_rate": 67.6,
+          "eff_input_price": 0.416,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "io.net",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.73,
+          "eff_output_price": 3.49
+        },
+        {
+          "provider": "AkashML",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.95,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "Cloudflare",
+          "cache_hit_rate": 13.6,
+          "eff_input_price": 0.687,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "StreamLake",
+          "cache_hit_rate": 83.5,
+          "eff_input_price": 0.276,
+          "eff_output_price": 3.8
+        },
+        {
+          "provider": "Nebius Token Factory",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.95,
+          "eff_output_price": 4.0
+        },
+        {
+          "provider": "Inceptron",
+          "cache_hit_rate": 76.6,
+          "eff_input_price": 0.336,
+          "eff_output_price": 3.5
+        },
+        {
+          "provider": "Moonshot AI",
+          "cache_hit_rate": 76.8,
+          "eff_input_price": 0.343,
+          "eff_output_price": 4.0
+        }
+      ],
       "openrouter_vendor": "moonshotai"
     },
     {
@@ -3237,11 +3477,20 @@ window.PROCESSED_DATA = {
       "aa_terminalbench_hard": 0.439393939393939,
       "aa_terminalbench_v2_1": 0.614232209737828,
       "aa_omniscience_hallucination_rate": 0.35,
+      "cache_hit_rate_max": 6.0,
       "radar_intel": 0.5056179775280899,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.5,
-      "release_date": "2026-04-02"
+      "release_date": "2026-04-02",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Alibaba Cloud Int.",
+          "cache_hit_rate": 6.0,
+          "eff_input_price": 0.669,
+          "eff_output_price": 1.982
+        }
+      ]
     },
     {
       "slug": "gemini-3-flash-reasoning",
@@ -3353,6 +3602,12 @@ window.PROCESSED_DATA = {
       "dirac_cache_hit_rates": [
         {
           "provider": "DeepInfra",
+          "cache_hit_rate": 73.4,
+          "eff_input_price": 0.023,
+          "eff_output_price": 0.399
+        },
+        {
+          "provider": "DeepInfra",
           "cache_hit_rate": 71.6,
           "eff_input_price": 0.445,
           "eff_output_price": 3.5
@@ -3362,6 +3617,12 @@ window.PROCESSED_DATA = {
           "cache_hit_rate": 77.5,
           "eff_input_price": 0.512,
           "eff_output_price": 4.4
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 14.3,
+          "eff_input_price": 0.061,
+          "eff_output_price": 0.399
         },
         {
           "provider": "SiliconFlow",
@@ -3383,6 +3644,12 @@ window.PROCESSED_DATA = {
         },
         {
           "provider": "Venice",
+          "cache_hit_rate": 14.4,
+          "eff_input_price": 0.125,
+          "eff_output_price": 0.496
+        },
+        {
+          "provider": "Venice",
           "cache_hit_rate": 0.2,
           "eff_input_price": 1.747,
           "eff_output_price": 5.5
@@ -3398,6 +3665,12 @@ window.PROCESSED_DATA = {
           "cache_hit_rate": 0.7,
           "eff_input_price": 1.21,
           "eff_output_price": 4.2
+        },
+        {
+          "provider": "Phala",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.1,
+          "eff_output_price": 0.429
         },
         {
           "provider": "Chutes",
@@ -3436,6 +3709,12 @@ window.PROCESSED_DATA = {
           "eff_output_price": 4.399
         },
         {
+          "provider": "Z.ai",
+          "cache_hit_rate": 44.2,
+          "eff_input_price": 0.043,
+          "eff_output_price": 0.399
+        },
+        {
           "provider": "Friendli",
           "cache_hit_rate": 66.3,
           "eff_input_price": 0.644,
@@ -3446,6 +3725,12 @@ window.PROCESSED_DATA = {
           "cache_hit_rate": 0.0,
           "eff_input_price": 1.29,
           "eff_output_price": 4.48
+        },
+        {
+          "provider": "Cloudflare",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.06,
+          "eff_output_price": 0.397
         },
         {
           "provider": "StreamLake",
@@ -3674,12 +3959,27 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.435,
       "openrouter_out_price_per_m": 0.87,
       "openrouter_cache_read_price_per_m": 0.0036,
+      "cache_hit_rate_max": 94.8,
       "radar_intel": 0.4868913857677903,
       "radar_speed": 0.03995307556948758,
       "radar_cache_eff": 1.0,
       "radar_cost_eff": 0.6666666666666667,
       "radar_ctx": 0.525,
       "release_date": "2026-04-22",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 11.7,
+          "eff_input_price": 0.906,
+          "eff_output_price": 3.0
+        },
+        {
+          "provider": "Xiaomi",
+          "cache_hit_rate": 94.8,
+          "eff_input_price": 0.372,
+          "eff_output_price": 3.167
+        }
+      ],
       "openrouter_vendor": "xiaomi"
     },
     {
@@ -3960,12 +4260,21 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.25,
       "openrouter_out_price_per_m": 2.5,
       "openrouter_cache_read_price_per_m": 0.19999999999999998,
+      "cache_hit_rate_max": 47.8,
       "radar_intel": 0.46816479400749067,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.8477958236658932,
       "radar_cost_eff": 0.125,
       "radar_ctx": 0.5,
       "release_date": "2026-04-30",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "xAI",
+          "cache_hit_rate": 47.8,
+          "eff_input_price": 0.749,
+          "eff_output_price": 2.5
+        }
+      ],
       "openrouter_vendor": "x-ai"
     },
     {
@@ -4249,11 +4558,116 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.15,
       "openrouter_out_price_per_m": 0.8999999999999999,
       "openrouter_cache_read_price_per_m": 0.049999999999999996,
+      "cache_hit_rate_max": 85.3,
       "radar_intel": 0.4307116104868914,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
       "radar_ctx": 0.1024,
       "release_date": "2026-02-12",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 62.5,
+          "eff_input_price": 0.075,
+          "eff_output_price": 1.148
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 84.9,
+          "eff_input_price": 0.071,
+          "eff_output_price": 1.197
+        },
+        {
+          "provider": "SiliconFlow",
+          "cache_hit_rate": 52.6,
+          "eff_input_price": 0.158,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "Parasail",
+          "cache_hit_rate": 62.6,
+          "eff_input_price": 0.131,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "AtlasCloud",
+          "cache_hit_rate": 78.2,
+          "eff_input_price": 0.111,
+          "eff_output_price": 1.198
+        },
+        {
+          "provider": "Venice",
+          "cache_hit_rate": 63.8,
+          "eff_input_price": 0.148,
+          "eff_output_price": 1.188
+        },
+        {
+          "provider": "Phala",
+          "cache_hit_rate": 32.9,
+          "eff_input_price": 0.2,
+          "eff_output_price": 1.379
+        },
+        {
+          "provider": "Weights & Biases",
+          "cache_hit_rate": 24.2,
+          "eff_input_price": 0.299,
+          "eff_output_price": 1.196
+        },
+        {
+          "provider": "Chutes",
+          "cache_hit_rate": 56.3,
+          "eff_input_price": 0.108,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "Baidu Qianfan",
+          "cache_hit_rate": 62.9,
+          "eff_input_price": 0.117,
+          "eff_output_price": 1.079
+        },
+        {
+          "provider": "Friendli",
+          "cache_hit_rate": 79.5,
+          "eff_input_price": 0.109,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "AkashML",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.15,
+          "eff_output_price": 1.149
+        },
+        {
+          "provider": "StreamLake",
+          "cache_hit_rate": 6.8,
+          "eff_input_price": 0.305,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "Inceptron",
+          "cache_hit_rate": 78.8,
+          "eff_input_price": 0.074,
+          "eff_output_price": 0.898
+        },
+        {
+          "provider": "MiniMax",
+          "cache_hit_rate": 85.3,
+          "eff_input_price": 0.07,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "MiniMax Highspeed",
+          "cache_hit_rate": 77.8,
+          "eff_input_price": 0.18,
+          "eff_output_price": 2.399
+        },
+        {
+          "provider": "MARA",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.3,
+          "eff_output_price": 1.2
+        }
+      ],
       "openrouter_vendor": "minimax"
     },
     {
@@ -4316,12 +4730,51 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.25,
       "openrouter_out_price_per_m": 1.0,
       "openrouter_cache_read_price_per_m": 0.049999999999999996,
+      "cache_hit_rate_max": 73.9,
       "radar_intel": 0.4307116104868914,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.8074245939675174,
       "radar_cost_eff": 0.2857142857142857,
       "radar_ctx": 0.1024,
       "release_date": "2026-03-18",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Together",
+          "cache_hit_rate": 41.2,
+          "eff_input_price": 0.201,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "Fireworks",
+          "cache_hit_rate": 39.2,
+          "eff_input_price": 0.205,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "SambaNova",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.6,
+          "eff_output_price": 2.399
+        },
+        {
+          "provider": "Morph",
+          "cache_hit_rate": 73.9,
+          "eff_input_price": 0.279,
+          "eff_output_price": 1.199
+        },
+        {
+          "provider": "MiniMax",
+          "cache_hit_rate": 65.6,
+          "eff_input_price": 0.143,
+          "eff_output_price": 1.2
+        },
+        {
+          "provider": "MiniMax Highspeed",
+          "cache_hit_rate": 64.7,
+          "eff_input_price": 0.251,
+          "eff_output_price": 2.399
+        }
+      ],
       "openrouter_vendor": "minimax"
     },
     {
@@ -4527,11 +4980,20 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 1323.0,
       "aa_briefcase_presentation_elo": 1323.0,
       "aa_time_per_task": 8.7,
+      "cache_hit_rate_max": 74.2,
       "radar_intel": 0.41198501872659177,
       "radar_speed": 0.063188361202727,
       "radar_cache_eff": 0.9876532979781238,
       "radar_ctx": 0.524288,
-      "release_date": "2026-04-22"
+      "release_date": "2026-04-22",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Xiaomi",
+          "cache_hit_rate": 74.2,
+          "eff_input_price": 0.183,
+          "eff_output_price": 2.057
+        }
+      ]
     },
     {
       "slug": "qwen3-6-27b",
@@ -4766,12 +5228,51 @@ window.PROCESSED_DATA = {
       "aa_briefcase_analytical_quality_elo": 926.0,
       "aa_briefcase_presentation_elo": 900.0,
       "aa_time_per_task": 5.3,
+      "cache_hit_rate_max": 78.4,
       "radar_intel": 0.39325842696629215,
       "radar_speed": 0.0,
       "radar_cache_eff": 0.9083526682134571,
       "radar_cost_eff": 0.04878048780487805,
       "radar_ctx": 0.1,
-      "release_date": "2025-09-29"
+      "release_date": "2025-09-29",
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Google Vertex",
+          "cache_hit_rate": 78.4,
+          "eff_input_price": 0.984,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Anthropic",
+          "cache_hit_rate": 5.4,
+          "eff_input_price": 3.021,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Claude Platform on AWS",
+          "cache_hit_rate": 77.8,
+          "eff_input_price": 0.977,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Google Vertex (Global)",
+          "cache_hit_rate": 55.1,
+          "eff_input_price": 1.61,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Amazon Bedrock (1)",
+          "cache_hit_rate": 30.4,
+          "eff_input_price": 2.285,
+          "eff_output_price": 15.001
+        },
+        {
+          "provider": "Amazon Bedrock (2)",
+          "cache_hit_rate": 48.7,
+          "eff_input_price": 1.774,
+          "eff_output_price": 15.0
+        }
+      ]
     },
     {
       "slug": "gpt-5-4-nano",
@@ -9637,126 +10138,6 @@ window.PROCESSED_DATA = {
       "livebench_if": 42.4
     },
     {
-      "slug": "claude-4-5-opus",
-      "name": "claude-4-5-opus",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 91.9,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 36.7,
-          "eff_input_price": 4.074,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 23.0,
-          "eff_input_price": 4.412,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Claude Platform on AWS",
-          "cache_hit_rate": 74.0,
-          "eff_input_price": 1.795,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Amazon Bedrock (1)",
-          "cache_hit_rate": 91.9,
-          "eff_input_price": 0.935,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Amazon Bedrock (2)",
-          "cache_hit_rate": 41.3,
-          "eff_input_price": 3.323,
-          "eff_output_price": 25.0
-        }
-      ]
-    },
-    {
-      "slug": "claude-4-5-sonnet-thinking",
-      "name": "claude-4-5-sonnet-thinking",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 78.4,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 78.4,
-          "eff_input_price": 0.984,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 5.4,
-          "eff_input_price": 3.021,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Claude Platform on AWS",
-          "cache_hit_rate": 77.8,
-          "eff_input_price": 0.977,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Google Vertex (Global)",
-          "cache_hit_rate": 55.1,
-          "eff_input_price": 1.61,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Amazon Bedrock (1)",
-          "cache_hit_rate": 30.4,
-          "eff_input_price": 2.285,
-          "eff_output_price": 15.001
-        },
-        {
-          "provider": "Amazon Bedrock (2)",
-          "cache_hit_rate": 48.7,
-          "eff_input_price": 1.774,
-          "eff_output_price": 15.0
-        }
-      ]
-    },
-    {
       "slug": "claude-4-sonnet-base",
       "name": "claude-4-sonnet-20250514-base",
       "creator": null,
@@ -9819,63 +10200,6 @@ window.PROCESSED_DATA = {
       "livebench_data_analysis": 54.63,
       "livebench_agentic_coding": 40.0,
       "livebench_if": 44.34
-    },
-    {
-      "slug": "claude-4.5-haiku",
-      "name": "claude-4.5-haiku",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 72.4,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 58.2,
-          "eff_input_price": 0.489,
-          "eff_output_price": 5.0
-        },
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 54.8,
-          "eff_input_price": 0.542,
-          "eff_output_price": 5.0
-        },
-        {
-          "provider": "Amazon Bedrock",
-          "cache_hit_rate": 48.7,
-          "eff_input_price": 0.578,
-          "eff_output_price": 5.0
-        },
-        {
-          "provider": "Google Vertex (Europe)",
-          "cache_hit_rate": 2.8,
-          "eff_input_price": 0.976,
-          "eff_output_price": 5.0
-        },
-        {
-          "provider": "Amazon Bedrock (Global)",
-          "cache_hit_rate": 72.4,
-          "eff_input_price": 0.367,
-          "eff_output_price": 5.0
-        }
-      ]
     },
     {
       "slug": "claude-fable-5-high-effort",
@@ -10374,69 +10698,6 @@ window.PROCESSED_DATA = {
       "livebench_if": 60.52
     },
     {
-      "slug": "claude-opus-4-6",
-      "name": "claude-opus-4-6",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 81.4,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 71.1,
-          "eff_input_price": 1.969,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 79.0,
-          "eff_input_price": 1.652,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Azure",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 6.25,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Amazon Bedrock",
-          "cache_hit_rate": 81.4,
-          "eff_input_price": 1.475,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Claude Platform on AWS",
-          "cache_hit_rate": 63.5,
-          "eff_input_price": 2.332,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Google Vertex (Europe)",
-          "cache_hit_rate": 44.3,
-          "eff_input_price": 3.087,
-          "eff_output_price": 25.0
-        }
-      ]
-    },
-    {
       "slug": "claude-opus-4-6-thinking",
       "name": "claude-opus-4-6-thinking",
       "creator": "Anthropic",
@@ -10497,70 +10758,6 @@ window.PROCESSED_DATA = {
       "livebench_data_analysis": 69.89,
       "livebench_agentic_coding": 61.67,
       "livebench_if": 63.31
-    },
-    {
-      "slug": "claude-opus-4-7",
-      "name": "claude-opus-4-7",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": 200000,
-      "cache_hit_rate_max": 79.1,
-      "radar_ctx": 0.1,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 65.3,
-          "eff_input_price": 2.458,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 79.1,
-          "eff_input_price": 1.592,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Amazon Bedrock",
-          "cache_hit_rate": 1.2,
-          "eff_input_price": 4.953,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Claude Platform on AWS",
-          "cache_hit_rate": 72.4,
-          "eff_input_price": 1.844,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Google Vertex (Europe)",
-          "cache_hit_rate": 68.2,
-          "eff_input_price": 2.3,
-          "eff_output_price": 25.0
-        },
-        {
-          "provider": "Amazon Bedrock (US)",
-          "cache_hit_rate": 23.7,
-          "eff_input_price": 3.952,
-          "eff_output_price": 25.0
-        }
-      ]
     },
     {
       "slug": "claude-opus-4-7-high-effort",
@@ -10968,7 +11165,46 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 5.0,
       "openrouter_out_price_per_m": 25.0,
       "openrouter_cache_read_price_per_m": 0.5,
+      "cache_hit_rate_max": 81.4,
       "radar_ctx": 0.5,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Google Vertex",
+          "cache_hit_rate": 71.1,
+          "eff_input_price": 1.969,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Anthropic",
+          "cache_hit_rate": 79.0,
+          "eff_input_price": 1.652,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Azure",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 6.25,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Amazon Bedrock",
+          "cache_hit_rate": 81.4,
+          "eff_input_price": 1.475,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Claude Platform on AWS",
+          "cache_hit_rate": 63.5,
+          "eff_input_price": 2.332,
+          "eff_output_price": 25.0
+        },
+        {
+          "provider": "Google Vertex (Europe)",
+          "cache_hit_rate": 44.3,
+          "eff_input_price": 3.087,
+          "eff_output_price": 25.0
+        }
+      ],
       "openrouter_vendor": "anthropic"
     },
     {
@@ -11060,8 +11296,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "claude-sonnet-4",
-      "name": "claude-sonnet-4",
-      "creator": null,
+      "name": "Anthropic: Claude Sonnet 4",
+      "creator": "Anthropic",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -11210,75 +11446,6 @@ window.PROCESSED_DATA = {
       "livebench_data_analysis": 56.97,
       "livebench_agentic_coding": 53.33,
       "livebench_if": 53.35
-    },
-    {
-      "slug": "claude-sonnet-4-6",
-      "name": "claude-sonnet-4-6",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 89.9,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Anthropic",
-          "cache_hit_rate": 89.9,
-          "eff_input_price": 0.607,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Amazon Bedrock",
-          "cache_hit_rate": 78.4,
-          "eff_input_price": 0.94,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Claude Platform on AWS",
-          "cache_hit_rate": 79.3,
-          "eff_input_price": 0.937,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Google Vertex (Global)",
-          "cache_hit_rate": 52.7,
-          "eff_input_price": 1.802,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Google Vertex (Europe)",
-          "cache_hit_rate": 28.7,
-          "eff_input_price": 2.439,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Amazon Bedrock (Global)",
-          "cache_hit_rate": 64.0,
-          "eff_input_price": 1.337,
-          "eff_output_price": 15.0
-        },
-        {
-          "provider": "Google Vertex (US East)",
-          "cache_hit_rate": 21.8,
-          "eff_input_price": 2.62,
-          "eff_output_price": 15.0
-        }
-      ]
     },
     {
       "slug": "claude-sonnet-4-6-thinking-auto-high-effort",
@@ -11440,7 +11607,52 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 3.0,
       "openrouter_out_price_per_m": 15.0,
       "openrouter_cache_read_price_per_m": 0.3,
+      "cache_hit_rate_max": 89.9,
       "radar_ctx": 0.5,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "Anthropic",
+          "cache_hit_rate": 89.9,
+          "eff_input_price": 0.607,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Amazon Bedrock",
+          "cache_hit_rate": 78.4,
+          "eff_input_price": 0.94,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Claude Platform on AWS",
+          "cache_hit_rate": 79.3,
+          "eff_input_price": 0.937,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Google Vertex (Global)",
+          "cache_hit_rate": 52.7,
+          "eff_input_price": 1.802,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Google Vertex (Europe)",
+          "cache_hit_rate": 28.7,
+          "eff_input_price": 2.439,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Amazon Bedrock (Global)",
+          "cache_hit_rate": 64.0,
+          "eff_input_price": 1.337,
+          "eff_output_price": 15.0
+        },
+        {
+          "provider": "Google Vertex (US East)",
+          "cache_hit_rate": 21.8,
+          "eff_input_price": 2.62,
+          "eff_output_price": 15.0
+        }
+      ],
       "openrouter_vendor": "anthropic"
     },
     {
@@ -14130,219 +14342,6 @@ window.PROCESSED_DATA = {
       "co2_kg": 2.7914034140852118
     },
     {
-      "slug": "deepseek-v3-0324",
-      "name": "deepseek-v3-0324",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 66.3,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 61.9,
-          "eff_input_price": 0.16,
-          "eff_output_price": 0.767
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 66.3,
-          "eff_input_price": 0.18,
-          "eff_output_price": 1.118
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 52.6,
-          "eff_input_price": 0.25,
-          "eff_output_price": 1.0
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 4.0,
-          "eff_input_price": 0.214,
-          "eff_output_price": 0.877
-        },
-        {
-          "provider": "GMICloud",
-          "cache_hit_rate": 0.6,
-          "eff_input_price": 0.289,
-          "eff_output_price": 1.135
-        },
-        {
-          "provider": "ModelRun",
-          "cache_hit_rate": 50.4,
-          "eff_input_price": 0.185,
-          "eff_output_price": 0.798
-        }
-      ]
-    },
-    {
-      "slug": "deepseek-v3-1",
-      "name": "deepseek-v3-1",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 43.2,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 43.2,
-          "eff_input_price": 0.175,
-          "eff_output_price": 0.788
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 5.7,
-          "eff_input_price": 0.262,
-          "eff_output_price": 1.0
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 36.8,
-          "eff_input_price": 0.27,
-          "eff_output_price": 1.0
-        },
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 19.3,
-          "eff_input_price": 0.6,
-          "eff_output_price": 1.7
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 7.3,
-          "eff_input_price": 0.287,
-          "eff_output_price": 0.947
-        },
-        {
-          "provider": "Weights & Biases",
-          "cache_hit_rate": 31.8,
-          "eff_input_price": 0.55,
-          "eff_output_price": 1.637
-        },
-        {
-          "provider": "SambaNova",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.65,
-          "eff_output_price": 1.499
-        }
-      ]
-    },
-    {
-      "slug": "deepseek-v3-2",
-      "name": "deepseek-v3-2",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 69.8,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 49.6,
-          "eff_input_price": 0.195,
-          "eff_output_price": 0.379
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 15.2,
-          "eff_input_price": 0.249,
-          "eff_output_price": 0.399
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 69.8,
-          "eff_input_price": 0.172,
-          "eff_output_price": 0.419
-        },
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 8.0,
-          "eff_input_price": 0.56,
-          "eff_output_price": 1.679
-        },
-        {
-          "provider": "Parasail",
-          "cache_hit_rate": 17.2,
-          "eff_input_price": 0.254,
-          "eff_output_price": 0.447
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 14.4,
-          "eff_input_price": 0.241,
-          "eff_output_price": 0.379
-        },
-        {
-          "provider": "Alibaba Cloud Int.",
-          "cache_hit_rate": 32.5,
-          "eff_input_price": 0.273,
-          "eff_output_price": 1.111
-        },
-        {
-          "provider": "Baidu Qianfan",
-          "cache_hit_rate": 64.9,
-          "eff_input_price": 0.105,
-          "eff_output_price": 0.376
-        },
-        {
-          "provider": "Friendli",
-          "cache_hit_rate": 40.5,
-          "eff_input_price": 0.399,
-          "eff_output_price": 1.5
-        }
-      ]
-    },
-    {
       "slug": "deepseek-v3.1-terminus",
       "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "creator": "DeepSeek",
@@ -14405,7 +14404,64 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.26899999999999996,
       "openrouter_out_price_per_m": 0.39999999999999997,
       "openrouter_cache_read_price_per_m": 0.13449999999999998,
+      "cache_hit_rate_max": 69.8,
       "radar_ctx": 0.08192,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 49.6,
+          "eff_input_price": 0.195,
+          "eff_output_price": 0.379
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 15.2,
+          "eff_input_price": 0.249,
+          "eff_output_price": 0.399
+        },
+        {
+          "provider": "SiliconFlow",
+          "cache_hit_rate": 69.8,
+          "eff_input_price": 0.172,
+          "eff_output_price": 0.419
+        },
+        {
+          "provider": "Google Vertex",
+          "cache_hit_rate": 8.0,
+          "eff_input_price": 0.56,
+          "eff_output_price": 1.679
+        },
+        {
+          "provider": "Parasail",
+          "cache_hit_rate": 17.2,
+          "eff_input_price": 0.254,
+          "eff_output_price": 0.447
+        },
+        {
+          "provider": "AtlasCloud",
+          "cache_hit_rate": 14.4,
+          "eff_input_price": 0.241,
+          "eff_output_price": 0.379
+        },
+        {
+          "provider": "Alibaba Cloud Int.",
+          "cache_hit_rate": 32.5,
+          "eff_input_price": 0.273,
+          "eff_output_price": 1.111
+        },
+        {
+          "provider": "Baidu Qianfan",
+          "cache_hit_rate": 64.9,
+          "eff_input_price": 0.105,
+          "eff_output_price": 0.376
+        },
+        {
+          "provider": "Friendli",
+          "cache_hit_rate": 40.5,
+          "eff_input_price": 0.399,
+          "eff_output_price": 1.5
+        }
+      ],
       "openrouter_vendor": "deepseek"
     },
     {
@@ -18338,87 +18394,9 @@ window.PROCESSED_DATA = {
       "co2_kg": 3.180329277429034
     },
     {
-      "slug": "gemini-2-0-flash",
-      "name": "gemini-2-0-flash",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 5.4,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 5.4,
-          "eff_input_price": 0.098,
-          "eff_output_price": 0.399
-        },
-        {
-          "provider": "Google AI Studio",
-          "cache_hit_rate": 0.6,
-          "eff_input_price": 0.101,
-          "eff_output_price": 0.399
-        }
-      ]
-    },
-    {
-      "slug": "gemini-2.0-flash-lite",
-      "name": "gemini-2.0-flash-lite",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 0.0,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.075,
-          "eff_output_price": 0.298
-        },
-        {
-          "provider": "Google AI Studio",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.075,
-          "eff_output_price": 0.295
-        }
-      ]
-    },
-    {
       "slug": "gemini-2.5-flash",
-      "name": "gemini-2.5-flash",
-      "creator": null,
+      "name": "Google: Gemini 2.5 Flash",
+      "creator": "Google",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -18534,8 +18512,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gemini-2.5-flash-lite",
-      "name": "gemini-2.5-flash-lite",
-      "creator": null,
+      "name": "Google: Gemini 2.5 Flash Lite",
+      "creator": "Google",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -18680,8 +18658,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gemini-2.5-pro",
-      "name": "gemini-2.5-pro",
-      "creator": null,
+      "name": "Google: Gemini 2.5 Pro",
+      "creator": "Google",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -18883,8 +18861,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gemini-3-flash-preview",
-      "name": "gemini-3-flash-preview",
-      "creator": null,
+      "name": "Google: Gemini 3 Flash Preview",
+      "creator": "Google",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -19171,8 +19149,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gemini-3.1-flash-lite",
-      "name": "gemini-3.1-flash-lite",
-      "creator": null,
+      "name": "Google: Gemini 3.1 Flash Lite",
+      "creator": "Google",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -19777,51 +19755,6 @@ window.PROCESSED_DATA = {
       "openrouter_vendor": "google"
     },
     {
-      "slug": "glm-4-5-air",
-      "name": "glm-4-5-air",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 73.5,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 72.3,
-          "eff_input_price": 0.054,
-          "eff_output_price": 0.846
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 42.4,
-          "eff_input_price": 0.14,
-          "eff_output_price": 0.858
-        },
-        {
-          "provider": "Z.ai",
-          "cache_hit_rate": 73.5,
-          "eff_input_price": 0.075,
-          "eff_output_price": 1.096
-        }
-      ]
-    },
-    {
       "slug": "glm-4-9b",
       "name": "THUDM/glm-4-9b",
       "creator": null,
@@ -20041,7 +19974,28 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 0.13,
       "openrouter_out_price_per_m": 0.85,
       "openrouter_cache_read_price_per_m": 0.024999999999999998,
+      "cache_hit_rate_max": 73.5,
       "radar_ctx": 0.065536,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 72.3,
+          "eff_input_price": 0.054,
+          "eff_output_price": 0.846
+        },
+        {
+          "provider": "SiliconFlow",
+          "cache_hit_rate": 42.4,
+          "eff_input_price": 0.14,
+          "eff_output_price": 0.858
+        },
+        {
+          "provider": "Z.ai",
+          "cache_hit_rate": 73.5,
+          "eff_input_price": 0.075,
+          "eff_output_price": 1.096
+        }
+      ],
       "openrouter_vendor": "z-ai"
     },
     {
@@ -20280,69 +20234,6 @@ window.PROCESSED_DATA = {
       "openrouter_vendor": "z-ai"
     },
     {
-      "slug": "glm-5-1",
-      "name": "glm-5-1",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 73.4,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 73.4,
-          "eff_input_price": 0.023,
-          "eff_output_price": 0.399
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 14.3,
-          "eff_input_price": 0.061,
-          "eff_output_price": 0.399
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 14.4,
-          "eff_input_price": 0.125,
-          "eff_output_price": 0.496
-        },
-        {
-          "provider": "Phala",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.1,
-          "eff_output_price": 0.429
-        },
-        {
-          "provider": "Z.ai",
-          "cache_hit_rate": 44.2,
-          "eff_input_price": 0.043,
-          "eff_output_price": 0.399
-        },
-        {
-          "provider": "Cloudflare",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.06,
-          "eff_output_price": 0.397
-        }
-      ]
-    },
-    {
       "slug": "glm-5.2 (max)",
       "name": "glm-5.2",
       "creator": "Z.ai",
@@ -20570,8 +20461,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gpt-4.1",
-      "name": "gpt-4.1",
-      "creator": null,
+      "name": "OpenAI: GPT-4.1",
+      "creator": "OpenAI",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -20614,8 +20505,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gpt-4.1-mini",
-      "name": "gpt-4.1-mini",
-      "creator": null,
+      "name": "OpenAI: GPT-4.1 Mini",
+      "creator": "OpenAI",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -20808,8 +20699,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gpt-4o-mini",
-      "name": "gpt-4o-mini",
-      "creator": null,
+      "name": "OpenAI: GPT-4o-mini",
+      "creator": "OpenAI",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -20943,8 +20834,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gpt-5",
-      "name": "gpt-5",
-      "creator": null,
+      "name": "OpenAI: GPT-5",
+      "creator": "OpenAI",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -20984,117 +20875,6 @@ window.PROCESSED_DATA = {
         }
       ],
       "openrouter_vendor": "openai"
-    },
-    {
-      "slug": "gpt-5-1",
-      "name": "gpt-5-1",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 38.1,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "OpenAI",
-          "cache_hit_rate": 38.1,
-          "eff_input_price": 0.822,
-          "eff_output_price": 10.0
-        },
-        {
-          "provider": "Azure (1)",
-          "cache_hit_rate": 26.3,
-          "eff_input_price": 0.955,
-          "eff_output_price": 10.0
-        }
-      ]
-    },
-    {
-      "slug": "gpt-5-1-chat",
-      "name": "gpt-5-1-chat",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 55.3,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "OpenAI",
-          "cache_hit_rate": 55.3,
-          "eff_input_price": 0.628,
-          "eff_output_price": 10.0
-        }
-      ]
-    },
-    {
-      "slug": "gpt-5-3-codex",
-      "name": "gpt-5-3-codex",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 93.2,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "OpenAI",
-          "cache_hit_rate": 93.2,
-          "eff_input_price": 0.282,
-          "eff_output_price": 14.0
-        },
-        {
-          "provider": "Azure",
-          "cache_hit_rate": 82.7,
-          "eff_input_price": 0.447,
-          "eff_output_price": 14.0
-        }
-      ]
     },
     {
       "slug": "gpt-5-chat",
@@ -21594,7 +21374,22 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.25,
       "openrouter_out_price_per_m": 10.0,
       "openrouter_cache_read_price_per_m": 0.125,
+      "cache_hit_rate_max": 38.1,
       "radar_ctx": 0.2,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "OpenAI",
+          "cache_hit_rate": 38.1,
+          "eff_input_price": 0.822,
+          "eff_output_price": 10.0
+        },
+        {
+          "provider": "Azure (1)",
+          "cache_hit_rate": 26.3,
+          "eff_input_price": 0.955,
+          "eff_output_price": 10.0
+        }
+      ],
       "openrouter_vendor": "openai"
     },
     {
@@ -21751,7 +21546,16 @@ window.PROCESSED_DATA = {
       "openrouter_inp_price_per_m": 1.25,
       "openrouter_out_price_per_m": 10.0,
       "openrouter_cache_read_price_per_m": 0.125,
+      "cache_hit_rate_max": 55.3,
       "radar_ctx": 0.064,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "OpenAI",
+          "cache_hit_rate": 55.3,
+          "eff_input_price": 0.628,
+          "eff_output_price": 10.0
+        }
+      ],
       "openrouter_vendor": "openai"
     },
     {
@@ -21930,7 +21734,7 @@ window.PROCESSED_DATA = {
       "slug": "gpt-5.2",
       "name": "gpt-5.2",
       "creator": "OpenAI",
-      "type": null,
+      "type": "proprietary",
       "intel": null,
       "cost_per_task": null,
       "tokens_m": null,
@@ -22864,7 +22668,7 @@ window.PROCESSED_DATA = {
       "slug": "gpt-5.5",
       "name": "gpt-5.5",
       "creator": "OpenAI",
-      "type": null,
+      "type": "proprietary",
       "intel": null,
       "cost_per_task": null,
       "tokens_m": null,
@@ -23573,39 +23377,6 @@ window.PROCESSED_DATA = {
       "livebench_data_analysis": 52.24,
       "livebench_agentic_coding": 31.67,
       "livebench_if": 28.2
-    },
-    {
-      "slug": "grok-4-3",
-      "name": "grok-4-3",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 47.8,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "xAI",
-          "cache_hit_rate": 47.8,
-          "eff_input_price": 0.749,
-          "eff_output_price": 2.5
-        }
-      ]
     },
     {
       "slug": "grok-4.1-thinking",
@@ -25510,8 +25281,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "hy3-preview",
-      "name": "hy3-preview",
-      "creator": null,
+      "name": "Tencent: Hy3 preview",
+      "creator": "Tencent",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -26890,141 +26661,6 @@ window.PROCESSED_DATA = {
       "openrouter_out_price_per_m": 2.5,
       "radar_ctx": 0.131072,
       "openrouter_vendor": "moonshotai"
-    },
-    {
-      "slug": "kimi-k2-6",
-      "name": "kimi-k2-6",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 83.9,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 71.3,
-          "eff_input_price": 0.322,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 80.5,
-          "eff_input_price": 0.285,
-          "eff_output_price": 3.4
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 83.9,
-          "eff_input_price": 0.292,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "Parasail",
-          "cache_hit_rate": 74.2,
-          "eff_input_price": 0.312,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 39.7,
-          "eff_input_price": 0.637,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 19.5,
-          "eff_input_price": 0.727,
-          "eff_output_price": 4.655
-        },
-        {
-          "provider": "Together",
-          "cache_hit_rate": 77.4,
-          "eff_input_price": 0.425,
-          "eff_output_price": 4.5
-        },
-        {
-          "provider": "Phala",
-          "cache_hit_rate": 6.1,
-          "eff_input_price": 1.09,
-          "eff_output_price": 4.6
-        },
-        {
-          "provider": "Weights & Biases",
-          "cache_hit_rate": 50.3,
-          "eff_input_price": 0.552,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "Chutes",
-          "cache_hit_rate": 80.8,
-          "eff_input_price": 0.441,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "Fireworks",
-          "cache_hit_rate": 67.6,
-          "eff_input_price": 0.416,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "io.net",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.73,
-          "eff_output_price": 3.49
-        },
-        {
-          "provider": "AkashML",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.95,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "Cloudflare",
-          "cache_hit_rate": 13.6,
-          "eff_input_price": 0.687,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "StreamLake",
-          "cache_hit_rate": 83.5,
-          "eff_input_price": 0.276,
-          "eff_output_price": 3.8
-        },
-        {
-          "provider": "Nebius Token Factory",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.95,
-          "eff_output_price": 4.0
-        },
-        {
-          "provider": "Inceptron",
-          "cache_hit_rate": 76.6,
-          "eff_input_price": 0.336,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "Moonshot AI",
-          "cache_hit_rate": 76.8,
-          "eff_input_price": 0.343,
-          "eff_output_price": 4.0
-        }
-      ]
     },
     {
       "slug": "kimi-k2-instruct",
@@ -28481,63 +28117,6 @@ window.PROCESSED_DATA = {
       "openllm_mmlu_pro": 3.8028221040189125,
       "params_b": 6.738,
       "co2_kg": 1.1941514924080088
-    },
-    {
-      "slug": "llama-3-1-8b-instruct",
-      "name": "llama-3-1-8b-instruct",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 87.5,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.02,
-          "eff_output_price": 0.048
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.02,
-          "eff_output_price": 0.048
-        },
-        {
-          "provider": "Cloudflare",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.152,
-          "eff_output_price": 0.285
-        },
-        {
-          "provider": "Cerebras",
-          "cache_hit_rate": 87.5,
-          "eff_input_price": 0.099,
-          "eff_output_price": 0.095
-        },
-        {
-          "provider": "Groq",
-          "cache_hit_rate": 67.8,
-          "eff_input_price": 0.033,
-          "eff_output_price": 0.075
-        }
-      ]
     },
     {
       "slug": "llama-3-1-big-thoughtful-passthrough-merge-2",
@@ -34154,7 +33733,40 @@ window.PROCESSED_DATA = {
       "openrouter_cache_read_price_per_m": 0.024999999999999998,
       "params_b": 8.03,
       "co2_kg": 2.1060373342307948,
+      "cache_hit_rate_max": 87.5,
       "radar_ctx": 0.065536,
+      "dirac_cache_hit_rates": [
+        {
+          "provider": "DeepInfra",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.02,
+          "eff_output_price": 0.048
+        },
+        {
+          "provider": "NovitaAI",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.02,
+          "eff_output_price": 0.048
+        },
+        {
+          "provider": "Cloudflare",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.152,
+          "eff_output_price": 0.285
+        },
+        {
+          "provider": "Cerebras",
+          "cache_hit_rate": 87.5,
+          "eff_input_price": 0.099,
+          "eff_output_price": 0.095
+        },
+        {
+          "provider": "Groq",
+          "cache_hit_rate": 67.8,
+          "eff_input_price": 0.033,
+          "eff_output_price": 0.075
+        }
+      ],
       "openrouter_vendor": "meta-llama"
     },
     {
@@ -37965,8 +37577,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "llama-4-maverick",
-      "name": "llama-4-maverick",
-      "creator": null,
+      "name": "Meta: Llama 4 Maverick",
+      "creator": "Meta Llama",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -45448,117 +45060,6 @@ window.PROCESSED_DATA = {
       "co2_kg": 0.371535779070013
     },
     {
-      "slug": "mimo-v2-5",
-      "name": "mimo-v2-5",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 74.2,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Xiaomi",
-          "cache_hit_rate": 74.2,
-          "eff_input_price": 0.183,
-          "eff_output_price": 2.057
-        }
-      ]
-    },
-    {
-      "slug": "mimo-v2-5-pro",
-      "name": "mimo-v2-5-pro",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 94.8,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 11.7,
-          "eff_input_price": 0.906,
-          "eff_output_price": 3.0
-        },
-        {
-          "provider": "Xiaomi",
-          "cache_hit_rate": 94.8,
-          "eff_input_price": 0.372,
-          "eff_output_price": 3.167
-        }
-      ]
-    },
-    {
-      "slug": "mimo-v2-flash",
-      "name": "mimo-v2-flash",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 58.7,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 58.7,
-          "eff_input_price": 0.053,
-          "eff_output_price": 0.299
-        },
-        {
-          "provider": "Xiaomi",
-          "cache_hit_rate": 55.0,
-          "eff_input_price": 0.05,
-          "eff_output_price": 0.298
-        }
-      ]
-    },
-    {
       "slug": "mimo-v2.5",
       "name": "mimo-v2.5",
       "creator": "Xiaomi",
@@ -45707,198 +45208,6 @@ window.PROCESSED_DATA = {
       "openrouter_cache_read_price_per_m": 0.03,
       "radar_ctx": 0.1024,
       "openrouter_vendor": "minimax"
-    },
-    {
-      "slug": "minimax-m2-5",
-      "name": "minimax-m2-5",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 85.3,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 62.5,
-          "eff_input_price": 0.075,
-          "eff_output_price": 1.148
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 84.9,
-          "eff_input_price": 0.071,
-          "eff_output_price": 1.197
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 52.6,
-          "eff_input_price": 0.158,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "Parasail",
-          "cache_hit_rate": 62.6,
-          "eff_input_price": 0.131,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 78.2,
-          "eff_input_price": 0.111,
-          "eff_output_price": 1.198
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 63.8,
-          "eff_input_price": 0.148,
-          "eff_output_price": 1.188
-        },
-        {
-          "provider": "Phala",
-          "cache_hit_rate": 32.9,
-          "eff_input_price": 0.2,
-          "eff_output_price": 1.379
-        },
-        {
-          "provider": "Weights & Biases",
-          "cache_hit_rate": 24.2,
-          "eff_input_price": 0.299,
-          "eff_output_price": 1.196
-        },
-        {
-          "provider": "Chutes",
-          "cache_hit_rate": 56.3,
-          "eff_input_price": 0.108,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "Baidu Qianfan",
-          "cache_hit_rate": 62.9,
-          "eff_input_price": 0.117,
-          "eff_output_price": 1.079
-        },
-        {
-          "provider": "Friendli",
-          "cache_hit_rate": 79.5,
-          "eff_input_price": 0.109,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "AkashML",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.15,
-          "eff_output_price": 1.149
-        },
-        {
-          "provider": "StreamLake",
-          "cache_hit_rate": 6.8,
-          "eff_input_price": 0.305,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "Inceptron",
-          "cache_hit_rate": 78.8,
-          "eff_input_price": 0.074,
-          "eff_output_price": 0.898
-        },
-        {
-          "provider": "MiniMax",
-          "cache_hit_rate": 85.3,
-          "eff_input_price": 0.07,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "MiniMax Highspeed",
-          "cache_hit_rate": 77.8,
-          "eff_input_price": 0.18,
-          "eff_output_price": 2.399
-        },
-        {
-          "provider": "MARA",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.3,
-          "eff_output_price": 1.2
-        }
-      ]
-    },
-    {
-      "slug": "minimax-m2-7",
-      "name": "minimax-m2-7",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 73.9,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Together",
-          "cache_hit_rate": 41.2,
-          "eff_input_price": 0.201,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "Fireworks",
-          "cache_hit_rate": 39.2,
-          "eff_input_price": 0.205,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "SambaNova",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.6,
-          "eff_output_price": 2.399
-        },
-        {
-          "provider": "Morph",
-          "cache_hit_rate": 73.9,
-          "eff_input_price": 0.279,
-          "eff_output_price": 1.199
-        },
-        {
-          "provider": "MiniMax",
-          "cache_hit_rate": 65.6,
-          "eff_input_price": 0.143,
-          "eff_output_price": 1.2
-        },
-        {
-          "provider": "MiniMax Highspeed",
-          "cache_hit_rate": 64.7,
-          "eff_input_price": 0.251,
-          "eff_output_price": 2.399
-        }
-      ]
     },
     {
       "slug": "minimax-m2-her",
@@ -47771,8 +47080,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "mistral-nemo",
-      "name": "mistral-nemo",
-      "creator": null,
+      "name": "Mistral: Mistral Nemo",
+      "creator": "Mistral",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -49226,57 +48535,6 @@ window.PROCESSED_DATA = {
       "openrouter_vendor": "mistralai"
     },
     {
-      "slug": "mistral-small-3.2-24b",
-      "name": "mistral-small-3.2-24b",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 41.9,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.075,
-          "eff_output_price": 0.198
-        },
-        {
-          "provider": "Parasail",
-          "cache_hit_rate": 41.9,
-          "eff_input_price": 0.073,
-          "eff_output_price": 0.598
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.094,
-          "eff_output_price": 0.249
-        },
-        {
-          "provider": "Mistral",
-          "cache_hit_rate": 15.9,
-          "eff_input_price": 0.086,
-          "eff_output_price": 0.299
-        }
-      ]
-    },
-    {
       "slug": "mistral-small-3.2-24b-instruct",
       "name": "Mistral: Mistral Small 3.2 24B",
       "creator": "Mistral",
@@ -49304,45 +48562,6 @@ window.PROCESSED_DATA = {
       "openrouter_cache_read_price_per_m": 0.01,
       "radar_ctx": 0.128,
       "openrouter_vendor": "mistralai"
-    },
-    {
-      "slug": "mistral-small-4",
-      "name": "mistral-small-4",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 16.1,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 11.2,
-          "eff_input_price": 0.187,
-          "eff_output_price": 0.749
-        },
-        {
-          "provider": "Mistral",
-          "cache_hit_rate": 16.1,
-          "eff_input_price": 0.128,
-          "eff_output_price": 0.599
-        }
-      ]
     },
     {
       "slug": "mistral-small-drummer-22b",
@@ -53094,39 +52313,6 @@ window.PROCESSED_DATA = {
       "openllm_mmlu_pro": 18.947621158392433,
       "params_b": 8.03,
       "co2_kg": 1.780599641553538
-    },
-    {
-      "slug": "owl-alpha",
-      "name": "owl-alpha",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 62.6,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Stealth",
-          "cache_hit_rate": 62.6,
-          "eff_input_price": 0.0,
-          "eff_output_price": 0.0
-        }
-      ]
     },
     {
       "slug": "palmyra-x5",
@@ -67366,156 +66552,6 @@ window.PROCESSED_DATA = {
       "radar_ctx": 0.065536
     },
     {
-      "slug": "qwen3-5-397b-a17b",
-      "name": "qwen3-5-397b-a17b",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 79.6,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.49,
-          "eff_output_price": 3.599
-        },
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 5.1,
-          "eff_input_price": 0.6,
-          "eff_output_price": 3.6
-        },
-        {
-          "provider": "Parasail",
-          "cache_hit_rate": 45.3,
-          "eff_input_price": 0.409,
-          "eff_output_price": 3.6
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.55,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 19.3,
-          "eff_input_price": 0.75,
-          "eff_output_price": 4.5
-        },
-        {
-          "provider": "Together",
-          "cache_hit_rate": 48.4,
-          "eff_input_price": 0.6,
-          "eff_output_price": 3.6
-        },
-        {
-          "provider": "Alibaba Cloud Int.",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.39,
-          "eff_output_price": 2.34
-        },
-        {
-          "provider": "Phala",
-          "cache_hit_rate": 35.5,
-          "eff_input_price": 0.55,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "Chutes",
-          "cache_hit_rate": 79.6,
-          "eff_input_price": 0.271,
-          "eff_output_price": 3.0
-        },
-        {
-          "provider": "GMICloud",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.6,
-          "eff_output_price": 3.6
-        },
-        {
-          "provider": "Morph",
-          "cache_hit_rate": 64.7,
-          "eff_input_price": 0.422,
-          "eff_output_price": 3.5
-        },
-        {
-          "provider": "Nebius Token Factory",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.6,
-          "eff_output_price": 3.598
-        }
-      ]
-    },
-    {
-      "slug": "qwen3-5-9b",
-      "name": "qwen3-5-9b",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 35.5,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "DeepInfra",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.04,
-          "eff_output_price": 0.148
-        },
-        {
-          "provider": "SiliconFlow",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.1,
-          "eff_output_price": 0.149
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 35.5,
-          "eff_input_price": 0.1,
-          "eff_output_price": 0.149
-        },
-        {
-          "provider": "Together",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.1,
-          "eff_output_price": 0.149
-        }
-      ]
-    },
-    {
       "slug": "qwen3-8b",
       "name": "Qwen: Qwen3 8B",
       "creator": "Qwen",
@@ -67601,81 +66637,6 @@ window.PROCESSED_DATA = {
       "openrouter_vendor": "qwen"
     },
     {
-      "slug": "qwen3-coder-480b-a35b",
-      "name": "qwen3-coder-480b-a35b",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 89.3,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "NovitaAI",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.38,
-          "eff_output_price": 1.549
-        },
-        {
-          "provider": "Google Vertex",
-          "cache_hit_rate": 49.2,
-          "eff_input_price": 0.22,
-          "eff_output_price": 1.799
-        },
-        {
-          "provider": "AtlasCloud",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.78,
-          "eff_output_price": 3.798
-        },
-        {
-          "provider": "Venice",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 0.35,
-          "eff_output_price": 1.5
-        },
-        {
-          "provider": "Together",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 2.0,
-          "eff_output_price": 2.0
-        },
-        {
-          "provider": "Weights & Biases",
-          "cache_hit_rate": 70.5,
-          "eff_input_price": 1.0,
-          "eff_output_price": 1.498
-        },
-        {
-          "provider": "DeepInfra (Turbo)",
-          "cache_hit_rate": 89.3,
-          "eff_input_price": 0.121,
-          "eff_output_price": 1.0
-        },
-        {
-          "provider": "Alibaba OpenSource",
-          "cache_hit_rate": 0.0,
-          "eff_input_price": 1.373,
-          "eff_output_price": 6.87
-        }
-      ]
-    },
-    {
       "slug": "qwen3-coder-flash",
       "name": "Qwen: Qwen3 Coder Flash",
       "creator": "Qwen",
@@ -67706,8 +66667,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "qwen3-coder-next",
-      "name": "qwen3-coder-next",
-      "creator": null,
+      "name": "Qwen: Qwen3 Coder Next",
+      "creator": "Qwen",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -68033,8 +66994,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "qwen3-vl-32b-instruct",
-      "name": "qwen3-vl-32b-instruct",
-      "creator": null,
+      "name": "Qwen: Qwen3 VL 32B Instruct",
+      "creator": "Qwen",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -68182,8 +67143,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "qwen3.5-35b-a3b",
-      "name": "qwen3.5-35b-a3b",
-      "creator": null,
+      "name": "Qwen: Qwen3.5-35B-A3B",
+      "creator": "Qwen",
       "type": null,
       "intel": null,
       "cost_per_task": null,
@@ -68296,41 +67257,35 @@ window.PROCESSED_DATA = {
       "context_window": 262144,
       "openrouter_inp_price_per_m": 0.09999999999999999,
       "openrouter_out_price_per_m": 0.15,
+      "cache_hit_rate_max": 35.5,
       "radar_ctx": 0.131072,
-      "openrouter_vendor": "qwen"
-    },
-    {
-      "slug": "qwen3.5-flash",
-      "name": "qwen3.5-flash",
-      "creator": null,
-      "type": null,
-      "intel": null,
-      "cost_per_task": null,
-      "tokens_m": null,
-      "speed_tps": null,
-      "inp_price": null,
-      "out_price": null,
-      "iq_per_dollar_pt": null,
-      "iq_per_mtok": null,
-      "iq_per_1k": null,
-      "cost_per_iq": null,
-      "useful_cost": null,
-      "reasoning_tax_pct": null,
-      "archetype": "uncategorized",
-      "has_breakdown": false,
-      "pareto_optimal": false,
-      "cost_percentile": null,
-      "iq_percentile": null,
-      "context_window": null,
-      "cache_hit_rate_max": 0.0,
       "dirac_cache_hit_rates": [
         {
-          "provider": "Alibaba Cloud Int.",
+          "provider": "DeepInfra",
           "cache_hit_rate": 0.0,
-          "eff_input_price": 0.065,
-          "eff_output_price": 0.259
+          "eff_input_price": 0.04,
+          "eff_output_price": 0.148
+        },
+        {
+          "provider": "SiliconFlow",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.1,
+          "eff_output_price": 0.149
+        },
+        {
+          "provider": "Venice",
+          "cache_hit_rate": 35.5,
+          "eff_input_price": 0.1,
+          "eff_output_price": 0.149
+        },
+        {
+          "provider": "Together",
+          "cache_hit_rate": 0.0,
+          "eff_input_price": 0.1,
+          "eff_output_price": 0.149
         }
-      ]
+      ],
+      "openrouter_vendor": "qwen"
     },
     {
       "slug": "qwen3.5-flash-02-23",
@@ -68593,16 +67548,7 @@ window.PROCESSED_DATA = {
       "arena_code_votes": 9474,
       "openrouter_inp_price_per_m": 0.325,
       "openrouter_out_price_per_m": 1.95,
-      "cache_hit_rate_max": 6.0,
       "radar_ctx": 0.5,
-      "dirac_cache_hit_rates": [
-        {
-          "provider": "Alibaba Cloud Int.",
-          "cache_hit_rate": 6.0,
-          "eff_input_price": 0.669,
-          "eff_output_price": 1.982
-        }
-      ],
       "openrouter_vendor": "qwen"
     },
     {

@@ -17,7 +17,7 @@
     model: {
       label: 'Model Detail',
       defaultSort: [{ key: 'intel', dir: 'desc' }],
-      buildRows: data => data,
+      buildRows: data => data.map(m => ({ ...m, providers: (m.dirac_cache_hit_rates || []).length })),
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
@@ -46,6 +46,10 @@
           r.openrouter_inp_price_per_m != null ? window.VIZ_NUM.fmtUSD(r.openrouter_inp_price_per_m) : '—', cls: 'num' },
         { key: 'params_b', label: 'PARAMS B', render: r =>
           r.params_b != null ? r.params_b.toFixed(0) : '—', cls: 'num' },
+        { key: 'providers', label: 'PROV', render: r =>
+          r.providers ? r.providers : '—', cls: 'num' },
+        { key: 'cache_hit_rate_max', label: 'BEST HIT %', render: r =>
+          r.cache_hit_rate_max != null ? r.cache_hit_rate_max.toFixed(1) + '%' : '—', cls: 'num' },
         { key: 'type', label: 'TYPE', render: r => r.type ?? '—' },
       ],
     },

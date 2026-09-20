@@ -3,7 +3,7 @@
     "generated": "2026-09-20",
     "version": "1.0",
     "total_axes": 71,
-    "total_models": 2299,
+    "total_models": 2268,
     "sources": [
       "AA",
       "Arena Code",
@@ -1015,7 +1015,7 @@
       "unit": "%",
       "higher_is_better": true,
       "description": "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
-      "models_have": 74,
+      "models_have": 61,
       "range": [
         0.0,
         98.6
@@ -1385,7 +1385,7 @@
       "unit": "tokens",
       "higher_is_better": true,
       "description": "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.",
-      "models_have": 443,
+      "models_have": 442,
       "range": [
         4095,
         2000000

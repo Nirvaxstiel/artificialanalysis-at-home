@@ -94,12 +94,13 @@ check('applySort multi-column', multi[0].intel === 30 && multi[1].intel === 10 &
 
 // ── matchesSearch: name / creator / slug, case-insensitive ──
 const m = { name: 'GPT-Four', creator: 'OpenAI', slug: 'gpt-4' };
-check('matchesSearch name', matchesSearch(m, 'gpt'));
-check('matchesSearch creator', matchesSearch(m, 'open'));
-check('matchesSearch slug', matchesSearch(m, '4'));
-check('matchesSearch case-insensitive', matchesSearch(m, 'OPENAI'));
-check('matchesSearch empty matches all', matchesSearch(m, ''));
-check('matchesSearch miss', !matchesSearch(m, 'claude'));
+const F = ['name', 'creator', 'slug'];
+check('matchesSearch name', matchesSearch(m, 'gpt', F));
+check('matchesSearch creator', matchesSearch(m, 'open', F));
+check('matchesSearch slug', matchesSearch(m, '4', F));
+check('matchesSearch case-insensitive', matchesSearch(m, 'OPENAI', F));
+check('matchesSearch empty matches all', matchesSearch(m, '', F));
+check('matchesSearch miss', !matchesSearch(m, 'claude', F));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

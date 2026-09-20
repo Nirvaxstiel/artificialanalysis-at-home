@@ -54,17 +54,38 @@ def step_aa(state):
     return ok(state)
 
 
+def _normalize_id(model_id: str) -> str:
+    return model_id.replace(".", "").replace("-", "").replace("_", "").lower()
+
+
+def _resolve_existing(all_models: dict, canonical_id: str) -> str | None:
+    if canonical_id in all_models and all_models[canonical_id].get("name"):
+        return canonical_id
+    normalized = _normalize_id(canonical_id)
+    candidates = [cid for cid in all_models
+                  if _normalize_id(cid) == normalized and all_models[cid].get("name")]
+    return candidates[0] if len(candidates) == 1 else None
+
+
 def step_dirac(state):
+    all_models = state["all_models"]
+    attached = 0
+    unresolved = []
     for canonical_id, record in get_dirac_models(BASE).items():
-        model = state["all_models"].setdefault(canonical_id, {
-            "id": canonical_id, "name": None, "creator": None, "model_type": None,
-            "meta": {}, "pricing": {}, "benchmarks": {}, "aliases": {}})
+        target = _resolve_existing(all_models, canonical_id)
+        if target is None:
+            unresolved.append(canonical_id)
+            continue
+        model = all_models[target]
         dirac_benchmarks = record.get("benchmarks", {}).get("dirac")
         if dirac_benchmarks:
             model.setdefault("benchmarks", {}).setdefault("dirac", {}).update(dirac_benchmarks)
         dirac_meta = record.get("meta", {})
         if dirac_meta:
             model.setdefault("meta", {}).update(dirac_meta)
+        attached += 1
+    state["counts"]["dirac"] = attached
+    state["dirac_unresolved"] = unresolved
     return ok(state)
 
 
@@ -278,7 +299,7 @@ def step_write(state):
     return ok(state)
 
 
-def _print_summary(output_models, name_map):
+def _print_summary(output_models, name_map, dirac_unresolved=None):
     print("\n── SOURCE COVERAGE ──")
     source_count = {"aa": 0, "livebench": 0, "arena": 0, "openllm": 0, "openrouter": 0}
     multi_source = 0
@@ -304,6 +325,10 @@ def _print_summary(output_models, name_map):
         if "aa" in m.get("pricing", {}) and "openrouter" in m.get("pricing", {}):
             aa_plus += 1
     print(f"  AA models with cross-source data: {aa_plus}")
+    if dirac_unresolved:
+        print(f"\n  Dirac ids with no matching AA model (skipped, no stub): {len(dirac_unresolved)}")
+        for cid in dirac_unresolved:
+            print(f"    {cid}")
     print("\n── TOP 20 MODELS (by sources) ──")
     def source_count_for_model(m):
         return len([s_ for s_ in m.get("pricing", {}) if m["pricing"][s_]]) + len([s_ for s_ in m.get("benchmarks", {}) if m["benchmarks"][s_]])
@@ -335,16 +360,16 @@ def run(ctx=None):
 
     pipeline = (Pipeline(state)
         .then("step_aa", lambda c: step_aa(c))
-        .then("step_dirac", lambda c: step_dirac(c))
         .then("step_livebench", lambda c: step_livebench(c))
         .then("step_arena_text", lambda c: step_arena_text(c))
         .then("step_arena_code", lambda c: step_arena_code(c))
         .then("step_openllm", lambda c: step_openllm(c))
         .then("step_openrouter", lambda c: step_openrouter(c))
+        .then("step_dirac", lambda c: step_dirac(c))
         .then("step_misc", lambda c: step_misc(c))
         .then("step_name_map", lambda c: step_name_map(c))
         .then("step_write", lambda c: step_write(c))
-        .then("print_summary", lambda c: _print_summary(c["output_models"], c["name_map"])))
+        .then("print_summary", lambda c: _print_summary(c["output_models"], c["name_map"], c.get("dirac_unresolved"))))
     pipeline.run()
 
     if pipeline.ctx.get("_failed_step"):

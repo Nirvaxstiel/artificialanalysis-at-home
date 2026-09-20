@@ -7,6 +7,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "data"))
 
 from _domain import ProjectionRow, Provenance  # noqa: E402
+from _canonical import dirac_name_to_canonical  # noqa: E402
 
 
 def _load_processed():
@@ -54,6 +55,39 @@ class TestDiracCacheHitRate:
 
     def test_cache_hit_rate_field_provenance_sourced(self):
         assert ProjectionRow.FIELD_PROVENANCE.get("cache_hit_rate_max") == Provenance.SOURCED
+
+    def test_provider_rates_slugs_are_canonical_ids(self):
+        rates = json.loads((REPO / "data" / "sources" / "dirac" / "provider_rates.json").read_text(encoding="utf-8"))
+        entries = [e for rows in rates.values() for e in rows]
+        assert entries, "provider_rates.json is empty"
+        expected = {dirac_name_to_canonical(e["model_name"]).unwrap_or(None) for e in entries}
+        assert None not in expected, "a dirac model_name does not resolve through DIRAC_NAME_MAP"
+        assert {e["slug"] for e in entries} == expected, "provider_rates.json slugs must equal the canonical ids"
+
+    def test_no_record_carries_only_dirac_rows(self):
+        reg = _load_registry()
+        shells = []
+        for m in reg["models"]:
+            if not m.get("meta", {}).get("dirac_cache_hit_rates"):
+                continue
+            aa_pricing = m.get("pricing", {}).get("aa", {}) or {}
+            aa_bench = m.get("benchmarks", {}).get("aa", {}) or {}
+            other_pricing = {s: v for s, v in m.get("pricing", {}).items() if s != "aa" and v}
+            if not any(v is not None for v in aa_pricing.values()) \
+                    and not any(v is not None for v in aa_bench.values()) \
+                    and not other_pricing and not m.get("name"):
+                shells.append(m["id"])
+        assert not shells, f"dirac rows attached to nameless shell records: {shells}"
+
+    def test_provider_rows_attach_only_to_real_models(self, processed_js):
+        with_dirac = [m for m in processed_js if m.get("dirac_cache_hit_rates")]
+        assert len(with_dirac) >= 40, f"dirac coverage collapsed: {len(with_dirac)} models"
+        unsourced = [m["slug"] for m in with_dirac
+                     if not any(m.get(f) is not None for f in
+                                ("intel", "cost_per_task", "inp_price", "out_price", "context_window",
+                                 "livebench_average", "arena_code_elo", "arena_text_elo",
+                                 "openllm_average", "openrouter_inp_price_per_m", "params_b"))]
+        assert not unsourced, f"dirac rows on models with no other sourced data: {unsourced}"
 
 
 # ── (C) iq_per_dollar translation fix ──

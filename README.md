@@ -11,7 +11,7 @@ Built for users who want to pick a model and care about more than one axis.
 | Tab | What it answers |
 |-----|-----------------|
 | **The Crossover** | X/Y scatter on any pair of (Intel, LiveBench, Arena Elo, OpenRouter pricing, speed, context). Bubble size = context window. |
-| **Cost Breakdown** | Per-model cost split (Input / Cached / Answer / Reasoning) with cache hit rate toggle. |
+| **Cost Breakdown** | Per-model cost split (Input / Cached / Answer / Reasoning) on the AA baseline, or repriced on any cache provider's observed effective rates. |
 | **Provider Archetypes** | Radar per creator across 5 axes: IQ, Speed, Token Eff, Cache Eff, Cost Eff. |
 | **Cost per IQ Point** | Bar: how much $ you pay per IQ point, log scale. |
 | **Data Tables** | Sortable, filterable multi-view table of all fields. Click banner → jumps to this row. |
@@ -87,7 +87,7 @@ Shared config in `viz/_shared.js`:
 - `RADAR_AXES` — 5 radar axes (IQ / Speed / Token Eff / Cache Eff / Cost Eff)
 - `FIELD_LABELS` — display names for table columns
 - `COST_SEGMENTS` — color + label for cost breakdown
-- `CACHE_HIT_RATES` — observed rates from Dirac.run / OpenRouter
+- `dirac_cache_hit_rates` (per model) — observed cache hit % + effective $/M per provider, from Dirac.run / OpenRouter effective pricing; drives the Cost Breakdown provider mode and the Provider Data view
 
 Generic filter: `window.__legendFilter = { dim, val }` — shared across all views, top-bar driven.
 

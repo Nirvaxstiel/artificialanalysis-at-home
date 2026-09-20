@@ -1,6 +1,6 @@
 // Black-box contract tests for viz/cost-breakdown.js pure transforms.
 // Node-only, no jsdom, no DOM. Loads the real file (shimmed window), asserts
-// buildCostData / applyExternalCache / getCacheHitRate input->output.
+// buildCostData / providerOptions / providerView / axisFor input->output.
 // No impl spying — input shape in, derived shape out.
 
 const fs = require('fs');
@@ -8,10 +8,14 @@ const path = require('path');
 
 function loadViz(file) {
   const win = {
-    CACHE_HIT_RATES: { 'gpt-x': 0.5, 'gpt-y': 0.8 },
     COST_SEGMENTS: {
-      aa: [{ key: 'answer_usd', label: 'ANSWER' }, { key: 'reasoning_usd', label: 'REASONING' }],
-      ext: [{ key: 'input_usd', label: 'INPUT' }],
+      aa: [
+        { key: 'input_usd', label: 'INPUT' },
+        { key: 'cache_hit_usd', label: 'CACHED INPUT' },
+        { key: 'cache_write_usd', label: 'CACHE WRITE' },
+        { key: 'answer_usd', label: 'ANSWER' },
+        { key: 'reasoning_usd', label: 'REASONING' },
+      ],
     },
   };
   const src = fs.readFileSync(path.join(__dirname, '..', 'viz', file), 'utf8');
@@ -21,62 +25,78 @@ function loadViz(file) {
 }
 
 const { COST_BREAKDOWN } = loadViz('cost-breakdown.js');
-const { buildCostData, applyExternalCache, getCacheHitRate } = COST_BREAKDOWN;
+const { buildCostData, providerOptions, providerView, providerTaskRow, axisFor } = COST_BREAKDOWN;
 
 let pass = 0, fail = 0;
 function check(name, cond) {
   if (cond) { pass++; } else { fail++; console.log('FAIL:', name); }
 }
+const near = (a, b) => Math.abs(a - b) < 1e-9;
 
-// ── buildCostData: keeps only models with cost_seg_total > 0, maps fields ──
 const raw = [
   { slug: 'gpt-x', name: 'GPT X', creator: 'OpenAI', cost_seg_total: 1.5,
     cost_seg_answer: 1.0, cost_seg_reasoning: 0.5, cost_seg_input: 0.3,
-    cost_seg_cache_hit: 0.2, cost_seg_cache_write: 0.1 },
-  { slug: 'no-seg', name: 'No Seg', creator: 'X', cost_seg_total: null },
+    cost_seg_cache_hit: 0.2, cost_seg_cache_write: 0.1,
+    inp_price: 5, out_price: 10,
+    dirac_cache_hit_rates: [
+      { provider: 'DeepInfra', cache_hit_rate: 80, eff_input_price: 2.5, eff_output_price: 5 },
+      { provider: 'Together', cache_hit_rate: 50, eff_input_price: 6, eff_output_price: 12 },
+    ] },
+  { slug: 'no-seg', name: 'No Seg', creator: 'X', cost_seg_total: null,
+    inp_price: 1, out_price: 2,
+    dirac_cache_hit_rates: [{ provider: 'DeepInfra', cache_hit_rate: 60, eff_input_price: 0.5, eff_output_price: 1.5 }] },
   { slug: 'zero', name: 'Zero', creator: 'Y', cost_seg_total: 0 },
+  { slug: 'unpriced', name: 'Unpriced', creator: 'Z', cost_seg_total: null,
+    dirac_cache_hit_rates: [{ provider: 'DeepInfra', cache_hit_rate: 40, eff_input_price: null, eff_output_price: null }] },
 ];
+
+// ── buildCostData: only rows with cost_seg_total > 0, missing segments default 0 ──
 const built = buildCostData(raw);
-check('buildCostData filters to only cost_seg_total>0', built.length === 1);
-check('buildCostData maps total', Math.abs(built[0].total_cost_per_task_usd - 1.5) < 1e-9);
-check('buildCostData maps segments', Math.abs(built[0].answer_usd - 1.0) < 1e-9 && Math.abs(built[0].reasoning_usd - 0.5) < 1e-9);
-check('buildCostData preserves present segment', Math.abs(built[0].cache_write_usd - 0.1) < 1e-9);
-// model with a missing segment field falls back to 0 via ||
-const rawMissing = [
-  { slug: 'm', name: 'M', creator: 'X', cost_seg_total: 2.0,
-    cost_seg_answer: 1.0, cost_seg_reasoning: 0.5 },
-];
-const builtMissing = buildCostData(rawMissing);
-check('buildCostData missing segment defaults to 0', builtMissing[0].cache_write_usd === 0 && builtMissing[0].cache_hit_usd === 0);
-check('buildCostData cache_hit_rate null (AA has none)', built[0].cache_hit_rate === null);
+check('buildCostData keeps only cost_seg_total>0', built.length === 1);
+check('buildCostData maps total', near(built[0].total_cost_per_task_usd, 1.5));
+check('buildCostData maps every segment', near(built[0].input_usd, 0.3) && near(built[0].cache_hit_usd, 0.2) &&
+  near(built[0].cache_write_usd, 0.1) && near(built[0].answer_usd, 1.0) && near(built[0].reasoning_usd, 0.5));
+check('buildCostData defaults absent segments to 0',
+  buildCostData([{ slug: 'm', name: 'M', creator: 'X', cost_seg_total: 2, cost_seg_answer: 2 }])[0].cache_write_usd === 0);
 
-// ── getCacheHitRate: exact + dot-slug fallback ──
-check('getCacheHitRate exact', getCacheHitRate('gpt-x') === 0.5);
-check('getCacheHitRate dot fallback', getCacheHitRate('gpt-y') === 0.8);
-check('getCacheHitRate missing -> null', getCacheHitRate('unknown') === null);
-// dot variant: slug with dashes maps to dotted key
-check('getCacheHitRate dash->dot', getCacheHitRate('gpt-x') === 0.5);
+// ── providerOptions: providers with usable eff rates, ordered by coverage ──
+const opts = providerOptions(raw);
+check('providerOptions orders providers by coverage', opts.length === 2 && opts[0].name === 'DeepInfra' && opts[1].name === 'Together');
+check('providerOptions counts entries with eff rates', opts[0].count === 2 && opts[1].count === 1);
+check('providerOptions ignores entries without eff rates', opts.every(o => o.name !== 'unpriced'));
 
-// ── applyExternalCache: redistributes input/cache_hit by observed hit rate ──
-const seg = buildCostData([
-  { slug: 'gpt-x', name: 'GPT X', creator: 'OpenAI', cost_seg_total: 1.5,
-    cost_seg_answer: 1.0, cost_seg_reasoning: 0.5, cost_seg_input: 0.3,
-    cost_seg_cache_hit: 0.2, cost_seg_cache_write: 0.1 },
-]);
-const ext = applyExternalCache(seg);
-check('applyExternalCache returns same count', ext.length === 1);
-check('applyExternalCache zeroes cache_write', ext[0].cache_write_usd === 0);
-// With rate 0.5 and CACHE_PRICE_RATIO 0.1: uncached = 0.5*totalInputAtFull, cached = 0.5*0.1*totalInputAtFull.
-// Conserves total input across uncached+cached.
-const totalInput = seg[0].input_usd + seg[0].cache_hit_usd + seg[0].cache_write_usd;
-check('applyExternalCache conserves input total',
-  Math.abs((ext[0].input_usd + ext[0].cache_hit_usd) - totalInput) < 1e-6);
-// cached cost strictly less than full input when rate>0 and ratio<1
-check('applyExternalCache cached cost discounted', ext[0].cache_hit_usd < seg[0].cache_hit_usd);
+// ── providerTaskRow: reprices AA segments by provider eff rate / AA list rate ──
+const task = providerTaskRow(built[0], raw[0], raw[0].dirac_cache_hit_rates[0]);
+check('providerTaskRow input ratio', near(task.rIn, 0.5));
+check('providerTaskRow output ratio', near(task.rOut, 0.5));
+check('providerTaskRow scales input side only', near(task.input_usd, 0.15) && near(task.cache_hit_usd, 0.1) &&
+  near(task.cache_write_usd, 0.05));
+check('providerTaskRow scales output side only', near(task.answer_usd, 0.5) && near(task.reasoning_usd, 0.25));
+check('providerTaskRow total is the scaled sum', near(task.total_cost_per_task_usd, 1.05));
+check('providerTaskRow carries observed hit rate', task.hit_rate === 80);
+check('providerTaskRow refuses a model with no list price',
+  providerTaskRow(built[0], { inp_price: 0, out_price: 0 }, raw[0].dirac_cache_hit_rates[0]) === null);
+check('providerTaskRow refuses an entry with no eff rates',
+  providerTaskRow(built[0], raw[0], { eff_input_price: null, eff_output_price: 2 }) === null);
 
-// Models with no known rate are unchanged
-const noRate = applyExternalCache([{ slug: 'unknown', input_usd: 1, cache_hit_usd: 0, cache_write_usd: 0, total_cost_per_task_usd: 1 }]);
-check('applyExternalCache no-rate unchanged', noRate[0].input_usd === 1 && noRate[0].cache_hit_usd === 0);
+// ── providerView: models with AA per-task cost → taskRows, rest → rateRows ──
+const view = providerView(raw, 'DeepInfra');
+check('providerView routes segment models to taskRows', view.taskRows.length === 1 && view.taskRows[0].slug === 'gpt-x');
+check('providerView routes segment-less models to rateRows', view.rateRows.length === 1 && view.rateRows[0].slug === 'no-seg');
+check('providerView excludes models the provider does not serve', !view.taskRows.concat(view.rateRows).some(r => r.slug === 'zero'));
+check('providerView drops entries without eff rates', !view.rateRows.some(r => r.slug === 'unpriced'));
+check('rate row total is 1M input + 1M output at eff rates', near(view.rateRows[0].total_cost_per_task_usd, 2));
+check('providerView for another provider is empty on segments',
+  providerView(raw, 'Together').taskRows.length === 1 && providerView(raw, 'Together').rateRows.length === 0);
+check('providerView for an unknown provider is empty',
+  providerView(raw, 'Nope').taskRows.length === 0 && providerView(raw, 'Nope').rateRows.length === 0);
+
+// ── axisFor: log ticks bracketing the data ──
+const ticks = axisFor([0.04, 1.2, 0.6]);
+check('axisFor brackets max', ticks[ticks.length - 1] >= 1.2);
+check('axisFor brackets min', ticks[0] <= 0.04);
+check('axisFor ticks ascend', ticks.every((t, i) => i === 0 || t > ticks[i - 1]));
+check('axisFor falls back to AA ticks with no positive values', axisFor([0, null]).length > 0);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

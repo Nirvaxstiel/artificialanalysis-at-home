@@ -105,6 +105,9 @@ nav.tabs button.active .sub { color: rgba(0,0,0,0.6); }
 .cache-toggle-btn[data-source="external"].active {
   background: var(--neon2); color: #000;
 }
+.cache-toggle-btn[data-provider].active {
+  background: var(--neon2); color: #000;
+}
 
 /* Color toggle buttons (01-crossover) */
 .color-toggle-btn {

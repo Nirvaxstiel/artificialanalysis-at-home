@@ -92,11 +92,13 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 - **Script:** `_pull_sources.py` reads local parquet → `openllm_aa_subset.json` (keyword-filtered to AA-relevant models).
 - **Repro:** download parquet externally first, then `python data/_pull_sources.py`.
 
-### 7. Dirac.run (`dirac/cache_hit_rates.json`)
+### 7. Dirac.run (`dirac/cache_hit_rates.json` → `dirac/provider_rates.json`)
 - **Method:** fetch `dirac.run/posts/cache-hit-rates-agents`, parse the `#the-full-table` `<table>` (the page renders the full table in HTML; extract `<tr>` rows → `model`, `provider`, `eff_input_price`, `eff_output_price`, `cache_hit_rate`). A one-off Python parse (`urllib` + regex on `<table>`) writes `cache_hit_rates.json` — no manual transcription needed.
 - **No API.** 398 rows: `model`, `provider`, `cache_hit_rate`, `eff_input_price`, `eff_output_price`.
-- **Semantics:** observed % of input served from prefix cache — distinct from AA's `cache_hit_price` ($/Mtok read price). Never conflate.
-- **Repro:** re-fetch + re-parse when a new snapshot posts.
+- **Semantics:** observed % of input served from prefix cache — distinct from AA's `cache_hit_price` ($/Mtok read price). Never conflate. `eff_input_price` / `eff_output_price` are observed *effective* $/M (cache effect already blended in).
+- **Provider-centric artifact:** `dirac/provider_rates.json` = `{provider: [{slug, model_name, cache_hit_rate, eff_input_price, eff_output_price}]}`, sorted by provider coverage then per-provider hit rate. This is the provider→model mapping the dashboard toggles on.
+- **Repro:** `PYTHONPATH=data python -m data.sources.dirac._build_provider_rates` (raw table → provider artifact; re-run on a new snapshot, then rebuild).
+- **Id resolution happens at registry time, in code — not in the file.** `data/sources/dirac/_build.py` resolves each `model_name` through `DIRAC_NAME_MAP` (`data/_canonical.py`) and falls back to the file's `slug`; `step_dirac` attaches the record **only to a model that already exists** (exact id, else a unique dot/dash-normalized match) and counts the rest as unresolved. It never invents a record — a stale map target used to create a nameless shell model next to the real one (57 of 74 provider-mapped models were such shells; `glm-5.1` had its provider rows split 19+6 across both ids).
 
 ### 8. Chatbot Arena (Code + Text)
 - **Method:** **manual JSON download** of the leaderboard → `arena_code.json` / `arena_text.json` (each has `meta` + `models[]`).
