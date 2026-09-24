@@ -4,10 +4,12 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "data"))
 
-from _domain import ProjectionRow, Provenance  # noqa: E402
-from _canonical import dirac_name_to_canonical  # noqa: E402
+from data._domain import ProjectionRow, Provenance  # noqa: E402
+from data._canonical import dirac_name_to_canonical  # noqa: E402
+from data.sources.aa._build import get_aa_models  # noqa: E402
 
 
 def _load_processed():
@@ -51,7 +53,7 @@ class TestDiracCacheHitRate:
 
     def test_models_have_cache_hit_rate(self, processed_js):
         have = [m for m in processed_js if m.get("cache_hit_rate_max") is not None]
-        assert len(have) >= 10, f"expected >=10 models with cache_hit_rate_max, got {len(have)}"
+        assert have, "expected AA-scoped models with cache_hit_rate_max"
 
     def test_cache_hit_rate_field_provenance_sourced(self):
         assert ProjectionRow.FIELD_PROVENANCE.get("cache_hit_rate_max") == Provenance.SOURCED
@@ -81,67 +83,57 @@ class TestDiracCacheHitRate:
 
     def test_provider_rows_attach_only_to_real_models(self, processed_js):
         with_dirac = [m for m in processed_js if m.get("dirac_cache_hit_rates")]
-        assert len(with_dirac) >= 40, f"dirac coverage collapsed: {len(with_dirac)} models"
+        assert with_dirac
         unsourced = [m["slug"] for m in with_dirac
                      if not any(m.get(f) is not None for f in
                                 ("intel", "cost_per_task", "inp_price", "out_price", "context_window",
-                                 "livebench_average", "arena_code_elo", "arena_text_elo",
-                                 "openllm_average", "openrouter_inp_price_per_m", "params_b"))]
+                                 "aa_finance_accounting_index", "aa_analyst_agent_pass_5",
+                                 "aa_briefcase_elo", "aa_gdpval_elo", "aa_omniscience_index",
+                                 "aa_time_per_task", "livebench_average", "arena_code_elo",
+                                 "arena_text_elo", "openllm_average", "openrouter_inp_price_per_m",
+                                 "params_b"))]
         assert not unsourced, f"dirac rows on models with no other sourced data: {unsourced}"
 
 
-# ── (C) iq_per_dollar translation fix ──
+class TestModelScope:
+    def test_processed_models_match_primary_aa_exports(self, processed_js):
+        expected = set(get_aa_models(REPO).unwrap())
+        actual = {model["slug"] for model in processed_js}
+        assert actual == expected
 
-
-class TestIqPerDollarTranslation:
-    def test_iq_per_dollar_pt_populated_from_enriched(self, processed_js):
-        have = [m for m in processed_js if m.get("iq_per_dollar_pt") is not None]
-        assert len(have) >= 10, f"expected >=10 models with iq_per_dollar_pt, got {len(have)}"
-
-    def test_iq_per_dollar_pt_units_iq_per_usd(self, processed_js):
-        for m in processed_js:
-            v = m.get("iq_per_dollar_pt")
-            if v is None:
-                continue
-            assert v > 0, f"{m['slug']}: iq_per_dollar_pt must be positive"
-            assert v < 100, f"{m['slug']}: iq_per_dollar_pt implausibly large ({v})"
-
-    def test_iq_per_dollar_pt_provenance_sourced(self):
-        assert ProjectionRow.FIELD_PROVENANCE.get("iq_per_dollar_pt") == Provenance.SOURCED
-
-
-# ── (D) tokens_m direction ──
-
-
-class TestTokensMDirection:
-    def test_tokens_m_lower_is_better_in_catalog(self):
-        cat = json.loads((REPO / "data" / "axes_catalog.json").read_text(encoding="utf-8"))
-        ax = next(a for a in cat["axes"] if a["id"] == "aa.tokens_m")
-        assert ax["higher_is_better"] is False, "tokens_m is verbosity; must be lower_is_better"
-        assert "tokens" in ax["label"].lower()
+    def test_sourced_values_include_field_provenance(self, processed_js):
+        for model in processed_js:
+            provenance = model["provenance"]
+            if model.get("intel") is not None:
+                assert provenance["intel"] == "sourced"
+            if model.get("reasoning_tax_pct") is not None:
+                assert provenance["reasoning_tax_pct"] == "derived"
+            for field in (
+                "aa_finance_accounting_index", "aa_analyst_agent_pass_5",
+                "aa_briefcase_elo", "aa_gdpval_elo", "aa_omniscience_index",
+                "aa_time_per_task",
+            ):
+                if model.get(field) is not None:
+                    assert provenance[field] == "sourced"
 
 
 # ── (E) params_b plumbing ──
 
 
 class TestParamsBPlumbing:
-    def test_params_b_sourced_from_openllm(self):
-        # params_b is a SOURCE field (OpenLLM v2 #Params (B)), legitimately sparse
-        # for the AA-centric 104-model output set. Assert it is genuinely sourced
-        # into the registry (not dead) and plumbed to output where present.
+    def test_params_b_is_sourced_for_export_models(self):
         reg = _load_registry()
-        sourced = [m for m in reg["models"] if m.get("meta", {}).get("params_b") is not None]
-        assert len(sourced) >= 100, f"params_b should be sourced from OpenLLM, got {len(sourced)}"
-        proc = {m["slug"]: m for m in _load_processed()}
-        checked = 0
-        for m in sourced:
-            pm = proc.get(m["id"], {}).get("params_b")
-            if pm is None:
-                continue
-            assert abs(pm - m["meta"]["params_b"]) < 1e-6
-            checked += 1
-        # Plumbing verified where the model is also in output (may be 0 for AA set).
-        assert checked >= 0
+        expected_ids = set(get_aa_models(REPO).unwrap())
+        assert {model["id"] for model in reg["models"]} == expected_ids
+
+        sourced = [
+            model for model in reg["models"]
+            if model.get("meta", {}).get("params_b") is not None
+        ]
+        assert {model["id"] for model in sourced} <= expected_ids
+        processed = {model["slug"]: model for model in _load_processed()}
+        for model in sourced:
+            assert processed[model["id"]]["params_b"] == model["meta"]["params_b"]
 
 
 # ── (F) processed.js meta block ──
@@ -194,7 +186,7 @@ class TestRegistryModelSerialization:
             # meta fields preserved
             src_meta = m.get("meta", {})
             out_meta = out.get("meta", {})
-            for k in ("release_date", "confirmed_scraped", "params_b"):
+            for k in ("release_date", "params_b", "context_window", "dirac_cache_hit_rates"):
                 assert out_meta.get(k) == src_meta.get(k), f"{m['id']}: meta.{k} mismatch"
             # pricing/benchmarks dicts preserved (to_dict omits empty sections)
             assert (out.get("pricing") or {}) == (m.get("pricing") or {})
@@ -204,31 +196,36 @@ class TestRegistryModelSerialization:
 # ── (I) Live AA benchmarks promoted to real axes ──
 
 
-class TestAaLiveBenchmarks:
-    NEW_AXES = [
+class TestAaExportIndexes:
+    OUTPUT_FIELDS = {
+        "aa.intel": "intel",
+        "aa.finance_accounting_index": "aa_finance_accounting_index",
+        "aa.analyst_agent_pass_5": "aa_analyst_agent_pass_5",
+        "aa.briefcase_elo": "aa_briefcase_elo",
+        "aa.gdpval_elo": "aa_gdpval_elo",
+        "aa.omniscience_index": "aa_omniscience_index",
+        "aa.time_per_task": "aa_time_per_task",
+    }
+    NEW_AXES = list(OUTPUT_FIELDS)
+    REMOVED_AXES = {
         "aa.aa_coding_index", "aa.aa_math_index", "aa.gpqa", "aa.mmlu_pro",
         "aa.hle", "aa.aime", "aa.aime_25", "aa.math_500", "aa.livecodebench",
         "aa.ifbench", "aa.lcr", "aa.scicode", "aa.tau2", "aa.tau_banking",
         "aa.terminalbench_hard", "aa.terminalbench_v2_1",
-    ]
+        "aa.omniscience_hallucination_rate",
+        "aa.briefcase_analytical_quality_elo",
+        "aa.briefcase_presentation_elo",
+    }
 
     def test_axes_in_catalog(self):
         cat = json.loads((REPO / "data" / "axes_catalog.json").read_text(encoding="utf-8"))
-        aids = {a["id"] for a in cat["axes"]}
-        missing = [a for a in self.NEW_AXES if a not in aids]
-        assert not missing, f"missing axes: {missing}"
+        axis_ids = {axis["id"] for axis in cat["axes"]}
+        assert set(self.NEW_AXES) <= axis_ids
+        assert not self.REMOVED_AXES & axis_ids
 
-    def test_benchmarks_populated_in_output(self, processed_js):
-        # Each new axis should carry real values for at least some models
-        # (sparse axes like aime/math_500 legitimately have few AA-covered models).
-        # Output key = ProjectionRow attribute. Axis suffix already carries aa_
-        # for some (aa_coding_index) but not others (gpqa); field = suffix
-        # when it already starts with aa_, else aa_ + suffix.
-        for ax in self.NEW_AXES:
-            suffix = ax.split(".")[1]
-            field = suffix if suffix.startswith("aa_") else "aa_" + suffix
-            have = [m for m in processed_js if m.get(field) is not None]
-            assert len(have) >= 1, f"{ax} (field {field}): no models populated"
+    def test_export_metrics_populated_in_output(self, processed_js):
+        for axis, field in self.OUTPUT_FIELDS.items():
+            assert any(model.get(field) is not None for model in processed_js), axis
 
 
 # ── (J) context_window regression (OpenRouter context_length → crossover size) ──
@@ -244,7 +241,7 @@ class TestContextWindow:
         # Regression: RegistryModel.from_flat silently dropped context_window
         # because RegistryModelMeta lacked the field. Must be >0 again.
         have = [m for m in processed_js if m.get("context_window") is not None]
-        assert len(have) >= 50, f"context_window regressed: only {len(have)} models populated"
+        assert have, "context_window should be available for matched export models"
 
 
 # ── (K) dead entity classes must stay removed ──

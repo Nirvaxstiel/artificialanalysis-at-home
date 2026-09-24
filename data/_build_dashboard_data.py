@@ -1,5 +1,6 @@
 
 import json, re, os
+from dataclasses import replace
 from pathlib import Path
 
 import sys
@@ -7,21 +8,20 @@ BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE))
 
 from project_axes import ProjectionEngine
-from _result import ok, err
+from _result import Err, Ok, ok, err
 from _pipeline import Pipeline
 from _domain import (
     ProjectionRow, ProjectionRowMeta,
     Archetype, ModelType,
-    safe_ppm, safe_cost, safe_tok_per_task, safe_tps, safe_ttft,
-    safe_useful_cost, safe_reasoning_tax,
-    safe_cost_segment, safe_intel, safe_iq_per_mtok,
-    safe_cost_per_iq, safe_iq_per_dollar,
+    safe_ppm, safe_cost, safe_tps, safe_reasoning_tax,
+    safe_cost_segment, safe_intel, safe_finance_accounting_index,
+    safe_pass_rate, safe_omniscience,
     safe_elo, safe_ci, safe_votes, safe_benchmark,
-    safe_params, safe_carbon, safe_pct,
+    safe_params, safe_carbon,
     safe_ctx_window,
     safe_response_time,
     safe_cache,
-    try_model_type, try_archetype,
+    try_model_type,
 )
 
 
@@ -72,16 +72,11 @@ def classify_archetype(row: ProjectionRow) -> Archetype:
 
 _PROJECTION_AXES = [
     "aa.inp_price", "aa.out_price", "aa.blended",
-    "aa.cost_per_task", "aa.tokens_m", "aa.speed_tps", "aa.ttft",
-    "aa.useful_cost", "aa.reasoning_tax_pct",
+    "aa.cost_per_task", "aa.speed_tps", "aa.reasoning_tax_pct",
     "aa.cache_hit_price",
-    "aa.intel", "aa.iq_per_mtok", "aa.iq_per_dollar", "aa.iq_per_1k", "aa.cost_per_iq",
-    "aa.aa_coding_index", "aa.aa_math_index", "aa.gpqa", "aa.mmlu_pro",
-    "aa.hle", "aa.aime", "aa.aime_25", "aa.math_500", "aa.livecodebench",
-    "aa.ifbench", "aa.lcr", "aa.scicode", "aa.tau2", "aa.tau_banking",
-    "aa.terminalbench_hard", "aa.terminalbench_v2_1",
-    "aa.omniscience_hallucination_rate", "aa.briefcase_analytical_quality_elo",
-    "aa.briefcase_presentation_elo", "aa.time_per_task",
+    "aa.intel", "aa.finance_accounting_index", "aa.analyst_agent_pass_5",
+    "aa.briefcase_elo", "aa.gdpval_elo", "aa.omniscience_index",
+    "aa.time_per_task",
     "aa.cost_seg_total", "aa.cost_seg_answer", "aa.cost_seg_reasoning",
     "aa.cost_seg_cache_write", "aa.cost_seg_cache_hit", "aa.cost_seg_input",
     "livebench.average", "livebench.coding", "livebench.reasoning",
@@ -107,11 +102,24 @@ def _select_aa_models(raw_rows):
     )]
 
 
-def _build_projection_row(row, registry_by_id):
+def _build_projection_row(row, registry_by_id) -> Ok[ProjectionRow] | Err[str]:
     mid = row["id"]
     axes = row["axes"]
     registry = registry_by_id.get(mid, {})
     meta = registry.get("meta", {})
+
+    finance_index = safe_finance_accounting_index(axes.get("aa.finance_accounting_index"))
+    analyst_pass_rate = safe_pass_rate(axes.get("aa.analyst_agent_pass_5"))
+    omniscience_index = safe_omniscience(axes.get("aa.omniscience_index"))
+    time_per_task = safe_response_time(axes.get("aa.time_per_task"))
+    for metric, result in (
+        ("finance_accounting_index", finance_index),
+        ("analyst_agent_pass_5", analyst_pass_rate),
+        ("omniscience_index", omniscience_index),
+        ("time_per_task", time_per_task),
+    ):
+        if result.is_err():
+            return err(f"{mid}.{metric}: {result.error}")
 
     projection = ProjectionRow(
         slug=mid,
@@ -119,28 +127,18 @@ def _build_projection_row(row, registry_by_id):
         creator=row.get("creator"),
         type=try_model_type(row.get("model_type")),
         meta=ProjectionRowMeta(
-            archetype=try_archetype(meta.get("archetype")),
-            pareto_optimal=meta.get("pareto_optimal", False),
-            has_breakdown=meta.get("has_breakdown", False),
-            cost_percentile=safe_pct(meta.get("cost_percentile")),
-            iq_percentile=safe_pct(meta.get("iq_percentile")),
+            has_breakdown=any(axes.get(f"aa.cost_seg_{key}") is not None
+                              for key in ("answer", "reasoning", "cache_write", "cache_hit", "input")),
             release_date=meta.get("release_date"),
-            confirmed_scraped=meta.get("confirmed_scraped"),
         ),
         inp_price=safe_ppm(axes.get("aa.inp_price")),
         out_price=safe_ppm(axes.get("aa.out_price")),
         blended=safe_ppm(axes.get("aa.blended")),
         cache_hit_price=safe_ppm(axes.get("aa.cache_hit_price")),
         cost_per_task=safe_cost(axes.get("aa.cost_per_task")),
-        tokens_m=safe_tok_per_task(axes.get("aa.tokens_m")),
         speed_tps=safe_tps(axes.get("aa.speed_tps")),
-        ttft=safe_ttft(axes.get("aa.ttft")),
-        useful_cost=safe_useful_cost(axes.get("aa.useful_cost")),
         reasoning_tax_pct=safe_reasoning_tax(axes.get("aa.reasoning_tax_pct")),
         intel=safe_intel(axes.get("aa.intel")),
-        iq_per_mtok=safe_iq_per_mtok(axes.get("aa.iq_per_mtok")),
-        iq_per_1k=safe_iq_per_dollar(axes.get("aa.iq_per_1k")),
-        cost_per_iq=safe_cost_per_iq(axes.get("aa.cost_per_iq")),
         cost_seg_total=safe_cost_segment(axes.get("aa.cost_seg_total")),
         cost_seg_answer=safe_cost_segment(axes.get("aa.cost_seg_answer")),
         cost_seg_reasoning=safe_cost_segment(axes.get("aa.cost_seg_reasoning")),
@@ -168,26 +166,12 @@ def _build_projection_row(row, registry_by_id):
         openllm_gpqa=safe_benchmark(axes.get("openllm.gpqa")),
         openllm_musr=safe_benchmark(axes.get("openllm.musr")),
         openllm_mmlu_pro=safe_benchmark(axes.get("openllm.mmlu_pro")),
-        aa_coding_index=safe_benchmark(axes.get("aa.aa_coding_index")),
-        aa_math_index=safe_benchmark(axes.get("aa.aa_math_index")),
-        aa_gpqa=safe_benchmark(axes.get("aa.gpqa")),
-        aa_mmlu_pro=safe_benchmark(axes.get("aa.mmlu_pro")),
-        aa_hle=safe_benchmark(axes.get("aa.hle")),
-        aa_aime=safe_benchmark(axes.get("aa.aime")),
-        aa_aime_25=safe_benchmark(axes.get("aa.aime_25")),
-        aa_math_500=safe_benchmark(axes.get("aa.math_500")),
-        aa_livecodebench=safe_benchmark(axes.get("aa.livecodebench")),
-        aa_ifbench=safe_benchmark(axes.get("aa.ifbench")),
-        aa_lcr=safe_benchmark(axes.get("aa.lcr")),
-        aa_scicode=safe_benchmark(axes.get("aa.scicode")),
-        aa_tau2=safe_benchmark(axes.get("aa.tau2")),
-        aa_tau_banking=safe_benchmark(axes.get("aa.tau_banking")),
-        aa_terminalbench_hard=safe_benchmark(axes.get("aa.terminalbench_hard")),
-        aa_terminalbench_v2_1=safe_benchmark(axes.get("aa.terminalbench_v2_1")),
-        aa_omniscience_hallucination_rate=safe_benchmark(axes.get("aa.omniscience_hallucination_rate")),
-        aa_briefcase_analytical_quality_elo=safe_elo(axes.get("aa.briefcase_analytical_quality_elo")),
-        aa_briefcase_presentation_elo=safe_elo(axes.get("aa.briefcase_presentation_elo")),
-        aa_time_per_task=safe_response_time(axes.get("aa.time_per_task")),
+        aa_finance_accounting_index=finance_index.unwrap(),
+        aa_analyst_agent_pass_5=analyst_pass_rate.unwrap(),
+        aa_briefcase_elo=safe_elo(axes.get("aa.briefcase_elo")),
+        aa_gdpval_elo=safe_elo(axes.get("aa.gdpval_elo")),
+        aa_omniscience_index=omniscience_index.unwrap(),
+        aa_time_per_task=time_per_task.unwrap(),
         openrouter_inp_price_per_m=safe_ppm(axes.get("openrouter.inp_price_per_m")),
         openrouter_out_price_per_m=safe_ppm(axes.get("openrouter.out_price_per_m")),
         openrouter_cache_read_price_per_m=safe_ppm(axes.get("openrouter.cache_read_price_per_m")),
@@ -196,19 +180,12 @@ def _build_projection_row(row, registry_by_id):
         co2_kg=safe_carbon(axes.get("meta.co2_kg")),
         context_window=safe_ctx_window(meta.get("context_window")),
         cache_hit_rate_max=safe_cache(axes.get("dirac.cache_hit_rate_max")),
-        iq_per_dollar_pt=safe_iq_per_dollar(axes.get("aa.iq_per_dollar")),
     )
 
     projection.compute_derived()
     projection.meta.archetype = classify_archetype(projection)
     projection.meta.dirac_cache_hit_rates = meta.get("dirac_cache_hit_rates")
-
-    if projection.tokens_m is not None:
-        tokens_m_primitive = projection.tokens_m.as_primitive()
-        if tokens_m_primitive <= 0 or tokens_m_primitive > 10_000:
-            projection.tokens_m = None
-
-    return projection
+    return ok(projection)
 
 
 def _extract_radar_raws(row):
@@ -237,12 +214,43 @@ def _normalize_radar_scores(output):
         row.radar_ctx = (raws[4] / maxes[4]) if raws[4] is not None else None
 
 
-def _project_rows(engine, axes):
+def _mark_pareto_optimal(rows: list[ProjectionRow]) -> list[ProjectionRow]:
+    candidates = sorted(
+        (row for row in rows
+         if row.cost_per_task is not None
+         and row.cost_per_task.as_primitive() > 0
+         and row.intel is not None),
+        key=lambda row: (
+            row.cost_per_task.as_primitive(),
+            -row.intel.as_primitive(),
+            row.slug,
+        ),
+    )
+    frontier = set()
+    best_intel = -float("inf")
+    for row in candidates:
+        intel = row.intel.as_primitive()
+        if intel > best_intel:
+            frontier.add(row.slug)
+            best_intel = intel + 1e-9
+    return [
+        replace(row, meta=replace(row.meta, pareto_optimal=row.slug in frontier))
+        for row in rows
+    ]
+
+
+def _project_rows(engine, axes) -> Ok[dict] | Err[str]:
     raw_rows = engine.project(axes)
     registry_by_id = {m["id"]: m for m in engine.models}
-    output = [_build_projection_row(r, registry_by_id) for r in raw_rows]
+    output = []
+    for raw_row in raw_rows:
+        result = _build_projection_row(raw_row, registry_by_id)
+        if result.is_err():
+            return err(result.error)
+        output.append(result.unwrap())
     output.sort(key=lambda r: (-(r.intel.as_primitive() if r.intel else 0), r.slug))
-    return {"raw_rows": raw_rows, "rows": output}
+    output = _mark_pareto_optimal(output)
+    return ok({"raw_rows": raw_rows, "rows": output})
 
 
 def _counts(projection):
@@ -289,8 +297,14 @@ def _print_dashboard_summary(output):
 
 
 def build(ctx=None):
-    pipeline = (Pipeline({"engine": ProjectionEngine(), "js_path": str(BASE / "processed.js")})
-        .then("project_rows", lambda c: ok(_project_rows(c["engine"], _PROJECTION_AXES)))
+    repo_root = Path(ctx["root"]) if ctx and ctx.get("root") else BASE.parent
+    data_dir = repo_root / "data"
+    engine = ProjectionEngine(
+        registry_path=str(data_dir / "model_registry.json"),
+        axes_path=str(data_dir / "axes_catalog.json"),
+    )
+    pipeline = (Pipeline({"engine": engine, "js_path": str(data_dir / "processed.js")})
+        .then("project_rows", lambda c: _project_rows(c["engine"], _PROJECTION_AXES))
         .then("normalize_radar", lambda c: ok(_normalize_radar_scores(c["project_rows"]["rows"]) or c["project_rows"]))
         .then("payload", lambda c: ok(_build_payload(c["project_rows"], c["engine"].registry.get("meta", {}))))
         .then("wrapper", lambda c: ok(_build_js_wrapper(c["payload"])))

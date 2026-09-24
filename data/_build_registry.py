@@ -35,13 +35,16 @@ def _load_csv(path: str):
         return err(f"{os.path.basename(path)}: {e}")
 
 def _ensure(all_models, cid, **overrides):
-    if cid not in all_models:
-        all_models[cid] = {"id": cid, "name": None, "creator": None,
-                           "model_type": None,
-                           "meta": {}, "pricing": {},
-                           "benchmarks": {}, "aliases": {},
-                           **overrides}
-    return all_models[cid]
+    if not cid or cid not in all_models:
+        return None
+    model = all_models[cid]
+    for key, value in overrides.items():
+        fallback_name = model.get("aliases", {}).get("aa")
+        if value is not None and (
+            model.get(key) is None or (key == "name" and model.get(key) == fallback_name)
+        ):
+            model[key] = value
+    return model
 
 
 def step_aa(state):
@@ -151,9 +154,13 @@ def step_livebench(state):
     if rows_result.is_err():
         return err(rows_result.error)
     livebench_rows = rows_result.unwrap()
+    attached = 0
     for row in livebench_rows:
         model_name = row["model"]
         canonical_id = livebench_name_to_canonical(model_name)
+        model = _ensure(state["all_models"], canonical_id, name=model_name)
+        if model is None:
+            continue
         task_scores, category_scores = {}, {}
         for task_name, value in row.items():
             if task_name == "model" or value == "" or value is None:
@@ -167,11 +174,11 @@ def step_livebench(state):
             category_scores.setdefault(category, []).append(numeric)
         category_averages = {cat: round(sum(vals) / len(vals), 2) for cat, vals in category_scores.items()}
         overall = round(sum(task_scores.values()) / len(task_scores), 2) if task_scores else None
-        _ensure(state["all_models"], canonical_id, name=model_name)
-        state["all_models"][canonical_id]["aliases"]["livebench"] = model_name
-        state["all_models"][canonical_id]["benchmarks"]["livebench"] = {
+        model.setdefault("aliases", {})["livebench"] = model_name
+        model.setdefault("benchmarks", {})["livebench"] = {
             "average": overall, **category_averages, "tasks": task_scores}
-    state["counts"]["livebench"] = len(livebench_rows)
+        attached += 1
+    state["counts"]["livebench"] = attached
     return ok(state)
 
 
@@ -179,17 +186,21 @@ def step_arena_text(state):
     result = _load_json(os.path.join(state["src"], "arena_text.json"))
     if result.is_err():
         return err(result.error)
+    attached = 0
     for model in result.unwrap().get("models", []):
         arena_id = model["model"]
         canonical_id = resolve_from_slug(arena_id)
-        _ensure(state["all_models"], canonical_id, name=arena_id,
-                creator=normalize_creator(model.get("vendor")), model_type=model.get("license"))
-        state["all_models"][canonical_id]["aliases"]["arena"] = arena_id
-        state["all_models"][canonical_id]["creator"] = \
-            state["all_models"][canonical_id].get("creator") or normalize_creator(model.get("vendor"))
-        state["all_models"][canonical_id]["benchmarks"]["arena_text"] = {
+        target = _ensure(state["all_models"], canonical_id, name=arena_id,
+                         creator=normalize_creator(model.get("vendor")),
+                         model_type=model.get("license"))
+        if target is None:
+            continue
+        target.setdefault("aliases", {})["arena"] = arena_id
+        target["creator"] = target.get("creator") or normalize_creator(model.get("vendor"))
+        target.setdefault("benchmarks", {})["arena_text"] = {
             "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
-    state["counts"]["arena_text"] = len(result.unwrap().get("models", []))
+        attached += 1
+    state["counts"]["arena_text"] = attached
     return ok(state)
 
 
@@ -197,17 +208,21 @@ def step_arena_code(state):
     result = _load_json(os.path.join(state["src"], "arena_code.json"))
     if result.is_err():
         return err(result.error)
+    attached = 0
     for model in result.unwrap().get("models", []):
         arena_id = model["model"]
         canonical_id = resolve_from_slug(arena_id)
-        _ensure(state["all_models"], canonical_id, name=arena_id,
-                creator=normalize_creator(model.get("vendor")), model_type=model.get("license"))
-        state["all_models"][canonical_id]["aliases"]["arena_code"] = arena_id
-        state["all_models"][canonical_id]["creator"] = \
-            state["all_models"][canonical_id].get("creator") or normalize_creator(model.get("vendor"))
-        state["all_models"][canonical_id]["benchmarks"]["arena_code"] = {
+        target = _ensure(state["all_models"], canonical_id, name=arena_id,
+                         creator=normalize_creator(model.get("vendor")),
+                         model_type=model.get("license"))
+        if target is None:
+            continue
+        target.setdefault("aliases", {})["arena_code"] = arena_id
+        target["creator"] = target.get("creator") or normalize_creator(model.get("vendor"))
+        target.setdefault("benchmarks", {})["arena_code"] = {
             "elo": model.get("score"), "ci": model.get("ci"), "votes": model.get("votes")}
-    state["counts"]["arena_code"] = len(result.unwrap().get("models", []))
+        attached += 1
+    state["counts"]["arena_code"] = attached
     return ok(state)
 
 
@@ -215,13 +230,16 @@ def step_openllm(state):
     result = _load_json(os.path.join(state["src"], "openllm_aa_subset.json"))
     if result.is_err():
         return err(result.error)
+    attached = set()
     for model in result.unwrap():
         canonical_id = openllm_name_to_canonical(model.get("fullname", "")).unwrap_or(None)
         if not canonical_id:
             continue
-        _ensure(state["all_models"], canonical_id, name=model.get("fullname"))
-        state["all_models"][canonical_id]["aliases"]["openllm"] = model.get("fullname")
-        state["all_models"][canonical_id]["benchmarks"]["openllm"] = {
+        target = _ensure(state["all_models"], canonical_id, name=model.get("fullname"))
+        if target is None:
+            continue
+        target.setdefault("aliases", {})["openllm"] = model.get("fullname")
+        target.setdefault("benchmarks", {})["openllm"] = {
             "average": model.get("Average ⬆️"), "ifeval": model.get("IFEval"), "bbh": model.get("BBH"),
             "math_lvl_5": model.get("MATH Lvl 5"), "gpqa": model.get("GPQA"),
             "musr": model.get("MUSR"), "mmlu_pro": model.get("MMLU-PRO")}
@@ -237,8 +255,9 @@ def step_openllm(state):
         if model.get("Precision"):
             meta_updates["precision"] = model.get("Precision")
         if meta_updates:
-            state["all_models"][canonical_id].setdefault("meta", {}).update(meta_updates)
-    state["counts"]["openllm_aa_subset"] = len(result.unwrap())
+            target.setdefault("meta", {}).update(meta_updates)
+        attached.add(canonical_id)
+    state["counts"]["openllm_aa_subset"] = len(attached)
     return ok(state)
 
 
@@ -253,30 +272,36 @@ def step_openrouter(state):
             return None
         return float(price_str)
 
+    attached = set()
     for model in openrouter_models:
         openrouter_id = model["id"]
         canonical_id = openrouter_id_to_canonical(openrouter_id)
-        _ensure(state["all_models"], canonical_id, name=model.get("name", openrouter_id), creator=normalize_creator(model.get("vendor")))
-        state["all_models"][canonical_id]["aliases"]["openrouter"] = openrouter_id
-        state["all_models"][canonical_id]["pricing"]["openrouter"] = {}
+        target = _ensure(state["all_models"], canonical_id,
+                         name=model.get("name", openrouter_id),
+                         creator=normalize_creator(model.get("vendor")))
+        if target is None:
+            continue
+        target.setdefault("aliases", {})["openrouter"] = openrouter_id
+        target.setdefault("pricing", {}).setdefault("openrouter", {})
         input_price = parse_price(model.get("input_price"))
         output_price = parse_price(model.get("output_price"))
         cache_read_price = parse_price(model.get("cache_read_price"))
         cache_write_price = parse_price(model.get("cache_write_price"))
         if input_price is not None:
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["inp_price"] = input_price
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["inp_price_per_m"] = input_price * 1_000_000
+            target["pricing"]["openrouter"]["inp_price"] = input_price
+            target["pricing"]["openrouter"]["inp_price_per_m"] = input_price * 1_000_000
         if output_price is not None:
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["out_price"] = output_price
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["out_price_per_m"] = output_price * 1_000_000
+            target["pricing"]["openrouter"]["out_price"] = output_price
+            target["pricing"]["openrouter"]["out_price_per_m"] = output_price * 1_000_000
         if cache_read_price is not None:
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_read_price"] = cache_read_price
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_read_price_per_m"] = cache_read_price * 1_000_000
+            target["pricing"]["openrouter"]["cache_read_price"] = cache_read_price
+            target["pricing"]["openrouter"]["cache_read_price_per_m"] = cache_read_price * 1_000_000
         if cache_write_price is not None:
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_write_price"] = cache_write_price
-            state["all_models"][canonical_id]["pricing"]["openrouter"]["cache_write_price_per_m"] = cache_write_price * 1_000_000
-        state["all_models"][canonical_id]["pricing"]["openrouter"]["vendor"] = model.get("vendor")
-    state["counts"]["openrouter"] = len(openrouter_models)
+            target["pricing"]["openrouter"]["cache_write_price"] = cache_write_price
+            target["pricing"]["openrouter"]["cache_write_price_per_m"] = cache_write_price * 1_000_000
+        target["pricing"]["openrouter"]["vendor"] = model.get("vendor")
+        attached.add(canonical_id)
+    state["counts"]["openrouter"] = len(attached)
     resolve_or_context(state["all_models"], openrouter_models)
     return ok(state)
 

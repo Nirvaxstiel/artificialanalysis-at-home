@@ -5,13 +5,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from ._base import (
     DomainValue, Direction, AxisCategory, SourceKey, ModelType,
 )
-from ._values import (
-    PricePerMToken, PricePerToken, CostPerTask, TokensPerTask, TokensPerSecond,
-    UsefulCost, ReasoningTaxPct, CacheHitRate, CostSegment,
-    IntelligenceScore, IQ_PerDollarPoint, IQ_PerMToken, IQ_PerMTokenDollar,
-    Elo, CIMargin, VoteCount, BenchmarkScore,
-    ParameterCount, CarbonKg, ContextWindow,
-)
+from ._values import ParameterCount, CarbonKg, ContextWindow
 
 
 @dataclass(frozen=True)
@@ -68,18 +62,12 @@ class Axis:
 
 @dataclass(frozen=True)
 class RegistryModelMeta:
-    archetype: Optional[str] = None
-    pareto_optimal: bool = False
-    cost_percentile: Optional[float] = None
-    iq_percentile: Optional[float] = None
-    has_breakdown: bool = False
     params_b: Optional[ParameterCount] = None
     co2_kg: Optional[CarbonKg] = None
     architecture: Optional[str] = None
     license: Optional[str] = None
     precision: Optional[str] = None
     release_date: Optional[str] = None
-    confirmed_scraped: Optional[bool] = None
     context_window: Optional[int] = None
     dirac_cache_hit_rates: Optional[list] = None
 
@@ -123,16 +111,12 @@ class RegistryModel:
         """
         meta = d.get("meta") or {}
         meta_obj = RegistryModelMeta(
-            archetype=meta.get("archetype"),
-            pareto_optimal=meta.get("pareto_optimal", False),
-            has_breakdown=meta.get("has_breakdown", False),
             params_b=meta.get("params_b"),
             co2_kg=meta.get("co2_kg"),
             architecture=meta.get("architecture"),
             license=meta.get("license"),
             precision=meta.get("precision"),
             release_date=meta.get("release_date"),
-            confirmed_scraped=meta.get("confirmed_scraped"),
             context_window=meta.get("context_window"),
             dirac_cache_hit_rates=meta.get("dirac_cache_hit_rates"),
         )

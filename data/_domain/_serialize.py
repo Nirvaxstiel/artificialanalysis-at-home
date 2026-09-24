@@ -1,16 +1,16 @@
 from dataclasses import fields
 from enum import Enum
+from math import isfinite
 from typing import Any, Optional
 
-from ._base import Archetype, DomainValue, ModelType, Provenance
+from _result import Err, Ok, ok, err
+from ._base import DomainValue, ModelType, Provenance
 from ._values import (
-    PricePerMToken, PricePerToken, CostPerTask, TokensPerTask,
-    TokensPerSecond, TimeToFirstToken,
-    UsefulCost, ReasoningTaxPct, CacheHitRate, CostSegment,
-    IntelligenceScore, IQ_PerDollarPoint, IQ_PerMToken, IQ_PerMTokenDollar,
-    Elo, CIMargin, VoteCount, BenchmarkScore,
-    ParameterCount, CarbonKg, ContextWindow, Percentile,
-    ResponseTime, OmniscienceIndex, AxisMetric,
+    PricePerMToken, PricePerToken, CostPerTask, TokensPerSecond,
+    ReasoningTaxPct, CacheHitRate, CostSegment, IntelligenceScore,
+    Elo, CIMargin, VoteCount, BenchmarkScore, ParameterCount, CarbonKg,
+    ContextWindow, ResponseTime, OmniscienceIndex,
+    FinanceAccountingIndex, PassRate,
 )
 
 
@@ -59,13 +59,7 @@ def try_model_type(v) -> Optional[ModelType]:
         return None
 
 
-def try_archetype(v) -> Archetype:
-    if not _is_valid(v):
-        return Archetype.UNCATEGORIZED
-    try:
-        return Archetype(str(v).lower())
-    except (ValueError, AttributeError):
-        return Archetype.UNCATEGORIZED
+
 
 
 def safe_ppm(v) -> Optional[PricePerMToken]:
@@ -83,9 +77,7 @@ def safe_cost(v) -> Optional[CostPerTask]:
     return CostPerTask(v) if v is not None else None
 
 
-def safe_tok_per_task(v) -> Optional[TokensPerTask]:
-    v = safe_float(v)
-    return TokensPerTask(v) if v is not None else None
+
 
 
 def safe_tps(v) -> Optional[TokensPerSecond]:
@@ -93,19 +85,13 @@ def safe_tps(v) -> Optional[TokensPerSecond]:
     return TokensPerSecond(v) if v is not None else None
 
 
-def safe_ttft(v) -> Optional[TimeToFirstToken]:
-    v = safe_float(v)
-    return TimeToFirstToken(v) if v is not None else None
 
 
-def safe_axis_metric(v) -> Optional[AxisMetric]:
-    v = safe_float(v)
-    return AxisMetric(v) if v is not None else None
 
 
-def safe_useful_cost(v) -> Optional[UsefulCost]:
-    v = safe_float(v)
-    return UsefulCost(v) if v is not None else None
+
+
+
 
 
 def safe_reasoning_tax(v) -> Optional[ReasoningTaxPct]:
@@ -148,19 +134,7 @@ def safe_benchmark(v) -> Optional[BenchmarkScore]:
     return BenchmarkScore(v) if v is not None else None
 
 
-def safe_iq_per_mtok(v) -> Optional[IQ_PerMToken]:
-    v = safe_float(v)
-    return IQ_PerMToken(v) if v is not None else None
 
-
-def safe_cost_per_iq(v) -> Optional[IQ_PerMTokenDollar]:
-    v = safe_float(v)
-    return IQ_PerMTokenDollar(v) if v is not None else None
-
-
-def safe_iq_per_dollar(v) -> Optional[IQ_PerDollarPoint]:
-    v = safe_float(v)
-    return IQ_PerDollarPoint(v) if v is not None else None
 
 
 def safe_params(v) -> Optional[ParameterCount]:
@@ -187,16 +161,48 @@ def safe_ctx_window(v) -> Optional[ContextWindow]:
     return ContextWindow(tokens)
 
 
-def safe_pct(v) -> Optional[Percentile]:
-    v = safe_float(v)
-    return Percentile(v) if v is not None else None
 
 
-def safe_omniscience(v) -> Optional[OmniscienceIndex]:
-    v = safe_float(v)
-    return OmniscienceIndex(v) if v is not None else None
+
+def safe_omniscience(v) -> Ok[Optional[OmniscienceIndex]] | Err[str]:
+    if v is None:
+        return ok(None)
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return err("Omniscience index must be numeric")
+    value = float(v)
+    if not isfinite(value) or not -100 <= value <= 100:
+        return err(f"Omniscience index out of [-100, 100]: {v}")
+    return ok(OmniscienceIndex(value))
 
 
-def safe_response_time(v) -> Optional[ResponseTime]:
-    v = safe_float(v)
-    return ResponseTime(v) if v is not None else None
+def safe_finance_accounting_index(v) -> Ok[Optional[FinanceAccountingIndex]] | Err[str]:
+    if v is None:
+        return ok(None)
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return err("Finance & Accounting Index must be numeric")
+    score = float(v)
+    if not isfinite(score) or not 0 <= score <= 100:
+        return err(f"Finance & Accounting Index out of [0, 100]: {v}")
+    return ok(FinanceAccountingIndex(score))
+
+
+def safe_pass_rate(v) -> Ok[Optional[PassRate]] | Err[str]:
+    if v is None:
+        return ok(None)
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return err("Pass rate must be a numeric fraction")
+    ratio = float(v)
+    if not isfinite(ratio) or not 0 <= ratio <= 1:
+        return err(f"Pass rate out of [0, 1]: {v}")
+    return ok(PassRate(ratio))
+
+
+def safe_response_time(v) -> Ok[Optional[ResponseTime]] | Err[str]:
+    if v is None:
+        return ok(None)
+    if isinstance(v, bool) or not isinstance(v, (int, float)):
+        return err("Time per task must be numeric seconds")
+    seconds = float(v)
+    if not isfinite(seconds) or seconds < 0:
+        return err(f"Time per task must be finite and non-negative: {v}")
+    return ok(ResponseTime(seconds))

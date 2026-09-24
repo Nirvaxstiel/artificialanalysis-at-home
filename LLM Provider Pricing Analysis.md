@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
 **Source:** Artificial Analysis — Intelligence Index v4.3 (AA snapshot 10 Sep '26)
-**Data:** 133 AA-covered models, 25 creators (2268 in the full dataset, 7 sources). Per-source dates in `data/processed.js` meta (`sources_meta`).
+**Data:** 41 AA-covered models across 17 creators. Supplementary sources enrich this export-defined set only. Per-source dates and counts are in `data/processed.js` meta (`sources_meta`).
 
 ## What it is
 
@@ -11,22 +11,22 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 |-----|---------------|
 | The Crossover | X/Y scatter, any pair of Intel / LiveBench / Arena Elo / OpenRouter pricing / speed / context. **Bubble size = context window** (OpenRouter `context_length`). |
 | Cost Breakdown | Per-model cost split (Input / Cached / Answer / Reasoning) with cache hit rate toggle. |
-| Provider Archetypes | Radar per creator: IQ / Speed / Token Eff / Cache Eff / Cost Eff. |
+| Provider Archetypes | Radar per creator: IQ / Speed / Cache Eff / Cost Eff / Context. |
 | Cost per IQ Point | $ per IQ point, log scale. |
 | Data Tables | Sortable, filterable (multi-column sort with shift+click). Click banner → jump to row. |
 
 ## Files
 
 - `dashboard.html` — the viz (loads `data/processed.js` as `window.PROCESSED_DATA`)
-- `data/processed.js` — 2268 models, primary dataset (surfaced as `window.MODELS`)
-- `data/model_registry.json` — 2268 models, 7 sources (serialized via `RegistryModel`)
+- `data/processed.js` — 41 models, primary dataset (surfaced as `window.MODELS`)
+- `data/model_registry.json` — 41 models, 7 sources (serialized via `RegistryModel`)
 - `data/axes_catalog.json` — typed axis catalog
 - `data/_pipeline.py` — orchestrator: `build` / `build_from_cache` (offline) or full pull
 - `data/_build_registry.py` — merges sources → `model_registry.json`
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — `aa_models_scraped.json`, `aa_api_live.json` (644 models), `aa_charts_export.json`, `aa_jsonld_export.json`
+- `data/sources/aa/` — AA chart and JSON-LD exports; cached live API supplies creator and release metadata
 - `data/sources/dirac/cache_hit_rates.json` — 398 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
@@ -36,35 +36,37 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 
 | Source | Coverage | Used for |
 |--------|----------|----------|
-| Artificial Analysis (primary, scraped) | 99 scrapes | IQ, $/M, speed, output tokens, params, cost segments |
-| Artificial Analysis (live API) | 644 models | `release_date`, `creator`, 16 eval scores (HLE, GPQA, AIME'25, SciCode, LCR, TAU2, TerminalBench v2.1, etc.) |
-| OpenRouter API | ~342 models | Pricing, **context window** (`context_length`) |
-| LiveBench | 127 models | Coding/agentic/reasoning scores |
-| Chatbot Arena (Code + Text) | 30 / 50 models | Code/Text Elo |
-| OpenLLM v2 | 1783 models in subset | Params (B) |
-| Dirac.run | 398 rows | Observed cache hit rates |
+| Artificial Analysis exports | 41 in-scope models | Intelligence, Finance & Accounting, AnalystAgent pass rate, Briefcase Elo, GDPval-AA Elo, Omniscience, time/task, pricing, speed |
+| Artificial Analysis live API cache | scoped to AA exports | `release_date` and creator metadata |
+| OpenRouter API | 10 in-scope models | Pricing, **context window** (`context_length`) |
+| LiveBench | 5 in-scope models | Coding/agentic/reasoning scores |
+| Chatbot Arena (Code + Text) | 4 / 2 in-scope models | Code/Text Elo |
+| OpenLLM v2 | 0 in-scope models | Params (B) |
+| Dirac.run | 6 in-scope models | Observed cache hit rates |
 
 ### Provenance rules
 
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
 - **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
 
-## Projection schema (2268-model set)
+## Projection schema (41-model set)
 
 Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 
 - **Identity:** `slug`, `name`, `creator`, `type`, `release_date`, `archetype`, `pareto_optimal`
-- **IQ / benchmarks:** `intel`, `iq_per_dollar_pt`, `iq_per_mtok`, `aa_*`, `omniscience_*`, `briefcase_*`, `agentic_index`, `coding_index`, `arena_code_*`, `arena_text_*`
-- **Cost:** `cost_per_task`, `inp_price`, `out_price`, `cache_hit_price`, `openrouter_*_price_per_m`, `iq_per_1k_pt`, `cost_per_iq_pt`, `useful_cost`, `reasoning_tax_pct`, `cost_percentile`, `iq_percentile`
-- **Speed / verbosity:** `speed_tps`, `ttft`, `tokens_m`, `context_window`
+- **AA indexes:** `intel`, `aa_finance_accounting_index`, `aa_analyst_agent_pass_5`, `aa_briefcase_elo`, `aa_gdpval_elo`, `aa_omniscience_index`
+- **Cost:** `cost_per_task`, `inp_price`, `out_price`, `cache_hit_price`, `openrouter_*_price_per_m`, `reasoning_tax_pct`
+- **Speed / context:** `speed_tps`, `aa_time_per_task`, `context_window`
 - **Radar (precomputed):** `radar_intel`, `radar_speed`, `radar_cache_eff`, `radar_cost_eff`, `radar_ctx`
-- **Cost Breakdown** segments are computed at render time from `cost_seg_*` on the source model when `has_breakdown` is true; they are not stored on the projection row.
+- **Derived value:** cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the chart/table; it is not stored in `processed.js`.
+- **Provenance:** each populated field is tagged `sourced` or `derived`.
+- **Cost Breakdown** reads source `cost_seg_*` values when `has_breakdown` is true.
 
 ## Methodology
 
-**AA Intelligence Index v4.3** — weighted evals (GDPval-AA v2, Banking, Terminal-Bench v2.1, SciCode, HLE, GPQA Diamond, CritPt, AA-Omniscience, AA-LCR).
+AA index and benchmark values come from current chart and JSON-LD exports. The live API cache supplements creator and release metadata; it does not define model scope.
 
-**Cost per Task** = (input×input_price + cache_hit×cache_hit_price + cache_write×cache_write_price + reasoning×output_price + answer×output_price) / task_count, weighted by eval importance. Uses measured per-model per-eval token counts.
+**Cost per Task** is sourced from the AA per-task dataset. Full-index “Cost to Run” values are separate and are not used as per-task prices.
 
 **Cache hit rate** is observed (Dirac.run, OpenRouter analytics) — AA only shows the cache *price* ($/M for cached tokens), not what % of input was actually cached. The radar `cache_eff` is computed from AA's price discount only; Dirac's observed rate is a separate axis (`cache_hit_rate_max`), never conflated.
 
@@ -75,11 +77,3 @@ Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 - `fast`: speed_tps ≥ 150
 - `compact`: params < 30B and intel ≥ 30
 - `uncategorized`: none of the above (most non-AA models — they carry no intel)
-
-## Key findings
-
-- **DeepSeek + MiniMax dominate cost efficiency** — both have very high cache hit rates (~80%) plus low input prices
-- **Anthropic + OpenAI** are at the top of IQ but cost ~10x more per IQ point
-- **OSS models drag down creator averages** — splitting "OpenAI" and "OpenAI OSS" shows the real proprietary profile
-- **Verbosity is the hidden cost** — DeepSeek V4 Pro emits 180M tokens per task, vs 89M for MiniMax-M3
-- **Cache hit rate is the biggest cost lever** — 80% hit rate = 70% cost reduction on input

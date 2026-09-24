@@ -16,7 +16,8 @@
     // Compute cost per IQ point and sort ascending
     const models = pts.map(m => ({
       ...m,
-      cost_per_iq: m.cost_per_task / m.intel
+      cost_per_iq: m.cost_per_task / m.intel,
+      provenance: { ...(m.provenance || {}), cost_per_iq: 'derived' }
     })).sort((a, b) => a.cost_per_iq - b.cost_per_iq);
 
     if (models.length === 0) {

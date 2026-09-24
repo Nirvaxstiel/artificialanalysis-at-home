@@ -45,14 +45,30 @@ def _get_value(m, aid):
     source = parts[0]
     if source == "meta":
         return m.get("meta", {}).get(parts[-1])
+    if source == "aa" and len(parts) == 2:
+        segments = m.get("pricing", {}).get("aa", {}).get("cost_segments", {}) or {}
+        segment_keys = {
+            "cost_seg_total": "total_cost_per_task_usd",
+            "cost_seg_answer": "answer_usd",
+            "cost_seg_reasoning": "reasoning_usd",
+            "cost_seg_cache_write": "cache_write_usd",
+            "cost_seg_cache_hit": "cache_hit_usd",
+            "cost_seg_input": "input_usd",
+        }
+        if parts[1] in segment_keys:
+            return segments.get(segment_keys[parts[1]])
+        benchmark = m.get("benchmarks", {}).get("aa", {}).get(parts[1])
+        if benchmark is not None:
+            return benchmark
+        return m.get("pricing", {}).get("aa", {}).get(parts[1])
     if parts[0] in ("livebench", "arena_text", "arena_code", "openllm"):
         sec = m.get("benchmarks", {}).get(parts[0], {})
         if len(parts) == 2:
             return sec.get(parts[1])
         elif len(parts) == 3:
             return sec.get(parts[1], {}).get(parts[2])
-    elif parts[0] in ("aa", "openrouter"):
-        sec = m.get("pricing", {}).get(parts[0], {})
+    elif parts[0] == "openrouter":
+        sec = m.get("pricing", {}).get("openrouter", {})
         if len(parts) == 2:
             return sec.get(parts[1])
         elif len(parts) == 3:
@@ -72,10 +88,6 @@ def _build_aa_pricing_axes(models):
                     "AA cache read price per million tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
         _build_axis(models, "aa.cost_per_task", "AA", "Cost per Task ($)", "pricing", "$", False,
                     "AA estimated cost per standard task", "Pricing", ["pricing", "aa"], range_decimals=4),
-        _build_axis(models, "aa.tokens_m", "AA", "Tokens per Task (M) - verbosity", "pricing", "M tokens", False,
-                    "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.", "Pricing", ["pricing", "aa"], range_decimals=4),
-        _build_axis(models, "aa.useful_cost", "AA", "Useful Cost ($)", "pricing", "$", False,
-                    "AA cost attributable to useful output (non-reasoning)", "Pricing", ["pricing", "aa"], range_decimals=4),
         _build_axis(models, "aa.reasoning_tax_pct", "AA", "Reasoning Tax (%)", "pricing", "%", False,
                     "AA premium percentage paid for reasoning tokens", "Pricing", ["pricing", "aa"], range_decimals=4),
     ]
@@ -104,8 +116,6 @@ def _build_aa_performance_axes(models):
     return [
         _build_axis(models, "aa.speed_tps", "AA", "Speed (tokens/s)", "performance", "tok/s", True,
                     "AA output speed in tokens per second", "Performance", perf_path, range_decimals=0),
-        _build_axis(models, "aa.ttft", "AA", "Time to First Token (s)", "performance", "s", False,
-                    "AA median time to first token in seconds", "Performance", perf_path, range_decimals=0),
     ]
 
 
@@ -114,48 +124,25 @@ def _build_aa_quality_axes(models):
     return [
         _build_axis(models, "aa.intel", "AA", "AA Intelligence Score (0-100)", "quality", "points", True,
                     "AA composite intelligence score (Pareto index)", "AA Quality", qual_path, range_decimals=4),
-        _build_axis(models, "aa.iq_per_dollar", "AA", "IQ per Dollar ($⁻¹)", "quality", "IQ/$", True,
-                    "AA intelligence per dollar spent", "AA Quality", qual_path, range_decimals=4),
-        _build_axis(models, "aa.iq_per_mtok", "AA", "IQ per Million Tokens", "quality", "IQ/Mtok", True,
-                    "AA intelligence per million tokens", "AA Quality", qual_path, range_decimals=4),
-        _build_axis(models, "aa.iq_per_1k", "AA", "IQ per $1K", "quality", "IQ/$1K", True,
-                    "AA intelligence per $1,000 spent (sourced from AA iq_per_1k)", "AA Quality", qual_path, range_decimals=2),
-        _build_axis(models, "aa.cost_per_iq", "AA", "Cost per IQ pt", "quality", "$/IQ", True,
-                    "AA cost per intelligence-index point (sourced from AA cost_per_iq)", "AA Quality", qual_path, range_decimals=4),
     ]
 
 
 def _build_aa_benchmark_axes(models):
     qual_path = ["benchmarks", "aa"]
-    live_api = [
-        ("aa.aa_coding_index", "AA Coding Index", "AA composite coding capability index"),
-        ("aa.aa_math_index", "AA Math Index", "AA composite math capability index"),
-        ("aa.gpqa", "GPQA", "Graduate-level Google-proof QA accuracy (0-1)"),
-        ("aa.mmlu_pro", "MMLU-Pro", "MMLU-Pro accuracy (0-1)"),
-        ("aa.hle", "HLE", "Humanity's Last Exam accuracy (0-1)"),
-        ("aa.aime", "AIME", "AIME math competition accuracy (0-1)"),
-        ("aa.aime_25", "AIME 2025", "AIME 2025 math competition accuracy (0-1)"),
-        ("aa.math_500", "MATH-500", "MATH-500 accuracy (0-1)"),
-        ("aa.livecodebench", "LiveCodeBench", "LiveCodeBench coding accuracy (0-1)"),
-        ("aa.ifbench", "IFBench", "Instruction-following benchmark score (0-1)"),
-        ("aa.lcr", "LCR", "Long-context reasoning score (0-1)"),
-        ("aa.scicode", "SciCode", "Scientific coding benchmark accuracy (0-1)"),
-        ("aa.tau2", "TAU2", "TAU-bench agentic benchmark v2 (0-1)"),
-        ("aa.tau_banking", "TAU2 Banking", "TAU-bench banking split accuracy (0-1)"),
-        ("aa.terminalbench_hard", "TerminalBench Hard", "TerminalBench hard subset accuracy (0-1)"),
-        ("aa.terminalbench_v2_1", "TerminalBench v2.1", "TerminalBench v2.1 accuracy (0-1)"),
+    return [
+        _build_axis(models, "aa.finance_accounting_index", "AA", "Finance & Accounting Index", "quality", "points", True,
+                    "AA Finance & Accounting composite index (0-100)", "AA Benchmarks", qual_path, range_decimals=2),
+        _build_axis(models, "aa.analyst_agent_pass_5", "AA", "AnalystAgent pass⁵", "quality", "fraction", True,
+                    "AnalystAgent pass rate across five attempts; fraction from 0 to 1", "AA Benchmarks", qual_path, range_decimals=3),
+        _build_axis(models, "aa.briefcase_elo", "AA", "AA-Briefcase Elo", "quality", "Elo", True,
+                    "Combined AA-Briefcase Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1),
+        _build_axis(models, "aa.gdpval_elo", "AA", "GDPval-AA v2.1 Elo", "quality", "Elo", True,
+                    "GDPval-AA v2.1 Elo (mid estimate; anchored at 1,600)", "AA Benchmarks", qual_path, range_decimals=1),
+        _build_axis(models, "aa.omniscience_index", "AA", "AA-Omniscience Index", "quality", "points", True,
+                    "Knowledge reliability index from -100 to 100; higher is better", "AA Benchmarks", qual_path, range_decimals=2),
+        _build_axis(models, "aa.time_per_task", "AA", "Time per Intelligence Index Task", "performance", "s", False,
+                    "Wall-clock seconds to complete one Intelligence Index Task; lower is better", "AA Benchmarks", qual_path, range_decimals=4),
     ]
-    axes = [_build_axis(models, aid, "AA", label, "quality", "score", True, desc, "AA Benchmarks", qual_path, range_decimals=4)
-            for aid, label, desc in live_api]
-    axes.append(_build_axis(models, "aa.omniscience_hallucination_rate", "AA", "Omniscience Hallucination Rate", "quality", "%", False,
-                            "AA omniscience incorrect rate (0-1); lower is better", "AA Benchmarks", qual_path, range_decimals=4))
-    axes.append(_build_axis(models, "aa.briefcase_analytical_quality_elo", "AA", "Briefcase Analytical Quality Elo", "quality", "elo", True,
-                            "AA-Briefcase analytical-quality Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1))
-    axes.append(_build_axis(models, "aa.briefcase_presentation_elo", "AA", "Briefcase Presentation Elo", "quality", "elo", True,
-                            "AA-Briefcase presentation Elo (mid estimate)", "AA Benchmarks", qual_path, range_decimals=1))
-    axes.append(_build_axis(models, "aa.time_per_task", "AA", "Time per Intelligence Index Task", "quality", "s", False,
-                            "Wall-clock seconds to complete one Intelligence Index Task; lower is better", "AA Benchmarks", qual_path, range_decimals=4))
-    return axes
 
 
 def _build_dirac_axes(models):

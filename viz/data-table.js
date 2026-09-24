@@ -1,5 +1,5 @@
-// Sortable data table — multi-column sort, search, 5 views:
-//   Model Detail / Provider Rollup / LiveBench / Cost Efficiency / Provider Data (cache hit rates)
+// Sortable data table — multi-column sort, search, 6 views:
+//   Model Detail / AA Indexes / Provider Rollup / LiveBench / Cost Efficiency / Provider Data
 //
 // Shared table infrastructure (buildShell, patchControls, patchTable, sort, search)
 // used by all views. Provider Data view adds a provider selector that only appears
@@ -21,22 +21,18 @@
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator ?? '—'}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
         { key: 'context_window', label: 'CTX', render: r =>
           r.context_window != null ? window.VIZ_NUM.fmtCount(r.context_window) : '—', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r =>
           r.cost_per_task != null ? window.VIZ_NUM.fmtUSD(r.cost_per_task) : '—', cls: 'num' },
-        { key: 'tokens_m', label: 'TOK', render: r =>
-          r.tokens_m != null ? window.VIZ_NUM.fmtCount(r.tokens_m, { decimals: 0 }) : '—', cls: 'num' },
+
         { key: 'speed_tps', label: 'SPEED t/s', render: r =>
           r.speed_tps != null ? window.VIZ_NUM.fmtCompact(r.speed_tps, { decimals: 0 }) : '—', cls: 'num' },
         { key: 'out_price', label: '$ / M TOK', render: r =>
           r.out_price != null ? window.VIZ_NUM.fmtUSD(r.out_price) : '—', cls: 'num' },
-        { key: 'iqPerK', label: 'IQ / $1K', render: r => {
-          return r.iq_per_1k != null
-            ? `<span style="color:var(--neon);font-weight:800;">${r.iq_per_1k.toFixed(1)}</span>` : '—';
-        }, cls: 'num' },
+
         { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r =>
           r.reasoning_tax_pct != null ? r.reasoning_tax_pct.toFixed(0) + '%' : '—', cls: 'num' },
         { key: 'livebench_average', label: 'LB AVG', render: r =>
@@ -53,34 +49,55 @@
         { key: 'type', label: 'TYPE', render: r => r.type ?? '—' },
       ],
     },
+    aaIndexes: {
+      label: 'AA Indexes',
+      defaultSort: [{ key: 'intel', dir: 'desc' }],
+      buildRows: data => data,
+      cols: [
+        { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
+        { key: 'creator', label: 'CREATOR', render: r =>
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator ?? '—'}` },
+        { key: 'intel', label: 'INTEL', render: r => r.intel ?? '—', cls: 'num' },
+        { key: 'aa_finance_accounting_index', label: 'FIN & ACCT', render: r =>
+          r.aa_finance_accounting_index != null ? r.aa_finance_accounting_index.toFixed(1) : '—', cls: 'num' },
+        { key: 'aa_analyst_agent_pass_5', label: 'ANALYST pass⁵', render: r =>
+          r.aa_analyst_agent_pass_5 != null ? (r.aa_analyst_agent_pass_5 * 100).toFixed(1) + '%' : '—', cls: 'num' },
+        { key: 'aa_briefcase_elo', label: 'BRIEFCASE ELO', render: r =>
+          r.aa_briefcase_elo != null ? r.aa_briefcase_elo.toFixed(1) : '—', cls: 'num' },
+        { key: 'aa_gdpval_elo', label: 'GDPVAL ELO', render: r =>
+          r.aa_gdpval_elo != null ? r.aa_gdpval_elo.toFixed(1) : '—', cls: 'num' },
+        { key: 'aa_omniscience_index', label: 'OMNISCIENCE', render: r =>
+          r.aa_omniscience_index != null ? r.aa_omniscience_index.toFixed(1) : '—', cls: 'num' },
+        { key: 'aa_time_per_task', label: 'TIME / TASK', render: r =>
+          r.aa_time_per_task != null ? r.aa_time_per_task.toFixed(2) + 's' : '—', cls: 'num' },
+      ],
+    },
     provider: {
       label: 'Provider Rollup',
       defaultSort: [{ key: 'avgIQ', dir: 'desc' }],
       buildRows(data) {
         const rollup = {};
         for (const m of data) {
-          if (!rollup[m.creator]) rollup[m.creator] = { count: 0, iq: [], cost: [], tokens: [] };
-          rollup[m.creator].count++;
-          if (m.intel != null) rollup[m.creator].iq.push(m.intel);
-          if (m.cost_per_task != null) rollup[m.creator].cost.push(m.cost_per_task);
-          if (m.tokens_m != null) rollup[m.creator].tokens.push(m.tokens_m);
+          const creator = m.creator ?? 'Unattributed';
+          if (!rollup[creator]) rollup[creator] = { count: 0, iq: [], cost: [] };
+          rollup[creator].count++;
+          if (m.intel != null) rollup[creator].iq.push(m.intel);
+          if (m.cost_per_task != null) rollup[creator].cost.push(m.cost_per_task);
         }
         const avg = arr => arr.length ? arr.reduce((a,b)=>a+b,0) / arr.length : null;
         return Object.entries(rollup).map(([creator, d]) => ({
           creator, count: d.count,
-          avgIQ: avg(d.iq), avgCost: avg(d.cost), avgTokens: avg(d.tokens),
+          avgIQ: avg(d.iq), avgCost: avg(d.cost),
         }));
       },
       cols: [
         { key: 'creator', label: 'CREATOR', render: (r, c) =>
-          `<span class="dot dot-lg" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
+          `<span class="dot dot-lg" style="background:${window.creatorColor(r.creator)}"></span>${r.creator ?? '—'}` },
         { key: 'count', label: '# MODELS', render: r => r.count, cls: 'num' },
         { key: 'avgIQ', label: 'AVG IQ', render: r => r.avgIQ != null ? r.avgIQ.toFixed(1) : '—', cls: 'num' },
         { key: 'avgCost', label: 'AVG $ / TASK', render: r =>
           r.avgCost != null ? window.VIZ_NUM.fmtUSD(r.avgCost) : '—', cls: 'num' },
-        { key: 'avgTokens', label: 'AVG TOK', render: r =>
-          r.avgTokens != null ? window.VIZ_NUM.fmtCount(r.avgTokens, { decimals: 0 }) : '—', cls: 'num' },
-        { key: 'iqPerK', label: '$ / 1K IQ', render: r => '—', cls: 'num' },
+
       ],
     },
     livebench: {
@@ -90,7 +107,7 @@
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator ?? '—'}` },
         { key: 'livebench_average', label: 'AVG', render: r =>
           r.livebench_average != null ? r.livebench_average.toFixed(1) : '—', cls: 'num' },
         { key: 'livebench_coding', label: 'CODING', render: r =>
@@ -111,26 +128,28 @@
     },
     efficiency: {
       label: 'Cost Efficiency',
-      defaultSort: [{ key: 'iqPerK', dir: 'desc' }],
-      buildRows: data => data,
+      defaultSort: [{ key: 'cost_per_iq', dir: 'asc' }],
+      buildRows: data => data.map(model => {
+        const costPerIq = model.cost_per_task > 0 && model.intel > 0
+          ? model.cost_per_task / model.intel
+          : null;
+        const provenance = { ...(model.provenance || {}) };
+        if (costPerIq != null) provenance.cost_per_iq = 'derived';
+        return { ...model, cost_per_iq: costPerIq, provenance };
+      }),
       cols: [
         { key: 'name', label: 'NAME', render: r => r.name, cls: 'name-cell' },
         { key: 'creator', label: 'CREATOR', render: r =>
-          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator}` },
+          `<span class="dot dot-sm" style="background:${window.creatorColor(r.creator)}"></span>${r.creator ?? '—'}` },
         { key: 'intel', label: 'IQ', render: r => r.intel ?? '—', cls: 'num' },
         { key: 'cost_per_task', label: '$ / TASK', render: r =>
           r.cost_per_task != null ? window.VIZ_NUM.fmtUSD(r.cost_per_task) : '—', cls: 'num' },
-        { key: 'iqPerK', label: 'IQ / $1K', render: r => {
-          return r.iq_per_1k != null
-            ? `<span style="color:var(--neon);font-weight:800;">${r.iq_per_1k.toFixed(1)}</span>` : '—';
-        }, cls: 'num' },
-        { key: 'cost_per_iq', label: '$ / IQ PT', render: r => {
-          return r.cost_per_iq != null ? window.VIZ_NUM.fmtUSD(r.cost_per_iq) : '—';
-        }, cls: 'num' },
-        { key: 'useful_cost', label: 'USEFUL $', render: r =>
-          r.useful_cost != null ? window.VIZ_NUM.fmtUSD(r.useful_cost) : '—', cls: 'num' },
-        { key: 'reasoning_tax_pct', label: 'RSN TAX %', render: r =>
+        { key: 'cost_per_iq', label: '$ / IQ PT†', render: r =>
+          r.cost_per_iq != null ? `<span title="Derived from AA cost/task and intel">${window.VIZ_NUM.fmtUSD(r.cost_per_iq)}</span>` : '—', cls: 'num' },
+        { key: 'reasoning_tax_pct', label: 'RSN SHARE %', render: r =>
           r.reasoning_tax_pct != null ? r.reasoning_tax_pct.toFixed(0) + '%' : '—', cls: 'num' },
+        { key: 'speed_tps', label: 'SPEED t/s', render: r =>
+          r.speed_tps != null ? window.VIZ_NUM.fmtCompact(r.speed_tps, { decimals: 0 }) : '—', cls: 'num' },
       ],
     },
     providerData: {
@@ -200,7 +219,7 @@
     sorted.sort((a, b) => {
       for (const { key, dir } of sortSpec) {
         let va = a[key], vb = b[key];
-        if (key === 'iqPerK') { va = a.iq_per_1k ?? null; vb = b.iq_per_1k ?? null; }
+
         if (va == null && vb == null) continue;
         if (va == null) return dir === 'asc' ? 1 : -1;
         if (vb == null) return dir === 'asc' ? -1 : 1;
@@ -224,6 +243,7 @@
   // Each view declares which fields to search. Defaults to name/creator/slug.
   const SEARCH_FIELDS = {
     model: ['name', 'creator', 'slug'],
+    aaIndexes: ['name', 'creator', 'slug'],
     provider: ['creator'],
     livebench: ['name', 'creator'],
     efficiency: ['name', 'creator'],
@@ -439,7 +459,7 @@
   window.VIZ_REGISTRY.push({
     id: 'data-table',
     name: 'Data Tables',
-    subtitle: 'Model Detail · Provider Rollup · LiveBench · Cost Efficiency · Provider Data (cache hit rates)',
+    subtitle: 'Model Detail · AA Indexes · Provider Rollup · LiveBench · Cost Efficiency · Provider Data (cache hit rates)',
     render,
   });
 

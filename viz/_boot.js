@@ -105,15 +105,17 @@ function renderBannerStats(ctx) {
   const byIntel = [...data].filter(m => m.intel != null).sort((a, b) => b.intel - a.intel);
   const byCost = [...data].filter(m => m.cost_per_task != null).sort((a, b) => a.cost_per_task - b.cost_per_task);
   const byValue = [...data]
-    .filter(m => m.iq_per_1k != null)
-    .sort((a, b) => b.iq_per_1k - a.iq_per_1k);
+    .filter(m => m.cost_per_task > 0 && m.intel > 0)
+    .map(m => ({ ...m, cost_per_iq: m.cost_per_task / m.intel }))
+    .sort((a, b) => a.cost_per_iq - b.cost_per_iq);
   const champ = byIntel[0], cheapest = byCost[0], bestValue = byValue[0] ?? null;
 
   function setStat(sel, model, slug, view, sortKey, sortDir) {
     const el = document.querySelector(sel);
     if (!el) return;
     const valEl = el.querySelector('.val');
-    if (valEl) valEl.innerHTML = model.creator.split('/')[0] + ' <span>' + model.slug + '</span>';
+    const creator = model.creator ? `${model.creator.split('/')[0]} ` : '';
+    if (valEl) valEl.innerHTML = creator + '<span>' + model.slug + '</span>';
     el.dataset.slug = slug;
     el.dataset.view = view;
     el.dataset.sortKey = sortKey;
@@ -121,7 +123,7 @@ function renderBannerStats(ctx) {
   }
   setStat('[data-metric="champion"]', champ, champ.slug, 'model', 'intel', 'desc');
   setStat('[data-metric="cheapest"]', cheapest, cheapest.slug, 'model', 'cost_per_task', 'asc');
-  setStat('[data-metric="value"]', bestValue, bestValue.slug, 'model', 'iqPerK', 'desc');
+  setStat('[data-metric="value"]', bestValue, bestValue.slug, 'efficiency', 'cost_per_iq', 'asc');
   return ok(ctx);
 }
 

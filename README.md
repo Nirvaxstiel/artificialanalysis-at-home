@@ -1,18 +1,18 @@
 # LLM Provider Pricing Analysis
 
-**Static dashboard for comparing LLM providers across IQ, cost, speed, verbosity, and cache efficiency.**
+**Static dashboard for comparing AA indexes, cost, speed, benchmarks, and cache efficiency.**
 
 Built for users who want to pick a model and care about more than one axis.
 
 ## What it shows
 
-133 AA-covered models (25 creators) inside a 2268-model dataset, 5 visualizations:
+41 models across 17 creators from AA's current exports; 5 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
 | **The Crossover** | X/Y scatter on any pair of (Intel, LiveBench, Arena Elo, OpenRouter pricing, speed, context). Bubble size = context window. |
 | **Cost Breakdown** | Per-model cost split (Input / Cached / Answer / Reasoning) on the AA baseline, or repriced on any cache provider's observed effective rates. |
-| **Provider Archetypes** | Radar per creator across 5 axes: IQ, Speed, Token Eff, Cache Eff, Cost Eff. |
+| **Provider Archetypes** | Radar per creator across IQ, Speed, Cache Eff, Cost Eff, and Context. |
 | **Cost per IQ Point** | Bar: how much $ you pay per IQ point, log scale. |
 | **Data Tables** | Sortable, filterable multi-view table of all fields. Click banner → jumps to this row. |
 
@@ -41,14 +41,14 @@ Or just open `dashboard.html` directly in a modern browser (it loads `processed.
 
 | Source | What we get |
 |--------|-------------|
-| **Artificial Analysis** (primary) | Intelligence Index, $/M input/output/cache, speed, output tokens, cost segments, 16 eval scores |
-| **OpenRouter API** | Pricing + context window for ~342 models (cross-check / context) |
-| **LiveBench** | Coding/agentic/reasoning scores (127 models) |
-| **Chatbot Arena** | Code + Text Elo (30 / 50 models) |
-| **OpenLLM v2** | Parameter counts (1783 models in subset) |
+| **Artificial Analysis** (primary) | Intelligence Index, Finance & Accounting, AnalystAgent pass rate, Briefcase Elo, GDPval-AA Elo, Omniscience, time/task, pricing, speed |
+| **OpenRouter API** | Pricing + context window for ~10 models (cross-check / context) |
+| **LiveBench** | Coding/agentic/reasoning scores (5 models) |
+| **Chatbot Arena** | Code + Text Elo (2 / 4 models) |
+| **OpenLLM v2** | Parameter counts (0 models in subset) |
 | **Dirac.run** | Observed cache hit rates + effective $/M per provider (auto-pulled) |
 
-AA Intelligence Index **v4.3**, AA snapshot **10 Sep 2026**. Per-source snapshot dates and model counts are generated into `data/processed.js` meta (`sources_meta`) and rendered in the dashboard footer.
+AA export snapshot: **10 Sep 2026**. Per-source dates and in-scope counts are generated into `data/processed.js` meta (`sources_meta`) and rendered in the dashboard footer.
 
 ## Architecture
 
@@ -70,11 +70,11 @@ Stages (each a `Result`-returning `run()`/`build()`):
 | Stage | Inputs | Output | Models |
 |-------|--------|--------|--------|
 | `_pull_sources` | OpenRouter API, OpenLLM parquet, LiveBench CSV, Dirac.run table | `data/sources/*` | (writes caches) |
-| `_build_registry` | `sources/*` (aa raw+enriched+live, openrouter, dirac, livebench, arena, openllm) | `model_registry.json` | 2268 |
+| `_build_registry` | `sources/*` (AA charts, JSON-LD and live metadata; supplementary sources scoped to AA exports) | `model_registry.json` | 41 |
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
-| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 2268 |
+| `_build_dashboard_data` | `model_registry.json` | `processed.js` | 41 |
 
-`_build_registry.run()` merges sources into a unified registry: `step_aa`, `step_dirac`, `step_livebench`, `step_arena_text`, `step_arena_code`, `step_openllm`, `step_openrouter`, `step_misc`, `step_name_map`, `step_write` — each a `Result` step over shared `ctx`, short-circuiting on the first `Err`.
+`_build_registry.run()` seeds models from AA's current chart and JSON-LD exports, then enriches only those models from metadata and supplementary sources. Stages return `Result` and short-circuit on the first `Err`.
 
 Serialized via the typed domain layer in `data/_domain/` (`RegistryModel`, `ProjectionRow`).
 
@@ -82,9 +82,9 @@ Serialized via the typed domain layer in `data/_domain/` (`RegistryModel`, `Proj
 JS uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/`fromFn`/`Pipeline` (mirrors `data/_pipeline.Pipeline`). `_boot.js` orchestrates load via `window.Result.Pipeline({}).then(bootstrap_models).then(build_shell)...run()` — identical shape to the Python stages. Each viz file is self-contained, registering itself in `window.VIZ_REGISTRY`.
 
 Shared config in `viz/_shared.js`:
-- `CREATOR_COLORS` — 25 creators with distinct hex colors
+- `CREATOR_COLORS` — curated colors for current creators
 - `SKU_PATTERNS` — slug-based splits (OSS / Mini / Nano / Flash / Code)
-- `RADAR_AXES` — 5 radar axes (IQ / Speed / Token Eff / Cache Eff / Cost Eff)
+- `RADAR_AXES` — 5 radar axes (IQ / Speed / Cache Eff / Cost Eff / Context)
 - `FIELD_LABELS` — display names for table columns
 - `COST_SEGMENTS` — color + label for cost breakdown
 - `dirac_cache_hit_rates` (per model) — observed cache hit % + effective $/M per provider, from Dirac.run / OpenRouter effective pricing; drives the Cost Breakdown provider mode and the Provider Data view
@@ -100,8 +100,8 @@ Generic filter: `window.__legendFilter = { dim, val }` — shared across all vie
 ├── README.md
 ├── dashboard.html              ← the viz (loads data/processed.js)
 ├── data/
-│   ├── processed.js           ← 2268 models, primary dataset (loaded by dashboard)
-│   ├── model_registry.json     ← 2268 models, 7 sources (serialized via RegistryModel)
+│   ├── processed.js           ← 41 models, primary dataset (loaded by dashboard)
+│   ├── model_registry.json     ← 41 models, 7 sources (serialized via RegistryModel)
 │   ├── axes_catalog.json       ← typed axis catalog
 │   ├── _pipeline.py            ← orchestrator: build / build_from_cache / build() (pull)
 │   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter / Dirac.run

@@ -32,6 +32,8 @@ def _run_pipeline_to_tmp():
     tmp = tempfile.mkdtemp(prefix="pipeline_det_")
     dest = os.path.join(tmp, "data")
     shutil.copytree(DATA_DIR, dest, ignore=shutil.ignore_patterns("__pycache__"))
+    for name in ("model_registry.json", "axes_catalog.json", "processed.js"):
+        os.remove(os.path.join(dest, name))
     ctx = {"root": tmp}
     build_from_cache(ctx)
     return dest

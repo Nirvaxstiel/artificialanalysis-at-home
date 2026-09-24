@@ -45,45 +45,43 @@ Each step is a named `Result`-returning function over a shared `ctx`. `render()`
 
 ## Available data (from `window.MODELS`)
 
-Each model is a `ProjectionRow` with these fields (2268 models; 133 carry AA data):
+Each model is a `ProjectionRow` with these fields (41 models; all 41 carry AA data):
 
 | Field | Type | Notes |
 |-------|------|-------|
 | `slug` | string | URL identifier (hyphenated) |
-| `name` | string | Display name (may include effort qualifiers) |
-| `creator` | string | Model creator org |
-| `type` | string | "Proprietary" or "Open weights" |
-| `intel` | float | AA Intelligence Index v4 |
-| `cost_per_task` | float | USD per task (AA-derived) |
-| `iq_per_dollar_pt` | float | IQ per $ (point-normalized) |
-| `iq_per_1k` / `cost_per_iq` | float | IQ per $1K / cost per IQ point — **AA-sourced only** (no derived fallback) |
-| `tokens_m` | float | Output tokens in millions (AA eval; verbosity, not quality) |
+| `name` | string | Display name |
+| `creator` | string | Model creator org; may be absent |
+| `type` | string | Model type |
+| `intel` | float | AA Intelligence Index |
+| `aa_finance_accounting_index` | float | Finance & Accounting score (0–100) |
+| `aa_analyst_agent_pass_5` | float | AnalystAgent pass⁵ rate (0–1) |
+| `aa_briefcase_elo` / `aa_gdpval_elo` | float | AA-Briefcase / GDPval-AA Elo |
+| `aa_omniscience_index` | float | Omniscience Index (−100–100) |
+| `aa_time_per_task` | float | Seconds per Intelligence Index task |
+| `cost_per_task` | float | AA-sourced USD per task |
+| `inp_price` / `out_price` / `cache_hit_price` | float | AA $/M input, output, and cached input tokens |
+| `cost_seg_*` | float | AA per-task cost components for Cost Breakdown |
 | `speed_tps` | float | Output tokens per second |
-| `ttft` | float | Time to first token (s) |
-| `inp_price` / `out_price` | float | $/M input / output tokens (AA) |
-| `cache_hit_price` | float | $/M cached input tokens (AA) |
-| `openrouter_inp_price_per_m` / `openrouter_out_price_per_m` / `openrouter_cache_read_price_per_m` | float | OpenRouter pricing |
+| `openrouter_*_price_per_m` | float | OpenRouter pricing |
 | `openrouter_vendor` | string | OpenRouter vendor tag |
-| `context_window` | int | Context window in tokens (OpenRouter `context_length`); drives crossover bubble size |
-| `arena_code_elo` / `arena_code_ci` / `arena_code_votes` | float | Chatbot Arena Code |
-| `arena_text_elo` / `arena_text_ci` / `arena_text_votes` | float | Chatbot Arena Text |
-| `aa_coding_index` / `aa_gpqa` / `aa_hle` / `aa_ifbench` / `aa_lcr` / `aa_scicode` / `aa_tau2` / `aa_tau_banking` / `aa_terminalbench_hard` / `aa_terminalbench_v2_1` / `aa_omniscience_hallucination_rate` / `aa_briefcase_analytical_quality_elo` / `aa_briefcase_presentation_elo` / `aa_time_per_task` | float | AA live-API eval scores (0–1) |
-| `params_b` / `co2_kg` | float | OpenLLM v2 parameters (B) / CO₂ cost (kg) |
-| `cache_hit_rate_max` | float | Observed prefix-cache hit rate (Dirac.run, max across providers) |
-| `radar_intel` / `radar_speed` / `radar_cache_eff` / `radar_cost_eff` / `radar_ctx` | float | Normalized radar values (Provider Archetypes) |
-| `archetype` | string | "frontier" / "reasoning" / "cheap" / "fast" / "compact" / "uncategorized" |
-| `pareto_optimal` | bool | On the IQ-vs-cost frontier |
-| `cost_percentile` / `iq_percentile` | float | Ranking percentiles |
-| `has_breakdown` | bool | True if AA cost-segment data exists (Cost Breakdown tab) |
-| `useful_cost` / `reasoning_tax_pct` | float | Derived cost metrics |
-| `blended` | float | AA blended $/M (3:1 input:output) |
-| `release_date` | string | Model release date (AA live API) |
+| `context_window` | int | OpenRouter context length; drives crossover bubble size |
+| `arena_code_*` / `arena_text_*` | float | Chatbot Arena Code / Text results |
+| `livebench_*` / `openllm_*` | float | Supplementary benchmark results when in scope |
+| `params_b` / `co2_kg` | float | Supplementary metadata when available |
+| `cache_hit_rate_max` / `dirac_cache_hit_rates` | float / array | Dirac observed rate and provider-grouped rates |
+| `reasoning_tax_pct` | float | Derived from sourced reasoning and total task cost |
+| `radar_*` | float | Normalized Provider Archetypes values |
+| `archetype` / `pareto_optimal` / `has_breakdown` | string / bool | Derived categorization, frontier, and cost-data presence |
+| `blended` | float | Derived AA blended $/M (3:1 input:output) |
+| `release_date` | string | AA live API metadata |
+| `provenance` | object | Per-field `sourced` / `derived` tags |
 
-Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at render time by `cost-breakdown.js` from `cost_seg_*` when present on the source model — they are not stored on the projection row.
+Cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the chart and table; it is not stored in `processed.js`. Full-index “Cost to Run” values are not used as per-task prices.
 
 ## Shared config (`_shared.js`)
 
-- `window.CREATOR_COLORS` — creator → hex color map (25 creators)
+- `window.CREATOR_COLORS` — curated creator → hex color map
 - `window.VIZ_REGISTRY` — array of `{id, name, subtitle, render}`
 - `window.__legendFilter` — global filter state `{ dim, val } | null`
 - `window.__setLegendFilter(dim, val)` — toggle helper
@@ -91,7 +89,7 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 - `window.__filterSubscribers` — `Set` of callbacks invoked on filter change
 - `window.__renderCreatorLegend()` — generates HTML legend strip
 - `window.SKU_PATTERNS` — slug → suffix splits (OSS / Mini / Nano / Flash / Code)
-- `window.RADAR_AXES` — 5 radar axes (key, label, angle)
+- `window.RADAR_AXES` — 5 radar axes (IQ, speed, cache efficiency, cost efficiency, context)
 - `window.COST_SEGMENTS` — color + label for cost breakdown
 - `window.FIELD_LABELS` — display names for table columns
 - `model.dirac_cache_hit_rates` — observed cache hit % + effective $/M per provider (Dirac.run / OpenRouter effective pricing)
@@ -101,7 +99,7 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 - `buildTooltip(model)` — full data tooltip builder
 - `attachTooltip(el, model)` — convenience: attaches mouseenter/move/leave
 - `window.PROCESSED_DATA` — the raw generated dataset object (`{meta, sources, sources_meta, models}`); `meta.counts` = `{models, aa_models, creators}`, `meta.sources_meta` = per-source `{models, as_of, note?}`
-- `window.MODELS` — array of all models (2268), after the `_domain.js` load boundary
+- `window.MODELS` — array of all models (41), after the `_domain.js` load boundary
 
 ## Current viz files
 
@@ -113,7 +111,7 @@ Cost Breakdown segments (Input / Cached / Answer / Reasoning) are computed at re
 - `cost-breakdown.js` — stacked bars on the AA baseline, or repriced per cache provider (scaled $/task + effective-rate block)
 - `provider-archetypes.js` — radar charts per creator
 - `cost-per-iq.js` — cost per IQ point bar chart
-- `data-table.js` — sortable, filterable multi-view table (multi-column sort with shift+click)
+- `data-table.js` — sortable, filterable six-view table (AA Indexes, multi-column sort with shift+click)
 
 ## Testing locally
 

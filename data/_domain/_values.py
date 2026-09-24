@@ -43,13 +43,7 @@ class CostPerTask(DomainValue):
             raise ValueError(f"Negative cost per task: {self.usd}")
 
 
-@dataclass(frozen=True)
-class TokensPerTask(DomainValue):
-    mtok: float
 
-    def __post_init__(self):
-        if self.mtok <= 0:
-            raise ValueError(f"Non-positive tokens per task: {self.mtok}")
 
 
 @dataclass(frozen=True)
@@ -61,27 +55,7 @@ class TokensPerSecond(DomainValue):
             raise ValueError(f"Negative tokens per second: {self.tps}")
 
 
-@dataclass(frozen=True)
-class TimeToFirstToken(DomainValue):
-    seconds: float
 
-    def __post_init__(self):
-        if self.seconds < 0:
-            raise ValueError(f"Negative TTFT: {self.seconds}")
-
-
-@dataclass(frozen=True)
-class AxisMetric(DomainValue):
-    value: float
-
-
-@dataclass(frozen=True)
-class UsefulCost(DomainValue):
-    usd: float
-
-    def __post_init__(self):
-        if self.usd < 0:
-            raise ValueError(f"Negative useful cost: {self.usd}")
 
 
 @dataclass(frozen=True)
@@ -159,37 +133,7 @@ class BenchmarkScore(DomainValue):
             raise ValueError(f"Benchmark score out of [0, 100]: {self.score}")
 
 
-@dataclass(frozen=True)
-class IQ_PerMToken(DomainValue):
-    value: float
 
-    def as_primitive(self) -> float:
-        return self.value
-
-
-@dataclass(frozen=True)
-class IQ_PerMTokenDollar(DomainValue):
-    value: float
-
-    def as_primitive(self) -> float:
-        return self.value
-
-
-@dataclass(frozen=True)
-class IQ_PerDollarPoint(DomainValue):
-    value: float
-
-    def as_primitive(self) -> float:
-        return self.value
-
-
-@dataclass(frozen=True)
-class CostPerIQPoint(DomainValue):
-    usd_per_iq: float
-
-    def __post_init__(self):
-        if self.usd_per_iq < 0:
-            raise ValueError(f"Negative cost per IQ point: {self.usd_per_iq}")
 
 
 @dataclass(frozen=True)
@@ -208,6 +152,24 @@ class OmniscienceIndex(DomainValue):
     def __post_init__(self):
         if not (-100 <= self.value <= 100):
             raise ValueError(f"Omniscience index out of [-100, 100]: {self.value}")
+
+
+@dataclass(frozen=True)
+class FinanceAccountingIndex(DomainValue):
+    score: float
+
+    def __post_init__(self):
+        if not (0 <= self.score <= 100):
+            raise ValueError(f"Finance & Accounting Index out of [0, 100]: {self.score}")
+
+
+@dataclass(frozen=True)
+class PassRate(DomainValue):
+    ratio: float
+
+    def __post_init__(self):
+        if not (0 <= self.ratio <= 1):
+            raise ValueError(f"Pass rate out of [0, 1]: {self.ratio}")
 
 
 @dataclass(frozen=True)
@@ -235,24 +197,3 @@ class ContextWindow(DomainValue):
     def __post_init__(self):
         if self.tokens <= 0:
             raise ValueError(f"Context window must be positive: {self.tokens}")
-
-
-@dataclass(frozen=True)
-class Percentile(DomainValue):
-    pct: float
-
-    def __post_init__(self):
-        if not (0 <= self.pct <= 100):
-            raise ValueError(f"Percentile out of [0, 100]: {self.pct}")
-
-
-@dataclass(frozen=True)
-class Count(DomainValue):
-    value: int
-
-    def __post_init__(self):
-        if self.value < 0:
-            raise ValueError(f"Negative count: {self.value}")
-
-    def as_primitive(self) -> int:
-        return self.value

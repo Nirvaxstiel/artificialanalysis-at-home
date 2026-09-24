@@ -3,14 +3,10 @@ from typing import Any, ClassVar, Dict, Optional
 
 from ._base import Archetype, DomainValue, ModelType, Provenance
 from ._values import (
-    PricePerMToken, PricePerToken,
-    CostPerTask, TokensPerTask, TokensPerSecond, TimeToFirstToken,
-    UsefulCost, ReasoningTaxPct, CacheHitRate, CostSegment,
-    IntelligenceScore, IQ_PerDollarPoint, IQ_PerMToken, IQ_PerMTokenDollar,
-    CostPerIQPoint,
-    Elo, CIMargin, VoteCount, BenchmarkScore,
-    ParameterCount, CarbonKg, ContextWindow, Percentile,
-    ResponseTime,
+    PricePerMToken, CostPerTask, TokensPerSecond, ReasoningTaxPct,
+    CacheHitRate, CostSegment, IntelligenceScore, FinanceAccountingIndex,
+    PassRate, OmniscienceIndex, Elo, CIMargin, VoteCount, BenchmarkScore,
+    ParameterCount, CarbonKg, ContextWindow, ResponseTime,
 )
 
 
@@ -19,10 +15,7 @@ class ProjectionRowMeta:
     archetype: Archetype = Archetype.UNCATEGORIZED
     pareto_optimal: bool = False
     has_breakdown: bool = False
-    cost_percentile: Optional[Percentile] = None
-    iq_percentile: Optional[Percentile] = None
     release_date: Optional[str] = None
-    confirmed_scraped: Optional[bool] = None
     dirac_cache_hit_rates: Optional[list] = None
 
 
@@ -38,10 +31,7 @@ class ProjectionRow:
     blended: Optional[PricePerMToken] = None
     cache_hit_price: Optional[PricePerMToken] = None
     cost_per_task: Optional[CostPerTask] = None
-    tokens_m: Optional[TokensPerTask] = None
     speed_tps: Optional[TokensPerSecond] = None
-    ttft: Optional[TimeToFirstToken] = None
-    useful_cost: Optional[UsefulCost] = None
     reasoning_tax_pct: Optional[ReasoningTaxPct] = None
     cost_seg_total: Optional[CostSegment] = None
     cost_seg_answer: Optional[CostSegment] = None
@@ -50,10 +40,6 @@ class ProjectionRow:
     cost_seg_cache_hit: Optional[CostSegment] = None
     cost_seg_input: Optional[CostSegment] = None
     intel: Optional[IntelligenceScore] = None
-    iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
-    iq_per_mtok: Optional[IQ_PerMToken] = None
-    iq_per_1k: Optional[IQ_PerDollarPoint] = None
-    cost_per_iq: Optional[IQ_PerMTokenDollar] = None
     livebench_average: Optional[BenchmarkScore] = None
     livebench_coding: Optional[BenchmarkScore] = None
     livebench_reasoning: Optional[BenchmarkScore] = None
@@ -75,25 +61,11 @@ class ProjectionRow:
     openllm_gpqa: Optional[BenchmarkScore] = None
     openllm_musr: Optional[BenchmarkScore] = None
     openllm_mmlu_pro: Optional[BenchmarkScore] = None
-    aa_coding_index: Optional[BenchmarkScore] = None
-    aa_math_index: Optional[BenchmarkScore] = None
-    aa_gpqa: Optional[BenchmarkScore] = None
-    aa_mmlu_pro: Optional[BenchmarkScore] = None
-    aa_hle: Optional[BenchmarkScore] = None
-    aa_aime: Optional[BenchmarkScore] = None
-    aa_aime_25: Optional[BenchmarkScore] = None
-    aa_math_500: Optional[BenchmarkScore] = None
-    aa_livecodebench: Optional[BenchmarkScore] = None
-    aa_ifbench: Optional[BenchmarkScore] = None
-    aa_lcr: Optional[BenchmarkScore] = None
-    aa_scicode: Optional[BenchmarkScore] = None
-    aa_tau2: Optional[BenchmarkScore] = None
-    aa_tau_banking: Optional[BenchmarkScore] = None
-    aa_terminalbench_hard: Optional[BenchmarkScore] = None
-    aa_terminalbench_v2_1: Optional[BenchmarkScore] = None
-    aa_omniscience_hallucination_rate: Optional[BenchmarkScore] = None
-    aa_briefcase_analytical_quality_elo: Optional[Elo] = None
-    aa_briefcase_presentation_elo: Optional[Elo] = None
+    aa_finance_accounting_index: Optional[FinanceAccountingIndex] = None
+    aa_analyst_agent_pass_5: Optional[PassRate] = None
+    aa_briefcase_elo: Optional[Elo] = None
+    aa_gdpval_elo: Optional[Elo] = None
+    aa_omniscience_index: Optional[OmniscienceIndex] = None
     aa_time_per_task: Optional[ResponseTime] = None
     openrouter_inp_price_per_m: Optional[PricePerMToken] = None
     openrouter_out_price_per_m: Optional[PricePerMToken] = None
@@ -103,10 +75,6 @@ class ProjectionRow:
     co2_kg: Optional[CarbonKg] = None
     context_window: Optional[ContextWindow] = None
     cache_hit_rate_max: Optional[CacheHitRate] = None
-    iq_per_dollar_pt: Optional[IQ_PerDollarPoint] = None
-    iq_per_mtok: Optional[IQ_PerMToken] = None
-    iq_per_1k: Optional[IQ_PerDollarPoint] = None
-    cost_per_iq: Optional[IQ_PerMTokenDollar] = None
     radar_intel: Optional[float] = None
     radar_speed: Optional[float] = None
     radar_cache_eff: Optional[float] = None
@@ -122,16 +90,14 @@ class ProjectionRow:
         "creator": Provenance.SOURCED, "type": Provenance.SOURCED,
         "meta": Provenance.SOURCED,
         "inp_price": Provenance.SOURCED, "out_price": Provenance.SOURCED,
-        "blended": Provenance.SOURCED, "cache_hit_price": Provenance.SOURCED,
-        "cost_per_task": Provenance.SOURCED, "tokens_m": Provenance.SOURCED,
-        "speed_tps": Provenance.SOURCED, "ttft": Provenance.SOURCED,
-        "useful_cost": Provenance.SOURCED, "reasoning_tax_pct": Provenance.SOURCED,
+        "blended": Provenance.DERIVED, "cache_hit_price": Provenance.SOURCED,
+        "cost_per_task": Provenance.SOURCED,
+        "speed_tps": Provenance.SOURCED,
+        "reasoning_tax_pct": Provenance.DERIVED,
         "cost_seg_total": Provenance.SOURCED, "cost_seg_answer": Provenance.SOURCED,
         "cost_seg_reasoning": Provenance.SOURCED, "cost_seg_cache_write": Provenance.SOURCED,
         "cost_seg_cache_hit": Provenance.SOURCED, "cost_seg_input": Provenance.SOURCED,
-        "intel": Provenance.SOURCED, "iq_per_dollar_pt": Provenance.SOURCED,
-        "iq_per_mtok": Provenance.SOURCED, "iq_per_1k": Provenance.SOURCED,
-        "cost_per_iq": Provenance.SOURCED,
+        "intel": Provenance.SOURCED,
         "livebench_average": Provenance.SOURCED,
         "livebench_coding": Provenance.SOURCED,
         "livebench_reasoning": Provenance.SOURCED,
@@ -147,17 +113,11 @@ class ProjectionRow:
         "openllm_bbh": Provenance.SOURCED, "openllm_math_lvl_5": Provenance.SOURCED,
         "openllm_gpqa": Provenance.SOURCED, "openllm_musr": Provenance.SOURCED,
         "openllm_mmlu_pro": Provenance.SOURCED,
-        "aa_coding_index": Provenance.SOURCED, "aa_math_index": Provenance.SOURCED,
-        "aa_gpqa": Provenance.SOURCED, "aa_mmlu_pro": Provenance.SOURCED,
-        "aa_hle": Provenance.SOURCED, "aa_aime": Provenance.SOURCED,
-        "aa_aime_25": Provenance.SOURCED, "aa_math_500": Provenance.SOURCED,
-        "aa_livecodebench": Provenance.SOURCED, "aa_ifbench": Provenance.SOURCED,
-        "aa_lcr": Provenance.SOURCED, "aa_scicode": Provenance.SOURCED,
-        "aa_tau2": Provenance.SOURCED, "aa_tau_banking": Provenance.SOURCED,
-        "aa_terminalbench_hard": Provenance.SOURCED, "aa_terminalbench_v2_1": Provenance.SOURCED,
-        "aa_omniscience_hallucination_rate": Provenance.SOURCED,
-        "aa_briefcase_analytical_quality_elo": Provenance.SOURCED,
-        "aa_briefcase_presentation_elo": Provenance.SOURCED,
+        "aa_finance_accounting_index": Provenance.SOURCED,
+        "aa_analyst_agent_pass_5": Provenance.SOURCED,
+        "aa_briefcase_elo": Provenance.SOURCED,
+        "aa_gdpval_elo": Provenance.SOURCED,
+        "aa_omniscience_index": Provenance.SOURCED,
         "aa_time_per_task": Provenance.SOURCED,
         "openrouter_inp_price_per_m": Provenance.SOURCED,
         "openrouter_out_price_per_m": Provenance.SOURCED,
@@ -167,7 +127,10 @@ class ProjectionRow:
         "context_window": Provenance.SOURCED,
         "cache_hit_rate_max": Provenance.SOURCED,
         "archetype": Provenance.DERIVED,
-        "iq_per_dollar_pt": Provenance.SOURCED,
+        "has_breakdown": Provenance.DERIVED,
+        "pareto_optimal": Provenance.DERIVED,
+        "release_date": Provenance.SOURCED,
+        "dirac_cache_hit_rates": Provenance.SOURCED,
         "radar_intel": Provenance.DERIVED, "radar_speed": Provenance.DERIVED,
         "radar_cache_eff": Provenance.DERIVED, "radar_cost_eff": Provenance.DERIVED,
         "radar_ctx": Provenance.DERIVED,
@@ -184,36 +147,21 @@ class ProjectionRow:
             "type": self.type.value if self.type else None,
             "intel": None,
             "cost_per_task": None,
-            "tokens_m": None,
             "speed_tps": None,
             "inp_price": self.inp_price.as_primitive() if self.inp_price else None,
             "out_price": self.out_price.as_primitive() if self.out_price else None,
-            "iq_per_dollar_pt": None,
-            "iq_per_mtok": None,
-            "iq_per_1k": None,
-            "cost_per_iq": None,
-            "useful_cost": None,
             "reasoning_tax_pct": None,
             "archetype": self.meta.archetype.value if self.meta else None,
             "has_breakdown": self.meta.has_breakdown if self.meta else False,
             "pareto_optimal": self.meta.pareto_optimal if self.meta else False,
-            "cost_percentile": None,
-            "iq_percentile": None,
             "context_window": None,
         }
-        optional_map: Dict[str, Optional[DomainValue]] = {
+        optional_map: Dict[str, Any] = {
             "intel": self.intel,
             "cost_per_task": self.cost_per_task,
-            "tokens_m": self.tokens_m,
             "speed_tps": self.speed_tps,
-            "ttft": self.ttft,
             "blended": self.blended,
             "cache_hit_price": self.cache_hit_price,
-            "iq_per_dollar_pt": self.iq_per_dollar_pt,
-            "iq_per_mtok": self.iq_per_mtok,
-            "iq_per_1k": self.iq_per_1k,
-            "cost_per_iq": self.cost_per_iq,
-            "useful_cost": self.useful_cost,
             "reasoning_tax_pct": self.reasoning_tax_pct,
             "cost_seg_total": self.cost_seg_total,
             "cost_seg_answer": self.cost_seg_answer,
@@ -242,25 +190,11 @@ class ProjectionRow:
             "openllm_gpqa": self.openllm_gpqa,
             "openllm_musr": self.openllm_musr,
             "openllm_mmlu_pro": self.openllm_mmlu_pro,
-            "aa_coding_index": self.aa_coding_index,
-            "aa_math_index": self.aa_math_index,
-            "aa_gpqa": self.aa_gpqa,
-            "aa_mmlu_pro": self.aa_mmlu_pro,
-            "aa_hle": self.aa_hle,
-            "aa_aime": self.aa_aime,
-            "aa_aime_25": self.aa_aime_25,
-            "aa_math_500": self.aa_math_500,
-            "aa_livecodebench": self.aa_livecodebench,
-            "aa_ifbench": self.aa_ifbench,
-            "aa_lcr": self.aa_lcr,
-            "aa_scicode": self.aa_scicode,
-            "aa_tau2": self.aa_tau2,
-            "aa_tau_banking": self.aa_tau_banking,
-            "aa_terminalbench_hard": self.aa_terminalbench_hard,
-            "aa_terminalbench_v2_1": self.aa_terminalbench_v2_1,
-            "aa_omniscience_hallucination_rate": self.aa_omniscience_hallucination_rate,
-            "aa_briefcase_analytical_quality_elo": self.aa_briefcase_analytical_quality_elo,
-            "aa_briefcase_presentation_elo": self.aa_briefcase_presentation_elo,
+            "aa_finance_accounting_index": self.aa_finance_accounting_index,
+            "aa_analyst_agent_pass_5": self.aa_analyst_agent_pass_5,
+            "aa_briefcase_elo": self.aa_briefcase_elo,
+            "aa_gdpval_elo": self.aa_gdpval_elo,
+            "aa_omniscience_index": self.aa_omniscience_index,
             "aa_time_per_task": self.aa_time_per_task,
             "openrouter_inp_price_per_m": self.openrouter_inp_price_per_m,
             "openrouter_out_price_per_m": self.openrouter_out_price_per_m,
@@ -269,7 +203,6 @@ class ProjectionRow:
             "co2_kg": self.co2_kg,
             "context_window": self.context_window,
             "cache_hit_rate_max": self.cache_hit_rate_max,
-            "iq_per_dollar_pt": self.iq_per_dollar_pt,
             "radar_intel": self.radar_intel,
             "radar_speed": self.radar_speed,
             "radar_cache_eff": self.radar_cache_eff,
@@ -280,16 +213,15 @@ class ProjectionRow:
             if val is not None:
                 d[key] = val.as_primitive() if isinstance(val, DomainValue) else val
         if self.meta is not None:
-            if self.meta.cost_percentile is not None:
-                d["cost_percentile"] = self.meta.cost_percentile.as_primitive()
-            if self.meta.iq_percentile is not None:
-                d["iq_percentile"] = self.meta.iq_percentile.as_primitive()
             if self.meta.release_date is not None:
                 d["release_date"] = self.meta.release_date
-            if self.meta.confirmed_scraped is not None:
-                d["confirmed_scraped"] = self.meta.confirmed_scraped
             if self.meta.dirac_cache_hit_rates is not None:
                 d["dirac_cache_hit_rates"] = self.meta.dirac_cache_hit_rates
         if self.openrouter_vendor is not None:
             d["openrouter_vendor"] = self.openrouter_vendor
+        d["provenance"] = {
+            key: provenance.value
+            for key, provenance in self.FIELD_PROVENANCE.items()
+            if key in d and d[key] is not None
+        }
         return d

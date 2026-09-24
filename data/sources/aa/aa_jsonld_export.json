@@ -1,1 +1,4209 @@
-[{"@context":"https://schema.org","@type":"Dataset","name":"Intelligence","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Artificial Analysis Intelligence Index · Higher is better · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Claude Fable 5.1 (max with fallback)","artificialAnalysisIntelligenceIndex":53.3737509623252,"detailsUrl":"/models/claude-fable-5-1"},{"label":"GPT-6 Astra (max)","artificialAnalysisIntelligenceIndex":52.814069395513,"detailsUrl":"/models/gpt-6-astra"},{"label":"Claude Opus 5 (max)","artificialAnalysisIntelligenceIndex":50.7001865797629,"detailsUrl":"/models/claude-opus-5"},{"label":"Muse Spark 1.3 (max)","artificialAnalysisIntelligenceIndex":48.1690107719685,"detailsUrl":"/models/muse-spark-1-3"},{"label":"GLM-5.3 (max)","artificialAnalysisIntelligenceIndex":44.855717385614,"detailsUrl":"/models/glm-5-3"},{"label":"Grok 4.6 (high)","artificialAnalysisIntelligenceIndex":44.4050073012592,"detailsUrl":"/models/grok-4-6"},{"label":"Kimi K3 (max)","artificialAnalysisIntelligenceIndex":43.7841729518782,"detailsUrl":"/models/kimi-k3"},{"label":"Gemini 3.8 Flash (high)","artificialAnalysisIntelligenceIndex":41.1863571765904,"detailsUrl":"/models/gemini-3-8-flash"},{"label":"GPT-5.6 Luna (max)","artificialAnalysisIntelligenceIndex":37.5048489690841,"detailsUrl":"/models/gpt-5-6-luna"},{"label":"DeepSeek V4 Pro 0813 (max)","artificialAnalysisIntelligenceIndex":36.2828791278402,"detailsUrl":"/models/deepseek-v4-pro"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Speed","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Output tokens per second · Higher is better · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Gemini 3.8 Flash (high)","medianOutputSpeed":272.947628761714,"detailsUrl":"/models/gemini-3-8-flash"},{"label":"Muse Spark 1.3 (max)","medianOutputSpeed":222.390781598493,"detailsUrl":"/models/muse-spark-1-3"},{"label":"GPT-5.6 Luna (max)","medianOutputSpeed":109.977223158517,"detailsUrl":"/models/gpt-5-6-luna"},{"label":"DeepSeek V4 Pro 0813 (max)","medianOutputSpeed":78.4834705420975,"detailsUrl":"/models/deepseek-v4-pro"},{"label":"Claude Fable 5.1 (max with fallback)","medianOutputSpeed":67.2341313736404,"detailsUrl":"/models/claude-fable-5-1"},{"label":"GLM-5.3 (max)","medianOutputSpeed":58.1461028441074,"detailsUrl":"/models/glm-5-3"},{"label":"GPT-6 Astra (max)","medianOutputSpeed":54.348906269889,"detailsUrl":"/models/gpt-6-astra"},{"label":"Grok 4.6 (high)","medianOutputSpeed":52.7575326221108,"detailsUrl":"/models/grok-4-6"},{"label":"Claude Opus 5 (max)","medianOutputSpeed":51.4080412771457,"detailsUrl":"/models/claude-opus-5"},{"label":"Kimi K3 (max)","medianOutputSpeed":35.5455244251045,"detailsUrl":"/models/kimi-k3"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Cost per Task","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Weighted average cost (USD) per Intelligence Index task · Lower is better · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"GPT-5.6 Luna (max)","costPerIntelligenceIndexTask":0.17829726152289094,"detailsUrl":"/models/gpt-5-6-luna"},{"label":"DeepSeek V4 Pro 0813 (max)","costPerIntelligenceIndexTask":0.6740219040435134,"detailsUrl":"/models/deepseek-v4-pro"},{"label":"Gemini 3.8 Flash (high)","costPerIntelligenceIndexTask":1.2427947606950427,"detailsUrl":"/models/gemini-3-8-flash"},{"label":"Muse Spark 1.3 (max)","costPerIntelligenceIndexTask":1.6048932100125866,"detailsUrl":"/models/muse-spark-1-3"},{"label":"Grok 4.6 (high)","costPerIntelligenceIndexTask":1.8589423352127492,"detailsUrl":"/models/grok-4-6"},{"label":"Kimi K3 (max)","costPerIntelligenceIndexTask":2.0001323004425493,"detailsUrl":"/models/kimi-k3"},{"label":"GLM-5.3 (max)","costPerIntelligenceIndexTask":2.0056375150449584,"detailsUrl":"/models/glm-5-3"},{"label":"GPT-6 Astra (max)","costPerIntelligenceIndexTask":3.2575003134834164,"detailsUrl":"/models/gpt-6-astra"},{"label":"Claude Opus 5 (max)","costPerIntelligenceIndexTask":5.858396237036018,"detailsUrl":"/models/claude-opus-5"},{"label":"Claude Fable 5.1 (max with fallback)","costPerIntelligenceIndexTask":7.629706364004841,"detailsUrl":"/models/claude-fable-5-1"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Artificial Analysis Intelligence Index","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Artificial Analysis Intelligence Index v4.3 incorporates 10 evaluations: AA-Briefcase, GDPval-AA v2, AutomationBench-AA, Terminal-Bench v4.0, SciCode, Humanity's Last Exam, GDP.pdf, CritPt, AA-Omniscience, AA-LCR v1.1 · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"GPT-6 Astra (max)","intelligenceIndex":52.814069395513,"detailsUrl":"/models/gpt-6-astra"},{"label":"Claude Fable 5.1 (high with fallback)","intelligenceIndex":51.2094958852237,"detailsUrl":"/models/claude-fable-5-1-high"},{"label":"Claude Fable 5 (with fallback)","intelligenceIndex":49.6994452733378,"detailsUrl":"/models/claude-fable-5"},{"label":"GPT-6 Astra (medium)","intelligenceIndex":49.6685363034369,"detailsUrl":"/models/gpt-6-astra-medium"},{"label":"Claude Opus 5 (high)","intelligenceIndex":48.2371932595908,"detailsUrl":"/models/claude-opus-5-high"},{"label":"GPT-5.6 Sol (max)","intelligenceIndex":47.0613568915036,"detailsUrl":"/models/gpt-5-6-sol"},{"label":"GPT-6 Astra (low)","intelligenceIndex":45.9944993120341,"detailsUrl":"/models/gpt-6-astra-low"},{"label":"GPT-5.6 Sol (xhigh)","intelligenceIndex":44.138026369169,"detailsUrl":"/models/gpt-5-6-sol-xhigh"},{"label":"Kimi K3 (max)","intelligenceIndex":43.7841729518782,"detailsUrl":"/models/kimi-k3"},{"label":"GPT-5.6 Sol (high)","intelligenceIndex":42.4991760420519,"detailsUrl":"/models/gpt-5-6-sol-high"},{"label":"GPT-5.6 Terra (max)","intelligenceIndex":42.2514998239494,"detailsUrl":"/models/gpt-5-6-terra"},{"label":"Claude Opus 4.8 (max)","intelligenceIndex":41.9915603794639,"detailsUrl":"/models/claude-opus-4-8"},{"label":"Claude Opus 4.7 (max)","intelligenceIndex":40.6897928205908,"detailsUrl":"/models/claude-opus-4-7"},{"label":"Qwen3.8-Flash-Next","intelligenceIndex":39.9140521864741,"detailsUrl":"/models/qwen3-8-flash-next"},{"label":"GPT-5.6 Sol (medium)","intelligenceIndex":39.4845585889147,"detailsUrl":"/models/gpt-5-6-sol-medium"},{"label":"GPT-5.4 (xhigh)","intelligenceIndex":38.9755886799637,"detailsUrl":"/models/gpt-5-4"},{"label":"GLM-5.2 (max)","intelligenceIndex":38.6392888040106,"detailsUrl":"/models/glm-5-2"},{"label":"GPT-5.5 (xhigh)","intelligenceIndex":38.6291937590607,"detailsUrl":"/models/gpt-5-5"},{"label":"Claude Sonnet 5 (max)","intelligenceIndex":38.3576962882576,"detailsUrl":"/models/claude-sonnet-5"},{"label":"GPT-5.6 Terra (xhigh)","intelligenceIndex":38.1856370742927,"detailsUrl":"/models/gpt-5-6-terra-xhigh"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Artificial Analysis Intelligence Index by Input Modality","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Artificial Analysis Intelligence Index v4.3 incorporates 10 evaluations: AA-Briefcase, GDPval-AA v2, AutomationBench-AA, Terminal-Bench v4.0, SciCode, Humanity's Last Exam, GDP.pdf, CritPt, AA-Omniscience, AA-LCR v1.1 · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"GPT-6 Astra (max)","intelligenceIndex":52.814069395513,"detailsUrl":"/models/gpt-6-astra"},{"label":"Claude Fable 5.1 (high with fallback)","intelligenceIndex":51.2094958852237,"detailsUrl":"/models/claude-fable-5-1-high"},{"label":"Claude Fable 5 (with fallback)","intelligenceIndex":49.6994452733378,"detailsUrl":"/models/claude-fable-5"},{"label":"GPT-6 Astra (medium)","intelligenceIndex":49.6685363034369,"detailsUrl":"/models/gpt-6-astra-medium"},{"label":"Claude Opus 5 (high)","intelligenceIndex":48.2371932595908,"detailsUrl":"/models/claude-opus-5-high"},{"label":"GPT-5.6 Sol (max)","intelligenceIndex":47.0613568915036,"detailsUrl":"/models/gpt-5-6-sol"},{"label":"GPT-6 Astra (low)","intelligenceIndex":45.9944993120341,"detailsUrl":"/models/gpt-6-astra-low"},{"label":"GPT-5.6 Sol (xhigh)","intelligenceIndex":44.138026369169,"detailsUrl":"/models/gpt-5-6-sol-xhigh"},{"label":"Kimi K3 (max)","intelligenceIndex":43.7841729518782,"detailsUrl":"/models/kimi-k3"},{"label":"GPT-5.6 Sol (high)","intelligenceIndex":42.4991760420519,"detailsUrl":"/models/gpt-5-6-sol-high"},{"label":"GPT-5.6 Terra (max)","intelligenceIndex":42.2514998239494,"detailsUrl":"/models/gpt-5-6-terra"},{"label":"Claude Opus 4.8 (max)","intelligenceIndex":41.9915603794639,"detailsUrl":"/models/claude-opus-4-8"},{"label":"Claude Opus 4.7 (max)","intelligenceIndex":40.6897928205908,"detailsUrl":"/models/claude-opus-4-7"},{"label":"Qwen3.8-Flash-Next","intelligenceIndex":39.9140521864741,"detailsUrl":"/models/qwen3-8-flash-next"},{"label":"GPT-5.6 Sol (medium)","intelligenceIndex":39.4845585889147,"detailsUrl":"/models/gpt-5-6-sol-medium"},{"label":"GPT-5.4 (xhigh)","intelligenceIndex":38.9755886799637,"detailsUrl":"/models/gpt-5-4"},{"label":"GLM-5.2 (max)","intelligenceIndex":38.6392888040106,"detailsUrl":"/models/glm-5-2"},{"label":"GPT-5.5 (xhigh)","intelligenceIndex":38.6291937590607,"detailsUrl":"/models/gpt-5-5"},{"label":"Claude Sonnet 5 (max)","intelligenceIndex":38.3576962882576,"detailsUrl":"/models/claude-sonnet-5"},{"label":"GPT-5.6 Terra (xhigh)","intelligenceIndex":38.1856370742927,"detailsUrl":"/models/gpt-5-6-terra-xhigh"}]},{"@context":"https://schema.org","@type":"Dataset","name":"AA-Briefcase Analytical Quality & Presentation Elo","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Elo of analytical quality and presentation pairwise checks from model submissions · Higher is better · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Qwen3.8-Flash-Next","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1908.87},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1890.01},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1929.78},{"@type":"PropertyValue","name":"presentation mid","value":1438.5},{"@type":"PropertyValue","name":"presentation lower","value":1423.15},{"@type":"PropertyValue","name":"presentation upper","value":1453.87}],"detailsUrl":"/models/qwen3-8-flash-next"},{"label":"Claude Fable 5.1 (high with fallback)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1846.32},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1830.95},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1863.68},{"@type":"PropertyValue","name":"presentation mid","value":1392.53},{"@type":"PropertyValue","name":"presentation lower","value":1377},{"@type":"PropertyValue","name":"presentation upper","value":1408.06}],"detailsUrl":"/models/claude-fable-5-1-high"},{"label":"Claude Opus 5 (high)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1814.96},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1803.29},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1828.12},{"@type":"PropertyValue","name":"presentation mid","value":1435.62},{"@type":"PropertyValue","name":"presentation lower","value":1424.21},{"@type":"PropertyValue","name":"presentation upper","value":1446.86}],"detailsUrl":"/models/claude-opus-5-high"},{"label":"GPT-6 Astra (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1753.18},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1736.58},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1772.26},{"@type":"PropertyValue","name":"presentation mid","value":1536.38},{"@type":"PropertyValue","name":"presentation lower","value":1520.16},{"@type":"PropertyValue","name":"presentation upper","value":1553.41}],"detailsUrl":"/models/gpt-6-astra"},{"label":"Claude Fable 5 (with fallback)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1669.7},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1658.1},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1682.36},{"@type":"PropertyValue","name":"presentation mid","value":1452.29},{"@type":"PropertyValue","name":"presentation lower","value":1441.52},{"@type":"PropertyValue","name":"presentation upper","value":1463.2}],"detailsUrl":"/models/claude-fable-5"},{"label":"Kimi K3 (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1667.26},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1655.98},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1679.21},{"@type":"PropertyValue","name":"presentation mid","value":1436.06},{"@type":"PropertyValue","name":"presentation lower","value":1425.18},{"@type":"PropertyValue","name":"presentation upper","value":1447.34}],"detailsUrl":"/models/kimi-k3"},{"label":"GPT-6 Astra (medium)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1641.21},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1623.99},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1658.24},{"@type":"PropertyValue","name":"presentation mid","value":1389.68},{"@type":"PropertyValue","name":"presentation lower","value":1374.27},{"@type":"PropertyValue","name":"presentation upper","value":1405.72}],"detailsUrl":"/models/gpt-6-astra-medium"},{"label":"GPT-5.6 Sol (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1536.77},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1525.14},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1549.05},{"@type":"PropertyValue","name":"presentation mid","value":1634.77},{"@type":"PropertyValue","name":"presentation lower","value":1622.25},{"@type":"PropertyValue","name":"presentation upper","value":1647.63}],"detailsUrl":"/models/gpt-5-6-sol"},{"label":"Qwen3.8 27B (xhigh)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1581.31},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1567.95},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1593.95},{"@type":"PropertyValue","name":"presentation mid","value":1278.57},{"@type":"PropertyValue","name":"presentation lower","value":1266.26},{"@type":"PropertyValue","name":"presentation upper","value":1290.48}],"detailsUrl":"/models/qwen3-8-27b"},{"label":"GPT-5.6 Sol (xhigh)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1473.38},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1457.63},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1489.91},{"@type":"PropertyValue","name":"presentation mid","value":1580.66},{"@type":"PropertyValue","name":"presentation lower","value":1563.05},{"@type":"PropertyValue","name":"presentation upper","value":1598}],"detailsUrl":"/models/gpt-5-6-sol-xhigh"},{"label":"GPT-5.6 Sol (high)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1367.98},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1352.42},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1384.61},{"@type":"PropertyValue","name":"presentation mid","value":1525.53},{"@type":"PropertyValue","name":"presentation lower","value":1508.79},{"@type":"PropertyValue","name":"presentation upper","value":1542.27}],"detailsUrl":"/models/gpt-5-6-sol-high"},{"label":"GPT-5.6 Terra (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1341.06},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1325.63},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1354.86},{"@type":"PropertyValue","name":"presentation mid","value":1520.25},{"@type":"PropertyValue","name":"presentation lower","value":1507.79},{"@type":"PropertyValue","name":"presentation upper","value":1533.03}],"detailsUrl":"/models/gpt-5-6-terra"},{"label":"GPT-5.6 Terra (xhigh)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1344.87},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1328.26},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1362.1},{"@type":"PropertyValue","name":"presentation mid","value":1508},{"@type":"PropertyValue","name":"presentation lower","value":1492.22},{"@type":"PropertyValue","name":"presentation upper","value":1526.52}],"detailsUrl":"/models/gpt-5-6-terra-xhigh"},{"label":"GPT-5.6 Luna (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1354.59},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1340.57},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1368.44},{"@type":"PropertyValue","name":"presentation mid","value":1471.98},{"@type":"PropertyValue","name":"presentation lower","value":1460.31},{"@type":"PropertyValue","name":"presentation upper","value":1483.72}],"detailsUrl":"/models/gpt-5-6-luna"},{"label":"Claude Opus 4.8 (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1298.18},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1286.59},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1309.87},{"@type":"PropertyValue","name":"presentation mid","value":1457.9},{"@type":"PropertyValue","name":"presentation lower","value":1447.3},{"@type":"PropertyValue","name":"presentation upper","value":1469.13}],"detailsUrl":"/models/claude-opus-4-8"},{"label":"Claude Sonnet 5 (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1412.87},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1401.21},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1425.22},{"@type":"PropertyValue","name":"presentation mid","value":1405.85},{"@type":"PropertyValue","name":"presentation lower","value":1394.97},{"@type":"PropertyValue","name":"presentation upper","value":1417.11}],"detailsUrl":"/models/claude-sonnet-5"},{"label":"GPT-5.6 Luna (xhigh)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1256.19},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1242.16},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1272.64},{"@type":"PropertyValue","name":"presentation mid","value":1406.97},{"@type":"PropertyValue","name":"presentation lower","value":1391.98},{"@type":"PropertyValue","name":"presentation upper","value":1423.01}],"detailsUrl":"/models/gpt-5-6-luna-xhigh"},{"label":"GPT-6 Astra (low)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1400.99},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1382.52},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1418.45},{"@type":"PropertyValue","name":"presentation mid","value":1142.01},{"@type":"PropertyValue","name":"presentation lower","value":1126.22},{"@type":"PropertyValue","name":"presentation upper","value":1157.73}],"detailsUrl":"/models/gpt-6-astra-low"},{"label":"GPT-5.6 Sol (medium)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1223.45},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1207.88},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1239.39},{"@type":"PropertyValue","name":"presentation mid","value":1397.74},{"@type":"PropertyValue","name":"presentation lower","value":1382.99},{"@type":"PropertyValue","name":"presentation upper","value":1413.33}],"detailsUrl":"/models/gpt-5-6-sol-medium"},{"label":"DeepSeek V4 Pro 0813 (max)","aaBriefcaseQualityElos":[{"@type":"PropertyValue","name":"analyticalQuality mid","value":1395.67},{"@type":"PropertyValue","name":"analyticalQuality lower","value":1383.17},{"@type":"PropertyValue","name":"analyticalQuality upper","value":1409.88},{"@type":"PropertyValue","name":"presentation mid","value":1123.33},{"@type":"PropertyValue","name":"presentation lower","value":1110.31},{"@type":"PropertyValue","name":"presentation upper","value":1136.17}],"detailsUrl":"/models/deepseek-v4-pro"}]},{"@context":"https://schema.org","@type":"Dataset","name":"AA-Omniscience Hallucination Rate","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"AA-Omniscience Hallucination Rate (lower is better) measures how often the model answers incorrectly when it should have refused or admitted to not knowing the answer. It is defined as the proportion of incorrect answers out of all non-correct responses, i.e. incorrect / (incorrect + partial answers + not attempted) · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Grok 4.3 (medium)","omniscienceHallucinationRate":0.16939635002339729,"detailsUrl":"/models/grok-4-3-medium"},{"label":"Grok 4.3 (low)","omniscienceHallucinationRate":0.1739031598090475,"detailsUrl":"/models/grok-4-3-low"},{"label":"MiniMax-M3","omniscienceHallucinationRate":0.1842737094837935,"detailsUrl":"/models/minimax-m3"},{"label":"MiMo-V2.5-Pro","omniscienceHallucinationRate":0.24704618689581095,"detailsUrl":"/models/mimo-v2-5-pro"},{"label":"Qwen3.7 Max","omniscienceHallucinationRate":0.2562923523717328,"detailsUrl":"/models/qwen3-7-max"},{"label":"Grok 4.3 (high)","omniscienceHallucinationRate":0.25760286225402507,"detailsUrl":"/models/grok-4-3"},{"label":"GLM-5.2 (max)","omniscienceHallucinationRate":0.2629955947136564,"detailsUrl":"/models/glm-5-2"},{"label":"Qwen3.7 Plus","omniscienceHallucinationRate":0.2766186276618628,"detailsUrl":"/models/qwen3-7-plus"},{"label":"Nemotron 3 Ultra","omniscienceHallucinationRate":0.2968783638320775,"detailsUrl":"/models/nvidia-nemotron-3-ultra-550b-a55b"},{"label":"GLM-5.1","omniscienceHallucinationRate":0.299475753604194,"detailsUrl":"/models/glm-5-1"},{"label":"MiMo-V2-Pro","omniscienceHallucinationRate":0.29979559391324095,"detailsUrl":"/models/mimo-v2-pro"},{"label":"Qwen3.8 27B (xhigh)","omniscienceHallucinationRate":0.30286278381046394,"detailsUrl":"/models/qwen3-8-27b"},{"label":"Gemma 4 E4B","omniscienceHallucinationRate":0.30938924339106655,"detailsUrl":"/models/gemma-4-e4b"},{"label":"MiMo-V2.5","omniscienceHallucinationRate":0.31931931931931934,"detailsUrl":"/models/mimo-v2-5-0424"},{"label":"Gemma 4 E2B","omniscienceHallucinationRate":0.32363441627990003,"detailsUrl":"/models/gemma-4-e2b"},{"label":"Qwen3.6 Plus","omniscienceHallucinationRate":0.34638895177722434,"detailsUrl":"/models/qwen3-6-plus"},{"label":"GLM-5","omniscienceHallucinationRate":0.35323383084577115,"detailsUrl":"/models/glm-5"},{"label":"MiniMax-M2.7","omniscienceHallucinationRate":0.35564663023679416,"detailsUrl":"/models/minimax-m2-7"},{"label":"Claude Opus 4.8 (max)","omniscienceHallucinationRate":0.3925081433224756,"detailsUrl":"/models/claude-opus-4-8"},{"label":"Claude Sonnet 5 (max)","omniscienceHallucinationRate":0.39366138448707255,"detailsUrl":"/models/claude-sonnet-5"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Pricing: Cache Hit, Input, and Output","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Price (USD per M Tokens) · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Gemma 4 E4B","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.02},{"@type":"PropertyValue","name":"outputPrice","value":0.1}],"detailsUrl":"/models/gemma-4-e4b"},{"label":"gpt-oss-20b (high)","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.060000000000000005},{"@type":"PropertyValue","name":"outputPrice","value":0.19}],"detailsUrl":"/models/gpt-oss-20b"},{"label":"Nemotron 3 Nano","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.05},{"@type":"PropertyValue","name":"outputPrice","value":0.2}],"detailsUrl":"/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"},{"label":"gpt-oss-20b (low)","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.07},{"@type":"PropertyValue","name":"outputPrice","value":0.2}],"detailsUrl":"/models/gpt-oss-20b-low"},{"label":"Step 3.5 Flash 2603","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.02},{"@type":"PropertyValue","name":"inputPrice","value":0.1},{"@type":"PropertyValue","name":"outputPrice","value":0.3}],"detailsUrl":"/models/step-3-5-flash"},{"label":"Gemma 4 12B","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.1},{"@type":"PropertyValue","name":"outputPrice","value":0.3}],"detailsUrl":"/models/gemma-4-12b"},{"label":"DeepSeek V4 Flash (max)","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.028},{"@type":"PropertyValue","name":"inputPrice","value":0.13},{"@type":"PropertyValue","name":"outputPrice","value":0.28}],"detailsUrl":"/models/deepseek-v4-flash-0420"},{"label":"MiMo-V2.5","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.0028},{"@type":"PropertyValue","name":"inputPrice","value":0.14},{"@type":"PropertyValue","name":"outputPrice","value":0.28}],"detailsUrl":"/models/mimo-v2-5-0424"},{"label":"Nemotron 3 Nano Omni 30B A3B","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.09},{"@type":"PropertyValue","name":"outputPrice","value":0.36}],"detailsUrl":"/models/nemotron-3-nano-omni-30b-a3b"},{"label":"Gemma 4 26B A4B","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.085},{"@type":"PropertyValue","name":"inputPrice","value":0.115},{"@type":"PropertyValue","name":"outputPrice","value":0.37}],"detailsUrl":"/models/gemma-4-26b-a4b"},{"label":"Qwen3.8-Flash-Next","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.016},{"@type":"PropertyValue","name":"inputPrice","value":0.15},{"@type":"PropertyValue","name":"outputPrice","value":0.47}],"detailsUrl":"/models/qwen3-8-flash-next"},{"label":"Hy3","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.034},{"@type":"PropertyValue","name":"inputPrice","value":0.136},{"@type":"PropertyValue","name":"outputPrice","value":0.554}],"detailsUrl":"/models/hy3"},{"label":"gpt-oss-120b (low)","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.15},{"@type":"PropertyValue","name":"inputPrice","value":0.15},{"@type":"PropertyValue","name":"outputPrice","value":0.5449999999999999}],"detailsUrl":"/models/gpt-oss-120b-low"},{"label":"gpt-oss-120b (high)","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.125},{"@type":"PropertyValue","name":"inputPrice","value":0.15},{"@type":"PropertyValue","name":"outputPrice","value":0.595}],"detailsUrl":"/models/gpt-oss-120b"},{"label":"Solar Pro 3","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.015},{"@type":"PropertyValue","name":"inputPrice","value":0.15},{"@type":"PropertyValue","name":"outputPrice","value":0.6}],"detailsUrl":"/models/solar-pro-3"},{"label":"Nemotron 3 Super","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.1925},{"@type":"PropertyValue","name":"outputPrice","value":0.65}],"detailsUrl":"/models/nvidia-nemotron-3-super-120b-a12b"},{"label":"Mercury 2","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.025},{"@type":"PropertyValue","name":"inputPrice","value":0.25},{"@type":"PropertyValue","name":"outputPrice","value":0.75}],"detailsUrl":"/models/mercury-2"},{"label":"Reka Flash 3","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.2},{"@type":"PropertyValue","name":"outputPrice","value":0.8}],"detailsUrl":"/models/reka-flash-3"},{"label":"Trinity Large Thinking","pricing":[{"@type":"PropertyValue","name":"inputPrice","value":0.25},{"@type":"PropertyValue","name":"outputPrice","value":0.9}],"detailsUrl":"/models/trinity-large-thinking"},{"label":"MiMo-V2.5-Pro","pricing":[{"@type":"PropertyValue","name":"cacheHitPrice","value":0.0036},{"@type":"PropertyValue","name":"inputPrice","value":0.435},{"@type":"PropertyValue","name":"outputPrice","value":0.87}],"detailsUrl":"/models/mimo-v2-5-pro"}]},{"@context":"https://schema.org","@type":"Dataset","name":"Time per Intelligence Index Task","creator":{"@type":"Organization","name":"Artificial Analysis","url":"https://artificialanalysis.ai"},"description":"Weighted average decode time (minutes) per task; excludes TTFT and overhead time · Lower is better · Evaluation results measured independently by Artificial Analysis","measurementTechnique":"Independent test run by Artificial Analysis on dedicated hardware.","spatialCoverage":"Worldwide","keywords":["analytics","llm","AI","benchmark","model","gpt","claude"],"license":"https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf","isAccessibleForFree":true,"citation":"Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai","data":[{"label":"Mercury 2","timePerTask":0.5427754686696056,"detailsUrl":"/models/mercury-2"},{"label":"Gemini 3.1 Flash-Lite","timePerTask":0.658041826443288,"detailsUrl":"/models/gemini-3-1-flash-lite-preview"},{"label":"GPT-5.5 Instant (June 2026)","timePerTask":0.6678565947874675,"detailsUrl":"/models/gpt-5-5-instant-06-26"},{"label":"GPT-6 Astra (low)","timePerTask":1.5567849491901888,"detailsUrl":"/models/gpt-6-astra-low"},{"label":"gpt-oss-20b (high)","timePerTask":1.644347565853671,"detailsUrl":"/models/gpt-oss-20b"},{"label":"GPT-5.5 (medium)","timePerTask":1.8219456329612966,"detailsUrl":"/models/gpt-5-5-medium"},{"label":"Nemotron 3 Nano","timePerTask":2.0386967811125207,"detailsUrl":"/models/nvidia-nemotron-3-nano-30b-a3b-reasoning"},{"label":"GPT-5.6 Sol (medium)","timePerTask":2.0844623891011977,"detailsUrl":"/models/gpt-5-6-sol-medium"},{"label":"gpt-oss-120b (high)","timePerTask":2.208657106886023,"detailsUrl":"/models/gpt-oss-120b"},{"label":"Trinity Large Thinking","timePerTask":2.278449788214977,"detailsUrl":"/models/trinity-large-thinking"},{"label":"GPT-5.6 Terra (high)","timePerTask":2.332709789805909,"detailsUrl":"/models/gpt-5-6-terra-high"},{"label":"Qwen3.7 Max","timePerTask":2.349529302794535,"detailsUrl":"/models/qwen3-7-max"},{"label":"Claude Sonnet 5 (low)","timePerTask":2.473127491996471,"detailsUrl":"/models/claude-sonnet-5-low"},{"label":"Grok 4.3 (high)","timePerTask":2.676041518525186,"detailsUrl":"/models/grok-4-3"},{"label":"Gemini 3.1 Pro Preview","timePerTask":2.7544425702798123,"detailsUrl":"/models/gemini-3-1-pro-preview"},{"label":"Nemotron 3 Ultra","timePerTask":2.87889195254559,"detailsUrl":"/models/nvidia-nemotron-3-ultra-550b-a55b"},{"label":"GPT-5.5 (high)","timePerTask":3.305575491975306,"detailsUrl":"/models/gpt-5-5-high"},{"label":"GPT-5.6 Luna (xhigh)","timePerTask":3.6598354854644506,"detailsUrl":"/models/gpt-5-6-luna-xhigh"},{"label":"GPT-6 Astra (medium)","timePerTask":3.6838718296195694,"detailsUrl":"/models/gpt-6-astra-medium"},{"label":"GPT-5.6 Terra (xhigh)","timePerTask":3.723642883723606,"detailsUrl":"/models/gpt-5-6-terra-xhigh"}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which is the most intelligent AI model?","acceptedAnswer":{"@type":"Answer","text":"Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback) currently leads the Artificial Analysis Intelligence Index with a score of 53, out of 133 models evaluated."}},{"@type":"Question","name":"What are the top AI models?","acceptedAnswer":{"@type":"Answer","text":"The top AI models by Intelligence Index are: 1. Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback) (53), 2. Claude Fable 5.1 (Adaptive Reasoning, Xhigh Effort, Default Fallback) (53), 3. GPT-6 Astra (max) (53), 4. GPT-6 Astra (xhigh) (53), and 5. Claude Fable 5.1 (Adaptive Reasoning, High Effort, Default Fallback) (51)."}},{"@type":"Question","name":"Which is the fastest AI model?","acceptedAnswer":{"@type":"Answer","text":"Celeris-1 is the fastest at 1,411.9 tokens per second, followed by Mercury 2 (776.8 t/s) and Gemini 2.5 Flash-Lite (Reasoning) (369.5 t/s)."}},{"@type":"Question","name":"Which is the cheapest AI model?","acceptedAnswer":{"@type":"Answer","text":"Llama 3.1 Instruct 8B is the most affordable at $0.02 per 1M tokens (blended), followed by Granite 4.2 3B ($0.02) and Nova Micro ($0.03)."}},{"@type":"Question","name":"Which AI model has the lowest latency?","acceptedAnswer":{"@type":"Answer","text":"Gemini 2.5 Flash-Lite (Non-reasoning) has the lowest time to first token at 0.31s, followed by North Mini Code (0.40s) and Command A+ (0.40s)."}},{"@type":"Question","name":"Which is the best open weights AI model?","acceptedAnswer":{"@type":"Answer","text":"GLM-5.3 (max) is the highest-ranked open weights model with an Intelligence Index score of 45. There are 62 open weights models out of 133 total evaluated."}},{"@type":"Question","name":"What are the top open weights AI models?","acceptedAnswer":{"@type":"Answer","text":"The top open weights AI models by Intelligence Index are: 1. GLM-5.3 (max) (45), 2. Kimi K3 (max) (44), and 3. GLM-5.3-Flash (42)."}},{"@type":"Question","name":"Which is the best reasoning model?","acceptedAnswer":{"@type":"Answer","text":"Claude Fable 5.1 (Adaptive Reasoning, Max Effort, Default Fallback) leads among 115 reasoning models with an Intelligence Index score of 53. Reasoning models use extended thinking to work through complex problems before providing answers."}},{"@type":"Question","name":"How are AI models compared on Artificial Analysis?","acceptedAnswer":{"@type":"Answer","text":"Models are compared across multiple dimensions including intelligence (quality), pricing, output speed (tokens per second), latency (time to first token), end-to-end response time, and context window size. Performance metrics are measured directly using standardized prompts across 644 models."}},{"@type":"Question","name":"How do I compare a specific model against others?","acceptedAnswer":{"@type":"Answer","text":"Click on any model name or row in the charts to view its dedicated page with detailed metrics and direct comparisons against similar models. You can also use the model selector to customize which models appear in each chart."}}]}]
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Intelligence",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Artificial Analysis Intelligence Index · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "artificialAnalysisIntelligenceIndex": 57.6223698102963,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "artificialAnalysisIntelligenceIndex": 53.3549259623252,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "artificialAnalysisIntelligenceIndex": 52.673669395513,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "artificialAnalysisIntelligenceIndex": 48.0923107719685,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "artificialAnalysisIntelligenceIndex": 46.4465506302286,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "artificialAnalysisIntelligenceIndex": 46.3242065310383,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "artificialAnalysisIntelligenceIndex": 44.777392385614,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "artificialAnalysisIntelligenceIndex": 40.9262321765904,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "artificialAnalysisIntelligenceIndex": 39.456167472527,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "artificialAnalysisIntelligenceIndex": 37.2559686869738,
+        "detailsUrl": "/models/gpt-6-luna"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Speed",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Output tokens per second · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "medianOutputSpeed": 275.899050615917,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "medianOutputSpeed": 226.562732849843,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "medianOutputSpeed": 218.607609481884,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "medianOutputSpeed": 157.236301337893,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "medianOutputSpeed": 64.7060238772019,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "medianOutputSpeed": 60.6917504797442,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "medianOutputSpeed": 53.9081908718683,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "medianOutputSpeed": 53.2165812895761,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "medianOutputSpeed": 39.1642379591038,
+        "detailsUrl": "/models/grok-4-7"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cost per Task",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Weighted average cost (USD) per Intelligence Index task · Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "GPT-6 Luna (max)",
+        "costPerIntelligenceIndexTask": 0.06809498628701058,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "costPerIntelligenceIndexTask": 0.13322318937213493,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "costPerIntelligenceIndexTask": 0.26522527009606844,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "costPerIntelligenceIndexTask": 1.2427947606950427,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "costPerIntelligenceIndexTask": 1.6048932100125866,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "costPerIntelligenceIndexTask": 2.0056375150449584,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "costPerIntelligenceIndexTask": 3.2575003134834164,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "costPerIntelligenceIndexTask": 3.738325952106939,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "costPerIntelligenceIndexTask": 5.982012019521066,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "costPerIntelligenceIndexTask": 7.629706364004841,
+        "detailsUrl": "/models/claude-fable-5-1"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Intelligence Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Artificial Analysis Intelligence Index v4.3.2 incorporates 10 evaluations: AA-Briefcase v1.1, GDPval-AA v2.1, AutomationBench-AA, Terminal-Bench 4.0, SciCode, Humanity's Last Exam, GDP.pdf, CritPt, AA-Omniscience, AA-LCR v1.1 · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "intelligenceIndex": 57.6223698102963,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "intelligenceIndex": 53.3549259623252,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "intelligenceIndex": 52.673669395513,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "intelligenceIndex": 50.7771115797629,
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "intelligenceIndex": 49.6258202733378,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "intelligenceIndex": 48.0923107719685,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "intelligenceIndex": 47.5276426437724,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "intelligenceIndex": 46.9727068915036,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "intelligenceIndex": 46.4465506302286,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "intelligenceIndex": 46.3242065310383,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "intelligenceIndex": 45.4152084980521,
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "intelligenceIndex": 44.777392385614,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "intelligenceIndex": 44.3113073012592,
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "Step 5 Preview",
+        "intelligenceIndex": 43.7343049141614,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "intelligenceIndex": 43.5938229518782,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "intelligenceIndex": 42.0829248239494,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "intelligenceIndex": 41.807466113455,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "intelligenceIndex": 40.9262321765904,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "intelligenceIndex": 39.8861723105325,
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "intelligenceIndex": 39.8223021864741,
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Intelligence Index by Open Weights / Proprietary",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Artificial Analysis Intelligence Index v4.3.2 incorporates 10 evaluations: AA-Briefcase v1.1, GDPval-AA v2.1, AutomationBench-AA, Terminal-Bench 4.0, SciCode, Humanity's Last Exam, GDP.pdf, CritPt, AA-Omniscience, AA-LCR v1.1 · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "intelligenceIndex": 57.6223698102963,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "intelligenceIndex": 53.3549259623252,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "intelligenceIndex": 52.673669395513,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "intelligenceIndex": 50.7771115797629,
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "intelligenceIndex": 49.6258202733378,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "intelligenceIndex": 48.0923107719685,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "intelligenceIndex": 47.5276426437724,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "intelligenceIndex": 46.9727068915036,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "intelligenceIndex": 46.4465506302286,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "intelligenceIndex": 46.3242065310383,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "intelligenceIndex": 45.4152084980521,
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "intelligenceIndex": 44.777392385614,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "intelligenceIndex": 44.3113073012592,
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "Step 5 Preview",
+        "intelligenceIndex": 43.7343049141614,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "intelligenceIndex": 43.5938229518782,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "intelligenceIndex": 42.0829248239494,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "intelligenceIndex": 41.807466113455,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "intelligenceIndex": 40.9262321765904,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "intelligenceIndex": 39.8861723105325,
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "intelligenceIndex": 39.8223021864741,
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cost per Intelligence Index Task",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Weighted average cost (USD) per Artificial Analysis Intelligence Index task, segmented by token type. Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "MiMo-V2.5-Pro",
+        "answer": 0.010420410648028294,
+        "reasoning": 0.015579472083681897,
+        "cacheWrite": 0.01824427521164876,
+        "cacheHit": 0.005165708089291328,
+        "input": 0.004662874382686566,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "answer": 0.0065659990358027465,
+        "reasoning": 0.014321796430512256,
+        "cacheWrite": 0.005811648656507115,
+        "cacheHit": 0.024630028652023166,
+        "input": 0.0037622817395946604,
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "answer": 0.005618384995119874,
+        "reasoning": 0.01965013330556484,
+        "cacheWrite": 0.01183466829559067,
+        "cacheHit": 0.028846687225027846,
+        "input": 0.0021451124657073345,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "answer": 0.0070623520432959485,
+        "reasoning": 0.00897526104444921,
+        "cacheWrite": 0.09008853164257433,
+        "cacheHit": 0,
+        "input": 0.0012983781736299591,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "answer": 0.017753866403875142,
+        "reasoning": 0.026012881416245023,
+        "cacheWrite": 0.054250309264039676,
+        "cacheHit": 0.02108940475429524,
+        "input": 0.004420434677479369,
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "answer": 0.023277736261924822,
+        "reasoning": 0.03264212318322624,
+        "cacheWrite": 0.05358918507522471,
+        "cacheHit": 0.01946950897564899,
+        "input": 0.004244635876110132,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "answer": 0.01576360546799524,
+        "reasoning": 0.03371790235319099,
+        "cacheWrite": 0.026430496259981964,
+        "cacheHit": 0.09774468082447282,
+        "input": 0.004640576617249952,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "answer": 0.021879625277210428,
+        "reasoning": 0.0600322073002369,
+        "cacheWrite": 0.07321760640376299,
+        "cacheHit": 0.06069836367576961,
+        "input": 0.0038170423547304677,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "answer": 0.01101183343601111,
+        "reasoning": 0.023324742592247094,
+        "cacheWrite": 0.01844679201070141,
+        "cacheHit": 0.19717920806761985,
+        "input": 0.003296984324158392,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "answer": 0.0310853235688138,
+        "reasoning": 0.07520347462481308,
+        "cacheWrite": 0.09664128766777466,
+        "cacheHit": 0.058423437101084455,
+        "input": 0.003871747133582461,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "answer": 0.01695638332498605,
+        "reasoning": 0.03374942774834666,
+        "cacheWrite": 0.04700064496525313,
+        "cacheHit": 0.2717961254229642,
+        "input": 0.0026734210687464144,
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "answer": 0.09049329237803294,
+        "reasoning": 0.10514817666176263,
+        "cacheWrite": 0.0997893922244269,
+        "cacheHit": 0.12533339167458266,
+        "input": 0.01620853681211329,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "MiniMax-M3",
+        "answer": 0.03164854660071267,
+        "reasoning": 0.026181895131328185,
+        "cacheWrite": 0.08745531081964547,
+        "cacheHit": 0.3556943830256406,
+        "input": 0.006632555000846242,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "answer": 0.033289571079160044,
+        "reasoning": 0.03762567069574988,
+        "cacheWrite": 0.4116437775451308,
+        "cacheHit": 0.061020794139011625,
+        "input": 0.005870212508347456,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Inkling",
+        "answer": 0.04559012774457057,
+        "reasoning": 0.09476657807148725,
+        "cacheWrite": 0.08095664630271783,
+        "cacheHit": 0.371122547835551,
+        "input": 0.014608601127756447,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "DeepSeek V4 Pro 0813 (max)",
+        "answer": 0.06728320630239852,
+        "reasoning": 0.15112833401052114,
+        "cacheWrite": 0.1749667500217311,
+        "cacheHit": 0.26752018427641244,
+        "input": 0.013123429432450151,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "Step 5 Preview",
+        "answer": 0.05577491240242307,
+        "reasoning": 0.11695565415613561,
+        "cacheWrite": 0.22078761020029253,
+        "cacheHit": 0.3080034840417753,
+        "input": 0.014001696657894582,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "Gemini 3.8 Flash (medium)",
+        "answer": 0.09616115100599934,
+        "reasoning": 0.10108435575019221,
+        "cacheWrite": 0.42142126451743733,
+        "cacheHit": 0.3012328521578915,
+        "input": 0.011138314006110156,
+        "detailsUrl": "/models/gemini-3-8-flash-medium"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "answer": 0.057259691355187124,
+        "reasoning": 0.14313272319862239,
+        "cacheWrite": 0.4231391110871978,
+        "cacheHit": 0.3745911160120289,
+        "input": 0.009192312003558188,
+        "detailsUrl": "/models/qwen3-8-27b"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "answer": 0.10214117618168614,
+        "reasoning": 0.21023570912006137,
+        "cacheWrite": 0.18601645626303118,
+        "cacheHit": 0.5152461786380224,
+        "input": 0.04278456920483766,
+        "detailsUrl": "/models/gpt-6-sol"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Text to Image Leaderboard",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Elo scores from blind preference votes in our Image Arena for text-to-image generation models. · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "GPT Image 2.5 Sunburst (max)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1195.57
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1186.57
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1204.57
+          }
+        ],
+        "detailsUrl": "/image/model-families/openai-gpt"
+      },
+      {
+        "label": "GPT Image 2.5 Flare (max)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1190.91
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1181.91
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1199.91
+          }
+        ],
+        "detailsUrl": "/image/model-families/openai-gpt"
+      },
+      {
+        "label": "GPT Image 2 (high)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1170.75
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1161.75
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1179.75
+          }
+        ],
+        "detailsUrl": "/image/model-families/openai-gpt"
+      },
+      {
+        "label": "Grok Imagine Image 2.0",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1152.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1140.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1164.42
+          }
+        ],
+        "detailsUrl": "/image/model-families/grok-imagine"
+      },
+      {
+        "label": "MAI-Image-2.6",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1147
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1137
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1157
+          }
+        ],
+        "detailsUrl": "/image/model-families/microsoft"
+      },
+      {
+        "label": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1122.24
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1114.24
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1130.24
+          }
+        ],
+        "detailsUrl": "/image/model-families/gemini"
+      },
+      {
+        "label": "Muse Image",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1111.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1101.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1121.9
+          }
+        ],
+        "detailsUrl": "/image/model-families/muse"
+      },
+      {
+        "label": "GPT Image 1.5 (high)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1103.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1094.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1112.13
+          }
+        ],
+        "detailsUrl": "/image/model-families/openai-gpt"
+      },
+      {
+        "label": "MAI-Image-2.5",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1102.86
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1093.86
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1111.86
+          }
+        ],
+        "detailsUrl": "/image/model-families/microsoft"
+      },
+      {
+        "label": "MAI-Image-2.6-Flash",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1100.04
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1091.04
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1109.04
+          }
+        ],
+        "detailsUrl": "/image/model-families/microsoft"
+      },
+      {
+        "label": "Nano Banana Pro (Gemini 3 Pro Image)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1099.74
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1091.74
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1107.74
+          }
+        ],
+        "detailsUrl": "/image/model-families/gemini"
+      },
+      {
+        "label": "MAI-Image-2.5-Pro",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1099.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1091.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1107.15
+          }
+        ],
+        "detailsUrl": "/image/model-families/microsoft"
+      },
+      {
+        "label": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1091.94
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1083.94
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1099.94
+          }
+        ],
+        "detailsUrl": "/image/model-families/gemini"
+      },
+      {
+        "label": "Qwen-Image-3.0-Pro",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1087.88
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1077.88
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1097.88
+          }
+        ],
+        "detailsUrl": "/image/model-families/qwen"
+      },
+      {
+        "label": "Seedream 5.0 Pro",
+        "elo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1078.56
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1070.56
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1086.56
+          }
+        ],
+        "detailsUrl": "/image/model-families/Seedream"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Provider Voice Arena Preference Elo",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Arena Elo: average Elo rating of the model · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Sonic 3.6",
+        "qualityElo": 1273.31,
+        "detailsUrl": "/text-to-speech/providers/sonic-3-6"
+      },
+      {
+        "label": "Qwen-Audio-3.0-TTS-Plus",
+        "qualityElo": 1259.31,
+        "detailsUrl": "/text-to-speech/providers/qwen-audio-3-0-tts-plus"
+      },
+      {
+        "label": "Realtime TTS-2",
+        "qualityElo": 1244.7,
+        "detailsUrl": "/text-to-speech/providers/realtime-tts-2"
+      },
+      {
+        "label": "Simba 3.2",
+        "qualityElo": 1236.52,
+        "detailsUrl": "/text-to-speech/providers/simba-3-2"
+      },
+      {
+        "label": "Luna TTS",
+        "qualityElo": 1229.74,
+        "detailsUrl": "/text-to-speech/providers/luna-tts"
+      },
+      {
+        "label": "Breeze TTS 2",
+        "qualityElo": 1204.35,
+        "detailsUrl": "/text-to-speech/providers/breeze-tts-2"
+      },
+      {
+        "label": "Gemini 3.1 Flash TTS",
+        "qualityElo": 1199.2,
+        "detailsUrl": "/text-to-speech/providers/gemini-3-1-tts"
+      },
+      {
+        "label": "v3 Conversational",
+        "qualityElo": 1195.9,
+        "detailsUrl": "/text-to-speech/providers/mitty"
+      },
+      {
+        "label": "Sonic 3.5",
+        "qualityElo": 1185.39,
+        "detailsUrl": "/text-to-speech/providers/sonic-3-5"
+      },
+      {
+        "label": "Lightning V3.1 Pro (Jul 2026)",
+        "qualityElo": 1174.59,
+        "detailsUrl": "/text-to-speech/providers/lightning-v3-1-pro-july"
+      },
+      {
+        "label": "Speech 2.8 HD",
+        "qualityElo": 1167.79,
+        "detailsUrl": "/text-to-speech/providers/speech-2-8-hd"
+      },
+      {
+        "label": "Eleven v3",
+        "qualityElo": 1166.97,
+        "detailsUrl": "/text-to-speech/providers/eleven-v3"
+      },
+      {
+        "label": "Falcon 2",
+        "qualityElo": 1157.1,
+        "detailsUrl": "/text-to-speech/providers/falcon-2"
+      },
+      {
+        "label": "Speech 2.8 Turbo",
+        "qualityElo": 1148.86,
+        "detailsUrl": "/text-to-speech/providers/speech-2-8-turbo"
+      },
+      {
+        "label": "Gradium TTS (Aug 2026)",
+        "qualityElo": 1148.45,
+        "detailsUrl": "/text-to-speech/providers/gradium-tts-beta"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Finance & Accounting Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Incorporates 7 evaluations: AA-Omniscience, GDPval-AA v2.1, AA-Briefcase v1.1, Humanity's Last Exam, AutomationBench-AA, AA-LCR v1.1, GDP.pdf · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "score": 60.7295442846867,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "score": 56.416905719465,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "score": 55.2438222359299,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "score": 54.8890200635187,
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "score": 51.9317468479662,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "score": 49.7560357285637,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "score": 49.2805651427737,
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "score": 49.017191009069,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "score": 48.4884197362378,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "score": 46.8896359847019,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "score": 46.7567637414082,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "score": 46.0835522889743,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "score": 45.5926965631672,
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "Step 5 Preview",
+        "score": 45.3728047646677,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "score": 44.9719825947757,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "score": 44.7076465242297,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "score": 41.9617901866044,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "score": 40.1003889846017,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "score": 39.4299797784778,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "score": 34.3532059447387,
+        "detailsUrl": "/models/qwen3-8-27b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AA-Briefcase Elo",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "AA-Briefcase v1.1 is an agentic knowledge work benchmark developed by Artificial Analysis. AA-Briefcase Elo is a combined metric that aggregates rubric pass rate, analytical quality Elo and presentation Elo · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1821.85
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1810.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1833.6
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1678.37
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1668.51
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1688.34
+          }
+        ],
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1673.33
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1663.51
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1684.09
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1657.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1647.92
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1666.48
+          }
+        ],
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1640.35
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1628.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1652.82
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1597.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1586.44
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1609.75
+          }
+        ],
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1597.21
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1587.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1608.38
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1568.86
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1558.69
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1579.61
+          }
+        ],
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1545.59
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1536.69
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1554.58
+          }
+        ],
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1542.97
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1535.31
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1552.13
+          }
+        ],
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1524.86
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1514.91
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1535.14
+          }
+        ],
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1521.82
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1511.95
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1531.7
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1510.23
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1502.28
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1518.82
+          }
+        ],
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1487.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1479.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1496.83
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1482.78
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1472.91
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1492.66
+          }
+        ],
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1459.41
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1449.55
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1468.85
+          }
+        ],
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1444.78
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1436.06
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1454.09
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      },
+      {
+        "label": "Step 5 Preview",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1432.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1417.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1446.22
+          }
+        ],
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1431.79
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1421.48
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1443
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "aaBriefcaseElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1403.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1394.98
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1411.6
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-27b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AA-AnalystAgent pass^5",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Share of end-to-end quantitative analysis tasks solved on all five attempts · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "analystAgent": 0.575,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "analystAgent": 0.5375,
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "analystAgent": 0.5125,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "analystAgent": 0.4875,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "analystAgent": 0.475,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "analystAgent": 0.4125,
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "analystAgent": 0.3875,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "Inkling",
+        "analystAgent": 0.2375,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "analystAgent": 0.2,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Ling-3.0-flash-Fin",
+        "analystAgent": 0.1625,
+        "detailsUrl": "/models/ling-3-0-flash-fin"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "analystAgent": 0.125,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "MiniMax-M3",
+        "analystAgent": 0.1,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "analystAgent": 0.0625,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AA-Omniscience Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "AA-Omniscience Index (higher is better) measures knowledge reliability and hallucination. It rewards correct answers, penalizes hallucinations, and has no penalty for refusing to answer. Scores range from -100 to 100, where 0 means as many correct as incorrect answers, and negative scores mean more incorrect than correct. · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "omniscienceIndex": 46.416666666666664,
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "omniscienceIndex": 43.45,
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "omniscienceIndex": 43.4,
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "omniscienceIndex": 43.3,
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "omniscienceIndex": 37.06666666666667,
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "omniscienceIndex": 32.03333333333333,
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "omniscienceIndex": 30.483333333333334,
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "omniscienceIndex": 29.55,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (medium)",
+        "omniscienceIndex": 28.583333333333332,
+        "detailsUrl": "/models/gemini-3-8-flash-medium"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "omniscienceIndex": 27.116666666666667,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "omniscienceIndex": 25,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "omniscienceIndex": 21.966666666666665,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "omniscienceIndex": 19.7,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "Step 5 Preview",
+        "omniscienceIndex": 16.383333333333333,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "omniscienceIndex": 14.3,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "omniscienceIndex": 11.983333333333333,
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "omniscienceIndex": 8.383333333333333,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "omniscienceIndex": 7.466666666666667,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "omniscienceIndex": 5.233333333333333,
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "omniscienceIndex": 4.316666666666666,
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "GDPval-AA v2.1 Leaderboard",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Elo rating for performance on real-world work tasks · Anchored to DeepSeek V4.1 Flash (max) at 1,600 · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Claude Opus 5.5 (max with fallback)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1846.17
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1822.93
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1869.4
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-5-5"
+      },
+      {
+        "label": "Claude Fable 5.1 (max with fallback)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1734.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1710.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1759.25
+          }
+        ],
+        "detailsUrl": "/models/claude-fable-5-1"
+      },
+      {
+        "label": "Claude Opus 5 (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1707.92
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1682.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1732.95
+          }
+        ],
+        "detailsUrl": "/models/claude-opus-5"
+      },
+      {
+        "label": "Grok 4.7 (xhigh)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1695.21
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1675.39
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1715.03
+          }
+        ],
+        "detailsUrl": "/models/grok-4-7"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1674.07
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1650
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1698.15
+          }
+        ],
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1673.19
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1653.84
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1692.54
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Qwen3.8 Max (0902)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1667.72
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1641.4
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1694.04
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-max"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1645.52
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1620.63
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1670.41
+          }
+        ],
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1640.78
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1618.06
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1663.5
+          }
+        ],
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1612.13
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1587.91
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1636.36
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "Grok 4.6 (high)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1605.49
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1583.93
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1627.05
+          }
+        ],
+        "detailsUrl": "/models/grok-4-6"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1600
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1600
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1600
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1597.27
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1572.42
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1622.11
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      },
+      {
+        "label": "Claude Fable 5 (with fallback)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1595.41
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1574.19
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1616.62
+          }
+        ],
+        "detailsUrl": "/models/claude-fable-5"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1587.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1566.68
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1609.12
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Step 5 Preview",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1566.12
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1534.76
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1597.48
+          }
+        ],
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1541.89
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1516.58
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1567.2
+          }
+        ],
+        "detailsUrl": "/models/gpt-6-astra"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1523.97
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1500.08
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1547.86
+          }
+        ],
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1486.93
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1468.4
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1505.47
+          }
+        ],
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "gdpvalAaElo": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 1443.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 1421.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 1465.08
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-6-luna"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Artificial Analysis Openness Index: Components",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Openness Index underlying score contribution by components, up to a maximum of 18 (higher is more open) · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Nemotron 3 Ultra",
+        "transparencyPreTrainingData": 1.5,
+        "transparencyPostTrainingData": 1.5,
+        "transparencyMethodology": 6,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "Ling-3.0-flash-VL",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/ling-3-0-flash-vl"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "Ling-3.0-flash-Fin",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/ling-3-0-flash-fin"
+      },
+      {
+        "label": "DeepSeek V4 Pro 0813 (max)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "Ling 3.0 Flash",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/ling-3-0-flash"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Inkling",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "MiMo-V2.5",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/mimo-v2-5-0424"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 5,
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/qwen3-8-27b"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 6,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Kimi K3 (max)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 3,
+        "modelAvailability": 4,
+        "detailsUrl": "/models/kimi-k3"
+      },
+      {
+        "label": "MiniMax-M3",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 2,
+        "modelAvailability": 4,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "GLM-5.3 (max)",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 5,
+        "detailsUrl": "/models/glm-5-3"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 5,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "Qwen3.8 2.4T A95B",
+        "transparencyPreTrainingData": 0,
+        "transparencyPostTrainingData": 0,
+        "transparencyMethodology": 1,
+        "modelAvailability": 4,
+        "detailsUrl": "/models/qwen3-8-2-4t-a95b"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Cost to Run Artificial Analysis Intelligence Index",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Cost (USD) to run all evaluations in the Artificial Analysis Intelligence Index · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "gpt-oss-120b (high)",
+        "answerCost": 5.91199616,
+        "reasoningCost": 44.168710565,
+        "cacheWriteCost": 69.92531819999999,
+        "cacheReadCost": 0,
+        "nonCacheInputCost": 2.2861243499999997,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "answerCost": 8.157622,
+        "reasoningCost": 64.353212,
+        "cacheWriteCost": 17.434795939937086,
+        "cacheReadCost": 29.65766640480504,
+        "nonCacheInputCost": 2.7855760000000003,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "answerCost": 16.89709389,
+        "reasoningCost": 80.64904785,
+        "cacheWriteCost": 28.27217263981424,
+        "cacheReadCost": 4.8862137408429165,
+        "nonCacheInputCost": 7.558580445,
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "answerCost": 15.7953975,
+        "reasoningCost": 72.169056,
+        "cacheWriteCost": 13.48658255,
+        "cacheReadCost": 44.4366384,
+        "nonCacheInputCost": 5.788350749999999,
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "answerCost": 33.671749199999994,
+        "reasoningCost": 91.33940775,
+        "cacheWriteCost": 58.86615848921961,
+        "cacheReadCost": 15.391046954613357,
+        "nonCacheInputCost": 7.386976425,
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "answerCost": 26.589145,
+        "reasoningCost": 122.0987625,
+        "cacheWriteCost": 81.64544058512423,
+        "cacheReadCost": 30.069722951487574,
+        "nonCacheInputCost": 6.5410419,
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "answerCost": 14.6124945,
+        "reasoningCost": 75.7282435,
+        "cacheWriteCost": 21.629579270760043,
+        "cacheReadCost": 164.02214144840158,
+        "nonCacheInputCost": 4.2896787,
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "answerCost": 22.0173816,
+        "reasoningCost": 162.3706872,
+        "cacheWriteCost": 35.51107014890568,
+        "cacheReadCost": 94.19413986808753,
+        "nonCacheInputCost": 5.8352326,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "answerCost": 20.347601429999997,
+        "reasoningCost": 94.77747776,
+        "cacheWriteCost": 43.21283780549994,
+        "cacheReadCost": 200.55182933807998,
+        "nonCacheInputCost": 3.8334344999999996,
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "answerCost": 32.71176744,
+        "reasoningCost": 287.17127868,
+        "cacheWriteCost": 90.00442685826658,
+        "cacheReadCost": 57.35814476578243,
+        "nonCacheInputCost": 6.94658712,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "answerCost": 40.378135199999996,
+        "reasoningCost": 263.358132,
+        "cacheWriteCost": 114.16695302136627,
+        "cacheReadCost": 53.13491481557268,
+        "nonCacheInputCost": 5.8523109,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "MiniMax-M3",
+        "answerCost": 34.9581792,
+        "reasoningCost": 105.51258119999999,
+        "cacheWriteCost": 87.38851467528632,
+        "cacheReadCost": 300.46775615195423,
+        "nonCacheInputCost": 9.651415799999999,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "answerCost": 46.7125,
+        "reasoningCost": 234.4078225,
+        "cacheWriteCost": 406.7925595558987,
+        "cacheReadCost": 59.51412123842701,
+        "nonCacheInputCost": 10.235647199999999,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Step 5 Preview",
+        "answerCost": 72.0597465,
+        "reasoningCost": 349.3605843,
+        "cacheWriteCost": 223.4677024423995,
+        "cacheReadCost": 259.24449742788005,
+        "nonCacheInputCost": 20.544259,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "Inkling",
+        "answerCost": 52.0767549,
+        "reasoningCost": 501.35508089999996,
+        "cacheWriteCost": 93.8472345378785,
+        "cacheReadCost": 357.79166066856067,
+        "nonCacheInputCost": 21.064496,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "Gemini 3.8 Flash (medium)",
+        "answerCost": 122.6793075,
+        "reasoningCost": 233.6941425,
+        "cacheWriteCost": 436.64013760139676,
+        "cacheReadCost": 290.6418956898603,
+        "nonCacheInputCost": 16.4052645,
+        "detailsUrl": "/models/gemini-3-8-flash-medium"
+      },
+      {
+        "label": "DeepSeek V4 Pro 0813 (max)",
+        "answerCost": 97.9321266,
+        "reasoningCost": 547.05880944,
+        "cacheWriteCost": 224.13719859924984,
+        "cacheReadCost": 231.08851933069167,
+        "nonCacheInputCost": 22.054468919999998,
+        "detailsUrl": "/models/deepseek-v4-pro"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "answerCost": 131.60504999999998,
+        "reasoningCost": 623.5584524999999,
+        "cacheWriteCost": 179.08034463327624,
+        "cacheReadCost": 200.0654505866724,
+        "nonCacheInputCost": 25.625038500000002,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "answerCost": 82.51217700000001,
+        "reasoningCost": 512.3598,
+        "cacheWriteCost": 396.77230494500003,
+        "cacheReadCost": 331.233911411,
+        "nonCacheInputCost": 13.040266,
+        "detailsUrl": "/models/qwen3-8-27b"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "answerCost": 142.30403,
+        "reasoningCost": 627.10968,
+        "cacheWriteCost": 239.62344409717173,
+        "cacheReadCost": 485.5224436722263,
+        "nonCacheInputCost": 55.522456,
+        "detailsUrl": "/models/gpt-6-sol"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Pricing: Cache Hit, Input, and Output",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Price (USD per M Tokens) · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Ling-3.0-flash-VL",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.015
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.075
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.22
+          }
+        ],
+        "detailsUrl": "/models/ling-3-0-flash-vl"
+      },
+      {
+        "label": "Ling-3.0-flash-Fin",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.015
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.075
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.22
+          }
+        ],
+        "detailsUrl": "/models/ling-3-0-flash-fin"
+      },
+      {
+        "label": "Ling 3.0 Flash",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.015
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.075
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.22
+          }
+        ],
+        "detailsUrl": "/models/ling-3-0-flash"
+      },
+      {
+        "label": "MiMo-V2.5",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0028
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.14
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.28
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-5-0424"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.01
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.5
+          }
+        ],
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "Qwen3.8-Flash-Next",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.016
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.47
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-flash-next"
+      },
+      {
+        "label": "GLM-5.3-Flash",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.026
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.5
+          }
+        ],
+        "detailsUrl": "/models/glm-5-3-flash"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.125
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.595
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "MiMo-V2.5-Pro",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0036
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.435
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.87
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-5-pro"
+      },
+      {
+        "label": "MiMo-V2.6-Pro",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.0036
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.435
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.87
+          }
+        ],
+        "detailsUrl": "/models/mimo-v2-6-pro"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.02
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.2
+          }
+        ],
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "MiniMax-M3",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.06
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.3
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.2
+          }
+        ],
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.006
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.3
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.2
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.014
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.44
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.32
+          }
+        ],
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.04
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.35
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.5
+          }
+        ],
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "Quasar 438B (max)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.6
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 1.8
+          }
+        ],
+        "detailsUrl": "/models/quasar-438b"
+      },
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.03
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.3
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 2.5
+          }
+        ],
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.16
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.6
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 2.5
+          }
+        ],
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Qwen3.8 27B (xhigh)",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.5
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 3
+          }
+        ],
+        "detailsUrl": "/models/qwen3-8-27b"
+      },
+      {
+        "label": "Step 5 Preview",
+        "pricing": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 2.7
+          }
+        ],
+        "detailsUrl": "/models/step-5"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Output Speed",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Output tokens per second · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "outputSpeed": 357.36891968771,
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "Ling 3.0 Flash",
+        "outputSpeed": 337.995119469859,
+        "detailsUrl": "/models/ling-3-0-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "outputSpeed": 275.899050615917,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "outputSpeed": 226.562732849843,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "outputSpeed": 221.097743777219,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "outputSpeed": 218.607609481884,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "outputSpeed": 196.40852176717,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Ling-3.0-flash-Fin",
+        "outputSpeed": 158.523634498654,
+        "detailsUrl": "/models/ling-3-0-flash-fin"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "outputSpeed": 157.236301337893,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "outputSpeed": 157.051580761675,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "outputSpeed": 145.809996917535,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "Ling-3.0-flash-VL",
+        "outputSpeed": 144.420788781349,
+        "detailsUrl": "/models/ling-3-0-flash-vl"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "outputSpeed": 142.271568203031,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "Quasar 438B (max)",
+        "outputSpeed": 141.765460832434,
+        "detailsUrl": "/models/quasar-438b"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "outputSpeed": 126.038858615841,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "Inkling",
+        "outputSpeed": 106.683925839884,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "MiniMax-M3",
+        "outputSpeed": 101.625254778374,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "outputSpeed": 92.4762055240274,
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "Step 5 Preview",
+        "outputSpeed": 83.1104192802692,
+        "detailsUrl": "/models/step-5"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "outputSpeed": 82.3930985080847,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Time per Intelligence Index Task",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Weighted average decode time (minutes) per task; excludes TTFT and overhead time · Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Gemini 3.5 Flash-Lite",
+        "timePerTask": 0.8065978946976551,
+        "detailsUrl": "/models/gemini-3-5-flash-lite"
+      },
+      {
+        "label": "gpt-oss-120b (high)",
+        "timePerTask": 2.198305664741888,
+        "detailsUrl": "/models/gpt-oss-120b"
+      },
+      {
+        "label": "Muse Glimmer (high)",
+        "timePerTask": 2.494547524008561,
+        "detailsUrl": "/models/muse-glimmer"
+      },
+      {
+        "label": "Mistral Medium 3.5",
+        "timePerTask": 2.8633571570569463,
+        "detailsUrl": "/models/mistral-medium-3-5"
+      },
+      {
+        "label": "Nemotron 3 Ultra",
+        "timePerTask": 2.8920157362841006,
+        "detailsUrl": "/models/nvidia-nemotron-3-ultra-550b-a55b"
+      },
+      {
+        "label": "DeepSeek V4 Flash 0731 (max)",
+        "timePerTask": 3.286272679517437,
+        "detailsUrl": "/models/deepseek-v4-flash"
+      },
+      {
+        "label": "Gemini 3.8 Flash (high)",
+        "timePerTask": 4.064761826878762,
+        "detailsUrl": "/models/gemini-3-8-flash"
+      },
+      {
+        "label": "GPT-6 Sol (max)",
+        "timePerTask": 4.193890865292032,
+        "detailsUrl": "/models/gpt-6-sol"
+      },
+      {
+        "label": "Muse Spark 1.3 (max)",
+        "timePerTask": 4.555103918064668,
+        "detailsUrl": "/models/muse-spark-1-3"
+      },
+      {
+        "label": "Inkling",
+        "timePerTask": 4.683393026958462,
+        "detailsUrl": "/models/inkling"
+      },
+      {
+        "label": "DeepSeek V4.1 Flash (max)",
+        "timePerTask": 4.878067884002816,
+        "detailsUrl": "/models/deepseek-v4-1-flash"
+      },
+      {
+        "label": "GPT-5.6 Luna (max)",
+        "timePerTask": 4.9697182239727775,
+        "detailsUrl": "/models/gpt-5-6-luna"
+      },
+      {
+        "label": "GPT-6 Luna (max)",
+        "timePerTask": 5.307890537837877,
+        "detailsUrl": "/models/gpt-6-luna"
+      },
+      {
+        "label": "Ling-3.0-flash-VL",
+        "timePerTask": 5.395819721146009,
+        "detailsUrl": "/models/ling-3-0-flash-vl"
+      },
+      {
+        "label": "GPT-5.6 Sol (max)",
+        "timePerTask": 5.878580126283719,
+        "detailsUrl": "/models/gpt-5-6-sol"
+      },
+      {
+        "label": "Ling-3.0-flash-Fin",
+        "timePerTask": 6.142075512289052,
+        "detailsUrl": "/models/ling-3-0-flash-fin"
+      },
+      {
+        "label": "GPT-5.6 Terra (max)",
+        "timePerTask": 7.771308034454262,
+        "detailsUrl": "/models/gpt-5-6-terra"
+      },
+      {
+        "label": "MiniMax-M3",
+        "timePerTask": 8.027071287465825,
+        "detailsUrl": "/models/minimax-m3"
+      },
+      {
+        "label": "Quasar 438B (max)",
+        "timePerTask": 8.120213399177693,
+        "detailsUrl": "/models/quasar-438b"
+      },
+      {
+        "label": "GPT-6 Astra (max)",
+        "timePerTask": 8.502433228183868,
+        "detailsUrl": "/models/gpt-6-astra"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Endpoint Accuracy Index: gpt-oss-120b (high)",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "v1.0 · Composite of BFCL v4-500, HLE-250 and AA-LCR-25 run against each provider endpoint · Percentage of the reference endpoint, with 95% confidence interval · Higher is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "SGLang",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 100
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 100
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "label": "Amazon",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 100.77
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 92.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 108.86999999999999
+          }
+        ],
+        "detailsUrl": "/providers/amazon_bedrock"
+      },
+      {
+        "label": "SambaNova",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 98.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 91.03
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 105.27000000000001
+          }
+        ],
+        "detailsUrl": "/providers/sambanova"
+      },
+      {
+        "label": "Parasail",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 97.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 89.25
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 106.55000000000001
+          }
+        ],
+        "detailsUrl": "/providers/parasail"
+      },
+      {
+        "label": "CoreWeave",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 97.63
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 90.53
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 104.72999999999999
+          }
+        ],
+        "detailsUrl": "/providers/coreweave"
+      },
+      {
+        "label": "DeepInfra",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 97.01
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 86.74000000000001
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 107.28
+          }
+        ],
+        "detailsUrl": "/providers/deepinfra"
+      },
+      {
+        "label": "Scaleway",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 96.61
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 88.67
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 104.55
+          }
+        ],
+        "detailsUrl": "/providers/scaleway"
+      },
+      {
+        "label": "Nebius (Base)",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 96.59
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 88.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 105.09
+          }
+        ],
+        "detailsUrl": "/providers/nebius"
+      },
+      {
+        "label": "Azure",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 92.9
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 85.7
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 100.10000000000001
+          }
+        ],
+        "detailsUrl": "/providers/azure"
+      },
+      {
+        "label": "Novita",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 90.84
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 81.83
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 99.85000000000001
+          }
+        ],
+        "detailsUrl": "/providers/novita"
+      },
+      {
+        "label": "Cerebras",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 87.28
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 79.36
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 95.2
+          }
+        ],
+        "detailsUrl": "/providers/cerebras"
+      },
+      {
+        "label": "Groq",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 86.36
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 77.73
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 94.99
+          }
+        ],
+        "detailsUrl": "/providers/groq"
+      },
+      {
+        "label": "DeepInfra (Turbo)",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 84.4
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 75.59
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 93.21000000000001
+          }
+        ],
+        "detailsUrl": "/providers/deepinfra"
+      },
+      {
+        "label": "Together AI",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 76.71
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 68.21
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 85.21
+          }
+        ],
+        "detailsUrl": "/providers/togetherai"
+      },
+      {
+        "label": "Google Vertex",
+        "endpointAccuracyIndex": [
+          {
+            "@type": "PropertyValue",
+            "name": "mid",
+            "value": 72.2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "lower",
+            "value": 65.41
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "upper",
+            "value": 78.99000000000001
+          }
+        ],
+        "detailsUrl": "/providers/google"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Pricing (Cache Hit, Input, and Output): gpt-oss-120b (high)",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Price (USD per M Tokens) · Lower is better · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "CoreWeave",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.03
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.17
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "DeepInfra",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.037
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.17
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Crusoe",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.2
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Novita",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.05
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.25
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Google Vertex",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.09
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.36
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Baseten",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.5
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Amazon",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Azure",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "DeepInfra (Turbo)",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Groq",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.075
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Nebius (Base)",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Together AI",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.15
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.6
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "SambaNova",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.22
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.59
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Parasail",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "cacheHitPrice",
+            "value": 0.055
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.1
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.75
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Scaleway",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.17
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.7
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Cerebras",
+        "price": [
+          {
+            "@type": "PropertyValue",
+            "name": "inputPrice",
+            "value": 0.35
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "outputPrice",
+            "value": 0.75
+          }
+        ],
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Output Speed: gpt-oss-120b (high)",
+    "creator": {
+      "@type": "Organization",
+      "name": "Artificial Analysis",
+      "url": "https://artificialanalysis.ai"
+    },
+    "description": "Output speed: output tokens per second · Evaluation results measured independently by Artificial Analysis",
+    "measurementTechnique": "Independent test run by Artificial Analysis on dedicated hardware.",
+    "spatialCoverage": "Worldwide",
+    "keywords": [
+      "analytics",
+      "llm",
+      "AI",
+      "benchmark",
+      "model",
+      "gpt",
+      "claude"
+    ],
+    "license": "https://artificialanalysis.ai/docs/legal/Terms-of-Use.pdf",
+    "isAccessibleForFree": true,
+    "citation": "Artificial Analysis (2025). LLM benchmarks dataset. https://artificialanalysis.ai",
+    "data": [
+      {
+        "label": "Cerebras",
+        "outputSpeed": 1733.62492804772,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "SambaNova",
+        "outputSpeed": 710.965199450992,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Groq",
+        "outputSpeed": 474.845595472005,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "DeepInfra (Turbo)",
+        "outputSpeed": 322.905161478016,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Azure",
+        "outputSpeed": 314.703166616799,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Nebius (Base)",
+        "outputSpeed": 290.216962617734,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Crusoe",
+        "outputSpeed": 267.915766191281,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Baseten",
+        "outputSpeed": 218.782375844423,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Scaleway",
+        "outputSpeed": 182.472865820954,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Google Vertex",
+        "outputSpeed": 163.343834295101,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Together AI",
+        "outputSpeed": 137.419256757944,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Parasail",
+        "outputSpeed": 124.880442677413,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Amazon",
+        "outputSpeed": 96.7264735011573,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "Novita",
+        "outputSpeed": 68.0309358568596,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "CoreWeave",
+        "outputSpeed": 51.6098490586513,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      },
+      {
+        "label": "DeepInfra",
+        "outputSpeed": 44.2460738842786,
+        "detailsUrl": "/models/gpt-oss-120b/providers"
+      }
+    ]
+  }
+]

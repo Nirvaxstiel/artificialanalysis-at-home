@@ -4,9 +4,14 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "data"))
 
-from _domain import ProjectionRow, Provenance  # noqa: E402
+from _domain import (
+    ProjectionRow, Provenance, safe_finance_accounting_index,
+    safe_omniscience, safe_pass_rate, safe_ppm, safe_reasoning_tax, safe_response_time,
+)  # noqa: E402
+from data.sources.aa._build import get_aa_models  # noqa: E402
 
 
 @pytest.fixture(scope="module")
@@ -46,10 +51,63 @@ class TestDerivedProperties:
     def test_derived_fields_are_explicit(self):
         derived = {k for k, v in ProjectionRow.FIELD_PROVENANCE.items()
                     if v == Provenance.DERIVED}
-        assert derived == {"archetype",
-                           "radar_intel", "radar_speed", "radar_cache_eff",
-                           "radar_cost_eff", "radar_ctx"}, \
-            f"DERIVED set drifted: {derived}"
+        assert derived == {
+            "archetype", "blended", "has_breakdown", "pareto_optimal",
+            "reasoning_tax_pct", "radar_intel", "radar_speed",
+            "radar_cache_eff", "radar_cost_eff", "radar_ctx",
+        }, f"DERIVED set drifted: {derived}"
+
+    def test_index_smart_constructors(self):
+        assert safe_finance_accounting_index(61.4).unwrap().as_primitive() == 61.4
+        assert safe_finance_accounting_index(None).unwrap() is None
+        assert safe_finance_accounting_index(100.1).is_err()
+        assert safe_finance_accounting_index(float("inf")).is_err()
+        assert safe_omniscience(-42).unwrap().as_primitive() == -42
+        assert safe_omniscience(None).unwrap() is None
+        assert safe_omniscience(100.1).is_err()
+
+    def test_pass_rate_smart_constructor(self):
+        valid = safe_pass_rate(0.575)
+        assert valid.is_ok()
+        assert valid.unwrap().as_primitive() == 0.575
+        assert safe_pass_rate(None).unwrap() is None
+        for invalid in (-0.01, 1.01, float("nan"), "invalid", True):
+            assert safe_pass_rate(invalid).is_err()
+
+    def test_response_time_returns_validated_result(self):
+        assert safe_response_time(35.5).unwrap().as_primitive() == 35.5
+        assert safe_response_time(None).unwrap() is None
+        for invalid in (-1, float("nan"), float("inf"), "invalid", True):
+            assert safe_response_time(invalid).is_err()
+
+    def test_serialized_provenance(self):
+        row = ProjectionRow(
+            slug="test-model",
+            name="Test Model",
+            blended=safe_ppm(2.5),
+            reasoning_tax_pct=safe_reasoning_tax(25),
+            aa_finance_accounting_index=safe_finance_accounting_index(61.4).unwrap(),
+            aa_analyst_agent_pass_5=safe_pass_rate(0.575).unwrap(),
+        )
+        provenance = row.to_dict()["provenance"]
+        assert provenance["blended"] == "derived"
+        assert provenance["reasoning_tax_pct"] == "derived"
+        assert provenance["aa_finance_accounting_index"] == "sourced"
+        assert provenance["aa_analyst_agent_pass_5"] == "sourced"
+
+    def test_new_aa_fields_have_sourced_provenance(self):
+        for field in (
+            "aa_finance_accounting_index", "aa_analyst_agent_pass_5",
+            "aa_briefcase_elo", "aa_gdpval_elo", "aa_omniscience_index",
+            "aa_time_per_task",
+        ):
+            assert ProjectionRow.FIELD_PROVENANCE[field] == Provenance.SOURCED
+        for field in (
+            "aa_omniscience_hallucination_rate",
+            "aa_briefcase_analytical_quality_elo",
+            "aa_briefcase_presentation_elo",
+        ):
+            assert field not in ProjectionRow.FIELD_PROVENANCE
 
     def test_cost_per_wallsec_axis_removed(self):
 
@@ -164,59 +222,38 @@ class TestMiscSource:
                 assert val is not None, \
                     f"misc.json[{slug!r}].{key} is null — omit the key instead"
 
-    def test_all_slugs_exist_in_registry(self):
+    def test_out_of_scope_records_do_not_seed_registry(self):
         with open(REPO / "data" / "model_registry.json") as f:
             reg = json.load(f)
-        reg_ids = {m["id"] for m in reg["models"]}
         with open(REPO / "data" / "sources" / "misc.json") as f:
             misc = json.load(f)
-        stale = [s for s in misc if s not in reg_ids]
-        assert not stale, \
-            f"misc.json references slugs not in registry: {stale}"
+        reg_ids = {model["id"] for model in reg["models"]}
+        aa_ids = set(get_aa_models(REPO).unwrap())
+        out_of_scope = set(misc) - aa_ids
+        assert out_of_scope
+        assert reg_ids == aa_ids
+        assert out_of_scope.isdisjoint(reg_ids)
 
 
-class TestTokensMGuardrail:
-    """tokens_m is AA's "Output Tokens per Intelligence Index Task" (millions).
+class TestUnsupportedMetrics:
+    fields = {
+        "tokens_m", "ttft", "useful_cost", "iq_per_1k", "iq_per_mtok",
+        "iq_per_dollar_pt", "cost_per_iq", "aa_coding_index", "aa_math_index",
+        "aa_gpqa", "aa_mmlu_pro", "aa_hle", "aa_aime", "aa_aime_25",
+        "aa_math_500", "aa_livecodebench", "aa_ifbench", "aa_lcr", "aa_scicode",
+        "aa_tau2", "aa_tau_banking", "aa_terminalbench_hard", "aa_terminalbench_v2_1",
+        "aa_omniscience_hallucination_rate", "aa_briefcase_analytical_quality_elo",
+        "aa_briefcase_presentation_elo",
+    }
 
-    It spans the ENTIRE eval suite, not a single context window — so it is
-    legitimately far larger than context_window. The guardrail only rejects
-    non-positive or absurdly large values (>10,000M = 10B tokens/task).
-    """
-    def test_tokens_m_is_aa_per_task_volume(self, processed_js):
+    def test_unsupported_metrics_absent(self, processed_js):
+        for model in processed_js:
+            assert not self.fields.intersection(model), model["slug"]
 
-        for m in processed_js:
-            tm = m.get("tokens_m")
-            if tm is None:
-                continue
-            assert tm > 0, f"{m['slug']}: tokens_m must be positive"
-            assert tm <= 10_000, f"{m['slug']}: tokens_m={tm}M exceeds sane AA per-task bound"
-
-    def test_tokens_m_absent_when_no_source(self, processed_js):
-
-        have = [m for m in processed_js if m.get("tokens_m") is not None]
-        # AA enriched set is ~38 models; the rest are null by design
-        assert 30 <= len(have) <= 45, f"unexpected tokens_m coverage: {len(have)}"
-
-
-class TestVizNoDataGating:
-
-    def test_archetypes_no_longer_requires_tokens_m(self, processed_js):
-        # 03 gate (post-fix): intel + cost_per_task>0 + speed_tps.
-        models = [m for m in processed_js
-                  if m.get("intel") is not None
-                  and m.get("cost_per_task") is not None and (m.get("cost_per_task") or 0) > 0
-                  and m.get("speed_tps") is not None]
-        assert len(models) > 0, "archetypes should render"
-        # gate must NOT require tokens_m — models both with and without it pass
-        with_tok = [m for m in models if m.get("tokens_m") is not None]
-        without_tok = [m for m in models if m.get("tokens_m") is None]
-        assert len(with_tok) > 0, "expected some archetype models with tokens_m (AA)"
-        assert len(without_tok) > 0, "expected some archetype models without tokens_m (non-AA)"
-
-    def test_cost_per_iq_still_has_data(self, processed_js):
-        pts = [m for m in processed_js
-               if (m.get("cost_per_task") or 0) > 0 and m.get("intel") is not None]
-        assert len(pts) > 0, "05 cost-per-iq must still render"
+    def test_cost_per_iq_chart_has_source_inputs(self, processed_js):
+        points = [model for model in processed_js
+                  if (model.get("cost_per_task") or 0) > 0 and model.get("intel") is not None]
+        assert points
 
 
 class TestProcessedJS:

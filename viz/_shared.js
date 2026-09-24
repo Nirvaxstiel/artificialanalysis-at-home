@@ -43,7 +43,9 @@ const CREATOR_COLORS = {
   "Microsoft":     "#6b9dff",
   "Writer":        "#ffb06b",
   "Perceptron":    "#9d6bff",
-  "Thinkingmachines": "#ff6b6b",
+  "Thinking Machines": "#F72585",
+  "MBZUAI Institute Of Foundation Models": "#4CC9F0",
+  "Multiverse Computing": "#B8F34A",
   "Baidu":         "#6bd4ff",
   "Anthracite":    "#d46bff",
   "Sakana":        "#ff6bb0",
@@ -344,6 +346,7 @@ function renderCoverageNote(container, shown, total, missingFields) {
 }
 
 const AXIS_SOURCE_PREFIXES = [
+  ['aa_', 'AA'],
   ['livebench_', 'LiveBench'],
   ['arena_code_', 'Arena Code'],
   ['arena_text_', 'Arena Text'],
@@ -353,9 +356,7 @@ const AXIS_SOURCE_PREFIXES = [
 
 const AXIS_SOURCES = {
   intel: 'AA', inp_price: 'AA', out_price: 'AA', blended: 'AA', cache_hit_price: 'AA',
-  cost_per_task: 'AA', tokens_m: 'AA', speed_tps: 'AA', ttft: 'AA',
-  useful_cost: 'AA', reasoning_tax_pct: 'AA',
-  iq_per_1k: 'AA', cost_per_iq: 'AA', iq_per_mtok: 'AA', iq_per_dollar_pt: 'AA',
+  cost_per_task: 'AA', speed_tps: 'AA', reasoning_tax_pct: 'AA',
   params_b: 'OpenLLM v2', co2_kg: 'OpenLLM v2',
   context_window: 'OpenRouter',
   cache_hit_rate_max: 'Dirac.run',
@@ -429,25 +430,33 @@ window.buildTooltip = function(m) {
   const N = window.VIZ_NUM;
   const iq = m.intel ?? 0;
   const cost = m.cost_per_task;
-  const tok = m.tokens_m;
-  const iqPerK = m.iq_per_1k != null ? m.iq_per_1k.toFixed(0) : '—';
   const reasoningPct = m.reasoning_tax_pct != null ? m.reasoning_tax_pct.toFixed(0) + '%' : '—';
   let html = `<div class=\"tt-name\">${m.name}</div>
-    <div class=\"tt-creator\">${m.creator} &middot; ${m.slug}</div>
+    <div class=\"tt-creator\">${m.creator ?? '—'} &middot; ${m.slug}</div>
     <div class=\"tt-row\"><span class=\"k\">IQ</span><span class=\"v neon\">${iq}</span></div>
     <div class=\"tt-row\"><span class=\"k\">$ / TASK</span><span class=\"v\">${cost != null ? N.fmtUSD(cost) : '—'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">OUTPUT TOK</span><span class=\"v\">${tok != null ? N.fmtCount(tok, { decimals: 0 }) : '—'}</span></div>
+
     <div class=\"tt-row\"><span class=\"k\">$ / M TOK</span><span class=\"v\">${m.out_price != null ? N.fmtUSD(m.out_price) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">SPEED t/s</span><span class=\"v\">${m.speed_tps != null ? N.fmtCompact(m.speed_tps, { decimals: 0 }) : '—'}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">IQ / $1K</span><span class=\"v neon\">${iqPerK}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">$ / IQ PT</span><span class=\"v\">${cost != null && iq > 0 ? N.fmtUSD(cost / iq) : '—'}</span></div>
+
+    <div class=\"tt-row\"><span class=\"k\">$ / IQ PT (DERIVED)</span><span class=\"v\">${cost != null && iq > 0 ? N.fmtUSD(cost / iq) : '—'}</span></div>
     <div class=\"tt-row\"><span class=\"k\">REASONING TAX</span><span class=\"v\">${reasoningPct}</span></div>
-    <div class=\"tt-row\"><span class=\"k\">USEFUL $</span><span class=\"v\">${m.useful_cost != null ? N.fmtUSD(m.useful_cost) : '—'}</span></div>
+
     <div class=\"tt-row\"><span class=\"k\">ARCHETYPE</span><span class=\"v\">${m.archetype}</span></div>
     <div class=\"tt-row\"><span class=\"k\">PARETO</span><span class=\"v\">${m.pareto_optimal ? 'YES' : 'no'}</span></div>`;
 
   // Additional cross-source data
   const cross = [];
+  if (m.aa_finance_accounting_index != null) {
+    cross.push(`AA Finance & Accounting: ${m.aa_finance_accounting_index.toFixed(1)}`);
+  }
+  if (m.aa_analyst_agent_pass_5 != null) {
+    cross.push(`AA AnalystAgent pass⁵: ${(m.aa_analyst_agent_pass_5 * 100).toFixed(1)}%`);
+  }
+  if (m.aa_briefcase_elo != null) cross.push(`AA-Briefcase Elo: ${m.aa_briefcase_elo}`);
+  if (m.aa_gdpval_elo != null) cross.push(`GDPval-AA v2.1 Elo: ${m.aa_gdpval_elo}`);
+  if (m.aa_omniscience_index != null) cross.push(`AA Omniscience Index: ${m.aa_omniscience_index.toFixed(1)}`);
+  if (m.aa_time_per_task != null) cross.push(`AA Time / Task: ${m.aa_time_per_task.toFixed(2)}s`);
   if (m.livebench_average != null) {
     cross.push(`LiveBench avg: ${m.livebench_average.toFixed(1)}`);
     if (m.livebench_coding != null) cross.push(`  Coding: ${m.livebench_coding.toFixed(1)}`);
@@ -500,7 +509,12 @@ window.COST_SEGMENTS = {
 window.FIELD_LABELS = {
   intel:                'IQ',
   cost_per_task:        '$ / TASK',
-  tokens_m:             'TOK',
+  aa_finance_accounting_index: 'FIN & ACCT',
+  aa_analyst_agent_pass_5: 'ANALYST pass⁵',
+  aa_briefcase_elo:      'BRIEFCASE ELO',
+  aa_gdpval_elo:         'GDPVAL ELO',
+  aa_omniscience_index:  'OMNISCIENCE',
+  aa_time_per_task:      'TIME / TASK',
   speed_tps:            'SPEED t/s',
   inp_price:            'INPUT $/M',
   out_price:            'OUTPUT $/M',

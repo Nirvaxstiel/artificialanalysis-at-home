@@ -7,53 +7,43 @@ from _result import ok, err
 
 
 def _load_json(path: str):
-    """Read + parse a JSON source file. Ok(dict) or Err(reason)."""
     try:
-        with open(path) as f:
-            return ok(json.load(f))
-    except (OSError, json.JSONDecodeError) as e:  # noqa: BLE001
+        return ok(json.loads(Path(path).read_text(encoding="utf-8-sig")))
+    except (OSError, UnicodeError, json.JSONDecodeError) as e:
         return err(f"{os.path.basename(path)}: {e}")
 
 
-# Map a chart's title (spans[0]) to its logical key. Title-based (not index-based)
-# so AA re-ordering / removing charts doesn't silently mis-map data. A chart
-# only contributes if its title matches a known key; unknown/removed charts
-# (e.g. AA dropped "Coding Index") are skipped instead of corrupting another key.
-CHART_TITLE_MAP = {
-    "intelligence index by open weights": "intel",
-    "intelligence index by input modality": "intel",
-    "briefcase": "briefcase",
-    "omniscience": "omniscience",
-    "cost to run": "cost_to_run",
-    "pricing": "pricing",
-    "time per intelligence": "time_per_task",
+CHART_TITLE_MAP: dict[str, str] = {
+    "artificial analysis intelligence index by open weights / proprietary": "intel",
+    "pricing: cache hit, input, and output": "pricing",
+    "cost per intelligence index task": "cost_per_task",
+    "output speed": "output_speed",
+    "time per intelligence index task": "time_per_task",
+    "artificial analysis finance & accounting index": "finance_accounting_index",
+    "aa-analystagent pass^5": "analyst_agent_pass_5",
+    "aa-briefcase elo": "briefcase_elo",
+    "gdpval-aa v2.1 leaderboard": "gdpval_elo",
+    "aa-omniscience index": "omniscience_index",
 }
 
 
 def _chart_key(spans):
-    title = (spans[0] if spans else "").lower()
-    for sub, key in CHART_TITLE_MAP.items():
-        if sub in title:
-            return key
-    return None
+    title = spans[0].strip().lower() if isinstance(spans, list) and spans else ""
+    return CHART_TITLE_MAP.get(title)
 
 
 def _norm_value(text: str):
-    """Parse a chart label into a float. Handles 78.3, $470, 16%, &lt;0.01, <0.01.
-
-    Percent values (only the Omniscience chart uses %) are returned as a
-    fraction (16% -> 0.16), matching the 0..1 schema of omniscience_hallucination_rate.
-    """
-    t = text.strip()
+    t = text.strip().replace("−", "-")
     t = t.replace("&lt;", "<").replace("&gt;", ">")
     is_pct = "%" in t
+    is_less_than = t.startswith("<")
     t = t.replace("$", "").replace("%", "").replace(",", "")
-    m = re.match(r"^<?\s*([\d.]+)$", t)
+    m = re.fullmatch(r"<?\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))", t)
     if not m:
         return None
     val = float(m.group(1))
-    if t.startswith("<"):
-        val = -val  # sentinel: store magnitude, flag "less than" upstream if needed
+    if is_less_than:
+        val = -abs(val)
     if is_pct:
         val = val / 100.0
     return val
@@ -131,14 +121,6 @@ def _align_x_to_models(xvals: list, ref_xs: list):
 
 
 def _parse_pricing(svg: str):
-    """Parse the Pricing chart (#9) → [(slug, {cache_hit, inp, out}), ...].
-
-    The chart title names 3 series ("Cache Hit, Input, and Output") matching the
-    3 recharts-label-list groups. Each value <text> carries an x-coordinate; we
-    align values to model columns by x-band (rounding to the per-model spacing
-    derived from the complete Input series). Cache-hit is sparse (some models
-    lack it) so it's optional per model. Validated against the AA live API.
-    """
     hrefs = _extract_slugs(svg)
     groups = _extract_label_lists(svg)
     if len(groups) < 3 or not hrefs:
@@ -160,41 +142,41 @@ def _parse_pricing(svg: str):
     return parsed_rows
 
 
+def _parse_cost_per_task(svg: str):
+    hrefs = _extract_slugs(svg)
+    if not hrefs:
+        return []
+    groups = [_extract_x_values(group) for group in _extract_label_lists(svg)]
+    reference = max(groups, key=len, default=[])
+    if len(reference) != len(hrefs):
+        return []
+    aligned = _align_x_to_models(reference, [x for x, _ in reference])
+    if set(aligned) != set(range(len(hrefs))):
+        return []
+    return [(hrefs[index], aligned[index]) for index in range(len(hrefs))]
+
+
 def parse_aa_charts(json_path: str) -> "Ok[dict]|Err[str]":
-    """Parse the method-2 SVG scrape -> {chart_key: [(slug, value), ...]}.
-
-    Ok(dict) on success, Err(reason) if the source file can't be read/parsed.
-
-    CHART COVERAGE:
-      Included (bar charts with <a href="/models/{slug}"> links — slug→value mapping):
-        intel, briefcase, omniscience, pricing, time_per_task
-
-      EXCLUDED (scatter/over-time charts — NO model <a href> links in SVG):
-        "Intelligence Index vs. Cost per Task", "vs. Context Window",
-        "vs. Total Parameters", "Latency vs. Output Speed", "Time per Task",
-        "Time to First Token Over Time", "End-to-End Response Time Over Time",
-        "Openness Index vs. Intelligence Index", "Intelligence vs. Output Tokens",
-        "Intelligence vs. Cost to Run"
-      Rationale: scatter SVGs have <circle cx= cy= data-chart-item-id=UUID> points
-      but zero <a href="/models/{slug}"> links — no slug→circle mapping is possible
-      without fragile text-label proximity matching. Worse, every scatter axis is
-      already sourced from other places (intel from JSON-LD, cost_per_task from
-      JSON-LD, context_window from OpenRouter, params_b from OpenLLM, ttft/speed_tps
-      from AA live API). Re-parsing the SVG would duplicate existing values with no
-      slug linkage and no new information. The 5 included bar charts capture all
-      per-model scalar values the SVG scrape can reliably provide.
-    """
     loaded = _load_json(json_path)
     if loaded.is_err():
         return err(loaded.error)
     data = loaded.unwrap()
+    if not isinstance(data, list) or any(not isinstance(entry, dict) for entry in data):
+        return err("AA chart export must be a list of objects")
     chart_data = {}
     for entry in data:
         key = _chart_key(entry.get("spans", []))
         if key is None:
             continue
         svg = entry.get("svg") or ""
-        rows = _parse_pricing(svg) if key == "pricing" else _parse_chart(svg)
+        if "recharts-surface" not in svg:
+            continue
+        if key == "pricing":
+            rows = _parse_pricing(svg)
+        elif key == "cost_per_task":
+            rows = _parse_cost_per_task(svg)
+        else:
+            rows = _parse_chart(svg)
         if not rows:
             continue
         chart_data[key] = rows

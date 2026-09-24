@@ -8,6 +8,11 @@
   const AXES = {
     quality: [
       { key: 'intel', label: 'AA Intel Index', unit: '' },
+      { key: 'aa_finance_accounting_index', label: 'AA Finance & Accounting', unit: '' },
+      { key: 'aa_analyst_agent_pass_5', label: 'AA AnalystAgent pass⁵', unit: '' },
+      { key: 'aa_briefcase_elo', label: 'AA-Briefcase Elo', unit: '' },
+      { key: 'aa_gdpval_elo', label: 'GDPval-AA v2.1 Elo', unit: '' },
+      { key: 'aa_omniscience_index', label: 'AA Omniscience Index', unit: '' },
       { key: 'livebench_average', label: 'LiveBench Avg', unit: '' },
       { key: 'livebench_coding', label: 'LiveBench Coding', unit: '' },
       { key: 'livebench_reasoning', label: 'LiveBench Reasoning', unit: '' },
@@ -25,7 +30,7 @@
       { key: 'openrouter_out_price_per_m', label: 'OR Output $/Mtok', unit: 'USD', log: true },
     ],
     size: [
-      { key: 'tokens_m', label: 'Output Tokens', unit: 'M' },
+
       { key: 'params_b', label: 'Params', unit: 'B' },
       { key: 'context_window', label: 'Context Window', unit: '' },
       { key: 'arena_code_votes', label: 'Arena Code Votes', unit: '' },

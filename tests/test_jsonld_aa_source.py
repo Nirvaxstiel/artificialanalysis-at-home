@@ -1,151 +1,118 @@
 import json
-import os
+import sys
 from pathlib import Path
 
-import pytest
-
 REPO = Path(__file__).resolve().parent.parent
-SRC = REPO / "data" / "sources" / "aa"
-JSONLD = REPO / "data" / "sources" / "aa" / "aa_jsonld_export.json"
+AA_SOURCE = REPO / "data" / "sources" / "aa"
+JSONLD = AA_SOURCE / "aa_jsonld_export.json"
+sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "data"))
+from data.sources.aa._build import get_aa_jsonld_models, get_aa_models
 
 
-def _load_jsonld():
-    with open(JSONLD) as f:
-        return json.load(f)
+def _datasets():
+    payload = json.loads(JSONLD.read_text(encoding="utf-8-sig"))
+    return {entry["name"]: entry["data"] for entry in payload
+            if entry.get("@type") == "Dataset"}
 
 
-def _load_registry():
-    with open(REPO / "data" / "model_registry.json") as f:
-        return json.load(f)
+def _slug(entry):
+    return (entry.get("detailsUrl") or "").removeprefix("/models/")
 
 
-def _load_processed():
-    raw = (REPO / "data" / "processed.js").read_text(encoding="utf-8")
-    js = raw[raw.index("=") + 1:].rstrip().rstrip(";")
-    data = json.loads(js)
-    return data["models"]
+def _record_for_slug(records, slug):
+    return next(record for record in records.values()
+                if record.get("aliases", {}).get("aa") == slug)
 
 
-def _gpt56_slugs():
-    return [
-        "gpt-5-6-luna-medium", "gpt-5-6-sol-medium", "gpt-5-6-terra-medium",
-        "gpt-5-6-sol-high", "gpt-5-6-terra-high", "gpt-5-6-luna-high",
-        "gpt-5-6-sol-xhigh", "gpt-5-6-luna-xhigh", "gpt-5-6-terra-xhigh",
-        "gpt-5-6-sol", "gpt-5-6-luna", "gpt-5-6-terra",
+def _property_value(entry, field, name):
+    return next(item["value"] for item in entry.get(field, [])
+                if item.get("name") == name)
+
+
+def test_jsonld_dataset_contract():
+    datasets = _datasets()
+    required = {
+        "Artificial Analysis Intelligence Index by Open Weights / Proprietary",
+        "AA-Omniscience Index", "AA-Briefcase Elo", "AA-AnalystAgent pass^5",
+        "GDPval-AA v2.1 Leaderboard", "Artificial Analysis Finance & Accounting Index",
+        "Cost per Intelligence Index Task", "Cost per Task",
+        "Pricing: Cache Hit, Input, and Output", "Time per Intelligence Index Task",
+    }
+    removed = {
+        "AA-Omniscience Hallucination Rate",
+        "AA-Briefcase Analytical Quality & Presentation Elo",
+        "Artificial Analysis Coding Index",
+    }
+    assert required <= datasets.keys()
+    assert not removed & datasets.keys()
+    assert all(rows for rows in datasets.values())
+
+
+def test_intelligence_jsonld_views_are_identical():
+    datasets = _datasets()
+    views = [
+        { _slug(row): row["intelligenceIndex"] for row in datasets[name] }
+        for name in (
+            "Artificial Analysis Intelligence Index",
+            "Artificial Analysis Intelligence Index by Open Weights / Proprietary",
+        )
     ]
+    assert len(views[0]) == 20
+    assert views[0] == views[1]
 
 
-# ── (A) JSON-LD contract: structure + dedup safety ──
+def test_jsonld_loader_returns_new_metrics():
+    records_result = get_aa_jsonld_models(str(AA_SOURCE))
+    assert records_result.is_ok()
+    records = records_result.unwrap()
+    datasets = _datasets()
+    mappings = (
+        ("Artificial Analysis Finance & Accounting Index", "finance_accounting_index",
+         lambda entry: entry["score"]),
+        ("AA-AnalystAgent pass^5", "analyst_agent_pass_5",
+         lambda entry: entry["analystAgent"]),
+        ("AA-Briefcase Elo", "briefcase_elo",
+         lambda entry: _property_value(entry, "aaBriefcaseElo", "mid")),
+        ("GDPval-AA v2.1 Leaderboard", "gdpval_elo",
+         lambda entry: _property_value(entry, "gdpvalAaElo", "mid")),
+        ("AA-Omniscience Index", "omniscience_index",
+         lambda entry: entry["omniscienceIndex"]),
+    )
+    for dataset_name, field, value_of in mappings:
+        entry = datasets[dataset_name][0]
+        record = _record_for_slug(records, _slug(entry))
+        assert record["benchmarks"]["aa"][field] == value_of(entry)
 
 
-class TestJsonLdContract:
-    def test_file_is_dataset_list(self):
-        d = _load_jsonld()
-        assert isinstance(d, list)
-        datasets = [ds for ds in d if ds.get("@type") == "Dataset"]
-        assert datasets, "expected at least one schema.org Dataset"
-        # A stray non-Dataset entry (e.g. FAQPage site boilerplate) is harmless.
-        non_dataset = [ds.get("@type") for ds in d if ds.get("@type") != "Dataset"]
-        assert all(t in (None, "FAQPage") for t in non_dataset), f"unexpected types: {non_dataset}"
-
-    def test_expected_datasets_present(self):
-        d = _load_jsonld()
-        names = {ds.get("name") for ds in d}
-        required = {
-            "Intelligence", "Speed", "Cost per Task",
-            "AA-Omniscience Hallucination Rate",
-            "AA-Briefcase Analytical Quality & Presentation Elo",
-            "Time per Intelligence Index Task",
-        }
-        missing = required - names
-        assert not missing, f"missing datasets: {missing}"
-        # NOTE: AA removed the "Artificial Analysis Coding Index" dataset from
-        # the JSON-LD export (and the chart) — coding_index is no longer an AA
-        # source. Deliberately not required here.
-
-    def test_two_intelligence_datasets_are_value_identical(self):
-        """Safe-dedup precondition: where slugs overlap, values must match."""
-        d = _load_jsonld()
-        by_name = {ds.get("name"): ds for ds in d}
-        intel_name = "Artificial Analysis Intelligence Index by Input Modality"
-        if intel_name not in by_name and "Artificial Analysis Intelligence Index by Open Weights / Proprietary" in by_name:
-            intel_name = "Artificial Analysis Intelligence Index by Open Weights / Proprietary"
-        intel = {e["detailsUrl"].replace("/models/", ""): e
-                 for e in by_name["Intelligence"]["data"]}
-        ow = {e["detailsUrl"].replace("/models/", ""): e
-              for e in by_name[intel_name]["data"]}
-        shared = set(intel) & set(ow)
-        assert shared, "expected overlapping slugs between the two intelligence datasets"
-        for s in shared:
-            a = intel[s].get("artificialAnalysisIntelligenceIndex")
-            b = ow[s].get("intelligenceIndex")
-            assert a is not None and b is not None, f"{s}: one dataset missing value"
-            assert abs(a - b) < 1e-9, f"{s}: Intelligence ({a}) != InputModality ({b}) — NOT safe to dedup"
-
-    def test_gpt56_variants_present_in_jsonld(self):
-        d = _load_jsonld()
-        labels = {e.get("label") for ds in d for e in ds.get("data", [])}
-        assert any("GPT-5.6" in l for l in labels), "no GPT-5.6 labels found"
+def test_task_cost_components_are_per_task_values():
+    records_result = get_aa_jsonld_models(str(AA_SOURCE))
+    assert records_result.is_ok()
+    records = records_result.unwrap()
+    datasets = _datasets()
+    entry = datasets["Cost per Intelligence Index Task"][0]
+    record = _record_for_slug(records, _slug(entry))
+    segments = record["pricing"]["aa"]["cost_segments"]
+    expected = {
+        "answer_usd": "answer",
+        "reasoning_usd": "reasoning",
+        "cache_write_usd": "cacheWrite",
+        "cache_hit_usd": "cacheHit",
+        "input_usd": "input",
+    }
+    for output_key, source_key in expected.items():
+        assert segments[output_key] == entry[source_key]
 
 
-# ── (B) Ingestion: 12 new models land with data ──
+def test_jsonld_parse_failure_is_a_result(tmp_path):
+    (tmp_path / "aa_jsonld_export.json").write_text("{bad json", encoding="utf-8")
+    result = get_aa_jsonld_models(str(tmp_path))
+    assert result.is_err()
 
 
-class TestJsonLdIngestion:
-    @pytest.fixture(scope="class")
-    def registry(self):
-        return _load_registry()
-
-    @pytest.fixture(scope="class")
-    def processed(self):
-        return _load_processed()
-
-    def test_12_gpt56_models_in_registry(self, registry):
-        ids = {m["id"] for m in registry["models"]}
-        missing = [s for s in _gpt56_slugs() if s not in ids]
-        assert not missing, f"GPT-5.6 slugs missing from registry: {missing}"
-
-    def test_12_gpt56_models_in_output(self, processed):
-        ids = {m["slug"] for m in processed}
-        missing = [s for s in _gpt56_slugs() if s not in ids]
-        assert not missing, f"GPT-5.6 slugs missing from processed.js: {missing}"
-
-    def test_intel_populated(self, processed):
-        sol_max = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
-        assert sol_max.get("intel") is not None, "gpt-5-6-sol should have intel from JSON-LD"
-        # AA v4.3 methodology (10 Sep 2026) lowered gpt-5-6-sol intel from ~59 to 47.
-        assert sol_max["intel"] > 40, f"unexpected intel value: {sol_max.get('intel')}"
-
-    def test_speed_populated(self, processed):
-        sol_max = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
-        assert sol_max.get("speed_tps") is not None, "gpt-5-6-sol should have speed_tps"
-
-    def test_coding_index_populated(self, processed):
-        # AA dropped Coding Index from the chart + JSON-LD, but RESTORED it in
-        # the live API `evaluations` block (31jul2026). It now lands as
-        # aa_coding_index via the _overlay_aa_api ev mapping.
-        sol = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
-        assert sol.get("aa_coding_index") is not None, "gpt-5-6-sol should have aa_coding_index from live API"
-
-    def test_time_per_task_axis_populated(self, processed):
-        have = [m for m in processed if m.get("aa_time_per_task") is not None]
-        gpt56 = [m for m in have if m["slug"].startswith("gpt-5-6")]
-        assert len(gpt56) >= 5, f"expected >=5 GPT-5.6 with aa_time_per_task, got {len(gpt56)}"
-
-    def test_omniscience_axis_wired_and_populated(self, processed):
-        # Omniscience dataset has no GPT-5.6 entries, but the axis must exist and
-        # be populated for at least one model (proves the axis + projection path works).
-        have = [m for m in processed if m.get("aa_omniscience_hallucination_rate") is not None]
-        assert len(have) >= 1, "aa_omniscience_hallucination_rate axis should be populated for >=1 model"
-
-    def test_briefcase_axis_populated(self, processed):
-        sol_max = next(m for m in processed if m["slug"] == "gpt-5-6-sol")
-        assert sol_max.get("aa_briefcase_analytical_quality_elo") is not None, \
-            "gpt-5-6-sol should have aa_briefcase_analytical_quality_elo"
-
-    def test_cost_segments_populated(self, processed):
-        opus = next(m for m in processed if m["slug"] == "claude-opus-4.8")
-        # Output exposes flattened cost segments (cost_seg_reasoning etc.), not a
-        # nested cost_segments dict.
-        assert opus.get("cost_seg_reasoning") is not None, \
-            "claude-opus-4.8 should have cost_seg_reasoning from JSON-LD"
+def test_current_cost_chart_wins_over_legacy_breakdown():
+    result = get_aa_models(REPO)
+    assert result.is_ok()
+    records = result.unwrap()
+    model = _record_for_slug(records, "mistral-medium-3-5")
+    assert model["pricing"]["aa"]["cost_per_task"] == 0.44

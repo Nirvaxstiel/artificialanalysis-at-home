@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated": "2026-09-21",
+    "generated": "2026-09-24",
     "version": "1.0",
-    "total_axes": 71,
-    "total_models": 2268,
+    "total_axes": 50,
+    "total_models": 41,
     "sources": [
       "AA",
       "Arena Code",
@@ -19,14 +19,12 @@
         "axes": [
           "meta.release_date",
           "aa.speed_tps",
-          "aa.ttft",
+          "aa.time_per_task",
           "aa.inp_price",
           "aa.out_price",
           "aa.blended",
-          "aa.cache_hit_price",
           "aa.cost_per_task",
-          "aa.tokens_m",
-          "aa.useful_cost",
+          "aa.cache_hit_price",
           "aa.reasoning_tax_pct",
           "aa.cost_seg_total",
           "aa.cost_seg_answer",
@@ -35,32 +33,13 @@
           "aa.cost_seg_cache_hit",
           "aa.cost_seg_input",
           "aa.intel",
-          "aa.gpqa",
-          "aa.omniscience_hallucination_rate",
-          "aa.aa_coding_index",
-          "aa.hle",
-          "aa.lcr",
-          "aa.ifbench",
-          "aa.tau2",
-          "aa.terminalbench_hard",
-          "aa.briefcase_analytical_quality_elo",
-          "aa.briefcase_presentation_elo",
-          "aa.terminalbench_v2_1",
-          "aa.time_per_task",
-          "aa.tau_banking",
-          "aa.scicode",
-          "aa.iq_per_dollar",
-          "aa.iq_per_1k",
-          "aa.cost_per_iq",
-          "aa.aa_math_index",
-          "aa.mmlu_pro",
-          "aa.aime_25",
-          "aa.livecodebench",
-          "aa.aime",
-          "aa.math_500",
-          "aa.iq_per_mtok"
+          "aa.briefcase_elo",
+          "aa.omniscience_index",
+          "aa.gdpval_elo",
+          "aa.finance_accounting_index",
+          "aa.analyst_agent_pass_5"
         ],
-        "count": 42,
+        "count": 21,
         "speculative": false
       },
       "Arena Code": {
@@ -145,9 +124,9 @@
       "unit": "date",
       "higher_is_better": true,
       "description": "Model release date from the live Artificial Analysis API (aa_api_live.json). Useful for recency/version-comparison; not a quality metric.",
-      "models_have": 131,
+      "models_have": 32,
       "range": [
-        "2025-01-28",
+        "2025-08-05",
         "2026-09-03"
       ],
       "group": "Provenance",
@@ -164,10 +143,10 @@
       "unit": "tok/s",
       "higher_is_better": true,
       "description": "AA output speed in tokens per second",
-      "models_have": 132,
+      "models_have": 38,
       "range": [
-        0,
-        1040.0
+        37.0,
+        357.0
       ],
       "group": "Performance",
       "normalize_range": [
@@ -176,19 +155,19 @@
       ]
     },
     {
-      "id": "aa.ttft",
-      "label": "Time to First Token (s)",
+      "id": "aa.time_per_task",
+      "label": "Time per Intelligence Index Task",
       "source": "AA",
       "type": "performance",
       "unit": "s",
       "higher_is_better": false,
-      "description": "AA median time to first token in seconds",
-      "models_have": 131,
+      "description": "Wall-clock seconds to complete one Intelligence Index Task; lower is better",
+      "models_have": 36,
       "range": [
-        0,
-        212.0
+        0.8,
+        33.4
       ],
-      "group": "Performance",
+      "group": "AA Benchmarks",
       "normalize_range": [
         0,
         100
@@ -202,10 +181,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA input price per million tokens",
-      "models_have": 133,
+      "models_have": 40,
       "range": [
-        0,
-        10
+        0.08,
+        10.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -221,10 +200,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA output price per million tokens",
-      "models_have": 133,
+      "models_have": 40,
       "range": [
-        0,
-        50
+        0.22,
+        50.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -240,29 +219,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "AA blended (weighted average) price",
-      "models_have": 133,
+      "models_have": 40,
       "range": [
-        0,
-        20
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cache_hit_price",
-      "label": "Cache Read Price ($/Mtok)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$/M tok",
-      "higher_is_better": false,
-      "description": "AA cache read price per million tokens",
-      "models_have": 88,
-      "range": [
-        0.003,
-        1.0
+        0.185,
+        40.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -278,10 +238,10 @@
       "unit": "$",
       "higher_is_better": false,
       "description": "AA estimated cost per standard task",
-      "models_have": 37,
+      "models_have": 36,
       "range": [
-        0.02,
-        7.6297
+        0.05,
+        8.75
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -290,36 +250,17 @@
       ]
     },
     {
-      "id": "aa.tokens_m",
-      "label": "Tokens per Task (M) - verbosity",
+      "id": "aa.cache_hit_price",
+      "label": "Cache Read Price ($/Mtok)",
       "source": "AA",
       "type": "pricing",
-      "unit": "M tokens",
+      "unit": "$/M tok",
       "higher_is_better": false,
-      "description": "AA 'Output Tokens per Intelligence Index Task' (millions). Cumulative eval-token volume, not a quality metric - higher = more verbose/expensive, so lower_is_better.",
-      "models_have": 32,
+      "description": "AA cache read price per million tokens",
+      "models_have": 35,
       "range": [
-        21,
-        300
-      ],
-      "group": "Pricing",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.useful_cost",
-      "label": "Useful Cost ($)",
-      "source": "AA",
-      "type": "pricing",
-      "unit": "$",
-      "higher_is_better": false,
-      "description": "AA cost attributable to useful output (non-reasoning)",
-      "models_have": 28,
-      "range": [
-        0.3149,
-        64.7186
+        0.01,
+        1.0
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -335,10 +276,10 @@
       "unit": "%",
       "higher_is_better": false,
       "description": "AA premium percentage paid for reasoning tokens",
-      "models_have": 28,
+      "models_have": 20,
       "range": [
-        0.0,
-        100.0
+        5.1,
+        31.2
       ],
       "group": "Pricing",
       "normalize_range": [
@@ -432,10 +373,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "AA composite intelligence score (Pareto index)",
-      "models_have": 130,
+      "models_have": 41,
       "range": [
-        5.0,
-        53.4
+        12.0,
+        58.0
       ],
       "group": "AA Quality",
       "normalize_range": [
@@ -444,169 +385,17 @@
       ]
     },
     {
-      "id": "aa.gpqa",
-      "label": "GPQA",
+      "id": "aa.briefcase_elo",
+      "label": "AA-Briefcase Elo",
       "source": "AA",
       "type": "quality",
-      "unit": "score",
+      "unit": "Elo",
       "higher_is_better": true,
-      "description": "Graduate-level Google-proof QA accuracy (0-1)",
-      "models_have": 125,
-      "range": [
-        0.433,
-        0.961
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.omniscience_hallucination_rate",
-      "label": "Omniscience Hallucination Rate",
-      "source": "AA",
-      "type": "quality",
-      "unit": "%",
-      "higher_is_better": false,
-      "description": "AA omniscience incorrect rate (0-1); lower is better",
-      "models_have": 117,
-      "range": [
-        0.17,
-        0.96
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.aa_coding_index",
-      "label": "AA Coding Index",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "AA composite coding capability index",
-      "models_have": 93,
-      "range": [
-        7.2,
-        81.6
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.hle",
-      "label": "HLE",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "Humanity's Last Exam accuracy (0-1)",
-      "models_have": 93,
-      "range": [
-        0.038,
-        0.555
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.lcr",
-      "label": "LCR",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "Long-context reasoning score (0-1)",
-      "models_have": 93,
-      "range": [
-        0,
-        0.8433
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.ifbench",
-      "label": "IFBench",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "Instruction-following benchmark score (0-1)",
-      "models_have": 85,
-      "range": [
-        0.2299,
-        0.8333
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.tau2",
-      "label": "TAU2",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "TAU-bench agentic benchmark v2 (0-1)",
-      "models_have": 84,
-      "range": [
-        0,
-        0.9912
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.terminalbench_hard",
-      "label": "TerminalBench Hard",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "TerminalBench hard subset accuracy (0-1)",
-      "models_have": 83,
-      "range": [
-        0,
-        0.6288
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.briefcase_analytical_quality_elo",
-      "label": "Briefcase Analytical Quality Elo",
-      "source": "AA",
-      "type": "quality",
-      "unit": "elo",
-      "higher_is_better": true,
-      "description": "AA-Briefcase analytical-quality Elo (mid estimate)",
-      "models_have": 69,
+      "description": "Combined AA-Briefcase Elo (mid estimate)",
+      "models_have": 41,
       "range": [
         0.0,
-        1909.0
+        1822.0
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -615,16 +404,35 @@
       ]
     },
     {
-      "id": "aa.briefcase_presentation_elo",
-      "label": "Briefcase Presentation Elo",
+      "id": "aa.omniscience_index",
+      "label": "AA-Omniscience Index",
       "source": "AA",
       "type": "quality",
-      "unit": "elo",
+      "unit": "points",
       "higher_is_better": true,
-      "description": "AA-Briefcase presentation Elo (mid estimate)",
-      "models_have": 69,
+      "description": "Knowledge reliability index from -100 to 100; higher is better",
+      "models_have": 41,
       "range": [
-        0.0,
+        -49.0,
+        46.0
+      ],
+      "group": "AA Benchmarks",
+      "normalize_range": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "aa.gdpval_elo",
+      "label": "GDPval-AA v2.1 Elo",
+      "source": "AA",
+      "type": "quality",
+      "unit": "Elo",
+      "higher_is_better": true,
+      "description": "GDPval-AA v2.1 Elo (mid estimate; anchored at 1,600)",
+      "models_have": 40,
+      "range": [
+        596.0,
         1846.0
       ],
       "group": "AA Benchmarks",
@@ -634,17 +442,17 @@
       ]
     },
     {
-      "id": "aa.terminalbench_v2_1",
-      "label": "TerminalBench v2.1",
+      "id": "aa.finance_accounting_index",
+      "label": "Finance & Accounting Index",
       "source": "AA",
       "type": "quality",
-      "unit": "score",
+      "unit": "points",
       "higher_is_better": true,
-      "description": "TerminalBench v2.1 accuracy (0-1)",
-      "models_have": 59,
+      "description": "AA Finance & Accounting composite index (0-100)",
+      "models_have": 27,
       "range": [
-        0.0037,
-        0.8464
+        14.0,
+        61.0
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
@@ -653,245 +461,23 @@
       ]
     },
     {
-      "id": "aa.time_per_task",
-      "label": "Time per Intelligence Index Task",
+      "id": "aa.analyst_agent_pass_5",
+      "label": "AnalystAgent pass\u2075",
       "source": "AA",
       "type": "quality",
-      "unit": "s",
-      "higher_is_better": false,
-      "description": "Wall-clock seconds to complete one Intelligence Index Task; lower is better",
-      "models_have": 54,
+      "unit": "fraction",
+      "higher_is_better": true,
+      "description": "AnalystAgent pass rate across five attempts; fraction from 0 to 1",
+      "models_have": 13,
       "range": [
-        0.5,
-        21.6
+        0.063,
+        0.575
       ],
       "group": "AA Benchmarks",
       "normalize_range": [
         0,
         100
       ]
-    },
-    {
-      "id": "aa.tau_banking",
-      "label": "TAU2 Banking",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "TAU-bench banking split accuracy (0-1)",
-      "models_have": 48,
-      "range": [
-        0.0289,
-        0.3959
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.scicode",
-      "label": "SciCode",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "Scientific coding benchmark accuracy (0-1)",
-      "models_have": 44,
-      "range": [
-        0.255,
-        0.61
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.iq_per_dollar",
-      "label": "IQ per Dollar ($\u207b\u00b9)",
-      "source": "AA",
-      "type": "quality",
-      "unit": "IQ/$",
-      "higher_is_better": true,
-      "description": "AA intelligence per dollar spent",
-      "models_have": 29,
-      "range": [
-        0.0088,
-        0.5523
-      ],
-      "group": "AA Quality",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.iq_per_1k",
-      "label": "IQ per $1K",
-      "source": "AA",
-      "type": "quality",
-      "unit": "IQ/$1K",
-      "higher_is_better": true,
-      "description": "AA intelligence per $1,000 spent (sourced from AA iq_per_1k)",
-      "models_have": 29,
-      "range": [
-        8.81,
-        552.33
-      ],
-      "group": "AA Quality",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.cost_per_iq",
-      "label": "Cost per IQ pt",
-      "source": "AA",
-      "type": "quality",
-      "unit": "$/IQ",
-      "higher_is_better": true,
-      "description": "AA cost per intelligence-index point (sourced from AA cost_per_iq)",
-      "models_have": 29,
-      "range": [
-        1.8105,
-        113.494
-      ],
-      "group": "AA Quality",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.aa_math_index",
-      "label": "AA Math Index",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "AA composite math capability index",
-      "models_have": 25,
-      "range": [
-        33.7,
-        97
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.mmlu_pro",
-      "label": "MMLU-Pro",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "MMLU-Pro accuracy (0-1)",
-      "models_have": 25,
-      "range": [
-        0.588,
-        0.898
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.aime_25",
-      "label": "AIME 2025",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "AIME 2025 math competition accuracy (0-1)",
-      "models_have": 24,
-      "range": [
-        0.3367,
-        0.97
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.livecodebench",
-      "label": "LiveCodeBench",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "LiveCodeBench coding accuracy (0-1)",
-      "models_have": 24,
-      "range": [
-        0.435,
-        0.917
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.aime",
-      "label": "AIME",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "AIME math competition accuracy (0-1)",
-      "models_have": 4,
-      "range": [
-        0.51,
-        0.8433
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.math_500",
-      "label": "MATH-500",
-      "source": "AA",
-      "type": "quality",
-      "unit": "score",
-      "higher_is_better": true,
-      "description": "MATH-500 accuracy (0-1)",
-      "models_have": 4,
-      "range": [
-        0.8927,
-        0.9767
-      ],
-      "group": "AA Benchmarks",
-      "normalize_range": [
-        0,
-        100
-      ]
-    },
-    {
-      "id": "aa.iq_per_mtok",
-      "label": "IQ per Million Tokens",
-      "source": "AA",
-      "type": "quality",
-      "unit": "IQ/Mtok",
-      "higher_is_better": true,
-      "description": "AA intelligence per million tokens",
-      "models_have": 0,
-      "range": null,
-      "group": "AA Quality",
-      "normalize_range": null
     },
     {
       "id": "arena_code.ci",
@@ -901,10 +487,10 @@
       "unit": "points",
       "higher_is_better": false,
       "description": "Arena AI code Elo confidence interval",
-      "models_have": 50,
+      "models_have": 4,
       "range": [
-        5,
-        22
+        8,
+        15
       ],
       "group": "Arena",
       "normalize_range": [
@@ -920,10 +506,10 @@
       "unit": "votes",
       "higher_is_better": true,
       "description": "Arena AI code total votes",
-      "models_have": 50,
+      "models_have": 4,
       "range": [
-        721,
-        19843
+        2100,
+        7887
       ],
       "group": "Arena",
       "normalize_range": [
@@ -939,9 +525,9 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Arena AI code leaderboard Elo score",
-      "models_have": 50,
+      "models_have": 4,
       "range": [
-        1386,
+        1446,
         1653
       ],
       "group": "Arena",
@@ -958,10 +544,10 @@
       "unit": "points",
       "higher_is_better": false,
       "description": "Arena AI text Elo confidence interval",
-      "models_have": 30,
+      "models_have": 2,
       "range": [
-        3,
-        10
+        5,
+        9
       ],
       "group": "Arena",
       "normalize_range": [
@@ -977,10 +563,10 @@
       "unit": "votes",
       "higher_is_better": true,
       "description": "Arena AI text total votes",
-      "models_have": 30,
+      "models_have": 2,
       "range": [
-        3727,
-        73099
+        4350,
+        34468
       ],
       "group": "Arena",
       "normalize_range": [
@@ -996,7 +582,7 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Arena AI text leaderboard Elo score",
-      "models_have": 30,
+      "models_have": 2,
       "range": [
         1466,
         1509
@@ -1015,10 +601,10 @@
       "unit": "%",
       "higher_is_better": true,
       "description": "Observed prefix-cache hit rate (max across providers, from OpenRouter Effective Pricing). Distinct from AA cache_hit_price ($/Mtok read price). Higher = cheaper agentic input.",
-      "models_have": 61,
+      "models_have": 6,
       "range": [
-        0.0,
-        98.6
+        21.7,
+        94.8
       ],
       "group": "Cache Efficiency",
       "normalize_range": [
@@ -1034,10 +620,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Overall average across all LiveBench tasks",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        29.92,
-        81.28
+        46.35,
+        74.39
       ],
       "group": "LiveBench",
       "_dict_key": "average",
@@ -1054,10 +640,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Agentic coding category average",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        1.67,
-        73.33
+        16.67,
+        60.0
       ],
       "group": "LiveBench",
       "_dict_key": "Agentic Coding",
@@ -1074,10 +660,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Overall average across all LiveBench tasks",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        29.92,
-        81.28
+        46.35,
+        74.39
       ],
       "group": "LiveBench",
       "_dict_key": "average",
@@ -1094,10 +680,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Coding category average",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        48.88,
-        83.62
+        60.21,
+        71.34
       ],
       "group": "LiveBench",
       "_dict_key": "Coding",
@@ -1114,10 +700,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Data analysis category average",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        21.23,
-        81.08
+        38.8,
+        76.17
       ],
       "group": "LiveBench",
       "_dict_key": "Data Analysis",
@@ -1134,10 +720,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "LiveBench if category",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        12.19,
-        79.1
+        50.29,
+        63.14
       ],
       "group": "LiveBench",
       "_dict_key": "IF",
@@ -1154,10 +740,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Language understanding category average",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        27.75,
-        88.47
+        48.59,
+        78.13
       ],
       "group": "LiveBench",
       "_dict_key": "Language",
@@ -1174,10 +760,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "LiveBench mathematics category",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        36.01,
-        96.32
+        54.52,
+        90.68
       ],
       "group": "LiveBench",
       "_dict_key": "Mathematics",
@@ -1194,10 +780,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "Reasoning category average",
-      "models_have": 127,
+      "models_have": 5,
       "range": [
-        17.41,
-        89.71
+        37.54,
+        82.69
       ],
       "group": "LiveBench",
       "_dict_key": "Reasoning",
@@ -1214,16 +800,10 @@
       "unit": "B",
       "higher_is_better": true,
       "description": "Model parameter count in billions",
-      "models_have": 1725,
-      "range": [
-        -1.0,
-        140.63
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "Model Meta",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "meta.co2_kg",
@@ -1233,16 +813,10 @@
       "unit": "kg",
       "higher_is_better": false,
       "description": "Estimated CO\u2082 cost of training",
-      "models_have": 1725,
-      "range": [
-        0.11983175082454595,
-        157.56579172301616
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "Model Meta",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.average",
@@ -1252,16 +826,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM average across all eval dimensions",
-      "models_have": 1725,
-      "range": [
-        2.0,
-        47.98
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.ifeval",
@@ -1271,16 +839,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM instruction following eval",
-      "models_have": 1725,
-      "range": [
-        0.0,
-        89.98
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.bbh",
@@ -1290,16 +852,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM Big-Bench Hard",
-      "models_have": 1725,
-      "range": [
-        0.36,
-        76.7
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.math_lvl_5",
@@ -1309,16 +865,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM MATH Level 5",
-      "models_have": 1725,
-      "range": [
-        0.0,
-        62.54
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.gpqa",
@@ -1328,16 +878,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM GPQA (graduate-level Q&A)",
-      "models_have": 1725,
-      "range": [
-        0.0,
-        27.74
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.musr",
@@ -1347,16 +891,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM MUSR (multi-step reasoning)",
-      "models_have": 1725,
-      "range": [
-        0.0,
-        38.69
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "openllm.mmlu_pro",
@@ -1366,16 +904,10 @@
       "unit": "points",
       "higher_is_better": true,
       "description": "OpenLLM MMLU Pro",
-      "models_have": 1725,
-      "range": [
-        0.54,
-        57.17
-      ],
+      "models_have": 0,
+      "range": null,
       "group": "OpenLLM",
-      "normalize_range": [
-        0,
-        100
-      ]
+      "normalize_range": null
     },
     {
       "id": "meta.context_window",
@@ -1385,10 +917,10 @@
       "unit": "tokens",
       "higher_is_better": true,
       "description": "Model context window in tokens, sourced from OpenRouter context_length. Drives the crossover viz circle size. Higher = larger context.",
-      "models_have": 442,
+      "models_have": 11,
       "range": [
-        4095,
-        2000000
+        131072,
+        1050000
       ],
       "group": "Provenance",
       "normalize_range": [
@@ -1404,10 +936,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter input price per million tokens",
-      "models_have": 337,
+      "models_have": 10,
       "range": [
-        0.0,
-        150.0
+        0.037,
+        10.0
       ],
       "group": "OpenRouter Pricing",
       "normalize_range": [
@@ -1423,10 +955,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter output price per million tokens",
-      "models_have": 337,
+      "models_have": 10,
       "range": [
-        0.0,
-        600.0
+        0.17,
+        50.0
       ],
       "group": "OpenRouter Pricing",
       "normalize_range": [
@@ -1442,10 +974,10 @@
       "unit": "$/M tok",
       "higher_is_better": false,
       "description": "OpenRouter cache-read price per million tokens",
-      "models_have": 184,
+      "models_have": 8,
       "range": [
-        0.002,
-        7.5
+        0.0036,
+        1.0
       ],
       "group": "OpenRouter Pricing",
       "normalize_range": [
@@ -1456,17 +988,11 @@
   ],
   "feasibility": {
     "n_axis_pairs": {
-      "AA\u00d7Arena Code": 16,
-      "AA\u00d7Arena Text": 11,
-      "AA\u00d7LiveBench": 19,
-      "AA\u00d7OpenRouter": 36,
-      "Arena Code\u00d7Arena Text": 18,
-      "Arena Code\u00d7LiveBench": 11,
-      "Arena Code\u00d7OpenRouter": 23,
-      "Arena Text\u00d7LiveBench": 4,
-      "Arena Text\u00d7OpenRouter": 11,
-      "LiveBench\u00d7OpenRouter": 38,
-      "OpenLLM v2\u00d7OpenRouter": 7
+      "AA\u00d7Arena Code": 4,
+      "AA\u00d7LiveBench": 5,
+      "AA\u00d7OpenRouter": 10,
+      "Arena Code\u00d7OpenRouter": 4,
+      "LiveBench\u00d7OpenRouter": 5
     },
     "notes": "number of models with data from both source groups (non-meta axes only)"
   }

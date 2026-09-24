@@ -38,8 +38,8 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
   - **Repro (scrape script `scraped-method-2.js`):**
     ```js
     // In the AA page console — capture each chart section as { svg, spans }.
-    JSON.stringify(Array.from(document.querySelectorAll('[dir=ltr].scroll-mt-24'))
-      .map(el => ({ svg: el.querySelector('svg[role]')?.outerHTML || '',
+    JSON.stringify(Array.from(document.querySelectorAll('div[id].scroll-mt-24'))
+      .map(el => ({ svg: el.querySelector('svg[role=application]')?.outerHTML || '',
                     spans: Array.from(el.querySelectorAll('span')).map(s => s.textContent) })))
     ```
     Save the array as `data/sources/aa/aa_charts_export.json`.
