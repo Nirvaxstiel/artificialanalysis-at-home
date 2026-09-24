@@ -2,7 +2,7 @@
 
 How every source in the pipeline is **obtained** — method, auth, script, freshness, and repro steps. This complements `LLM Provider Pricing Analysis.md` (what each source is *used for*) and `README.md` (build order and orchestrator modes).
 
-> **Golden rule:** `_build_registry.py` reads raw source files only — never pipeline output. Each source below lands as a file under `data/sources/`; the build scripts consume files, not live endpoints. The only network access in the pipeline is `_pull_sources.py` (OpenRouter / LiveBench / OpenLLM), invoked by the full build only.
+> **Golden rule:** `_build_registry.py` reads raw source files only — never pipeline output. Each source below lands as a file under `data/sources/`; the build scripts consume files, not live endpoints. `_pull_sources.py` fetches the AA public catalog, OpenRouter, LiveBench, and Dirac.run; it also processes the local OpenLLM parquet file. The keyed AA REST snapshot is pulled separately.
 >
 > Snapshot dates and per-source model counts are declared once in `data/_build_registry.py` (`SOURCE_NAMES`, `UNDATED_SNAPSHOTS`, `SOURCE_NOTES`; Arena/LiveBench dates are read from the source files), generated into `model_registry.json` meta (`source_meta`) → `processed.js` meta (`sources_meta`), and rendered in the dashboard footer. The Freshness column below mirrors that generated meta.
 
@@ -13,7 +13,8 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 | 1 | Artificial Analysis (scraped) | **Web page scraping** | none (public) | External AA scraper → dropped into repo | `aa/raw/aa_models_scraped.json`, `aa/enriched/aa_model_data.json`, `aa/enriched/aa_cost_breakdown.json` | AA snapshot 2026-09-10 |
 | 1A | AA intelligence/benchmark charts | **SVG scrape (method-2)** — PRIMARY | none (public) | Browser console query → `aa_charts_export.json` (inside repo) → `aa` source | `aa_charts_export.json` | AA snapshot 2026-09-10 |
 | 1B | AA intelligence/benchmark charts | **JSON-LD console export** | none (public) | AA page console query → `aa_jsonld_export.json` (inside repo) → merged into `aa` source as Step 0b (fills gaps method-2 doesn't cover) | `aa_jsonld_export.json` | AA snapshot 2026-09-10 |
-| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (AA_API_KEY in Hermes `.env`) | Manual `curl`/script → `aa_api_live.json` | `aa/aa_api_live.json` (644 models) | pulled 2026-09-10 |
+| 2 | Artificial Analysis (live API) | **REST API pull** | `x-api-key` (`AA_API_KEY` in Hermes `.env`) | Manual authenticated pull → `aa_api_live.json` | `aa/aa_api_live.json` (671 models) | pulled 2026-09-24 |
+| 2A | Artificial Analysis (public model catalog) | **Next.js RSC page payload** | none | `_pull_sources.py` | `aa/aa_public_model_catalog.json` (671 variants) | on full build (pull) |
 | 3 | OpenRouter | **REST API pull** | none (public) | `_pull_sources.py` | `openrouter_models.json` (~342 models) | on full build (pull) |
 | 5 | LiveBench | **CSV download** (GitHub raw) | none | `_pull_sources.py` | `livebench_2026_01_08.csv`, `livebench_categories_2026_01_08.json` | pinned date 2026-01-08 |
 | 6 | OpenLLM v2 | **Parquet file** (manually placed) | none | Downloaded separately → `openllm_v2.parquet`, then `_pull_sources.py` reads it | `openllm_v2.parquet` → `openllm_aa_subset.json` | manual, not fetched by script |
@@ -71,13 +72,19 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 ### 2. Artificial Analysis — live API (`aa_api_live.json`)
 - **Method:** `GET https://artificialanalysis.ai/api/v2/data/llms/models` with header `x-api-key: ***`
 - **Auth:** free-tier key (100 req/day). Key stored in Hermes `.env` as `AA_API_KEY` — **never hardcode**.
-- **Payload:** `status`, `prompt_options`, `data[]` (644 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
+- **Payload:** `status`, `prompt_options`, `data[]` (671 models). Each has `slug`, `release_date`, `model_creator.name`, `evaluations{}` (16 scores: hle, gpqa, aime, aime_25, scicode, lcr, terminalbench_v2_1, …).
 - **Repro:**
   ```bash
-  curl -s -H "x-api-key: $AA_API_KEY" https://artificialanalysis.ai/api/v2/data/llms/models \
+  curl -s -H "x-api-key: ${AA_API_KEY}" https://artificialanalysis.ai/api/v2/data/llms/models \
     | python -m json.tool > data/sources/aa/aa_api_live.json
   ```
 - **Used for:** `release_date`, `creator` backfill, 16 live-AA benchmark axes.
+
+### 2A. Artificial Analysis — public model catalog (`aa_public_model_catalog.json`)
+- **Method:** `_pull_sources.py` requests the public providers page as a Next.js React Server Components (RSC) payload. It needs no API key and returns model variants with `release.slug`, `releaseDate`, and `creator.name`.
+- **File:** `data/sources/aa/aa_public_model_catalog.json` (671 variants; fetched 2026-09-24).
+- **Role:** fills missing creator and release-date metadata for existing AA models only. It does not seed models or add benchmark metrics. The RSC route is an internal website payload, not a stable public API; the keyed REST API remains authoritative for evaluation scores.
+- **Repro:** `PYTHONPATH=data python -m data._pull_sources`.
 
 ### 3. OpenRouter (`openrouter_models.json`)
 - **Method:** `GET https://openrouter.ai/api/v1/models` (public, no auth).
@@ -114,9 +121,9 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 - **Not fetched by any script.** Edit in place when a model's context window is missing from OpenRouter.
 
 ## What `_pull_sources.py` actually covers
-Only **#3 OpenRouter, #5 LiveBench, #6 OpenLLM v2, #7 Dirac.run** are fetched by the script. The other sources (#1, #1A, #1B, #2, #8) are acquired **manually** (scrape / console-query / API curl / JSON download) and committed as files; #9 is hand-maintained. This is by design — those sources require keys/console-query or have no stable endpoint.
+**#2A AA public catalog, #3 OpenRouter, #5 LiveBench, and #7 Dirac.run** are fetched by the script. The script also processes the manually downloaded #6 OpenLLM v2 parquet file. The other sources (#1, #1A, #1B, #2, #8) are acquired **manually** (scrape / console-query / keyed API pull / JSON download) and committed as files; #9 is hand-maintained.
 
-> **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), and live-API (#2) all feed the same `aa.*` namespace via `get_aa_models()` merge. The SVG scrape (#1A) is now the preferred way to add new models + authoritative metrics without vision/scraping.
+> **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), live API (#2), and the public catalog (#2A) all feed `get_aa_models()`. Only charts/JSON-LD seed the model set; API/catalog metadata attaches to those models and never adds new ones.
 
 ## Repro checklist (full refresh)
 
@@ -125,7 +132,7 @@ Only **#3 OpenRouter, #5 LiveBench, #6 OpenLLM v2, #7 Dirac.run** are fetched by
 #  - run external AA scraper → aa/raw + aa/enriched
 #  - copy aa_charts_export.json (SVG console scrape of AA page) → aa/      (PRIMARY)
 #  - copy aa_jsonld_export.json (JSON-LD console query of AA page) → aa/  (fills gaps)
-#  - curl AA live API → aa/aa_api_live.json   (needs AA_API_KEY)
+#  - pull AA live API → aa/aa_api_live.json   (needs AA_API_KEY)
 #  - download Arena JSON → arena_code.json, arena_text.json
 #  - download openllm_v2.parquet → data/sources/
 #  - bump UNDATED_SNAPSHOTS in data/_build_registry.py to the new snapshot dates
@@ -137,4 +144,4 @@ python -m data._pipeline            # no arg → build() pulls + builds
 python -m data._pipeline build      # or: build_from_cache
 ```
 
-`_pull_sources.py` itself (with no arg) fetches OpenRouter / LiveBench / OpenLLM v2 / Dirac.run. The manual sources above are committed files consumed by `_build_registry` regardless of pull.
+`_pull_sources.py` itself (with no arg) fetches the public AA catalog, OpenRouter, LiveBench, OpenLLM v2, and Dirac.run. The manual sources above are committed files consumed by `_build_registry` regardless of pull.

@@ -1,4 +1,5 @@
 import json, csv, io, os, sys, urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 from _result import ok, err, from_fn
@@ -98,6 +99,94 @@ def pull_openrouter(src):
     return ok({"json": "openrouter_models.json", "models": len(fetched_models)})
 
 
+AA_PUBLIC_MODEL_CATALOG_URL = "https://artificialanalysis.ai/leaderboards/providers?_rsc=hgvan"
+AA_PUBLIC_MODEL_CATALOG_HEADERS = {
+    "accept": "*/*",
+    "rsc": "1",
+    "next-router-prefetch": "1",
+    "next-router-state-tree": '[["","pages",["leaderboards",["models",["__PAGE__",{},"/leaderboards/models","refresh"]]]],null,null,true]',
+    "next-url": "/leaderboards/models",
+    "user-agent": "Mozilla/5.0",
+}
+
+
+def parse_aa_public_model_catalog(payload):
+    marker = b'"models":'
+    marker_at = payload.find(marker)
+    if marker_at < 0:
+        return err("AA public catalog: missing models list")
+
+    start = payload.find(b"[", marker_at + len(marker), marker_at + len(marker) + 16)
+    if start < 0:
+        return err("AA public catalog: malformed models list")
+
+    depth = 0
+    in_string = False
+    escaped = False
+    end = None
+    for index in range(start, len(payload)):
+        byte = payload[index]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif byte == 92:
+                escaped = True
+            elif byte == 34:
+                in_string = False
+        elif byte == 34:
+            in_string = True
+        elif byte == 91:
+            depth += 1
+        elif byte == 93:
+            depth -= 1
+            if depth == 0:
+                end = index + 1
+                break
+    if end is None:
+        return err("AA public catalog: unterminated models list")
+
+    try:
+        models = json.loads(payload[start:end])
+    except (UnicodeDecodeError, json.JSONDecodeError) as e:
+        return err(f"AA public catalog: invalid models list: {e}")
+    if not isinstance(models, list) or not all(isinstance(model, dict) for model in models):
+        return err("AA public catalog: expected model objects")
+    if not any(model.get("slug") and isinstance(model.get("release"), dict) for model in models):
+        return err("AA public catalog: model list has no release metadata")
+    return ok(models)
+
+
+def pull_aa_public_model_catalog(src):
+    request = urllib.request.Request(AA_PUBLIC_MODEL_CATALOG_URL, headers=AA_PUBLIC_MODEL_CATALOG_HEADERS)
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            payload = response.read()
+    except Exception as e:  # noqa: BLE001 — network failure is a Result, not a crash
+        return err(f"AA public catalog fetch: {e}")
+
+    parsed = parse_aa_public_model_catalog(payload)
+    if parsed.is_err():
+        return err(parsed.error)
+
+    snapshot = {
+        "meta": {
+            "endpoint": AA_PUBLIC_MODEL_CATALOG_URL,
+            "format": "public AA model catalog via Next.js RSC",
+            "fetched_at": datetime.now(timezone.utc).isoformat(),
+        },
+        "models": parsed.unwrap(),
+    }
+    aa_dir = os.path.join(src, "aa")
+    os.makedirs(aa_dir, exist_ok=True)
+    path = os.path.join(aa_dir, "aa_public_model_catalog.json")
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(snapshot, f, indent=2)
+    except OSError as e:
+        return err(f"AA public catalog write: {e}")
+    return ok({"json": "aa/aa_public_model_catalog.json", "models": len(snapshot["models"])})
+
+
 def run(ctx=None):
     src = _src_dir(ctx)
 
@@ -105,6 +194,7 @@ def run(ctx=None):
         "livebench": pull_livebench(src),
         "openllm": pull_openllm(src),
         "openrouter": pull_openrouter(src),
+        "aa_public_catalog": pull_aa_public_model_catalog(src),
         "dirac": pull_dirac(src),
     }
 

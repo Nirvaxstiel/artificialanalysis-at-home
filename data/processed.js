@@ -6,7 +6,7 @@ window.PROCESSED_DATA = {
     "counts": {
       "models": 41,
       "aa_models": 41,
-      "creators": 17
+      "creators": 18
     },
     "sources": [
       "AA",
@@ -20,7 +20,8 @@ window.PROCESSED_DATA = {
     "sources_meta": {
       "AA": {
         "models": 41,
-        "as_of": "2026-09-10"
+        "as_of": "2026-09-24",
+        "note": "Charts and JSON-LD captured 2026-09-10; live API and public model catalog refreshed 2026-09-24."
       },
       "Dirac.run": {
         "models": 6,
@@ -61,7 +62,8 @@ window.PROCESSED_DATA = {
   "sources_meta": {
     "AA": {
       "models": 41,
-      "as_of": "2026-09-10"
+      "as_of": "2026-09-24",
+      "note": "Charts and JSON-LD captured 2026-09-10; live API and public model catalog refreshed 2026-09-24."
     },
     "Dirac.run": {
       "models": 6,
@@ -93,7 +95,7 @@ window.PROCESSED_DATA = {
     {
       "slug": "claude-opus-5-5",
       "name": "Claude Opus 5.5 (max with fallback)",
-      "creator": null,
+      "creator": "Anthropic",
       "type": null,
       "intel": 58.0,
       "cost_per_task": 5.98,
@@ -115,9 +117,11 @@ window.PROCESSED_DATA = {
       "radar_intel": 1.0,
       "radar_cache_eff": 0.9720930232558139,
       "radar_cost_eff": 0.008361204013377926,
+      "release_date": "2026-09-22",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -132,6 +136,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_cache_eff": "derived",
         "radar_cost_eff": "derived"
@@ -390,7 +395,7 @@ window.PROCESSED_DATA = {
     {
       "slug": "gpt-6-sol",
       "name": "GPT-6 Sol",
-      "creator": null,
+      "creator": "OpenAI",
       "type": null,
       "intel": 48.0,
       "cost_per_task": 1.06,
@@ -419,9 +424,11 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.35294117647058826,
       "radar_cache_eff": 0.9209302325581395,
       "radar_cost_eff": 0.04716981132075471,
+      "release_date": "2026-09-22",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -444,6 +451,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived",
@@ -565,7 +573,7 @@ window.PROCESSED_DATA = {
     {
       "slug": "grok-4-7",
       "name": "Grok 4.7",
-      "creator": null,
+      "creator": "SpaceXAI",
       "type": null,
       "intel": 46.0,
       "cost_per_task": 3.74,
@@ -589,9 +597,11 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.1092436974789916,
       "radar_cache_eff": 0.7674418604651163,
       "radar_cost_eff": 0.01336898395721925,
+      "release_date": "2026-09-21",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -608,6 +618,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived",
@@ -617,7 +628,7 @@ window.PROCESSED_DATA = {
     {
       "slug": "mimo-v2-6-pro",
       "name": "MiMo-V2.6-Pro",
-      "creator": null,
+      "creator": "Xiaomi",
       "type": null,
       "intel": 46.0,
       "cost_per_task": 0.13,
@@ -644,9 +655,11 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.7931034482758621,
       "radar_speed": 0.15126050420168066,
       "radar_cost_eff": 0.3846153846153846,
+      "release_date": "2026-09-21",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -668,6 +681,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cost_eff": "derived"
@@ -755,7 +769,7 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.1092436974789916,
       "radar_cache_eff": 0.8953488372093024,
       "radar_cost_eff": 0.009242144177449169,
-      "release_date": "2026-08-03",
+      "release_date": "2026-09-02",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
@@ -911,7 +925,7 @@ window.PROCESSED_DATA = {
     {
       "slug": "step-5",
       "name": "Step 5 Preview",
-      "creator": null,
+      "creator": "StepFun",
       "type": null,
       "intel": 44.0,
       "cost_per_task": 0.72,
@@ -940,9 +954,11 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.23249299719887956,
       "radar_cache_eff": 0.9720930232558139,
       "radar_cost_eff": 0.06944444444444445,
+      "release_date": "2026-09-18",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -965,6 +981,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived",
@@ -1323,8 +1340,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "deepseek-v4-1-flash",
-      "name": "deepseek-v4-1-flash",
-      "creator": null,
+      "name": "DeepSeek V4.1 Flash (Reasoning, Max Effort)",
+      "creator": "DeepSeek",
       "type": null,
       "intel": 39.0,
       "cost_per_task": 0.27,
@@ -1351,9 +1368,11 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.6724137931034483,
       "radar_speed": 0.6358543417366946,
       "radar_cost_eff": 0.18518518518518517,
+      "release_date": "2026-09-10",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1375,6 +1394,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cost_eff": "derived"
@@ -1448,8 +1468,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "gpt-6-luna",
-      "name": "gpt-6-luna",
-      "creator": null,
+      "name": "GPT-6 Luna",
+      "creator": "OpenAI",
       "type": null,
       "intel": 37.0,
       "cost_per_task": 0.07,
@@ -1478,9 +1498,11 @@ window.PROCESSED_DATA = {
       "radar_speed": 0.43977591036414565,
       "radar_cache_eff": 0.9209302325581395,
       "radar_cost_eff": 0.7142857142857142,
+      "release_date": "2026-09-22",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1503,6 +1525,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived",
@@ -2328,8 +2351,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "ling-3-0-flash-vl",
-      "name": "ling-3-0-flash-vl",
-      "creator": null,
+      "name": "Ling-3.0-flash-VL",
+      "creator": "InclusionAI",
       "type": null,
       "intel": 25.0,
       "cost_per_task": null,
@@ -2350,9 +2373,11 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.43103448275862066,
       "radar_speed": 0.40336134453781514,
       "radar_cache_eff": 0.7674418604651163,
+      "release_date": "2026-09-10",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2366,6 +2391,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived"
@@ -2429,8 +2455,8 @@ window.PROCESSED_DATA = {
     },
     {
       "slug": "ling-3-0-flash-fin",
-      "name": "ling-3-0-flash-fin",
-      "creator": null,
+      "name": "Ling-3.0-flash-Fin",
+      "creator": "InclusionAI",
       "type": null,
       "intel": 23.0,
       "cost_per_task": null,
@@ -2452,9 +2478,11 @@ window.PROCESSED_DATA = {
       "radar_intel": 0.39655172413793105,
       "radar_speed": 0.44537815126050423,
       "radar_cache_eff": 0.7674418604651163,
+      "release_date": "2026-09-11",
       "provenance": {
         "slug": "sourced",
         "name": "sourced",
+        "creator": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2469,6 +2497,7 @@ window.PROCESSED_DATA = {
         "archetype": "derived",
         "has_breakdown": "derived",
         "pareto_optimal": "derived",
+        "release_date": "sourced",
         "radar_intel": "derived",
         "radar_speed": "derived",
         "radar_cache_eff": "derived"

@@ -72,12 +72,13 @@ SOURCE_NAMES = {
 }
 
 UNDATED_SNAPSHOTS = {
-    "aa": "2026-09-10",
+    "aa": "2026-09-24",
     "dirac": "2026-07-23",
     "openllm_aa_subset": "2026-07-04",
 }
 
 SOURCE_NOTES = {
+    "aa": "Charts and JSON-LD captured 2026-09-10; live API and public model catalog refreshed 2026-09-24.",
     "dirac": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing.",
 }
 

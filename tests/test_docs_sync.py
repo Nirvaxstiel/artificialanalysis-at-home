@@ -82,10 +82,11 @@ def test_processed_meta_is_derived_from_registry(processed_meta, registry_meta):
 
 def test_documented_snapshot_rows_match_source_files(processed_meta):
     aa_live = json.loads((DATA / "sources" / "aa" / "aa_api_live.json").read_text(encoding="utf-8"))
+    aa_catalog = json.loads((DATA / "sources" / "aa" / "aa_public_model_catalog.json").read_text(encoding="utf-8"))
     dirac = json.loads((DATA / "sources" / "dirac" / "cache_hit_rates.json").read_text(encoding="utf-8"))
     misc = json.loads((DATA / "sources" / "misc.json").read_text(encoding="utf-8"))
     acquisition = _read("DATA-ACQUISITION.md")
-    for label, count in (("aa_api_live", len(aa_live["data"])), ("dirac", len(dirac)), ("misc", len(misc))):
+    for label, count in (("aa_api_live", len(aa_live["data"])), ("aa_public_catalog", len(aa_catalog["models"])), ("dirac", len(dirac)), ("misc", len(misc))):
         assert f"({count} " in acquisition or f"({count} models)" in acquisition, \
             f"DATA-ACQUISITION.md: {label} row must state its real row count ({count})"
     assert str(len(aa_live["data"])) in acquisition

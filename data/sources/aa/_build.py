@@ -43,6 +43,75 @@ def get_aa_metadata(aa_dir: str):
     return ok(out)
 
 
+def get_aa_public_model_catalog(aa_dir: str):
+    path = os.path.join(aa_dir, "aa_public_model_catalog.json")
+    if not os.path.exists(path):
+        return ok({})
+    loaded = _load_json(path)
+    if loaded.is_err():
+        return err(loaded.error)
+    payload = loaded.unwrap()
+    if not isinstance(payload, dict):
+        return err("aa_public_model_catalog.json: expected an object")
+    source_models = payload.get("models")
+    if isinstance(source_models, dict):
+        entries = [
+            (slug, record.get("creator"), record.get("release_date"))
+            for slug, record in source_models.items()
+            if isinstance(record, dict)
+        ]
+        if len(entries) != len(source_models):
+            return err("aa_public_model_catalog.json: each model must be an object")
+    elif isinstance(source_models, list):
+        if any(not isinstance(model, dict) for model in source_models):
+            return err("aa_public_model_catalog.json: each model must be an object")
+        entries = []
+        for model in source_models:
+            release = model.get("release")
+            release = release if isinstance(release, dict) else {}
+            model_slug = model.get("slug")
+            release_slug = release.get("slug")
+            raw_creator = model.get("creator")
+            creator = raw_creator.get("name") if isinstance(raw_creator, dict) else raw_creator
+            if isinstance(model_slug, str):
+                entries.append((model_slug, creator, model.get("releaseDate")))
+            if isinstance(release_slug, str) and release_slug != model_slug:
+                entries.append((release_slug, creator, None))
+    else:
+        return err("aa_public_model_catalog.json: expected a models list or map")
+
+    out: dict[str, dict] = {}
+    for slug, raw_creator, release_date in entries:
+        if not isinstance(slug, str):
+            continue
+        if release_date is not None and not isinstance(release_date, str):
+            return err(f"aa_public_model_catalog.json: invalid release date for {slug}")
+        canonical_id = resolve_from_slug(slug)
+        if not canonical_id:
+            continue
+        creator = normalize_creator(raw_creator)
+        if creator is None and release_date is None:
+            continue
+        record = {
+            "id": canonical_id,
+            "creator": creator,
+            "meta": {"release_date": release_date},
+            "aliases": {"aa_public_catalog": slug},
+        }
+        if canonical_id in out:
+            existing = out[canonical_id]
+            existing_creator = existing.get("creator")
+            existing_date = existing.get("meta", {}).get("release_date")
+            if creator and existing_creator and creator != existing_creator:
+                return err(f"aa_public_model_catalog.json: conflicting creators for {canonical_id}")
+            if release_date and existing_date and release_date != existing_date:
+                return err(f"aa_public_model_catalog.json: conflicting release dates for {canonical_id}")
+            _merge_fill_nulls(out[canonical_id], record)
+        else:
+            out[canonical_id] = record
+    return ok(out)
+
+
 def _ensure_aa_record(out: dict, slug: str):
     if not slug:
         return None
@@ -265,6 +334,16 @@ def _step_metadata(all_models: dict, aa_dir: str):
     return ok(all_models)
 
 
+def _step_public_model_catalog(all_models: dict, aa_dir: str):
+    catalog = get_aa_public_model_catalog(aa_dir)
+    if catalog.is_err():
+        return err(catalog.error)
+    for canonical_id, record in catalog.unwrap().items():
+        if canonical_id in all_models:
+            _merge_fill_nulls(all_models[canonical_id], record)
+    return ok(all_models)
+
+
 def _derive_reasoning_tax(all_models: dict) -> dict:
     for model in all_models.values():
         aa = model.get("pricing", {}).get("aa", {})
@@ -286,7 +365,7 @@ def get_aa_models(base: Path):
         return err(f"Missing AA primary export(s): {', '.join(missing)}")
     all_models: dict[str, dict] = {}
 
-    for step in (_step_charts, _step_jsonld, _step_metadata):
+    for step in (_step_charts, _step_jsonld, _step_metadata, _step_public_model_catalog):
         result = step(all_models, aa_dir)
         if result.is_err():
             return err(result.error)

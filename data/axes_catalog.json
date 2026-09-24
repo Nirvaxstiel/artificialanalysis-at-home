@@ -124,10 +124,10 @@
       "unit": "date",
       "higher_is_better": true,
       "description": "Model release date from the live Artificial Analysis API (aa_api_live.json). Useful for recency/version-comparison; not a quality metric.",
-      "models_have": 32,
+      "models_have": 41,
       "range": [
         "2025-08-05",
-        "2026-09-03"
+        "2026-09-22"
       ],
       "group": "Provenance",
       "normalize_range": [

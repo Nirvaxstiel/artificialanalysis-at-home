@@ -306,6 +306,8 @@ _CREATOR_CANON = {
     "cognitivecomputations": "Cognitive Computations", "cohere": "Cohere",
     "deepcogito": "Deep Cogito", "gryphe": "Gryphe", "ibm-granite": "IBM Granite",
     "inclusionai": "InclusionAI", "inflection": "Inflection", "kwaipilot": "KuaiPilot",
+    "institute of foundation models": "MBZUAI Institute Of Foundation Models",
+    "mbzuai institute of foundation models": "MBZUAI Institute Of Foundation Models",
     "liquid": "Liquid", "mancer": "Mancer", "microsoft": "Microsoft", "morph": "Morph",
     "nousresearch": "Nous Research", "openrouter": "OpenRouter", "perceptron": "Perceptron",
     "perplexity": "Perplexity", "poolside": "Poolside", "relace": "Relace", "sakana": "Sakana",

@@ -72,6 +72,26 @@ def test_aa_records_exclude_legacy_metric_fields():
         }
 
 
+def test_public_catalog_fills_missing_creators_from_release_families():
+    models = get_aa_models(REPO).unwrap()
+    expected = {
+        "claude-opus-5-5": "Anthropic",
+        "deepseek-v4-1-flash": "DeepSeek",
+        "gpt-6-luna": "OpenAI",
+        "gpt-6-sol": "OpenAI",
+        "grok-4-7": "SpaceXAI",
+        "ling-3-0-flash-fin": "InclusionAI",
+        "ling-3-0-flash-vl": "InclusionAI",
+        "mimo-v2-6-pro": "Xiaomi",
+        "step-5": "StepFun",
+    }
+
+    assert {model_id: models[model_id]["creator"] for model_id in expected} == expected
+    assert all(models[model_id]["aliases"].get("aa_public_catalog") for model_id in expected)
+    assert all(models[model_id]["meta"].get("release_date") for model_id in expected)
+    assert models["k2-horizon-375b-a23b"]["creator"] == "MBZUAI Institute Of Foundation Models"
+
+
 def test_get_aa_models_propagates_malformed_export(tmp_path):
     source = tmp_path / "data" / "sources" / "aa"
     source.mkdir(parents=True)

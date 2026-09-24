@@ -63,6 +63,7 @@ def test_run_err_when_all_sources_fail(tmp_path):
     with mock.patch.object(ps, "pull_livebench", return_value=ps.err("lb down")), \
          mock.patch.object(ps, "pull_openllm", return_value=ps.err("ol down")), \
          mock.patch.object(ps, "pull_openrouter", return_value=ps.err("or down")), \
+         mock.patch.object(ps, "pull_aa_public_model_catalog", return_value=ps.err("aa catalog down")), \
          mock.patch.object(ps, "pull_dirac", return_value=ps.err("dirac down")):
         r = ps.run({"root": str(tmp_path.parent)})
     assert r.is_err()
@@ -74,6 +75,7 @@ def test_run_ok_records_failed_subset(tmp_path):
     with mock.patch.object(ps, "pull_livebench", return_value=ps.err("lb down")), \
          mock.patch.object(ps, "pull_openllm", return_value=ps.ok({"rows": 0})), \
          mock.patch.object(ps, "pull_openrouter", return_value=ps.ok({"models": 0})), \
+         mock.patch.object(ps, "pull_aa_public_model_catalog", return_value=ps.ok({"models": 0})), \
          mock.patch.object(ps, "pull_dirac", return_value=ps.ok({"rows": 0})):
         r = ps.run({"root": str(tmp_path.parent)})
     assert r.is_ok()
@@ -81,4 +83,47 @@ def test_run_ok_records_failed_subset(tmp_path):
     assert "livebench" in s["failed_sources"]
     assert "openllm" in s["ok_sources"]
     assert "openrouter" in s["ok_sources"]
+    assert "aa_public_catalog" in s["ok_sources"]
     assert "dirac" in s["ok_sources"]
+
+
+def test_parse_aa_public_model_catalog_extracts_model_rows():
+    payload = b'''0:{"models":[
+      {"slug":"gpt-6-luna-max","creator":{"name":"OpenAI"},
+       "release":{"slug":"gpt-6-luna","name":"GPT-6 Luna"},"releaseDate":"2026-09-22"}
+    ]}'''
+
+    result = ps.parse_aa_public_model_catalog(payload)
+
+    assert result.is_ok()
+    assert result.unwrap() == [{
+        "slug": "gpt-6-luna-max",
+        "creator": {"name": "OpenAI"},
+        "release": {"slug": "gpt-6-luna", "name": "GPT-6 Luna"},
+        "releaseDate": "2026-09-22",
+    }]
+
+
+def test_parse_aa_public_model_catalog_rejects_missing_models():
+    result = ps.parse_aa_public_model_catalog(b"0:{\"page\":\"catalog unavailable\"}")
+
+    assert result.is_err()
+
+
+def test_pull_aa_public_model_catalog_writes_full_source_shape(tmp_path):
+    payload = b'''0:{"models":[
+      {"slug":"gpt-6-luna-max","creator":{"name":"OpenAI"},
+       "release":{"slug":"gpt-6-luna","name":"GPT-6 Luna"},"releaseDate":"2026-09-22"}
+    ]}'''
+    response = mock.MagicMock()
+    response.read.return_value = payload
+    response.__enter__.return_value = response
+
+    with mock.patch.object(ps.urllib.request, "urlopen", return_value=response):
+        result = ps.pull_aa_public_model_catalog(str(tmp_path))
+
+    assert result.is_ok()
+    assert result.unwrap()["models"] == 1
+    snapshot = json.loads((tmp_path / "aa" / "aa_public_model_catalog.json").read_text(encoding="utf-8"))
+    assert snapshot["models"][0]["creator"]["name"] == "OpenAI"
+    assert snapshot["models"][0]["release"]["slug"] == "gpt-6-luna"

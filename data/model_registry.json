@@ -15,7 +15,8 @@
     "source_meta": {
       "AA": {
         "models": 41,
-        "as_of": "2026-09-10"
+        "as_of": "2026-09-24",
+        "note": "Charts and JSON-LD captured 2026-09-10; live API and public model catalog refreshed 2026-09-24."
       },
       "Dirac.run": {
         "models": 6,
@@ -43,69 +44,110 @@
         "as_of": null
       }
     },
-    "name_map_size": 62
+    "name_map_size": 103
   },
   "name_map": {
     "aa:claude-opus-5-5": "claude-opus-5-5",
+    "aa_public_catalog:claude-opus-5-5": "claude-opus-5-5",
     "aa:claude-fable-5-1": "claude-fable-5-1",
+    "aa_public_catalog:claude-fable-5-1": "claude-fable-5-1",
     "aa:gpt-6-astra": "gpt-6-astra",
+    "aa_public_catalog:gpt-6-astra": "gpt-6-astra",
     "aa:claude-opus-5": "claude-opus-5",
+    "aa_public_catalog:claude-opus-5": "claude-opus-5",
     "aa:claude-fable-5": "claude-fable-5",
+    "aa_public_catalog:claude-fable-5": "claude-fable-5",
     "arena:claude-fable-5": "claude-fable-5",
     "arena_code:claude-fable-5": "claude-fable-5",
     "openrouter:anthropic/claude-fable-5": "claude-fable-5",
     "aa:muse-spark-1-3": "muse-spark-1-3",
+    "aa_public_catalog:muse-spark-1-3": "muse-spark-1-3",
     "aa:gpt-6-sol": "gpt-6-sol",
+    "aa_public_catalog:gpt-6-sol": "gpt-6-sol",
     "aa:gpt-5-6-sol": "gpt-5-6-sol",
+    "aa_public_catalog:gpt-5-6-sol": "gpt-5-6-sol",
     "aa:grok-4-7": "grok-4-7",
+    "aa_public_catalog:grok-4-7": "grok-4-7",
     "aa:mimo-v2-6-pro": "mimo-v2-6-pro",
+    "aa_public_catalog:mimo-v2-6-pro": "mimo-v2-6-pro",
     "aa:qwen3-8-max": "qwen3-8-max",
+    "aa_public_catalog:qwen3-8-max": "qwen3-8-max",
     "aa:glm-5-3": "glm-5-3",
+    "aa_public_catalog:glm-5-3": "glm-5-3",
     "aa:grok-4-6": "grok-4-6",
+    "aa_public_catalog:grok-4-6": "grok-4-6",
     "aa:step-5": "step-5",
+    "aa_public_catalog:step-5": "step-5",
     "aa:kimi-k3": "kimi-k3",
+    "aa_public_catalog:kimi-k3": "kimi-k3",
     "openrouter:moonshotai/kimi-k3": "kimi-k3",
     "aa:gpt-5-6-terra": "gpt-5-6-terra",
+    "aa_public_catalog:gpt-5-6-terra": "gpt-5-6-terra",
     "aa:glm-5-3-flash": "glm-5-3-flash",
+    "aa_public_catalog:glm-5-3-flash": "glm-5-3-flash",
     "aa:gemini-3-8-flash": "gemini-3-8-flash",
+    "aa_public_catalog:gemini-3-8-flash": "gemini-3-8-flash",
     "aa:qwen3-8-2-4t-a95b": "qwen3-8-2-4t-a95b",
+    "aa_public_catalog:qwen3-8-2-4t-a95b": "qwen3-8-2-4t-a95b",
     "aa:qwen3-8-flash-next": "qwen3-8-flash-next",
+    "aa_public_catalog:qwen3-8-flash-next": "qwen3-8-flash-next",
     "aa:gemini-3-8-flash-medium": "gemini-3-8-flash-medium",
+    "aa_public_catalog:gemini-3-8-flash-medium": "gemini-3-8-flash-medium",
     "aa:deepseek-v4-1-flash": "deepseek-v4-1-flash",
+    "aa_public_catalog:deepseek-v4-1-flash": "deepseek-v4-1-flash",
     "aa:gpt-5-6-luna": "gpt-5-6-luna",
+    "aa_public_catalog:gpt-5-6-luna": "gpt-5-6-luna",
     "aa:gpt-6-luna": "gpt-6-luna",
+    "aa_public_catalog:gpt-6-luna": "gpt-6-luna",
     "aa:deepseek-v4-pro": "deepseek-v4-pro",
+    "aa_public_catalog:deepseek-v4-pro": "deepseek-v4-pro",
     "livebench:deepseek-v4-pro": "deepseek-v4-pro",
     "arena_code:deepseek-v4-pro": "deepseek-v4-pro",
     "openrouter:deepseek/deepseek-v4-pro": "deepseek-v4-pro",
     "aa:deepseek-v4-flash": "deepseek-v4-flash",
+    "aa_public_catalog:deepseek-v4-flash": "deepseek-v4-flash",
     "livebench:deepseek-v4-flash": "deepseek-v4-flash",
     "openrouter:deepseek/deepseek-v4-flash": "deepseek-v4-flash",
     "aa:qwen3-8-27b": "qwen3-8-27b",
+    "aa_public_catalog:qwen3-8-27b": "qwen3-8-27b",
     "aa:k2-horizon-375b-a23b": "k2-horizon-375b-a23b",
+    "aa_public_catalog:k2-horizon-375b-a23b": "k2-horizon-375b-a23b",
     "aa:minimax-m3": "minimax-m3",
+    "aa_public_catalog:minimax-m3": "minimax-m3",
     "livebench:minimax-m3": "minimax-m3",
     "arena_code:minimax-m3": "minimax-m3",
     "openrouter:minimax/minimax-m3": "minimax-m3",
     "aa:quasar-438b": "quasar-438b",
+    "aa_public_catalog:quasar-438b": "quasar-438b",
     "aa:mimo-v2-5-pro": "mimo-v2.5-pro",
+    "aa_public_catalog:mimo-v2-5-pro": "mimo-v2.5-pro",
     "arena:mimo-v2.5-pro": "mimo-v2.5-pro",
     "arena_code:mimo-v2.5-pro": "mimo-v2.5-pro",
     "openrouter:xiaomi/mimo-v2.5-pro": "mimo-v2.5-pro",
     "aa:mimo-v2-5-0424": "mimo-v2-5-0424",
+    "aa_public_catalog:mimo-v2-5-0424": "mimo-v2-5-0424",
     "aa:inkling": "inkling",
+    "aa_public_catalog:inkling": "inkling",
     "openrouter:thinkingmachines/inkling": "inkling",
     "aa:ling-3-0-flash": "ling-3-0-flash",
+    "aa_public_catalog:ling-3-0-flash": "ling-3-0-flash",
     "aa:ling-3-0-flash-vl": "ling-3-0-flash-vl",
+    "aa_public_catalog:ling-3-0-flash-vl": "ling-3-0-flash-vl",
     "aa:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
+    "aa_public_catalog:nvidia-nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
     "livebench:nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b": "nemotron-3-ultra-550b-a55b",
     "aa:ling-3-0-flash-fin": "ling-3-0-flash-fin",
+    "aa_public_catalog:ling-3-0-flash-fin": "ling-3-0-flash-fin",
     "aa:gemini-3-5-flash-lite": "gemini-3-5-flash-lite",
+    "aa_public_catalog:gemini-3-5-flash-lite": "gemini-3-5-flash-lite",
     "aa:muse-glimmer": "muse-glimmer",
+    "aa_public_catalog:muse-glimmer": "muse-glimmer",
     "aa:mistral-medium-3-5": "mistral-medium-3.5",
+    "aa_public_catalog:mistral-medium-3-5": "mistral-medium-3.5",
     "openrouter:mistralai/mistral-medium-3-5": "mistral-medium-3.5",
     "aa:gpt-oss-120b": "gpt-oss-120b",
+    "aa_public_catalog:gpt-oss-120b": "gpt-oss-120b",
     "livebench:gpt-oss-120b": "gpt-oss-120b",
     "openrouter:openai/gpt-oss-120b": "gpt-oss-120b"
   },
@@ -172,6 +214,7 @@
       },
       "aliases": {
         "aa": "claude-fable-5",
+        "aa_public_catalog": "claude-fable-5",
         "arena": "claude-fable-5",
         "arena_code": "claude-fable-5",
         "openrouter": "anthropic/claude-fable-5"
@@ -215,7 +258,8 @@
         }
       },
       "aliases": {
-        "aa": "claude-fable-5-1"
+        "aa": "claude-fable-5-1",
+        "aa_public_catalog": "claude-fable-5-1"
       }
     },
     {
@@ -256,12 +300,17 @@
         }
       },
       "aliases": {
-        "aa": "claude-opus-5"
+        "aa": "claude-opus-5",
+        "aa_public_catalog": "claude-opus-5"
       }
     },
     {
       "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5 (max with fallback)",
+      "creator": "Anthropic",
+      "meta": {
+        "release_date": "2026-09-22"
+      },
       "pricing": {
         "aa": {
           "inp_price": 4.0,
@@ -293,12 +342,17 @@
         }
       },
       "aliases": {
-        "aa": "claude-opus-5-5"
+        "aa": "claude-opus-5-5",
+        "aa_public_catalog": "claude-opus-5-5"
       }
     },
     {
       "id": "deepseek-v4-1-flash",
-      "name": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash (Reasoning, Max Effort)",
+      "creator": "DeepSeek",
+      "meta": {
+        "release_date": "2026-09-10"
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.3,
@@ -330,7 +384,8 @@
         }
       },
       "aliases": {
-        "aa": "deepseek-v4-1-flash"
+        "aa": "deepseek-v4-1-flash",
+        "aa_public_catalog": "deepseek-v4-1-flash"
       }
     },
     {
@@ -463,6 +518,7 @@
       },
       "aliases": {
         "aa": "deepseek-v4-flash",
+        "aa_public_catalog": "deepseek-v4-flash",
         "livebench": "deepseek-v4-flash",
         "openrouter": "deepseek/deepseek-v4-flash"
       }
@@ -609,6 +665,7 @@
       },
       "aliases": {
         "aa": "deepseek-v4-pro",
+        "aa_public_catalog": "deepseek-v4-pro",
         "livebench": "deepseek-v4-pro",
         "arena_code": "deepseek-v4-pro",
         "openrouter": "deepseek/deepseek-v4-pro"
@@ -652,7 +709,8 @@
         }
       },
       "aliases": {
-        "aa": "gemini-3-5-flash-lite"
+        "aa": "gemini-3-5-flash-lite",
+        "aa_public_catalog": "gemini-3-5-flash-lite"
       }
     },
     {
@@ -693,7 +751,8 @@
         }
       },
       "aliases": {
-        "aa": "gemini-3-8-flash"
+        "aa": "gemini-3-8-flash",
+        "aa_public_catalog": "gemini-3-8-flash"
       }
     },
     {
@@ -734,7 +793,8 @@
         }
       },
       "aliases": {
-        "aa": "gemini-3-8-flash-medium"
+        "aa": "gemini-3-8-flash-medium",
+        "aa_public_catalog": "gemini-3-8-flash-medium"
       }
     },
     {
@@ -775,7 +835,8 @@
         }
       },
       "aliases": {
-        "aa": "glm-5-3"
+        "aa": "glm-5-3",
+        "aa_public_catalog": "glm-5-3"
       }
     },
     {
@@ -816,7 +877,8 @@
         }
       },
       "aliases": {
-        "aa": "glm-5-3-flash"
+        "aa": "glm-5-3-flash",
+        "aa_public_catalog": "glm-5-3-flash"
       }
     },
     {
@@ -857,7 +919,8 @@
         }
       },
       "aliases": {
-        "aa": "gpt-5-6-luna"
+        "aa": "gpt-5-6-luna",
+        "aa_public_catalog": "gpt-5-6-luna"
       }
     },
     {
@@ -898,7 +961,8 @@
         }
       },
       "aliases": {
-        "aa": "gpt-5-6-sol"
+        "aa": "gpt-5-6-sol",
+        "aa_public_catalog": "gpt-5-6-sol"
       }
     },
     {
@@ -939,7 +1003,8 @@
         }
       },
       "aliases": {
-        "aa": "gpt-5-6-terra"
+        "aa": "gpt-5-6-terra",
+        "aa_public_catalog": "gpt-5-6-terra"
       }
     },
     {
@@ -980,12 +1045,17 @@
         }
       },
       "aliases": {
-        "aa": "gpt-6-astra"
+        "aa": "gpt-6-astra",
+        "aa_public_catalog": "gpt-6-astra"
       }
     },
     {
       "id": "gpt-6-luna",
-      "name": "gpt-6-luna",
+      "name": "GPT-6 Luna (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-09-22"
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.1,
@@ -1017,12 +1087,17 @@
         }
       },
       "aliases": {
-        "aa": "gpt-6-luna"
+        "aa": "gpt-6-luna",
+        "aa_public_catalog": "gpt-6-luna"
       }
     },
     {
       "id": "gpt-6-sol",
       "name": "GPT-6 Sol (max)",
+      "creator": "OpenAI",
+      "meta": {
+        "release_date": "2026-09-22"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.0,
@@ -1054,7 +1129,8 @@
         }
       },
       "aliases": {
-        "aa": "gpt-6-sol"
+        "aa": "gpt-6-sol",
+        "aa_public_catalog": "gpt-6-sol"
       }
     },
     {
@@ -1239,6 +1315,7 @@
       },
       "aliases": {
         "aa": "gpt-oss-120b",
+        "aa_public_catalog": "gpt-oss-120b",
         "livebench": "gpt-oss-120b",
         "openrouter": "openai/gpt-oss-120b"
       }
@@ -1281,12 +1358,17 @@
         }
       },
       "aliases": {
-        "aa": "grok-4-6"
+        "aa": "grok-4-6",
+        "aa_public_catalog": "grok-4-6"
       }
     },
     {
       "id": "grok-4-7",
       "name": "Grok 4.7 (xhigh)",
+      "creator": "SpaceXAI",
+      "meta": {
+        "release_date": "2026-09-21"
+      },
       "pricing": {
         "aa": {
           "inp_price": 2.0,
@@ -1318,7 +1400,8 @@
         }
       },
       "aliases": {
-        "aa": "grok-4-7"
+        "aa": "grok-4-7",
+        "aa_public_catalog": "grok-4-7"
       }
     },
     {
@@ -1370,6 +1453,7 @@
       },
       "aliases": {
         "aa": "inkling",
+        "aa_public_catalog": "inkling",
         "openrouter": "thinkingmachines/inkling"
       }
     },
@@ -1404,7 +1488,8 @@
         }
       },
       "aliases": {
-        "aa": "k2-horizon-375b-a23b"
+        "aa": "k2-horizon-375b-a23b",
+        "aa_public_catalog": "k2-horizon-375b-a23b"
       }
     },
     {
@@ -1456,6 +1541,7 @@
       },
       "aliases": {
         "aa": "kimi-k3",
+        "aa_public_catalog": "kimi-k3",
         "openrouter": "moonshotai/kimi-k3"
       }
     },
@@ -1490,12 +1576,17 @@
         }
       },
       "aliases": {
-        "aa": "ling-3-0-flash"
+        "aa": "ling-3-0-flash",
+        "aa_public_catalog": "ling-3-0-flash"
       }
     },
     {
       "id": "ling-3-0-flash-fin",
-      "name": "ling-3-0-flash-fin",
+      "name": "Ling-3.0-flash-Fin",
+      "creator": "InclusionAI",
+      "meta": {
+        "release_date": "2026-09-11"
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.08,
@@ -1520,12 +1611,17 @@
         }
       },
       "aliases": {
-        "aa": "ling-3-0-flash-fin"
+        "aa": "ling-3-0-flash-fin",
+        "aa_public_catalog": "ling-3-0-flash-fin"
       }
     },
     {
       "id": "ling-3-0-flash-vl",
-      "name": "ling-3-0-flash-vl",
+      "name": "Ling-3.0-flash-VL",
+      "creator": "InclusionAI",
+      "meta": {
+        "release_date": "2026-09-10"
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.08,
@@ -1550,7 +1646,8 @@
         }
       },
       "aliases": {
-        "aa": "ling-3-0-flash-vl"
+        "aa": "ling-3-0-flash-vl",
+        "aa_public_catalog": "ling-3-0-flash-vl"
       }
     },
     {
@@ -1596,12 +1693,17 @@
         }
       },
       "aliases": {
-        "aa": "mimo-v2-5-0424"
+        "aa": "mimo-v2-5-0424",
+        "aa_public_catalog": "mimo-v2-5-0424"
       }
     },
     {
       "id": "mimo-v2-6-pro",
       "name": "MiMo-V2.6-Pro",
+      "creator": "Xiaomi",
+      "meta": {
+        "release_date": "2026-09-21"
+      },
       "pricing": {
         "aa": {
           "inp_price": 0.44,
@@ -1633,7 +1735,8 @@
         }
       },
       "aliases": {
-        "aa": "mimo-v2-6-pro"
+        "aa": "mimo-v2-6-pro",
+        "aa_public_catalog": "mimo-v2-6-pro"
       }
     },
     {
@@ -1713,6 +1816,7 @@
       },
       "aliases": {
         "aa": "mimo-v2-5-pro",
+        "aa_public_catalog": "mimo-v2-5-pro",
         "arena": "mimo-v2.5-pro",
         "arena_code": "mimo-v2.5-pro",
         "openrouter": "xiaomi/mimo-v2.5-pro"
@@ -1783,6 +1887,7 @@
       },
       "aliases": {
         "aa": "minimax-m3",
+        "aa_public_catalog": "minimax-m3",
         "livebench": "minimax-m3",
         "arena_code": "minimax-m3",
         "openrouter": "minimax/minimax-m3"
@@ -1846,6 +1951,7 @@
       },
       "aliases": {
         "aa": "mistral-medium-3-5",
+        "aa_public_catalog": "mistral-medium-3-5",
         "openrouter": "mistralai/mistral-medium-3-5"
       }
     },
@@ -1887,7 +1993,8 @@
         }
       },
       "aliases": {
-        "aa": "muse-glimmer"
+        "aa": "muse-glimmer",
+        "aa_public_catalog": "muse-glimmer"
       }
     },
     {
@@ -1928,7 +2035,8 @@
         }
       },
       "aliases": {
-        "aa": "muse-spark-1-3"
+        "aa": "muse-spark-1-3",
+        "aa_public_catalog": "muse-spark-1-3"
       }
     },
     {
@@ -1990,6 +2098,7 @@
       },
       "aliases": {
         "aa": "nvidia-nemotron-3-ultra-550b-a55b",
+        "aa_public_catalog": "nvidia-nemotron-3-ultra-550b-a55b",
         "livebench": "nemotron-3-ultra-550b-a55b",
         "openrouter": "nvidia/nemotron-3-ultra-550b-a55b"
       }
@@ -2032,7 +2141,8 @@
         }
       },
       "aliases": {
-        "aa": "quasar-438b"
+        "aa": "quasar-438b",
+        "aa_public_catalog": "quasar-438b"
       }
     },
     {
@@ -2073,7 +2183,8 @@
         }
       },
       "aliases": {
-        "aa": "qwen3-8-2-4t-a95b"
+        "aa": "qwen3-8-2-4t-a95b",
+        "aa_public_catalog": "qwen3-8-2-4t-a95b"
       }
     },
     {
@@ -2114,7 +2225,8 @@
         }
       },
       "aliases": {
-        "aa": "qwen3-8-27b"
+        "aa": "qwen3-8-27b",
+        "aa_public_catalog": "qwen3-8-27b"
       }
     },
     {
@@ -2155,7 +2267,8 @@
         }
       },
       "aliases": {
-        "aa": "qwen3-8-flash-next"
+        "aa": "qwen3-8-flash-next",
+        "aa_public_catalog": "qwen3-8-flash-next"
       }
     },
     {
@@ -2163,7 +2276,7 @@
       "name": "Qwen3.8 Max (0902)",
       "creator": "Alibaba",
       "meta": {
-        "release_date": "2026-08-03"
+        "release_date": "2026-09-02"
       },
       "pricing": {
         "aa": {
@@ -2196,12 +2309,17 @@
         }
       },
       "aliases": {
-        "aa": "qwen3-8-max"
+        "aa": "qwen3-8-max",
+        "aa_public_catalog": "qwen3-8-max"
       }
     },
     {
       "id": "step-5",
       "name": "Step 5 Preview",
+      "creator": "StepFun",
+      "meta": {
+        "release_date": "2026-09-18"
+      },
       "pricing": {
         "aa": {
           "inp_price": 1.0,
@@ -2233,7 +2351,8 @@
         }
       },
       "aliases": {
-        "aa": "step-5"
+        "aa": "step-5",
+        "aa_public_catalog": "step-5"
       }
     }
   ]
