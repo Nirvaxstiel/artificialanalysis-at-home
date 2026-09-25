@@ -201,7 +201,7 @@ if __name__ == "__main__":
         elo = r['axes']['arena_code.elo']
         orp = r['axes']['openrouter.inp_price_per_m']
         print(f"  {r['id']:35s} IQ={iq if iq is not None else '-':>5}  "
-              f"LB-Code={lb if lb is not None else '-':>6}  "
+              f"LB-Code={livebench_coding if livebench_coding is not None else '-':>6}  "
               f"Code-Elo={elo if elo is not None else '-':>4}  "
               f"OR-Inp=${orp if orp is not None else '-':>}/Mtok")
 
