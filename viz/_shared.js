@@ -377,6 +377,7 @@ function axisProvenance(key) {
   const bits = [source];
   if (info.models != null) bits.push(`${info.models} models`);
   if (info.as_of) bits.push(info.as_of);
+  if (info.refresh_failed) bits.push('REFRESH FAILED');
   return bits.join(' · ');
 }
 

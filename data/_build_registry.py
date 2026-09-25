@@ -82,6 +82,14 @@ SOURCE_NOTES = {
     "dirac": "Observed prefix-cache hit rates per model (max across providers), sourced from dirac.run full table via OpenRouter Effective Pricing.",
 }
 
+PULL_KEYS = {
+    "aa": "aa_public_catalog",
+    "dirac": "dirac",
+    "livebench": "livebench",
+    "openllm_aa_subset": "openllm",
+    "openrouter": "openrouter",
+}
+
 
 def _snapshot_date_from_file(src, filename, *path):
     result = _load_json(os.path.join(src, filename))
@@ -98,6 +106,14 @@ def _livebench_snapshot_date(src):
     return "-".join(match.groups()) if match else None
 
 
+def _pull_failures(src):
+    """Refresh errors recorded by the last `_pull_sources` run, keyed by pull name."""
+    result = _load_json(os.path.join(src, "_pull_status.json"))
+    if result.is_err():
+        return {}
+    return result.unwrap().get("failed", {}) or {}
+
+
 def _source_meta(state):
     as_of = {
         **UNDATED_SNAPSHOTS,
@@ -105,11 +121,16 @@ def _source_meta(state):
         "arena_text": _snapshot_date_from_file(state["src"], "arena_text.json", "meta", "fetched_at"),
         "livebench": _livebench_snapshot_date(state["src"]),
     }
+    failed = _pull_failures(state["src"])
     meta = {}
     for source_id, name in SOURCE_NAMES.items():
         entry = {"models": state["counts"].get(source_id, 0), "as_of": as_of.get(source_id)}
         if source_id in SOURCE_NOTES:
             entry["note"] = SOURCE_NOTES[source_id]
+        pull_key = PULL_KEYS.get(source_id)
+        if pull_key and pull_key in failed:
+            entry["refresh_failed"] = True
+            entry["refresh_error"] = failed[pull_key]
         meta[name] = entry
     return meta
 

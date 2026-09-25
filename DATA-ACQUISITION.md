@@ -125,6 +125,14 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 
 > **AA is ONE unified source, not separate streams.** Scraped (#1), SVG scrape (#1A), JSON-LD console-query (#1B), live API (#2), and the public catalog (#2A) all feed `get_aa_models()`. Only charts and JSON-LD seed the model set. API and catalog metadata attaches to those models, and it never adds new ones.
 
+### Refresh status (`_pull_status.json`)
+
+`_pull_sources.py` writes `data/sources/_pull_status.json` on every run, before it decides the stage outcome. The file records `checked_at`, the sources that refreshed (`ok`), and the sources that failed (`failed`, with the error text).
+
+A failed refresh leaves the previous source file in place, so the build still succeeds. `_build_registry._source_meta()` reads this file and marks the affected source `refresh_failed` in `source_meta`. That flag flows into `processed.js` (`sources_meta`). The dashboard marks the source in the footer and in the provenance note of each affected chart.
+
+Commit the file with the sources. The offline build reads it, so the warning stays on the artifact until a refresh succeeds.
+
 ## Repro checklist (full refresh)
 
 ```bash

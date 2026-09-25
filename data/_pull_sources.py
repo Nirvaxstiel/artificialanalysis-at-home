@@ -6,12 +6,29 @@ from _result import ok, err, from_fn
 
 from sources.dirac._fetch import pull_dirac
 
+PULL_STATUS_FILE = "_pull_status.json"
+
 
 def _src_dir(ctx):
     base = str(ctx["root"]) if (ctx and ctx.get("root")) else str(Path(__file__).resolve().parent.parent)
     src = os.path.join(base, "data", "sources")
     os.makedirs(src, exist_ok=True)
     return src
+
+
+def _write_pull_status(src, ok_sources, failed_sources):
+    """Record this refresh outcome so the registry can flag a stale source."""
+    payload = {
+        "checked_at": datetime.now(timezone.utc).isoformat(),
+        "ok": ok_sources,
+        "failed": failed_sources,
+    }
+    try:
+        with open(os.path.join(src, PULL_STATUS_FILE), "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+    except OSError as e:
+        return err(f"{PULL_STATUS_FILE}: {e}")
+    return ok(payload)
 
 
 def pull_livebench(src):
@@ -201,8 +218,13 @@ def run(ctx=None):
     ok_sources = [n for n, r in sources.items() if r.is_ok()]
     failed = {n: r.error for n, r in sources.items() if r.is_err()}
 
+    status = _write_pull_status(src, ok_sources, failed)
+    if status.is_err():
+        return status
+
     files = sorted(os.listdir(src))
-    summary = {"src_dir": src, "files": files, "ok_sources": ok_sources, "failed_sources": failed}
+    summary = {"src_dir": src, "files": files, "ok_sources": ok_sources, "failed_sources": failed,
+               "pull_status": status.unwrap()}
 
     if not ok_sources:
         return err(f"all sources failed: {failed}")

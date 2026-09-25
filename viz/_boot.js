@@ -32,7 +32,8 @@ function injectSourceFreshness(ctx) {
   const sourcesMeta = (window.PROCESSED_DATA && window.PROCESSED_DATA.meta && window.PROCESSED_DATA.meta.sources_meta) || null;
   if (!el || !sourcesMeta) return ok(ctx);
   const parts = Object.entries(sourcesMeta).map(([name, source]) =>
-    `${name} <span>${source.models} · ${source.as_of || 'on pull'}</span>`);
+    `${name} <span>${source.models} · ${source.as_of || 'on pull'}</span>` +
+    (source.refresh_failed ? ' <b class="stale">// REFRESH FAILED</b>' : ''));
   el.innerHTML = `<span class="label">Snapshots:</span> ` + parts.join(' · ');
   return ok(ctx);
 }
