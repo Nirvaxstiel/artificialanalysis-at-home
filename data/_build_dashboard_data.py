@@ -286,7 +286,10 @@ def _mark_pareto_optimal(rows: list[ProjectionRow]) -> list[ProjectionRow]:
 
 
 def _project_rows(engine, axes) -> Ok[dict] | Err[str]:
-    raw_rows = engine.project(axes)
+    projected = engine.project(axes)
+    if projected.is_err():
+        return projected
+    raw_rows = projected.unwrap()
     registry_by_id = {m["id"]: m for m in engine.models}
     output = []
     for raw_row in raw_rows:

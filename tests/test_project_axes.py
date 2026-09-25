@@ -3,7 +3,7 @@
 Builds a minimal registry + axes catalog in a temp dir (no committed-artifact
 dependency), constructs the engine, and asserts the observable Result behaviour:
 known axis -> Ok, unknown axis -> Err, legitimately-absent value -> Ok(None),
-project() still rejects unknown axes. No internal spying.
+project() -> Err for unknown axes. No internal spying.
 """
 import sys, os, json, tempfile
 import pytest
@@ -81,12 +81,13 @@ def test_case_insensitive_axis_id(engine):
 
 
 def test_project_rejects_unknown_axis(engine):
-    with pytest.raises(ValueError):
-        engine.project(["aa.intel", "bogus.axis"])
+    r = engine.project(["aa.intel", "bogus.axis"])
+    assert r.is_err()
+    assert r.error == "Axis 'bogus.axis' not found"
 
 
 def test_project_rows_carry_ok_values(engine):
-    rows = engine.project(["aa.intel", "meta.context_window"])
+    rows = engine.project(["aa.intel", "meta.context_window"]).unwrap()
     by_id = {r["id"]: r for r in rows}
     assert by_id["m1"]["axes"]["aa.intel"] == 50
     assert by_id["m1"]["axes"]["meta.context_window"] == 1000

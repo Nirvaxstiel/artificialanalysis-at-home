@@ -86,9 +86,11 @@ class ProjectionEngine:
         return ok(None)
 
     def project(self, axis_ids, model_ids=None, require_all=False):
+        """Return Ok(rows) or Err(unknown axis id)."""
         for aid in axis_ids:
-            if self.resolve_axis(aid).is_err():
-                raise ValueError(f"Axis '{aid}' not found")
+            resolved = self.resolve_axis(aid)
+            if resolved.is_err():
+                return resolved
 
         results = []
         model_set = set(model_ids) if model_ids else None
@@ -110,7 +112,7 @@ class ProjectionEngine:
             for aid in axis_ids:
                 resolved = self.get_value(m, aid)
                 if resolved.is_err():
-                    raise ValueError(resolved.error)
+                    return resolved
                 value = resolved.unwrap()
                 row["axes"][aid] = value
                 if value is None:
@@ -122,9 +124,10 @@ class ProjectionEngine:
             if any(v is not None for v in row["axes"].values()):
                 results.append(row)
 
-        return results
+        return ok(results)
 
     def feasibility_report(self, min_overlap=3):
+        """Return Ok(report) or Err(unknown axis id)."""
         axes_by_source = {}
         for axis in self.catalog["axes"]:
             source = axis["source"]
@@ -141,7 +144,9 @@ class ProjectionEngine:
                 axes_a = axes_by_source[source_a][:1]
                 axes_b = axes_by_source[source_b][:1]
                 matrix = self.project(axes_a + axes_b)
-                overlap = sum(1 for row in matrix if row["axes"][axes_a[0]] is not None and row["axes"][axes_b[0]] is not None)
+                if matrix.is_err():
+                    return matrix
+                overlap = sum(1 for row in matrix.unwrap() if row["axes"][axes_a[0]] is not None and row["axes"][axes_b[0]] is not None)
                 if overlap >= min_overlap:
                     pairs[f"{source_a}×{source_b}"] = {
                         "models": overlap,
@@ -150,11 +155,11 @@ class ProjectionEngine:
                         "all_axes_s2": axes_by_source[source_b],
                     }
 
-        return {
+        return ok({
             "sources": sources,
             "pairs": pairs,
             "total_models": len(self.models),
-        }
+        })
 
     def describe_axis(self, axis_id):
         return self.axes_meta.get(axis_id)
@@ -173,6 +178,12 @@ class ProjectionEngine:
 if __name__ == "__main__":
     pe = ProjectionEngine()
 
+    def rows(axis_ids, **kwargs):
+        result = pe.project(axis_ids, **kwargs)
+        if result.is_err():
+            raise SystemExit(f"  ERROR: {result.error}")
+        return result.unwrap()
+
     print("═══ PROJECTION ENGINE ═══")
     print(f"  Models: {len(pe.models):,}")
     print(f"  Axes:   {len(pe.catalog['axes'])}")
@@ -181,7 +192,7 @@ if __name__ == "__main__":
     print("\n═══ EXAMPLE QUERIES ═══")
 
     print("\n── Query 1: AA Intelligence vs AA Input Price (sweet-spot archetypes) ──")
-    m1 = pe.project(["aa.intel", "aa.inp_price", "aa.speed_tps"],
+    m1 = rows(["aa.intel", "aa.inp_price", "aa.speed_tps"],
                      model_ids=[m["id"] for m in pe.models if m.get("meta", {}).get("archetype") == "sweet-spot"])
     for r in m1[:10]:
         iq = r['axes']['aa.intel']
@@ -193,7 +204,7 @@ if __name__ == "__main__":
 
     print("\n── Query 2: 4-axis crossover (require_all=True) ──")
     axes_4 = ["aa.intel", "livebench.coding", "arena_code.elo", "openrouter.inp_price_per_m"]
-    m2 = pe.project(axes_4, require_all=True)
+    m2 = rows(axes_4, require_all=True)
     print(f"  Models with ALL 4 axes: {len(m2)}")
     for r in sorted(m2, key=lambda x: -(x["axes"]["aa.intel"] or 0))[:8]:
         iq = r['axes']['aa.intel']
@@ -206,7 +217,7 @@ if __name__ == "__main__":
               f"OR-Inp=${orp if orp is not None else '-':>}/Mtok")
 
     print("\n── Query 3: Cost segments vs LiveBench reasoning ──")
-    m3 = pe.project(["livebench.reasoning", "aa.cost_seg_reasoning", "aa.cost_seg_cache_hit", "aa.reasoning_tax_pct"],
+    m3 = rows(["livebench.reasoning", "aa.cost_seg_reasoning", "aa.cost_seg_cache_hit", "aa.reasoning_tax_pct"],
                      require_all=True)
     print(f"  Models with cost segmentation + LiveBench reasoning: {len(m3)}")
     for r in sorted(m3, key=lambda x: -(x["axes"]["livebench.reasoning"] or 0))[:6]:
@@ -220,7 +231,7 @@ if __name__ == "__main__":
               f"Tax={tax if tax is not None else 0:>3.0f}%")
 
     print("\n── Query 4: LiveBench coding vs Arena Code Elo ──")
-    m4 = pe.project(["livebench.coding", "arena_code.elo"], require_all=True)
+    m4 = rows(["livebench.coding", "arena_code.elo"], require_all=True)
     print(f"  Models in both LiveBench coding + Arena Code: {len(m4)}")
     for r in sorted(m4, key=lambda x: -(x["axes"]["livebench.coding"] or 0))[:6]:
         lbc = r['axes']['livebench.coding']
@@ -229,7 +240,7 @@ if __name__ == "__main__":
         print(f"  {r['id']:35s} LB-Coding={lbc if lbc is not None else '-':>6}  Code-Elo={elo if elo is not None else '-':>4}")
 
     print("\n── Query 5: OR price vs AA intel (all models) ──")
-    m5 = pe.project(["aa.intel", "openrouter.inp_price_per_m"])
+    m5 = rows(["aa.intel", "openrouter.inp_price_per_m"])
     with_data = [r for r in m5 if r["axes"]["aa.intel"] is not None and r["axes"]["openrouter.inp_price_per_m"] is not None]
     print(f"  Models with both AA intel + OR pricing: {len(with_data)}")
     for r in sorted(with_data, key=lambda x: -(x["axes"]["aa.intel"] or 0))[:10]:
