@@ -38,6 +38,14 @@ def _read(name):
     return (REPO / name).read_text(encoding="utf-8")
 
 
+def test_docs_creator_counts_match_processed_meta(processed_meta):
+    expected = processed_meta["counts"]["creators"]
+    for doc in ("README.md", "LLM Provider Pricing Analysis.md"):
+        found = [int(n) for n in re.findall(r"(\d+) creators", _read(doc))]
+        assert found, f"{doc}: must state the generated creator count ({expected})"
+        assert set(found) == {expected}, f"{doc}: creator counts {found} != generated {expected}"
+
+
 def test_docs_carry_the_generated_counts(processed_meta):
     counts = processed_meta["counts"]
     for doc in ("README.md", "LLM Provider Pricing Analysis.md", "viz/README.md"):

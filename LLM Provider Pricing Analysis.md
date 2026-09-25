@@ -1,7 +1,7 @@
 # LLM Provider Pricing Analysis
 
 **Source:** Artificial Analysis — Intelligence Index v4.3 (AA snapshot 10 Sep '26)
-**Data:** 41 AA-covered models across 17 creators. Supplementary sources enrich this export-defined set only. Per-source dates and counts are in `data/processed.js` meta (`sources_meta`).
+**Data:** 41 AA-covered models across 18 creators. Supplementary sources enrich this export-defined set only. Per-source dates and counts are in `data/processed.js` meta (`sources_meta`).
 
 ## What it is
 
@@ -26,7 +26,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 - `data/_build_axes.py` — → `axes_catalog.json`
 - `data/_build_dashboard_data.py` — projects registry → `processed.js`
 - `data/_domain/` — typed domain layer (`ProjectionRow`, `RegistryModel`)
-- `data/sources/aa/` — AA chart and JSON-LD exports; cached live API supplies creator and release metadata
+- `data/sources/aa/` — AA chart and JSON-LD exports. The cached live API supplies creator and release metadata
 - `data/sources/dirac/cache_hit_rates.json` — 398 rows, observed cache hit rates
 - `viz/` — 5 viz scripts + `_result.js` / `_domain.js` / `_shared.js` / `_boot.js`
 - `README.md` — quick start, current state, orchestrator modes
@@ -47,7 +47,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 ### Provenance rules
 
 - **No cross-source price fallback.** AA and OpenRouter pricing are separate namespaces. A null in one is signal, not a gap to fill from the other.
-- **Nulls preserved**, never dropped. Derived metrics computed only at transform time (`_build_dashboard_data.py`), never sourced-from-derived.
+- **Nulls are preserved**, never dropped. The build computes derived metrics only at transform time (`_build_dashboard_data.py`), and never from a derived value.
 
 ## Projection schema (41-model set)
 
@@ -58,17 +58,17 @@ Each `ProjectionRow` carries the fields listed in `viz/README.md`. Highlights:
 - **Cost:** `cost_per_task`, `inp_price`, `out_price`, `cache_hit_price`, `openrouter_*_price_per_m`, `reasoning_tax_pct`
 - **Speed / context:** `speed_tps`, `aa_time_per_task`, `context_window`
 - **Radar (precomputed):** `radar_intel`, `radar_speed`, `radar_cache_eff`, `radar_cost_eff`, `radar_ctx`
-- **Derived value:** cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the chart/table; it is not stored in `processed.js`.
+- **Derived value:** the build calculates cost per IQ point from sourced `cost_per_task` and `intel` for the chart and the table. It is not stored in `processed.js`.
 - **Provenance:** each populated field is tagged `sourced` or `derived`.
 - **Cost Breakdown** reads source `cost_seg_*` values when `has_breakdown` is true.
 
 ## Methodology
 
-AA index and benchmark values come from current chart and JSON-LD exports. The live API cache supplements creator and release metadata; it does not define model scope.
+AA index and benchmark values come from the current chart and JSON-LD exports. The live API cache supplements creator and release metadata. It does not define model scope.
 
 **Cost per Task** is sourced from the AA per-task dataset. Full-index “Cost to Run” values are separate and are not used as per-task prices.
 
-**Cache hit rate** is observed (Dirac.run, OpenRouter analytics) — AA only shows the cache *price* ($/M for cached tokens), not what % of input was actually cached. The radar `cache_eff` is computed from AA's price discount only; Dirac's observed rate is a separate axis (`cache_hit_rate_max`), never conflated.
+**Cache hit rate** is observed (Dirac.run, OpenRouter analytics). AA shows only the cache *price* ($/M for cached tokens), not the percentage of input that was actually cached. The build computes the radar `cache_eff` from the AA price discount only. The Dirac observed rate is a separate axis (`cache_hit_rate_max`), and the two are never conflated.
 
 **Archetypes** (computed in `archetype` field, first match wins): derive from intel tier × cost × speed × params.
 - `frontier`: intel ≥ 50

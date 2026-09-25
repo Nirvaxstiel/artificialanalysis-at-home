@@ -2,11 +2,11 @@
 
 **Static dashboard for comparing AA indexes, cost, speed, benchmarks, and cache efficiency.**
 
-Built for users who want to pick a model and care about more than one axis.
+The dashboard compares models on more than one axis at a time.
 
 ## What it shows
 
-41 models across 17 creators from AA's current exports; 5 visualizations:
+41 models across 18 creators from AA's current exports; 5 visualizations:
 
 | Tab | What it answers |
 |-----|-----------------|
@@ -24,7 +24,7 @@ Static, build-free to serve, embeddable. No frameworks, no CDN, no bundlers — 
 
 ## Stack
 
-- **No build step.** No framework, no CDN, no bundler.
+- **No frontend build step.** The browser needs no framework, no CDN, and no bundler.
 - **One HTML file** (`dashboard.html`) — embeddable anywhere that serves static files.
 - **Vanilla JS** for charts, all 5 in `viz/`.
 - **External data** — `window.PROCESSED_DATA` loaded from `data/processed.js` (a generated `window.PROCESSED_DATA = {...}` script). The dashboard does not embed data inline.
@@ -37,6 +37,8 @@ python -m http.server 8000
 
 Or just open `dashboard.html` directly in a modern browser (it loads `processed.js` via a `<script src>`).
 
+The Python pipeline in `data/` is a separate build. It generates the data files. It is not part of the frontend runtime.
+
 ## Data sources
 
 | Source | What we get |
@@ -48,12 +50,12 @@ Or just open `dashboard.html` directly in a modern browser (it loads `processed.
 | **OpenLLM v2** | Parameter counts (0 models in subset) |
 | **Dirac.run** | Observed cache hit rates + effective $/M per provider (auto-pulled) |
 
-AA export snapshot: **10 Sep 2026**. Per-source dates and in-scope counts are generated into `data/processed.js` meta (`sources_meta`) and rendered in the dashboard footer.
+AA export snapshot: **10 Sep 2026**. The build generates the per-source dates and in-scope counts into `data/processed.js` meta (`sources_meta`). The dashboard footer shows them.
 
 ## Architecture
 
 ### Build pipeline (`data/`)
-Each stage returns a `Result` (Ok/Err). The shared `Pipeline` class (`data/_pipeline.py`) threads a `ctx` dict and short-circuits at the first `Err` instead of raising. Stages compose their steps with `Pipeline(...).then(name, fn).then(...).run()`.
+Each stage returns a `Result` (Ok/Err). The shared `Pipeline` class (`data/_pipeline.py`) threads a `ctx` dict and stops at the first `Err`. It does not raise. Stages compose their steps with `Pipeline(...).then(name, fn).then(...).run()`.
 
 Entry point: `python -m data._pipeline`.
 
@@ -63,7 +65,7 @@ Entry point: `python -m data._pipeline`.
 | `python -m data._pipeline build_from_cache` | **offline** | same as `build` (alias). |
 | `python -m data._pipeline` (no arg) or any other arg | **full pull** | `build()`: runs `_pull_sources` first (network), then builds. |
 
-> `build` / `build_from_cache` never touch the network. Only the full build (`build()`) pulls. This separation is deliberate — committed source files are the build inputs, so a refresh is an explicit, deliberate act.
+> `build` / `build_from_cache` never touch the network. Only the full build (`build()`) pulls. This separation is deliberate. The committed source files are the build inputs. A refresh is an explicit act.
 
 Stages (each a `Result`-returning `run()`/`build()`):
 
@@ -74,19 +76,19 @@ Stages (each a `Result`-returning `run()`/`build()`):
 | `_build_axes` | `model_registry.json` | `axes_catalog.json` | — |
 | `_build_dashboard_data` | `model_registry.json` | `processed.js` | 41 |
 
-`_build_registry.run()` seeds models from AA's current chart and JSON-LD exports, then enriches only those models from metadata and supplementary sources. Stages return `Result` and short-circuit on the first `Err`.
+`_build_registry.run()` seeds models from AA's current chart and JSON-LD exports. It then enriches only those models, from metadata and supplementary sources.
 
-Serialized via the typed domain layer in `data/_domain/` (`RegistryModel`, `ProjectionRow`).
+The typed domain layer in `data/_domain/` (`RegistryModel`, `ProjectionRow`) serializes the data.
 
 ### Viz layer (`viz/`)
-JS uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/`fromFn`/`Pipeline` (mirrors `data/_pipeline.Pipeline`). `_boot.js` orchestrates load via `window.Result.Pipeline({}).then(bootstrap_models).then(build_shell)...run()` — identical shape to the Python stages. Each viz file is self-contained, registering itself in `window.VIZ_REGISTRY`.
+The JavaScript layer uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/`fromFn`/`Pipeline`, and mirrors `data/_pipeline.Pipeline`. `_boot.js` loads the data with `window.Result.Pipeline({}).then(bootstrap_models).then(build_shell)...run()`. The shape is identical to the Python stages. Each viz file is self-contained and registers itself in `window.VIZ_REGISTRY`.
 
 Shared config in `viz/_shared.js`:
 - `CREATOR_COLORS` — curated colors for current creators
 - `RADAR_AXES` — 5 radar axes (IQ / Speed / Cache Eff / Cost Eff / Context)
 - `FIELD_LABELS` — display names for table columns
 - `COST_SEGMENTS` — color + label for cost breakdown
-- `dirac_cache_hit_rates` (per model) — observed cache hit % + effective $/M per provider, from Dirac.run / OpenRouter effective pricing; drives the Cost Breakdown provider mode and the Provider Data view
+- `dirac_cache_hit_rates` (per model) — observed cache hit % + effective $/M per provider, from Dirac.run / OpenRouter effective pricing. This config drives the Cost Breakdown provider mode and the Provider Data view
 
 Provider Archetypes groups models by creator and the sourced AA family (`release.slug` / `release.name`) in `processed.js`.
 
@@ -141,8 +143,8 @@ python -m data._pipeline build            # or: build_from_cache
 python -m data._pipeline                  # no arg → build() pulls + builds
 ```
 
-`_pull_sources.py` covers 4 of 7 sources (OpenRouter API, LiveBench CSV, OpenLLM v2 parquet, Dirac.run HTML table). The rest are AA (scraped pages, SVG/JSON-LD console exports, live API) and Chatbot Arena — acquired **manually** (scrape / console query / API curl / JSON download) and committed as files. See `DATA-ACQUISITION.md` for the full per-source method, auth, and repro steps.
+`_pull_sources.py` covers 4 of 7 sources: the OpenRouter API, the LiveBench CSV, the OpenLLM v2 parquet, and the Dirac.run HTML table. The other sources are AA (scraped pages, SVG and JSON-LD console exports, live API) and Chatbot Arena. Acquire those **manually** (scrape / console query / API curl / JSON download) and commit them as files. See `DATA-ACQUISITION.md` for the per-source method, the auth, and the repro steps.
 
-**Build order matters.** `_build_registry.py` reads AA data from `data/sources/aa/` — never from pipeline output. No circular dependency.
+**Build order matters.** `_build_registry.py` reads AA data from `data/sources/aa/`. It never reads pipeline output, so there is no circular dependency.
 
-**To update the committed snapshot:** run a full build (`python -m data._pipeline`), verify `processed.js` has the expected models, then commit.
+**To update the committed snapshot:** run a full build (`python -m data._pipeline`). Make sure that `processed.js` has the expected models. Then commit.

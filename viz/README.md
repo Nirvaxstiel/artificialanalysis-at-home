@@ -27,7 +27,7 @@ Note: files are named by slug (`crossover.js`, `cost-breakdown.js`, …), **not*
 
 ## Rules
 
-1. **Read-only inputs.** `data/processed.js` (loaded as `window.PROCESSED_DATA`, surfaced as `window.MODELS`) is the only data source. Don't write to it.
+1. **Read-only inputs.** `data/processed.js` (loaded as `window.PROCESSED_DATA`, surfaced as `window.MODELS`) is the only data source. Do not write to it.
 2. **Self-contained styles.** Inline `<style>` in your container, or use the CSS custom properties from `dashboard.html` (`--neon`, `--neon2`, `--bg`, `--fg`, `--muted`, `--border`).
 3. **Reuse the tooltip.** If you have hoverable elements, attach to the shared `#tooltip` div from `dashboard.html` using the `buildTooltip(model)` function (also exposed globally).
 4. **No external dependencies.** No CDN, no fetch, no imports. Pure DOM + SVG.
@@ -41,17 +41,17 @@ Note: files are named by slug (`crossover.js`, `cost-breakdown.js`, …), **not*
 
 `bootstrap_models → validate_schema → header_meta → source_freshness → build_shell → render_legend → render_first → wire_tabs → wire_filter_sync → banner_stats → pareto_count → banner_nav → repo_links`
 
-Each step is a named `Result`-returning function over a shared `ctx`. `render()` internals in each viz file are untouched. The load boundary (`viz/_domain.js`) wraps `processed.js` parsing in `Result`; a parse failure short-circuits boot with `ctx._failed_step` set.
+Each step is a named `Result`-returning function over a shared `ctx`. `render()` internals in each viz file are untouched. The load boundary (`viz/_domain.js`) wraps `processed.js` parsing in `Result`. A parse failure short-circuits boot with `ctx._failed_step` set.
 
 ## Available data (from `window.MODELS`)
 
-Each model is a `ProjectionRow` with these fields (41 models; all 41 carry AA data):
+Each model is a `ProjectionRow` with these fields (41 models, and all 41 carry AA data):
 
 | Field | Type | Notes |
 |-------|------|-------|
 | `slug` | string | URL identifier (hyphenated) |
 | `name` | string | Display name |
-| `creator` | string | Model creator org; may be absent |
+| `creator` | string | Model creator org; can be absent |
 | `type` | string | Model type |
 | `intel` | float | AA Intelligence Index |
 | `aa_finance_accounting_index` | float | Finance & Accounting score (0–100) |
@@ -65,7 +65,7 @@ Each model is a `ProjectionRow` with these fields (41 models; all 41 carry AA da
 | `speed_tps` | float | Output tokens per second |
 | `openrouter_*_price_per_m` | float | OpenRouter pricing |
 | `openrouter_vendor` | string | OpenRouter vendor tag |
-| `context_window` | int | OpenRouter context length; drives crossover bubble size |
+| `context_window` | int | OpenRouter context length; drives the crossover bubble size |
 | `arena_code_*` / `arena_text_*` | float | Chatbot Arena Code / Text results |
 | `livebench_*` / `openllm_*` | float | Supplementary benchmark results when in scope |
 | `params_b` / `co2_kg` | float | Supplementary metadata when available |
@@ -77,7 +77,7 @@ Each model is a `ProjectionRow` with these fields (41 models; all 41 carry AA da
 | `release_date` | string | AA live API metadata |
 | `provenance` | object | Per-field `sourced` / `derived` tags |
 
-Cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the chart and table; it is not stored in `processed.js`. Full-index “Cost to Run” values are not used as per-task prices.
+The build calculates cost per IQ point from sourced `cost_per_task` and `intel` for the chart and the table. It is not stored in `processed.js`. Full-index “Cost to Run” values are not used as per-task prices.
 
 ## Shared config (`_shared.js`)
 
@@ -104,7 +104,7 @@ Cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the
 ## Current viz files
 
 - `_result.js` — `Result` (`ok`/`err`/`fromFn`) + `Pipeline` (JS port of `data/_pipeline.Pipeline`)
-- `_domain.js` — `ProjectionRow.load` boundary; populates `window.MODELS`
+- `_domain.js` — `ProjectionRow.load` boundary, and it populates `window.MODELS`
 - `_shared.js` — shared state, config, tooltip wiring
 - `_boot.js` — boot orchestration pipeline
 - `crossover.js` — scatter with x/y axis dropdowns, bubble size = context window
@@ -121,4 +121,4 @@ python -m http.server 8000
 # open http://localhost:8000/dashboard.html
 ```
 
-Black-box JS tests (`tests/test_*_js.js`) load `data/processed.js` under Node with a DOM stub and assert pure-transform behavior — no jsdom, stub at the boundary.
+Black-box JS tests (`tests/test_*_js.js`) load `data/processed.js` under Node with a DOM stub, and they assert pure-transform behavior. No jsdom. Stub at the boundary.
