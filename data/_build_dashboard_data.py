@@ -1,5 +1,5 @@
 
-import json, re, os
+import hashlib, json, re, os, subprocess
 from dataclasses import replace
 from pathlib import Path
 
@@ -32,6 +32,48 @@ def _write_js(path: Path, wrapper: dict) -> "Ok[None]|Err[str]":
             f.write("window.PROCESSED_DATA = ")
             json.dump(wrapper, f, indent=2)
             f.write(";\n")
+        return ok(None)
+    except OSError as e:  # noqa: BLE001
+        return err(f"{path.name}: {e}")
+
+
+def _artifact_sha256(path):
+    try:
+        return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    except OSError:
+        return None
+
+
+def _git_sha(repo_root):
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=str(repo_root), capture_output=True, text=True, timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return out.stdout.strip() or None if out.returncode == 0 else None
+
+
+def _build_manifest(payload, js_path, repo_root):
+    digest = _artifact_sha256(js_path)
+    generated = payload["meta"]["generated"]
+    return {
+        "build_id": f"{generated}@{digest[:12]}" if digest else generated,
+        "generated": generated,
+        "artifact": Path(js_path).name,
+        "artifact_sha256": digest,
+        "git_sha": _git_sha(repo_root),
+        "model_count": payload["meta"]["model_count"],
+        "sources": {name: info.get("as_of") for name, info in payload["meta"]["sources_meta"].items()},
+    }
+
+
+def _write_manifest(path: Path, manifest: dict) -> "Ok[None]|Err[str]":
+    try:
+        with open(path, "w") as f:
+            json.dump(manifest, f, indent=2)
+            f.write("\n")
         return ok(None)
     except OSError as e:  # noqa: BLE001
         return err(f"{path.name}: {e}")
@@ -307,12 +349,15 @@ def build(ctx=None):
         registry_path=str(data_dir / "model_registry.json"),
         axes_path=str(data_dir / "axes_catalog.json"),
     )
-    pipeline = (Pipeline({"engine": engine, "js_path": str(data_dir / "processed.js")})
+    pipeline = (Pipeline({"engine": engine, "js_path": str(data_dir / "processed.js"),
+                          "manifest_path": str(data_dir / "manifest.json"), "repo_root": str(repo_root)})
         .then("project_rows", lambda c: _project_rows(c["engine"], _PROJECTION_AXES))
         .then("normalize_radar", lambda c: ok(_normalize_radar_scores(c["project_rows"]["rows"]) or c["project_rows"]))
         .then("payload", lambda c: ok(_build_payload(c["project_rows"], c["engine"].registry.get("meta", {}))))
         .then("wrapper", lambda c: ok(_build_js_wrapper(c["payload"])))
-        .then("write_js", lambda c: _write_js(c["js_path"], c["wrapper"])))
+        .then("write_js", lambda c: _write_js(c["js_path"], c["wrapper"]))
+        .then("write_manifest", lambda c: _write_manifest(
+            Path(c["manifest_path"]), _build_manifest(c["payload"], c["js_path"], Path(c["repo_root"])))))
     pipeline.run()
     if pipeline.ctx.get("_failed_step"):
         return err(pipeline.ctx["_error"])

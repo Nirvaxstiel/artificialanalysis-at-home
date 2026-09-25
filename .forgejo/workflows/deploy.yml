@@ -11,6 +11,9 @@ jobs:
       - name: Checkout
         uses: https://code.forgejo.org/actions/checkout@v6
 
+      - name: Verify release manifest
+        run: PYTHONPATH=data python3 data/_verify_manifest.py
+
       - name: Deploy
         uses: https://codeberg.org/git-pages/action@v2
         with:

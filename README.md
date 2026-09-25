@@ -80,6 +80,8 @@ Stages (each a `Result`-returning `run()`/`build()`):
 
 The typed domain layer in `data/_domain/` (`RegistryModel`, `ProjectionRow`) serializes the data.
 
+Each build writes a release manifest next to its artifact. `data/manifest.json` records the build id, the per-source snapshot dates, the artifact digest, and the git sha. `data/_verify_manifest.py` compares the manifest against the artifact, and both deploy workflows run it before they publish. A `processed.js` that was regenerated without its manifest fails the gate.
+
 ### Viz layer (`viz/`)
 The JavaScript layer uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/`fromFn`/`Pipeline`, and mirrors `data/_pipeline.Pipeline`. `_boot.js` loads the data with `window.Result.Pipeline({}).then(bootstrap_models).then(build_shell)...run()`. The shape is identical to the Python stages. Each viz file is self-contained and registers itself in `window.VIZ_REGISTRY`.
 
@@ -104,13 +106,14 @@ Generic filter: `window.__legendFilter = { dim, val }` — shared across all vie
 ├── dashboard.html              ← the viz (loads data/processed.js)
 ├── data/
 │   ├── processed.js           ← 41 models, primary dataset (loaded by dashboard)
+│   ├── manifest.json           ← release record for processed.js (build_id, sources, git_sha)
 │   ├── model_registry.json     ← 41 models, 7 sources (serialized via RegistryModel)
 │   ├── axes_catalog.json       ← typed axis catalog
 │   ├── _pipeline.py            ← orchestrator: build / build_from_cache / build() (pull)
 │   ├── _pull_sources.py        ← fetches LiveBench / OpenLLM / OpenRouter / Dirac.run
 │   ├── _build_registry.py      ← merges sources → model_registry.json
 │   ├── _build_axes.py          ← axes_catalog.json
-│   ├── _build_dashboard_data.py← projects registry → processed.js
+│   ├── _build_dashboard_data.py← projects registry → processed.js + manifest.json
 │   ├── _domain/                ← typed domain layer (ProjectionRow, RegistryModel)
 │   ├── project_axes.py         ← ProjectionEngine (N-axis query)
 │   ├── sources/                ← all source data + per-source build modules

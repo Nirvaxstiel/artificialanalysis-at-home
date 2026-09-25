@@ -19,6 +19,7 @@ Static HTML dashboard at `dashboard.html`. Five viz tabs:
 
 - `dashboard.html` — the viz (loads `data/processed.js` as `window.PROCESSED_DATA`)
 - `data/processed.js` — 41 models, primary dataset (surfaced as `window.MODELS`)
+- `data/manifest.json` — release record for `processed.js`. `data/_verify_manifest.py` gates the deploy on it.
 - `data/model_registry.json` — 41 models, 7 sources (serialized via `RegistryModel`)
 - `data/axes_catalog.json` — typed axis catalog
 - `data/_pipeline.py` — orchestrator: `build` / `build_from_cache` (offline) or full pull
