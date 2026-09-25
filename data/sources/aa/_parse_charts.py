@@ -84,8 +84,7 @@ def _parse_chart(svg: str):
     if len(vals) > len(slugs) and len(vals) % len(slugs) == 0:
         per = len(vals) // len(slugs)
         return [(slugs[i], vals[i * per:(i + 1) * per]) for i in range(len(slugs))]
-    # Ambiguous: fall back to zip (best-effort)
-    return list(zip(slugs, vals))
+    return []
 
 
 def _extract_label_lists(svg: str):
