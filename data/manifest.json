@@ -3,7 +3,6 @@
   "generated": "2026-09-25",
   "artifact": "processed.js",
   "artifact_sha256": "fdc71cb1e37694cc24bffb4745b8ddbb7f7954d44c77735f8674450137f79658",
-  "git_sha": "ba8fb1454bcd131565992be2fb0019d855cd7f2b",
   "model_count": 41,
   "sources": {
     "AA": "2026-09-24",
