@@ -12,7 +12,7 @@ Built for users who want to pick a model and care about more than one axis.
 |-----|-----------------|
 | **The Crossover** | X/Y scatter on any pair of (Intel, LiveBench, Arena Elo, OpenRouter pricing, speed, context). Bubble size = context window. |
 | **Cost Breakdown** | Per-model cost split (Input / Cached / Answer / Reasoning) on the AA baseline, or repriced on any cache provider's observed effective rates. |
-| **Provider Archetypes** | Radar per creator across IQ, Speed, Cache Eff, Cost Eff, and Context. |
+| **Provider Archetypes** | Radar per AA family, grouped under its creator, across IQ, Speed, Cache Eff, Cost Eff, and Context. |
 | **Cost per IQ Point** | Bar: how much $ you pay per IQ point, log scale. |
 | **Data Tables** | Sortable, filterable multi-view table of all fields. Click banner → jumps to this row. |
 
@@ -83,11 +83,12 @@ JS uses the same `Result`/`Pipeline` idiom. `viz/_result.js` defines `ok`/`err`/
 
 Shared config in `viz/_shared.js`:
 - `CREATOR_COLORS` — curated colors for current creators
-- `SKU_PATTERNS` — slug-based splits (OSS / Mini / Nano / Flash / Code)
 - `RADAR_AXES` — 5 radar axes (IQ / Speed / Cache Eff / Cost Eff / Context)
 - `FIELD_LABELS` — display names for table columns
 - `COST_SEGMENTS` — color + label for cost breakdown
 - `dirac_cache_hit_rates` (per model) — observed cache hit % + effective $/M per provider, from Dirac.run / OpenRouter effective pricing; drives the Cost Breakdown provider mode and the Provider Data view
+
+Provider Archetypes groups models by creator and the sourced AA family (`release.slug` / `release.name`) in `processed.js`.
 
 Generic filter: `window.__legendFilter = { dim, val }` — shared across all views, top-bar driven.
 

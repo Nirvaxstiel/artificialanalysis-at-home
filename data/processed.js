@@ -1,6 +1,6 @@
 window.PROCESSED_DATA = {
   "meta": {
-    "generated": "2026-09-24",
+    "generated": "2026-09-25",
     "version": "3.0",
     "model_count": 41,
     "counts": {
@@ -107,6 +107,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": true,
       "context_window": null,
+      "family": {
+        "slug": "claude-opus-5-5",
+        "name": "Claude Opus 5.5"
+      },
       "blended": 16.0,
       "cache_hit_price": 0.2,
       "cost_seg_total": 5.98,
@@ -122,6 +126,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -157,6 +162,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "claude-fable-5-1",
+        "name": "Claude Fable 5.1"
+      },
       "blended": 40.0,
       "cache_hit_price": 0.25,
       "cost_seg_total": 7.63,
@@ -175,6 +184,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -214,6 +224,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": true,
       "context_window": null,
+      "family": {
+        "slug": "gpt-6-astra",
+        "name": "GPT-6 Astra"
+      },
       "blended": 40.0,
       "cache_hit_price": 1.0,
       "cost_seg_total": 3.26,
@@ -232,6 +246,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -271,6 +286,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "claude-opus-5",
+        "name": "Claude Opus 5"
+      },
       "blended": 20.0,
       "cache_hit_price": 0.5,
       "cost_seg_total": 5.86,
@@ -289,6 +308,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -328,6 +348,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": 1000000,
+      "family": {
+        "slug": "claude-fable-5",
+        "name": "Claude Fable 5"
+      },
       "blended": 40.0,
       "cache_hit_price": 1.0,
       "cost_seg_total": 8.75,
@@ -356,6 +380,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "type": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
@@ -407,6 +432,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": true,
       "context_window": null,
+      "family": {
+        "slug": "gpt-6-sol",
+        "name": "GPT-6 Sol"
+      },
       "blended": 8.0,
       "cache_hit_price": 0.2,
       "cost_seg_total": 1.06,
@@ -429,6 +458,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -473,6 +503,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "muse-spark-1-3",
+        "name": "Muse Spark 1.3"
+      },
       "blended": 3.5,
       "cache_hit_price": 0.15,
       "cost_seg_total": 1.6,
@@ -490,6 +524,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -528,6 +563,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gpt-5-6-sol",
+        "name": "GPT-5.6 Sol"
+      },
       "blended": 16.0,
       "cache_hit_price": 0.4,
       "cost_seg_total": 1.99,
@@ -546,6 +585,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -585,6 +625,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "grok-4-7",
+        "name": "Grok 4.7"
+      },
       "blended": 5.0,
       "cache_hit_price": 0.5,
       "cost_seg_total": 3.74,
@@ -602,6 +646,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -640,6 +685,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": true,
       "context_window": null,
+      "family": {
+        "slug": "mimo-v2-6-pro",
+        "name": "MiMo-V2.6-Pro"
+      },
       "blended": 0.7625,
       "cost_seg_total": 0.13,
       "cost_seg_answer": 0.023277736261924822,
@@ -660,6 +709,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -702,6 +752,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "glm-5-3",
+        "name": "GLM-5.3"
+      },
       "blended": 3.65,
       "cache_hit_price": 0.26,
       "cost_seg_total": 2.01,
@@ -719,6 +773,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -757,6 +812,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "qwen3-8-max-0902",
+        "name": "Qwen3.8 Max (0902)"
+      },
       "blended": 5.0,
       "cache_hit_price": 0.25,
       "cost_seg_total": 5.41,
@@ -774,6 +833,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -812,6 +872,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "grok-4-6",
+        "name": "Grok 4.6"
+      },
       "blended": 5.0,
       "cache_hit_price": 0.5,
       "cost_seg_total": 1.86,
@@ -830,6 +894,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -869,6 +934,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": 1048576,
+      "family": {
+        "slug": "kimi-k3",
+        "name": "Kimi K3"
+      },
       "blended": 12.0,
       "cache_hit_price": 0.3,
       "cost_seg_total": 2.0,
@@ -892,6 +961,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -937,6 +1007,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "step-5-preview",
+        "name": "Step 5 Preview"
+      },
       "blended": 2.275,
       "cache_hit_price": 0.05,
       "cost_seg_total": 0.72,
@@ -959,6 +1033,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1003,6 +1078,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "glm-5-3-flash",
+        "name": "GLM 5.3 Flash"
+      },
       "blended": 0.4125,
       "cache_hit_price": 0.03,
       "cost_seg_total": 0.25,
@@ -1025,6 +1104,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1069,6 +1149,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gpt-5-6-terra",
+        "name": "GPT-5.6 Terra"
+      },
       "blended": 9.5,
       "cache_hit_price": 0.2,
       "cost_seg_total": 1.4,
@@ -1085,6 +1169,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1122,6 +1207,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gemini-3-8-flash",
+        "name": "Gemini 3.8 Flash"
+      },
       "blended": 3.0,
       "cache_hit_price": 0.08,
       "cost_seg_total": 1.24,
@@ -1139,6 +1228,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1177,6 +1267,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gemini-3-8-flash",
+        "name": "Gemini 3.8 Flash"
+      },
       "blended": 3.0,
       "cache_hit_price": 0.08,
       "cost_seg_total": 0.93,
@@ -1196,6 +1290,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1236,6 +1331,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "qwen3-8-2-4t-a95b",
+        "name": "Qwen3.8 2.4T A95B"
+      },
       "blended": 5.0,
       "cache_hit_price": 0.25,
       "cost_seg_total": 2.16,
@@ -1252,6 +1351,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1289,6 +1389,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "qwen3-8-flash-next",
+        "name": "Qwen3.8-Flash-Next"
+      },
       "blended": 0.39,
       "cache_hit_price": 0.02,
       "cost_seg_total": 0.37,
@@ -1310,6 +1414,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1353,6 +1458,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "deepseek-v4-1-flash",
+        "name": "DeepSeek V4.1 Flash"
+      },
       "blended": 0.975,
       "cost_seg_total": 0.27,
       "cost_seg_answer": 0.0310853235688138,
@@ -1373,6 +1482,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1415,6 +1525,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gpt-5-6-luna",
+        "name": "GPT-5.6 Luna"
+      },
       "blended": 0.95,
       "cache_hit_price": 0.02,
       "cost_seg_total": 0.18,
@@ -1437,6 +1551,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1481,6 +1596,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": true,
       "context_window": null,
+      "family": {
+        "slug": "gpt-6-luna",
+        "name": "GPT-6 Luna"
+      },
       "blended": 0.4,
       "cache_hit_price": 0.01,
       "cost_seg_total": 0.07,
@@ -1503,6 +1622,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1547,6 +1667,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 1048576,
+      "family": {
+        "slug": "deepseek-v4-pro",
+        "name": "DeepSeek V4 Pro 0813"
+      },
       "blended": 3.3,
       "cache_hit_price": 0.04,
       "cost_seg_total": 0.67,
@@ -1659,6 +1783,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "type": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
@@ -1722,6 +1847,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 1048576,
+      "family": {
+        "slug": "deepseek-v4-flash",
+        "name": "DeepSeek V4 Flash 0731"
+      },
       "blended": 1.1,
       "cache_hit_price": 0.01,
       "cost_seg_total": 0.22,
@@ -1825,6 +1954,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1884,6 +2014,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "qwen3-8-27b",
+        "name": "Qwen3.8 27B"
+      },
       "blended": 2.375,
       "cache_hit_price": 0.1,
       "cost_seg_total": 1.01,
@@ -1906,6 +2040,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -1950,6 +2085,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "k2-horizon-375b-a23b",
+        "name": "K2 Horizon 375B A23B"
+      },
       "aa_finance_accounting_index": 32.0,
       "aa_briefcase_elo": 1303.0,
       "aa_gdpval_elo": 1349.0,
@@ -1960,6 +2099,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "intel": "sourced",
         "aa_finance_accounting_index": "sourced",
         "aa_briefcase_elo": "sourced",
@@ -1987,6 +2127,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 1048576,
+      "family": {
+        "slug": "minimax-m3",
+        "name": "MiniMax-M3"
+      },
       "blended": 0.975,
       "cache_hit_price": 0.06,
       "cost_seg_total": 0.51,
@@ -2026,6 +2170,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "type": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
@@ -2089,6 +2234,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "quasar-438b",
+        "name": "Quasar 438B"
+      },
       "blended": 1.5,
       "cost_seg_total": 2.02,
       "aa_briefcase_elo": 1122.0,
@@ -2103,6 +2252,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2138,6 +2288,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": true,
       "context_window": 1050000,
+      "family": {
+        "slug": "mimo-v2-5-pro",
+        "name": "MiMo-V2.5-Pro"
+      },
       "blended": 0.7625,
       "cost_seg_total": 0.05,
       "cost_seg_answer": 0.010420410648028294,
@@ -2184,6 +2338,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "type": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
@@ -2241,6 +2396,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 524288,
+      "family": {
+        "slug": "inkling",
+        "name": "Inkling"
+      },
       "blended": 3.2875,
       "cache_hit_price": 0.17,
       "cost_seg_total": 0.61,
@@ -2269,6 +2428,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2320,6 +2480,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "ling-3-0-flash",
+        "name": "Ling 3.0 Flash"
+      },
       "blended": 0.185,
       "cache_hit_price": 0.02,
       "aa_briefcase_elo": 796.0,
@@ -2332,6 +2496,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2364,6 +2529,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "ling-3-0-flash-vl",
+        "name": "Ling-3.0-flash-VL"
+      },
       "blended": 0.185,
       "cache_hit_price": 0.02,
       "aa_briefcase_elo": 983.0,
@@ -2378,6 +2547,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2412,6 +2582,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": 1048576,
+      "family": {
+        "slug": "mimo-v2-5-0424",
+        "name": "MiMo-V2.5"
+      },
       "blended": 0.245,
       "aa_briefcase_elo": 748.0,
       "aa_gdpval_elo": 986.0,
@@ -2433,6 +2607,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2468,6 +2643,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": false,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "ling-3-0-flash-fin",
+        "name": "Ling-3.0-flash-Fin"
+      },
       "blended": 0.185,
       "cache_hit_price": 0.02,
       "aa_analyst_agent_pass_5": 0.163,
@@ -2483,6 +2662,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2518,6 +2698,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 512288,
+      "family": {
+        "slug": "nemotron-3-ultra-550b-a55b",
+        "name": "Nemotron 3 Ultra 550B A55B"
+      },
       "blended": 2.025,
       "cache_hit_price": 0.16,
       "cost_seg_total": 0.55,
@@ -2554,6 +2738,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2613,6 +2798,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "gemini-3-5-flash-lite",
+        "name": "Gemini 3.5 Flash-Lite"
+      },
       "blended": 1.95,
       "cache_hit_price": 0.03,
       "cost_seg_total": 0.12,
@@ -2635,6 +2824,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2679,6 +2869,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": null,
+      "family": {
+        "slug": "muse-glimmer",
+        "name": "Muse Glimmer"
+      },
       "blended": 1.2125,
       "cache_hit_price": 0.04,
       "cost_seg_total": 0.06,
@@ -2701,6 +2895,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2745,6 +2940,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 262144,
+      "family": {
+        "slug": "mistral-medium-3-5",
+        "name": "Mistral Medium 3.5"
+      },
       "blended": 6.0,
       "cache_hit_price": 0.15,
       "cost_seg_total": 0.44,
@@ -2781,6 +2980,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",
@@ -2833,6 +3033,10 @@ window.PROCESSED_DATA = {
       "has_breakdown": true,
       "pareto_optimal": false,
       "context_window": 131072,
+      "family": {
+        "slug": "gpt-oss-120b",
+        "name": "gpt-oss-120b"
+      },
       "blended": 0.4875,
       "cache_hit_price": 0.13,
       "cost_seg_total": 0.11,
@@ -2989,6 +3193,7 @@ window.PROCESSED_DATA = {
         "slug": "sourced",
         "name": "sourced",
         "creator": "sourced",
+        "family": "sourced",
         "inp_price": "sourced",
         "out_price": "sourced",
         "blended": "derived",

@@ -92,6 +92,27 @@ def test_public_catalog_fills_missing_creators_from_release_families():
     assert models["k2-horizon-375b-a23b"]["creator"] == "MBZUAI Institute Of Foundation Models"
 
 
+def test_public_catalog_assigns_models_to_official_release_families():
+    models = get_aa_models(REPO).unwrap()
+
+    assert models["gemini-3-8-flash-medium"]["family"] == {
+        "slug": "gemini-3-8-flash",
+        "name": "Gemini 3.8 Flash",
+    }
+    assert models["step-5"]["family"] == {
+        "slug": "step-5-preview",
+        "name": "Step 5 Preview",
+    }
+    assert models["qwen3-8-max"]["family"] == {
+        "slug": "qwen3-8-max-0902",
+        "name": "Qwen3.8 Max (0902)",
+    }
+    assert models["mistral-medium-3.5"]["family"] == {
+        "slug": "mistral-medium-3-5",
+        "name": "Mistral Medium 3.5",
+    }
+
+
 def test_get_aa_models_propagates_malformed_export(tmp_path):
     source = tmp_path / "data" / "sources" / "aa"
     source.mkdir(parents=True)

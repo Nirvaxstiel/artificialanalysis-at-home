@@ -1,7 +1,9 @@
-// Small-multiples radar chart: 5 metrics per creator (IQ, speed, token eff, cache eff, cost eff)
+// Small-multiples radar chart: 5 metrics per model family
 
 (function() {
-  const CREATOR_COLORS = window.CREATOR_COLORS || {};
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[character]);
 
   function render(container, data) {
     const models = data.filter(m =>
@@ -15,23 +17,17 @@
       return;
     }
 
-    // Group by creator, split into SKU variants
-    const SKU_PATTERNS = window.SKU_PATTERNS || [];
-    const byCreator = {};
+    const byFamily = new Map();
     for (const m of models) {
-      const slug = m.slug.toLowerCase();
-      let suffix = '';
-      for (const p of SKU_PATTERNS) {
-        if (new RegExp(p.pattern).test(slug)) { suffix = p.suffix; break; }
-      }
-      const key = m.creator + suffix;
-      if (!byCreator[key]) byCreator[key] = [];
-      byCreator[key].push(m);
+      const family = m.family || { slug: m.slug, name: m.name };
+      const key = JSON.stringify([m.creator, family.slug]);
+      const group = byFamily.get(key) || { creator: m.creator, family, models: [] };
+      group.models.push(m);
+      byFamily.set(key, group);
     }
 
-    // Build creator archetypes: average normalized scores per creator
     const archetypes = [];
-    for (const [creator, ms] of Object.entries(byCreator)) {
+    for (const { creator, family, models: ms } of byFamily.values()) {
       const avgIQ = ms.reduce((s, m) => s + (m.radar_intel ?? 0), 0) / ms.length;
       const avgSpeed = ms.reduce((s, m) => s + (m.radar_speed ?? 0), 0) / ms.length;
       const avgCacheEff = ms.reduce((s, m) => s + (m.radar_cache_eff ?? 0), 0) / ms.length;
@@ -49,12 +45,11 @@
       const rawCacheEff = rawCacheHit.length
         ? rawCacheHit.reduce((s, m) => s + (1 - m.cache_hit_price / m.inp_price), 0) / rawCacheHit.length : 0;
 
-      archetypes.push({ creator, avgIQ, avgSpeed, avgCacheEff, avgCostEff, avgCtx,
+      archetypes.push({ creator, familyName: family.name, avgIQ, avgSpeed, avgCacheEff, avgCostEff, avgCtx,
                         rawIQ, rawCost, rawSpeed, rawCtx, rawCacheEff, count: ms.length });
     }
 
-    // Sort alphabetically — keeps OSS variants next to parent
-    archetypes.sort((a, b) => a.creator.localeCompare(b.creator));
+    archetypes.sort((a, b) => a.creator.localeCompare(b.creator) || a.familyName.localeCompare(b.familyName));
 
     // Collect raw apex values for axis labels
     const allIQ = archetypes.map(a => a.rawIQ);
@@ -97,6 +92,11 @@
         color: var(--fg, #f5f5f0);
         margin-bottom: 4px;
       }
+      .radar-panel .family-name {
+        font-size: 10px;
+        color: var(--muted, #888);
+        margin-bottom: 4px;
+      }
       .radar-panel .radar-stats {
         font-size: 10px;
         color: var(--muted, #888);
@@ -129,7 +129,7 @@
     html += `<span style="color:#b6ff3c;font-weight:700">AXES</span> `;
     const axisLabels = (window.RADAR_AXES || []).map(a => a.label);
     html += axisLabels.map(l => `<span class="item">// ${l}</span>`).join(' ');
-    html += `<span class="size" style="margin-left:12px">// SORTED ALPHABETICALLY · NORMALIZED 0–MAX</span>`;
+    html += `<span class="size" style="margin-left:12px">// CREATOR + FAMILY · NORMALIZED 0–MAX</span>`;
     html += `</div>`;
     html += '<div class="radar-grid">';
 
@@ -167,9 +167,9 @@
         return `${x},${y}`;
       }).join(' ');
 
-      const skuSuffixes = (window.SKU_PATTERNS || []).map(p => p.suffix.trim()).join('|');
-      const baseCreator = a.creator.replace(new RegExp(` (${skuSuffixes})$`), '');
-      const color = window.creatorColor(baseCreator);
+      const color = window.creatorColor(a.creator);
+      const creatorLabel = escapeHtml(a.creator);
+      const familyLabel = escapeHtml(a.familyName);
       svg += `<polygon points="${dataPts}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="1.5"/>`;
 
       const fmtRaw = (key, val) => {
@@ -195,7 +195,7 @@
           ? `${window.VIZ_NUM.fmtUSD(rawVal)}/task · ${(a.avgCostEff * 100).toFixed(0)} eff`
           : (rawVal == null ? window.VIZ_NUM.DASH : fmtRaw(ax.key, rawVal));
         svg += `<circle cx="${x}" cy="${y}" r="3" fill="${color}" stroke="#000" stroke-width="1" `
-             + `data-creator="${a.creator}" data-axis="${ax.label}" data-tip="${tip}" style="cursor:pointer"/>`;
+             + `data-creator="${creatorLabel}" data-axis="${ax.label}" data-tip="${tip}" style="cursor:pointer"/>`;
       }
 
       // Axis labels — show the apex value at each axis (edge = peak is
@@ -237,8 +237,9 @@
       statsHtml += ` · <span class="val">${a.count}</span> model${a.count > 1 ? 's' : ''}`;
 
       html += `
-        <div class="radar-panel" data-creator="${a.creator}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? (window.__filterMode === 'hide' ? 'display:none' : 'opacity:0.15') : ''}">
-          <div class="creator-name" style="color:${color}">${a.creator}</div>
+        <div class="radar-panel" data-creator="${creatorLabel}" style="${window.__legendFilter && window.__legendFilter.dim === 'creator' && window.__legendFilter.val !== a.creator ? (window.__filterMode === 'hide' ? 'display:none' : 'opacity:0.15') : ''}">
+          <div class="creator-name" style="color:${color}">${creatorLabel}</div>
+          <div class="family-name">${familyLabel}</div>
           ${svg}
           <div class="radar-stats">${statsHtml}</div>
         </div>`;
@@ -280,7 +281,7 @@
   window.VIZ_REGISTRY.push({
     id: 'provider-archetypes',
     name: 'Provider Archetypes',
-    subtitle: `Radar grid: ${(window.RADAR_AXES || []).map(a => a.label).join(' \u00d7 ')}`,
+    subtitle: `AA release families · ${(window.RADAR_AXES || []).map(a => a.label).join(' × ')}`,
     render
   });
 })();

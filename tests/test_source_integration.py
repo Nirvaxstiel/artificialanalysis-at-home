@@ -180,9 +180,11 @@ class TestRegistryModelSerialization:
         from data._domain._entities import RegistryModel
         reg = _load_registry()
         for m in reg["models"]:
-            rm = RegistryModel.from_flat(m)
-            out = rm.to_dict()
+            result = RegistryModel.from_flat(m)
+            assert result.is_ok(), f"{m['id']}: {result.error if result.is_err() else ''}"
+            out = result.unwrap().to_dict()
             assert out["id"] == m["id"], f"id lost for {m['id']}"
+            assert out.get("family") == m.get("family")
             # meta fields preserved
             src_meta = m.get("meta", {})
             out_meta = out.get("meta", {})

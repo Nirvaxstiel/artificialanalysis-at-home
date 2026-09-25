@@ -6,7 +6,7 @@ from ._values import (
     PricePerMToken, CostPerTask, TokensPerSecond, ReasoningTaxPct,
     CacheHitRate, CostSegment, IntelligenceScore, FinanceAccountingIndex,
     PassRate, OmniscienceIndex, Elo, CIMargin, VoteCount, BenchmarkScore,
-    ParameterCount, CarbonKg, ContextWindow, ResponseTime,
+    ParameterCount, CarbonKg, ContextWindow, ResponseTime, ModelFamily,
 )
 
 
@@ -24,6 +24,7 @@ class ProjectionRow:
     slug: str
     name: str
     creator: Optional[str] = None
+    family: Optional[ModelFamily] = None
     inp_price: Optional[PricePerMToken] = None
     out_price: Optional[PricePerMToken] = None
     type: Optional[ModelType] = None
@@ -87,7 +88,8 @@ class ProjectionRow:
 
     FIELD_PROVENANCE: ClassVar[Dict[str, Provenance]] = {
         "slug": Provenance.SOURCED, "name": Provenance.SOURCED,
-        "creator": Provenance.SOURCED, "type": Provenance.SOURCED,
+        "creator": Provenance.SOURCED, "family": Provenance.SOURCED,
+        "type": Provenance.SOURCED,
         "meta": Provenance.SOURCED,
         "inp_price": Provenance.SOURCED, "out_price": Provenance.SOURCED,
         "blended": Provenance.DERIVED, "cache_hit_price": Provenance.SOURCED,
@@ -156,6 +158,8 @@ class ProjectionRow:
             "pareto_optimal": self.meta.pareto_optimal if self.meta else False,
             "context_window": None,
         }
+        if self.family is not None:
+            d["family"] = self.family.as_primitive()
         optional_map: Dict[str, Any] = {
             "intel": self.intel,
             "cost_per_task": self.cost_per_task,

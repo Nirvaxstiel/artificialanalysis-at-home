@@ -81,9 +81,9 @@ How every source in the pipeline is **obtained** — method, auth, script, fresh
 - **Used for:** `release_date`, `creator` backfill, 16 live-AA benchmark axes.
 
 ### 2A. Artificial Analysis — public model catalog (`aa_public_model_catalog.json`)
-- **Method:** `_pull_sources.py` requests the public providers page as a Next.js React Server Components (RSC) payload. It needs no API key and returns model variants with `release.slug`, `releaseDate`, and `creator.name`.
+- **Method:** `_pull_sources.py` requests the public providers page as a Next.js React Server Components (RSC) payload. It needs no API key and returns model variants with `release.slug`, `release.name`, `releaseDate`, and `creator.name`.
 - **File:** `data/sources/aa/aa_public_model_catalog.json` (671 variants; fetched 2026-09-24).
-- **Role:** fills missing creator and release-date metadata for existing AA models only. It does not seed models or add benchmark metrics. The RSC route is an internal website payload, not a stable public API; the keyed REST API remains authoritative for evaluation scores.
+- **Role:** fills creator, release date, and official model-family metadata for existing AA models only. It does not seed models or add benchmark metrics. The family value is `{slug, name}` from AA's `release`; the RSC route is an internal website payload, not a stable public API. The keyed REST API remains authoritative for evaluation scores.
 - **Repro:** `PYTHONPATH=data python -m data._pull_sources`.
 
 ### 3. OpenRouter (`openrouter_models.json`)

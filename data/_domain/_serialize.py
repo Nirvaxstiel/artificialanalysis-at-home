@@ -10,7 +10,7 @@ from ._values import (
     ReasoningTaxPct, CacheHitRate, CostSegment, IntelligenceScore,
     Elo, CIMargin, VoteCount, BenchmarkScore, ParameterCount, CarbonKg,
     ContextWindow, ResponseTime, OmniscienceIndex,
-    FinanceAccountingIndex, PassRate,
+    FinanceAccountingIndex, PassRate, ModelFamily,
 )
 
 
@@ -206,3 +206,17 @@ def safe_response_time(v) -> Ok[Optional[ResponseTime]] | Err[str]:
     if not isfinite(seconds) or seconds < 0:
         return err(f"Time per task must be finite and non-negative: {v}")
     return ok(ResponseTime(seconds))
+
+
+def safe_model_family(value) -> Ok[Optional[ModelFamily]] | Err[str]:
+    if value is None:
+        return ok(None)
+    if not isinstance(value, dict):
+        return err("Model family must be an object")
+    slug = value.get("slug")
+    name = value.get("name")
+    if not isinstance(slug, str) or not slug.strip():
+        return err("Model family slug must be a non-empty string")
+    if not isinstance(name, str) or not name.strip():
+        return err("Model family name must be a non-empty string")
+    return ok(ModelFamily(slug=slug, name=name))

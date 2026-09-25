@@ -353,6 +353,10 @@ def step_write(state):
             if "tasks" in livebench:
                 del livebench["tasks"]
         output_models.append(model)
+    registry_models = [RegistryModel.from_flat(model) for model in output_models]
+    invalid_registry_model = next((model for model in registry_models if model.is_err()), None)
+    if invalid_registry_model is not None:
+        return err(invalid_registry_model.error)
     output = {
         "meta": {
             "generated": state["today"],
@@ -363,7 +367,7 @@ def step_write(state):
             "name_map_size": len(state["name_map"]),
         },
         "name_map": state["name_map"],
-        "models": [RegistryModel.from_flat(m).to_dict() for m in output_models],
+        "models": [model.unwrap().to_dict() for model in registry_models],
     }
     try:
         with open(state["out"], "w") as f:

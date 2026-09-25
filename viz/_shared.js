@@ -480,15 +480,6 @@ window.buildTooltip = function(m) {
   return html;
 };
 
-window.SKU_PATTERNS = [
-  { keyword: 'oss',     suffix: ' OSS',   pattern: '(^|-)oss(-|$)' },
-  { keyword: 'mini',    suffix: ' Mini',  pattern: '(^|-)mini(-|$)' },
-  { keyword: 'nano',    suffix: ' Nano',  pattern: '(^|-)nano(-|$)' },
-  { keyword: 'flash',   suffix: ' Flash', pattern: '(^|-)flash(-|$)' },
-  { keyword: 'codex',   suffix: ' Code',  pattern: '(^|-)codex(-|$)' },
-  { keyword: '-code',   suffix: ' Code',  pattern: '-code$' },
-];
-
 window.RADAR_AXES = [
   { key: 'avgIQ',       label: 'IQ',         angle: -Math.PI / 2 },
   { key: 'avgSpeed',    label: 'SPEED',      angle: -Math.PI / 2 + 2 * Math.PI / 5 },

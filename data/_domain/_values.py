@@ -197,3 +197,18 @@ class ContextWindow(DomainValue):
     def __post_init__(self):
         if self.tokens <= 0:
             raise ValueError(f"Context window must be positive: {self.tokens}")
+
+
+@dataclass(frozen=True)
+class ModelFamily(DomainValue):
+    slug: str
+    name: str
+
+    def __post_init__(self):
+        if not isinstance(self.slug, str) or not self.slug.strip():
+            raise ValueError("Model family slug must be a non-empty string")
+        if not isinstance(self.name, str) or not self.name.strip():
+            raise ValueError("Model family name must be a non-empty string")
+
+    def as_primitive(self) -> dict[str, str]:
+        return {"slug": self.slug, "name": self.name}

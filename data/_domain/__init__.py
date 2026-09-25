@@ -7,7 +7,7 @@ from ._values import (
     ReasoningTaxPct, CacheHitRate, CostSegment, IntelligenceScore,
     Elo, CIMargin, VoteCount, BenchmarkScore, ParameterCount, CarbonKg,
     ContextWindow, ResponseTime, OmniscienceIndex, FinanceAccountingIndex,
-    PassRate,
+    PassRate, ModelFamily,
 )
 from ._entities import Axis, RegistryModelMeta, RegistryModel
 from ._projection import ProjectionRowMeta, ProjectionRow
@@ -17,5 +17,6 @@ from ._serialize import (
     safe_intel, safe_elo, safe_ci, safe_votes, safe_benchmark,
     safe_params, safe_carbon, safe_ctx_window, safe_omniscience,
     safe_finance_accounting_index, safe_pass_rate, safe_response_time,
+    safe_model_family,
     try_model_type,
 )

@@ -55,33 +55,36 @@ def get_aa_public_model_catalog(aa_dir: str):
         return err("aa_public_model_catalog.json: expected an object")
     source_models = payload.get("models")
     if isinstance(source_models, dict):
-        entries = [
-            (slug, record.get("creator"), record.get("release_date"))
-            for slug, record in source_models.items()
-            if isinstance(record, dict)
-        ]
-        if len(entries) != len(source_models):
-            return err("aa_public_model_catalog.json: each model must be an object")
+        entries = []
+        for slug, record in source_models.items():
+            if not isinstance(record, dict):
+                return err("aa_public_model_catalog.json: each model must be an object")
+            family_result = _public_model_family(record.get("family"), slug)
+            if family_result.is_err():
+                return err(family_result.error)
+            entries.append((slug, record.get("creator"), record.get("release_date"), family_result.unwrap()))
     elif isinstance(source_models, list):
         if any(not isinstance(model, dict) for model in source_models):
             return err("aa_public_model_catalog.json: each model must be an object")
         entries = []
         for model in source_models:
             release = model.get("release")
-            release = release if isinstance(release, dict) else {}
             model_slug = model.get("slug")
-            release_slug = release.get("slug")
+            family_result = _public_model_family(release, model_slug)
+            if family_result.is_err():
+                return err(family_result.error)
+            release_slug = release.get("slug") if isinstance(release, dict) else None
             raw_creator = model.get("creator")
             creator = raw_creator.get("name") if isinstance(raw_creator, dict) else raw_creator
             if isinstance(model_slug, str):
-                entries.append((model_slug, creator, model.get("releaseDate")))
+                entries.append((model_slug, creator, model.get("releaseDate"), family_result.unwrap()))
             if isinstance(release_slug, str) and release_slug != model_slug:
-                entries.append((release_slug, creator, None))
+                entries.append((release_slug, creator, None, None))
     else:
         return err("aa_public_model_catalog.json: expected a models list or map")
 
     out: dict[str, dict] = {}
-    for slug, raw_creator, release_date in entries:
+    for slug, raw_creator, release_date, family in entries:
         if not isinstance(slug, str):
             continue
         if release_date is not None and not isinstance(release_date, str):
@@ -90,7 +93,7 @@ def get_aa_public_model_catalog(aa_dir: str):
         if not canonical_id:
             continue
         creator = normalize_creator(raw_creator)
-        if creator is None and release_date is None:
+        if creator is None and release_date is None and family is None:
             continue
         record = {
             "id": canonical_id,
@@ -98,18 +101,39 @@ def get_aa_public_model_catalog(aa_dir: str):
             "meta": {"release_date": release_date},
             "aliases": {"aa_public_catalog": slug},
         }
+        if family is not None:
+            record["family"] = family
         if canonical_id in out:
             existing = out[canonical_id]
             existing_creator = existing.get("creator")
             existing_date = existing.get("meta", {}).get("release_date")
+            existing_family = existing.get("family")
             if creator and existing_creator and creator != existing_creator:
                 return err(f"aa_public_model_catalog.json: conflicting creators for {canonical_id}")
             if release_date and existing_date and release_date != existing_date:
                 return err(f"aa_public_model_catalog.json: conflicting release dates for {canonical_id}")
+            if family and existing_family and family != existing_family:
+                return err(f"aa_public_model_catalog.json: conflicting families for {canonical_id}")
             _merge_fill_nulls(out[canonical_id], record)
         else:
             out[canonical_id] = record
     return ok(out)
+
+
+def _public_model_family(release, model_slug):
+    if release is None:
+        return ok(None)
+    if not isinstance(release, dict):
+        return err(f"aa_public_model_catalog.json: invalid release for {model_slug}")
+    slug = release.get("slug")
+    name = release.get("name")
+    if slug is None and name is None:
+        return ok(None)
+    if not isinstance(slug, str) or not slug.strip():
+        return err(f"aa_public_model_catalog.json: invalid family slug for {model_slug}")
+    if not isinstance(name, str) or not name.strip():
+        return err(f"aa_public_model_catalog.json: invalid family name for {model_slug}")
+    return ok({"slug": slug, "name": name})
 
 
 def _ensure_aa_record(out: dict, slug: str):

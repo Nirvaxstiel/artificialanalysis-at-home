@@ -21,6 +21,7 @@ from _domain import (
     safe_ctx_window,
     safe_response_time,
     safe_cache,
+    safe_model_family,
     try_model_type,
 )
 
@@ -112,11 +113,13 @@ def _build_projection_row(row, registry_by_id) -> Ok[ProjectionRow] | Err[str]:
     analyst_pass_rate = safe_pass_rate(axes.get("aa.analyst_agent_pass_5"))
     omniscience_index = safe_omniscience(axes.get("aa.omniscience_index"))
     time_per_task = safe_response_time(axes.get("aa.time_per_task"))
+    family = safe_model_family(registry.get("family"))
     for metric, result in (
         ("finance_accounting_index", finance_index),
         ("analyst_agent_pass_5", analyst_pass_rate),
         ("omniscience_index", omniscience_index),
         ("time_per_task", time_per_task),
+        ("family", family),
     ):
         if result.is_err():
             return err(f"{mid}.{metric}: {result.error}")
@@ -125,6 +128,7 @@ def _build_projection_row(row, registry_by_id) -> Ok[ProjectionRow] | Err[str]:
         slug=mid,
         name=_clean_name(row.get("name")) or mid,
         creator=row.get("creator"),
+        family=family.unwrap(),
         type=try_model_type(row.get("model_type")),
         meta=ProjectionRowMeta(
             has_breakdown=any(axes.get(f"aa.cost_seg_{key}") is not None

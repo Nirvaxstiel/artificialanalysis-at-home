@@ -8,8 +8,9 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "data"))
 
 from _domain import (
-    ProjectionRow, Provenance, safe_finance_accounting_index,
-    safe_omniscience, safe_pass_rate, safe_ppm, safe_reasoning_tax, safe_response_time,
+    ProjectionRow, Provenance, RegistryModel, safe_finance_accounting_index,
+    safe_model_family, safe_omniscience, safe_pass_rate, safe_ppm,
+    safe_reasoning_tax, safe_response_time,
 )  # noqa: E402
 from data.sources.aa._build import get_aa_models  # noqa: E402
 
@@ -94,6 +95,27 @@ class TestDerivedProperties:
         assert provenance["reasoning_tax_pct"] == "derived"
         assert provenance["aa_finance_accounting_index"] == "sourced"
         assert provenance["aa_analyst_agent_pass_5"] == "sourced"
+
+    def test_model_family_is_validated_and_sourced(self):
+        family_data = {"slug": "gemini-3-8-flash", "name": "Gemini 3.8 Flash"}
+        family = safe_model_family(family_data)
+        assert family.unwrap().as_primitive() == family_data
+        assert safe_model_family(None).unwrap() is None
+        assert safe_model_family({"slug": "", "name": "Gemini 3.8 Flash"}).is_err()
+
+        row = ProjectionRow(slug="gemini-3-8-flash", name="Gemini 3.8 Flash", family=family.unwrap())
+        serialized = row.to_dict()
+        assert serialized["family"] == family_data
+        assert serialized["provenance"]["family"] == "sourced"
+
+        registry_model = RegistryModel.from_flat({"id": row.slug, "family": family_data})
+        assert registry_model.unwrap().to_dict()["family"] == family_data
+        assert RegistryModel.from_flat({"id": row.slug, "family": {"slug": "", "name": "bad"}}).is_err()
+
+    def test_official_family_flows_to_processed_data(self, processed_js):
+        model = next(row for row in processed_js if row["slug"] == "gemini-3-8-flash-medium")
+        assert model["family"] == {"slug": "gemini-3-8-flash", "name": "Gemini 3.8 Flash"}
+        assert model["provenance"]["family"] == "sourced"
 
     def test_new_aa_fields_have_sourced_provenance(self):
         for field in (

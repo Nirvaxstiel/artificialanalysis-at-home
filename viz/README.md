@@ -32,7 +32,7 @@ Note: files are named by slug (`crossover.js`, `cost-breakdown.js`, …), **not*
 3. **Reuse the tooltip.** If you have hoverable elements, attach to the shared `#tooltip` div from `dashboard.html` using the `buildTooltip(model)` function (also exposed globally).
 4. **No external dependencies.** No CDN, no fetch, no imports. Pure DOM + SVG.
 5. **Match the brutalist aesthetic.** Hard borders, monospace, neon accents, `//` comments.
-6. **No hardcoded values.** Use `window.FIELD_LABELS`, `window.RADAR_AXES`, `window.SKU_PATTERNS`, `window.COST_SEGMENTS` from `_shared.js`.
+6. **No hardcoded values.** Use `window.FIELD_LABELS`, `window.RADAR_AXES`, and `window.COST_SEGMENTS` from `_shared.js`. Provider Archetypes reads official `model.family` data from `processed.js`.
 7. **Use the legend filter.** Read `window.__legendFilter` to dim non-matching elements.
 
 ## Boot orchestration
@@ -88,7 +88,7 @@ Cost per IQ point is calculated from sourced `cost_per_task` and `intel` for the
 - `window.__modelOpacity(m)` — returns 0–1 for fade effect based on filter
 - `window.__filterSubscribers` — `Set` of callbacks invoked on filter change
 - `window.__renderCreatorLegend()` — generates HTML legend strip
-- `window.SKU_PATTERNS` — slug → suffix splits (OSS / Mini / Nano / Flash / Code)
+- `model.family` — official AA release slug and name used to group Provider Archetypes
 - `window.RADAR_AXES` — 5 radar axes (IQ, speed, cache efficiency, cost efficiency, context)
 - `window.COST_SEGMENTS` — color + label for cost breakdown
 - `window.FIELD_LABELS` — display names for table columns

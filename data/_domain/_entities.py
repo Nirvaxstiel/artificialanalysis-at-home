@@ -5,7 +5,9 @@ from typing import Any, Dict, List, Optional, Tuple
 from ._base import (
     DomainValue, Direction, AxisCategory, SourceKey, ModelType,
 )
-from ._values import ParameterCount, CarbonKg, ContextWindow
+from ._values import ParameterCount, CarbonKg, ContextWindow, ModelFamily
+from ._serialize import safe_model_family
+from _result import Err, Ok, err, ok
 
 
 @dataclass(frozen=True)
@@ -89,6 +91,7 @@ class RegistryModel:
     id: str
     name: Optional[str] = None
     creator: Optional[str] = None
+    family: Optional[ModelFamily] = None
     model_type: Optional[ModelType] = None
     meta: RegistryModelMeta = field(default_factory=RegistryModelMeta)
     pricing: Dict[str, Any] = field(default_factory=dict)
@@ -100,7 +103,7 @@ class RegistryModel:
             raise ValueError(f"Model ID cannot be empty")
 
     @classmethod
-    def from_flat(cls, d: Dict[str, Any]) -> 'RegistryModel':
+    def from_flat(cls, d: Dict[str, Any]) -> "Ok['RegistryModel'] | Err[str]":
         """Build from the pipeline's plain-dict registry contract.
 
         Wraps the flat `meta` dict in RegistryModelMeta (typed/validated) while
@@ -120,6 +123,9 @@ class RegistryModel:
             context_window=meta.get("context_window"),
             dirac_cache_hit_rates=meta.get("dirac_cache_hit_rates"),
         )
+        family_result = safe_model_family(d.get("family"))
+        if family_result.is_err():
+            return err(f"{d.get('id', 'model')}.family: {family_result.error}")
         mt = d.get("model_type")
         model_type = None
         if mt:
@@ -127,16 +133,17 @@ class RegistryModel:
                 model_type = ModelType(mt)
             except ValueError:
                 model_type = None
-        return cls(
+        return ok(cls(
             id=d["id"],
             name=d.get("name"),
             creator=d.get("creator"),
+            family=family_result.unwrap(),
             model_type=model_type,
             meta=meta_obj,
             pricing=d.get("pricing", {}) or {},
             benchmarks=d.get("benchmarks", {}) or {},
             aliases=d.get("aliases", {}) or {},
-        )
+        ))
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {"id": self.id}
@@ -144,6 +151,8 @@ class RegistryModel:
             d["name"] = self.name
         if self.creator is not None:
             d["creator"] = self.creator
+        if self.family is not None:
+            d["family"] = self.family.as_primitive()
         if self.model_type is not None:
             d["model_type"] = self.model_type.value
         meta_dict = self.meta.to_dict()
